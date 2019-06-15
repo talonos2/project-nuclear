@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Accessory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public EffectType effectType;
+    public float effectStrength;
 
-    // Update is called once per frame
-    void Update()
+    public enum EffectType
     {
-        
+        SAMPLE,EFFECT,TYPES,TO,BE,REPLACED,LATER
     }
 }
