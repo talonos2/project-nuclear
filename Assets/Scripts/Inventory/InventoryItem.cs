@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class InventoryItem : MonoBehaviour
 {
-    public string equipmentName = "Name me please";
+    public string equipmentDescription = "Describe me please";
 }
