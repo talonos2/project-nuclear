@@ -3,4 +3,4 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PassabilityType
-{ NORMAL, MONSTER_HOME, AIR, WALL }
+{ NORMAL, MONSTER, AIR, WALL, ERROR }
