@@ -14,11 +14,11 @@ public class PassabilityGrid : MonoBehaviour
     void Start()
     {
         grid = new PassabilityType[width, height];
-        string[] yRows = passabilityMap.text.Split('\n');
+        string[] yRows = passabilityMap.text.Split(new char[] { '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+        System.Array.Reverse(yRows);
         if (yRows.Length < height)
         {
             Debug.LogWarning(passabilityMap.name + " does not have enough rows; all missing rows will be filled with empty ground!");
-            return;
         }
         if (yRows.Length > height)
         {
@@ -27,7 +27,6 @@ public class PassabilityGrid : MonoBehaviour
         int rowNum = 0;
         foreach (string rowString in yRows)
         {
-            Debug.Log(rowString);
             if (rowString.Length < width)
             {
                 Debug.LogWarning("Row " + rowNum + " does not have enough squares; all missing squares will be filled with empty ground!");
@@ -54,8 +53,8 @@ public class PassabilityGrid : MonoBehaviour
                         grid[charNum, rowNum] = PassabilityType.WALL;
                         break;
                     default:
-                        Debug.LogWarning("Got unexpected type " + c + ": Ignoring and replacing with blank ground!");
-                        grid[charNum, rowNum] = PassabilityType.NORMAL;
+                        Debug.LogWarning("Got unexpected type " + c + " at "+ charNum + " in row "+ rowNum +": Ignoring and replacing with errored ground!");
+                        grid[charNum, rowNum] = PassabilityType.ERROR;
                         break;
                 }
                 charNum++;
@@ -70,5 +69,41 @@ public class PassabilityGrid : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (grid == null)
+        {
+            return;
+        }
+        float xOffset = width / 2;
+        float yOffset = height / 2;
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                switch (grid[x,y])
+                {
+                    case PassabilityType.NORMAL:
+                        Gizmos.color = Color.green;
+                        break;
+                    case PassabilityType.MONSTER:
+                        Gizmos.color = Color.yellow;
+                        break;
+                    case PassabilityType.AIR:
+                        Gizmos.color = Color.blue;
+                        break;
+                    case PassabilityType.WALL:
+                        Gizmos.color = Color.black;
+                        break;
+                    case PassabilityType.ERROR:
+                        Gizmos.color = Color.magenta;
+                        break;
+                }
+                Gizmos.color = new Color(Gizmos.color.r, Gizmos.color.g, Gizmos.color.b, .25f);
+                Gizmos.DrawCube(new Vector3(x - xOffset + .5f, y - yOffset, 0), new Vector3(1, 1, .2f));
+            }
+        }
     }
 }
