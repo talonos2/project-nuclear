@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CombatInitiator : MonoBehaviour
 {
@@ -26,5 +27,8 @@ public class CombatInitiator : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("huh");
+        Time.timeScale = 0;
+        SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
+
     }
 }
