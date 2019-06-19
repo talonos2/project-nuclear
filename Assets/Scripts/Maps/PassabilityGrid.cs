@@ -33,7 +33,7 @@ public class PassabilityGrid : MonoBehaviour
             }
             if (rowString.Length > width)
             {
-                Debug.LogWarning("Row " + rowNum + " does has too many squares; all extra squares will be ignored!");
+                Debug.LogWarning("Row " + rowNum + " has too many squares; all extra squares will be ignored!");
             }
             int charNum = 0;
             foreach (char c in rowString.ToCharArray())
