@@ -33,7 +33,7 @@ public class PassabilityGrid : MonoBehaviour
             }
             if (rowString.Length > width)
             {
-                Debug.LogWarning("Row " + rowNum + " does has too many squares; all extra squares will be ignored!");
+                Debug.LogWarning("Row " + rowNum + " has too many squares; all extra squares will be ignored!");
             }
             int charNum = 0;
             foreach (char c in rowString.ToCharArray())
@@ -105,5 +105,10 @@ public class PassabilityGrid : MonoBehaviour
                 Gizmos.DrawCube(new Vector3(x - xOffset + .5f, y - yOffset, 0), new Vector3(1, 1, .2f));
             }
         }
+    }
+
+    public Vector2 GridToTransform(Vector2 gridPosition)
+    {
+        return new Vector2(gridPosition.x - width / 2, gridPosition.y - height / 2);
     }
 }

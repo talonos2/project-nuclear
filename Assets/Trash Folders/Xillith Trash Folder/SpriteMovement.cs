@@ -11,14 +11,21 @@ public class SpriteMovement : MonoBehaviour
     public Sprite[] MovementSprites;
     public float MoveSpeed = 6;
     public float AnimationSpeed = 10;
+    protected GameObject MapGrid;
 
     private SpriteRenderer spriteR;
     private string spriteNames;
  
 
-    void Start()
+    public void Start()
     {
         spriteR = gameObject.GetComponent<SpriteRenderer>();
+        MapGrid = GetMapGrid();
+    }
+
+    public GameObject GetMapGrid() {
+        GameObject MapGridRetrieved = GameObject.Find("Grid");
+            return MapGridRetrieved;
     }
 
     // Update is called once per frame
@@ -55,6 +62,7 @@ public class SpriteMovement : MonoBehaviour
         }
         Vector3 getMotion = new Vector3(0.0f, -DistanceToMove, 0.0f);
         transform.position = transform.position + getMotion;
+        //transform.position.y = (float)(int)Math.Round(transform.position.y);
         return MovedSoFar;
     }
 
