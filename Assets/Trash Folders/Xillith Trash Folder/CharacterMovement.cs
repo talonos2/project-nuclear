@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class CharacterMovement : SpriteMovement
 {
+
+    /// <summary>
+    /// This is the character's start position. The character's transform won't matter; this will overwrite it.
+    /// </summary>
+    public Vector2 startPositionOnMap = new Vector2(0,0);
     // Start is called before the first frame update
 
 
@@ -16,7 +21,12 @@ public class CharacterMovement : SpriteMovement
     private int CharacterLocationX;
     private int CharacterLocationY;
 
-
+    private void Start()
+    {
+        base.Start();
+        Vector2 transformToMoveTo = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(startPositionOnMap);
+        this.transform.position = new Vector3(transformToMoveTo.x, transformToMoveTo.y, -.1f);
+    }
 
     // Update is called once per frame
     void Update()
@@ -56,14 +66,11 @@ public class CharacterMovement : SpriteMovement
         }
 
 
-        float xOffset = this.MapGrid.GetComponent<PassabilityGrid>().width / 2;
-        float yOffset = this.MapGrid.GetComponent<PassabilityGrid>().height / 2;
-        float xZeroLocation = -xOffset;
-        float yZeroLocation = -yOffset;
+        Vector2 zero = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
         //Debug.Log(" Location x "+ xZeroLocation+" y "+ yZeroLocation);
 
-        float xCharLocation = (int)Math.Round(this.transform.position.x) - xZeroLocation;
-        float yCharLocation= (int)Math.Round(this.transform.position.y) - yZeroLocation;
+        float xCharLocation = (int)Math.Round(this.transform.position.x) - zero.x;
+        float yCharLocation= (int)Math.Round(this.transform.position.y) - zero.y;
 
 
 

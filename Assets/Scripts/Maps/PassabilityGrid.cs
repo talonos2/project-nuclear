@@ -106,4 +106,9 @@ public class PassabilityGrid : MonoBehaviour
             }
         }
     }
+
+    public Vector2 GridToTransform(Vector2 gridPosition)
+    {
+        return new Vector2(gridPosition.x - width / 2, gridPosition.y - height / 2);
+    }
 }

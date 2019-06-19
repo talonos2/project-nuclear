@@ -17,7 +17,7 @@ public class SpriteMovement : MonoBehaviour
     private string spriteNames;
  
 
-    void Start()
+    public void Start()
     {
         spriteR = gameObject.GetComponent<SpriteRenderer>();
         MapGrid = GetMapGrid();
