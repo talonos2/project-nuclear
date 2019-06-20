@@ -8,10 +8,10 @@ public class Enemy : MonoBehaviour
     public int HP = 0;
     public int attack = 0;
     public int defense = 0;
+    public int ExpGiven;
     public ElementalPower weakness = ElementalPower.NULL;
     public CrystalType crystalType = CrystalType.NULL;
     public int crystalDropAmount;
-    public int ExpGiven;
 
     public
     // Start is called before the first frame update

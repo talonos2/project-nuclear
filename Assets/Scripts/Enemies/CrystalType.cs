@@ -3,4 +3,4 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum CrystalType
-{ NULL, HEALTH, DEFENSE, ATTACK, MANA }
+{ NULL, HEALTH, DEFENSE, ATTACK, MANA, All }
