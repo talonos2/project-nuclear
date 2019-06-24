@@ -20,30 +20,38 @@ public class MonsterMovement : SpriteMovement
            NextStep= GetNextStep();
            CurrentlyMoving = true;
         }
+
+        if (CurrentlyMoving == true)
+        {
+            float finishedMoving = MoveToNextStep();
+            if (finishedMoving == 0)
+                CurrentlyMoving = false;
+        }
+
+        
+    }
+
+    private float MoveToNextStep()
+    {
+
+        float finishedMoving = 0;
         if (NextStep == (int)DirectionMoved.LEFT)
         {
             finishedMoving = MoveLeft(MoveSpeed);
-            if (finishedMoving == 0)
-                CurrentlyMoving = false;
         }
         if (NextStep == (int)DirectionMoved.RIGHT)
         {
             finishedMoving = MoveRight(MoveSpeed);
-            if (finishedMoving == 0)
-                CurrentlyMoving = false;
         }
         if (NextStep == (int)DirectionMoved.UP)
         {
             finishedMoving = MoveUp(MoveSpeed);
-            if (finishedMoving == 0)
-                CurrentlyMoving = false;
         }
         if (NextStep == (int)DirectionMoved.DOWN)
         {
             finishedMoving = MoveDown(MoveSpeed);
-            if (finishedMoving == 0)
-                CurrentlyMoving = false;
         }
+        return finishedMoving;
     }
 
     private int GetNextStep()
