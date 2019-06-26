@@ -12,15 +12,43 @@ public class SpriteMovement : MonoBehaviour
     public float MoveSpeed = 6;
     public float AnimationSpeed = 10;
     protected GameObject MapGrid;
+    protected Vector2 MapZeroLocation;
 
     private SpriteRenderer spriteR;
     private string spriteNames;
- 
+
+    private float MovedSoFar = 0;
+    private float AnimationStep = 0;
+
+    protected int CharacterLocationX;
+    protected int CharacterLocationY;
+
+    public enum DirectionMoved
+    { UP, DOWN, LEFT, RIGHT, NONE }
 
     public void Start()
     {
         spriteR = gameObject.GetComponent<SpriteRenderer>();
+        InitializeNewMap();
+        InitializeSpriteLocation();
+    }
+
+    private void InitializeSpriteLocation()
+    {
+        CharacterLocationX = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
+        CharacterLocationY = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
+        Debug.Log("Where am I " + CharacterLocationX + " " + CharacterLocationY);
+        Debug.Log("Hmm "+this.gameObject);
+        MapGrid.GetComponent<EntityGrid>().grid[CharacterLocationX, CharacterLocationY]= this.gameObject;
+    }
+
+    protected void UpdateEntityGridLocation(int xNewLoc, int yNewLoc) {
+        MapGrid.GetComponent<EntityGrid>().grid[CharacterLocationX, CharacterLocationY] = this.gameObject;
+    }
+
+    public void InitializeNewMap() {
         MapGrid = GetMapGrid();
+        MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
     }
 
     public GameObject GetMapGrid() {
@@ -30,13 +58,7 @@ public class SpriteMovement : MonoBehaviour
 
     // Update is called once per frame
 
-    public enum DirectionMoved
-    { UP, DOWN, LEFT, RIGHT }
-
-    private float MovedSoFar = 0;
-    private float AnimationStep = 0;
-    
-
+ 
 
     void Update()
     {
@@ -48,8 +70,7 @@ public class SpriteMovement : MonoBehaviour
 
     public float MoveDown(float MoveSpeed){
 
-        float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * MoveSpeed;
+        float DistanceToMove = Time.deltaTime * MoveSpeed;
         MovedSoFar += DistanceToMove;
 
         AnimateMoveDown();
