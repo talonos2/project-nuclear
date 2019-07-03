@@ -28,14 +28,7 @@ public class CharacterMovement : SpriteMovement
     void Update()
     {
 
-        if (CurrentlyMoving)
-        {
-            float finishedMoving = ContinueMoving();
-            if (finishedMoving == 0)
-            {
-                CurrentlyMoving = false;
-            }
-        }
+       
 
 
         if (!CurrentlyMoving)
@@ -71,7 +64,14 @@ public class CharacterMovement : SpriteMovement
 
         //If in the process of moving, keep moving and do nothing else
 
-
+        if (CurrentlyMoving)
+        {
+            float finishedMoving = ContinueMoving();
+            if (finishedMoving == 0)
+            {
+                CurrentlyMoving = false;
+            }
+        }
 
 
 

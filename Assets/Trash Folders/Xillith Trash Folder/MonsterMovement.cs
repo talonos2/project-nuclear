@@ -28,12 +28,7 @@ public class MonsterMovement : SpriteMovement
            
         
 
-        if (CurrentlyMoving == true)
-        {
-            float finishedMoving = MoveToNextSquare();
-            if (finishedMoving == 0)
-                CurrentlyMoving = false;
-        }
+      
 
         if (!CurrentlyMoving)
         {
@@ -62,8 +57,15 @@ public class MonsterMovement : SpriteMovement
             }
         }
 
-
+        if (CurrentlyMoving == true)
+        {
+            float finishedMoving = MoveToNextSquare();
+            if (finishedMoving == 0)
+                CurrentlyMoving = false;
         }
+
+
+    }
 
     
 
