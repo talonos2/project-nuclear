@@ -27,7 +27,17 @@ public class CharacterMovement : SpriteMovement
     // Update is called once per frame
     void Update()
     {
- 
+
+        if (CurrentlyMoving)
+        {
+            float finishedMoving = ContinueMoving();
+            if (finishedMoving == 0)
+            {
+                CurrentlyMoving = false;
+            }
+        }
+
+
         if (!CurrentlyMoving)
         {
             //Sets current Character position as an int
@@ -40,7 +50,7 @@ public class CharacterMovement : SpriteMovement
             }
                
             FacedDirection = InputDirection;
-            SetLookDirection();
+           // SetLookDirection();
             SetNextLocation(InputDirection);          
             if (IsMoveLocationPassable() && IsLocationEntityFree())
             {
@@ -60,14 +70,7 @@ public class CharacterMovement : SpriteMovement
         }
 
         //If in the process of moving, keep moving and do nothing else
-        if (CurrentlyMoving)
-        {
-            float finishedMoving = ContinueMoving();
-            if (finishedMoving == 0)
-            {
-                CurrentlyMoving = false;
-            }
-        }
+
 
 
 

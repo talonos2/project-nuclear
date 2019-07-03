@@ -16,27 +16,7 @@ public class MonsterMovement : SpriteMovement
     // Update is called once per frame
     void Update()
     {
-        if (!CurrentlyMoving) {
-            SetCurrentLocation();
-            NextStep = GetNextStep();
-            if (NextStep == (int)DirectionMoved.NONE) {
-                SetLookDirection();
-                return;
-            }
-                
-            SetNextLocation(NextStep);
-            FacedDirection = NextStep;
-            SetLookDirection();
-            if (IsMoveLocationPassable() && IsLocationEntityFree()) {
-                UpdateNewEntityGridLocation();
-                RemoveOldEntityGridLocation();
-                CurrentlyMoving = true;
-            } else if (isThereAPlayer()) {
-
-                //InitiateCombat();
-                SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
-
-            }
+      
             //if (MoveLocationIsMonster()) {
 
            // }
@@ -46,7 +26,7 @@ public class MonsterMovement : SpriteMovement
             //Test: are There no locations to go? if not skip this movement phase
             //If none of the above, update
            
-        }
+        
 
         if (CurrentlyMoving == true)
         {
@@ -55,8 +35,35 @@ public class MonsterMovement : SpriteMovement
                 CurrentlyMoving = false;
         }
 
-        
-    }
+        if (!CurrentlyMoving)
+        {
+            SetCurrentLocation();
+            NextStep = GetNextStep();
+            if (NextStep == (int)DirectionMoved.NONE)
+            {
+                SetLookDirection();
+                return;
+            }
+
+            SetNextLocation(NextStep);
+            FacedDirection = NextStep;
+            if (IsMoveLocationPassable() && IsLocationEntityFree())
+            {
+                UpdateNewEntityGridLocation();
+                RemoveOldEntityGridLocation();
+                CurrentlyMoving = true;
+            }
+            else if (isThereAPlayer())
+            {
+
+                //InitiateCombat();
+                SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
+
+            }
+        }
+
+
+        }
 
     
 
