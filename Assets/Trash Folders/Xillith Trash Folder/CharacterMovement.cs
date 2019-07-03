@@ -13,12 +13,8 @@ public class CharacterMovement : SpriteMovement
     public Vector2 startPositionOnMap = new Vector2(0,0);
     // Start is called before the first frame update
 
-
-
     
-    private int FacedDirection = (int)DirectionMoved.LEFT;
-    
-    private bool CurrentlyMoving = false;
+   
 
 
     //private void Start()
@@ -35,24 +31,31 @@ public class CharacterMovement : SpriteMovement
         if (!CurrentlyMoving)
         {
             //Sets current Character position as an int
-            CharacterLocationX = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
-            CharacterLocationY = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
+            SetCurrentLocation();
             int InputDirection=GetInputDirection();
-            if (InputDirection != (int)DirectionMoved.NONE)
-                FacedDirection = InputDirection;
-            if (ValidMoveLocation(InputDirection))
-            {                
-                CurrentlyMoving = true;
-            }
-            else {
+            if (InputDirection == (int)DirectionMoved.NONE)
+            {
                 SetLookDirection();
+                return;
             }
-
-            if (RunIntoMonster(InputDirection)) {
-                SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
+               
+            FacedDirection = InputDirection;
+            SetLookDirection();
+            SetNextLocation(InputDirection);          
+            if (IsMoveLocationPassable() && IsLocationEntityFree())
+            {
+                //if it is possible, check for a monster attack
+                //Needs to be refractored a bit
+                UpdateNewEntityGridLocation();
+                RemoveOldEntityGridLocation();
+                CurrentlyMoving = true;
 
             }
+            else if (isThereAMonster()) {
+                //InitiateFight();
+                    SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
 
+                }
                 
         }
 
@@ -71,65 +74,33 @@ public class CharacterMovement : SpriteMovement
 
     }
 
-    private bool RunIntoMonster(int inputDirection)
+    /*private bool RunIntoMonster(int inputDirection)
     {
         if (inputDirection == (int)DirectionMoved.NONE)
             return false;
 
         if (inputDirection == (int)DirectionMoved.RIGHT
-            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocationX + 1, CharacterLocationY))
+            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocation.x + 1, CharacterLocation.y))
             return true;
 
         if (inputDirection == (int)DirectionMoved.LEFT
-            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocationX - 1, CharacterLocationY))          
+            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocation.x - 1, CharacterLocation.y))          
             return true;
 
         if (inputDirection == (int)DirectionMoved.UP
-            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocationX, CharacterLocationY + 1))
+            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocation.x, CharacterLocation.y + 1))
             return true;
 
         if (inputDirection == (int)DirectionMoved.DOWN
-            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocationX, CharacterLocationY - 1))            
+            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocation.x, CharacterLocation.y - 1))            
             return true;
 
         return false;
-    }
+    }*/
 
-    private void SetLookDirection()
-    {
-        if (FacedDirection == (int)DirectionMoved.DOWN)
-            FaceDown();
-        if (FacedDirection == (int)DirectionMoved.UP)
-            FaceUp();
-        if (FacedDirection == (int)DirectionMoved.LEFT)
-            FaceLeft();
-        if (FacedDirection == (int)DirectionMoved.RIGHT)
-            FaceRight();
-    }
 
-    private bool ValidMoveLocation(int inputDirection)
-    {
-        if (inputDirection == (int)DirectionMoved.NONE)
-            return false;
 
-        if (inputDirection == (int)DirectionMoved.RIGHT 
-            && this.MapGrid.GetComponent<PassabilityGrid>().grid[CharacterLocationX + 1, CharacterLocationY] == PassabilityType.NORMAL)
-            return true;
-
-        if (inputDirection == (int)DirectionMoved.LEFT
-            && this.MapGrid.GetComponent<PassabilityGrid>().grid[CharacterLocationX - 1, CharacterLocationY] == PassabilityType.NORMAL)
-            return true;
-
-        if (inputDirection == (int)DirectionMoved.UP
-            && this.MapGrid.GetComponent<PassabilityGrid>().grid[CharacterLocationX, CharacterLocationY + 1] == PassabilityType.NORMAL)
-            return true;
-
-        if (inputDirection == (int)DirectionMoved.DOWN
-            && this.MapGrid.GetComponent<PassabilityGrid>().grid[CharacterLocationX , CharacterLocationY - 1] == PassabilityType.NORMAL)
-            return true;
-
-        return false;
-    }
+    
 
     private int GetInputDirection()
     {

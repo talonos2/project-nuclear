@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MonsterMovement : SpriteMovement
 {
     // Start is called before the first frame update
 
-    private bool CurrentlyMoving = false;
     private int NextStep;
     private float finishedMoving;
     private int[] Pathing= {3,3,3,1,1,1, 2, 2,2, 0,0,0 };
@@ -17,13 +17,40 @@ public class MonsterMovement : SpriteMovement
     void Update()
     {
         if (!CurrentlyMoving) {
-           NextStep= GetNextStep();
-           CurrentlyMoving = true;
+            SetCurrentLocation();
+            NextStep = GetNextStep();
+            if (NextStep == (int)DirectionMoved.NONE) {
+                SetLookDirection();
+                return;
+            }
+                
+            SetNextLocation(NextStep);
+            FacedDirection = NextStep;
+            SetLookDirection();
+            if (IsMoveLocationPassable() && IsLocationEntityFree()) {
+                UpdateNewEntityGridLocation();
+                RemoveOldEntityGridLocation();
+                CurrentlyMoving = true;
+            } else if (isThereAPlayer()) {
+
+                //InitiateCombat();
+                SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
+
+            }
+            //if (MoveLocationIsMonster()) {
+
+           // }
+            //Test: will next step run into a player 
+            //Test: will next step run into a wall or monster
+            //Test: will next step run into a forbidden zone?
+            //Test: are There no locations to go? if not skip this movement phase
+            //If none of the above, update
+           
         }
 
         if (CurrentlyMoving == true)
         {
-            float finishedMoving = MoveToNextStep();
+            float finishedMoving = MoveToNextSquare();
             if (finishedMoving == 0)
                 CurrentlyMoving = false;
         }
@@ -31,28 +58,7 @@ public class MonsterMovement : SpriteMovement
         
     }
 
-    private float MoveToNextStep()
-    {
-
-        float finishedMoving = 0;
-        if (NextStep == (int)DirectionMoved.LEFT)
-        {
-            finishedMoving = MoveLeft(MoveSpeed);
-        }
-        if (NextStep == (int)DirectionMoved.RIGHT)
-        {
-            finishedMoving = MoveRight(MoveSpeed);
-        }
-        if (NextStep == (int)DirectionMoved.UP)
-        {
-            finishedMoving = MoveUp(MoveSpeed);
-        }
-        if (NextStep == (int)DirectionMoved.DOWN)
-        {
-            finishedMoving = MoveDown(MoveSpeed);
-        }
-        return finishedMoving;
-    }
+    
 
     private int GetNextStep()
     {
