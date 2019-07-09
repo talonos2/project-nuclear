@@ -10,6 +10,6 @@ public class Accessory : InventoryItem
 
     public enum EffectType
     {
-        Health,Mana,Defence,Attack,Ice,Earth,Fire,Air,HPVamp,MPVamp,Crit,XP,Dodge
+        Health,Mana,defense,Attack,Ice,Earth,Fire,Air,HPVamp,MPVamp,Crit,XP,Dodge
     }
 }

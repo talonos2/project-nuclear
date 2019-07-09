@@ -16,19 +16,19 @@ public class MonsterMovement : SpriteMovement
     // Update is called once per frame
     void Update()
     {
-      
-            //if (MoveLocationIsMonster()) {
 
-           // }
-            //Test: will next step run into a player 
-            //Test: will next step run into a wall or monster
-            //Test: will next step run into a forbidden zone?
-            //Test: are There no locations to go? if not skip this movement phase
-            //If none of the above, update
-           
-        
+        //if (MoveLocationIsMonster()) {
 
-      
+        // }
+        //Test: will next step run into a player 
+        //Test: will next step run into a wall or monster
+        //Test: will next step run into a forbidden zone?
+        //Test: are There no locations to go? if not skip this movement phase
+        //If none of the above, update
+
+
+
+
 
         if (!CurrentlyMoving)
         {
@@ -48,12 +48,18 @@ public class MonsterMovement : SpriteMovement
                 RemoveOldEntityGridLocation();
                 CurrentlyMoving = true;
             }
-            else if (isThereAPlayer())
+            else
             {
+                GameObject EnemyToFight = null;
+                EnemyToFight = isThereAPlayer();
+                if (EnemyToFight != null)
+                {
+                    //Combat Combat = new Combat();
+                    Combat.initiateFight(EnemyToFight, this.gameObject);
+                    //InitiateFight();
+                    //SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
 
-                //InitiateCombat();
-                SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
-
+                }
             }
         }
 

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SampleMonsterSpriter : MonoBehaviour
 {
-    Renderer r;
+    private Renderer r;
 
     public GameObject hero;
     public Renderer mapr;
 
     int subframe = 0;
-    int frame;
+    public int frame;
+    //public int frameTime;
     // Start is called before the first frame update
     void Start()
     {

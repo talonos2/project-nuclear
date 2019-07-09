@@ -44,7 +44,7 @@ public class CharacterMovement : SpriteMovement
                
             FacedDirection = InputDirection;
            // SetLookDirection();
-            SetNextLocation(InputDirection);          
+            SetNextLocation(InputDirection);
             if (IsMoveLocationPassable() && IsLocationEntityFree())
             {
                 //if it is possible, check for a monster attack
@@ -54,11 +54,18 @@ public class CharacterMovement : SpriteMovement
                 CurrentlyMoving = true;
 
             }
-            else if (isThereAMonster()) {
-                //InitiateFight();
-                    SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
+            else {
+                GameObject EnemyToFight = null;
+                EnemyToFight = isThereAMonster();
+                if (EnemyToFight!=null)
+                {
+                    Combat.initiateFight(this.gameObject, EnemyToFight);
+                    //InitiateFight();
+                    //SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
 
                 }
+            }
+            
                 
         }
 
