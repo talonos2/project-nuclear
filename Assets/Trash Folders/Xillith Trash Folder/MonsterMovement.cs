@@ -9,8 +9,10 @@ public class MonsterMovement : SpriteMovement
     // Start is called before the first frame update
 
     private int NextStep;
-    private float finishedMoving;
-    private int[] Pathing= {3,3,3,1,1,1, 2, 2,2, 0,0,0 };
+    private float finishedMoving;    
+    public bool PathRandomly;
+    public bool PathViaSteps;
+    public int[] Pathing = { 1, 1, 1, 2, 2, 2, 3, 3, 3, 4,4,4 };
     private int CurrentStep = 0;
 
     // Update is called once per frame
@@ -77,10 +79,21 @@ public class MonsterMovement : SpriteMovement
 
     private int GetNextStep()
     {
-        if (CurrentStep == 12)
-            CurrentStep = 0;
-        int nexstp= Pathing[CurrentStep];
-        CurrentStep++;
+        int nexstp=0;
+        if (PathViaSteps) {
+            if (CurrentStep == Pathing.Length)
+                CurrentStep = 0;
+            nexstp = Pathing[CurrentStep];
+            CurrentStep++;
+        }
+        if (PathRandomly) {
+            System.Random rand = new System.Random();
+            int direction = rand.Next(4) + 1;
+            //CanIMoveRandomly(direction);
+        }
+        
         return nexstp;
     }
+
+
 }

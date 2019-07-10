@@ -9,7 +9,7 @@ public class SpriteMovement : MonoBehaviour
     // Start is called before the first frame update
 
    // public Sprite MovementSprite;
-    public Sprite[] MovementSprites;
+    //public Sprite[] MovementSprites;
     public float MoveSpeed = 6;
     public float AnimationSpeed = 10;
     protected GameObject MapGrid;
@@ -30,7 +30,7 @@ public class SpriteMovement : MonoBehaviour
     //protected int CharacterLocationY;
 
     public enum DirectionMoved
-    { UP, DOWN, LEFT, RIGHT, NONE }
+    { NONE, UP, RIGHT, DOWN, LEFT }
 
     public void Start()
     {
