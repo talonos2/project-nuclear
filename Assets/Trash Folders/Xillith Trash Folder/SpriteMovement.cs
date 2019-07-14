@@ -15,6 +15,7 @@ public class SpriteMovement : MonoBehaviour
     protected GameObject MapGrid;
     protected Vector2 MapZeroLocation;
     protected bool CurrentlyMoving = false;
+    protected GameObject ThePlayer;
 
     //private SpriteRenderer spriteR;
     private string spriteNames;
@@ -39,6 +40,7 @@ public class SpriteMovement : MonoBehaviour
         InitializeSpriteLocation();
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
+        ThePlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void InitializeSpriteLocation()
@@ -49,8 +51,11 @@ public class SpriteMovement : MonoBehaviour
     }
 
     protected void SetCurrentLocation() {
+        //Vector3 roundLocation = new Vector3((int)Math.Round(this.transform.position.x), (int)Math.Round(this.transform.position.y),0);
+        //this.transform.position = roundLocation;
         CharacterLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
         CharacterLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
+        //Debug.Log("" + CharacterLocation.x + " "+CharacterLocation.y);
     }
 
     protected float MoveToNextSquare()
@@ -106,32 +111,98 @@ public class SpriteMovement : MonoBehaviour
 
     }
 
-    protected bool IsMoveLocationPassable() {
+    protected bool IsMoveLocationPassable(int LocX, int LocY) {
 
         bool MoveableLocation = false;
 
-        if(MapGrid.GetComponent<PassabilityGrid>().grid[CharacterNextLocation.x , CharacterNextLocation.y] == PassabilityType.NORMAL)
-            MoveableLocation= true;
-        //Toggleable Terrain check
-        GameObject DoddadObject = MapGrid.GetComponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y];
-        if (DoddadObject != null){
-            if (DoddadObject.GetComponent<EntityData>().isBlockableTerrain)
-                MoveableLocation = false;
-            if (DoddadObject.GetComponent<EntityData>().isPlatformTerrain)
-                MoveableLocation = true;
-            if (DoddadObject.GetComponent<EntityData>().isBackgroundCharacter)
-                MoveableLocation = false;
-        }
 
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL  || IsPlatformUp(LocX, LocY)) {
+            if (IsLocationDoodadFree(LocX, LocY) && IsLocationEntityFree(LocX, LocY))
+                MoveableLocation = true;
+        }
+           
+        
+        return MoveableLocation;
+    }
+
+    protected bool IsPlayerMoveLocationPassable(int LocX, int LocY)
+    {
+
+        bool MoveableLocation = false;
+
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
+            || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
+        {
+            if (IsLocationDoodadFree(LocX, LocY) && IsLocationEntityFree(LocX, LocY))
+                MoveableLocation = true;
+        }
+        return MoveableLocation;
+    }
+
+    protected bool IsMoveLocationMonsterChaseable(int LocX, int LocY) {
+        bool MoveableLocation = false;
+
+
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
+            || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
+        {
+            if (IsLocationDoodadFree(LocX, LocY) && IsLocationEntityFree(LocX, LocY))
+                MoveableLocation = true;
+        }
 
 
         return MoveableLocation;
     }
 
-    protected bool IsLocationEntityFree() {
+    private bool IsPlatformUp(int LocX, int LocY)
+    {
         bool MoveableLocation = false;
 
-        if (MapGrid.GetComponent<EntityGrid>().grid[CharacterNextLocation.x, CharacterNextLocation.y] == null)
+        GameObject doddadObject = MapGrid.GetComponent<DoodadGrid>().grid[LocX, LocY];
+
+        if (doddadObject != null)
+        {
+            if (doddadObject.GetComponent<EntityData>().isPlatformTerrain)
+                MoveableLocation = true;
+        }
+            return MoveableLocation;
+    }
+
+    protected bool IsRandomMoveLocationPassable(int LocX, int LocY) {
+
+        bool MoveableLocation = false;
+
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER) {
+            if (IsLocationDoodadFree(LocX, LocY) && IsLocationEntityFree(LocX, LocY))
+                MoveableLocation = true;
+        }
+           
+        //Toggleable Terrain check
+       
+
+        return MoveableLocation;
+
+    }
+
+    protected bool IsLocationDoodadFree(int LocX, int LocY) {
+        bool MoveableLocation = true;
+
+        GameObject DoddadObject = MapGrid.GetComponent<DoodadGrid>().grid[LocX, LocY];
+        if (DoddadObject != null)
+        {
+            if (DoddadObject.GetComponent<EntityData>().isBlockableTerrain)
+                MoveableLocation = false;
+            if (DoddadObject.GetComponent<EntityData>().isBackgroundCharacter)
+                MoveableLocation = false;
+        }
+        return MoveableLocation;
+
+    }
+
+    protected bool IsLocationEntityFree(int LocX, int LocY) {
+        bool MoveableLocation = false;
+
+        if (MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY] == null)
             MoveableLocation = true;
 
         return MoveableLocation;
@@ -139,7 +210,7 @@ public class SpriteMovement : MonoBehaviour
 
     protected GameObject isThereAMonster() {
         GameObject EnemyPresent = null;
-        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[CharacterNextLocation.x, CharacterNextLocation.y]; ;
+        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[CharacterNextLocation.x, CharacterNextLocation.y]; 
 
         if (EntityToFight != null) {
             if (EntityToFight.GetComponent<EntityData>().isAMonster) {
@@ -149,10 +220,10 @@ public class SpriteMovement : MonoBehaviour
         return EnemyPresent;
     }
 
-    protected GameObject isThereAPlayer()
+    protected GameObject isThereAPlayer(int CharLocX, int CharLocY)
     {
         GameObject EnemyPresent = null;
-        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[CharacterNextLocation.x, CharacterNextLocation.y]; ;
+        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[CharLocX, CharLocY]; ;
 
         if (EntityToFight != null)
         {
@@ -176,6 +247,7 @@ public class SpriteMovement : MonoBehaviour
     public void InitializeNewMap() {
         MapGrid = GetMapGrid();
         MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
+        
     }
 
     public GameObject GetMapGrid() {

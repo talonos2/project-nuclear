@@ -209,6 +209,10 @@ MonoBehaviour:
   PathRandomly: 0
   PathViaSteps: 1
   Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
+  SpotterMonster: 0
+  SpottingDistance: 4
+  LookDuration: 5
+  LookPattern: 
 --- !u!33 &28675372
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -644,8 +648,8 @@ GameObject:
   - component: {fileID: 539707991}
   - component: {fileID: 539707997}
   m_Layer: 0
-  m_Name: Hiro (1)
-  m_TagString: Untagged
+  m_Name: Hiro
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

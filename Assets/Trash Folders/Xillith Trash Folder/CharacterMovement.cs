@@ -43,9 +43,8 @@ public class CharacterMovement : SpriteMovement
             }
                
             FacedDirection = InputDirection;
-           // SetLookDirection();
             SetNextLocation(InputDirection);
-            if (IsMoveLocationPassable() && IsLocationEntityFree())
+            if (IsPlayerMoveLocationPassable(CharacterNextLocation.x, CharacterNextLocation.y))
             {
                 //if it is possible, check for a monster attack
                 //Needs to be refractored a bit
@@ -54,19 +53,16 @@ public class CharacterMovement : SpriteMovement
                 CurrentlyMoving = true;
 
             }
-            else {
-                GameObject EnemyToFight = null;
-                EnemyToFight = isThereAMonster();
-                if (EnemyToFight!=null)
-                {
-                    Combat.initiateFight(this.gameObject, EnemyToFight);
-                    //InitiateFight();
-                    //SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
 
-                }
+            //Check if a monster is in the next location, and initiate combat if so
+            GameObject EnemyToFight = isThereAMonster();
+            if (EnemyToFight != null)
+            {
+                Combat.initiateFight(this.gameObject, EnemyToFight);
             }
-            
-                
+
+
+
         }
 
         //If in the process of moving, keep moving and do nothing else
