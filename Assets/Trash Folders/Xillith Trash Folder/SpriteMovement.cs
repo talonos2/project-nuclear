@@ -165,7 +165,7 @@ public class SpriteMovement : MonoBehaviour
 
         if (doddadObject != null)
         {
-            if (doddadObject.GetComponent<EntityData>().isPlatformTerrain)
+            if (doddadObject.GetComponent<DoodadData>().isPlatformTerrain)
                 MoveableLocation = true;
         }
             return MoveableLocation;
@@ -193,9 +193,9 @@ public class SpriteMovement : MonoBehaviour
         GameObject DoddadObject = MapGrid.GetComponent<DoodadGrid>().grid[LocX, LocY];
         if (DoddadObject != null)
         {
-            if (DoddadObject.GetComponent<EntityData>().isBlockableTerrain)
+            if (DoddadObject.GetComponent<DoodadData>().isBlockableTerrain)
                 MoveableLocation = false;
-            if (DoddadObject.GetComponent<EntityData>().isBackgroundCharacter)
+            if (DoddadObject.GetComponent<DoodadData>().isBackgroundCharacter)
                 MoveableLocation = false;
         }
         return MoveableLocation;
@@ -207,6 +207,7 @@ public class SpriteMovement : MonoBehaviour
 
         if (MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY] == null)
             MoveableLocation = true;
+       
 
         return MoveableLocation;
     }

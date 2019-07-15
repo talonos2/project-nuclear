@@ -7,12 +7,11 @@ public class EntityData : MonoBehaviour
 {
 
     public bool isMainCharacter = false;
-    public bool isBackgroundCharacter = false;
+    
     public bool isAMonster = false;
     public bool isInteractableObject = false;
-    public bool isBlockableTerrain = false;
-    public bool isPlatformTerrain = false;
-    
+
+
     //public GameObject enemyData;
     // Start is called before the first frame update
     void Start()

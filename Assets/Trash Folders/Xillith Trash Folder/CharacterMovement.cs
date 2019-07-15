@@ -33,6 +33,8 @@ public class CharacterMovement : SpriteMovement
 
         if (!CurrentlyMoving)
         {
+
+            CheckExitStatus();
             //Sets current Character position as an int
             SetCurrentLocation();
             int InputDirection=GetInputDirection();
@@ -80,6 +82,19 @@ public class CharacterMovement : SpriteMovement
 
     }
 
+    private void CheckExitStatus()
+    {
+        GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y];
+        if (exitLocation != null)
+        {
+            if (exitLocation.GetComponent<DoodadData>().isExit) {
+                SceneManager.LoadScene("Map1-1");
+
+            }
+        }
+
+    }
+
     /*private bool RunIntoMonster(int inputDirection)
     {
         if (inputDirection == (int)DirectionMoved.NONE)
@@ -106,7 +121,7 @@ public class CharacterMovement : SpriteMovement
 
 
 
-    
+
 
     private int GetInputDirection()
     {

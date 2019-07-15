@@ -925,7 +925,6 @@ MonoBehaviour:
   isAMonster: 0
   isInteractableObject: 0
   isBlockableTerrain: 0
-  isPlatformTerrain: 0
 --- !u!114 &539707994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,6 +1029,89 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &650572584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 650572589}
+  - component: {fileID: 650572588}
+  - component: {fileID: 650572590}
+  - component: {fileID: 650572586}
+  - component: {fileID: 650572585}
+  m_Layer: 0
+  m_Name: Exit
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &650572585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650572584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc6aac62190a4f4b995d452d3b619b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlatformTerrain: 0
+  isWindShifter: 0
+  isTeleporter: 0
+  isExit: 1
+--- !u!65 &650572586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650572584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &650572588
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650572584}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &650572589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650572584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -14, y: 9, z: -375.70367}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &650572590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650572584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa51906f3ccdc4a4ba7dd0a601615daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &805596660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1216,6 +1298,11 @@ PrefabInstance:
       propertyPath: MoveSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookDuration
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29858a53dc1d064da23c93d060f7847, type: 3}
 --- !u!1001 &819155437
@@ -1388,6 +1475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SpotterMonster
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookDuration
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29858a53dc1d064da23c93d060f7847, type: 3}
@@ -1927,7 +2019,6 @@ MonoBehaviour:
   isAMonster: 0
   isInteractableObject: 0
   isBlockableTerrain: 0
-  isPlatformTerrain: 0
 --- !u!114 &1381064978
 MonoBehaviour:
   m_ObjectHideFlags: 0

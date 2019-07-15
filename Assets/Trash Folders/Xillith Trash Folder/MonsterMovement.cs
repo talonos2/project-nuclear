@@ -93,7 +93,7 @@ public class MonsterMovement : SpriteMovement
                     NextStep = GetChaseStep();
                     if (ChaseStepNumber >= ChaseRange)
                     {                       
-                        NextStep = PathToHomeLocatioin();
+                        NextStep = PathToHomeLocation();
                         if (NextStep == (int)DirectionMoved.NONE) {
                             CurrentlyChasingPlayer = false;
                             CurrentlyMoving = false;
@@ -129,15 +129,16 @@ public class MonsterMovement : SpriteMovement
             }
 
             //Check if there is a fight about to happen.
-                           
+            GameObject EnemyToFight = isThereAPlayer(CharacterNextLocation.x, CharacterNextLocation.y);
+            if (EnemyToFight != null)
+            {
+                Combat.initiateFight(EnemyToFight, this.gameObject);
+            }
+
         }
 
 
-        GameObject EnemyToFight = isThereAPlayer(CharacterNextLocation.x, CharacterNextLocation.y);
-        if (EnemyToFight != null)
-        {
-            Combat.initiateFight(EnemyToFight, this.gameObject);
-        }
+
 
         if (CurrentlyMoving == true)
         {
@@ -164,7 +165,7 @@ public class MonsterMovement : SpriteMovement
             
     }
 
-    private int PathToHomeLocatioin()
+    private int PathToHomeLocation()
     {
         //Returns DirectionMoved.NONE if they are at home. 
         int TempX= HomeLocation.x-CharacterLocation.x;
@@ -201,24 +202,36 @@ public class MonsterMovement : SpriteMovement
             for (int j = 0; j < SpottingDistance; j++) {
                 switch (FacedDirection) {
                     case (int)DirectionMoved.UP:
-                        if( isThereAPlayer(CharacterLocation.x + i - 1, CharacterLocation.y + j + 1)!=null)
+                        if( isThereAPlayer(CharacterLocation.x + i - 1, CharacterLocation.y + j + 1) != null)
+                        {
+                            ThePlayer = isThereAPlayer(CharacterLocation.x + i - 1, CharacterLocation.y + j + 1);
                             return true;
-                        if (!IsMoveLocationMonsterChaseable(CharacterLocation.x + i - 1, CharacterLocation.y + j + 1)) { j = SpottingDistance; }
+                        }
                         //if there is not a player found AND spot is not passible, set j=SpottingDistance as a way of skipping further checks along that line. 
+                        if (!IsMoveLocationMonsterChaseable(CharacterLocation.x + i - 1, CharacterLocation.y + j + 1)) { j = SpottingDistance; }
                             break;
                     case (int)DirectionMoved.DOWN:
                         if (isThereAPlayer(CharacterLocation.x + i - 1, CharacterLocation.y - j - 1) != null)
+                        {
+                            ThePlayer = isThereAPlayer(CharacterLocation.x + i - 1, CharacterLocation.y - j - 1);
                             return true;
+                        }
                         if (!IsMoveLocationMonsterChaseable(CharacterLocation.x + i - 1, CharacterLocation.y - j - 1)) { j = SpottingDistance; }
                         break;
                     case (int)DirectionMoved.LEFT:
                         if (isThereAPlayer(CharacterLocation.x - j - 1, CharacterLocation.y + i - 1) != null)
+                        {
+                            ThePlayer = isThereAPlayer(CharacterLocation.x - j - 1, CharacterLocation.y + i - 1);
                             return true;
+                        }
                         if (!IsMoveLocationMonsterChaseable(CharacterLocation.x - j - 1, CharacterLocation.y + i - 1)) { j = SpottingDistance; }
                         break;
                     case (int)DirectionMoved.RIGHT:
                         if (isThereAPlayer(CharacterLocation.x + j + 1, CharacterLocation.y + i - 1) != null)
+                        {
+                            ThePlayer = isThereAPlayer(CharacterLocation.x + j + 1, CharacterLocation.y + i - 1);
                             return true;
+                        }
                         if (!IsMoveLocationMonsterChaseable(CharacterLocation.x + j + 1, CharacterLocation.y + i - 1)) { j = SpottingDistance; }
                         break;
                 }

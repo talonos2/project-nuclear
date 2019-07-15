@@ -8,8 +8,7 @@ public class EntityGrid : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject[,] grid;
-    private int Debugdelay = 1;
-    private float resetDeb = 0;
+
     void Start()
     {
         InitializeEntityMap();
