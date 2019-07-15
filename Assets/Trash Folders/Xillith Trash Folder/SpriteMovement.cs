@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class SpriteMovement : MonoBehaviour
 {
@@ -27,8 +28,7 @@ public class SpriteMovement : MonoBehaviour
     protected Vector2Int CharacterNextLocation;
     protected int FacedDirection = (int)DirectionMoved.LEFT;
     protected Renderer sRender;
-    //protected int CharacterLocationX;
-    //protected int CharacterLocationY;
+    protected Vector2Int HomeLocation;
 
     public enum DirectionMoved
     { NONE, UP, RIGHT, DOWN, LEFT }
@@ -41,6 +41,7 @@ public class SpriteMovement : MonoBehaviour
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     private void InitializeSpriteLocation()
@@ -48,6 +49,8 @@ public class SpriteMovement : MonoBehaviour
         CharacterLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
         CharacterLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
         MapGrid.GetComponent<EntityGrid>().grid[CharacterLocation.x, CharacterLocation.y] = this.gameObject;
+        HomeLocation.x = CharacterLocation.x;
+        HomeLocation.y = CharacterLocation.y;
     }
 
     protected void SetCurrentLocation() {
@@ -445,6 +448,30 @@ public class SpriteMovement : MonoBehaviour
             FaceLeft();
         if (FacedDirection == (int)DirectionMoved.RIGHT)
             FaceRight();
+    }
+
+    protected int GetChaseStep()
+    {
+        int TempX = ThePlayer.GetComponent<CharacterMovement>().CharacterLocation.x - CharacterLocation.x;
+        int TempY = ThePlayer.GetComponent<CharacterMovement>().CharacterLocation.y - CharacterLocation.y;
+        if (TempX == 0 && TempY == 0)
+        {
+            return (int)DirectionMoved.NONE;
+        }
+        //Pick an axis based on a random number with the abs value distances as it's input
+        int AxisChosen = Random.Range(0, (Math.Abs(TempX) + Math.Abs(TempY))) + 1;
+        if (Math.Abs(TempX) - AxisChosen >= 0)
+        {
+            //go x direction
+            if (TempX < 0) { return (int)DirectionMoved.LEFT; }
+            else { return (int)DirectionMoved.RIGHT; }
+        }
+        else
+        {
+            //go y Direction
+            if (TempY < 0) { return (int)DirectionMoved.DOWN; }
+            else { return (int)DirectionMoved.UP; }
+        }
     }
 
 }

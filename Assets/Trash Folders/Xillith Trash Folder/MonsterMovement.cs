@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class MonsterMovement : SpriteMovement
 {
@@ -15,16 +16,19 @@ public class MonsterMovement : SpriteMovement
     public bool PathViaSteps;
     public int[] Pathing = { 1, 1, 1, 2, 2, 2, 3, 3, 3, 4,4,4 };
     public bool SpotterMonster;
-    public int SpottingDistance = 4;//in squares
-    public int LookDuration = 5; //in deciseconds
+    public int SpottingDistance = 5;//in squares
+    public int LookDuration = 10; //in deciseconds
+    public int ChaseRange = 15;
     public int[] LookPattern; //1 for N, 2 for E, 3 for S, 4 for W
 
     private bool CurrentlyChasingPlayer=false;
-    private int ChaseRange = 5;
+
     private int ChaseStepNumber = 0;
     private int CurrentStep = 0;
     private float LookTiming = 0;
     private int CurrentFacing = 0;
+    private int stuck = 0;
+    
 
 
     // Update is called once per frame
@@ -73,6 +77,7 @@ public class MonsterMovement : SpriteMovement
                 }
             }
 
+
             if (SpotterMonster) {
 
                 if (!CurrentlyChasingPlayer) {
@@ -85,7 +90,6 @@ public class MonsterMovement : SpriteMovement
                 }
 
                 if (CurrentlyChasingPlayer) {
-                    CurrentlyMoving = true;
                     NextStep = GetChaseStep();
                     if (ChaseStepNumber >= ChaseRange)
                     {                       
@@ -99,22 +103,40 @@ public class MonsterMovement : SpriteMovement
 
                     SetNextLocation(NextStep);
                     FacedDirection = NextStep;
-                    if (IsMoveLocationPassable(CharacterNextLocation.x, CharacterNextLocation.y))
+
+                    if (!IsMoveLocationMonsterChaseable(CharacterNextLocation.x, CharacterNextLocation.y)&&stuck>=15){
+                        NextStep = GetRandomStep();
+                        SetNextLocation(NextStep);
+                        FacedDirection = NextStep;
+                        
+                    }
+
+                    if (IsMoveLocationMonsterChaseable(CharacterNextLocation.x, CharacterNextLocation.y))
                     {
                         UpdateNewEntityGridLocation();
-                        RemoveOldEntityGridLocation();                        
+                        RemoveOldEntityGridLocation();
+                        CurrentlyMoving = true;
+                        ChaseStepNumber += 1;
+                        stuck = 0;
                     }
-                    ChaseStepNumber += 1;                   
+                    else {
+                        stuck += 1;
+                    }
+                   
+                            
                 }
 
             }
 
             //Check if there is a fight about to happen.
-            GameObject EnemyToFight = isThereAPlayer(CharacterNextLocation.x, CharacterNextLocation.y);
-            if (EnemyToFight != null)
-            {
-                Combat.initiateFight(EnemyToFight, this.gameObject);
-            }                
+                           
+        }
+
+
+        GameObject EnemyToFight = isThereAPlayer(CharacterNextLocation.x, CharacterNextLocation.y);
+        if (EnemyToFight != null)
+        {
+            Combat.initiateFight(EnemyToFight, this.gameObject);
         }
 
         if (CurrentlyMoving == true)
@@ -145,19 +167,36 @@ public class MonsterMovement : SpriteMovement
     private int PathToHomeLocatioin()
     {
         //Returns DirectionMoved.NONE if they are at home. 
-        throw new NotImplementedException();
+        int TempX= HomeLocation.x-CharacterLocation.x;
+        int TempY= HomeLocation.y-CharacterLocation.y;
+        if (TempX == 0 && TempY == 0) {
+            return (int)DirectionMoved.NONE;
+        }
+        //Pick an axis based on a random number with the abs value distances as it's input
+        int AxisChosen=Random.Range(0,(Math.Abs(TempX) + Math.Abs(TempY)))+1;
+        if (Math.Abs(TempX) - AxisChosen >= 0)
+        { 
+            //go x direction
+            if (TempX < 0) { return (int)DirectionMoved.LEFT; }
+            else { return (int)DirectionMoved.RIGHT; }
+        }
+        else {
+            //go y Direction
+            if (TempY < 0) { return (int)DirectionMoved.DOWN; }
+            else { return (int)DirectionMoved.UP; }
+
+
+        }
+
+      // return 0;
+
     }
 
-    private int GetChaseStep()
-    {
-        throw new NotImplementedException();
-    }
+    
 
     private bool IsPlayerInView()
     {
         bool PlayerFound = false;
-        //Needs access to player game object, which should be universal to the scene. In fact, it should be found at Start by the SpriteMovement script
-        //uses faceddirection
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < SpottingDistance; j++) {
                 switch (FacedDirection) {
