@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InventoryItem : MonoBehaviour
 {
     public string equipmentDescription = "Describe me please";
+    public string floorFoundOn;
+    public bool Rare;
 }

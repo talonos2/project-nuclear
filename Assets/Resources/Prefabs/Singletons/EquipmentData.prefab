@@ -1,5 +1,61 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &39510583410397823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6025191342904536391}
+  - component: {fileID: 7173683149998384309}
+  m_Layer: 0
+  m_Name: Master's Walking Stick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6025191342904536391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39510583410397823}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 69
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7173683149998384309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39510583410397823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: Used by mages to lean on. (All elemental damage +25%)
+  floorFoundOn: 19
+  Rare: 0
+  effectType: 5
+  effectType1: 6
+  effectType2: 7
+  effectType3: 8
+  effectType4: 0
+  effectStrength: 25
+  effectStrength1: 25
+  effectStrength2: 25
+  effectStrength3: 25
+  effectStrength4: 0
 --- !u!1 &74422323528349972
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Not from a real panther. We think. None of us have
     actually seen one.'
+  floorFoundOn: 11
+  Rare: 1
   addAttack: 46
 --- !u!1 &229107717532864267
 GameObject:
@@ -90,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Made from the fur of animals that drank a lot of deuterium.'
+  floorFoundOn: 2
+  Rare: 1
   addDefense: 10
 --- !u!1 &437949991209273645
 GameObject:
@@ -135,6 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It's like having two axes at once.
+  floorFoundOn: 15 16
+  Rare: 0
   addAttack: 46
 --- !u!1 &519206689744190503
 GameObject:
@@ -180,7 +242,123 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: So holy it''s downright porous, I mean pious.'
+  floorFoundOn: 12 13
+  Rare: 1
   addAttack: 54
+--- !u!1 &526022127201794771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8795327767998433585}
+  - component: {fileID: 4607818815132232387}
+  m_Layer: 0
+  m_Name: Cloak of Kings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8795327767998433585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526022127201794771}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 82
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4607818815132232387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526022127201794771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: 'Rare: A mantle passed down from warrior-king to warrior-king.
+    (HP, MP + 100, Atk +12, Def +6)'
+  floorFoundOn: 16
+  Rare: 1
+  effectType: 1
+  effectType1: 2
+  effectType2: 4
+  effectType3: 3
+  effectType4: 0
+  effectStrength: 100
+  effectStrength1: 100
+  effectStrength2: 12
+  effectStrength3: 6
+  effectStrength4: 0
+--- !u!1 &583695702900088283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1756398637935448352}
+  - component: {fileID: 2837938200304948787}
+  m_Layer: 0
+  m_Name: Eternal Flame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1756398637935448352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583695702900088283}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 79
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2837938200304948787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583695702900088283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: 'Rare: It smoulders, but never quite goes out. (Fire damage
+    dealt + 50%, +100 Mana)'
+  floorFoundOn: 13
+  Rare: 1
+  effectType: 7
+  effectType1: 2
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 50
+  effectStrength1: 100
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &599704247469743016
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Basically a small axe.
+  floorFoundOn: 2
+  Rare: 0
   addAttack: 10
 --- !u!1 &764107541694402510
 GameObject:
@@ -271,6 +451,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: It''s apparently named after some kind of vampire bird.
     What would a bird with fangs even look like?'
+  floorFoundOn: 9 10
+  Rare: 1
   addAttack: 42
 --- !u!1 &766179515854898794
 GameObject:
@@ -301,7 +483,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 59
+  m_RootOrder: 65
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &213340328023190727
 MonoBehaviour:
@@ -317,8 +499,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'A cursed mana stone put to good use: drains mana and gives
     it to the wielder. (Heals 2% max mana/hit)'
-  effectType: 9
+  floorFoundOn: 14 15
+  Rare: 0
+  effectType: 10
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 2
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &784560714698197718
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +556,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: It''s the sword other swords use when they need to
     cut things.'
+  floorFoundOn: 14 15
+  Rare: 1
   addAttack: 62
+--- !u!1 &860844491599026521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8879551018790139839}
+  - component: {fileID: 1636695204303253571}
+  m_Layer: 0
+  m_Name: Eldritch Stone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8879551018790139839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860844491599026521}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 80
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1636695204303253571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860844491599026521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: 'A cursed mana stone put to good use: drains mana and gives
+    it to the wielder. (Heals 3% max mana/hit, +100 Mana))'
+  floorFoundOn: 14
+  Rare: 1
+  effectType: 10
+  effectType1: 2
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 3
+  effectStrength1: 100
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &882800743795828250
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +661,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: It's a spear, but fancier.                                            and
     deadlier
+  floorFoundOn: 19
+  Rare: 0
   addAttack: 58
 --- !u!1 &914392260727858362
 GameObject:
@@ -456,7 +709,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: We tried chopping wood with this axe.  It was surprisingly
     awkward.
+  floorFoundOn: 12 13
+  Rare: 0
   addAttack: 38
+--- !u!1 &940313232129410868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5059455096791935606}
+  - component: {fileID: 5906874613007914950}
+  m_Layer: 0
+  m_Name: Champions's Crest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5059455096791935606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940313232129410868}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 77
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5906874613007914950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940313232129410868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: Empowers those who wear it, aiding in their ascent to legend.
+    (+50% XP gain when worn, +8 Atk, +4 Def)
+  floorFoundOn: 11
+  Rare: 1
+  effectType: 12
+  effectType1: 4
+  effectType2: 3
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 50
+  effectStrength1: 8
+  effectStrength2: 4
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &1023409933643403190
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +814,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: This is more of a concept than something you actually
     wear. We didn''t even have the graphics budget to show full plate.'
+  floorFoundOn: 18 19
+  Rare: 1
   addDefense: 38
 --- !u!1 &1032494893005238048
 GameObject:
@@ -547,6 +861,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: This sword got bent somehow, but it's still razor sharp.
+  floorFoundOn: 20
+  Rare: 0
   addAttack: 62
 --- !u!1 &1118574504218214776
 GameObject:
@@ -593,6 +909,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: No, we can't combine two of these to make a full plate. Stop
     asking.
+  floorFoundOn: 18
+  Rare: 0
   addDefense: 28
 --- !u!1 &1127622237645844758
 GameObject:
@@ -638,6 +956,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: By far the least knife-like thing we've found so far.
+  floorFoundOn: 6 7
+  Rare: 0
   addAttack: 22
 --- !u!1 &1158985615356898920
 GameObject:
@@ -683,6 +1003,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: This is nothing like the parade armor our guards wear.
+  floorFoundOn: 11 12
+  Rare: 0
   addDefense: 18
 --- !u!1 &1253612094869742016
 GameObject:
@@ -695,7 +1017,7 @@ GameObject:
   - component: {fileID: 290747175476472593}
   - component: {fileID: 4407981015487462181}
   m_Layer: 0
-  m_Name: Stalker's Ring
+  m_Name: Strikers's Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -713,7 +1035,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 57
+  m_RootOrder: 66
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4407981015487462181
 MonoBehaviour:
@@ -729,8 +1051,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: Guides the wearer's hand, helping them strike vulnerable places.
     (10% chance of x2.5 damage)
-  effectType: 10
-  effectStrength: 2.5
+  floorFoundOn: 16
+  Rare: 0
+  effectType: 11
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 10
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
+--- !u!1 &1485697408466886461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8390487208672480164}
+  - component: {fileID: 4257670737385960018}
+  m_Layer: 0
+  m_Name: Vampire's Medallion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8390487208672480164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485697408466886461}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 78
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4257670737385960018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485697408466886461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: This dreaded charm absorbs the life essence of those near
+    the wearer. (Heals 3% max HP/hit)
+  floorFoundOn: 12
+  Rare: 1
+  effectType: 9
+  effectType1: 1
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 3
+  effectStrength1: 100
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &1535694713234611032
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +1164,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: STILL not made of reptile scales.'
+  floorFoundOn: 12 13
+  Rare: 1
   addDefense: 26
+--- !u!1 &1545136435759348869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3847021536823381797}
+  - component: {fileID: 1091799834789747103}
+  m_Layer: 0
+  m_Name: Legend Crown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3847021536823381797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545136435759348869}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 85
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091799834789747103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545136435759348869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: 'Rare: Enchanted to make heroes out of commoners. (Atk, Def
+    +10, 10% damage, +50% Exp)'
+  floorFoundOn: 19
+  Rare: 1
+  effectType: 4
+  effectType1: 3
+  effectType2: 12
+  effectType3: 14
+  effectType4: 0
+  effectStrength: 10
+  effectStrength1: 10
+  effectStrength2: 50
+  effectStrength3: 10
+  effectStrength4: 0
 --- !u!1 &1598663323607135750
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +1253,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 62
+  m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6762954293388130018
 MonoBehaviour:
@@ -820,8 +1268,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Softens and deflects blows. (Def + 3)
-  effectType: 2
+  floorFoundOn: 7
+  Rare: 0
+  effectType: 3
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 3
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
+--- !u!1 &1643735857635220935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8535984206143153680}
+  - component: {fileID: 318960888168598803}
+  m_Layer: 0
+  m_Name: Hellrime Ice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8535984206143153680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643735857635220935}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 71
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &318960888168598803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643735857635220935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: 'Rare: Ice from the arctic, enchanted to never melt. (Ice
+    damage dealt +50%, +50 Mana)'
+  floorFoundOn: 5
+  Rare: 1
+  effectType: 5
+  effectType1: 2
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 50
+  effectStrength1: 50
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &1680062150416365784
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,6 +1381,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It's kind of like wearing a quilt.
+  floorFoundOn: 8 9
+  Rare: 0
   addDefense: 14
 --- !u!1 &1722135928238393813
 GameObject:
@@ -911,6 +1428,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Wait, if they''re immortal... why did they need armor?'
+  floorFoundOn: 7 8
+  Rare: 1
   addDefense: 18
 --- !u!1 &1932130020280635507
 GameObject:
@@ -956,6 +1475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: You've got more than enough on your plate already.
+  floorFoundOn: 20
+  Rare: 0
   addDefense: 32
 --- !u!1 &2016593857088109546
 GameObject:
@@ -1001,6 +1522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It could stand to be longer if you ask me.
+  floorFoundOn: 8
+  Rare: 0
   addAttack: 26
 --- !u!1 &2406263633948052006
 GameObject:
@@ -1031,7 +1554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 61
+  m_RootOrder: 62
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3676118265154647401
 MonoBehaviour:
@@ -1047,8 +1570,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: Empowers those who wear it, aiding in their ascent to legend.
     (+50% XP gain when worn)
-  effectType: 11
+  floorFoundOn: 11
+  Rare: 0
+  effectType: 12
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 50
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &2439868228424550064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,8 +1627,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: Hedge witches sell these, claiming they harbor incredible
     medical benifits. (HP + 50)
-  effectType: 0
+  floorFoundOn: 3 4
+  Rare: 0
+  effectType: 1
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 50
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &2709287325622921922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1668,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 60
+  m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4716694804900252921
 MonoBehaviour:
@@ -1141,8 +1684,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: This translucent cloak obscures your form, making you harder
     to hit. (20% chance to avoid all damage)
-  effectType: 12
+  floorFoundOn: 10
+  Rare: 0
+  effectType: 13
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 20
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
+--- !u!1 &2716635669877322813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2071462549398848410}
+  - component: {fileID: 1157950112658215901}
+  m_Layer: 0
+  m_Name: Lifestone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2071462549398848410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716635669877322813}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 70
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157950112658215901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716635669877322813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: A stone invigorating the wearer, protecting their life essence.
+    (HP + 100)
+  floorFoundOn: 3 4
+  Rare: 1
+  effectType: 1
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 100
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &2807155997143369007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1798,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: This looks suspiciously like Hiro''s sword. Was that
     a knockoff is or this one?'
+  floorFoundOn: 2
+  Rare: 1
   addAttack: 15
 --- !u!1 &2844264373606369912
 GameObject:
@@ -1234,6 +1846,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: It's large for a hatchet, but still too small to be a proper
     axe.
+  floorFoundOn: 9 10
+  Rare: 0
   addAttack: 30
 --- !u!1 &2852085229931394547
 GameObject:
@@ -1279,6 +1893,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: You call that a stab?'
+  floorFoundOn: 3 4
+  Rare: 1
   addAttack: 24
 --- !u!1 &3176953964488116692
 GameObject:
@@ -1324,7 +1940,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Why do you never find Mithril Trousers?'
+  floorFoundOn: 9
+  Rare: 1
   addDefense: 20
+--- !u!1 &3225263198227380029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8606808508789533682}
+  - component: {fileID: 6320297407347995285}
+  m_Layer: 0
+  m_Name: Master's Orb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8606808508789533682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225263198227380029}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 84
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6320297407347995285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225263198227380029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: 'Rare: Used by mages to channel magic. (All elemental damage
+    +50%, +200 mana)'
+  floorFoundOn: 18
+  Rare: 1
+  effectType: 2
+  effectType1: 5
+  effectType2: 6
+  effectType3: 7
+  effectType4: 8
+  effectStrength: 250
+  effectStrength1: 50
+  effectStrength2: 50
+  effectStrength3: 50
+  effectStrength4: 50
 --- !u!1 &3657692007308846369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +2045,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Some would say it''s ''supremely good'', but it''s
     just okay.'
+  floorFoundOn: 16 17
+  Rare: 1
   addDefense: 34
 --- !u!1 &3756366410966217076
 GameObject:
@@ -1415,6 +2092,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: If Ultimus shows up... you never saw this.'
+  floorFoundOn: 18 19
+  Rare: 1
   addAttack: 78
 --- !u!1 &3774903753993818530
 GameObject:
@@ -1461,6 +2140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: A sword?  Lets be honest, we have no idea where the cave is
     getting these weapons.
+  floorFoundOn: 14
+  Rare: 0
   addAttack: 42
 --- !u!1 &3814787088023799535
 GameObject:
@@ -1506,6 +2187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare:  Too late for Halloween unfortunately.'
+  floorFoundOn: 3 4
+  Rare: 1
   addDefense: 14
 --- !u!1 &3863838589663670259
 GameObject:
@@ -1551,6 +2234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Makes you as tough as a cow.
+  floorFoundOn: 4
+  Rare: 0
   addDefense: 8
 --- !u!1 &3874943445189000950
 GameObject:
@@ -1596,6 +2281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It's a sword, but in latin.
+  floorFoundOn: 11
+  Rare: 0
   addAttack: 34
 --- !u!1 &4064068807198669573
 GameObject:
@@ -1641,6 +2328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: The average villager can only wear three of it''s rings.'
+  floorFoundOn: 10 11
+  Rare: 1
   addDefense: 22
 --- !u!1 &4221801390282564571
 GameObject:
@@ -1687,6 +2376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: The sword of Douglass Hiro''s father. Sent back to
     town for safekeeping.'
+  floorFoundOn: 
+  Rare: 1
   addAttack: 11
 --- !u!1 &4441432925042862627
 GameObject:
@@ -1733,8 +2424,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Common: It smoulders, but never quite goes out. (Fire damage
     dealt + 25%)'
-  effectType: 6
+  floorFoundOn: 13
+  Rare: 0
+  effectType: 7
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 25
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &4563220723227968812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,7 +2465,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 67
+  m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5584657135479820714
 MonoBehaviour:
@@ -1780,8 +2481,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: Pulled from the depths of the underdark and suffused with
     earth magic. (Earth damage dealt + 25%)
-  effectType: 5
+  floorFoundOn: 9
+  Rare: 0
+  effectType: 6
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 25
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &4695774330574198795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +2538,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Does not actually impart wind powers to the wielder.
     It''s strange that we need to specify that nowadays.'
+  floorFoundOn: 5 6
+  Rare: 1
   addAttack: 30
 --- !u!1 &4706591796156302315
 GameObject:
@@ -1857,7 +2570,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 66
+  m_RootOrder: 67
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8846537732981315290
 MonoBehaviour:
@@ -1873,8 +2586,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Common: A stone that magically controls electrical currents.
     (Electrical damage dealt +25%)'
-  effectType: 7
+  floorFoundOn: 17
+  Rare: 0
+  effectType: 8
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 25
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &4787267732292513344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,7 +2643,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: Nobody has actually found a historical example of ring mail.
     Until now I guess.
+  floorFoundOn: 10
+  Rare: 0
   addDefense: 16
+--- !u!1 &4798019601035704148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7207651314584644061}
+  - component: {fileID: 2531669130222270990}
+  m_Layer: 0
+  m_Name: Deep Obsidian
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7207651314584644061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798019601035704148}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 75
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2531669130222270990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798019601035704148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: 'Rare: Pulled from the depths of the underdark and suffused
+    with earth magic. (Earth damage dealt + 50%, +75 Mana)'
+  floorFoundOn: 9
+  Rare: 1
+  effectType: 6
+  effectType1: 2
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 50
+  effectStrength1: 75
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &5067161037506254078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,7 +2732,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 58
+  m_RootOrder: 63
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3344976989185780366
 MonoBehaviour:
@@ -1966,8 +2748,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: This dreaded charm absorbs the life essence of those near
     the wearer. (Heals 2% max HP/hit)
-  effectType: 8
+  floorFoundOn: 12
+  Rare: 0
+  effectType: 9
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 2
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
+--- !u!1 &5267085627860826080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2300183261178321344}
+  - component: {fileID: 3662665719488269341}
+  m_Layer: 0
+  m_Name: Power Crystal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2300183261178321344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267085627860826080}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 72
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3662665719488269341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267085627860826080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: A chunk of raw mana, crystallized by unfathomable arcane power.
+    (MP + 100)
+  floorFoundOn: 6
+  Rare: 1
+  effectType: 2
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 100
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &5334594005159241229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,7 +2846,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 65
+  m_RootOrder: 56
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4379561525540785179
 MonoBehaviour:
@@ -2012,8 +2861,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Enchanted Ice from the coldest nights. (Ice damage dealt +25%)
-  effectType: 4
+  floorFoundOn: 5
+  Rare: 0
+  effectType: 5
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 25
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &5411204279386125299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,6 +2917,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Cutlery pressed into service as a weapon.
+  floorFoundOn: 
+  Rare: 0
   addAttack: 2
 --- !u!1 &5860561117836393298
 GameObject:
@@ -2103,6 +2964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: A little stuffy, but somewhat effective.
+  floorFoundOn: 1
+  Rare: 0
   addDefense: 4
 --- !u!1 &5942299782191814019
 GameObject:
@@ -2133,7 +2996,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 56
+  m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8248247642065337031
 MonoBehaviour:
@@ -2148,8 +3011,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It glows blue with untapped power. (MP + 50)
-  effectType: 1
+  floorFoundOn: 6
+  Rare: 0
+  effectType: 2
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 50
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &5972263162815035475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,7 +3067,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It's not stealth armor, it's strips of animal skin.
+  floorFoundOn: 2 3
+  Rare: 0
   addDefense: 6
+--- !u!1 &6007915667673856553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3643305608980865468}
+  - component: {fileID: 2879414225268975710}
+  m_Layer: 0
+  m_Name: Spiked Shoulder Pads
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3643305608980865468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007915667673856553}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 68
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2879414225268975710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007915667673856553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: Obscenely large and spiky shoulder pads. (+5% Damage)
+  floorFoundOn: 18
+  Rare: 0
+  effectType: 14
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 5
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &6109204368016151421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +3171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Okay okay, we don''t know what ''vorpal'' means. Don''t
     lose your head over it.'
+  floorFoundOn: 16 17
+  Rare: 1
   addAttack: 70
 --- !u!1 &6116712947208571250
 GameObject:
@@ -2285,6 +3218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: The Answer.'
+  floorFoundOn: 20
+  Rare: 1
   addDefense: 42
 --- !u!1 &6423593181026198594
 GameObject:
@@ -2330,6 +3265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It's never a good idea to make these anatomically correct.
+  floorFoundOn: 17
+  Rare: 0
   addDefense: 26
 --- !u!1 &6526638954735115044
 GameObject:
@@ -2376,6 +3313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: More useful against cold than blades, but it's all we had
     on hand.
+  floorFoundOn: 
+  Rare: 0
   addDefense: 1
 --- !u!1 &6801808103546009931
 GameObject:
@@ -2421,7 +3360,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It's the third best lamellar we've ever seen.
+  floorFoundOn: 16
+  Rare: 0
   addDefense: 24
+--- !u!1 &6949103964160091721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207020232932472668}
+  - component: {fileID: 6764112217031440101}
+  m_Layer: 0
+  m_Name: Deflection Ring
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207020232932472668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949103964160091721}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 73
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6764112217031440101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949103964160091721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: Softens and deflects blows. (Def + 5)
+  floorFoundOn: 7
+  Rare: 1
+  effectType: 3
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 5
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &7016487691694752571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2466,6 +3463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Or maybe this is a long knife.
+  floorFoundOn: 3 4
+  Rare: 0
   addAttack: 14
 --- !u!1 &7080814684707153993
 GameObject:
@@ -2511,6 +3510,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: This came from cows that knew how to party.
+  floorFoundOn: 5 6
+  Rare: 0
   addDefense: 10
 --- !u!1 &7144139568499270493
 GameObject:
@@ -2556,6 +3557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: The Enigma
+  floorFoundOn: 20
+  Rare: 1
   addAttack: 86
 --- !u!1 &7151024905643062086
 GameObject:
@@ -2601,6 +3604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Think of it as a dagger with a really long handle.
+  floorFoundOn: 5
+  Rare: 0
   addAttack: 18
 --- !u!1 &7531352372630925619
 GameObject:
@@ -2686,18 +3691,36 @@ Transform:
   - {fileID: 5447294010046223900}
   - {fileID: 2999283159729417423}
   - {fileID: 8267854555490038526}
+  - {fileID: 7538832316739657211}
   - {fileID: 7152305100268609257}
-  - {fileID: 290747175476472593}
-  - {fileID: 6874240062893999921}
-  - {fileID: 5365330654037594993}
-  - {fileID: 69738269521278384}
-  - {fileID: 5248680264016036975}
   - {fileID: 4595912378303989560}
   - {fileID: 3308726740372072547}
-  - {fileID: 8440016678697986359}
-  - {fileID: 7538832316739657211}
-  - {fileID: 7674100832081430124}
   - {fileID: 6426289795642304479}
+  - {fileID: 69738269521278384}
+  - {fileID: 5248680264016036975}
+  - {fileID: 6874240062893999921}
+  - {fileID: 8440016678697986359}
+  - {fileID: 5365330654037594993}
+  - {fileID: 290747175476472593}
+  - {fileID: 7674100832081430124}
+  - {fileID: 3643305608980865468}
+  - {fileID: 6025191342904536391}
+  - {fileID: 2071462549398848410}
+  - {fileID: 8535984206143153680}
+  - {fileID: 2300183261178321344}
+  - {fileID: 1207020232932472668}
+  - {fileID: 1833979389115847620}
+  - {fileID: 7207651314584644061}
+  - {fileID: 749806171999518529}
+  - {fileID: 5059455096791935606}
+  - {fileID: 8390487208672480164}
+  - {fileID: 1756398637935448352}
+  - {fileID: 8879551018790139839}
+  - {fileID: 345964603395369680}
+  - {fileID: 8795327767998433585}
+  - {fileID: 1308613950624730204}
+  - {fileID: 8606808508789533682}
+  - {fileID: 3847021536823381797}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2787,7 +3810,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It has a lot of layers.
+  floorFoundOn: 7
+  Rare: 0
   addDefense: 12
+--- !u!1 &7858404851273299970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1308613950624730204}
+  - component: {fileID: 8341214743692483855}
+  m_Layer: 0
+  m_Name: Magic Loadstone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1308613950624730204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7858404851273299970}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 83
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8341214743692483855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7858404851273299970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: 'Rare: A stone that magically controls electrical currents.
+    (Electrical damage dealt +50%, +150 Mana)'
+  floorFoundOn: 17
+  Rare: 1
+  effectType: 8
+  effectType1: 2
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 50
+  effectStrength1: 150
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &7900680329636642918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,6 +3914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It's like a gambeson, but with a metal endoskeleton.
+  floorFoundOn: 13
+  Rare: 0
   addDefense: 20
 --- !u!1 &7971413832149646563
 GameObject:
@@ -2878,7 +3962,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: Superior to a knife because it's actually supposed to hurt
     people.
+  floorFoundOn: 1
+  Rare: 0
   addAttack: 6
+--- !u!1 &8139762185290300628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749806171999518529}
+  - component: {fileID: 7290966908771578795}
+  m_Layer: 0
+  m_Name: Phantoms's Cloak
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749806171999518529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139762185290300628}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 76
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7290966908771578795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139762185290300628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: This translucent cloak obscures your form, making you harder
+    to hit. (25% chance to avoid all damage, +100 HP)
+  floorFoundOn: 10
+  Rare: 1
+  effectType: 13
+  effectType1: 1
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 25
+  effectStrength1: 100
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &8263919110925965709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,6 +4067,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: It does cleave earth, but it''s better at cleaving
     monsters. For earth you''d still be better off with a plow.'
+  floorFoundOn: 7 8
+  Rare: 1
   addAttack: 38
 --- !u!1 &8279815359145171053
 GameObject:
@@ -2969,6 +4114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Not actually made from reptile scales. I'm disappointed.
+  floorFoundOn: 19
+  Rare: 0
   addDefense: 30
 --- !u!1 &8506848164888758199
 GameObject:
@@ -3014,7 +4161,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It certainly draws attention.
+  floorFoundOn: 14 15
+  Rare: 0
   addDefense: 22
+--- !u!1 &8540567133464917341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833979389115847620}
+  - component: {fileID: 6549925724926550818}
+  m_Layer: 0
+  m_Name: Belt of Massive Strength
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1833979389115847620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8540567133464917341}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 74
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6549925724926550818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8540567133464917341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: Enchanted to add force to your blows. (Atk + 10)
+  floorFoundOn: 8
+  Rare: 1
+  effectType: 4
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 10
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &8560928603955819327
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,7 +4249,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 63
+  m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2360840783254206083
 MonoBehaviour:
@@ -3059,8 +4264,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Enchanted to add force to your blows. (Atk + 6)
-  effectType: 3
+  floorFoundOn: 8
+  Rare: 0
+  effectType: 4
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
   effectStrength: 6
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &8618369198725198042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3105,6 +4320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Well, it's okay.
+  floorFoundOn: 17
+  Rare: 0
   addAttack: 50
 --- !u!1 &8650033012714983125
 GameObject:
@@ -3150,6 +4367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Like a battlehammer, but designed for longer conflicts.
+  floorFoundOn: 18
+  Rare: 0
   addAttack: 54
 --- !u!1 &8889911485806849076
 GameObject:
@@ -3195,7 +4414,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Worn by rather smallish titans... apparently.'
+  floorFoundOn: 14 15
+  Rare: 1
   addDefense: 30
+--- !u!1 &8945146637603999189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345964603395369680}
+  - component: {fileID: 3036931024992025625}
+  m_Layer: 0
+  m_Name: Assassin's Ring
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &345964603395369680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945146637603999189}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 81
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3036931024992025625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945146637603999189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: Guides the wearer's hand, helping them strike vulnerable places.
+    (15% chance of x2.5 damage, Atk +8)
+  floorFoundOn: 15
+  Rare: 1
+  effectType: 11
+  effectType1: 4
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 15
+  effectStrength1: 8
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &9090979597587477109
 GameObject:
   m_ObjectHideFlags: 0
@@ -3241,4 +4519,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Trust me, it''s a good thing they left the eyes off
     of this one.'
+  floorFoundOn: 5 6
+  Rare: 1
   addDefense: 16

@@ -921,10 +921,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainCharacter: 1
-  isBackgroundCharacter: 0
   isAMonster: 0
   isInteractableObject: 0
-  isBlockableTerrain: 0
 --- !u!114 &539707994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,6 +1063,8 @@ MonoBehaviour:
   isWindShifter: 0
   isTeleporter: 0
   isExit: 1
+  isBlockableTerrain: 0
+  isBackgroundCharacter: 0
 --- !u!65 &650572586
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1377,6 +1377,16 @@ PrefabInstance:
       propertyPath: PathViaSteps
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d289a535dd68baa4db1da718103636d8, type: 3}
 --- !u!1001 &1097898703
@@ -1641,6 +1651,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8256436232106188755, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8256436232106188757, guid: d289a535dd68baa4db1da718103636d8,
         type: 3}
       propertyPath: Pathing.Array.size
@@ -1785,6 +1800,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Pathing.Array.data[11]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d289a535dd68baa4db1da718103636d8, type: 3}
@@ -2015,10 +2040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainCharacter: 1
-  isBackgroundCharacter: 0
   isAMonster: 0
   isInteractableObject: 0
-  isBlockableTerrain: 0
 --- !u!114 &1381064978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2833,5 +2856,10 @@ PrefabInstance:
       propertyPath: mapr
       value: 
       objectReference: {fileID: 2018926733}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d289a535dd68baa4db1da718103636d8, type: 3}

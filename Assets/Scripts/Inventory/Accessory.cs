@@ -6,10 +6,17 @@ using UnityEngine;
 public class Accessory : InventoryItem
 {
     public EffectType effectType;
+    public EffectType effectType1;
+    public EffectType effectType2;
+    public EffectType effectType3;
+    public EffectType effectType4;
     public float effectStrength;
-
+    public float effectStrength1;
+    public float effectStrength2;
+    public float effectStrength3;
+    public float effectStrength4;
     public enum EffectType
     {
-        Health,Mana,defense,Attack,Ice,Earth,Fire,Air,HPVamp,MPVamp,Crit,XP,Dodge
+        None, Health,Mana,Defense,Attack,Ice,Earth,Fire,Air,HPVamp,MPVamp,Crit,XP,Dodge, AttackPercent
     }
 }
