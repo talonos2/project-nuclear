@@ -7,16 +7,16 @@ public class CharacterStats : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    
 
-    public int HealthCrystalsGained=0;
-    private int HealthCrystalBuff=0;
-    public int ManaCrystalsGained=0;
-    private int ManaCrystalBuff=0;
-    public int AttackCrystalsGained=0;
-    private int AttackCrystalBuff=0;
-    public int defenseCrystalsGained=0;
-    private int defenseCrystalBuff=0;
+
+    public int HealthCrystalsGained = 0;
+    private int HealthCrystalBuff = 0;
+    public int ManaCrystalsGained = 0;
+    private int ManaCrystalBuff = 0;
+    public int AttackCrystalsGained = 0;
+    private int AttackCrystalBuff = 0;
+    public int defenseCrystalsGained = 0;
+    private int defenseCrystalBuff = 0;
 
     private int HealthPerLevel;
     private int ManaPerLevel;
@@ -32,20 +32,77 @@ public class CharacterStats : MonoBehaviour
     public float Experiance=0;
     public int ExpToLevel = 90;
 
+    public GameObject weapon;
+    public GameObject armor;
+    public GameObject accessory;
+
     public bool MageClass;
     public bool FighterClass;
     public bool SurvivorClass;
     public bool ScoutClass;
 
+    private GameObject gameStateData;
+    private GameData gameData;
+    private CharacterStats SavedStats;
+
     //private int 
     void Start()
     {
-        SetupDungionRun();
+
+        
+        gameStateData = GameObject.Find("GameStateData");       
+        gameData = gameStateData.GetComponent <GameData> ();
+        SavedStats = gameStateData.GetComponent<CharacterStats>();
+        if (!gameData.RunSetupFinished)
+        {
+            SetupBaseStats();
+            PushCharacterData();
+            gameData.RunSetupFinished = true;
+        }
+        else { SetupBaseStats();
+            PullCharacterData(); }
+        
+        
+           
+    }
+
+    private void PullCharacterData()
+    {
+        this.Level = SavedStats.Level;
+        this.MaxHP=SavedStats.MaxHP;
+        this.HP = SavedStats.HP;
+        this.mana = SavedStats.mana;
+        this.attack = SavedStats.attack;
+        this.defense = SavedStats.defense;
+        this.Experiance = SavedStats.Experiance;
+        this.ExpToLevel = SavedStats.ExpToLevel;
+
+        this.HealthCrystalsGained = SavedStats.HealthCrystalsGained;
+        this.ManaCrystalsGained = SavedStats.ManaCrystalsGained;
+        this.AttackCrystalsGained = SavedStats.AttackCrystalsGained;
+        this.defenseCrystalsGained = SavedStats.defenseCrystalsGained;
+
+}
+
+    internal void PushCharacterData() {
+        SavedStats.Level=this.Level;
+        SavedStats.MaxHP=this.MaxHP;
+        SavedStats.HP=this.HP;
+        SavedStats.mana=this.mana;
+        SavedStats.attack=this.attack;
+        SavedStats.defense= this.defense;
+        SavedStats.Experiance=this.Experiance;
+        SavedStats.ExpToLevel=this.ExpToLevel;
+
+        SavedStats.HealthCrystalsGained=this.HealthCrystalsGained;
+        SavedStats.ManaCrystalsGained=this.ManaCrystalsGained;
+        SavedStats.AttackCrystalsGained= this.AttackCrystalsGained;
+        SavedStats.defenseCrystalsGained= this.defenseCrystalsGained;
     }
 
     //Each dungion run this section sets the stats. Main stats to set are the CrystalBuffs and Item buffs. 
     //Also sets class information
-    private void SetupDungionRun()
+    private void SetupBaseStats()
     {
 
         //HealthCrystalBuff = GetHealthCrystalBuff();
@@ -135,7 +192,7 @@ public class CharacterStats : MonoBehaviour
 
     private void SetExpToNextLevel()
     {
-        ExpToLevel = Level * 45 + Level * Level * 45;
+        ExpToLevel = (Level * 45 + Level * Level * 45)- ((Level-1) * 45 + (Level-1) * (Level-1) * 45);
     }
 
     // Update is called once per frame

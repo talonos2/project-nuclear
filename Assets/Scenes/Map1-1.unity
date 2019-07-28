@@ -904,6 +904,9 @@ MonoBehaviour:
   defense: 0
   Experiance: 0
   ExpToLevel: 90
+  weapon: {fileID: 0}
+  armor: {fileID: 0}
+  accessory: {fileID: 0}
   MageClass: 0
   FighterClass: 1
   SurvivorClass: 0
@@ -2846,6 +2849,11 @@ PrefabInstance:
       propertyPath: Pathing.Array.data[15]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8256436231999761628, guid: d289a535dd68baa4db1da718103636d8,
         type: 3}
       propertyPath: hero
@@ -2856,10 +2864,5 @@ PrefabInstance:
       propertyPath: mapr
       value: 
       objectReference: {fileID: 2018926733}
-    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d289a535dd68baa4db1da718103636d8, type: 3}

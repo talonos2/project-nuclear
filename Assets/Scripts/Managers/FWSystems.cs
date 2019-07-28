@@ -15,6 +15,11 @@ public class FWSystems
         GameObject EnemyData = GameObject.Instantiate(Resources.Load("Prefabs/Singletons/EnemyData") as GameObject);
         EnemyData.name = "EnemyData";
         Object.DontDestroyOnLoad(EnemyData);
+
+        GameObject GameStateData = GameObject.Instantiate(Resources.Load("Prefabs/Singletons/GameStateData") as GameObject);
+        GameStateData.name = "GameStateData";
+        Object.DontDestroyOnLoad(GameStateData);
+
         Debug.Log("ManagersLoaded");
     }
 }

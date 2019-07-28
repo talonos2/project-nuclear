@@ -60,6 +60,7 @@ public class Combat : MonoBehaviour
                         break;
                 }
                 PlayerStats.AddExp(MonsterStats.ExpGiven);
+                PlayerStats.PushCharacterData();
                 Destroy(Monster);
                 inCombat = false;
             }
