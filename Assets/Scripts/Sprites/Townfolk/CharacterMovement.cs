@@ -29,43 +29,8 @@ public class CharacterMovement : SpriteMovement
     void Update()
     {
 
-       
-
-
-        if (!CurrentlyMoving)
-        {
-
-            //Sets current Character position as an int
-            
-            int InputDirection=GetInputDirection();
-            if (InputDirection == (int)DirectionMoved.NONE)
-            {
-                SetLookDirection();
-                return;
-            }
-               
-            FacedDirection = InputDirection;
-            SetNextLocation(InputDirection);
-            if (IsPlayerMoveLocationPassable(CharacterNextLocation.x, CharacterNextLocation.y))
-            {
-                //if it is possible, check for a monster attack
-                //Needs to be refractored a bit
-                UpdateNewEntityGridLocation();
-                RemoveOldEntityGridLocation();
-                CurrentlyMoving = true;
-
-            }
-
-            //Check if a monster is in the next location, and initiate combat if so
-            GameObject EnemyToFight = isThereAMonster();
-            if (EnemyToFight != null)
-            {
-                Combat.initiateFight(this.gameObject, EnemyToFight);
-            }
-
-
-
-        }
+      
+        
 
         //If in the process of moving, keep moving and do nothing else
 
@@ -82,6 +47,38 @@ public class CharacterMovement : SpriteMovement
 
 
 
+    }
+
+    //Key command received from CharacterInputController script
+    public void MoveKeyReceived(int inputDirection) {
+
+        if (!CurrentlyMoving)
+        {
+            if (inputDirection == (int)DirectionMoved.NONE)
+            {
+                SetLookDirection();
+                return;
+            }
+
+            FacedDirection = inputDirection;
+            SetNextLocation(inputDirection);
+            if (IsPlayerMoveLocationPassable(CharacterNextLocation.x, CharacterNextLocation.y))
+            {
+                //if it is possible, check for a monster attack
+                //Needs to be refractored a bit
+                UpdateNewEntityGridLocation();
+                RemoveOldEntityGridLocation();
+                CurrentlyMoving = true;
+
+            }
+
+            //Check if a monster is in the next location, and initiate combat if so
+            GameObject EnemyToFight = isThereAMonster();
+            if (EnemyToFight != null)
+            {
+                Combat.initiateFight(this.gameObject, EnemyToFight);
+            }
+        }
     }
 
     private void CheckExitStatus()
