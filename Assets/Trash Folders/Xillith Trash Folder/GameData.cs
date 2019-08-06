@@ -10,6 +10,7 @@ public class GameData : MonoBehaviour
     public int AttackCrystalBonus;
     public int DefenseCrystalBonus;
     public int FloorNumber = 1;
+    public int RunNumber = 1;
 
     public bool Shortcut1 = false;
 

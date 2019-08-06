@@ -44,14 +44,18 @@ public class CharacterStats : MonoBehaviour
     private GameObject gameStateData;
     private GameData gameData;
     private CharacterStats SavedStats;
+    private GameObject equipmentData;
+    private EquipmentData itemData;
 
     //private int 
     void Start()
     {
 
         
-        gameStateData = GameObject.Find("GameStateData");       
+        gameStateData = GameObject.Find("GameStateData");
+        equipmentData = GameObject.Find("EquipmentData");
         gameData = gameStateData.GetComponent <GameData> ();
+        itemData = equipmentData.GetComponent<EquipmentData>();
         SavedStats = gameStateData.GetComponent<CharacterStats>();
         if (!gameData.RunSetupFinished)
         {
@@ -61,9 +65,7 @@ public class CharacterStats : MonoBehaviour
         }
         else { SetupBaseStats();
             PullCharacterData(); }
-        
-        
-           
+               
     }
 
     private void PullCharacterData()
@@ -166,8 +168,18 @@ public class CharacterStats : MonoBehaviour
         HP = HP + HealthCrystalBuff;
         mana = mana + ManaCrystalBuff;
         attack = attack + AttackCrystalBuff;
-        defense = defense + defenseCrystalBuff; 
+        defense = defense + defenseCrystalBuff;
 
+        if (gameData.RunNumber == 1) {
+            weapon = itemData.getRunOneWeapon();
+            attack += weapon.GetComponent<Weapon>().addAttack;
+        }
+        else {
+            weapon = itemData.getRunTwoWeapon();
+            attack += weapon.GetComponent<Weapon>().addAttack;
+        }
+        armor = itemData.getDefaultArmor();
+        defense += armor.GetComponent<Armor>().addDefense;
     }
 
     internal void AddExp(int expGiven)

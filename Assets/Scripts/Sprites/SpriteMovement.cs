@@ -29,6 +29,7 @@ public class SpriteMovement : MonoBehaviour
     protected int FacedDirection = (int)DirectionMoved.LEFT;
     protected Renderer sRender;
     protected Vector2Int HomeLocation;
+    protected Vector2Int exitLocation = new Vector2Int(0, 0);
 
     public enum DirectionMoved
     { NONE, UP, RIGHT, DOWN, LEFT }
@@ -41,6 +42,7 @@ public class SpriteMovement : MonoBehaviour
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
+        
 
     }
 
@@ -251,7 +253,9 @@ public class SpriteMovement : MonoBehaviour
     public void InitializeNewMap() {
         MapGrid = GetMapGrid();
         MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
-        
+        //GameObject exitLocationObj = GameObject.Find("Exit");
+        //exitLocation.x= exitLocationObj.transform.
+            //omponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y]; 
     }
 
     public GameObject GetMapGrid() {

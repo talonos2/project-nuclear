@@ -11,6 +11,7 @@ public class CharacterMovement : SpriteMovement
     /// This is the character's start position. The character's transform won't matter; this will overwrite it.
     /// </summary>
     public Vector2 startPositionOnMap = new Vector2(0,0);
+
     // Start is called before the first frame update
 
     
@@ -34,9 +35,8 @@ public class CharacterMovement : SpriteMovement
         if (!CurrentlyMoving)
         {
 
-            CheckExitStatus();
             //Sets current Character position as an int
-            SetCurrentLocation();
+            
             int InputDirection=GetInputDirection();
             if (InputDirection == (int)DirectionMoved.NONE)
             {
@@ -75,6 +75,8 @@ public class CharacterMovement : SpriteMovement
             if (finishedMoving == 0)
             {
                 CurrentlyMoving = false;
+                SetCurrentLocation();
+                CheckExitStatus();
             }
         }
 
@@ -89,7 +91,6 @@ public class CharacterMovement : SpriteMovement
         {
             if (exitLocation.GetComponent<DoodadData>().isExit) {
                 SceneManager.LoadScene("Map1-1");
-
             }
         }
 

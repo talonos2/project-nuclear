@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FWSystems
 {
-    [RuntimeInitializeOnLoadMethod]
-    static void OnRuntimeMethodLoad()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void OnBeforeSceneLoadRuntimeMethod()
     {
         GameObject EquipmentData = GameObject.Instantiate(Resources.Load("Prefabs/Singletons/EquipmentData") as GameObject);
         EquipmentData.name = "EquipmentData";
