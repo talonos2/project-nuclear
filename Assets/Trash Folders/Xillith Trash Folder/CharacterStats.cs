@@ -26,20 +26,39 @@ public class CharacterStats : MonoBehaviour
     public int Level = 1;
     public int MaxHP;
     public int HP;
+    public int MaxMana;
     public int mana;
     public float attack;
     public float defense;
     public float Experiance=0;
     public int ExpToLevel = 90;
 
-    public GameObject weapon;
-    public GameObject armor;
-    public GameObject accessory;
-
     public bool MageClass;
     public bool FighterClass;
     public bool SurvivorClass;
     public bool ScoutClass;
+
+    public GameObject weapon;
+    public GameObject armor;
+    public GameObject accessory;
+
+    public int armorBonusDefense;
+    public int weaponBonusAttack;
+    public int accessoryAttack;
+    public int accessoryDefense;
+    public int accessoryHealth;
+    public int accessoryMana;
+    public int accessoryCritChance;
+    public int accessoryExpBonus;
+    public int accessoryIceBonus;
+    public int accessoryEarthBonus;
+    public int accessoryFireBonus;
+    public int accessoryAirBonus;
+    public int accessoryHPVamp;
+    public int accessoryMPVamp;
+    public int accessoryDodgeBonus;
+    public int accessoryAttackPercent;
+
 
     private GameObject gameStateData;
     private GameData gameData;
@@ -73,6 +92,7 @@ public class CharacterStats : MonoBehaviour
         this.Level = SavedStats.Level;
         this.MaxHP=SavedStats.MaxHP;
         this.HP = SavedStats.HP;
+        this.MaxMana = SavedStats.MaxMana;
         this.mana = SavedStats.mana;
         this.attack = SavedStats.attack;
         this.defense = SavedStats.defense;
@@ -84,12 +104,21 @@ public class CharacterStats : MonoBehaviour
         this.AttackCrystalsGained = SavedStats.AttackCrystalsGained;
         this.defenseCrystalsGained = SavedStats.defenseCrystalsGained;
 
+        this.weapon = SavedStats.weapon;
+        this.armor = SavedStats.armor;
+        this.accessory = SavedStats.accessory;
+        setWeaponStats(weapon);
+        setArmorStats(armor);
+        setAccessoryStats(accessory);
+
 }
 
-    internal void PushCharacterData() {
+    //Called at the end of every combat and every time an item is gained. 
+    public void PushCharacterData() {
         SavedStats.Level=this.Level;
         SavedStats.MaxHP=this.MaxHP;
         SavedStats.HP=this.HP;
+        SavedStats.MaxMana = this.MaxMana;
         SavedStats.mana=this.mana;
         SavedStats.attack=this.attack;
         SavedStats.defense= this.defense;
@@ -100,6 +129,10 @@ public class CharacterStats : MonoBehaviour
         SavedStats.ManaCrystalsGained=this.ManaCrystalsGained;
         SavedStats.AttackCrystalsGained= this.AttackCrystalsGained;
         SavedStats.defenseCrystalsGained= this.defenseCrystalsGained;
+
+        SavedStats.weapon = this.weapon;
+        SavedStats.armor = this.armor;
+        SavedStats.accessory = this.accessory;
     }
 
     //Each dungion run this section sets the stats. Main stats to set are the CrystalBuffs and Item buffs. 
@@ -121,7 +154,8 @@ public class CharacterStats : MonoBehaviour
             defensePerLevel = 1;
 
             MaxHP = 140+ HealthPerLevel*Level+ HealthCrystalBuff;
-            mana=95+ ManaPerLevel*Level;
+            MaxMana=95+ ManaPerLevel*Level;
+
             attack=10+(int)AttackPerLevel*Level;
             defense=(int)defensePerLevel*Level;
 
@@ -133,7 +167,7 @@ public class CharacterStats : MonoBehaviour
             defensePerLevel = 1;
 
             MaxHP = 140 + HealthPerLevel * Level;
-            mana = 90 + ManaPerLevel * Level;
+            MaxMana = 90 + ManaPerLevel * Level;
             attack = 11 + (int)AttackPerLevel * Level;
             defense = (int)defensePerLevel * Level;
 
@@ -147,7 +181,7 @@ public class CharacterStats : MonoBehaviour
             defensePerLevel = 1.1f;
 
             MaxHP = 140 + HealthPerLevel * Level;
-            mana = 90 + ManaPerLevel * Level;
+            MaxMana = 90 + ManaPerLevel * Level;
             attack = 10 + (int)AttackPerLevel * Level;
             defense = 1+(int)defensePerLevel * Level;
 
@@ -159,27 +193,30 @@ public class CharacterStats : MonoBehaviour
             defensePerLevel = 1;
 
             MaxHP = 154 + HealthPerLevel * Level;
-            mana = 90 + ManaPerLevel * Level;
+            MaxMana = 90 + ManaPerLevel * Level;
             attack = 10 + (int)AttackPerLevel * Level;
             defense = (int)defensePerLevel * Level;
 
         }
+
+        MaxMana += ManaCrystalBuff;
+        MaxHP += HealthCrystalBuff;
         HP = MaxHP;
-        HP = HP + HealthCrystalBuff;
-        mana = mana + ManaCrystalBuff;
+        mana = MaxMana;
         attack = attack + AttackCrystalBuff;
         defense = defense + defenseCrystalBuff;
 
         if (gameData.RunNumber == 1) {
             weapon = itemData.getRunOneWeapon();
-            attack += weapon.GetComponent<Weapon>().addAttack;
+           // attack += weapon.GetComponent<Weapon>().addAttack;
         }
         else {
             weapon = itemData.getRunTwoWeapon();
-            attack += weapon.GetComponent<Weapon>().addAttack;
+
         }
         armor = itemData.getDefaultArmor();
-        defense += armor.GetComponent<Armor>().addDefense;
+        setWeaponStats(weapon);
+        setArmorStats(armor);
     }
 
     internal void AddExp(int expGiven)
@@ -192,6 +229,35 @@ public class CharacterStats : MonoBehaviour
             SetExpToNextLevel();
         }
     }
+
+    public void setWeaponStats(GameObject weaponChanged) {
+        weaponBonusAttack = weaponChanged.GetComponent<Weapon>().addAttack;
+    }
+
+    public void setArmorStats(GameObject armorChanged) {
+        armorBonusDefense = armorChanged.GetComponent<Armor>().addDefense;
+    }
+
+    public void setAccessoryStats(GameObject accessoryChanged) {
+        Debug.Log("ToBeImplemented setting accessorys in CharacterStats.cs");
+        accessoryAttack=0;
+        accessoryDefense = 0;
+        accessoryHealth = 0;
+        accessoryMana = 0;
+        accessoryCritChance = 0;
+        accessoryExpBonus = 0;
+        accessoryIceBonus = 0;
+        accessoryEarthBonus = 0;
+        accessoryFireBonus = 0;
+        accessoryAirBonus = 0;
+        accessoryHPVamp = 0;
+        accessoryMPVamp = 0;
+        accessoryDodgeBonus = 0;
+        accessoryAttackPercent = 0;
+
+
+
+}
 
     private void LevelUp()
     {

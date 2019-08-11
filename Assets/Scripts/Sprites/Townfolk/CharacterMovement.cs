@@ -93,33 +93,6 @@ public class CharacterMovement : SpriteMovement
 
     }
 
-    /*private bool RunIntoMonster(int inputDirection)
-    {
-        if (inputDirection == (int)DirectionMoved.NONE)
-            return false;
-
-        if (inputDirection == (int)DirectionMoved.RIGHT
-            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocation.x + 1, CharacterLocation.y))
-            return true;
-
-        if (inputDirection == (int)DirectionMoved.LEFT
-            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocation.x - 1, CharacterLocation.y))          
-            return true;
-
-        if (inputDirection == (int)DirectionMoved.UP
-            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocation.x, CharacterLocation.y + 1))
-            return true;
-
-        if (inputDirection == (int)DirectionMoved.DOWN
-            && this.MapGrid.GetComponent<EntityGrid>().IsThereAMonster(CharacterLocation.x, CharacterLocation.y - 1))            
-            return true;
-
-        return false;
-    }*/
-
-
-
-
 
     private int GetInputDirection()
     {

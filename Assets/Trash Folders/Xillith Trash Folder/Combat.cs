@@ -21,9 +21,9 @@ public class Combat : MonoBehaviour
         //Player.GetComponent<CharacterStats>.;
         Enemy MonsterStats = Monster.GetComponent<Enemy>();
         CharacterStats PlayerStats = Player.GetComponent<CharacterStats>();
-
-        //Player attacks:
         
+        //Player attacks:
+
         //Animate Attack
         //Check for timed bonus and elements.
         bool inCombat = true;
@@ -32,7 +32,7 @@ public class Combat : MonoBehaviour
 
             //Debug.Log("Mhp " + MonsterStats.HP + " PlyAtk " + PlayerStats.Attack);
             //Debug.Log("Php " + PlayerStats.HP + " MonAtk " + MonsterStats.Attack);
-            MonsterStats.HP -= (int)PlayerStats.attack - MonsterStats.defense<0?0: (int)PlayerStats.attack - MonsterStats.defense;
+            MonsterStats.HP -= (int)PlayerStats.attack + PlayerStats.weaponBonusAttack - MonsterStats.defense<0?0: (int)PlayerStats.attack + PlayerStats.weaponBonusAttack - MonsterStats.defense;
             if (MonsterStats.HP <= 0)
             {
                 Debug.Log("You win!");
@@ -65,7 +65,7 @@ public class Combat : MonoBehaviour
                 inCombat = false;
             }
             else {
-                PlayerStats.HP -= MonsterStats.attack - (int)PlayerStats.defense < 0 ? 0 : MonsterStats.attack - (int)PlayerStats.defense;
+                PlayerStats.HP -= MonsterStats.attack - (int)PlayerStats.defense- PlayerStats.armorBonusDefense < 0 ? 0 : MonsterStats.attack - (int)PlayerStats.defense- PlayerStats.armorBonusDefense;
                 if (PlayerStats.HP <= 0) {
                     //Animate Attack
                     //Check for timed bonus and elements.

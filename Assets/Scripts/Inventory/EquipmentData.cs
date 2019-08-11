@@ -41,6 +41,24 @@ public class EquipmentData : MonoBehaviour
         return defaultArmor;
     }
 
+    public GameObject getRandomCommonItem(int floor) {
+        if (floor < 1 || floor > 20) return null;
+        int numberOfItems = CommonItemList[floor].EquipmentOnFloor.Count;
+        if (numberOfItems == 0) return null;
+
+        return CommonItemList[floor].EquipmentOnFloor[UnityEngine.Random.Range(0, numberOfItems)];
+    }
+
+    public GameObject getRandomRareItem(int floor) {
+        {
+            if (floor < 1 || floor > 20) return null;
+            if (floor == 1) floor = 2;
+            int numberOfItems = RareItemList[floor].EquipmentOnFloor.Count;
+            if (numberOfItems == 0) return null;
+            return RareItemList[floor].EquipmentOnFloor[UnityEngine.Random.Range(0, numberOfItems)];
+        }
+    }
+
 
     private void GenerateEquipmentList() {
         //GameObject[] ParentDatabase = this.GetComponentsInParent<GameObject>();

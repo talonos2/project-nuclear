@@ -12,6 +12,10 @@ public class GameData : MonoBehaviour
     public int FloorNumber = 1;
     public int RunNumber = 1;
 
+    public List<GameObject> townWeapons=new List<GameObject>();
+    public List<GameObject> townArmor = new List<GameObject>();
+    public List<GameObject> townAccessories = new List<GameObject>();
+
     public bool Shortcut1 = false;
 
     public bool RunSetupFinished = false;
