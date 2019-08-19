@@ -6,16 +6,7 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     internal static void initiateFight(GameObject Player, GameObject Monster) {
         //Player.GetComponent<CharacterStats>.;

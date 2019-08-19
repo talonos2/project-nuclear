@@ -68,6 +68,7 @@ public class CharacterMovement : SpriteMovement
                 //Needs to be refractored a bit
                 UpdateNewEntityGridLocation();
                 RemoveOldEntityGridLocation();
+                CharacterLocation = CharacterNextLocation;
                 CurrentlyMoving = true;
 
             }
@@ -78,6 +79,54 @@ public class CharacterMovement : SpriteMovement
             {
                 Combat.initiateFight(this.gameObject, EnemyToFight);
             }
+        }
+    }
+
+    public void ActivateKeyReceived() {
+        GameObject entityToCheck;
+        if (!CurrentlyMoving) {
+            switch (FacedDirection) {
+                case (int)DirectionMoved.UP:
+                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x, CharacterLocation.y+1];
+                    if (entityToCheck != null) {
+                        if (entityToCheck.GetComponent<EntityData>().isItem) {
+                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                    }
+                    break;
+                case (int)DirectionMoved.DOWN:
+                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x, CharacterLocation.y - 1];
+                    if (entityToCheck != null)
+                    {
+                        if (entityToCheck.GetComponent<EntityData>().isItem)
+                        {
+                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                    }
+                    break;
+                case (int)DirectionMoved.LEFT:
+                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x-1, CharacterLocation.y];
+                    if (entityToCheck != null)
+                    {
+                        if (entityToCheck.GetComponent<EntityData>().isItem)
+                        {
+                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                    }
+                    break;
+                case (int)DirectionMoved.RIGHT:
+                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x+1, CharacterLocation.y];
+                    if (entityToCheck != null)
+                    {
+                        if (entityToCheck.GetComponent<EntityData>().isItem)
+                        {
+                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                    }
+                    break;
+
+            }
+
         }
     }
 

@@ -17,7 +17,7 @@ public class CharacterInputController : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Submit")){
-            Debug.Log("I see you");
+            characterToMove.ActivateKeyReceived();
         }
         characterToMove.MoveKeyReceived(GetInputDirection());
        

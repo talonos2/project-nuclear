@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3128599578249191473}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: -9, z: -375.70367}
+  m_LocalPosition: {x: -4, y: -9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3128599578980096541}
@@ -79,11 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainCharacter: 0
-  isBackgroundCharacter: 0
   isAMonster: 1
   isInteractableObject: 0
-  isBlockableTerrain: 0
-  isPlatformTerrain: 0
 --- !u!65 &3128599578249191472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -145,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3128599578980096542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 375.49023}
+  m_LocalPosition: {x: 0, y: 0.25, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3128599578249191483}
