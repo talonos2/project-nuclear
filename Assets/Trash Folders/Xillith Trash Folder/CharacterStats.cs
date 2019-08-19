@@ -264,6 +264,7 @@ public class CharacterStats : MonoBehaviour
         MaxHP += HealthPerLevel;
         HP += HealthPerLevel;
         mana += ManaPerLevel;
+        MaxMana += ManaPerLevel;
         attack += AttackPerLevel;
         defense += defensePerLevel;
     }

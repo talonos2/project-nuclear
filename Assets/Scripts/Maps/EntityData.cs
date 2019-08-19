@@ -10,6 +10,9 @@ public class EntityData : MonoBehaviour
     
     public bool isAMonster = false;
     public bool isInteractableObject = false;
+    public bool isItem = false;
+    public bool isSwitch = false;
+    public bool isNPC = false;
 
 
     //public GameObject enemyData;

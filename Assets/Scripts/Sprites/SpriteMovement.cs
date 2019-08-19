@@ -15,6 +15,7 @@ public class SpriteMovement : MonoBehaviour
     public float AnimationSpeed = 10;
     protected GameObject MapGrid;
     protected Vector2 MapZeroLocation;
+    protected EntityGrid mapEntityGrid;
     protected bool CurrentlyMoving = false;
     protected GameObject ThePlayer;
 
@@ -24,8 +25,8 @@ public class SpriteMovement : MonoBehaviour
     private float MovedSoFar = 0;
     private float AnimationStep = 0;
 
-    protected Vector2Int CharacterLocation;
-    protected Vector2Int CharacterNextLocation;
+    public Vector2Int CharacterLocation;
+    public Vector2Int CharacterNextLocation;
     protected int FacedDirection = (int)DirectionMoved.LEFT;
     protected Renderer sRender;
     protected Vector2Int HomeLocation;
@@ -214,6 +215,17 @@ public class SpriteMovement : MonoBehaviour
         return MoveableLocation;
     }
 
+  /*  protected bool IsLocationEntityFreeExceptPlayer(int LocX, int LocY)
+    {
+        bool MoveableLocation = false;
+        GameObject entityToCheck = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
+        if (entityToCheck == null) { MoveableLocation = true; }
+        else if (entityToCheck.GetComponent<EntityData>().isMainCharacter) {
+            MoveableLocation = true;
+        }            
+        return MoveableLocation;
+    }*/
+
     protected GameObject isThereAMonster() {
         GameObject EnemyPresent = null;
         GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[CharacterNextLocation.x, CharacterNextLocation.y]; 
@@ -253,6 +265,7 @@ public class SpriteMovement : MonoBehaviour
     public void InitializeNewMap() {
         MapGrid = GetMapGrid();
         MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
+        mapEntityGrid = MapGrid.GetComponent<EntityGrid>();
         //GameObject exitLocationObj = GameObject.Find("Exit");
         //exitLocation.x= exitLocationObj.transform.
             //omponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y]; 

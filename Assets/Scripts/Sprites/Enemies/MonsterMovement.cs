@@ -61,8 +61,10 @@ public class MonsterMovement : SpriteMovement
                 {
                     UpdateNewEntityGridLocation();
                     RemoveOldEntityGridLocation();
+                    CharacterLocation = CharacterNextLocation;
                     CurrentlyMoving = true;
                 }
+                CheckForFight(CharacterNextLocation.x, CharacterNextLocation.y);
             }
 
             if (PathRandomly) {
@@ -73,8 +75,10 @@ public class MonsterMovement : SpriteMovement
                 {
                     UpdateNewEntityGridLocation();
                     RemoveOldEntityGridLocation();
+                    CharacterLocation = CharacterNextLocation;
                     CurrentlyMoving = true;
                 }
+                CheckForFight(CharacterNextLocation.x, CharacterNextLocation.y);
             }
 
 
@@ -91,6 +95,8 @@ public class MonsterMovement : SpriteMovement
 
                 if (CurrentlyChasingPlayer) {
                     NextStep = GetChaseStep();
+                    SetNextLocation(NextStep);//
+                    CheckForFight(CharacterNextLocation.x, CharacterNextLocation.y);//
                     if (ChaseStepNumber >= ChaseRange)
                     {                       
                         NextStep = PathToHomeLocation();
@@ -104,36 +110,37 @@ public class MonsterMovement : SpriteMovement
                     SetNextLocation(NextStep);
                     FacedDirection = NextStep;
 
-                    if (!IsMoveLocationMonsterChaseable(CharacterNextLocation.x, CharacterNextLocation.y)&&stuck>=15){
+                    if (!IsMoveLocationMonsterChaseable(CharacterNextLocation.x, CharacterNextLocation.y) && stuck >= 15)
+                    {
                         NextStep = GetRandomStep();
                         SetNextLocation(NextStep);
                         FacedDirection = NextStep;
-                        
+                        Debug.Log("MonsterIsStuck");
+
                     }
 
                     if (IsMoveLocationMonsterChaseable(CharacterNextLocation.x, CharacterNextLocation.y))
                     {
                         UpdateNewEntityGridLocation();
                         RemoveOldEntityGridLocation();
+                        CharacterLocation = CharacterNextLocation;
                         CurrentlyMoving = true;
                         ChaseStepNumber += 1;
                         stuck = 0;
                     }
-                    else {
+                    else
+                    {
                         stuck += 1;
                     }
-                   
-                            
+                    //Debug.Log("FightCheckLocation " + CharacterNextLocation.x + " " + CharacterNextLocation.y);
+                    //CheckForFight(CharacterNextLocation.x, CharacterNextLocation.y);
                 }
-
+                
+                
             }
 
             //Check if there is a fight about to happen.
-            GameObject EnemyToFight = isThereAPlayer(CharacterNextLocation.x, CharacterNextLocation.y);
-            if (EnemyToFight != null)
-            {
-                Combat.initiateFight(EnemyToFight, this.gameObject);
-            }
+           
 
         }
 
@@ -148,6 +155,15 @@ public class MonsterMovement : SpriteMovement
         }
 
 
+    }
+
+    private void CheckForFight(int locX, int locY)
+    {
+        GameObject EnemyToFight = isThereAPlayer(locX, locY);
+        if (EnemyToFight != null)
+        {
+            Combat.initiateFight(EnemyToFight, this.gameObject);
+        }
     }
 
     private void ChangeMonsterFacing()

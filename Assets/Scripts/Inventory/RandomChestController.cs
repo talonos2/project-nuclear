@@ -32,6 +32,16 @@ public class RandomChestController : MonoBehaviour
     public bool rareItemChest;
     public bool healingFountain;
     public bool manaFountain;
+    public float framesPerSecond;
+    private float timeSinceLastFrame=0;
+    private int currentFrame = 0;
+
+    private Renderer sRender;
+    public GameObject fountainPrefab;
+    public GameObject itemPrefab;
+    public GameObject rareItemPrefab;
+    public GameObject crystalPrefab;
+
     void Start()
     {
         InitializeNewMap();
@@ -40,10 +50,85 @@ public class RandomChestController : MonoBehaviour
         gameData = gameStateData.GetComponent<GameData>();
         itemListData = GameObject.Find("EquipmentData").GetComponent<EquipmentData>();
         RollRandomChest();
+        InstantiateChestSprite();
+        if (attackCrystal || armorCrystal || healthCrystal || manaCrystal) {
+            framesPerSecond = 8;
+        }
+        if (healingFountain || manaFountain)
+        {
+            framesPerSecond = 6;
+        }
+    }
 
-        //this.sRender = this.GetComponentInChildren<Renderer>();
-        //this.sRender.material = new Material(this.sRender.material);
-        //ThePlayer = GameObject.FindGameObjectWithTag("Player");
+    private void InstantiateChestSprite()
+    {
+
+
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        if (attackCrystal) { Instantiate(crystalPrefab, this.transform.position+new Vector3(0,.5f,-10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+        }
+        if (armorCrystal) { Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+        }
+        if (healthCrystal) { Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+        }
+        if (manaCrystal) { Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+        }
+        if (itemChest) { Instantiate(itemPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+        }
+        if (rareItemChest) { Instantiate(rareItemPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+        }
+        if (healingFountain) { Instantiate(fountainPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+            currentFrame = 10;
+            sRender.material.SetInt("_Frame", currentFrame);
+        }
+        if (manaFountain) { Instantiate(fountainPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+            currentFrame = 20;
+            sRender.material.SetInt("_Frame", currentFrame);
+        }
+        
+    }
+
+    void Update()
+    {
+        if (active && !(itemChest || rareItemChest) ) AnimateChest();
+    }
+
+    private void AnimateChest()
+    {
+       
+        timeSinceLastFrame += Time.deltaTime;
+        if (timeSinceLastFrame >= (1f / framesPerSecond)) {
+            timeSinceLastFrame = 0;
+            if (healingFountain) {
+                currentFrame += 1;
+                if (currentFrame > 19)
+                    currentFrame = 10;
+                sRender.material.SetInt("_Frame", currentFrame);
+            }
+            if (manaFountain) {
+                currentFrame += 1;
+                if (currentFrame > 29)
+                    currentFrame = 20;
+                sRender.material.SetInt("_Frame", currentFrame);
+            }
+            
+        }
     }
 
     private void RollRandomChest()
@@ -80,12 +165,13 @@ public class RandomChestController : MonoBehaviour
             }
 
         }
-        else if (itemRolled <= (itemChestChance + goldItemChestChance + crystalChance + manaChance))
+        else if (itemRolled <= (itemChestChance + goldItemChestChance + crystalChance + healingChance))
         {
-            manaFountain = true;
+            healingFountain = true;
         }
         else if (itemRolled <= (itemChestChance + goldItemChestChance + crystalChance + manaChance + healingChance)) {
-            healingFountain = true;
+            if (gameData.PowersGained == 0) RollRandomChest();
+            else manaFountain = true;
         }
 
     }
@@ -166,13 +252,13 @@ public class RandomChestController : MonoBehaviour
         else if (manaFountain)
         {
             amountGained = 20 + rarity * manaFactor;
-            playerData.HP += amountGained;
+            playerData.mana += amountGained;
             if (playerData.mana > playerData.MaxMana) playerData.mana = playerData.MaxMana;
         }
 
         playerData.PushCharacterData();
 
-
+        active = false;
 }
 
     private int GetFloorRarity()
@@ -195,10 +281,7 @@ public class RandomChestController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 
     private void InitializeNewMap()
     {

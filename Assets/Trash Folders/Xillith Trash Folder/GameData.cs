@@ -11,6 +11,7 @@ public class GameData : MonoBehaviour
     public int DefenseCrystalBonus;
     public int FloorNumber = 1;
     public int RunNumber = 1;
+    public int PowersGained = 0;
 
     public List<GameObject> townWeapons=new List<GameObject>();
     public List<GameObject> townArmor = new List<GameObject>();
