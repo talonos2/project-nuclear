@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ExitController : MonoBehaviour
     Vector2Int ExitLocation;
     private GameObject MapGrid;
     private Vector2 MapZeroLocation;
+    public String mapToLoad;
+    public int nextMapLevel;
     void Start()
     {
         InitializeNewMap();        
@@ -28,5 +31,12 @@ public class ExitController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void TransitionMap()
+    {
+        GameObject.Find("GameStateData").GetComponent<GameData>().FloorNumber = nextMapLevel;
+        SceneManager.LoadScene(mapToLoad);
+
     }
 }
