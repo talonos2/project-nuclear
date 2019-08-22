@@ -261,7 +261,8 @@ public class MonsterMovement : SpriteMovement
     {
         int nexstp = 0;
         System.Random rand = new System.Random();
-        nexstp = rand.Next(4) + 1;
+        nexstp = rand.Next(10) + 1;
+        if (nexstp > 4) nexstp = FacedDirection;
         return nexstp;
     }
 

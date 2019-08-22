@@ -12,7 +12,7 @@ public class SpriteMovement : MonoBehaviour
    // public Sprite MovementSprite;
     //public Sprite[] MovementSprites;
     public float MoveSpeed = 6;
-    public float AnimationSpeed = 10;
+    public float framesPerSecond = 30;
     protected GameObject MapGrid;
     protected Vector2 MapZeroLocation;
     protected EntityGrid mapEntityGrid;
@@ -23,7 +23,8 @@ public class SpriteMovement : MonoBehaviour
     private string spriteNames;
 
     private float MovedSoFar = 0;
-    private float AnimationStep = 0;
+    private float timeSinceLastAnimation = 0;
+    private int AnimationStep = 0;
 
     public Vector2Int CharacterLocation;
     public Vector2Int CharacterNextLocation;
@@ -339,14 +340,13 @@ public class SpriteMovement : MonoBehaviour
 
     private void AnimateMoveDown()
     {
+        timeSinceLastAnimation += Time.deltaTime;
+        if (timeSinceLastAnimation >= 1 / framesPerSecond) { timeSinceLastAnimation = 0;
+            AnimationStep += 1;
+            if (AnimationStep > 6) { AnimationStep = 1;  }
+            sRender.material.SetInt("_Frame", AnimationStep);
+        }
 
-        AnimationStep += 1;
-        if (AnimationStep<=(1* AnimationSpeed)) { sRender.material.SetInt("_Frame", 1); }
-        else if (AnimationStep == (2 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 2); }
-        else if (AnimationStep == (3 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 3); }
-        else if (AnimationStep == (4 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 4); }
-        else if (AnimationStep == (5 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 5); }
-        else if (AnimationStep == (6 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 6); AnimationStep = 0; }
     }
 
     public float MoveUp(float MoveSpeed)
@@ -378,13 +378,16 @@ public class SpriteMovement : MonoBehaviour
     
     private void AnimateMoveUp()
     {
-        AnimationStep += 1; 
-        if (AnimationStep <= (1 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 22); }
-        else if (AnimationStep == (2 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 23); }
-        else if (AnimationStep == (3 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 24); }
-        else if (AnimationStep == (4 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 25); }
-        else if (AnimationStep == (5 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 26); }
-        else if (AnimationStep == (6 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 27); ; AnimationStep = 0; }
+
+        timeSinceLastAnimation += Time.deltaTime;
+        if (timeSinceLastAnimation >= 1 / framesPerSecond)
+        {
+            timeSinceLastAnimation = 0;
+            AnimationStep += 1;
+            if (AnimationStep > 6) { AnimationStep = 1; }
+            sRender.material.SetInt("_Frame", AnimationStep+21);
+        }
+      
     }
     public float MoveLeft(float MoveSpeed)
     {
@@ -412,14 +415,15 @@ public class SpriteMovement : MonoBehaviour
 
     private void AnimateMoveLeft()
     {
+        timeSinceLastAnimation += Time.deltaTime;
+        if (timeSinceLastAnimation >= 1 / framesPerSecond)
+        {
+            timeSinceLastAnimation = 0;
+            AnimationStep += 1;
+            if (AnimationStep > 6) { AnimationStep = 1; }
+            sRender.material.SetInt("_Frame", AnimationStep+7);
+        }
 
-        AnimationStep += 1;
-        if (AnimationStep <= (1 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 8); }
-        else if (AnimationStep == (2 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 9); }
-        else if (AnimationStep == (3 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 10); }
-        else if (AnimationStep == (4 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 11); }
-        else if (AnimationStep == (5 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 12); }
-        else if (AnimationStep == (6 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 13); AnimationStep = 0; }
     }
     public float MoveRight(float MoveSpeed)
     {
@@ -446,14 +450,15 @@ public class SpriteMovement : MonoBehaviour
 
     private void AnimateMoveRight()
     {
-        
-        AnimationStep += 1;
-        if (AnimationStep <= (1 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 15); }
-        else if (AnimationStep == (2 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 16); }
-        else if (AnimationStep == (3 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 17); }
-        else if (AnimationStep == (4 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 18); }
-        else if (AnimationStep == (5 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 19); }
-        else if (AnimationStep == (6 * AnimationSpeed)) { sRender.material.SetInt("_Frame", 20); AnimationStep = 0; }
+        timeSinceLastAnimation += Time.deltaTime;
+        if (timeSinceLastAnimation >= 1 / framesPerSecond)
+        {
+            timeSinceLastAnimation = 0;
+            AnimationStep += 1;
+            if (AnimationStep > 6) { AnimationStep = 1; }
+            sRender.material.SetInt("_Frame", AnimationStep+14);
+        }
+       
     }
 
     protected void SetLookDirection()
