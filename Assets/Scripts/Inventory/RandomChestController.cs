@@ -117,8 +117,8 @@ public class RandomChestController : MonoBehaviour
             timeSinceLastFrame = 0;
             if (healingFountain) {
                 currentFrame += 1;
-                if (currentFrame > 19)
-                    currentFrame = 10;
+                if (currentFrame > 9)
+                    currentFrame = 0;
                 sRender.material.SetInt("_Frame", currentFrame);
             }
             if (manaFountain) {
@@ -178,6 +178,9 @@ public class RandomChestController : MonoBehaviour
     }
 
     public void ProcessClick(CharacterStats playerData) {
+
+        if (!active) { return; }
+
         int rarity = GetFloorRarity();
         int amountGained=0;
 
