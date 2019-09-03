@@ -136,7 +136,7 @@ public class CharacterMovement : SpriteMovement
         if (exitLocation != null)
         {
             if (exitLocation.GetComponent<DoodadData>().isExit) {
-                SceneManager.LoadScene("Map1-1");
+                exitLocation.GetComponent<ExitController>().TransitionMap(); 
             }
         }
 

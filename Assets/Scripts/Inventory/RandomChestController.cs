@@ -142,7 +142,8 @@ public class RandomChestController : MonoBehaviour
         }
         else if (itemRolled <= (itemChestChance + goldItemChestChance))
         {
-            rareItemChest = true;
+            if (gameData.FloorNumber == 1) RollRandomChest();
+            else rareItemChest = true;
         }
         else if (itemRolled <= (itemChestChance + goldItemChestChance + crystalChance))
         {
