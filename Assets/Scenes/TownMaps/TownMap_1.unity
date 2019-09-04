@@ -202,13 +202,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 539707996}
-  - component: {fileID: 539707995}
   - component: {fileID: 539707994}
   - component: {fileID: 539707998}
   - component: {fileID: 539707993}
   - component: {fileID: 539707992}
   - component: {fileID: 539707991}
-  - component: {fileID: 539707997}
   m_Layer: 0
   m_Name: Hiro
   m_TagString: Player
@@ -312,14 +310,6 @@ MonoBehaviour:
   CharacterLocation: {x: 0, y: 0}
   CharacterNextLocation: {x: 0, y: 0}
   startPositionOnMap: {x: 2, y: 5}
---- !u!33 &539707995
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539707990}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &539707996
 Transform:
   m_ObjectHideFlags: 0
@@ -336,21 +326,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &539707997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539707990}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e361028c7b85646a169a20665eb84e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hero: {fileID: 539707990}
-  mapr: {fileID: 2018926733}
-  frame: 400
 --- !u!114 &539707998
 MonoBehaviour:
   m_ObjectHideFlags: 0
