@@ -29,8 +29,11 @@ public class CharacterMovement : SpriteMovement
     void Update()
     {
 
-      
-        
+
+        if (gameData.Paused == true)
+        {
+            return;
+        }
 
         //If in the process of moving, keep moving and do nothing else
 
@@ -51,6 +54,11 @@ public class CharacterMovement : SpriteMovement
 
     //Key command received from CharacterInputController script
     public void MoveKeyReceived(int inputDirection) {
+
+        if (gameData.Paused == true)
+        {
+            return;
+        }
 
         if (!CurrentlyMoving)
         {
@@ -77,7 +85,9 @@ public class CharacterMovement : SpriteMovement
             GameObject EnemyToFight = isThereAMonster();
             if (EnemyToFight != null)
             {
+                gameData.Paused = true;
                 Combat.initiateFight(this.gameObject, EnemyToFight);
+                gameData.Paused = false ;
             }
         }
     }

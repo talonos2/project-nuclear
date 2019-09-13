@@ -25,6 +25,7 @@ public class SpriteMovement : MonoBehaviour
     private float MovedSoFar = 0;
     private float timeSinceLastAnimation = 0;
     private int AnimationStep = 0;
+    protected GameData gameData;
 
     public Vector2Int CharacterLocation;
     public Vector2Int CharacterNextLocation;
@@ -44,7 +45,8 @@ public class SpriteMovement : MonoBehaviour
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
-        
+        gameData =GameObject.Find("GameStateData").GetComponent<GameData>();
+
 
     }
 

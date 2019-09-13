@@ -106,6 +106,12 @@ public class RandomChestController : MonoBehaviour
 
     void Update()
     {
+
+        if (gameData.Paused == true)
+        {
+            return;
+        }
+
         if (active && !(itemChest || rareItemChest) ) AnimateChest();
     }
 
