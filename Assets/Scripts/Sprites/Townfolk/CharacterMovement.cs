@@ -77,7 +77,7 @@ public class CharacterMovement : SpriteMovement
             GameObject EnemyToFight = isThereAMonster();
             if (EnemyToFight != null)
             {
-                Combat.initiateFight(this.gameObject, EnemyToFight);
+                Combat.InitiateFight(this.gameObject, EnemyToFight);
             }
         }
     }

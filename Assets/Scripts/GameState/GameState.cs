@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
+    public static bool isInBattle = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +17,6 @@ public class GameState : MonoBehaviour
     {
         
     }
+
+    internal static bool endRunFlag;
 }

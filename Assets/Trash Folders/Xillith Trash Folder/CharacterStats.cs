@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : Stats
 {
     // Start is called before the first frame update
-
-
 
     public int HealthCrystalsGained = 0;
     private int HealthCrystalBuff = 0;
@@ -21,15 +19,12 @@ public class CharacterStats : MonoBehaviour
     private int HealthPerLevel;
     private int ManaPerLevel;
     private float AttackPerLevel;
-    private float defensePerLevel;
+    private float DefensePerLevel;
 
     public int Level = 1;
-    public int MaxHP;
-    public int HP;
     public int MaxMana;
     public int mana;
-    public float attack;
-    public float defense;
+
     public float Experiance=0;
     public int ExpToLevel = 90;
 
@@ -58,7 +53,6 @@ public class CharacterStats : MonoBehaviour
     public int accessoryMPVamp;
     public int accessoryDodgeBonus;
     public int accessoryAttackPercent;
-
 
     private GameObject gameStateData;
     private GameData gameData;
@@ -151,25 +145,25 @@ public class CharacterStats : MonoBehaviour
             HealthPerLevel = 10;
             ManaPerLevel = 11;
             AttackPerLevel = 2f;
-            defensePerLevel = 1;
+            DefensePerLevel = 1;
 
             MaxHP = 140+ HealthPerLevel*Level+ HealthCrystalBuff;
             MaxMana=95+ ManaPerLevel*Level;
 
             attack=10+(int)AttackPerLevel*Level;
-            defense=(int)defensePerLevel*Level;
+            defense=(int)DefensePerLevel*Level;
 
 }
         if (FighterClass) {
             HealthPerLevel = 10;
             ManaPerLevel = 10;
             AttackPerLevel = 2.2f;
-            defensePerLevel = 1;
+            DefensePerLevel = 1;
 
             MaxHP = 140 + HealthPerLevel * Level;
             MaxMana = 90 + ManaPerLevel * Level;
             attack = 11 + (int)AttackPerLevel * Level;
-            defense = (int)defensePerLevel * Level;
+            defense = (int)DefensePerLevel * Level;
 
 
         }
@@ -178,24 +172,24 @@ public class CharacterStats : MonoBehaviour
             HealthPerLevel = 10;
             ManaPerLevel = 10;
             AttackPerLevel = 2;
-            defensePerLevel = 1.1f;
+            DefensePerLevel = 1.1f;
 
             MaxHP = 140 + HealthPerLevel * Level;
             MaxMana = 90 + ManaPerLevel * Level;
             attack = 10 + (int)AttackPerLevel * Level;
-            defense = 1+(int)defensePerLevel * Level;
+            defense = 1+(int)DefensePerLevel * Level;
 
         }
         if (ScoutClass) {
             HealthPerLevel = 11;
             ManaPerLevel = 10;
             AttackPerLevel = 2;
-            defensePerLevel = 1;
+            DefensePerLevel = 1;
 
             MaxHP = 154 + HealthPerLevel * Level;
             MaxMana = 90 + ManaPerLevel * Level;
             attack = 10 + (int)AttackPerLevel * Level;
-            defense = (int)defensePerLevel * Level;
+            defense = (int)DefensePerLevel * Level;
 
         }
 
@@ -266,7 +260,7 @@ public class CharacterStats : MonoBehaviour
         mana += ManaPerLevel;
         MaxMana += ManaPerLevel;
         attack += AttackPerLevel;
-        defense += defensePerLevel;
+        defense += DefensePerLevel;
     }
 
     private void SetExpToNextLevel()
