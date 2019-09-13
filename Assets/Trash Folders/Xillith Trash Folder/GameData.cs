@@ -13,9 +13,12 @@ public class GameData : MonoBehaviour
     public int RunNumber = 1;
     public int PowersGained = 0;
 
+
     public List<GameObject> townWeapons=new List<GameObject>();
     public List<GameObject> townArmor = new List<GameObject>();
     public List<GameObject> townAccessories = new List<GameObject>();
+
+    public bool Paused = false;
 
     public bool Shortcut1 = false;
 

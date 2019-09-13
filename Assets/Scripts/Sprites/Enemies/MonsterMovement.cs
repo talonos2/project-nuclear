@@ -44,6 +44,12 @@ public class MonsterMovement : SpriteMovement
         //Test: are There no locations to go? if not skip this movement phase
         //If none of the above, update
 
+
+        if (gameData.Paused == true) {
+            return; 
+        }
+
+
         if (!CurrentlyMoving)
         {
 
@@ -158,7 +164,9 @@ public class MonsterMovement : SpriteMovement
         GameObject EnemyToFight = isThereAPlayer(locX, locY);
         if (EnemyToFight != null)
         {
-            Combat.InitiateFight(EnemyToFight, this.gameObject);
+            gameData.Paused = true;
+            Combat.initiateFight(EnemyToFight, this.gameObject);
+            gameData.Paused = false;
         }
     }
 
