@@ -8,15 +8,15 @@ using UnityEngine;
 public static class Extensions
 {
 
-    public static void HandleAnimation(this AttackAnimation anim, float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
+    public static int HandleAnimation(this AttackAnimation anim, float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
     {
         switch (anim)
         {
             case AttackAnimation.HOP:
-                HandleHopAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
-                return;
+                return HandleHopAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
         }
         Debug.LogWarning("Unknown Attack Animation!" + anim);
+        return -1;
     }
 
     public static float GetAnimationLength(this AttackAnimation anim)
@@ -41,9 +41,10 @@ public static class Extensions
         return 1000;
     }
 
-    private static void HandleHopAnimation(float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
+    private static int HandleHopAnimation(float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
     {
         AttackAnimationManager aam = AttackAnimationManager.Instance;
+        int flip = (userStats.homePositionOnScreen.x < targetStats.homePositionOnScreen.x ? 1 : -1);
         if (timeSinceStart < aam.initialHopDuration)
         {
             float amountThrough = timeSinceStart /aam.initialHopDuration;
@@ -53,17 +54,17 @@ public static class Extensions
         if (timeSinceStart > aam.enemyKnockBackStart && timeSinceStart < aam.enemyKnockBackStart + aam.enemyKnockBackDuration)
         {
             float amountThrough = (timeSinceStart - aam.enemyKnockBackStart) / aam.enemyKnockBackDuration;
-            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen, targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0), amountThrough);
+            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen, targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0)*flip, amountThrough);
         }
         if (timeSinceStart > aam.enemySpringbackStart && timeSinceStart < aam.enemySpringbackStart + aam.enemySpringbackDuration)
         {
             float amountThrough = (timeSinceStart - aam.enemySpringbackStart) / aam.enemySpringbackDuration;
-            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0), targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0), amountThrough);
+            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0) * flip, targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, amountThrough);
         }
         if (timeSinceStart > aam.enemyMoveBackStart && timeSinceStart < aam.enemyMoveBackStart + aam.enemyMoveBackDuration)
         {
             float amountThrough = (timeSinceStart - aam.enemyMoveBackStart) / aam.enemyMoveBackDuration;
-            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0), targetStats.homePositionOnScreen, amountThrough);
+            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, targetStats.homePositionOnScreen, amountThrough);
         }
         if (timeSinceStart > aam.returnHopStart && timeSinceStart < aam.returnHopStart + aam.returnHopDuration)
         {
@@ -71,6 +72,22 @@ public static class Extensions
             float currentJumpHeight = -Mathf.Pow(-((amountThrough * 2 * Mathf.Pow(aam.returnHopHeight, .5f)) - Mathf.Pow(aam.returnHopHeight, .5f)), 2)+aam.returnHopHeight;
             userSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen, userStats.homePositionOnScreen, amountThrough) + new Vector3(0, currentJumpHeight);
         }
+
+        //Which frame are we in?
+
+        if (timeSinceStart > aam.initialHopDuration && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime)
+        {
+            return 1;
+        }
+        if (timeSinceStart > aam.initialHopDuration + aam.defaultAttackFrameTime && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime*2)
+        {
+            return 2;
+        }
+        if (timeSinceStart > aam.initialHopDuration + aam.defaultAttackFrameTime * 2 && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime*5)
+        {
+            return 3;
+        }
+        return 0;
     }
 }
 

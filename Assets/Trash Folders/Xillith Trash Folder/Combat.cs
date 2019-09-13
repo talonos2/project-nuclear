@@ -115,10 +115,10 @@ public class Combat : MonoBehaviour
 
         //Debug.Log(combatTimer+", "+)
 
-        //enemyStats.animation.HandleAnimation();
-        AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
-        //enemyStats.animation.HOP.HandleAnimation();
-        AttackAnimation.HOP.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
+        int playerFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
+        int enemyFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
+        playerSprite.GetComponent<SpriteRenderer>().sprite = playerStats.combatSprites[playerFrame];
+        monsterSprite.GetComponent<SpriteRenderer>().sprite = monsterStats.combatSprites[enemyFrame];
 
         //Handle damage:
         if (timeSinceLastPlayerAttack < previousTimeSinceLastPlayerAttack)
