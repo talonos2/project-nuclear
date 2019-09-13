@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CharacterStats : Stats
 {
-    // Start is called before the first frame update
-
     public int HealthCrystalsGained = 0;
     private int HealthCrystalBuff = 0;
     public int ManaCrystalsGained = 0;
@@ -25,8 +23,10 @@ public class CharacterStats : Stats
     public int MaxMana;
     public int mana;
 
-    public float Experiance=0;
-    public int ExpToLevel = 90;
+    public int experience=0;
+    public int expToLevel = 90;
+
+    public Sprite[] combatSprites;
 
     public bool MageClass;
     public bool FighterClass;
@@ -60,7 +60,6 @@ public class CharacterStats : Stats
     private GameObject equipmentData;
     private EquipmentData itemData;
 
-    //private int 
     void Start()
     {
 
@@ -90,8 +89,8 @@ public class CharacterStats : Stats
         this.mana = SavedStats.mana;
         this.attack = SavedStats.attack;
         this.defense = SavedStats.defense;
-        this.Experiance = SavedStats.Experiance;
-        this.ExpToLevel = SavedStats.ExpToLevel;
+        this.experience = SavedStats.experience;
+        this.expToLevel = SavedStats.expToLevel;
 
         this.HealthCrystalsGained = SavedStats.HealthCrystalsGained;
         this.ManaCrystalsGained = SavedStats.ManaCrystalsGained;
@@ -116,8 +115,8 @@ public class CharacterStats : Stats
         SavedStats.mana=this.mana;
         SavedStats.attack=this.attack;
         SavedStats.defense= this.defense;
-        SavedStats.Experiance=this.Experiance;
-        SavedStats.ExpToLevel=this.ExpToLevel;
+        SavedStats.experience = this.experience;
+        SavedStats.expToLevel = this.expToLevel;
 
         SavedStats.HealthCrystalsGained=this.HealthCrystalsGained;
         SavedStats.ManaCrystalsGained=this.ManaCrystalsGained;
@@ -215,9 +214,9 @@ public class CharacterStats : Stats
 
     internal void AddExp(int expGiven)
     {
-        Experiance += expGiven;
-        while (Experiance >= ExpToLevel) {
-            Experiance -= ExpToLevel;
+        experience += expGiven;
+        while (experience >= expToLevel) {
+            experience -= expToLevel;
             Level += 1;
             LevelUp();
             SetExpToNextLevel();
@@ -265,7 +264,7 @@ public class CharacterStats : Stats
 
     private void SetExpToNextLevel()
     {
-        ExpToLevel = (Level * 45 + Level * Level * 45)- ((Level-1) * 45 + (Level-1) * (Level-1) * 45);
+        expToLevel = (Level * 45 + Level * Level * 45)- ((Level-1) * 45 + (Level-1) * (Level-1) * 45);
     }
 
     // Update is called once per frame
