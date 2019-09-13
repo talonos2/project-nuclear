@@ -72,6 +72,21 @@ public static class Extensions
             float currentJumpHeight = -Mathf.Pow(-((amountThrough * 2 * Mathf.Pow(aam.returnHopHeight, .5f)) - Mathf.Pow(aam.returnHopHeight, .5f)), 2)+aam.returnHopHeight;
             userSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen, userStats.homePositionOnScreen, amountThrough) + new Vector3(0, currentJumpHeight);
         }
+
+        //Which frame are we in?
+
+        if (timeSinceStart > aam.initialHopDuration && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime)
+        {
+            return 1;
+        }
+        if (timeSinceStart > aam.initialHopDuration + aam.defaultAttackFrameTime && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime*2)
+        {
+            return 2;
+        }
+        if (timeSinceStart > aam.initialHopDuration + aam.defaultAttackFrameTime * 2 && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime*5)
+        {
+            return 3;
+        }
         return 0;
     }
 }

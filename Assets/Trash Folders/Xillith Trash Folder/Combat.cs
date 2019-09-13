@@ -117,7 +117,7 @@ public class Combat : MonoBehaviour
 
         int playerFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
         int enemyFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
-        //playerSprite.GetComponent<SpriteRenderer>().sprite = playerStats
+        playerSprite.GetComponent<SpriteRenderer>().sprite = playerStats.combatSprites[playerFrame];
         monsterSprite.GetComponent<SpriteRenderer>().sprite = monsterStats.combatSprites[enemyFrame];
 
         //Handle damage:
