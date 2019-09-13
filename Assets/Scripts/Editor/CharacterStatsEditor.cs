@@ -85,6 +85,7 @@ public class CharacterStatsEditor : Editor
             charac.startPositionOnScreen = EditorGUILayout.Vector2Field("Start Position", charac.startPositionOnScreen);
             charac.homePositionOnScreen = EditorGUILayout.Vector2Field("Home Position", charac.homePositionOnScreen);
         }
+        EditorGUILayout.EndFoldoutHeaderGroup();
         classes = EditorGUILayout.BeginFoldoutHeaderGroup(classes, "Classes");
         if (classes)
         {
@@ -93,6 +94,7 @@ public class CharacterStatsEditor : Editor
             charac.SurvivorClass = EditorGUILayout.Toggle("Survivor?", charac.SurvivorClass);
             charac.ScoutClass = EditorGUILayout.Toggle("Scout?", charac.ScoutClass);
         }
+        EditorGUILayout.EndFoldoutHeaderGroup();
     }
 }
 
