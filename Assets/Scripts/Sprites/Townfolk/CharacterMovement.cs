@@ -86,7 +86,7 @@ public class CharacterMovement : SpriteMovement
             if (EnemyToFight != null)
             {
                 gameData.Paused = true;
-                Combat.initiateFight(this.gameObject, EnemyToFight);
+                Combat.InitiateFight(this.gameObject, EnemyToFight);
                 gameData.Paused = false ;
             }
         }

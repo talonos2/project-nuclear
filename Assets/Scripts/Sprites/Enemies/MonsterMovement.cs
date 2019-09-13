@@ -165,7 +165,7 @@ public class MonsterMovement : SpriteMovement
         if (EnemyToFight != null)
         {
             gameData.Paused = true;
-            Combat.initiateFight(EnemyToFight, this.gameObject);
+            Combat.InitiateFight(EnemyToFight, this.gameObject);
             gameData.Paused = false;
         }
     }
