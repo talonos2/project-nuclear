@@ -102,6 +102,9 @@ public class CharacterMovement : SpriteMovement
                         if (entityToCheck.GetComponent<EntityData>().isItem) {
                             entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
                         }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch) {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
+                        }
                     }
                     break;
                 case (int)DirectionMoved.DOWN:
@@ -111,6 +114,10 @@ public class CharacterMovement : SpriteMovement
                         if (entityToCheck.GetComponent<EntityData>().isItem)
                         {
                             entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
+                        {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
                         }
                     }
                     break;
@@ -122,6 +129,10 @@ public class CharacterMovement : SpriteMovement
                         {
                             entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
                         }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
+                        {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
+                        }
                     }
                     break;
                 case (int)DirectionMoved.RIGHT:
@@ -131,6 +142,10 @@ public class CharacterMovement : SpriteMovement
                         if (entityToCheck.GetComponent<EntityData>().isItem)
                         {
                             entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
+                        {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
                         }
                     }
                     break;

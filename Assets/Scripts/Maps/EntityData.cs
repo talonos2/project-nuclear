@@ -6,27 +6,16 @@ using UnityEngine;
 public class EntityData : MonoBehaviour
 {
 
-    public bool isMainCharacter = false;
-    
+    public bool isMainCharacter = false;    
     public bool isAMonster = false;
     public bool isInteractableObject = false;
     public bool isItem = false;
     public bool isSwitch = false;
     public bool isNPC = false;
+    public bool isSpike = false;
+    public bool isPassable = false;
 
 
-    //public GameObject enemyData;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
 }

@@ -207,6 +207,8 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 0
+  isSpike: 0
+  isPassable: 0
 --- !u!114 &8256436232106188759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 45
   HP: 45
   attack: 19
   defense: 3
@@ -232,9 +234,14 @@ MonoBehaviour:
   crystalDropAmount: 2
   combatSprites:
   - {fileID: -5516807709991325739, guid: 39442b4647825ae4babd624b820af6df, type: 3}
+  - {fileID: -3371181855513982237, guid: 39442b4647825ae4babd624b820af6df, type: 3}
+  - {fileID: 5083125842175270224, guid: 39442b4647825ae4babd624b820af6df, type: 3}
   - {fileID: -7455342918688537225, guid: 39442b4647825ae4babd624b820af6df, type: 3}
   - {fileID: -3772043870533336583, guid: 39442b4647825ae4babd624b820af6df, type: 3}
   - {fileID: 5911367138723749726, guid: 39442b4647825ae4babd624b820af6df, type: 3}
+  - {fileID: -7071417042575499994, guid: 39442b4647825ae4babd624b820af6df, type: 3}
+  - {fileID: -8313341801205668475, guid: 39442b4647825ae4babd624b820af6df, type: 3}
+  - {fileID: 695783814551711570, guid: 39442b4647825ae4babd624b820af6df, type: 3}
 --- !u!65 &8256436232106188758
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -210,10 +210,13 @@ public class SpriteMovement : MonoBehaviour
 
     protected bool IsLocationEntityFree(int LocX, int LocY) {
         bool MoveableLocation = false;
-
-        if (MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY] == null)
+        GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
+        if (entityInLocation == null)
             MoveableLocation = true;
-       
+        else if (entityInLocation.GetComponent<EntityData>().isPassable)
+            MoveableLocation = true;
+
+
 
         return MoveableLocation;
     }

@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3128599578249191473}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4, y: -9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -56,18 +56,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bbabb577345f240886179cc01bde1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 4
+  MoveSpeed: 8
   framesPerSecond: 14
   CharacterLocation: {x: 0, y: 0}
   CharacterNextLocation: {x: 0, y: 0}
   PathRandomly: 0
   PathViaSteps: 0
   Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
-  SpotterMonster: 0
-  SpottingDistance: 6
+  SpotterMonster: 1
+  SpottingDistance: 5
   LookDuration: 10
   ChaseRange: 15
-  LookPattern: 01000000020000000300000004000000
+  LookPattern: 04000000
 --- !u!114 &3128599578249191478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +86,8 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 0
+  isSpike: 0
+  isPassable: 0
 --- !u!65 &3128599578249191472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -111,14 +113,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Spider
+  MaxHP: 60
   HP: 60
   attack: 15
   defense: 6
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  enemyName: Spider
   ExpGiven: 70
   weakness: 1
   crystalType: 3
   crystalDropAmount: 2
+  combatSprites:
+  - {fileID: -4480272334087500341, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  - {fileID: 4310844079638894855, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  - {fileID: 6676365715323773283, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  - {fileID: -3674070280908573562, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  - {fileID: -1709970976819407592, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  - {fileID: -3692116549114297304, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  - {fileID: 2673242093466531867, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  - {fileID: 4249126988654396894, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  - {fileID: 86892479422007442, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
 --- !u!1 &3128599578980096542
 GameObject:
   m_ObjectHideFlags: 0
