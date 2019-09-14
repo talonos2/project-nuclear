@@ -49,7 +49,9 @@ public static class Extensions
         {
             float amountThrough = timeSinceStart /aam.initialHopDuration;
             float currentJumpHeight = -Mathf.Pow(-((amountThrough * 2 * Mathf.Pow(aam.initialHopHeight, .5f)) - Mathf.Pow(aam.initialHopHeight, .5f)),2)+aam.initialHopHeight;
-            userSprite.transform.localPosition = Vector3.Lerp(userStats.homePositionOnScreen, targetStats.homePositionOnScreen, amountThrough)+new Vector3(0,currentJumpHeight);
+            Vector3 startPosit = userStats.homePositionOnScreen;
+            Vector3 endPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
+            userSprite.transform.localPosition = Vector3.Lerp(startPosit, endPosit, amountThrough)+new Vector3(0,currentJumpHeight);
         }
         if (timeSinceStart > aam.enemyKnockBackStart && timeSinceStart < aam.enemyKnockBackStart + aam.enemyKnockBackDuration)
         {
@@ -70,7 +72,9 @@ public static class Extensions
         {
             float amountThrough = (timeSinceStart - aam.returnHopStart) / aam.returnHopDuration;
             float currentJumpHeight = -Mathf.Pow(-((amountThrough * 2 * Mathf.Pow(aam.returnHopHeight, .5f)) - Mathf.Pow(aam.returnHopHeight, .5f)), 2)+aam.returnHopHeight;
-            userSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen, userStats.homePositionOnScreen, amountThrough) + new Vector3(0, currentJumpHeight);
+            Vector3 endPosit = userStats.homePositionOnScreen;
+            Vector3 startPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
+            userSprite.transform.localPosition = Vector3.Lerp(startPosit, endPosit, amountThrough) + new Vector3(0, currentJumpHeight);
         }
 
         //Which frame are we in?
