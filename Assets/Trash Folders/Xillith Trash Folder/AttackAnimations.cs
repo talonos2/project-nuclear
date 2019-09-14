@@ -10,6 +10,7 @@ public static class Extensions
 
     public static int HandleAnimation(this AttackAnimation anim, float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
     {
+        Time.timeScale = AttackAnimationManager.Instance.timeWarp;
         switch (anim)
         {
             case AttackAnimation.HOP:
@@ -45,29 +46,40 @@ public static class Extensions
     {
         AttackAnimationManager aam = AttackAnimationManager.Instance;
         int flip = (userStats.homePositionOnScreen.x < targetStats.homePositionOnScreen.x ? 1 : -1);
+
+        //User Jump forward.
         if (timeSinceStart < aam.initialHopDuration)
         {
             float amountThrough = timeSinceStart /aam.initialHopDuration;
             float currentJumpHeight = -Mathf.Pow(-((amountThrough * 2 * Mathf.Pow(aam.initialHopHeight, .5f)) - Mathf.Pow(aam.initialHopHeight, .5f)),2)+aam.initialHopHeight;
             Vector3 startPosit = userStats.homePositionOnScreen;
             Vector3 endPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
-            userSprite.transform.localPosition = Vector3.Lerp(startPosit, endPosit, amountThrough)+new Vector3(0,currentJumpHeight);
+            Vector3 lerpedPosit = Vector3.Lerp(startPosit, endPosit, amountThrough) + new Vector3(0, currentJumpHeight);
+            userSprite.transform.localPosition = lerpedPosit;
         }
+
+        //Target get knocked back.
         if (timeSinceStart > aam.enemyKnockBackStart && timeSinceStart < aam.enemyKnockBackStart + aam.enemyKnockBackDuration)
         {
             float amountThrough = (timeSinceStart - aam.enemyKnockBackStart) / aam.enemyKnockBackDuration;
             targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen, targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0)*flip, amountThrough);
         }
+
+        //Target rubber-band back forward
         if (timeSinceStart > aam.enemySpringbackStart && timeSinceStart < aam.enemySpringbackStart + aam.enemySpringbackDuration)
         {
             float amountThrough = (timeSinceStart - aam.enemySpringbackStart) / aam.enemySpringbackDuration;
             targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0) * flip, targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, amountThrough);
         }
+
+        //Target move back to home position.
         if (timeSinceStart > aam.enemyMoveBackStart && timeSinceStart < aam.enemyMoveBackStart + aam.enemyMoveBackDuration)
         {
             float amountThrough = (timeSinceStart - aam.enemyMoveBackStart) / aam.enemyMoveBackDuration;
             targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, targetStats.homePositionOnScreen, amountThrough);
         }
+
+        //User move back to home position.
         if (timeSinceStart > aam.returnHopStart && timeSinceStart < aam.returnHopStart + aam.returnHopDuration)
         {
             float amountThrough = (timeSinceStart - aam.returnHopStart) / aam.returnHopDuration;

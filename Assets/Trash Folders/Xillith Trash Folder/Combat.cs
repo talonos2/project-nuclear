@@ -63,7 +63,7 @@ public class Combat : MonoBehaviour
         combatFolder = Camera.main.transform.Find("UI").Find("Combat").gameObject;
 
         playerSprite.transform.SetParent(combatFolder.transform);
-        playerSprite.transform.localPosition = new Vector3(-1, -1.5f, 0);  //TODO: Link this to the villager's start stats.
+        playerSprite.transform.localPosition = playerStats.startPositionOnScreen;
 
         monsterSprite.transform.SetParent(combatFolder.transform);
         monsterSprite.transform.localPosition = monsterStats.startPositionOnScreen;
@@ -110,7 +110,7 @@ public class Combat : MonoBehaviour
         float timeSinceLastPlayerAttack = combatTimer % totalAnimationTime;
         float timeSinceLastMonsterAttack = (combatTimer > enemyAttackTime ? (combatTimer - enemyAttackTime) % totalAnimationTime : 0);
 
-        //Debug.Log(combatTimer+", "+)
+        Debug.Log("Player:" + playerStats.homePositionOnScreen);
 
         int playerFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
         int enemyFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
@@ -222,6 +222,7 @@ public class Combat : MonoBehaviour
 
     private void HandleEntranceRoutine()
     {
+        Debug.Log("Time: " + enterTimer / ENTER_TIME);
         Vector3 startPos = monsterStats.startPositionOnScreen;
         Vector3 targetPos = monsterStats.homePositionOnScreen;
         Vector3 lerpedPos = Vector3.Lerp(startPos, targetPos, enterTimer / ENTER_TIME);

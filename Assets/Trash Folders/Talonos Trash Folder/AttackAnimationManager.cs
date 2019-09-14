@@ -20,6 +20,7 @@ public class AttackAnimationManager : Singleton<AttackAnimationManager>
     public float springBackXOffset = .1f;
 
     public float defaultAttackFrameTime = .1f;
+    public float timeWarp = 1;
 
     // Start is called before the first frame update
     void Start()
