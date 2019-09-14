@@ -207,6 +207,8 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 0
+  isSpike: 0
+  isPassable: 0
 --- !u!65 &4775031707782143768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -232,11 +234,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Drone
+  MaxHP: 39
   HP: 39
   attack: 30
   defense: 2
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: -0.5, y: -1}
+  enemyName: Drone
   ExpGiven: 90
   weakness: 2
   crystalType: 3
   crystalDropAmount: 2
+  combatSprites:
+  - {fileID: 305411795992972965, guid: b92f720350d7a994a90aa54d6c2e8cdf, type: 3}
+  - {fileID: -6029815493263627195, guid: b92f720350d7a994a90aa54d6c2e8cdf, type: 3}
+  - {fileID: 4702436349953653639, guid: b92f720350d7a994a90aa54d6c2e8cdf, type: 3}
+  - {fileID: -2491429711794241105, guid: b92f720350d7a994a90aa54d6c2e8cdf, type: 3}
+  - {fileID: 4202221955599236902, guid: b92f720350d7a994a90aa54d6c2e8cdf, type: 3}
+  - {fileID: 240000035529290094, guid: b92f720350d7a994a90aa54d6c2e8cdf, type: 3}
+  - {fileID: 8166388340325578345, guid: b92f720350d7a994a90aa54d6c2e8cdf, type: 3}
+  - {fileID: -6062849464377877505, guid: b92f720350d7a994a90aa54d6c2e8cdf, type: 3}
+  - {fileID: 7966481058535383057, guid: b92f720350d7a994a90aa54d6c2e8cdf, type: 3}

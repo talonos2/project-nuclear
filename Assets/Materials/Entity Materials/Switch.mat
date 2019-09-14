@@ -7,14 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fountain
-  m_Shader: {fileID: -6465566751694194690, guid: 555813faeadffd448b8a156dea3329da,
+  m_Name: Switch
+  m_Shader: {fileID: -6465566751694194690, guid: 645f2cc642dd5964793bbe7ef2e9bd89,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 4000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -49,11 +49,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmitTex:
-        m_Texture: {fileID: 2800000, guid: 8cddad28dd0ecea4eb5243ea58260fb6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41bc58ee85e484440bd57585bc51d7f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f1b511f83b665a34a8b9fe5b9cdaeb22, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41bc58ee85e484440bd57585bc51d7f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -66,6 +66,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Shadows:
+        m_Texture: {fileID: 2800000, guid: bcdb9edb042a7f04db6896a4e5e7401b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
