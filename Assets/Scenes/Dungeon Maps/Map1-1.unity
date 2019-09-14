@@ -1144,6 +1144,8 @@ MonoBehaviour:
   defense: 0
   startPositionOnScreen: {x: -1, y: -1.5}
   homePositionOnScreen: {x: -0.5, y: -1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
   HealthCrystalsGained: 0
   ManaCrystalsGained: 0
   AttackCrystalsGained: 0
@@ -1771,21 +1773,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256436232106188759, guid: d289a535dd68baa4db1da718103636d8,
-        type: 3}
-      propertyPath: attack
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256436232106188759, guid: d289a535dd68baa4db1da718103636d8,
-        type: 3}
-      propertyPath: HP
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256436232106188759, guid: d289a535dd68baa4db1da718103636d8,
-        type: 3}
-      propertyPath: MaxHP
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d289a535dd68baa4db1da718103636d8, type: 3}
