@@ -24,12 +24,12 @@ public class CharacterStatsEditor : Editor
         if (baseStats)
         {
             charac.Level = EditorGUILayout.IntField("Level", charac.Level);
-        charac.MaxHP = EditorGUILayout.IntField("MaxHP", charac.MaxHP);
-        charac.HP = EditorGUILayout.IntField("HP", charac.mana);
-        charac.MaxMana = EditorGUILayout.IntField("MaxMana", charac.MaxMana);
-        charac.mana = EditorGUILayout.IntField("mana", charac.mana);
-        charac.attack = EditorGUILayout.FloatField("attack", charac.attack);
-        charac.defense = EditorGUILayout.FloatField("defense", charac.defense);
+            charac.MaxHP = EditorGUILayout.IntField("MaxHP", charac.MaxHP);
+            charac.HP = EditorGUILayout.IntField("HP", charac.mana);
+            charac.MaxMana = EditorGUILayout.IntField("MaxMana", charac.MaxMana);
+            charac.mana = EditorGUILayout.IntField("mana", charac.mana);
+            charac.attack = EditorGUILayout.FloatField("attack", charac.attack);
+            charac.defense = EditorGUILayout.FloatField("defense", charac.defense);
             charac.experience = EditorGUILayout.IntField("experience", charac.experience);
             charac.expToLevel = EditorGUILayout.IntField("expToLevel", charac.expToLevel);
         }
@@ -84,6 +84,8 @@ public class CharacterStatsEditor : Editor
             //EditorGUIUtility.LookLikeControls();
             charac.startPositionOnScreen = EditorGUILayout.Vector2Field("Start Position", charac.startPositionOnScreen);
             charac.homePositionOnScreen = EditorGUILayout.Vector2Field("Home Position", charac.homePositionOnScreen);
+            charac.strikingPointOffset = EditorGUILayout.Vector2Field("Striking Point Offset", charac.strikingPointOffset);
+            charac.gettingStruckPointOffset = EditorGUILayout.Vector2Field("Getting Struck Point Offset", charac.gettingStruckPointOffset);
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
         classes = EditorGUILayout.BeginFoldoutHeaderGroup(classes, "Classes");
