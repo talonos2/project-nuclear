@@ -55,7 +55,7 @@ public class CharacterMovement : SpriteMovement
     //Key command received from CharacterInputController script
     public void MoveKeyReceived(int inputDirection) {
 
-        if (gameData.Paused == true)
+        if (GameState.isInBattle == true)
         {
             return;
         }
@@ -85,14 +85,16 @@ public class CharacterMovement : SpriteMovement
             GameObject EnemyToFight = isThereAMonster();
             if (EnemyToFight != null)
             {
-                gameData.Paused = true;
                 Combat.InitiateFight(this.gameObject, EnemyToFight);
-                gameData.Paused = false ;
             }
         }
     }
 
     public void ActivateKeyReceived() {
+        if (GameState.isInBattle == true)
+        {
+            return;
+        }
         GameObject entityToCheck;
         if (!CurrentlyMoving) {
             switch (FacedDirection) {

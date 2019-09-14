@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spike2EntityData : SpikeController
+public class SpikeEntityData : SpikeController
 {
 
-    private int totalFrames = 7;
+    private int totalFrames = 8;
+
     void Update()
     {
-        if (!isAnimating || gameData.Paused) { return; }
+        if (!isAnimating|| GameState.isInBattle) { return; }
         timeSinceLastFrame += Time.deltaTime;
         if (timeSinceLastFrame >= 1 / AnimationSpeed)
         {
@@ -19,4 +20,5 @@ public class Spike2EntityData : SpikeController
             if (frameNumber == totalFrames-1) isAnimating = false;
         }
     }
+
 }

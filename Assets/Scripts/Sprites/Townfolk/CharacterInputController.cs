@@ -7,15 +7,20 @@ public class CharacterInputController : MonoBehaviour
 {
     // Start is called before the first frame update
     CharacterMovement characterToMove;
+    EntityData characterEntityData;
+    private bool moveable;
     void Start()
     {
         characterToMove = this.gameObject.GetComponent<CharacterMovement>();
-
+        characterEntityData=this.gameObject.GetComponent<EntityData>();
+        if (characterEntityData.isMainCharacter) moveable = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!moveable) { return; }
+
         if (Input.GetButtonDown("Submit")){
             characterToMove.ActivateKeyReceived();
         }

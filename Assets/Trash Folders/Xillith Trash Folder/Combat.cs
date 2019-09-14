@@ -45,9 +45,6 @@ public class Combat : MonoBehaviour
         this.playerStats = playerStats;
         this.monsterToDelete = monsterToDelete;
 
-        //Temp to avoid infinite loop
-        Destroy(monsterToDelete);
-
         //Create monster sprites:
 
         monsterSprite = new GameObject("Monster Sprite");
@@ -150,16 +147,19 @@ public class Combat : MonoBehaviour
         {
             combatEnded = true;
             GameState.endRunFlag = true;
+            GameState.isInBattle = false;
         }
         if (playerStats.HP <= 0)
         {
             combatEnded = true;
             GameState.endRunFlag = true;
+            GameState.isInBattle = false;
         }
         if (monsterStats.HP <= 0)
         {
             combatEnded = true;
             KillMonsterAndGetRewards();
+            GameState.isInBattle = false;
         }
     }
 
@@ -208,6 +208,7 @@ public class Combat : MonoBehaviour
 
     private void DealDamageToPlayer()
     {
+        
         int incomingDamage = (int)monsterStats.attack;
         incomingDamage -= (int)(playerStats.defense+playerStats.armorBonusDefense);
         incomingDamage = Math.Max(incomingDamage, 0);

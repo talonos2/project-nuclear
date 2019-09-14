@@ -45,7 +45,7 @@ public class MonsterMovement : SpriteMovement
         //If none of the above, update
 
 
-        if (gameData.Paused == true) {
+        if (GameState.isInBattle==true) {
             return; 
         }
 
@@ -164,9 +164,7 @@ public class MonsterMovement : SpriteMovement
         GameObject EnemyToFight = isThereAPlayer(locX, locY);
         if (EnemyToFight != null)
         {
-            gameData.Paused = true;
             Combat.InitiateFight(EnemyToFight, this.gameObject);
-            gameData.Paused = false;
         }
     }
 

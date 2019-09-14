@@ -107,7 +107,7 @@ public class RandomChestController : MonoBehaviour
     void Update()
     {
 
-        if (gameData.Paused == true)
+        if (GameState.isInBattle == true)
         {
             return;
         }

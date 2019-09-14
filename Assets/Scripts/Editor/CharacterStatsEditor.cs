@@ -25,7 +25,7 @@ public class CharacterStatsEditor : Editor
         {
             charac.Level = EditorGUILayout.IntField("Level", charac.Level);
         charac.MaxHP = EditorGUILayout.IntField("MaxHP", charac.MaxHP);
-        charac.HP = EditorGUILayout.IntField("HP", charac.mana);
+        charac.HP = EditorGUILayout.IntField("HP", charac.HP);
         charac.MaxMana = EditorGUILayout.IntField("MaxMana", charac.MaxMana);
         charac.mana = EditorGUILayout.IntField("mana", charac.mana);
         charac.attack = EditorGUILayout.FloatField("attack", charac.attack);

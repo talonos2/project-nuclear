@@ -149,7 +149,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.25, z: -100}
   m_LocalScale: {x: 125, y: 250, z: 125}
-  m_Children: []
+  m_Children:
+  - {fileID: 376939832487368295}
   m_Father: {fileID: 1364964542356941726}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -265,7 +266,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364964542356941716}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 654cc8b889de18a48915e1269f1fb496, type: 3}
   m_Name: 
@@ -282,12 +283,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b61252a66b3eb34b8c0519976aac2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMainCharacter: 1
+  isMainCharacter: 0
   isAMonster: 0
   isInteractableObject: 0
   isItem: 0
   isSwitch: 0
   isNPC: 1
+  isSpike: 0
+  isPassable: 0
 --- !u!114 &1364964542356941722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,19 +303,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863240b4c4d85214c92f96337fd765ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 0
+  HP: 0
+  attack: 0
+  defense: 0
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: -0.5, y: -1}
   HealthCrystalsGained: 0
   ManaCrystalsGained: 0
   AttackCrystalsGained: 0
   defenseCrystalsGained: 0
   Level: 1
-  MaxHP: 0
-  HP: 0
   MaxMana: 0
   mana: 0
-  attack: 0
-  defense: 0
-  Experiance: 0
-  ExpToLevel: 90
+  experience: 0
+  expToLevel: 90
+  combatSprites:
+  - {fileID: 1218732923920613670, guid: b29d649dde74887429ad033e9c7e2f01, type: 3}
+  - {fileID: -6995601674170439625, guid: b29d649dde74887429ad033e9c7e2f01, type: 3}
+  - {fileID: -7668603499702221437, guid: b29d649dde74887429ad033e9c7e2f01, type: 3}
+  - {fileID: 3515811209503696468, guid: b29d649dde74887429ad033e9c7e2f01, type: 3}
   MageClass: 0
   FighterClass: 0
   SurvivorClass: 0
@@ -349,3 +359,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1693487649300293089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 376939832487368295}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &376939832487368295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693487649300293089}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.047139775, y: -0.005662159, z: 0}
+  m_LocalScale: {x: 0.008, y: 0.004, z: 0.008}
+  m_Children:
+  - {fileID: 56255760940243904}
+  m_Father: {fileID: 1364964540958919639}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5034670810366130714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56255760940243904}
+  m_Layer: 0
+  m_Name: Combat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &56255760940243904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034670810366130714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_Children: []
+  m_Father: {fileID: 376939832487368295}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Stats
 {
+
     public string enemyName = "Name me please";
     public int ExpGiven;
     public ElementalPower weakness = ElementalPower.NULL;
