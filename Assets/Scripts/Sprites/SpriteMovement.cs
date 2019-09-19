@@ -29,7 +29,7 @@ public class SpriteMovement : MonoBehaviour
 
     public Vector2Int CharacterLocation;
     public Vector2Int CharacterNextLocation;
-    protected int FacedDirection = (int)DirectionMoved.LEFT;
+    public int FacedDirection = (int)DirectionMoved.LEFT;
     protected Renderer sRender;
     protected Vector2Int HomeLocation;
     protected Vector2Int exitLocation = new Vector2Int(0, 0);
@@ -466,7 +466,7 @@ public class SpriteMovement : MonoBehaviour
        
     }
 
-    protected void SetLookDirection()
+    public void SetLookDirection()
     {
         if (FacedDirection == (int)DirectionMoved.DOWN)
             FaceDown();
