@@ -22,8 +22,8 @@ public class Combat : MonoBehaviour
         GameState.isInBattle = true;
     }
 
-    private Enemy monsterStats;
-    private CharacterStats playerStats;
+    public Enemy monsterStats;
+    public CharacterStats playerStats;
     private GameObject monsterToDelete;
     private float enterTimer;
     private float combatTimer;
@@ -41,6 +41,8 @@ public class Combat : MonoBehaviour
 
     private void Init(Enemy monsterStats, CharacterStats playerStats, GameObject monsterToDelete)
     {
+        AttackAnimationManager aam = AttackAnimationManager.Instance;
+        aam.LoadCombatPawns(monsterStats, playerStats);
         this.monsterStats = monsterStats;
         this.playerStats = playerStats;
         this.monsterToDelete = monsterToDelete;
@@ -68,7 +70,18 @@ public class Combat : MonoBehaviour
         monsterSprite.transform.SetParent(combatFolder.transform);
         monsterSprite.transform.localPosition = monsterStats.startPositionOnScreen;
 
+        SetMonsterAndPlayerScale();
+
         hitsplatTemplate = Resources.Load<GameObject>("Hitsplat");
+    }
+
+    private void SetMonsterAndPlayerScale()
+    {
+        Vector3 pScale = (Vector3)(playerStats.scale * monsterStats.forceOpponentAdditionalScale) + new Vector3(0, 0, 1);
+        playerSprite.transform.localScale = pScale*1/6;
+
+        Vector3 mScale = (Vector3)(playerStats.scale * monsterStats.forceOpponentAdditionalScale) + new Vector3(0, 0, 1);
+        monsterSprite.transform.localScale = pScale * 1 / 6;
     }
 
     public void Update()
@@ -99,6 +112,11 @@ public class Combat : MonoBehaviour
     private void HandleCombatLoop()
     {
         combatTimer += Time.deltaTime;
+
+        if (Application.isEditor)
+        {
+            SetMonsterAndPlayerScale();
+        }
 
         //float playerAttackTime = playerStats.animation.GetAnimationLength();
         float playerAttackTime = AttackAnimation.HOP.GetAnimationLength();

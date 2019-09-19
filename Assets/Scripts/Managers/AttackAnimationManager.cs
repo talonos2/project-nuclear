@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AttackAnimationManager : Singleton<AttackAnimationManager>
 {
+
+    public Enemy monsterStats;
+    public CharacterStats playerStats;
+
     public float initialHopDuration = .35f;
     public float enemyKnockBackStart = .35f;
     public float enemyKnockBackDuration=.1f;
@@ -32,5 +36,11 @@ public class AttackAnimationManager : Singleton<AttackAnimationManager>
     void Update()
     {
         
+    }
+
+    public void LoadCombatPawns(Enemy monsterStats, CharacterStats playerStats)
+    {
+        this.monsterStats = monsterStats;
+        this.playerStats = playerStats;
     }
 }
