@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1306,7 +1306,6 @@ GameObject:
   - component: {fileID: 2018926734}
   - component: {fileID: 2018926733}
   - component: {fileID: 2018926732}
-  - component: {fileID: 2018926736}
   - component: {fileID: 2018926737}
   - component: {fileID: 2018926738}
   m_Layer: 0
@@ -1389,23 +1388,6 @@ Transform:
   m_Father: {fileID: 326564849}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
---- !u!114 &2018926736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018926731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4967e89dd13f19c46b08b9985bc6b72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireworks:
-  - {fileID: 4888064450347162304, guid: 8f724e4c10ab4a2468fbeafd23b0b2f1, type: 3}
-  - {fileID: 4888064450347162304, guid: 2d0524a7a3f008e489980d76749524c9, type: 3}
-  - {fileID: 4888064450347162304, guid: 9c313967829f3bd46a62c28673b9ef82, type: 3}
-  - {fileID: 4888064450347162304, guid: 081809386b21a9441b742a46d5bbc548, type: 3}
 --- !u!114 &2018926737
 MonoBehaviour:
   m_ObjectHideFlags: 0
