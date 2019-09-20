@@ -14,8 +14,10 @@ public class SpawnPlayer : MonoBehaviour
         gameData = GameObject.Find("GameStateData").GetComponent<GameData>();
         GameObject newPlayer=Instantiate(Players[gameData.RunNumber-1], this.transform.position, Quaternion.identity);
         newPlayer.GetComponent<EntityData>().isMainCharacter = true ;
-        newPlayer.GetComponent<SpriteMovement>().FacedDirection=facing;
-        newPlayer.GetComponent<SpriteMovement>().SetLookDirection();
+        CharacterMovement characterMovement =newPlayer.GetComponent<CharacterMovement>();
+        characterMovement.SetRenderer();
+        characterMovement.FacedDirection = facing;
+        characterMovement.SetLookDirection();
     }
 
 }
