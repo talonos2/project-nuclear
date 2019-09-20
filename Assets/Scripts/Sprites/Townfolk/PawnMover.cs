@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CharacterMovement : SpriteMovement
+public class PawnMover : SpriteMovement
 {
 
     /// <summary>
@@ -12,18 +12,7 @@ public class CharacterMovement : SpriteMovement
     /// </summary>
     public Vector2 startPositionOnMap = new Vector2(0,0);
 
-    // Start is called before the first frame update
-
-    
-   
-
-
-    //private void Start()
-   // {
-   //     base.Start();
-   //     Vector2 transformToMoveTo = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(startPositionOnMap);
-   //     this.transform.position = new Vector3(transformToMoveTo.x, transformToMoveTo.y, -.1f);
-   // }
+    public Queue<DirectionMoved> movementQueue;
 
     // Update is called once per frame
     void Update()
@@ -47,9 +36,6 @@ public class CharacterMovement : SpriteMovement
                 CheckExitStatus();
             }
         }
-
-
-
     }
 
     //Key command received from CharacterInputController script

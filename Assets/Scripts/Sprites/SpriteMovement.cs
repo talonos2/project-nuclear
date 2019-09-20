@@ -29,7 +29,7 @@ public class SpriteMovement : MonoBehaviour
 
     public Vector2Int CharacterLocation;
     public Vector2Int CharacterNextLocation;
-    public int FacedDirection = (int)DirectionMoved.LEFT;
+    public DirectionMoved FacedDirection = DirectionMoved.LEFT;
     protected Renderer sRender;
     protected Vector2Int HomeLocation;
     protected Vector2Int exitLocation = new Vector2Int(0, 0);
@@ -71,46 +71,46 @@ public class SpriteMovement : MonoBehaviour
     {
 
         float finishedMoving = 0;
-        if (FacedDirection == (int)DirectionMoved.LEFT)
+        if (FacedDirection == DirectionMoved.LEFT)
         {
             finishedMoving = MoveLeft(MoveSpeed);
         }
-        if (FacedDirection == (int)DirectionMoved.RIGHT)
+        if (FacedDirection == DirectionMoved.RIGHT)
         {
             finishedMoving = MoveRight(MoveSpeed);
         }
-        if (FacedDirection == (int)DirectionMoved.UP)
+        if (FacedDirection == DirectionMoved.UP)
         {
             finishedMoving = MoveUp(MoveSpeed);
         }
-        if (FacedDirection == (int)DirectionMoved.DOWN)
+        if (FacedDirection == DirectionMoved.DOWN)
         {
             finishedMoving = MoveDown(MoveSpeed);
         }
         return finishedMoving;
     }
 
-    protected void SetNextLocation(int nextStep) {
+    protected void SetNextLocation(DirectionMoved nextStep) {
 
         //Debug.Log("next step loc x " + CharacterLocation.x +" y "+ CharacterLocation.y);
 
        
-        if (nextStep == (int)DirectionMoved.UP) {
+        if (nextStep == DirectionMoved.UP) {
             CharacterNextLocation.x = CharacterLocation.x;
             CharacterNextLocation.y = CharacterLocation.y + 1;
         }
-        if (nextStep == (int)DirectionMoved.DOWN)
+        if (nextStep == DirectionMoved.DOWN)
         {
             CharacterNextLocation.x = CharacterLocation.x;
             CharacterNextLocation.y = CharacterLocation.y - 1;
 
         }
-        if (nextStep == (int)DirectionMoved.LEFT)
+        if (nextStep == DirectionMoved.LEFT)
         {
             CharacterNextLocation.x = CharacterLocation.x-1;
             CharacterNextLocation.y = CharacterLocation.y;
         }
-        if (nextStep == (int)DirectionMoved.RIGHT)
+        if (nextStep == DirectionMoved.RIGHT)
         {
             CharacterNextLocation.x = CharacterLocation.x + 1;
             CharacterNextLocation.y = CharacterLocation.y;
@@ -468,37 +468,37 @@ public class SpriteMovement : MonoBehaviour
 
     public void SetLookDirection()
     {
-        if (FacedDirection == (int)DirectionMoved.DOWN)
+        if (FacedDirection == DirectionMoved.DOWN)
             FaceDown();
-        if (FacedDirection == (int)DirectionMoved.UP)
+        if (FacedDirection == DirectionMoved.UP)
             FaceUp();
-        if (FacedDirection == (int)DirectionMoved.LEFT)
+        if (FacedDirection == DirectionMoved.LEFT)
             FaceLeft();
-        if (FacedDirection == (int)DirectionMoved.RIGHT)
+        if (FacedDirection == DirectionMoved.RIGHT)
             FaceRight();
     }
 
-    protected int GetChaseStep()
+    protected DirectionMoved GetChaseStep()
     {
         int TempX = ThePlayer.GetComponent<CharacterMovement>().CharacterLocation.x - CharacterLocation.x;
         int TempY = ThePlayer.GetComponent<CharacterMovement>().CharacterLocation.y - CharacterLocation.y;
         if (TempX == 0 && TempY == 0)
         {
-            return (int)DirectionMoved.NONE;
+            return DirectionMoved.NONE;
         }
         //Pick an axis based on a random number with the abs value distances as it's input
         int AxisChosen = Random.Range(0, (Math.Abs(TempX) + Math.Abs(TempY))) + 1;
         if (Math.Abs(TempX) - AxisChosen >= 0)
         {
             //go x direction
-            if (TempX < 0) { return (int)DirectionMoved.LEFT; }
-            else { return (int)DirectionMoved.RIGHT; }
+            if (TempX < 0) { return DirectionMoved.LEFT; }
+            else { return DirectionMoved.RIGHT; }
         }
         else
         {
             //go y Direction
-            if (TempY < 0) { return (int)DirectionMoved.DOWN; }
-            else { return (int)DirectionMoved.UP; }
+            if (TempY < 0) { return DirectionMoved.DOWN; }
+            else { return DirectionMoved.UP; }
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnPlayer : MonoBehaviour
 {
-    public int facing=1;
+    public SpriteMovement.DirectionMoved facing = SpriteMovement.DirectionMoved.UP;
     public GameObject [] Players;
     private GameData gameData;
     // Start is called before the first frame update

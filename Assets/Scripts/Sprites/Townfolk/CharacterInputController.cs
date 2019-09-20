@@ -28,31 +28,26 @@ public class CharacterInputController : MonoBehaviour
        
     }
 
-    private int GetInputDirection()
+    private DirectionMoved GetInputDirection()
     {
 
-        int NextInputDirection = -1;
+        DirectionMoved NextInputDirection = DirectionMoved.NONE;
 
         if (Input.GetAxisRaw("Horizontal") > .1)
         {
-            NextInputDirection = (int)DirectionMoved.RIGHT;
+            NextInputDirection = DirectionMoved.RIGHT;
         }
         if (Input.GetAxisRaw("Horizontal") < -.1)
         {
-            NextInputDirection = (int)DirectionMoved.LEFT;
+            NextInputDirection = DirectionMoved.LEFT;
         }
         if (Input.GetAxisRaw("Vertical") > .1)
         {
-            NextInputDirection = (int)DirectionMoved.UP;
+            NextInputDirection = DirectionMoved.UP;
         }
         if (Input.GetAxisRaw("Vertical") < -.1)
         {
-            NextInputDirection = (int)DirectionMoved.DOWN;
-        }
-
-        if (NextInputDirection == -1)
-        {
-            NextInputDirection = (int)DirectionMoved.NONE;
+            NextInputDirection = DirectionMoved.DOWN;
         }
         return NextInputDirection;
         //ToDo Have a variable for key last pressed and use that one. Use timestamps. reset timestamps if key not pressed. 
