@@ -29,6 +29,6 @@ public class SpriteShadowLoader : MonoBehaviour
     void Update()
     {
 
-        sRender.material.SetVector("_HeroXY", ThePlayer.transform.position/5);
+        sRender.material.SetVector("_HeroXY", ThePlayer.transform.position);
     }
 }

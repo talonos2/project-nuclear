@@ -43,14 +43,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Red Slime
+  MaxHP: 0
   HP: 132
   attack: 74
   defense: 8
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Red Slime
   ExpGiven: 840
   weakness: 3
   crystalType: 3
   crystalDropAmount: 12
+  combatSprites: []
 --- !u!1 &827846531077113007
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,14 +100,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Necromancer
+  MaxHP: 0
   HP: 205
   attack: 100
   defense: 10
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Necromancer
   ExpGiven: 1510
   weakness: 4
   crystalType: 3
   crystalDropAmount: 20
+  combatSprites: []
 --- !u!1 &1561709137489326470
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,14 +157,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Death
+  MaxHP: 0
   HP: 2750
   attack: 145
   defense: 35
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Death
   ExpGiven: 13150
   weakness: 0
   crystalType: 5
   crystalDropAmount: 210
+  combatSprites: []
 --- !u!1 &1984966368155950946
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,14 +214,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Boar
+  MaxHP: 0
   HP: 105
   attack: 40
   defense: 8
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Boar
   ExpGiven: 210
   weakness: 2
   crystalType: 1
   crystalDropAmount: 5
+  combatSprites: []
 --- !u!1 &2336016274750735320
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,14 +271,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Reaper
+  MaxHP: 0
   HP: 640
   attack: 142
   defense: 29
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Reaper
   ExpGiven: 2630
   weakness: 3
   crystalType: 4
   crystalDropAmount: 30
+  combatSprites: []
 --- !u!1 &2605010660601057676
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,14 +328,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Frost Giant
+  MaxHP: 350
   HP: 350
   attack: 32
   defense: 11
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Frost Giant
   ExpGiven: 750
   weakness: 1
   crystalType: 5
   crystalDropAmount: 15
+  combatSprites: []
 --- !u!1 &2755349454602390168
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,14 +385,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Red Walker
+  MaxHP: 0
   HP: 185
   attack: 60
   defense: 16
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Red Walker
   ExpGiven: 580
   weakness: 3
   crystalType: 1
   crystalDropAmount: 12
+  combatSprites: []
 --- !u!1 &2760781383947197025
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,14 +442,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: ???
+  MaxHP: 0
   HP: 1250
   attack: 155
   defense: 39
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: ???
   ExpGiven: 5000
   weakness: 0
   crystalType: 3
   crystalDropAmount: 1
+  combatSprites: []
 --- !u!1 &2890289784685799572
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,14 +499,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Fire Boss
+  MaxHP: 0
   HP: 1250
   attack: 77
   defense: 25
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Fire Boss
   ExpGiven: 5000
   weakness: 3
   crystalType: 5
   crystalDropAmount: 65
+  combatSprites: []
 --- !u!1 &3285584308365703404
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,14 +556,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Garuda
+  MaxHP: 0
   HP: 1950
   attack: 115
   defense: 30
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Garuda
   ExpGiven: 8500
   weakness: 4
   crystalType: 5
   crystalDropAmount: 110
+  combatSprites: []
 --- !u!1 &4029425963261980473
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,14 +613,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Drone
+  MaxHP: 0
   HP: 39
   attack: 30
   defense: 2
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Drone
   ExpGiven: 90
   weakness: 2
   crystalType: 1
   crystalDropAmount: 2
+  combatSprites: []
 --- !u!1 &4386044017345740628
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,14 +670,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: DeathKnight
+  MaxHP: 0
   HP: 600
   attack: 110
   defense: 28
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: DeathKnight
   ExpGiven: 2145
   weakness: 2
   crystalType: 2
   crystalDropAmount: 30
+  combatSprites: []
 --- !u!1 &4699885649082519313
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,14 +727,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Ghost
+  MaxHP: 0
   HP: 305
   attack: 86
   defense: 20
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Ghost
   ExpGiven: 1150
   weakness: 4
   crystalType: 1
   crystalDropAmount: 20
+  combatSprites: []
 --- !u!1 &4713860520958778024
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,14 +784,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Hellblade
+  MaxHP: 0
   HP: 290
   attack: 140
   defense: 12
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Hellblade
   ExpGiven: 2380
   weakness: 1
   crystalType: 3
   crystalDropAmount: 30
+  combatSprites: []
 --- !u!1 &4848392439506292885
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,14 +841,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Gazer
+  MaxHP: 0
   HP: 405
   attack: 79
   defense: 24
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Gazer
   ExpGiven: 1325
   weakness: 4
   crystalType: 2
   crystalDropAmount: 20
+  combatSprites: []
 --- !u!1 &4853902709626568051
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,14 +898,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Slime
+  MaxHP: 0
   HP: 45
   attack: 19
   defense: 3
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Slime
   ExpGiven: 40
   weakness: 1
   crystalType: 2
   crystalDropAmount: 2
+  combatSprites:
+  - {fileID: -5516807709991325739, guid: 39442b4647825ae4babd624b820af6df, type: 3}
 --- !u!1 &5496230649167645518
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,14 +1029,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Spider
+  MaxHP: 0
   HP: 60
   attack: 15
   defense: 6
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Spider
   ExpGiven: 70
   weakness: 1
   crystalType: 3
   crystalDropAmount: 2
+  combatSprites: []
 --- !u!1 &5648562717899212257
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,14 +1086,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Ice Wisp
+  MaxHP: 90
   HP: 90
   attack: 27
   defense: 6
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Ice Wisp
   ExpGiven: 150
   weakness: 1
   crystalType: 4
   crystalDropAmount: 2
+  combatSprites: []
 --- !u!1 &6346479501008770178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,14 +1143,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Iron Giant
+  MaxHP: 0
   HP: 750
   attack: 54
   defense: 17
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Iron Giant
   ExpGiven: 2350
   weakness: 2
   crystalType: 5
   crystalDropAmount: 35
+  combatSprites: []
 --- !u!1 &7274372838845481732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,14 +1200,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: ??? mk. II
+  MaxHP: 0
   HP: 2500
   attack: 165
   defense: 42
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: ??? mk. II
   ExpGiven: 32000
   weakness: 0
   crystalType: 3
   crystalDropAmount: 1
+  combatSprites: []
 --- !u!1 &7333873151289894206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,14 +1257,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Earth Spirit
+  MaxHP: 0
   HP: 155
   attack: 49
   defense: 14
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Earth Spirit
   ExpGiven: 470
   weakness: 2
   crystalType: 4
   crystalDropAmount: 5
+  combatSprites: []
 --- !u!1 &7378701172255309393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,14 +1314,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Imp
+  MaxHP: 0
   HP: 470
   attack: 123
   defense: 24
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Imp
   ExpGiven: 1920
   weakness: 4
   crystalType: 1
   crystalDropAmount: 30
+  combatSprites: []
 --- !u!1 &7891320591109204527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,14 +1371,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Red Spider
+  MaxHP: 0
   HP: 78
   attack: 51
   defense: 6
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Red Spider
   ExpGiven: 370
   weakness: 3
   crystalType: 3
   crystalDropAmount: 5
+  combatSprites: []
 --- !u!1 &7982560400985809361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,14 +1428,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Forge Automation
+  MaxHP: 0
   HP: 245
   attack: 54
   defense: 20
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Forge Automation
   ExpGiven: 705
   weakness: 3
   crystalType: 2
   crystalDropAmount: 12
+  combatSprites: []
 --- !u!1 &8126632054429326452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,14 +1485,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Vampire
+  MaxHP: 0
   HP: 435
   attack: 104
   defense: 24
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Vampire
   ExpGiven: 1710
   weakness: 3
   crystalType: 4
   crystalDropAmount: 20
+  combatSprites: []
 --- !u!1 &8451098583420310700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,14 +1542,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Green Slime
+  MaxHP: 0
   HP: 135
   attack: 35
   defense: 14
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Green Slime
   ExpGiven: 285
   weakness: 2
   crystalType: 2
   crystalDropAmount: 5
+  combatSprites: []
 --- !u!1 &8627591396735245944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,11 +1599,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Wind Drone
+  MaxHP: 0
   HP: 275
   attack: 68
   defense: 20
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0, y: 0}
+  enemyName: Wind Drone
   ExpGiven: 990
   weakness: 4
   crystalType: 4
   crystalDropAmount: 12
+  combatSprites: []

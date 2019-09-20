@@ -106,6 +106,12 @@ public class RandomChestController : MonoBehaviour
 
     void Update()
     {
+
+        if (GameState.isInBattle == true)
+        {
+            return;
+        }
+
         if (active && !(itemChest || rareItemChest) ) AnimateChest();
     }
 

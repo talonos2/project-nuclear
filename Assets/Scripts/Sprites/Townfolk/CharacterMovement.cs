@@ -29,17 +29,20 @@ public class CharacterMovement : SpriteMovement
     void Update()
     {
 
-      
-        
+
+        if (gameData.Paused == true)
+        {
+            return;
+        }
 
         //If in the process of moving, keep moving and do nothing else
 
-        if (CurrentlyMoving)
+        if (currentlyMoving)
         {
             float finishedMoving = ContinueMoving();
             if (finishedMoving == 0)
             {
-                CurrentlyMoving = false;
+                currentlyMoving = false;
                 SetCurrentLocation();
                 CheckExitStatus();
             }
@@ -50,9 +53,14 @@ public class CharacterMovement : SpriteMovement
     }
 
     //Key command received from CharacterInputController script
-    public void MoveKeyReceived(int inputDirection) {
+    public void MoveKeyReceived(DirectionMoved inputDirection) {
 
-        if (!CurrentlyMoving)
+        if (GameState.isInBattle == true)
+        {
+            return;
+        }
+
+        if (!currentlyMoving)
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
@@ -60,16 +68,16 @@ public class CharacterMovement : SpriteMovement
                 return;
             }
 
-            FacedDirection = inputDirection;
+            facedDirection = inputDirection;
             SetNextLocation(inputDirection);
-            if (IsPlayerMoveLocationPassable(CharacterNextLocation.x, CharacterNextLocation.y))
+            if (IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
             {
                 //if it is possible, check for a monster attack
                 //Needs to be refractored a bit
                 UpdateNewEntityGridLocation();
                 RemoveOldEntityGridLocation();
-                CharacterLocation = CharacterNextLocation;
-                CurrentlyMoving = true;
+                characterLocation = characterNextLocation;
+                currentlyMoving = true;
 
             }
 
@@ -77,50 +85,69 @@ public class CharacterMovement : SpriteMovement
             GameObject EnemyToFight = isThereAMonster();
             if (EnemyToFight != null)
             {
-                Combat.initiateFight(this.gameObject, EnemyToFight);
+                Combat.InitiateFight(this.gameObject, EnemyToFight);
             }
         }
     }
 
     public void ActivateKeyReceived() {
+        if (GameState.isInBattle == true)
+        {
+            return;
+        }
         GameObject entityToCheck;
-        if (!CurrentlyMoving) {
-            switch (FacedDirection) {
-                case (int)DirectionMoved.UP:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x, CharacterLocation.y+1];
+        if (!currentlyMoving) {
+            switch (facedDirection) {
+                case DirectionMoved.UP:
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y+1];
                     if (entityToCheck != null) {
                         if (entityToCheck.GetComponent<EntityData>().isItem) {
                             entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
                         }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch) {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
+                        }
                     }
                     break;
-                case (int)DirectionMoved.DOWN:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x, CharacterLocation.y - 1];
+                case DirectionMoved.DOWN:
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y - 1];
                     if (entityToCheck != null)
                     {
                         if (entityToCheck.GetComponent<EntityData>().isItem)
                         {
                             entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
                         }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
+                        {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
+                        }
                     }
                     break;
-                case (int)DirectionMoved.LEFT:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x-1, CharacterLocation.y];
+                case DirectionMoved.LEFT:
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x-1, characterLocation.y];
                     if (entityToCheck != null)
                     {
                         if (entityToCheck.GetComponent<EntityData>().isItem)
                         {
                             entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
                         }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
+                        {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
+                        }
                     }
                     break;
-                case (int)DirectionMoved.RIGHT:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x+1, CharacterLocation.y];
+                case DirectionMoved.RIGHT:
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x+1, characterLocation.y];
                     if (entityToCheck != null)
                     {
                         if (entityToCheck.GetComponent<EntityData>().isItem)
                         {
                             entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
+                        {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
                         }
                     }
                     break;
@@ -132,7 +159,7 @@ public class CharacterMovement : SpriteMovement
 
     private void CheckExitStatus()
     {
-        GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y];
+        GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
         if (exitLocation != null)
         {
             if (exitLocation.GetComponent<DoodadData>().isExit) {
@@ -174,19 +201,19 @@ public class CharacterMovement : SpriteMovement
     private float ContinueMoving()
     {
         float finishedMoving=0;
-        if (FacedDirection == (int)DirectionMoved.UP)
+        if (facedDirection == DirectionMoved.UP)
         {
             finishedMoving = MoveUp(MoveSpeed);
         }
-        if (FacedDirection == (int)DirectionMoved.DOWN)
+        if (facedDirection == DirectionMoved.DOWN)
         {
             finishedMoving = MoveDown(MoveSpeed);
         }
-        if (FacedDirection == (int)DirectionMoved.LEFT)
+        if (facedDirection == DirectionMoved.LEFT)
         {
             finishedMoving = MoveLeft(MoveSpeed);
         }
-        if (FacedDirection == (int)DirectionMoved.RIGHT)
+        if (facedDirection == DirectionMoved.RIGHT)
         {
             finishedMoving = MoveRight(MoveSpeed);
         }

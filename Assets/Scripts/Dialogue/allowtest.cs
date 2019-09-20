@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Naninovel;
 
-public class allowtest : MonoBehaviour
+public class Allowtest : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

@@ -9,17 +9,22 @@ public class MonsterMovement : SpriteMovement
 {
     // Start is called before the first frame update
 
-    private int NextStep;
+    private DirectionMoved NextStep;
     private float finishedMoving;
 
     public bool PathRandomly;
     public bool PathViaSteps;
-    public int[] Pathing = { 1, 1, 1, 2, 2, 2, 3, 3, 3, 4,4,4 };
+
+    public DirectionMoved[] Pathing = {DirectionMoved.UP, DirectionMoved.UP, DirectionMoved.UP,
+                                            DirectionMoved.RIGHT, DirectionMoved.RIGHT, DirectionMoved.RIGHT,
+                                            DirectionMoved.DOWN, DirectionMoved.DOWN, DirectionMoved.DOWN,
+                                            DirectionMoved.LEFT, DirectionMoved.LEFT, DirectionMoved.LEFT};
+
     public bool SpotterMonster;
     public int SpottingDistance = 5;//in squares
     public int LookDuration = 10; //in deciseconds
     public int ChaseRange = 15;
-    public int[] LookPattern; //1 for N, 2 for E, 3 for S, 4 for W
+    public DirectionMoved[] LookPattern;
 
     private bool CurrentlyChasingPlayer=false;
 
@@ -45,10 +50,12 @@ public class MonsterMovement : SpriteMovement
         //If none of the above, update
 
 
+        if (GameState.isInBattle==true) {
+            return; 
+        }
 
 
-
-        if (!CurrentlyMoving)
+        if (!currentlyMoving)
         {
 
             SetCurrentLocation();
@@ -56,29 +63,29 @@ public class MonsterMovement : SpriteMovement
             if (PathViaSteps) {
                 NextStep = GetNextStep();
                 SetNextLocation(NextStep);
-                FacedDirection = NextStep;
-                if (IsMoveLocationPassable(CharacterNextLocation.x, CharacterNextLocation.y))
+                facedDirection = NextStep;
+                if (IsMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
                 {
                     UpdateNewEntityGridLocation();
                     RemoveOldEntityGridLocation();
-                    CharacterLocation = CharacterNextLocation;
-                    CurrentlyMoving = true;
+                    characterLocation = characterNextLocation;
+                    currentlyMoving = true;
                 }
-                CheckForFight(CharacterNextLocation.x, CharacterNextLocation.y);
+                CheckForFight(characterNextLocation.x, characterNextLocation.y);
             }
 
             if (PathRandomly) {
                 NextStep = GetRandomStep();
                 SetNextLocation(NextStep);
-                FacedDirection = NextStep;
-                if (IsRandomMoveLocationPassable(CharacterNextLocation.x, CharacterNextLocation.y))
+                facedDirection = NextStep;
+                if (IsRandomMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
                 {
                     UpdateNewEntityGridLocation();
                     RemoveOldEntityGridLocation();
-                    CharacterLocation = CharacterNextLocation;
-                    CurrentlyMoving = true;
+                    characterLocation = characterNextLocation;
+                    currentlyMoving = true;
                 }
-                CheckForFight(CharacterNextLocation.x, CharacterNextLocation.y);
+                CheckForFight(characterNextLocation.x, characterNextLocation.y);
             }
 
 
@@ -96,35 +103,35 @@ public class MonsterMovement : SpriteMovement
                 if (CurrentlyChasingPlayer) {
                     NextStep = GetChaseStep();
                     SetNextLocation(NextStep);//
-                    CheckForFight(CharacterNextLocation.x, CharacterNextLocation.y);//
+                    CheckForFight(characterNextLocation.x, characterNextLocation.y);//
                     if (ChaseStepNumber >= ChaseRange)
                     {                       
                         NextStep = PathToHomeLocation();
                         if (NextStep == (int)DirectionMoved.NONE) {
                             CurrentlyChasingPlayer = false;
-                            CurrentlyMoving = false;
+                            currentlyMoving = false;
                             return;
                         }
                     }
 
                     SetNextLocation(NextStep);
-                    FacedDirection = NextStep;
+                    facedDirection = NextStep;
 
-                    if (!IsMoveLocationMonsterChaseable(CharacterNextLocation.x, CharacterNextLocation.y) && stuck >= 15)
+                    if (!IsMoveLocationMonsterChaseable(characterNextLocation.x, characterNextLocation.y) && stuck >= 15)
                     {
                         NextStep = GetRandomStep();
                         SetNextLocation(NextStep);
-                        FacedDirection = NextStep;
+                        facedDirection = NextStep;
                         Debug.Log("MonsterIsStuck");
 
                     }
 
-                    if (IsMoveLocationMonsterChaseable(CharacterNextLocation.x, CharacterNextLocation.y))
+                    if (IsMoveLocationMonsterChaseable(characterNextLocation.x, characterNextLocation.y))
                     {
                         UpdateNewEntityGridLocation();
                         RemoveOldEntityGridLocation();
-                        CharacterLocation = CharacterNextLocation;
-                        CurrentlyMoving = true;
+                        characterLocation = characterNextLocation;
+                        currentlyMoving = true;
                         ChaseStepNumber += 1;
                         stuck = 0;
                     }
@@ -147,11 +154,11 @@ public class MonsterMovement : SpriteMovement
 
 
 
-        if (CurrentlyMoving == true)
+        if (currentlyMoving == true)
         {
             float finishedMoving = MoveToNextSquare();
             if (finishedMoving == 0)
-                CurrentlyMoving = false;
+                currentlyMoving = false;
         }
 
 
@@ -162,7 +169,7 @@ public class MonsterMovement : SpriteMovement
         GameObject EnemyToFight = isThereAPlayer(locX, locY);
         if (EnemyToFight != null)
         {
-            Combat.initiateFight(EnemyToFight, this.gameObject);
+            Combat.InitiateFight(EnemyToFight, this.gameObject);
         }
     }
 
@@ -174,18 +181,18 @@ public class MonsterMovement : SpriteMovement
             LookTiming = 0;
             if (CurrentFacing == LookPattern.Length)
                 CurrentFacing = 0;
-            FacedDirection = LookPattern[CurrentFacing];
+            facedDirection = LookPattern[CurrentFacing];
             CurrentFacing++;
             SetLookDirection();
         }
             
     }
 
-    private int PathToHomeLocation()
+    private DirectionMoved PathToHomeLocation()
     {
         //Returns DirectionMoved.NONE if they are at home. 
-        int TempX= HomeLocation.x-CharacterLocation.x;
-        int TempY= HomeLocation.y-CharacterLocation.y;
+        int TempX= homeLocation.x-characterLocation.x;
+        int TempY= homeLocation.y-characterLocation.y;
         if (TempX == 0 && TempY == 0) {
             return (int)DirectionMoved.NONE;
         }
@@ -194,13 +201,13 @@ public class MonsterMovement : SpriteMovement
         if (Math.Abs(TempX) - AxisChosen >= 0)
         { 
             //go x direction
-            if (TempX < 0) { return (int)DirectionMoved.LEFT; }
-            else { return (int)DirectionMoved.RIGHT; }
+            if (TempX < 0) { return DirectionMoved.LEFT; }
+            else { return DirectionMoved.RIGHT; }
         }
         else {
             //go y Direction
-            if (TempY < 0) { return (int)DirectionMoved.DOWN; }
-            else { return (int)DirectionMoved.UP; }
+            if (TempY < 0) { return DirectionMoved.DOWN; }
+            else { return DirectionMoved.UP; }
 
 
         }
@@ -216,39 +223,39 @@ public class MonsterMovement : SpriteMovement
         bool PlayerFound = false;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < SpottingDistance; j++) {
-                switch (FacedDirection) {
-                    case (int)DirectionMoved.UP:
-                        if( isThereAPlayer(CharacterLocation.x + i - 1, CharacterLocation.y + j + 1) != null)
+                switch (facedDirection) {
+                    case DirectionMoved.UP:
+                        if( isThereAPlayer(characterLocation.x + i - 1, characterLocation.y + j + 1) != null)
                         {
-                            ThePlayer = isThereAPlayer(CharacterLocation.x + i - 1, CharacterLocation.y + j + 1);
+                            ThePlayer = isThereAPlayer(characterLocation.x + i - 1, characterLocation.y + j + 1);
                             return true;
                         }
                         //if there is not a player found AND spot is not passible, set j=SpottingDistance as a way of skipping further checks along that line. 
-                        if (!IsMoveLocationMonsterChaseable(CharacterLocation.x + i - 1, CharacterLocation.y + j + 1)) { j = SpottingDistance; }
+                        if (!IsMoveLocationMonsterChaseable(characterLocation.x + i - 1, characterLocation.y + j + 1)) { j = SpottingDistance; }
                             break;
-                    case (int)DirectionMoved.DOWN:
-                        if (isThereAPlayer(CharacterLocation.x + i - 1, CharacterLocation.y - j - 1) != null)
+                    case DirectionMoved.DOWN:
+                        if (isThereAPlayer(characterLocation.x + i - 1, characterLocation.y - j - 1) != null)
                         {
-                            ThePlayer = isThereAPlayer(CharacterLocation.x + i - 1, CharacterLocation.y - j - 1);
+                            ThePlayer = isThereAPlayer(characterLocation.x + i - 1, characterLocation.y - j - 1);
                             return true;
                         }
-                        if (!IsMoveLocationMonsterChaseable(CharacterLocation.x + i - 1, CharacterLocation.y - j - 1)) { j = SpottingDistance; }
+                        if (!IsMoveLocationMonsterChaseable(characterLocation.x + i - 1, characterLocation.y - j - 1)) { j = SpottingDistance; }
                         break;
-                    case (int)DirectionMoved.LEFT:
-                        if (isThereAPlayer(CharacterLocation.x - j - 1, CharacterLocation.y + i - 1) != null)
+                    case DirectionMoved.LEFT:
+                        if (isThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 1) != null)
                         {
-                            ThePlayer = isThereAPlayer(CharacterLocation.x - j - 1, CharacterLocation.y + i - 1);
+                            ThePlayer = isThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 1);
                             return true;
                         }
-                        if (!IsMoveLocationMonsterChaseable(CharacterLocation.x - j - 1, CharacterLocation.y + i - 1)) { j = SpottingDistance; }
+                        if (!IsMoveLocationMonsterChaseable(characterLocation.x - j - 1, characterLocation.y + i - 1)) { j = SpottingDistance; }
                         break;
-                    case (int)DirectionMoved.RIGHT:
-                        if (isThereAPlayer(CharacterLocation.x + j + 1, CharacterLocation.y + i - 1) != null)
+                    case DirectionMoved.RIGHT:
+                        if (isThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 1) != null)
                         {
-                            ThePlayer = isThereAPlayer(CharacterLocation.x + j + 1, CharacterLocation.y + i - 1);
+                            ThePlayer = isThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 1);
                             return true;
                         }
-                        if (!IsMoveLocationMonsterChaseable(CharacterLocation.x + j + 1, CharacterLocation.y + i - 1)) { j = SpottingDistance; }
+                        if (!IsMoveLocationMonsterChaseable(characterLocation.x + j + 1, characterLocation.y + i - 1)) { j = SpottingDistance; }
                         break;
                 }
             }
@@ -257,18 +264,18 @@ public class MonsterMovement : SpriteMovement
         return PlayerFound;
     }
 
-    private int GetRandomStep()
+    private DirectionMoved GetRandomStep()
     {
-        int nexstp = 0;
+        DirectionMoved nexstp = 0;
         System.Random rand = new System.Random();
-        nexstp = rand.Next(10) + 1;
-        if (nexstp > 4) nexstp = FacedDirection;
-        return nexstp;
+        int dirOrdinal = rand.Next(10)+1;
+        if (dirOrdinal > 4) nexstp = facedDirection;
+        return (DirectionMoved)dirOrdinal;
     }
 
-    private int GetNextStep()
+    private DirectionMoved GetNextStep()
     {
-        int nexstp=0;
+        DirectionMoved nexstp =0;
 
             if (CurrentStep == Pathing.Length)
                 CurrentStep = 0;
