@@ -11,4 +11,6 @@ public abstract class Stats : MonoBehaviour
     public Vector2 homePositionOnScreen = new Vector2(-.5f, -1);
     public Vector2 strikingPointOffset = new Vector2(0, 0);
     public Vector2 gettingStruckPointOffset = new Vector2(0, 0);
+    public Vector2 scale = new Vector2(1, 1);
+    public Vector2 forceOpponentAdditionalScale = new Vector2(1, 1);
 }
