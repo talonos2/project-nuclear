@@ -17,8 +17,6 @@ public class PawnMover : SpriteMovement
     // Update is called once per frame
     void Update()
     {
-
-
         if (gameData.Paused == true)
         {
             return;
@@ -26,183 +24,128 @@ public class PawnMover : SpriteMovement
 
         //If in the process of moving, keep moving and do nothing else
 
-        if (CurrentlyMoving)
+        if (currentlyMoving)
         {
             float finishedMoving = ContinueMoving();
             if (finishedMoving == 0)
             {
-                CurrentlyMoving = false;
+                currentlyMoving = false;
                 SetCurrentLocation();
-                CheckExitStatus();
+            }
+        }
+        else
+        {
+            if (movementQueue.Count > 0)
+            {
+                MoveKeyReceived(movementQueue.Dequeue());
             }
         }
     }
 
     //Key command received from CharacterInputController script
-    public void MoveKeyReceived(DirectionMoved inputDirection) {
-
-        if (GameState.isInBattle == true)
+    private void MoveKeyReceived(DirectionMoved inputDirection)
+    {
+        if (GameState.isInBattle == true) // Defensive. In practice, this should never happen.
         {
             return;
         }
 
-        if (!CurrentlyMoving)
+        if (inputDirection == (int)DirectionMoved.NONE)
         {
-            if (inputDirection == (int)DirectionMoved.NONE)
-            {
-                SetLookDirection();
-                return;
-            }
-
-            FacedDirection = inputDirection;
-            SetNextLocation(inputDirection);
-            if (IsPlayerMoveLocationPassable(CharacterNextLocation.x, CharacterNextLocation.y))
-            {
-                //if it is possible, check for a monster attack
-                //Needs to be refractored a bit
-                UpdateNewEntityGridLocation();
-                RemoveOldEntityGridLocation();
-                CharacterLocation = CharacterNextLocation;
-                CurrentlyMoving = true;
-
-            }
-
-            //Check if a monster is in the next location, and initiate combat if so
-            GameObject EnemyToFight = isThereAMonster();
-            if (EnemyToFight != null)
-            {
-                Combat.InitiateFight(this.gameObject, EnemyToFight);
-            }
-        }
-    }
-
-    public void ActivateKeyReceived() {
-        if (GameState.isInBattle == true)
-        {
+            SetLookDirection();
             return;
         }
-        GameObject entityToCheck;
-        if (!CurrentlyMoving) {
-            switch (FacedDirection) {
-                case DirectionMoved.UP:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x, CharacterLocation.y+1];
-                    if (entityToCheck != null) {
-                        if (entityToCheck.GetComponent<EntityData>().isItem) {
-                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
-                        }
-                        if (entityToCheck.GetComponent<EntityData>().isSwitch) {
-                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
-                        }
-                    }
-                    break;
-                case DirectionMoved.DOWN:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x, CharacterLocation.y - 1];
-                    if (entityToCheck != null)
-                    {
-                        if (entityToCheck.GetComponent<EntityData>().isItem)
-                        {
-                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
-                        }
-                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
-                        {
-                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
-                        }
-                    }
-                    break;
-                case DirectionMoved.LEFT:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x-1, CharacterLocation.y];
-                    if (entityToCheck != null)
-                    {
-                        if (entityToCheck.GetComponent<EntityData>().isItem)
-                        {
-                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
-                        }
-                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
-                        {
-                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
-                        }
-                    }
-                    break;
-                case DirectionMoved.RIGHT:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x+1, CharacterLocation.y];
-                    if (entityToCheck != null)
-                    {
-                        if (entityToCheck.GetComponent<EntityData>().isItem)
-                        {
-                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
-                        }
-                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
-                        {
-                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
-                        }
-                    }
-                    break;
 
-            }
-
-        }
-    }
-
-    private void CheckExitStatus()
-    {
-        GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y];
-        if (exitLocation != null)
+        facedDirection = inputDirection;
+        SetNextLocation(inputDirection);
+        if (IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
         {
-            if (exitLocation.GetComponent<DoodadData>().isExit) {
-                exitLocation.GetComponent<ExitController>().TransitionMap(); 
-            }
+            UpdateNewEntityGridLocation();
+            RemoveOldEntityGridLocation();
+            characterLocation = characterNextLocation;
+            currentlyMoving = true;
+
         }
-
-    }
-
-
-    private int GetInputDirection()
-    {
-
-        int NextInputDirection=-1;
-
-            if (Input.GetAxisRaw("Horizontal") > .1)
-            {
-                NextInputDirection = (int)DirectionMoved.RIGHT;             
-            }
-            if (Input.GetAxisRaw("Horizontal") < -.1)
-            {
-                NextInputDirection = (int)DirectionMoved.LEFT;
-            }
-            if (Input.GetAxisRaw("Vertical") > .1)
-            {
-                NextInputDirection = (int)DirectionMoved.UP;
-            }
-            if (Input.GetAxisRaw("Vertical") < -.1)
-            {
-                NextInputDirection = (int)DirectionMoved.DOWN;
-            }
-
-        if (NextInputDirection == -1) {
-            NextInputDirection = (int)DirectionMoved.NONE;
-        }
-        return NextInputDirection;
     }
 
     private float ContinueMoving()
     {
         float finishedMoving=0;
-        if (FacedDirection == DirectionMoved.UP)
+        if (facedDirection == DirectionMoved.UP)
         {
             finishedMoving = MoveUp(MoveSpeed);
         }
-        if (FacedDirection == DirectionMoved.DOWN)
+        if (facedDirection == DirectionMoved.DOWN)
         {
             finishedMoving = MoveDown(MoveSpeed);
         }
-        if (FacedDirection == DirectionMoved.LEFT)
+        if (facedDirection == DirectionMoved.LEFT)
         {
             finishedMoving = MoveLeft(MoveSpeed);
         }
-        if (FacedDirection == DirectionMoved.RIGHT)
+        if (facedDirection == DirectionMoved.RIGHT)
         {
             finishedMoving = MoveRight(MoveSpeed);
         }
         return finishedMoving;
+    }
+
+    public void EnqueueMovement(String direction)
+    {
+        direction = direction.ToLower();
+        switch (direction)
+        {
+            case "up":
+                movementQueue.Enqueue(DirectionMoved.UP);
+                break;
+            case "u":
+                movementQueue.Enqueue(DirectionMoved.UP);
+                break;
+            case "north":
+                movementQueue.Enqueue(DirectionMoved.UP);
+                break;
+            case "n":
+                movementQueue.Enqueue(DirectionMoved.UP);
+                break;
+            case "down":
+                movementQueue.Enqueue(DirectionMoved.DOWN);
+                break;
+            case "d":
+                movementQueue.Enqueue(DirectionMoved.DOWN);
+                break;
+            case "south":
+                movementQueue.Enqueue(DirectionMoved.DOWN);
+                break;
+            case "s":
+                movementQueue.Enqueue(DirectionMoved.DOWN);
+                break;
+            case "left":
+                movementQueue.Enqueue(DirectionMoved.LEFT);
+                break;
+            case "l":
+                movementQueue.Enqueue(DirectionMoved.LEFT);
+                break;
+            case "west":
+                movementQueue.Enqueue(DirectionMoved.LEFT);
+                break;
+            case "w":
+                movementQueue.Enqueue(DirectionMoved.LEFT);
+                break;
+            case "right":
+                movementQueue.Enqueue(DirectionMoved.RIGHT);
+                break;
+            case "r":
+                movementQueue.Enqueue(DirectionMoved.RIGHT);
+                break;
+            case "east":
+                movementQueue.Enqueue(DirectionMoved.RIGHT);
+                break;
+            case "e":
+                movementQueue.Enqueue(DirectionMoved.RIGHT);
+                break;
+            default:
+                Debug.LogWarning("Unrecognized movement direction: "+direction+" Passed in via the MovePawn command.");
+                break;
+        }
     }
 }

@@ -16,7 +16,7 @@ public class SpawnPlayer : MonoBehaviour
         newPlayer.GetComponent<EntityData>().isMainCharacter = true ;
         CharacterMovement characterMovement =newPlayer.GetComponent<CharacterMovement>();
         characterMovement.SetRenderer();
-        characterMovement.FacedDirection = facing;
+        characterMovement.facedDirection = facing;
         characterMovement.SetLookDirection();
     }
 
