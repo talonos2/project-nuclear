@@ -40,6 +40,7 @@ public class SpriteMovement : MonoBehaviour
     public void Start()
     {
         //spriteR = gameObject.GetComponent<SpriteRenderer>();
+
         InitializeNewMap();
         InitializeSpriteLocation();
         this.sRender = this.GetComponentInChildren<Renderer>();
@@ -48,6 +49,11 @@ public class SpriteMovement : MonoBehaviour
         gameData =GameObject.Find("GameStateData").GetComponent<GameData>();
 
 
+    }
+
+    public void SetRenderer() {
+        this.sRender = this.GetComponentInChildren<Renderer>();
+        this.sRender.material = new Material(this.sRender.material);
     }
 
     private void InitializeSpriteLocation()

@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c43449399b97343bd07e28ead99251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passabilityMap: {fileID: 4900000, guid: fab6daeb372e46643a28fcccb06d0c17, type: 3}
+  passabilityMap: {fileID: 4900000, guid: a1a10672b5106e24383fd74d24232a41, type: 3}
   width: 15
-  height: 20
+  height: 24
 --- !u!4 &326564849
 Transform:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ PrefabInstance:
     - target: {fileID: 7426463875589292824, guid: 2a6b5610efc1eaa418537d5c3c42796f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 7426463875589292824, guid: 2a6b5610efc1eaa418537d5c3c42796f,
         type: 3}
@@ -365,7 +365,6 @@ GameObject:
   - component: {fileID: 2018926734}
   - component: {fileID: 2018926733}
   - component: {fileID: 2018926732}
-  - component: {fileID: 2018926736}
   - component: {fileID: 2018926737}
   - component: {fileID: 2018926738}
   m_Layer: 0
@@ -406,7 +405,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7fc16e71ed3851b41ae7016d4dd90ec5, type: 2}
+  - {fileID: 2100000, guid: ed2d6728cdc4bc24da9565684df46da8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -442,29 +441,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018926731}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -1, y: -0.7, z: 0}
-  m_LocalScale: {x: 2.697, y: 0.10097424, z: 2.4}
+  m_LocalPosition: {x: -1, y: -1.2, z: 0}
+  m_LocalScale: {x: 3.1, y: 0.10097424, z: 2.53}
   m_Children: []
   m_Father: {fileID: 326564849}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
---- !u!114 &2018926736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018926731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4967e89dd13f19c46b08b9985bc6b72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireworks:
-  - {fileID: 4888064450347162304, guid: 8f724e4c10ab4a2468fbeafd23b0b2f1, type: 3}
-  - {fileID: 4888064450347162304, guid: 2d0524a7a3f008e489980d76749524c9, type: 3}
-  - {fileID: 4888064450347162304, guid: 9c313967829f3bd46a62c28673b9ef82, type: 3}
-  - {fileID: 4888064450347162304, guid: 081809386b21a9441b742a46d5bbc548, type: 3}
 --- !u!114 &2018926737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83360528e91a02f43816a8a669578d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowTexture: {fileID: 2800000, guid: 761e1c4e82cd0004286d1d06f5bf84f4, type: 3}
+  shadowTexture: {fileID: 2800000, guid: c3a6d8cfe8ddd84448b1ad6ac705edfa, type: 3}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +492,7 @@ PrefabInstance:
     - target: {fileID: 8295020037215701068, guid: 8bf6399b3a1c209409d46fe762f1620f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 8295020037215701068, guid: 8bf6399b3a1c209409d46fe762f1620f,
         type: 3}
