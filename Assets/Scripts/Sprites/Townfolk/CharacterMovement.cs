@@ -37,12 +37,12 @@ public class CharacterMovement : SpriteMovement
 
         //If in the process of moving, keep moving and do nothing else
 
-        if (CurrentlyMoving)
+        if (currentlyMoving)
         {
             float finishedMoving = ContinueMoving();
             if (finishedMoving == 0)
             {
-                CurrentlyMoving = false;
+                currentlyMoving = false;
                 SetCurrentLocation();
                 CheckExitStatus();
             }
@@ -60,7 +60,7 @@ public class CharacterMovement : SpriteMovement
             return;
         }
 
-        if (!CurrentlyMoving)
+        if (!currentlyMoving)
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
@@ -68,16 +68,16 @@ public class CharacterMovement : SpriteMovement
                 return;
             }
 
-            FacedDirection = inputDirection;
+            facedDirection = inputDirection;
             SetNextLocation(inputDirection);
-            if (IsPlayerMoveLocationPassable(CharacterNextLocation.x, CharacterNextLocation.y))
+            if (IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
             {
                 //if it is possible, check for a monster attack
                 //Needs to be refractored a bit
                 UpdateNewEntityGridLocation();
                 RemoveOldEntityGridLocation();
-                CharacterLocation = CharacterNextLocation;
-                CurrentlyMoving = true;
+                characterLocation = characterNextLocation;
+                currentlyMoving = true;
 
             }
 
@@ -96,10 +96,10 @@ public class CharacterMovement : SpriteMovement
             return;
         }
         GameObject entityToCheck;
-        if (!CurrentlyMoving) {
-            switch (FacedDirection) {
+        if (!currentlyMoving) {
+            switch (facedDirection) {
                 case DirectionMoved.UP:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x, CharacterLocation.y+1];
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y+1];
                     if (entityToCheck != null) {
                         if (entityToCheck.GetComponent<EntityData>().isItem) {
                             entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
@@ -110,7 +110,7 @@ public class CharacterMovement : SpriteMovement
                     }
                     break;
                 case DirectionMoved.DOWN:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x, CharacterLocation.y - 1];
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y - 1];
                     if (entityToCheck != null)
                     {
                         if (entityToCheck.GetComponent<EntityData>().isItem)
@@ -124,7 +124,7 @@ public class CharacterMovement : SpriteMovement
                     }
                     break;
                 case DirectionMoved.LEFT:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x-1, CharacterLocation.y];
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x-1, characterLocation.y];
                     if (entityToCheck != null)
                     {
                         if (entityToCheck.GetComponent<EntityData>().isItem)
@@ -138,7 +138,7 @@ public class CharacterMovement : SpriteMovement
                     }
                     break;
                 case DirectionMoved.RIGHT:
-                    entityToCheck = mapEntityGrid.grid[CharacterLocation.x+1, CharacterLocation.y];
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x+1, characterLocation.y];
                     if (entityToCheck != null)
                     {
                         if (entityToCheck.GetComponent<EntityData>().isItem)
@@ -159,7 +159,7 @@ public class CharacterMovement : SpriteMovement
 
     private void CheckExitStatus()
     {
-        GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y];
+        GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
         if (exitLocation != null)
         {
             if (exitLocation.GetComponent<DoodadData>().isExit) {
@@ -201,19 +201,19 @@ public class CharacterMovement : SpriteMovement
     private float ContinueMoving()
     {
         float finishedMoving=0;
-        if (FacedDirection == DirectionMoved.UP)
+        if (facedDirection == DirectionMoved.UP)
         {
             finishedMoving = MoveUp(MoveSpeed);
         }
-        if (FacedDirection == DirectionMoved.DOWN)
+        if (facedDirection == DirectionMoved.DOWN)
         {
             finishedMoving = MoveDown(MoveSpeed);
         }
-        if (FacedDirection == DirectionMoved.LEFT)
+        if (facedDirection == DirectionMoved.LEFT)
         {
             finishedMoving = MoveLeft(MoveSpeed);
         }
-        if (FacedDirection == DirectionMoved.RIGHT)
+        if (facedDirection == DirectionMoved.RIGHT)
         {
             finishedMoving = MoveRight(MoveSpeed);
         }
