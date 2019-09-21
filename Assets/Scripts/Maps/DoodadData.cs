@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,14 +13,22 @@ public class DoodadData : MonoBehaviour
     public bool isExit = false;
     public bool isBlockableTerrain = false;
     public bool isBackgroundCharacter = false;
+
+    protected Vector2Int DoodadLocation;
+    protected GameObject MapGrid;
+    protected Vector2 MapZeroLocation;
     void Start()
     {
-        
+        InitializeDoodadNewMap();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    protected void InitializeDoodadNewMap()
     {
-        
+        MapGrid = GameObject.Find("Grid"); ;
+        MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
+        DoodadLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
+        DoodadLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
+        MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = this.gameObject;
     }
 }
