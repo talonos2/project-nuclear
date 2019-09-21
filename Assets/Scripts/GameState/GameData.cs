@@ -14,7 +14,7 @@ public class GameData : MonoBehaviour
     public int PowersGained = 0;
 
 
-    public List<GameObject> townWeapons=new List<GameObject>();
+    public List<GameObject> townWeapons = new List<GameObject>();
     public List<GameObject> townArmor = new List<GameObject>();
     public List<GameObject> townAccessories = new List<GameObject>();
 
@@ -23,14 +23,19 @@ public class GameData : MonoBehaviour
     public bool Shortcut1 = false;
 
     public bool RunSetupFinished = false;
-    void Start()
-    {
-        
+
+
+      [HideInInspector]
+    public Vector2Int nextLocaiton;
+      [HideInInspector]
+    public SpriteMovement.DirectionMoved nextFacing = SpriteMovement.DirectionMoved.LEFT;
+      [HideInInspector]
+    public bool nextLocationSet;
+
+    public void SetNextLocation(Vector2Int location, SpriteMovement.DirectionMoved facing) {
+        nextLocaiton = location;
+        nextFacing = facing;
+        nextLocationSet = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

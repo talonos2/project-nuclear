@@ -13,6 +13,8 @@ public class ExitController : MonoBehaviour
     private Vector2 MapZeroLocation;
     public String mapToLoad;
     public int nextMapLevel;
+    public Vector2Int exitPosition;
+    public SpriteMovement.DirectionMoved exitFacing;
     void Start()
     {
         InitializeNewMap();        
@@ -35,7 +37,11 @@ public class ExitController : MonoBehaviour
 
     public void TransitionMap()
     {
-        GameObject.Find("GameStateData").GetComponent<GameData>().FloorNumber = nextMapLevel;
+        GameData gameData= GameObject.Find("GameStateData").GetComponent<GameData>();
+        gameData.FloorNumber = nextMapLevel;
+
+            gameData.SetNextLocation(exitPosition, exitFacing);
+        
         SceneManager.LoadScene(mapToLoad);
 
     }
