@@ -33,6 +33,7 @@ public class MonsterMovement : SpriteMovement
     private float LookTiming = 0;
     private int CurrentFacing = 0;
     private int stuck = 0;
+    private float waitTimer = 0;
     
 
 
@@ -65,6 +66,10 @@ public class MonsterMovement : SpriteMovement
             }
 
             if (PathRandomly) {
+                if (waitTimer >= 0) {
+                    waitTimer -= Time.deltaTime;
+                    return;
+                }
                 NextStep = GetRandomStep();
                 SetNextLocation(NextStep);
                 facedDirection = NextStep;
@@ -75,6 +80,11 @@ public class MonsterMovement : SpriteMovement
                     characterLocation = characterNextLocation;
                     currentlyMoving = true;
                 }
+                else {
+                    waitTimer = .25f;
+                    SetLookDirection();
+                }
+
                 if (IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y))
                     CheckForFight(characterNextLocation.x, characterNextLocation.y);
             }
@@ -86,9 +96,16 @@ public class MonsterMovement : SpriteMovement
                     ChangeMonsterFacing();
                 }
 
+
                 if (IsPlayerInView() && !CurrentlyChasingPlayer) {
                     CurrentlyChasingPlayer = true;
                     ChaseStepNumber = 0;
+                    waitTimer = .25f;
+                }
+                if (waitTimer >= 0)
+                {
+                    waitTimer -= Time.deltaTime;
+                    return;
                 }
 
                 if (CurrentlyChasingPlayer) {
@@ -262,7 +279,7 @@ public class MonsterMovement : SpriteMovement
     {
         //DirectionMoved nexstp = 0;
         System.Random rand = new System.Random();
-        int dirOrdinal = rand.Next(10)+1;
+        int dirOrdinal = rand.Next(8)+1;
         if (dirOrdinal > 4) dirOrdinal = (int)facedDirection;
         return (DirectionMoved)dirOrdinal;
     }
