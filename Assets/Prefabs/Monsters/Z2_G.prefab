@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4634487189316768513}
   - component: {fileID: 4634487189316768514}
   - component: {fileID: 4634487189316768515}
-  - component: {fileID: 4634487189316768636}
   - component: {fileID: 3413334061054776686}
   m_Layer: 0
   m_Name: Z2G_Sprite
@@ -94,21 +93,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &4634487189316768636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4634487189316768638}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e361028c7b85646a169a20665eb84e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hero: {fileID: 0}
-  mapr: {fileID: 0}
-  frame: 400
 --- !u!114 &3413334061054776686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +118,7 @@ GameObject:
   - component: {fileID: 4634487190051776853}
   - component: {fileID: 4634487190051776854}
   - component: {fileID: 4634487190051776848}
-  - component: {fileID: 3501704338804293393}
+  - component: {fileID: -5191209925222229903}
   m_Layer: 0
   m_Name: Z2_G
   m_TagString: Untagged
@@ -221,7 +205,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3501704338804293393
+--- !u!114 &-5191209925222229903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,23 +217,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 90
-  HP: 90
-  attack: 27
-  defense: 6
+  MaxHP: 155
+  HP: 155
+  attack: 49
+  defense: 14
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.6, y: 0.3}
+  homePositionOnScreen: {x: 0.6, y: 0.1}
   strikingPointOffset: {x: 0, y: 0}
   gettingStruckPointOffset: {x: 0, y: 0}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
-  enemyName: Ice Wisp
-  ExpGiven: 150
-  weakness: 1
+  enemyName: Earth Spirit
+  ExpGiven: 470
+  weakness: 2
   crystalType: 4
-  crystalDropAmount: 2
+  crystalDropAmount: 5
   combatSprites:
-  - {fileID: -3140893535867307849, guid: 6cffe338af7f630419b0f97f7e2ea8d6, type: 3}
-  - {fileID: 2324314425751264968, guid: 6cffe338af7f630419b0f97f7e2ea8d6, type: 3}
-  - {fileID: -6985847762494979768, guid: 6cffe338af7f630419b0f97f7e2ea8d6, type: 3}
-  - {fileID: 8321140587538360279, guid: 6cffe338af7f630419b0f97f7e2ea8d6, type: 3}
+  - {fileID: 4402923059368857304, guid: 0657cced8b021724da0e9f3cd1a963f1, type: 3}
+  - {fileID: 2918391466552716516, guid: 0657cced8b021724da0e9f3cd1a963f1, type: 3}
+  - {fileID: 5205300515062268985, guid: 0657cced8b021724da0e9f3cd1a963f1, type: 3}
+  - {fileID: -9150380430428349094, guid: 0657cced8b021724da0e9f3cd1a963f1, type: 3}

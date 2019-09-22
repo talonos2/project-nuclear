@@ -183,6 +183,13 @@ public class SpriteMovement : MonoBehaviour
             return MoveableLocation;
     }
 
+    protected bool IsPlayerInMonsterTerritory(int LocX, int LocY) {
+        bool attackable = false;
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER)
+            attackable = true;
+        return attackable;
+
+    }
     protected bool IsRandomMoveLocationPassable(int LocX, int LocY) {
 
         bool MoveableLocation = false;
