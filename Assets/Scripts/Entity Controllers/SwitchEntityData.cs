@@ -9,13 +9,17 @@ public class SwitchEntityData : EntityData
     private Vector2Int SwitchLocation;
     private GameObject MapGrid;
     private Vector2 MapZeroLocation;
-    public GameObject[] TiedSpikes;
+    public GameObject[] TiedEntities;
     private bool isAnimating;
     public float AnimationSpeed=6;
     private float timeSinceLastFrame = 0;
     private int frameNumber = 0;
     private int totalFrames = 3;
     private Renderer sRender;
+    private bool forwardAnimation;
+    private int animationCounter=0;
+    private bool activeSwitch = true;
+    public double timeTillReset = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,32 +40,87 @@ public class SwitchEntityData : EntityData
     }
 
     public void ProcessClick() {
-        if (this.isSwitch) {
-            foreach (GameObject spike in TiedSpikes) {
-                SpikeController spikeControlled = spike.GetComponent<SpikeController>();
-                spikeControlled.isPassable = true;
-                spikeControlled.LowerSpikeAnimation();
+        if (isAnimating) { return; }
+
+        if (activeSwitch)
+        {
+            foreach (GameObject tiedEntity in TiedEntities)
+            {
+                SpikeController spikeControlled = tiedEntity.GetComponent<SpikeController>();
+                BridgeController bridgeControlled = tiedEntity.GetComponent<BridgeController>();
+                if (spikeControlled != null)
+                {
+                    spikeControlled.isPassable = true;
+                    spikeControlled.LowerSpikeAnimation();
+                }
+                if (bridgeControlled != null)
+                {
+                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.removePlatform(); }
+                    else { bridgeControlled.addPlatform(); }
+                }
+
 
             }
-            this.isSwitch = false;
+            activeSwitch = false;
             SwitchAnimation();
+        }
+        else {
+            foreach (GameObject tiedEntity in TiedEntities)
+            {
+                SpikeController spikeControlled = tiedEntity.GetComponent<SpikeController>();
+                BridgeController bridgeControlled = tiedEntity.GetComponent<BridgeController>();
+                if (spikeControlled != null)
+                {
+                    spikeControlled.isPassable = false;
+                    spikeControlled.RaiseSpikeAnimation();
+                }
+                if (bridgeControlled != null)
+                {
+                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.removePlatform(); }
+                        else { bridgeControlled.addPlatform(); }
+                }
+
+
+            }
+            activeSwitch = true;
+            SwitchReverseAnimation();
+
         }
     }
 
     private void SwitchAnimation()
     {
         isAnimating = true;
+        forwardAnimation = true;
+        frameNumber = 0;
+    }
+    private void SwitchReverseAnimation()
+    {
+        isAnimating = true;
+        forwardAnimation = false;
+        frameNumber = totalFrames-1;
     }
 
     void Update()
     {
         if (!isAnimating) { return; }
+        if (GameState.isInBattle == true)
+        {
+            return;
+        }
         timeSinceLastFrame += Time.deltaTime;
+
         if (timeSinceLastFrame >= 1 / AnimationSpeed) {
-            frameNumber += 1;
+            if (forwardAnimation) frameNumber += 1;
+            else frameNumber -= 1;
+            animationCounter += 1;
             sRender.material.SetInt("_Frame", frameNumber);
             timeSinceLastFrame = 0;
-            if (frameNumber == totalFrames-1) isAnimating = false;
+            if (animationCounter == totalFrames - 1)
+            {
+                isAnimating = false;
+                animationCounter = 0;
+            }
         }
     }
 

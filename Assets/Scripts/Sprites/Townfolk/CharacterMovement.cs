@@ -30,7 +30,7 @@ public class CharacterMovement : SpriteMovement
     {
 
 
-        if (gameData.Paused == true)
+        if (GameState.isInBattle == true)
         {
             return;
         }
