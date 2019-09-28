@@ -1,0 +1,53 @@
+#start
+
+$@scene= town
+
+$@place Jezerine
+$@place Nelson
+
+@char Nelson
+Come inside, you'll catch your death of cold.
+
+@char Jezerine
+I will catch death
+
+@fwmovepawn Jezerine east
+@fwmovepawn Jezerine east
+$@animate dummy swordhit
+@fwmovepawn Jezerine east
+@fwmovepawn Jezerine east
+
+@char Jezerine
+And it will meet its end.
+
+@char Nelson
+It is not becoming of a young lady to play with swords.
+
+@fwmovepawn Jezerine west
+@fwmovepawn Jezerine west
+$@animate dummy swordhit
+@fwmovepawn Jezerine west
+@fwmovepawn Jezerine west
+
+@char Jezerine
+What will become of any of us if I do not?
+
+$@animate curse Jezerine
+
+@fwmovepawn Nelson (toward Jezerine)
+
+@char Jezerine
+Still going to try to talk me out of it?
+
+$@fwturnpawn Jezerine (toward Nelson)
+
+@char Nelson
+No. Here, take this.
+
+$@dispay "you recieved sweater"
+
+@fwmovepawn Jezerine (toward cave)
+
+$@startRun
+
+@stop

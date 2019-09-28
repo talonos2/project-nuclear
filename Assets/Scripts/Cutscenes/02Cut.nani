@@ -1,0 +1,44 @@
+#start
+
+$@scene= bar
+
+$@place Jezerine
+$@place McDermit
+$@place Meyster
+$@place Jerene
+$@place Sara
+$@place Paul
+
+
+@char Sara
+The hero is gone... What will we do now?
+@char Meyster
+Fear not fair maiden! He was not the only one who knew how to swing a blade!
+@char Paul
+We may not have guild cards, but we have our spirit.
+@char McDermit
+Bandits or curses, we will do our duty.  All of us are ready to be chosen.
+@char Jerene
+Hear Hear!
+
+
+$@fwpawnturn Jezerine south
+$@fwpawnturn Paul south
+$@fwpawnturn McDermit south
+$@fwpawnturn Meyster south
+
+
+$@animate curse Sara
+
+(animate Sara runnnig to door and disappearing, happen while dialogue pops up)
+
+@char Sara
+Aaaaah!  The weapons![BR]Where did we put the weapons?!
+
+@char Meyster
+Well then...
+
+
+$@startRun
+
+@stop

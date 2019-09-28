@@ -1,0 +1,31 @@
+#start
+
+$@scene= town
+
+$@place Meyster
+$@place Pendleton
+
+@char Meyster
+Take a look squire.  The den of evil.
+
+@char Pendleton
+Yes sire.
+
+@char Meyster
+I would purge it right now, if only there were not so much evil in the town itself.
+
+@char Pendleton
+Of course sire.
+
+@char Meyster
+Do not worry frail squire. Soon a hero will save this town.
+
+$@animate curse Pendleton
+char Pendleton
+We shall see sire.
+
+@fwmovepawn Pendleton (to shrine)
+
+$@startRun
+
+@stop
