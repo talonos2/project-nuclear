@@ -10,7 +10,6 @@ public class ExitController : DoodadData
 
 
     public String mapToLoad;
-    public int nextMapLevel;
     public Vector2Int exitPosition;
     public SpriteMovement.DirectionMoved exitFacing;
 
@@ -18,7 +17,7 @@ public class ExitController : DoodadData
     public void TransitionMap()
     {
         GameData gameData= GameObject.Find("GameStateData").GetComponent<GameData>();
-        gameData.FloorNumber = nextMapLevel;
+        gameData.FloorNumber +=1;
 
             gameData.SetNextLocation(exitPosition, exitFacing);
         
