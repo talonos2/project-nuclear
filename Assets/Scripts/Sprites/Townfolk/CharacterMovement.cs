@@ -107,6 +107,9 @@ public class CharacterMovement : SpriteMovement
                         if (entityToCheck.GetComponent<EntityData>().isSwitch) {
                             entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
                         }
+                        //if (entityToCheck.GetComponent<EntityData>().isNPC) {
+                            //entityToCheck.GetComponent
+                        //}
                     }
                     break;
                 case DirectionMoved.DOWN:
