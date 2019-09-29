@@ -16,7 +16,9 @@ public class EntityData : MonoBehaviour
     public bool isPassable = false;
 
     public virtual void ProcessClick(CharacterStats stats)
-    { }
+    {
+        Debug.Log("Nothing to Interact With");
+    }
 
 
 }

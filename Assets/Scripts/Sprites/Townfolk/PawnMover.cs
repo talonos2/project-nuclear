@@ -7,12 +7,7 @@ using UnityEngine.SceneManagement;
 public class PawnMover : SpriteMovement
 {
 
-    /// <summary>
-    /// This is the character's start position. The character's transform won't matter; this will overwrite it.
-    /// </summary>
-    public Vector2 startPositionOnMap = new Vector2(0,0);
-
-    public Queue<DirectionMoved> movementQueue;
+    public Queue<DirectionMoved> movementQueue = new Queue<DirectionMoved>();
 
     // Update is called once per frame
     void Update()

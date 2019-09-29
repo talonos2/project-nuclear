@@ -10,11 +10,7 @@ public class PawnInteraction : EntityData
     private Vector2Int SwitchLocation;
     private GameObject MapGrid;
     private Vector2 MapZeroLocation;
-    private bool isAnimating;
     public float AnimationSpeed = 6;
-    private float timeSinceLastFrame = 0;
-    private int frameNumber = 0;
-    private int totalFrames = 3;
     private Renderer sRender;
 
     public String scriptName;
@@ -40,13 +36,9 @@ public class PawnInteraction : EntityData
 
     public override void ProcessClick(CharacterStats stats)
     {
+        Debug.Log("Here in interact");
         RuntimeInitializer.InitializeAsync();
         Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(scriptName);
-    }
-
-    private void SwitchAnimation()
-    {
-        isAnimating = true;
     }
 
     void Update()
