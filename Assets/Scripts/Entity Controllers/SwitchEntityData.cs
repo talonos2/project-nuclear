@@ -35,7 +35,7 @@ public class SwitchEntityData : EntityData
 
     }
 
-    public void ProcessClick() {
+    public override void ProcessClick(CharacterStats stats) {
         if (this.isSwitch) {
             foreach (GameObject spike in TiedSpikes) {
                 SpikeController spikeControlled = spike.GetComponent<SpikeController>();

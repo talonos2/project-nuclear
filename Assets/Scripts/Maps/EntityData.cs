@@ -15,7 +15,8 @@ public class EntityData : MonoBehaviour
     public bool isSpike = false;
     public bool isPassable = false;
 
-
+    public virtual void ProcessClick(CharacterStats stats)
+    { }
 
 
 }

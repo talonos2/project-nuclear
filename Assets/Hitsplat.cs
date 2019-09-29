@@ -6,12 +6,12 @@ using UnityEngine;
 public class Hitsplat : MonoBehaviour
 {
     float baseHeight = 2;
-    float baseYVelo = .1f;
+    float baseYVelo = .2f;
     Vector3 startPosition;
-    float gravity = .01f;
+    float gravity = .03f;
     float bounciness = .5f;
     int maxBounces = 4;
-    int numberOfFramesAppearing = 60;
+    int numberOfFramesAppearing = 25;
 
     float height;
     float yVelo;

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomChestController : MonoBehaviour
+public class RandomChestController : EntityData
 {
     // Start is called before the first frame update
 
@@ -183,7 +183,7 @@ public class RandomChestController : MonoBehaviour
 
     }
 
-    public void ProcessClick(CharacterStats playerData) {
+    public override void ProcessClick(CharacterStats playerData) {
 
         if (!active) { return; }
 
