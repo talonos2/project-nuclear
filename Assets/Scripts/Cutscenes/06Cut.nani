@@ -1,0 +1,33 @@
+#start
+
+$@scene= blacksmith
+
+$@place Derringer
+$@place Jezerine
+
+
+@char Jezerine
+Is it nearly done?
+
+
+@char Derringer
+I'm afraid these things take time.[br]I can't risk cracking the blade.
+
+@char Jezerine
+How much longer will it take?
+
+$@animate curse Derringer
+
+@char Derringer
+I'm afraid it's longer than ten minutes.
+
+(walk around table)
+
+@char Derringer
+I'm afraid I must be going.
+
+(leave)
+
+$@startRun
+
+@stop

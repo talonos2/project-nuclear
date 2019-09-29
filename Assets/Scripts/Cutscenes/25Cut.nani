@@ -1,0 +1,36 @@
+#start
+
+$@scene= town
+
+$@place Mara
+$@place Wilson
+
+@char Wilson
+So, shouldn't you be maintaining the viewing portal?
+
+@char Mara
+Oh it's fine.
+
+@char Wilson
+Logos nearly wore himself out concentrating on keeping the view open.
+
+@char Mara
+Really?  I wondered why he always looked so tired.
+
+$@animate curse Mara
+
+@char Wilson
+Oh no... what will we do now?
+
+@char Mara
+It's okay! i set it up to run on its own.
+
+@fwmovepawn Jezerine (toward cave)
+
+@char Wilson
+Wait, what?
+
+
+$@startRun
+
+@stop

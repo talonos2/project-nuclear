@@ -1,0 +1,31 @@
+#start
+
+$@scene= town
+
+$@place Devon
+$@place Pendleton
+
+@char Devon
+Furs for sale! Get your furs!
+Man, quiet town.
+
+$@animation curse Devon
+
+@char Pendleton
+Get in the cave!
+
+$@setspeed Pendleton
+
+@fwmovepawn Pendleton (to Devon)
+
+#@setspeed Devon
+@fwmovepawn Devon (offscreen)
+@fwmovepawn Pendleton (offscreen)
+
+@char Pendleton
+Get in the cave! GET IN THE CAVE! GETINTHECAVE!
+
+
+$@startRun
+
+@stop

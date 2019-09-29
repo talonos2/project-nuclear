@@ -1,0 +1,51 @@
+#start
+
+$@scene= sagehut
+
+$@place Logos
+$@place Metra
+
+@char Logos
+Okay, now try to open your third eye.
+
+@char Mara
+I see some bears, looks like they're sleeping.
+
+@char Logos
+Oh!  You be seeing another cave...  Wait, are those pandas?
+
+@char Mara
+Oh right, those aren't actually bears are they?
+
+@char Logos
+No, they are, it's just... Um, try again.
+
+@char Mara
+Okay, I see monsters, but it's not a cave.  I can tell because of the three suns.
+
+@char Logos
+Yes that's... somewhere else.  Hold on a second, let me have a look in there.
+
+#@fwturnpawn Mara east
+#@fwturnpawn Mara west
+
+@char Logos
+Okay, how about this time, you close your 4th through 17th eye, and trying looking again.
+
+$@animate curse Logos
+@fwmovepawn Logos (halfway toward exit)
+
+@char Mara
+But, but- We aren't done with the lessons!
+
+#@fwturnpawn Logos North
+
+@char Logos
+I think you'll do fine.
+
+@fwmovepawn Logos (toward exit)
+
+
+$@startRun
+
+@stop

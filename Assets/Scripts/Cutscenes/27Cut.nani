@@ -1,0 +1,47 @@
+#start
+
+$@scene= town
+
+$@place Svenra
+$@place Tristana
+
+
+@char Svenra
+I told you to stay away.  Isn’t there someone else you can bother?
+
+@char Tristana
+Not really...
+
+@char Svenra
+They’re gone?  All of them?
+
+@char Tristana
+Does it make you as happy as you thought it would?
+
+@char Svenra
+What?
+
+@char Tristana
+You’re always telling people to leave, and now they have.
+
+@fwmovepawn Svenra (moves away a bit)
+
+@char Svenra
+Well, it isn't terrible.  I do want to be left alone.
+It's not like I wanted everyone to die for it.
+
+@char Tristana
+So you tricked everyone into thinking you had evil magical powers just to get privacy?
+
+@char Svenra
+Tricked?
+
+$@animate curse Svenra
+
+@char svenra
+Well, gotta go.
+
+@fwmovepawn Svenra (toward cave)
+$@startRun
+
+@stop

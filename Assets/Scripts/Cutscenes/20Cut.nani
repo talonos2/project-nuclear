@@ -1,0 +1,39 @@
+#start
+
+$@scene= town
+
+$@place Dorara
+$@place Jerene
+
+@char Dorara
+I said, give me that blade.
+
+@char Jerene
+No.
+
+@char Dorara
+I've seen ya'll take some real shiny loot out of that cave, and I want it.
+
+@char Jerene
+You'll have to go through me.
+
+@char Dorara
+Fine, I was getting tired of idle threats.
+
+$@animate curse Dorara
+
+@char Jerene
+Take the blade.
+
+@char Dorara
+I, uh.
+
+@char Jerene
+You take it, or you'll have to go through me.
+
+
+@fwmovepawn Dorara (to chest and then cave)
+
+$@startRun
+
+@stop
