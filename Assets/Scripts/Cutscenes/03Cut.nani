@@ -1,0 +1,24 @@
+#start
+
+$@scene= town
+
+$@place McDermit
+$@place Jerene
+$@place Paul
+
+
+@char McDermit
+Is this how it's going to end?[br]We just stand here and watch as the civilians are sent to their doom?
+
+$@animate curse McDermit
+
+@char Jerene
+Guess not.
+
+
+@fwmovepawn McDermit (to exit)
+
+
+$@startRun
+
+@stop

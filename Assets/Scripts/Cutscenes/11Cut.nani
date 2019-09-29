@@ -1,0 +1,60 @@
+#start
+
+$@scene= town
+
+$@place Stranger
+$@place Dorara
+$@place Phillip
+
+@char Phillip
+No! stop! Please don't hurt me!
+
+@char Dorara
+You know how this goes, give me your valuables before I-
+
+@fwmovepawn Stranger (moving about in background)
+
+Hey!  What do you think you're doing?
+
+@fwmovepawn Dorara (moving away from Phillip)
+
+@char Starnger
+What? I'm looting this place, same as you.
+
+@char Dorara
+Look here you lowlife, don't you dare compare what you do to what I do! I'm Pillaging! You see this sword?
+
+$@fwturnpawn Phillip (toward Dorara)
+@char Phillip
+Yes...?
+
+@char Dorara
+Quiet! I'm not talking to you!
+
+@fwmovepawn Phillip (backwards)
+
+@char Stranger
+Look, I'm trying not to call attention to myself.
+
+@fwmovepawn Phillip (backwards)
+
+@char Dorara
+That's my point! We may be ruining these people's lives, but if I'm going to stab someone in the back at least I'm going to  do it to their face!
+
+$@animate curse Stranger
+
+$@setspeed Phillip fast
+@fwmovepawn Phillip (runs off)
+$@setspeed Stranger fast
+@fwmovepawn Stranger (to shrine)
+
+@char Dorara
+Hey, maybe you can sneak by when the monster's backs are turned! Loot-ser!
+
+
+
+
+
+$@startRun
+
+@stop

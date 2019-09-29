@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -131,6 +131,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8256436232106188755, guid: d289a535dd68baa4db1da718103636d8,
         type: 3}
@@ -326,11 +331,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Pathing.Array.data[8]
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d289a535dd68baa4db1da718103636d8, type: 3}
@@ -893,6 +893,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpotterMonster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookDuration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: ChaseRange
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191483, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -948,51 +988,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpotterMonster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookDuration
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[1]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: ChaseRange
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpottingDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578980096541, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
     - target: {fileID: 3128599578980096540, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
       propertyPath: hero
@@ -1003,6 +998,11 @@ PrefabInstance:
       propertyPath: mapr
       value: 
       objectReference: {fileID: 2018926733}
+    - target: {fileID: 3128599578980096541, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29858a53dc1d064da23c93d060f7847, type: 3}
 --- !u!1 &326564847
@@ -1102,12 +1102,12 @@ PrefabInstance:
     - target: {fileID: 2236789191275909213, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14
+      value: 13.815
       objectReference: {fileID: 0}
     - target: {fileID: 2236789191275909213, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -2.905
       objectReference: {fileID: 0}
     - target: {fileID: 2236789191275909213, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
@@ -1247,6 +1247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8256436232106188755, guid: d289a535dd68baa4db1da718103636d8,
         type: 3}
@@ -1443,11 +1448,6 @@ PrefabInstance:
       propertyPath: Pathing.Array.data[8]
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d289a535dd68baa4db1da718103636d8, type: 3}
 --- !u!1001 &743390658
@@ -1622,6 +1622,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpotterMonster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: ChaseRange
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookDuration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191483, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1677,46 +1717,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpotterMonster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpottingDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: ChaseRange
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookDuration
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[1]
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3128599578980096541, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1735,6 +1735,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spider (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpotterMonster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookDuration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: ChaseRange
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191483, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
@@ -1791,41 +1826,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpotterMonster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpottingDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[0]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookDuration
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: ChaseRange
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3128599578980096541, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1848,7 +1848,7 @@ PrefabInstance:
     - target: {fileID: 2236789191275909213, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14
+      value: 13.91
       objectReference: {fileID: 0}
     - target: {fileID: 2236789191275909213, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
@@ -1914,6 +1914,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpotterMonster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookDuration
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191483, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1968,41 +2003,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[1]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpottingDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpotterMonster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookDuration
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3128599578980096541, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
@@ -2182,6 +2182,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8256436232106188755, guid: d289a535dd68baa4db1da718103636d8,
         type: 3}
@@ -2393,11 +2398,6 @@ PrefabInstance:
       propertyPath: Pathing.Array.data[11]
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d289a535dd68baa4db1da718103636d8, type: 3}
 --- !u!1001 &1843319314
@@ -2415,7 +2415,7 @@ PrefabInstance:
     - target: {fileID: 2236789191275909213, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13
+      value: 12.88
       objectReference: {fileID: 0}
     - target: {fileID: 2236789191275909213, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
@@ -2883,6 +2883,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 8256436232106188755, guid: d289a535dd68baa4db1da718103636d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3083,11 +3088,6 @@ PrefabInstance:
       propertyPath: PathRandomly
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8256436231999761631, guid: d289a535dd68baa4db1da718103636d8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d289a535dd68baa4db1da718103636d8, type: 3}
 --- !u!1001 &2109394250
@@ -3101,6 +3101,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spider (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpotterMonster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookDuration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: ChaseRange
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191483, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
@@ -3156,46 +3196,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpottingDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpotterMonster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookDuration
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[0]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: ChaseRange
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3128599578980096541, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
@@ -3270,6 +3270,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider
       objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpotterMonster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookPattern.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: LookDuration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191483, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3325,41 +3355,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpotterMonster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookPattern.Array.data[0]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: LookDuration
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578249191477, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: SpottingDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3128599578980096541, guid: d29858a53dc1d064da23c93d060f7847,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
     - target: {fileID: 3128599578980096540, guid: d29858a53dc1d064da23c93d060f7847,
         type: 3}
       propertyPath: hero
@@ -3370,5 +3365,10 @@ PrefabInstance:
       propertyPath: mapr
       value: 
       objectReference: {fileID: 2018926733}
+    - target: {fileID: 3128599578980096541, guid: d29858a53dc1d064da23c93d060f7847,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29858a53dc1d064da23c93d060f7847, type: 3}

@@ -1,0 +1,33 @@
+#start
+
+$@scene= town
+
+$@place Meyster
+$@place Pendleton
+$@place Todd
+
+
+@char Meyster
+You waste your time.[br]Ever since the quake, only the cursed may enter.
+Go on squire, tell him he is wasting his time!
+@char Pendleton
+You are wasting your time.
+
+@char Todd
+It does not matter.  When my time comes I will find my way to the leader of this place, and join in his dark pact.
+
+@char Meyster
+Not if we have anything to say about it!
+Squire! Apprehend that man!
+
+@fwmovepawn pendleton (towards Todd)
+$@animate curse Todd
+
+
+@fwmovepawn Todd (to shrine)
+@char Todd
+Mwahaha!
+
+$@startRun
+
+@stop

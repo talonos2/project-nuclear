@@ -15,6 +15,8 @@ public class SpikeController : EntityData
     protected int frameNumber = 0;
     protected Renderer sRender;
     protected GameData gameData;
+    protected bool animateRise = false;
+    protected int frameToSet = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +40,13 @@ public class SpikeController : EntityData
 
     public void LowerSpikeAnimation() {
         isAnimating = true;
+        animateRise = false;
     }
 
     public void RaiseSpikeAnimation()
     {
         isAnimating = true;
+        animateRise = true;
     }
 
 }

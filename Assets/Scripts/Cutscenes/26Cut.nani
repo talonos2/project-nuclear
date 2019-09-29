@@ -1,0 +1,27 @@
+#start
+
+$@scene= town
+
+$@place Tristana
+$@place Wilson
+
+@char Tristana
+Here, it's all that I've written so far.
+
+@char Wilson
+Why are you giving it to me?
+
+@char Tristana
+Because I know I won't leave without it. And now that I know your stories, I don't want to just leave you behind.
+
+$@animate curse Wilson
+
+@char Tristana
+Go on sir, its your turn.
+
+
+@fwmovepawn Wilson (toward cave)
+
+$@startRun
+
+@stop

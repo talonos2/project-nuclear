@@ -1,0 +1,48 @@
+#start
+
+$@scene= town
+
+$@place Phillip
+$@place Paul
+
+
+
+
+@char Phillip
+Quite a lot of loot coming in from that cave.
+
+@char Paul
+I guess, if you need hatchets.
+
+@char Phillip
+There’s more than that in there.  I bet someone out there would buy monster bones.
+
+@char Paul
+There's a pleasant thought.
+
+@char Phillip
+Hey, if we don’t get something out of this you’re going to be destitute.
+
+@char Paul
+You mean we’re going to be destitute.
+
+@char Phillip
+that’s what I said.
+
+@char Paul
+No, I mean... won’t you be destitute too?
+
+@char Phillip
+I, well... this is difficult to explain... You see—
+
+$@animate curse Phillip
+
+@char Phillip
+Oh thank (diety)
+
+@fwmovepawn Phillip (to exit)
+
+
+$@startRun
+
+@stop

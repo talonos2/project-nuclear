@@ -1,0 +1,85 @@
+#start
+
+$@scene= bar
+
+$@place Paul
+$@place Mara
+
+@char Paul
+It was two years ago ya-know, back when it only grabbed people foolish enough to get close.
+
+@char Mara
+Uh huh.
+
+
+@char Paul
+Sometimes I still think he'll be coming home any second, calling to show me a funny bug he found.
+
+@char Mara
+Uh huh.
+
+@char Paul
+But now's my chance! I won't let anythingstop me! When I see whatever fiend is causing this I'm gonna-
+
+@char Mara
+Woah there sugar, don't go tempting fate like that, remember what happened to Douglass?
+
+$@fwturnpawn Devon south
+
+
+(animation runs paralell to following text, scene stops when mara exits)
+$@wait (about two seconds)
+$@animate curse Mara
+$@setspeed mara veryhigh
+
+@fwmovepawn Mara west
+$@wait 20 frames
+@fwmovepawn Mara east
+@fwmovepawn Mara east
+$@wait 20 frames
+@fwmovepawn Mara west
+@fwmovepawn Mara west
+$@wait 20 frames
+@fwmovepawn Mara east
+@fwmovepawn Mara east
+$@wait 20 frames
+@fwmovepawn Mara west
+@fwmovepawn Mara west
+$@wait 20 frames
+@fwmovepawn Mara east
+@fwmovepawn Mara east
+$@wait 20 frames
+
+$@setspeed mara veryhigh
+@fwmovepawn Mara (to exit)
+$@remove Mara
+(end animation section)
+
+
+
+
+@char Paul
+So what!? I don't care! In fact, I want the curse! Do you hear me?! Paul Dodger is here! Take your best shot!...
+
+@char Paul
+Or are you too much of a coward?  Is that the problem ya cave!  I may be a simple woodsman, but you'll see.
+
+@char Paul
+I'm pretty handy with an ax.  I'll fell you just like a tree!  Trees are pretty tough.  
+
+@char Paul
+They don't move around much... but they can't be too different right?
+
+@char Paul
+Maybe the evil is a tree.  You never know. That'd be pretty conveniant.  I mean, Douglass didn't bring an axe did he?
+
+@char Paul
+I think I saw someone bring a hatchet. They probably didn't know how to use it though.
+
+@char Paul
+Not to be rude of course. But there's a reason I'm the woodsman in this town.
+
+
+$@startRun
+
+@stop

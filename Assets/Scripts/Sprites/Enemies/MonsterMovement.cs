@@ -33,22 +33,13 @@ public class MonsterMovement : SpriteMovement
     private float LookTiming = 0;
     private int CurrentFacing = 0;
     private int stuck = 0;
+    private float waitTimer = 0;
     
 
 
     // Update is called once per frame
     void Update()
     {
-
-        //if (MoveLocationIsMonster()) {
-
-        // }
-        //Test: will next step run into a player 
-        //Test: will next step run into a wall or monster
-        //Test: will next step run into a forbidden zone?
-        //Test: are There no locations to go? if not skip this movement phase
-        //If none of the above, update
-
 
         if (GameState.isInBattle==true) {
             return; 
@@ -75,6 +66,10 @@ public class MonsterMovement : SpriteMovement
             }
 
             if (PathRandomly) {
+                if (waitTimer >= 0) {
+                    waitTimer -= Time.deltaTime;
+                    return;
+                }
                 NextStep = GetRandomStep();
                 SetNextLocation(NextStep);
                 facedDirection = NextStep;
@@ -85,7 +80,13 @@ public class MonsterMovement : SpriteMovement
                     characterLocation = characterNextLocation;
                     currentlyMoving = true;
                 }
-                CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                else {
+                    waitTimer = .25f;
+                    SetLookDirection();
+                }
+
+                if (IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y))
+                    CheckForFight(characterNextLocation.x, characterNextLocation.y);
             }
 
 
@@ -95,9 +96,16 @@ public class MonsterMovement : SpriteMovement
                     ChangeMonsterFacing();
                 }
 
+
                 if (IsPlayerInView() && !CurrentlyChasingPlayer) {
                     CurrentlyChasingPlayer = true;
                     ChaseStepNumber = 0;
+                    waitTimer = .25f;
+                }
+                if (waitTimer >= 0)
+                {
+                    waitTimer -= Time.deltaTime;
+                    return;
                 }
 
                 if (CurrentlyChasingPlayer) {
@@ -122,7 +130,7 @@ public class MonsterMovement : SpriteMovement
                         NextStep = GetRandomStep();
                         SetNextLocation(NextStep);
                         facedDirection = NextStep;
-                        Debug.Log("MonsterIsStuck");
+
 
                     }
 
@@ -221,8 +229,11 @@ public class MonsterMovement : SpriteMovement
     private bool IsPlayerInView()
     {
         bool PlayerFound = false;
+        //
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < SpottingDistance; j++) {
+                if (i == 0 && j == 0) continue;
+                if (i == 2 && j == 0) continue;
                 switch (facedDirection) {
                     case DirectionMoved.UP:
                         if( isThereAPlayer(characterLocation.x + i - 1, characterLocation.y + j + 1) != null)
@@ -266,16 +277,16 @@ public class MonsterMovement : SpriteMovement
 
     private DirectionMoved GetRandomStep()
     {
-        DirectionMoved nexstp = 0;
+        //DirectionMoved nexstp = 0;
         System.Random rand = new System.Random();
-        int dirOrdinal = rand.Next(10)+1;
-        if (dirOrdinal > 4) nexstp = facedDirection;
+        int dirOrdinal = rand.Next(8)+1;
+        if (dirOrdinal > 4) dirOrdinal = (int)facedDirection;
         return (DirectionMoved)dirOrdinal;
     }
 
     private DirectionMoved GetNextStep()
     {
-        DirectionMoved nexstp =0;
+        DirectionMoved nexstp;
 
             if (CurrentStep == Pathing.Length)
                 CurrentStep = 0;

@@ -1,0 +1,20 @@
+#start
+
+$@scene= town
+
+$@place Jinn
+
+@char Jinn
+So cave, how many of my students have you taken over the years?
+I did my best to teach them to stay away from you.
+
+$@animate curse Jinn
+
+@char Jinn
+Now it's time to teach you a lesson.
+
+@fwmovepawn Jinn (toward cave)
+
+$@startRun
+
+@stop

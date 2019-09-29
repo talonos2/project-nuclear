@@ -1,0 +1,34 @@
+#start
+
+$@scene= town
+
+$@place Fluer
+$@place Paul
+
+@char Fluer
+You know, I really have to admire your handiwork on this.  It's so richly detailed.
+
+$@animate carvesound dummy
+
+@char Fluer
+You must have spent hours studying how those beasties look.
+
+$@animate carvesound dummy
+
+@char Fluer
+Well... it um, looks like you're just about done.
+
+@char Paul
+Yep, just need to make one last cut.
+
+$@animate break dummy
+
+$@wait
+
+$@animate curse Paul
+
+@fwmovepawn Paul (toward cave, slower than most)
+
+$@startRun
+
+@stop

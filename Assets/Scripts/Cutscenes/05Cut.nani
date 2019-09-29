@@ -1,0 +1,42 @@
+#start
+
+$@scene= town
+
+$@place Jerene
+$@place Norma
+$@place Paul
+$@place Fluer
+
+$@place scarecrow1
+$@place scarecrow2
+$@place scarecrow3
+
+@char Jerene
+Again!
+
+$@animate hit scarecrow1
+$@animate hit scarecrow2
+$@animate hit scarecrow3
+
+@char Jerene
+Again!
+
+$@animate hit scarecrow1
+$@animate hit scarecrow2
+$@animate hit scarecrow3
+$@animate Fluer collapse
+
+@char Jerene
+Ugh, take five.
+
+
+$@animate curse Norma
+
+(Norma runs off screen)
+
+@char Jerene
+On second thought, get up!
+
+$@startRun
+
+@stop

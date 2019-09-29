@@ -30,7 +30,7 @@ public class CharacterMovement : SpriteMovement
     {
 
 
-        if (gameData.Paused == true)
+        if (GameState.isInBattle == true)
         {
             return;
         }
@@ -95,27 +95,68 @@ public class CharacterMovement : SpriteMovement
         {
             return;
         }
-        GameObject entityToCheck = null;
+        GameObject entityToCheck;
         if (!currentlyMoving) {
-            switch (facedDirection)
-            {
+            switch (facedDirection) {
                 case DirectionMoved.UP:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y+1];
+                    if (entityToCheck != null) {
+                        if (entityToCheck.GetComponent<EntityData>().isItem) {
+                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch) {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
+                        }
+                        //if (entityToCheck.GetComponent<EntityData>().isNPC) {
+                            //entityToCheck.GetComponent
+                        //}
+                    }
                     break;
                 case DirectionMoved.DOWN:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y - 1];
+                    if (entityToCheck != null)
+                    {
+                        if (entityToCheck.GetComponent<EntityData>().isItem)
+                        {
+                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
+                        {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
+                        }
+                    }
                     break;
                 case DirectionMoved.LEFT:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x-1, characterLocation.y];
+                    if (entityToCheck != null)
+                    {
+                        if (entityToCheck.GetComponent<EntityData>().isItem)
+                        {
+                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
+                        {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
+                        }
+                    }
                     break;
                 case DirectionMoved.RIGHT:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x+1, characterLocation.y];
+                    if (entityToCheck != null)
+                    {
+                        if (entityToCheck.GetComponent<EntityData>().isItem)
+                        {
+                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
+                        }
+                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
+                        {
+                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
+                        }
+                    }
                     break;
+
             }
-            if (entityToCheck != null)
-            {
-                entityToCheck.GetComponent<EntityData>().ProcessClick(this.GetComponent<CharacterStats>());
-            }
+
         }
     }
 

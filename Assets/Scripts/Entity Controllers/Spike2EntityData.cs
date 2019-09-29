@@ -14,9 +14,12 @@ public class Spike2EntityData : SpikeController
         if (timeSinceLastFrame >= 1 / AnimationSpeed)
         {
             frameNumber += 1;
-            sRender.material.SetInt("_Frame", frameNumber);
+            if (animateRise) sRender.material.SetInt("_Frame", totalFrames - frameNumber-1) ;
+                else sRender.material.SetInt("_Frame", frameNumber);
             timeSinceLastFrame = 0;
-            if (frameNumber == totalFrames-1) isAnimating = false;
+            if (frameNumber == totalFrames - 1) { isAnimating = false;
+                frameNumber = 0;
+            }
         }
     }
 }
