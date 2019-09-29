@@ -13,38 +13,44 @@ MonoBehaviour:
   m_Name: TextPrintersConfiguration
   m_EditorClassIdentifier: 
   DefaultEasing: 0
-  DefaulPrinterId: Dialogue
+  DefaulPrinterId: FWDialogue
   MaxPrintDelay: 0.06
   DefaultMetadata:
     Implementation: Naninovel.UITextPrinter
     LoaderConfiguration:
       PathPrefix: TextPrinters
       ProviderTypes: 0000000001000000
-    guid: ce162044-b6c1-484e-b773-4ffd6336e3ea
+    guid: b83aee2a-ad69-4c02-9d32-1e90da549f99
   Metadata:
     ids:
     - Dialogue
     - Fullscreen
     - Wide
     - Chat
+    - FWDialogue
     metas:
     - Implementation: Naninovel.UITextPrinter
       LoaderConfiguration:
         PathPrefix: Naninovel/TextPrinters
         ProviderTypes: 0000000001000000
-      guid: 056e5087-4bfe-4b23-8098-50ef6dfab8f3
+      guid: f2d263de-a81c-474b-a0a7-0bdae7172ca9
     - Implementation: Naninovel.UITextPrinter
       LoaderConfiguration:
         PathPrefix: Naninovel/TextPrinters
         ProviderTypes: 0000000001000000
-      guid: f0b79640-5a31-4425-b1ca-d95c8a50fec9
+      guid: eadc362a-7bc9-4188-9cf6-4a8f779d99cf
     - Implementation: Naninovel.UITextPrinter
       LoaderConfiguration:
         PathPrefix: Naninovel/TextPrinters
         ProviderTypes: 0000000001000000
-      guid: ce8cffa4-33d6-4338-ab1d-d9164825e3e0
+      guid: 7e351fd9-4dbd-479f-9db9-f3fe4ac816a0
     - Implementation: Naninovel.UITextPrinter
       LoaderConfiguration:
         PathPrefix: Naninovel/TextPrinters
         ProviderTypes: 0000000001000000
-      guid: 760f5218-23c3-4688-a51d-7ed39fc416d4
+      guid: 1c836672-cc6e-4dee-8502-ed27f2ea8dc7
+    - Implementation: Naninovel.UITextPrinter
+      LoaderConfiguration:
+        PathPrefix: TextPrinters
+        ProviderTypes: 0000000001000000
+      guid: 235a951b-428c-4d64-bb3a-457aba049c11

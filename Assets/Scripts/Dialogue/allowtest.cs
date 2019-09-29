@@ -9,6 +9,7 @@ public class Allowtest : MonoBehaviour
     void Start()
     {
         RuntimeInitializer.InitializeAsync();
+        Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync("02Sara");
     }
 
     // Update is called once per frame

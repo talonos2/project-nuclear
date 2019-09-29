@@ -6,25 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class CharacterMovement : SpriteMovement
 {
-
-    /// <summary>
-    /// This is the character's start position. The character's transform won't matter; this will overwrite it.
-    /// </summary>
-    public Vector2 startPositionOnMap = new Vector2(0,0);
-
-    // Start is called before the first frame update
-
-    
-   
-
-
-    //private void Start()
-   // {
-   //     base.Start();
-   //     Vector2 transformToMoveTo = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(startPositionOnMap);
-   //     this.transform.position = new Vector3(transformToMoveTo.x, transformToMoveTo.y, -.1f);
-   // }
-
     // Update is called once per frame
     void Update()
     {
@@ -95,68 +76,27 @@ public class CharacterMovement : SpriteMovement
         {
             return;
         }
-        GameObject entityToCheck;
+        GameObject entityToCheck = null;
         if (!currentlyMoving) {
             switch (facedDirection) {
                 case DirectionMoved.UP:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y+1];
-                    if (entityToCheck != null) {
-                        if (entityToCheck.GetComponent<EntityData>().isItem) {
-                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
-                        }
-                        if (entityToCheck.GetComponent<EntityData>().isSwitch) {
-                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
-                        }
-                        //if (entityToCheck.GetComponent<EntityData>().isNPC) {
-                            //entityToCheck.GetComponent
-                        //}
-                    }
                     break;
                 case DirectionMoved.DOWN:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y - 1];
-                    if (entityToCheck != null)
-                    {
-                        if (entityToCheck.GetComponent<EntityData>().isItem)
-                        {
-                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
-                        }
-                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
-                        {
-                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
-                        }
-                    }
                     break;
                 case DirectionMoved.LEFT:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x-1, characterLocation.y];
-                    if (entityToCheck != null)
-                    {
-                        if (entityToCheck.GetComponent<EntityData>().isItem)
-                        {
-                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
-                        }
-                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
-                        {
-                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
-                        }
-                    }
                     break;
                 case DirectionMoved.RIGHT:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x+1, characterLocation.y];
-                    if (entityToCheck != null)
-                    {
-                        if (entityToCheck.GetComponent<EntityData>().isItem)
-                        {
-                            entityToCheck.GetComponent<RandomChestController>().ProcessClick(this.GetComponent<CharacterStats>());
-                        }
-                        if (entityToCheck.GetComponent<EntityData>().isSwitch)
-                        {
-                            entityToCheck.GetComponent<SwitchEntityData>().ProcessClick();
-                        }
-                    }
                     break;
 
             }
-
+            if (entityToCheck != null)
+            {
+                entityToCheck.GetComponent<EntityData>().ProcessClick(this.GetComponent<CharacterStats>());
+            }
         }
     }
 
