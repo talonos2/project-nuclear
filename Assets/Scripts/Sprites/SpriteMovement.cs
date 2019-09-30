@@ -260,7 +260,7 @@ public class SpriteMovement : MonoBehaviour
     protected GameObject isThereAPlayer(int CharLocX, int CharLocY)
     {
         GameObject EnemyPresent = null;
-        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[CharLocX, CharLocY]; ;
+        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[CharLocX, CharLocY]; 
 
         if (EntityToFight != null)
         {
