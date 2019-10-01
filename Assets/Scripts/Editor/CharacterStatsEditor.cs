@@ -32,6 +32,8 @@ public class CharacterStatsEditor : Editor
         charac.defense = EditorGUILayout.FloatField("defense", charac.defense);
             charac.experience = EditorGUILayout.IntField("experience", charac.experience);
             charac.expToLevel = EditorGUILayout.IntField("expToLevel", charac.expToLevel);
+            charac.currentPower =EditorGUILayout.IntField("currentPower", charac.currentPower);
+            charac.powersGained = EditorGUILayout.IntField("powersGained", charac.powersGained);
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
         equipment = EditorGUILayout.BeginFoldoutHeaderGroup(equipment, "Equipment");
