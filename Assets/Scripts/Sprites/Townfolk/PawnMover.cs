@@ -24,15 +24,25 @@ public class PawnMover : SpriteMovement
             float finishedMoving = ContinueMoving();
             if (finishedMoving == 0)
             {
+                //Debug.Log("Done moving!");
                 currentlyMoving = false;
                 SetCurrentLocation();
+            }
+            else
+            {
+                //Debug.Log("Already Moving!");
             }
         }
         else
         {
             if (movementQueue.Count > 0)
             {
+                //Debug.Log("Moving!");
                 MoveKeyReceived(movementQueue.Dequeue());
+            }
+            else
+            {
+                //Debug.Log("No direction to move to!");
             }
         }
     }
@@ -40,11 +50,6 @@ public class PawnMover : SpriteMovement
     //Key command received from CharacterInputController script
     private void MoveKeyReceived(DirectionMoved inputDirection)
     {
-        if (GameState.isInBattle == true) // Defensive. In practice, this should never happen.
-        {
-            return;
-        }
-
         if (inputDirection == (int)DirectionMoved.NONE)
         {
             SetLookDirection();

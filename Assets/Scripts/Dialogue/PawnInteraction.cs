@@ -7,10 +7,9 @@ using UnityEngine;
 public class PawnInteraction : EntityData
 {
 
-    private Vector2Int SwitchLocation;
-    private GameObject MapGrid;
-    private Vector2 MapZeroLocation;
-    public float AnimationSpeed = 6;
+    private Vector2Int pawnLocation;
+    private GameObject mapGrid;
+    private Vector2 mapZeroLocation;
     private Renderer sRender;
 
     public String scriptName;
@@ -26,19 +25,22 @@ public class PawnInteraction : EntityData
 
     private void InitializeSpriteLocation()
     {
-        MapGrid = GameObject.Find("Grid");
-        MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
-        SwitchLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
-        SwitchLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
-        MapGrid.GetComponent<EntityGrid>().grid[SwitchLocation.x, SwitchLocation.y] = this.gameObject;
+        mapGrid = GameObject.Find("Grid");
+        mapZeroLocation = mapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
+        pawnLocation.x = (int)Math.Round(this.transform.position.x) - (int)mapZeroLocation.x;
+        pawnLocation.y = (int)Math.Round(this.transform.position.y) - (int)mapZeroLocation.y;
+        mapGrid.GetComponent<EntityGrid>().grid[pawnLocation.x, pawnLocation.y] = this.gameObject;
 
     }
 
     public override void ProcessClick(CharacterStats stats)
     {
-        Debug.Log("Here in interact");
-        RuntimeInitializer.InitializeAsync();
-        Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(scriptName);
+        if (GameState.isInBattle == false)
+        {
+            GameState.isInBattle = true;
+            RuntimeInitializer.InitializeAsync();
+            Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(scriptName);
+        }
     }
 
     void Update()

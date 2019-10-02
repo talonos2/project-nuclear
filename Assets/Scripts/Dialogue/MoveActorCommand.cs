@@ -7,27 +7,27 @@ using UnityEngine;
 public class MoveActorCommand : Naninovel.Commands.Command
 {
     [CommandParameter]
-    public string pawnName { get; set; }
+    public string n { get; set; }
 
     [CommandParameter]
-    public string direction { get; set; }
+    public string d { get; set; }
 
     public override Task ExecuteAsync()
     {
-        Debug.Log("Trying to move " + pawnName);
-        GameObject go = GameObject.Find(pawnName);
+        Debug.Log("Trying to move " + n);
+        GameObject go = GameObject.Find(n);
         if (go == null)
         {
-            Debug.LogWarning("GO " + pawnName + "Not found to move with fwmovepawn!");
+            Debug.LogWarning("GO " + n + "Not found to move with fwmovepawn!");
             return Task.CompletedTask;
         }
         PawnMover mover = go.GetComponent<PawnMover>();
         if (mover == null)
         {
-            Debug.LogWarning("No PawnMover on " + pawnName + " to move with fwmovepawn!");
+            Debug.LogWarning("No PawnMover on " + n + " to move with fwmovepawn!");
             return Task.CompletedTask;
         }
-        mover.EnqueueMovement(direction);
+        mover.EnqueueMovement(d);
 
         return Task.CompletedTask;
     }

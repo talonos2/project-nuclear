@@ -7,7 +7,7 @@ using UnityEngine;
 public class SpawnVFXCOmmand : Naninovel.Commands.Command
 {
     [CommandParameter]
-    public string resourceName { get; set; }
+    public string vfx { get; set; }
 
     [CommandParameter]
     public float x { get; set; }
@@ -20,8 +20,8 @@ public class SpawnVFXCOmmand : Naninovel.Commands.Command
 
     public override Task ExecuteAsync()
     {
-        GameObject vfx = GameObject.Instantiate(Resources.Load("Prefabs/VFX/"+resourceName) as GameObject);
-        vfx.transform.position = new Vector3(x, y, z);
+        GameObject vfxgo = GameObject.Instantiate(Resources.Load("Prefabs/VFX/"+vfx) as GameObject);
+        vfxgo.transform.position = new Vector3(x, y, z);
         return Task.CompletedTask;
     }
 
