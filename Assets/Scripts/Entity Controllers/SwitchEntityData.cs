@@ -39,7 +39,7 @@ public class SwitchEntityData : EntityData
 
     }
 
-    public void ProcessClick() {
+    override public void ProcessClick(CharacterStats stats) {
         if (isAnimating) { return; }
 
         if (activeSwitch)

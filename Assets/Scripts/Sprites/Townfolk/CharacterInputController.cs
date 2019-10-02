@@ -6,12 +6,12 @@ using static SpriteMovement;
 public class CharacterInputController : MonoBehaviour
 {
     // Start is called before the first frame update
-    CharacterMovement characterToMove;
+    CharacterMovement characterController;
     EntityData characterEntityData;
     private bool moveable;
     void Start()
     {
-        characterToMove = this.gameObject.GetComponent<CharacterMovement>();
+        characterController = this.gameObject.GetComponent<CharacterMovement>();
         characterEntityData=this.gameObject.GetComponent<EntityData>();
         if (characterEntityData.isMainCharacter) moveable = true;
     }
@@ -22,9 +22,19 @@ public class CharacterInputController : MonoBehaviour
         if (!moveable) { return; }
 
         if (Input.GetButtonDown("Submit")){
-            characterToMove.ActivateKeyReceived();
+            characterController.ActivateKeyReceived();
         }
-        characterToMove.MoveKeyReceived(GetInputDirection());
+        if (Input.GetButtonDown("PowerToggleLeft")) {
+            characterController.PowerToggleLeftKeyReceived();
+        }
+        if (Input.GetButtonDown("PowerToggleRight"))
+        {
+            characterController.PowerToggleRightKeyReceived();
+        }
+        if (Input.GetButtonDown("PowerActivate")) {
+            characterController.PowerActivateKeyReceived();
+        }
+        characterController.MoveKeyReceived(GetInputDirection());
        
     }
 

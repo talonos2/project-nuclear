@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 132
   HP: 132
   attack: 74
   defense: 8
@@ -58,7 +58,11 @@ MonoBehaviour:
   weakness: 3
   crystalType: 3
   crystalDropAmount: 12
-  combatSprites: []
+  combatSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &827846531077113007
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +74,7 @@ GameObject:
   - component: {fileID: 1025393392303808945}
   - component: {fileID: 7242850373760706377}
   m_Layer: 0
-  m_Name: Necromancer
+  m_Name: Spiral Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 205
   HP: 205
   attack: 100
   defense: 10
@@ -112,12 +116,16 @@ MonoBehaviour:
   gettingStruckPointOffset: {x: 0, y: 0}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
-  enemyName: Necromancer
+  enemyName: Spiral Soldier
   ExpGiven: 1510
   weakness: 4
   crystalType: 3
   crystalDropAmount: 20
-  combatSprites: []
+  combatSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1561709137489326470
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 185
   HP: 185
   attack: 60
   defense: 16
@@ -542,7 +550,7 @@ GameObject:
   - component: {fileID: 471515124049959289}
   - component: {fileID: 4297597390383548110}
   m_Layer: 0
-  m_Name: Garuda
+  m_Name: Drone Carrier Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -584,7 +592,7 @@ MonoBehaviour:
   gettingStruckPointOffset: {x: 0, y: 0}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
-  enemyName: Garuda
+  enemyName: Drone Carrier Boss
   ExpGiven: 8500
   weakness: 4
   crystalType: 5
@@ -719,7 +727,7 @@ GameObject:
   - component: {fileID: 6976898961583178491}
   - component: {fileID: 7282170668926112147}
   m_Layer: 0
-  m_Name: Ghost
+  m_Name: Yellow Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -751,7 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 305
   HP: 305
   attack: 86
   defense: 20
@@ -761,12 +769,16 @@ MonoBehaviour:
   gettingStruckPointOffset: {x: 0, y: 0}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
-  enemyName: Ghost
+  enemyName: Yellow Slime
   ExpGiven: 1150
   weakness: 4
   crystalType: 1
   crystalDropAmount: 20
-  combatSprites: []
+  combatSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &4713860520958778024
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +849,7 @@ GameObject:
   - component: {fileID: 5659733639788932599}
   - component: {fileID: 5091151729333335359}
   m_Layer: 0
-  m_Name: Gazer
+  m_Name: Shield Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -869,7 +881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 405
   HP: 405
   attack: 79
   defense: 24
@@ -879,7 +891,7 @@ MonoBehaviour:
   gettingStruckPointOffset: {x: 0, y: 0}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
-  enemyName: Gazer
+  enemyName: Shield Soldier
   ExpGiven: 1325
   weakness: 4
   crystalType: 2
@@ -1474,7 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 245
   HP: 245
   attack: 54
   defense: 20
@@ -1489,7 +1501,11 @@ MonoBehaviour:
   weakness: 3
   crystalType: 2
   crystalDropAmount: 12
-  combatSprites: []
+  combatSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8126632054429326452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,7 +1517,7 @@ GameObject:
   - component: {fileID: 9182136180330085162}
   - component: {fileID: 3971019676788468848}
   m_Layer: 0
-  m_Name: Vampire
+  m_Name: Fire Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1533,7 +1549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 435
   HP: 435
   attack: 104
   defense: 24
@@ -1543,12 +1559,16 @@ MonoBehaviour:
   gettingStruckPointOffset: {x: 0, y: 0}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
-  enemyName: Vampire
+  enemyName: Fire Drone
   ExpGiven: 1710
   weakness: 3
   crystalType: 4
   crystalDropAmount: 20
-  combatSprites: []
+  combatSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8451098583420310700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,7 +1671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 275
   HP: 275
   attack: 68
   defense: 20

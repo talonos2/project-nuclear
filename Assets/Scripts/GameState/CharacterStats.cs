@@ -54,6 +54,9 @@ public class CharacterStats : Stats
     public int accessoryDodgeBonus;
     public int accessoryAttackPercent;
 
+    public int powersGained = 0;
+    public int currentPower = 0;
+
     private GameObject gameStateData;
     private GameData gameData;
     private CharacterStats SavedStats;
@@ -91,6 +94,8 @@ public class CharacterStats : Stats
         this.defense = SavedStats.defense;
         this.experience = SavedStats.experience;
         this.expToLevel = SavedStats.expToLevel;
+        this.powersGained = SavedStats.powersGained;
+        this.currentPower = SavedStats.currentPower;
 
         this.HealthCrystalsGained = SavedStats.HealthCrystalsGained;
         this.ManaCrystalsGained = SavedStats.ManaCrystalsGained;
@@ -117,6 +122,8 @@ public class CharacterStats : Stats
         SavedStats.defense= this.defense;
         SavedStats.experience = this.experience;
         SavedStats.expToLevel = this.expToLevel;
+        SavedStats.powersGained = this.powersGained;
+        SavedStats.currentPower = this.currentPower;
 
         SavedStats.HealthCrystalsGained=this.HealthCrystalsGained;
         SavedStats.ManaCrystalsGained=this.ManaCrystalsGained;

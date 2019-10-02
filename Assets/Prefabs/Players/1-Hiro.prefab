@@ -112,9 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 6
   framesPerSecond: 8
-  CharacterLocation: {x: 0, y: 0}
-  CharacterNextLocation: {x: 0, y: 0}
-  startPositionOnMap: {x: 2, y: 5}
+  facedDirection: 4
 --- !u!114 &8620583717511749603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +165,8 @@ MonoBehaviour:
   homePositionOnScreen: {x: -0.45, y: -0.8}
   strikingPointOffset: {x: 0, y: 0}
   gettingStruckPointOffset: {x: 0, y: 0}
+  scale: {x: 1, y: 1}
+  forceOpponentAdditionalScale: {x: 1, y: 1}
   HealthCrystalsGained: 0
   ManaCrystalsGained: 0
   AttackCrystalsGained: 0
@@ -300,7 +300,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8620583718238683049}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &8620583718818935986
 GameObject:
   m_ObjectHideFlags: 0

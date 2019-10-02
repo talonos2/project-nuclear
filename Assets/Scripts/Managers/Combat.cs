@@ -128,7 +128,7 @@ public class Combat : MonoBehaviour
         float timeSinceLastPlayerAttack = combatTimer % totalAnimationTime;
         float timeSinceLastMonsterAttack = (combatTimer > enemyAttackTime ? (combatTimer - enemyAttackTime) % totalAnimationTime : 0);
 
-        Debug.Log("Player:" + playerStats.homePositionOnScreen);
+        //Debug.Log("Player:" + playerStats.homePositionOnScreen);
 
         int playerFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
         int enemyFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
@@ -213,15 +213,52 @@ public class Combat : MonoBehaviour
 
     private void DealDamageToEnemy()
     {
-        float incomingDamage = (int)playerStats.attack + playerStats.weaponBonusAttack;
+        float incomingDamage = (int)playerStats.attack + playerStats.weaponBonusAttack+playerStats.accessoryAttack;
+        incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent);
         incomingDamage -= monsterStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
-        monsterStats.HP -=  Mathf.RoundToInt(incomingDamage);
+        float elementalDamage = incomingDamage * playerStats.currentPower * .25f;
+        if (playerStats.currentPower == (int)ElementalPower.ICE) { elementalDamage *= 1 + playerStats.accessoryIceBonus;
+            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage *= 2; }
+            if (playerStats.mana >= 2) { playerStats.mana -= 2; }
+                else { elementalDamage = 0; }
+        }
+        if (playerStats.currentPower == (int)ElementalPower.EARTH) { elementalDamage *= 1 + playerStats.accessoryEarthBonus;
+            if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage *= 2; }
+            if (playerStats.mana >= 4) { playerStats.mana -= 4; }
+                else { elementalDamage = 0; }
+        }
+        if (playerStats.currentPower == (int)ElementalPower.FIRE) { elementalDamage *= 1 + playerStats.accessoryFireBonus;
+            if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage *= 2; }
+            if (playerStats.mana >= 6) { playerStats.mana -= 6; }
+                else { elementalDamage = 0; }
+        }
+        if (playerStats.currentPower == (int)ElementalPower.AIR) { elementalDamage *= 1 + playerStats.accessoryAirBonus;
+            if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage *= 2; }
+            if (playerStats.mana >= 8) { playerStats.mana -= 8; }
+                else { elementalDamage = 0; }
+        }
+        incomingDamage *= 1 + rollCrit();
+
+        Debug.Log("ed: " + elementalDamage);
+        monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
+
+        //need elemental hit-splat if elemental damage is > 0
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
         Debug.Log("Monster HP:" + monsterStats.HP);
         CheckCombatOver();
+    }
+
+    private float rollCrit()
+    {
+        float critValue = 0;
+        System.Random rand = new System.Random(100);
+        int roll = rand.Next() + 1;
+        if (roll <= playerStats.accessoryCritChance) { critValue = 1.5f; }
+
+        return critValue;
     }
 
     private void DealDamageToPlayer()
@@ -240,7 +277,7 @@ public class Combat : MonoBehaviour
 
     private void HandleEntranceRoutine()
     {
-        Debug.Log("Time: " + enterTimer / ENTER_TIME);
+        //Debug.Log("Time: " + enterTimer / ENTER_TIME);
         Vector3 startPos = monsterStats.startPositionOnScreen;
         Vector3 targetPos = monsterStats.homePositionOnScreen;
         Vector3 lerpedPos = Vector3.Lerp(startPos, targetPos, enterTimer / ENTER_TIME);

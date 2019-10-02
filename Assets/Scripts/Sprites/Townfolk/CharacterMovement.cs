@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class CharacterMovement : SpriteMovement
 {
+
+    public CharacterStats playerStats;
     // Update is called once per frame
     void Update()
     {
@@ -69,6 +71,48 @@ public class CharacterMovement : SpriteMovement
                 Combat.InitiateFight(this.gameObject, EnemyToFight);
             }
         }
+    }
+
+    internal void PowerActivateKeyReceived()
+    {
+        if (GameState.isInBattle == true)
+        {
+            return;
+        }
+        if (playerStats == null)
+        {
+            playerStats = this.GetComponent<CharacterStats>();
+        }
+    }
+
+    internal void PowerToggleLeftKeyReceived()
+    {
+        if (playerStats == null)
+        {
+            playerStats = this.GetComponent<CharacterStats>();
+        }
+        if (playerStats.powersGained == 0) return;
+        playerStats.currentPower -= 1;
+        if (playerStats.currentPower < 0) {
+            playerStats.currentPower = playerStats.powersGained;
+        }
+
+    }
+
+
+    internal void PowerToggleRightKeyReceived()
+    {
+        if (playerStats == null)
+        {
+            playerStats = this.GetComponent<CharacterStats>();
+        }
+        if (playerStats.powersGained == 0) return;
+        playerStats.currentPower += 1;
+        if (playerStats.currentPower > playerStats.powersGained)
+        {
+            playerStats.currentPower = 0;
+        }
+
     }
 
     public void ActivateKeyReceived() {
