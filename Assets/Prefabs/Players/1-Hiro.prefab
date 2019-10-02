@@ -113,6 +113,7 @@ MonoBehaviour:
   MoveSpeed: 6
   framesPerSecond: 8
   facedDirection: 4
+  playerStats: {fileID: 0}
 --- !u!114 &8620583717511749603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainCharacter: 0
   isAMonster: 0
+  isLargeMonster: 0
   isInteractableObject: 0
   isItem: 0
   isSwitch: 0
@@ -204,6 +206,8 @@ MonoBehaviour:
   accessoryMPVamp: 0
   accessoryDodgeBonus: 0
   accessoryAttackPercent: 0
+  powersGained: 0
+  currentPower: 0
 --- !u!65 &8620583717511749610
 BoxCollider:
   m_ObjectHideFlags: 0

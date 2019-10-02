@@ -159,14 +159,14 @@ public class MonsterMovement : SpriteMovement
 
         }
 
-
-
-
         if (currentlyMoving == true)
         {
             float finishedMoving = MoveToNextSquare();
             if (finishedMoving == 0)
+            {
                 currentlyMoving = false;
+                tiePositionToGrid();
+            }
         }
 
 

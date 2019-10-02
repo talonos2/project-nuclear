@@ -12,6 +12,7 @@ public class DoodadData : MonoBehaviour
     public bool isTeleporter = false;
     public bool isExit = false;
     public bool isBlockableTerrain = false;
+    public bool isTallBlockableTerrain = false;
     public bool isBackgroundCharacter = false;
 
     protected Vector2Int DoodadLocation;
