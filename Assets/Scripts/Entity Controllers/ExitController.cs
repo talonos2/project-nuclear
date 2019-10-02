@@ -21,6 +21,7 @@ public class ExitController : DoodadData
 
             gameData.SetNextLocation(exitPosition, exitFacing);
         
+        
         SceneManager.LoadScene(mapToLoad);
 
     }

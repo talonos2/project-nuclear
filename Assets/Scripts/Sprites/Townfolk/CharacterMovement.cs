@@ -19,14 +19,24 @@ public class CharacterMovement : SpriteMovement
             return;
         }
 
-        //If in the process of moving, keep moving and do nothing else
-        if (!currentlyMoving && jumping) {
-            float finishedMoving = ContinueJumping();
-            if (finishedMoving == 0)
-            {
-                currentlyMoving = false;
-                SetCurrentLocation();
-                CheckExitStatus();
+        if (!currentlyMoving && (jumping|| jumpQued)) {
+
+
+            if (jumpQued &&!jumping) {
+                jumping = ActivateJump();
+                jumpQued = false;
+            }
+
+            if (jumping) { 
+                float finishedMoving = ContinueJumping();
+                if (finishedMoving == 0)
+                {
+                    currentlyMoving = false;
+                    jumping = false;
+                    tempFramesPerSecond = framesPerSecond;
+                    SetCurrentLocation();
+                    CheckExitStatus();
+                }
             }
         }
 
@@ -34,6 +44,8 @@ public class CharacterMovement : SpriteMovement
 
         }
 
+
+        //If in the process of moving, keep moving and do nothing else
         if (currentlyMoving)
         {
             float finishedMoving = ContinueMoving();
@@ -58,7 +70,7 @@ public class CharacterMovement : SpriteMovement
             return;
         }
 
-        if (!currentlyMoving && !jumping && !dashing)
+        if (!currentlyMoving && !jumping && !dashing && !jumpQued)
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
@@ -98,7 +110,7 @@ public class CharacterMovement : SpriteMovement
         {
             playerStats = this.GetComponent<CharacterStats>();
         }
-        if (!currentlyMoving && !jumping && !dashing)
+        if (!jumping && !dashing )
         {
             switch (playerStats.currentPower)
             {
@@ -112,7 +124,8 @@ public class CharacterMovement : SpriteMovement
                     ActivateHaste();
                     break;
                 case (int)ElementalPower.AIR:
-                    ActivateJump();
+                    jumpQued = true;
+                    //ActivateJump();
                     break;
                 default:
                     return;
@@ -120,39 +133,61 @@ public class CharacterMovement : SpriteMovement
         }
     }
 
-    private void ActivateJump()
+    private bool ActivateJump()
     {
-
-            if (playerStats.mana < 10) return;
-
+        bool jumpingTemp = true; ;
+        if (playerStats.mana < 10) {
+            jumpingTemp = false;
+            return jumpingTemp;
+        }
             switch (facedDirection)
             {
                 case DirectionMoved.UP:
-                  //  entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y + 1];
-                    break;
+                if (isLocationJumpOverable(characterLocation.x, characterLocation.y + 1) && IsPlayerMoveLocationPassable(characterLocation.x, characterLocation.y + 2))
+                {
+
+                    SetNextLocationActual(characterLocation.x, characterLocation.y + 2);
+                  //  jumping = true;
+                    tempFramesPerSecond *= jumpSpeed;
+                }
+                else jumpingTemp = false;
+                //  entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y + 1];
+                break;
                 case DirectionMoved.DOWN:
-                   // entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y - 1];
-                    break;
+                if (isLocationJumpOverable(characterLocation.x, characterLocation.y - 1) && IsPlayerMoveLocationPassable(characterLocation.x, characterLocation.y - 2))
+                {
+
+                    SetNextLocationActual(characterLocation.x, characterLocation.y - 2);
+                    //jumping = true;
+                    tempFramesPerSecond *= jumpSpeed;
+                }
+                else jumpingTemp = false;
+                // entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y - 1];
+                break;
                 case DirectionMoved.LEFT:
-                    
-              
-                    //if it is possible, check for a monster attack
-                    //Needs to be refractored a bit
-
-
                     if (isLocationJumpOverable(characterLocation.x - 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x - 2, characterLocation.y)) {
                         
                         SetNextLocationActual(characterLocation.x - 2, characterLocation.y);                        
-                        jumping = true;
+                       // jumping = true;
+                    tempFramesPerSecond *= jumpSpeed;
                     }
-                    break;
+                else jumpingTemp = false;
+                break;
                 case DirectionMoved.RIGHT:
-                  //  entityToCheck = mapEntityGrid.grid[characterLocation.x + 1, characterLocation.y];
-                    break;
+                if (isLocationJumpOverable(characterLocation.x + 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x + 2, characterLocation.y))
+                {
+
+                    SetNextLocationActual(characterLocation.x + 2, characterLocation.y);
+                   // jumping = true;
+                    tempFramesPerSecond *= jumpSpeed;
+                }
+                else jumpingTemp = false;
+                //  entityToCheck = mapEntityGrid.grid[characterLocation.x + 1, characterLocation.y];
+                break;
 
             }
-        if (jumping == true) { playerStats.mana -= 10; }
-        
+        if (jumpingTemp == true) { playerStats.mana -= 10; }
+        return jumpingTemp;
     }
 
     private bool isLocationJumpOverable(int characterLocationx, int characterLocationy)
@@ -262,6 +297,11 @@ public class CharacterMovement : SpriteMovement
         if (exitLocation != null)
         {
             if (exitLocation.GetComponent<DoodadData>().isExit) {
+                if (playerStats == null)
+                {
+                    playerStats = this.GetComponent<CharacterStats>();
+                }
+                playerStats.PushCharacterData();
                 exitLocation.GetComponent<ExitController>().TransitionMap(); 
             }
         }
@@ -324,11 +364,11 @@ public class CharacterMovement : SpriteMovement
         float finishedMoving = 0;
         if (facedDirection == DirectionMoved.UP)
         {
-            finishedMoving = MoveUp(MoveSpeed);
+            finishedMoving = JumpUp(MoveSpeed * jumpSpeed);
         }
         if (facedDirection == DirectionMoved.DOWN)
         {
-            finishedMoving = MoveDown(MoveSpeed);
+            finishedMoving = JumpDown(MoveSpeed * jumpSpeed);
         }
         if (facedDirection == DirectionMoved.LEFT)
         {
@@ -336,7 +376,7 @@ public class CharacterMovement : SpriteMovement
         }
         if (facedDirection == DirectionMoved.RIGHT)
         {
-            finishedMoving = MoveRight(MoveSpeed);
+            finishedMoving = JumpRight(MoveSpeed * jumpSpeed);
         }
         return finishedMoving;
     }
