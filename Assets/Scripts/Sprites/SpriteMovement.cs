@@ -26,8 +26,8 @@ public class SpriteMovement : MonoBehaviour
     private float movedSoFar = 0;
     private float timeSinceLastAnimation = 0;
     private int animationStep = 0;
-    protected float jumpHeight = .22f;
-    protected float jumpSpeed = 1.5f;
+    protected float jumpHeight = .25f;
+    protected float jumpSpeed = 1.25f;
     protected bool jumpQued = false;
     protected bool dashQued = false;
     protected float queDistance = .75f;
@@ -74,12 +74,10 @@ public class SpriteMovement : MonoBehaviour
         homeLocation.y = characterLocation.y;
     }
 
-    protected void SetCurrentLocation() {
-        //Vector3 roundLocation = new Vector3((int)Math.Round(this.transform.position.x), (int)Math.Round(this.transform.position.y),0);
-        //this.transform.position = roundLocation;
+    protected void SetCurrentLocation()
+    {
         characterLocation.x = (int)Math.Round(this.transform.position.x) - (int)mapZeroLocation.x;
         characterLocation.y = (int)Math.Round(this.transform.position.y) - (int)mapZeroLocation.y;
-        //Debug.Log("" + CharacterLocation.x + " "+CharacterLocation.y);
     }
 
     protected float MoveToNextSquare()
@@ -406,6 +404,11 @@ public class SpriteMovement : MonoBehaviour
       
     }
 
+    public bool JumpToTarget(float jumpMoveSpeed,Vector2Int jumpDistance) {
+
+        return false;
+    }
+
     public float JumpLeft(float jumpMoveSpeed)
     {
         float TotalDistance = 2;
@@ -419,7 +422,7 @@ public class SpriteMovement : MonoBehaviour
             DistanceToMove = DistanceToMove - (movedSoFar/TotalDistance - 1);
             movedSoFar = 0;
         }
-        Vector3 getMotion = new Vector3(-DistanceToMove, JumpHeightCalc(jumpHeight,movedSoFar/TotalDistance), 0.0f);
+        Vector3 getMotion = new Vector3(-DistanceToMove, JumpHorizontalCalc(jumpHeight,movedSoFar/TotalDistance), 0.0f);
         transform.position = transform.position + getMotion;
         if (movedSoFar == 0) tiePositionToGrid(); 
 
@@ -439,27 +442,47 @@ public class SpriteMovement : MonoBehaviour
             DistanceToMove = DistanceToMove - (movedSoFar / TotalDistance - 1);
             movedSoFar = 0;
         }
-        Vector3 getMotion = new Vector3(DistanceToMove, JumpHeightCalc(jumpHeight, movedSoFar / TotalDistance), 0.0f);
+        Vector3 getMotion = new Vector3(DistanceToMove, JumpHorizontalCalc(jumpHeight, movedSoFar / TotalDistance), 0.0f);
         transform.position = transform.position + getMotion;
         if (movedSoFar == 0) tiePositionToGrid();
 
         return movedSoFar;
     }
+
+    private float JumpVerticalCalc(float height, float aveMovedSoFar, float timedDistance)
+    {
+
+        float calcHeightChange;
+        //Debug.Log("moved so far in jump calc " + movedSoFar + " sin value " + (float)Math.Sin(movedSoFar * Math.PI));
+        //when x=0, y=0, x=1, y=1, x=2, y=0;
+        //moved so far is between 0 and 1. 0@0, 1@90, 
+        calcHeightChange = height * (float)Math.Sin(aveMovedSoFar * Math.PI);
+        //Debug.Log(movedSoFar + " actual height " + calcHeightChange);
+        if (aveMovedSoFar > .5)
+            calcHeightChange *= -.9f;
+        //timedDistance +
+        calcHeightChange += timedDistance;
+        //if (calcHeightChange < 0) calcHeightChange = 0;
+        return calcHeightChange;
+    }
+
     public float JumpUp(float jumpMoveSpeed)
     {
         float TotalDistance = 2;
         float DistanceToMove = 1;
+      
         DistanceToMove = Time.deltaTime * jumpMoveSpeed;
         movedSoFar += DistanceToMove;
-
         AnimateMoveUp();
-        if (movedSoFar > 2)
+        if (movedSoFar > TotalDistance)
         {
-            DistanceToMove = DistanceToMove - (movedSoFar / TotalDistance - 1);
+            DistanceToMove = DistanceToMove - (movedSoFar - TotalDistance);
             movedSoFar = 0;
         }
-        Vector3 getMotion = new Vector3(0.0f, DistanceToMove+ JumpHeightCalc(jumpHeight, movedSoFar / TotalDistance),  0.0f);
+        Vector3 getMotion = new Vector3(0.0f, JumpVerticalCalc(jumpHeight, movedSoFar / TotalDistance, DistanceToMove),  0.0f);
+
         transform.position = transform.position + getMotion;
+        //Debug.Log(" y pos " + transform.position.y);
         if (movedSoFar == 0) tiePositionToGrid();
 
         return movedSoFar;
@@ -477,7 +500,7 @@ public class SpriteMovement : MonoBehaviour
             DistanceToMove = DistanceToMove - (movedSoFar / TotalDistance - 1);
             movedSoFar = 0;
         }
-        Vector3 getMotion = new Vector3(0.0f, -DistanceToMove - JumpHeightCalc(jumpHeight, movedSoFar / TotalDistance),  0.0f);
+        Vector3 getMotion = new Vector3(0.0f, - JumpVerticalCalc(jumpHeight, movedSoFar / TotalDistance, DistanceToMove),  0.0f);
         transform.position = transform.position + getMotion;
         if (movedSoFar == 0) tiePositionToGrid();
 
@@ -574,18 +597,19 @@ public class SpriteMovement : MonoBehaviour
         transform.position = new Vector3(characterLocation.x + (int)mapZeroLocation.x, characterLocation.y + (int)mapZeroLocation.y, transform.position.z);
     }
 
-    private float JumpHeightCalc(float height, float movedSoFar)
+    private float JumpHorizontalCalc(float height, float movedSoFar)
     {
         float calcHeightChange;
         //when x=0, y=0, x=1, y=1, x=2, y=0;
-        Debug.Log(movedSoFar);
         //moved so far is between 0 and 1. 0@0, 1@90, 
         calcHeightChange = height * (float)Math.Sin(movedSoFar * Math.PI);
-        Debug.Log(movedSoFar+" actual height "+calcHeightChange);
+        //Debug.Log(movedSoFar+" actual height "+calcHeightChange);
         if (movedSoFar > .5)
             calcHeightChange *= -1;
         return calcHeightChange;
     }
+
+    
 
     protected DirectionMoved GetChaseStep()
     {
