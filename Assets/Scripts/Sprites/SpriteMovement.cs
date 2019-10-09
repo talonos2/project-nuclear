@@ -24,6 +24,8 @@ public class SpriteMovement : MonoBehaviour
     private string spriteNames;
 
     private float movedSoFar = 0;
+    protected float movedSoFarX = 0;
+    protected float movedSoFarY = 0;
     private float timeSinceLastAnimation = 0;
     private int animationStep = 0;
     protected float jumpHeight = .25f;
@@ -406,6 +408,23 @@ public class SpriteMovement : MonoBehaviour
 
     public bool JumpToTarget(float jumpMoveSpeed,Vector2Int jumpDistance) {
 
+        float DistanceToMoveX = Time.deltaTime * jumpMoveSpeed * jumpDistance.x; ;
+        float DistanceToMoveY = Time.deltaTime * jumpMoveSpeed * jumpDistance.y;
+        movedSoFarX += DistanceToMoveX;
+        movedSoFarY += DistanceToMoveY;
+
+        //AnimateSpinning();
+
+
+        if (Math.Abs(movedSoFarX) > Math.Abs(jumpDistance.x) || Math.Abs(movedSoFarY) > Math.Abs(jumpDistance.y))
+        {
+            movedSoFarX = 0;
+            movedSoFarY = 0;
+            return true;
+        }
+        Vector3 getMotion = new Vector3(DistanceToMoveX, DistanceToMoveY, 0.0f);
+        transform.position = transform.position + getMotion;
+        
         return false;
     }
 

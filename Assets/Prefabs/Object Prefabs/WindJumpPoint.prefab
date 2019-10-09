@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2209139354426487147}
   - component: {fileID: 2209139354426487144}
   - component: {fileID: 8215424202992345780}
-  - component: {fileID: 3681900557861407610}
   - component: {fileID: -7553305880299381898}
   m_Layer: 0
   m_Name: WindJumpPoint
@@ -95,25 +94,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3681900557861407610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2209139354426487151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce787697b0bcec54f9c95f4627d1e5f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlatformTerrain: 1
-  isWindShifter: 0
-  isTeleporter: 0
-  isExit: 0
-  isBlockableTerrain: 0
-  isTallBlockableTerrain: 0
-  isBackgroundCharacter: 0
 --- !u!114 &-7553305880299381898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,3 +106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a562721b26032a4286347f27ee61903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlatformTerrain: 0
+  isWindShifter: 1
+  isTeleporter: 0
+  isExit: 0
+  isBlockableTerrain: 0
+  isTallBlockableTerrain: 0
+  isBackgroundCharacter: 0
+  jumpDestOffset: {x: 0, y: 0}
+  jumpSpeed: 2

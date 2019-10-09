@@ -21,14 +21,15 @@ public class CharacterMovement : SpriteMovement
             return;
         }
 
-        if (windJump) {
+        if (!currentlyMoving && windJump) {
             bool finishedMoving = JumpToTarget(windJumpSpeed, jumpTarget);
             if (finishedMoving)
             {
                 currentlyMoving = false;
                 windJump = false;
+                tiePositionToGrid();
                 tempFramesPerSecond = framesPerSecond;
-                SetCurrentLocation();
+                CheckWindJumpStatus();
             }
         }
     
@@ -48,7 +49,8 @@ public class CharacterMovement : SpriteMovement
                     currentlyMoving = false;
                     jumping = false;
                     tempFramesPerSecond = framesPerSecond;
-                    SetCurrentLocation();
+                    //   SetCurrentLocation();
+                    tiePositionToGrid();
                     CheckExitStatus();
                     CheckWindJumpStatus();
                 }
@@ -68,7 +70,8 @@ public class CharacterMovement : SpriteMovement
             {
                 currentlyMoving = false;
                 tiePositionToGrid();
-                SetCurrentLocation();
+                //  SetCurrentLocation();
+                CheckWindJumpStatus();
                 CheckExitStatus();
             }
         }
@@ -77,10 +80,6 @@ public class CharacterMovement : SpriteMovement
 
     }
 
-    private float ContinueWindJumping()
-    {
-        throw new NotImplementedException();
-    }
 
     private void CheckWindJumpStatus()
     {
@@ -96,9 +95,9 @@ public class CharacterMovement : SpriteMovement
                 jumpTarget = windJumpLocation.GetComponent<WindJumpController>().jumpDestOffset;
                 
                 SetNextLocationActual(characterLocation.x+jumpTarget.x, characterLocation.y +jumpTarget.y);
-                windJumpSpeed= windJumpLocation.GetComponent<WindJumpController>().jumpSpeed;
+                windJumpSpeed= windJumpLocation.GetComponent<WindJumpController>().jumpSpeedMultiplier;
                 windJump = true;
-                currentlyMoving = true;
+                currentlyMoving = false;
                 
             }
         }
@@ -112,7 +111,7 @@ public class CharacterMovement : SpriteMovement
             return;
         }
 
-        if (!currentlyMoving && !jumping && !dashing && !jumpQued)
+        if (!currentlyMoving && !jumping && !dashing && !jumpQued&&!windJump)
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
