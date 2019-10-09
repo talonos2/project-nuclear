@@ -8,7 +8,9 @@ public class CharacterMovement : SpriteMovement
 {
 
     public CharacterStats playerStats;
-
+    private Vector2Int jumpTarget;
+    private float windJumpSpeed=0;
+    private bool windJump;
     // Update is called once per frame
     void Update()
     {
@@ -18,6 +20,18 @@ public class CharacterMovement : SpriteMovement
         {
             return;
         }
+
+        if (windJump) {
+            bool finishedMoving = JumpToTarget(windJumpSpeed, jumpTarget);
+            if (finishedMoving)
+            {
+                currentlyMoving = false;
+                windJump = false;
+                tempFramesPerSecond = framesPerSecond;
+                SetCurrentLocation();
+            }
+        }
+    
 
         if (!currentlyMoving && (jumping|| jumpQued)) {
 
@@ -36,6 +50,7 @@ public class CharacterMovement : SpriteMovement
                     tempFramesPerSecond = framesPerSecond;
                     SetCurrentLocation();
                     CheckExitStatus();
+                    CheckWindJumpStatus();
                 }
             }
         }
@@ -60,6 +75,33 @@ public class CharacterMovement : SpriteMovement
 
 
 
+    }
+
+    private float ContinueWindJumping()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void CheckWindJumpStatus()
+    {
+        GameObject windJumpLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
+        if (windJumpLocation != null)
+        {
+            if (windJumpLocation.GetComponent<DoodadData>().isWindShifter)
+            {
+                if (playerStats == null)
+                {
+                    playerStats = this.GetComponent<CharacterStats>();
+                }
+                jumpTarget = windJumpLocation.GetComponent<WindJumpController>().jumpDestOffset;
+                
+                SetNextLocationActual(characterLocation.x+jumpTarget.x, characterLocation.y +jumpTarget.y);
+                windJumpSpeed= windJumpLocation.GetComponent<WindJumpController>().jumpSpeed;
+                windJump = true;
+                currentlyMoving = true;
+                
+            }
+        }
     }
 
     //Key command received from CharacterInputController script
@@ -197,7 +239,7 @@ public class CharacterMovement : SpriteMovement
         {
             jumpable = false;
         }
-        GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[characterLocationx, characterLocationx];
+        GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[characterLocationx, characterLocationy];
         if (entityInLocation != null )
         {
             if (entityInLocation.GetComponent<EntityData>().isItem) {
@@ -207,7 +249,7 @@ public class CharacterMovement : SpriteMovement
                 jumpable = false;
             }            
         }
-        GameObject doodadObject= MapGrid.GetComponent<DoodadGrid>().grid[characterLocationx, characterLocationx];
+        GameObject doodadObject= MapGrid.GetComponent<DoodadGrid>().grid[characterLocationx, characterLocationy];
         if (doodadObject != null) {
             if (doodadObject.GetComponent<DoodadData>().isTallBlockableTerrain) {
                 jumpable = false;
