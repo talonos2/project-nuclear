@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8256436232106188759}
   - component: {fileID: 8256436232106188758}
   m_Layer: 0
-  m_Name: Z2_Slime
+  m_Name: Z1_Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,8 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 4
   framesPerSecond: 10
-  CharacterLocation: {x: 0, y: 0}
-  CharacterNextLocation: {x: 0, y: 0}
+  facedDirection: 4
   PathRandomly: 0
   PathViaSteps: 1
   Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
@@ -203,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainCharacter: 0
   isAMonster: 1
+  isLargeMonster: 0
   isInteractableObject: 0
   isItem: 0
   isSwitch: 0
@@ -226,9 +226,11 @@ MonoBehaviour:
   attack: 19
   defense: 3
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.6, y: 0}
-  strikingPointOffset: {x: 0, y: 0}
+  homePositionOnScreen: {x: 0.4, y: -0.4}
+  strikingPointOffset: {x: 0, y: 0.25}
   gettingStruckPointOffset: {x: 0, y: 0}
+  scale: {x: 1, y: 1}
+  forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Slime
   ExpGiven: 40
   weakness: 1

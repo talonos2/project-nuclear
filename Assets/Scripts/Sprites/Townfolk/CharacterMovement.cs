@@ -80,6 +80,29 @@ public class CharacterMovement : SpriteMovement
 
     }
 
+    internal void PowerDownCheat()
+    {
+        if (playerStats == null)
+        {
+            playerStats = this.GetComponent<CharacterStats>();
+        }
+        playerStats.attack = 0;
+        playerStats.defense = 1000;
+        
+    }
+
+    internal void PowerUpCheat()
+    {
+        if (playerStats == null)
+        {
+            playerStats = this.GetComponent<CharacterStats>();
+        }
+        playerStats.attack += 200;
+        playerStats.defense += 50;
+        playerStats.mana += 1000;
+        playerStats.MaxMana += 1000;
+        playerStats.powersGained = 4;
+    }
 
     private void CheckWindJumpStatus()
     {
