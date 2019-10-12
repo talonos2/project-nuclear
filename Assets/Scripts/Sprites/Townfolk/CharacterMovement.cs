@@ -11,6 +11,17 @@ public class CharacterMovement : SpriteMovement
     private Vector2Int jumpTarget;
     private float windJumpSpeed=0;
     private bool windJump;
+    private float hasteSpeed = 2;
+    private float stealthspeed = .75f;
+    private int actionTicker=0;
+
+
+    new void Start()
+    {
+        base.Start();
+        playerStats = this.GetComponent<CharacterStats>();
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +30,13 @@ public class CharacterMovement : SpriteMovement
         if (GameState.isInBattle == true)
         {
             return;
+        }
+
+        if (hasted) {
+
+        }
+        if (stealthed) {
+
         }
 
         if (!currentlyMoving && windJump) {
@@ -82,10 +100,6 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerDownCheat()
     {
-        if (playerStats == null)
-        {
-            playerStats = this.GetComponent<CharacterStats>();
-        }
         playerStats.attack = 0;
         playerStats.defense = 1000;
         
@@ -93,10 +107,6 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerUpCheat()
     {
-        if (playerStats == null)
-        {
-            playerStats = this.GetComponent<CharacterStats>();
-        }
         playerStats.attack += 200;
         playerStats.defense += 50;
         playerStats.mana += 1000;
@@ -111,10 +121,6 @@ public class CharacterMovement : SpriteMovement
         {
             if (windJumpLocation.GetComponent<DoodadData>().isWindShifter)
             {
-                if (playerStats == null)
-                {
-                    playerStats = this.GetComponent<CharacterStats>();
-                }
                 jumpTarget = windJumpLocation.GetComponent<WindJumpController>().jumpDestOffset;
                 
                 SetNextLocationActual(characterLocation.x+jumpTarget.x, characterLocation.y +jumpTarget.y);
@@ -169,10 +175,6 @@ public class CharacterMovement : SpriteMovement
         if (GameState.isInBattle == true)
         {
             return;
-        }
-        if (playerStats == null)
-        {
-            playerStats = this.GetComponent<CharacterStats>();
         }
         if (!jumping && !dashing )
         {
@@ -298,10 +300,6 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerToggleLeftKeyReceived()
     {
-        if (playerStats == null)
-        {
-            playerStats = this.GetComponent<CharacterStats>();
-        }
         if (playerStats.powersGained == 0) return;
         playerStats.currentPower -= 1;
         if (playerStats.currentPower < 0) {
@@ -313,10 +311,7 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerToggleRightKeyReceived()
     {
-        if (playerStats == null)
-        {
-            playerStats = this.GetComponent<CharacterStats>();
-        }
+
         if (playerStats.powersGained == 0) return;
         playerStats.currentPower += 1;
         if (playerStats.currentPower > playerStats.powersGained)
@@ -361,10 +356,6 @@ public class CharacterMovement : SpriteMovement
         if (exitLocation != null)
         {
             if (exitLocation.GetComponent<DoodadData>().isExit) {
-                if (playerStats == null)
-                {
-                    playerStats = this.GetComponent<CharacterStats>();
-                }
                 playerStats.PushCharacterData();
                 exitLocation.GetComponent<ExitController>().TransitionMap(); 
             }

@@ -36,6 +36,8 @@ public class SpriteMovement : MonoBehaviour
     protected float tempFramesPerSecond = 0;
     protected bool jumping;
     protected bool dashing;
+    protected bool stealthed;
+    protected bool hasted;
     protected GameData gameData;
 
     protected Vector2Int characterLocation;
@@ -653,5 +655,7 @@ public class SpriteMovement : MonoBehaviour
             else { return DirectionMoved.UP; }
         }
     }
+
+
 
 }
