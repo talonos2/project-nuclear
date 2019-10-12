@@ -94,7 +94,7 @@ public class CharacterStats : Stats
         this.defense = SavedStats.defense;
         this.experience = SavedStats.experience;
         this.expToLevel = SavedStats.expToLevel;
-        this.powersGained = SavedStats.powersGained;
+        this.powersGained = gameData.PowersGained;
         this.currentPower = SavedStats.currentPower;
 
         this.HealthCrystalsGained = SavedStats.HealthCrystalsGained;
@@ -124,6 +124,7 @@ public class CharacterStats : Stats
         SavedStats.expToLevel = this.expToLevel;
         SavedStats.powersGained = this.powersGained;
         SavedStats.currentPower = this.currentPower;
+        gameData.PowersGained = this.powersGained;
 
         SavedStats.HealthCrystalsGained=this.HealthCrystalsGained;
         SavedStats.ManaCrystalsGained=this.ManaCrystalsGained;

@@ -14,6 +14,7 @@ public class RandomChestController : EntityData
     private GameObject equipmentData;
     private GameData gameData;
     private EquipmentData itemListData;
+    private GameObject instanciatedObject;
 
     public int itemChestChance = 45;
     public int goldItemChestChance = 5;
@@ -39,8 +40,10 @@ public class RandomChestController : EntityData
     private Renderer sRender;
     public GameObject fountainPrefab;
     public GameObject itemPrefab;
+    public GameObject itemBreaking;
     public GameObject rareItemPrefab;
     public GameObject crystalPrefab;
+    public GameObject manaFountainBreaking;
 
     void Start()
     {
@@ -52,7 +55,7 @@ public class RandomChestController : EntityData
         RollRandomChest();
         InstantiateChestSprite();
         if (attackCrystal || armorCrystal || healthCrystal || manaCrystal) {
-            framesPerSecond = 8;
+            framesPerSecond = 6;
         }
         if (healingFountain || manaFountain)
         {
@@ -62,60 +65,72 @@ public class RandomChestController : EntityData
 
     private void InstantiateChestSprite()
     {
-
-
         this.GetComponent<SpriteRenderer>().enabled = false;
-        if (attackCrystal) { Instantiate(crystalPrefab, this.transform.position+new Vector3(0,.5f,-10), Quaternion.identity, this.transform);
+        if (attackCrystal) {
+            instanciatedObject= Instantiate(crystalPrefab, this.transform.position+new Vector3(0,.5f,-10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+            currentFrame = 16;
+            sRender.material.SetInt("_Frame", currentFrame);
+        }
+        if (armorCrystal) {
+            instanciatedObject = Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+            currentFrame = 32;
+            sRender.material.SetInt("_Frame", currentFrame);
+        }
+        if (healthCrystal) {
+            instanciatedObject = Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+            currentFrame = 48;
+            sRender.material.SetInt("_Frame", currentFrame);
+        }
+        if (manaCrystal) {
+            instanciatedObject = Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            this.sRender = this.GetComponentInChildren<MeshRenderer>();
+            this.sRender.material = new Material(this.sRender.material);
+            currentFrame = 0;
+            sRender.material.SetInt("_Frame", currentFrame);
+        }
+        if (itemChest) {
+            instanciatedObject = Instantiate(itemPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
         }
-        if (armorCrystal) { Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+        if (rareItemChest) {
+            instanciatedObject = Instantiate(rareItemPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
         }
-        if (healthCrystal) { Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
-            this.sRender = this.GetComponentInChildren<MeshRenderer>();
-            this.sRender.material = new Material(this.sRender.material);
-        }
-        if (manaCrystal) { Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
-            this.sRender = this.GetComponentInChildren<MeshRenderer>();
-            this.sRender.material = new Material(this.sRender.material);
-        }
-        if (itemChest) { Instantiate(itemPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
-            this.sRender = this.GetComponentInChildren<MeshRenderer>();
-            this.sRender.material = new Material(this.sRender.material);
-        }
-        if (rareItemChest) { Instantiate(rareItemPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
-            this.sRender = this.GetComponentInChildren<MeshRenderer>();
-            this.sRender.material = new Material(this.sRender.material);
-        }
-        if (healingFountain) { Instantiate(fountainPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+        if (healingFountain) {
+            instanciatedObject = Instantiate(fountainPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
             currentFrame = 10;
             sRender.material.SetInt("_Frame", currentFrame);
         }
-        if (manaFountain) { Instantiate(fountainPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+        if (manaFountain) {
+            instanciatedObject = Instantiate(fountainPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
             currentFrame = 20;
             sRender.material.SetInt("_Frame", currentFrame);
-        }
-        
+        }        
     }
 
     void Update()
     {
-
         if (GameState.isInBattle == true)
         {
             return;
         }
-
-        if (active && !(itemChest || rareItemChest) ) AnimateChest();
+        if (active && !(itemChest || rareItemChest) ) AnimateItem();
     }
 
-    private void AnimateChest()
+   
+    private void AnimateItem()
     {
        
         timeSinceLastFrame += Time.deltaTime;
@@ -125,15 +140,38 @@ public class RandomChestController : EntityData
                 currentFrame += 1;
                 if (currentFrame > 9)
                     currentFrame = 0;
-                sRender.material.SetInt("_Frame", currentFrame);
             }
             if (manaFountain) {
                 currentFrame += 1;
                 if (currentFrame > 29)
                     currentFrame = 20;
-                sRender.material.SetInt("_Frame", currentFrame);
+            }
+            if (attackCrystal)
+            {
+                currentFrame += 1;
+                if (currentFrame > 31)
+                    currentFrame = 16;
+            }
+            if (manaCrystal)
+            {
+                currentFrame += 1;
+                if (currentFrame > 15)
+                    currentFrame = 0;
+            }
+            if (healthCrystal)
+            {
+                currentFrame += 1;
+                if (currentFrame > 63)
+                    currentFrame = 48;
+            }
+            if (armorCrystal)
+            {
+                currentFrame += 1;
+                if (currentFrame > 47)
+                    currentFrame = 32;
             }
             
+            sRender.material.SetInt("_Frame", currentFrame);
         }
     }
 
@@ -141,7 +179,6 @@ public class RandomChestController : EntityData
     {
         int itemRolled = UnityEngine.Random.Range(0, 100)+1;
         
-
         if (itemRolled <= itemChestChance)
         {
             itemChest = true;
@@ -228,7 +265,9 @@ public class RandomChestController : EntityData
                 if (playerData.accessory != null) gameData.townAccessories.Add(playerData.accessory);
                 playerData.accessory = itemFound;
                 playerData.setAccessoryStats(itemFound);
-            }                        
+            }
+            Instantiate(itemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Destroy(instanciatedObject);
         }
         else if (rareItemChest)
         {
@@ -258,12 +297,16 @@ public class RandomChestController : EntityData
             amountGained = 20 + rarity * healingFactor;
             playerData.HP += amountGained;
             if (playerData.HP > playerData.MaxHP) playerData.HP = playerData.MaxHP;
+            Instantiate(manaFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Destroy(instanciatedObject);
         }
         else if (manaFountain)
         {
             amountGained = 20 + rarity * manaFactor;
             playerData.mana += amountGained;
             if (playerData.mana > playerData.MaxMana) playerData.mana = playerData.MaxMana;
+            Instantiate(manaFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Destroy(instanciatedObject);
         }
 
         playerData.PushCharacterData();
@@ -297,7 +340,6 @@ public class RandomChestController : EntityData
     {
         MapGrid = GameObject.Find("Grid"); 
         MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
-
     }
 
     private void InitializeSpriteLocation()
@@ -305,6 +347,5 @@ public class RandomChestController : EntityData
         ChestLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
         ChestLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
         MapGrid.GetComponent<EntityGrid>().grid[ChestLocation.x, ChestLocation.y] = this.gameObject;
-
     }
 }

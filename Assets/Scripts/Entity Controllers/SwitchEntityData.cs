@@ -14,7 +14,7 @@ public class SwitchEntityData : EntityData
     public float AnimationSpeed=6;
     private float timeSinceLastFrame = 0;
     private int frameNumber = 0;
-    private int totalFrames = 3;
+    private int totalFrames = 5;
     private Renderer sRender;
     private bool forwardAnimation;
     private int animationCounter=0;

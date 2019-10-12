@@ -19,7 +19,7 @@ public class ExitController : DoodadData
         GameData gameData= GameObject.Find("GameStateData").GetComponent<GameData>();
         gameData.FloorNumber +=1;
 
-            gameData.SetNextLocation(exitPosition, exitFacing);
+        gameData.SetNextLocation(exitPosition, exitFacing);
         
         
         SceneManager.LoadScene(mapToLoad);
