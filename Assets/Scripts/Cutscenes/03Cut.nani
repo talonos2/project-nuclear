@@ -1,24 +1,25 @@
 #start
 
-$@scene= town
+	@fwspawnvfx x:0 y:0 z:0 Vfx:Paul
+	@fwspawnvfx x:2 y:0 z:0 Vfx:Jerene
+  @fwspawnvfx x:0 y:-3 z:0 Vfx:Mcdermit
 
-$@place McDermit
-$@place Jerene
-$@place Paul
 
 
 @char McDermit
 Is this how it's going to end?[br]We just stand here and watch as the civilians are sent to their doom?
 
-$@animate curse McDermit
+@fwspawnvfx x:0 y:-3 z:0 Vfx:Firework
 
 @char Jerene
 Guess not.
 
+@fwmovepawn n:Mcdermit d:s
+@fwmovepawn n:Mcdermit d:s
+@fwmovepawn n:Mcdermit d:s
+@fwmovepawn n:Mcdermit d:s
 
-@fwmovepawn McDermit (to exit)
 
 
-$@startRun
 
-@stop
+@exit
