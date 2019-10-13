@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
+
+    private float timer;
+    public int seconds;
+    public int minutes;
     // Start is called before the first frame update
     public int HealhCrystalBonus;
     public int ManaCrystalBonus;
@@ -12,6 +16,7 @@ public class GameData : MonoBehaviour
     public int FloorNumber = 1;
     public int RunNumber = 1;
     public int PowersGained = 0;
+
 
 
     public List<GameObject> townWeapons = new List<GameObject>();
@@ -38,4 +43,11 @@ public class GameData : MonoBehaviour
         nextLocationSet = true;
     }
 
+    void Update()
+    {
+        timer += Time.deltaTime;
+        seconds = (int)(timer % 60);
+        minutes = (int)(timer / 60);
+        if (minutes == 10) { Debug.Log("Run Over. You are dead."); }
+    }
 }

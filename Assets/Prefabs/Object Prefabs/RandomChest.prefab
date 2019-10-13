@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainCharacter: 0
   isAMonster: 0
+  isLargeMonster: 0
   isInteractableObject: 1
   isItem: 1
   isSwitch: 0
@@ -87,9 +88,13 @@ MonoBehaviour:
     type: 3}
   itemPrefab: {fileID: 3750606275656000468, guid: 5c2cb3a25df046f4b9840ac8daa72761,
     type: 3}
+  itemBreaking: {fileID: 2149071705929039163, guid: 89ae25ecad6fe654597dbe6e0cdfeeec,
+    type: 3}
   rareItemPrefab: {fileID: 6884372004519679543, guid: ac464cf45f7d9b0429d027493828e00f,
     type: 3}
   crystalPrefab: {fileID: 4372632286479124443, guid: 6ae31ac11f8a1a44faefea24942dc594,
+    type: 3}
+  manaFountainBreaking: {fileID: 6779871452013414145, guid: 3b06bb234ecfa674d981ceeb0d493268,
     type: 3}
 --- !u!212 &8332177918306501506
 SpriteRenderer:

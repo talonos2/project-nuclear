@@ -1,14 +1,14 @@
 		#day2
 		@char Jinn
 		We had to send the children away. At least now I don't need to hide my drinking.
-		@stop
+		@exit
 
 
 		#day3
 		@char Jinn
 		Why am I still here?...
 		Shoot, why am I here?
-		@stop
+		@exit
 		
 
 		#day4
@@ -20,19 +20,19 @@
 		That's not "death" it's the rune for "phase".
 		@char Todd
 		It's not a phase rune!
-		@stop
+		@exit
 		
 
 		#day5
 		@char Jinn
 		How do you think the cave chooses?  It doesn't seem to be the closest people...
-		@stop
+		@exit
 
 		
 		#day6
 		@char Jinn
 		Don't worry about me, I'm alright.
-		@stop
+		@exit
 
 		
 		#day7
@@ -44,19 +44,19 @@
 		Oh, would you like to try some?
 		@char Jinn
 		No... I'm good thanks.
-		@stop
+		@exit
 		
 
 		#day8
 		@char Jinn
 		Let me draw a chart of what I'm trying to do...
-		@stop
+		@exit
 
 		
 		#day9
 		@char Jinn
 		Welp, I took inventory so we can sort tabs out later.
-		@stop
+		@exit
 
 		
 		#day10
@@ -64,31 +64,31 @@
 		You shur you can do ziss yourself?
 		@char Nelson
 		Unlike our former bartender, I am much more apt to 'cut one off'.
-		@stop
+		@exit
 
 		
 		#day11
 		@char Jinn
 		It's... not easy to lose a student.
-		@stop
+		@exit
 
 		
 		#day12
 		@char Jinn
 		The worst part is that there isn't much to do around here anymore.
-		@stop
+		@exit
 		
 
 		#day13
 		@char Jinn
 		Todd was a good kid. But,  I think he felt like he couldn't be as good as you...
-		@stop
+		@exit
 		
 
 		#day14
 		@char Jinn
 		So, people didn't get sick until they left town right?
-		@stop
+		@exit
 
 		
 		#day15
@@ -100,7 +100,7 @@
 		You'd like to?
 		@char Jinn
 		Really, I think it's just a way out I wouldn't have to be ashamed of.
-		@stop
+		@exit
 
 		
 		#day16
@@ -110,7 +110,7 @@
 		...
 		@char Trsitana
 		Off the record.
-		@stop
+		@exit
 
 		
 		#day17
@@ -120,38 +120,50 @@
 		...
 		@char Jinn
 		I mean, he is a good kid.
-		@stop
+		@exit
 
 		
 		#day18
 		@char Jinn
 		I don't know if I'm ready for the end, but I know they aren't.  I can't let them down.
-		@stop
+		@exit
 
 		
+		#lowHealth
+		@char Jinn
+		No... not giving up.
+		@exit
+
+		#usePuzzleResult
+		@char Jinn
+		They've done so much. I can't let them down.
+		@exit
 
 
 		#getIce
 		@char Jinn
 		Why does it just keep getting colder?
-		@stop
+		@exit
 
 		#getEarth
 		@char Jinn
 		With this, they will never find me.
-		@stop
+		@exit
 
 		#getFire
 		@char Jinn
 		I must keep moving.
-		@stop
+		@exit
 
 		#getAir
 		@char Jinn
 		It is working, we can do this!
-		@stop
+		@exit
 
 
+		#deathLine
+		@char Jinn
+		I'm... not okay with this.
+		@exit
 
-
-@stop
+@exit

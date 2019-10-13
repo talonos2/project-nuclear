@@ -8,6 +8,7 @@ public class EntityData : MonoBehaviour
 
     public bool isMainCharacter = false;    
     public bool isAMonster = false;
+    public bool isLargeMonster = false;
     public bool isInteractableObject = false;
     public bool isItem = false;
     public bool isSwitch = false;

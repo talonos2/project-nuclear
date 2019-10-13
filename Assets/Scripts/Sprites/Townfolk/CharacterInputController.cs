@@ -34,6 +34,13 @@ public class CharacterInputController : MonoBehaviour
         if (Input.GetButtonDown("PowerActivate")) {
             characterController.PowerActivateKeyReceived();
         }
+        if (Input.GetButtonDown("PowerUp")) {
+            characterController.PowerUpCheat();
+        }
+        if (Input.GetButtonDown("PowerDown"))
+        {
+            characterController.PowerDownCheat();
+        }
         characterController.MoveKeyReceived(GetInputDirection());
        
     }
