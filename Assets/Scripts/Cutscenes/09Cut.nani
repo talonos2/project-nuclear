@@ -1,30 +1,54 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Devon
-$@place Pendleton
+
+
+@fwspawnvfx x:7 y:10 z:0 Vfx:Devon
+@fwspawnvfx x:7 y:6 z:0 Vfx:Pendleton
+
+@fwmovepawn n:Devon d:s
+@fwmovepawn n:Devon d:s
 
 @char Devon
 Furs for sale! Get your furs!
+@hidechars time:0
+;wait halfsecond
+@fwturnpawn n:Devon d:e
+;wait halfsecond
+@fwturnpawn n:Devon d:w
+@char Devon
 Man, quiet town.
-
-$@animation curse Devon
+@hidechars time:0
+@fwspawnvfx x:7 y:12 z:0 Vfx:Firework
 
 @char Pendleton
 Get in the cave!
+@hidechars time:0
 
-$@setspeed Pendleton
+;$@setspeed Pendleton fast
 
-@fwmovepawn Pendleton (to Devon)
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Pendleton d:n
 
-#@setspeed Devon
-@fwmovepawn Devon (offscreen)
-@fwmovepawn Pendleton (offscreen)
-
-@char Pendleton
+@char Pendleton wait: false
 Get in the cave! GET IN THE CAVE! GETINTHECAVE!
 
+;#@setspeed Devon fast
+
+@fwmovepawn n:Devon d:n
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Devon d:n
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Devon d:n
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Devon d:n
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Devon d:n
+@fwmovepawn n:Pendleton d:n
 
 $@startRun
 

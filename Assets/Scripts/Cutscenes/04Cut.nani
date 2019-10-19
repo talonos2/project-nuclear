@@ -1,33 +1,54 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Meyster
-$@place Pendleton
-$@place Todd
+@fwspawnvfx x:8 y:20 z:0 Vfx:Meyster
+@fwturnpawn n:Meyster d:e
+@fwspawnvfx x:9 y:16 z:0 Vfx:Pendleton
+@fwturnpawn n:Pendleton d:w
+@fwspawnvfx x:16 y:20 z:0 Vfx:Todd
+@fwturnpawn n:Todd d:w
+
+
 
 
 @char Meyster
 You waste your time.[br]Ever since the quake, only the cursed may enter.
 Go on squire, tell him he is wasting his time!
+@hidechars time:0
 @char Pendleton
 You are wasting your time.
+@hidechars time:0
 
 @char Todd
 It does not matter.  When my time comes I will find my way to the leader of this place, and join in his dark pact.
+@hidechars time:0
 
 @char Meyster
 Not if we have anything to say about it!
 Squire! Apprehend that man!
+@hidechars time:0
 
-@fwmovepawn pendleton (towards Todd)
-$@animate curse Todd
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Pendleton d:n
 
 
-@fwmovepawn Todd (to shrine)
+@fwspawnvfx x:16 y:20 z:0 Vfx:Firework
+
+@fwmovepawn n:Todd d:e
+@fwmovepawn n:Todd d:e
+@fwmovepawn n:Todd d:e
+
+@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:Pendleton d:e
+
+
+;@fadeout
+
 @char Todd
 Mwahaha!
 
-$@startRun
+;$@startRun
 
-@stop
+@exit

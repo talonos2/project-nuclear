@@ -21,6 +21,7 @@ public class SpawnVFXCOmmand : Naninovel.Commands.Command
     public override Task ExecuteAsync()
     {
         GameObject vfxgo = GameObject.Instantiate(Resources.Load("Prefabs/VFX/"+vfx) as GameObject);
+        vfxgo.name = vfx;
         vfxgo.transform.position = new Vector3(x, y, z);
         return Task.CompletedTask;
     }

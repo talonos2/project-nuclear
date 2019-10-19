@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    private static readonly float ENTER_TIME = .5f;
+    private static readonly float ENTER_TIME = .3f;
+    private static readonly float EXIT_TIME = .3f;
 
     //Starts a fight, creating a new game object with an instance of this monobehavior.
     internal static void InitiateFight(GameObject Player, GameObject monster)
@@ -26,6 +27,7 @@ public class Combat : MonoBehaviour
     public CharacterStats playerStats;
     private GameObject monsterToDelete;
     private float enterTimer;
+    private float exitTimer;
     private float combatTimer;
     private bool combatEnded;
 
@@ -33,6 +35,8 @@ public class Combat : MonoBehaviour
     private GameObject playerSprite;
     private SpriteRenderer pRenderer;
     private SpriteRenderer eRenderer;
+
+    private Renderer combatDarkening;
 
     private GameObject combatFolder;
     private int phaseLastFrame;
@@ -55,14 +59,16 @@ public class Combat : MonoBehaviour
         pRenderer = playerSprite.AddComponent<SpriteRenderer>();
         pRenderer.flipX = true;
         pRenderer.sprite = Resources.LoadAll<Sprite>("DELETE LATER")[1];
-        pRenderer.sortingOrder = 2;
+        pRenderer.sortingOrder = 3;
 
         eRenderer = monsterSprite.AddComponent<SpriteRenderer>();
         eRenderer.flipX = true;
         eRenderer.sprite = monsterStats.combatSprites[0];
-        eRenderer.sortingOrder = 1;
+        eRenderer.sortingOrder = 2;
 
         combatFolder = Camera.main.transform.Find("UI").Find("Combat").gameObject;
+        combatDarkening = Camera.main.transform.Find("UI").Find("DarkeningPlane").gameObject.GetComponent<Renderer>();
+        combatDarkening.sortingOrder = 1;
 
         playerSprite.transform.SetParent(combatFolder.transform);
         playerSprite.transform.localPosition = playerStats.startPositionOnScreen;
@@ -94,14 +100,43 @@ public class Combat : MonoBehaviour
         {
             HandleCombatLoop();
         }
+        else if (exitTimer < EXIT_TIME)
+        {
+            HandleExitRoutine();
+        }
         else
         {
+            KillMonsterAndGetRewards();
+            GameState.isInBattle = false;
             Destroy(monsterSprite.gameObject);
             Destroy(playerSprite.gameObject);
             Destroy(this);
         }
 
         return;
+    }
+
+    Vector3 exitStartPos = new Vector3(-1000, -1000, -1000);
+
+    private void HandleExitRoutine()
+    {
+        float amountThrough = exitTimer / EXIT_TIME;
+
+        if (exitStartPos == new Vector3(-1000, -1000, -1000))
+        {
+            exitStartPos = playerSprite.transform.localPosition;
+        }
+
+        combatDarkening.material.SetFloat("_Alpha", (1-amountThrough) / 2.0f);
+
+        monsterSprite.GetComponent<SpriteRenderer>().color = new Color((1 - amountThrough), (1 - amountThrough), (1 - amountThrough), (1 - amountThrough));
+
+        Vector3 targetPos = monsterStats.startPositionOnScreen;
+        Vector3 lerpedPos = Vector3.Lerp(exitStartPos, targetPos, amountThrough);
+
+        playerSprite.transform.localPosition = lerpedPos;
+
+        exitTimer += Time.deltaTime;
     }
 
     bool playerDidDamageRecently;
@@ -176,8 +211,6 @@ public class Combat : MonoBehaviour
         if (monsterStats.HP <= 0)
         {
             combatEnded = true;
-            KillMonsterAndGetRewards();
-            GameState.isInBattle = false;
         }
     }
 
@@ -238,7 +271,7 @@ public class Combat : MonoBehaviour
             if (playerStats.mana >= 8) { playerStats.mana -= 8; }
                 else { elementalDamage = 0; }
         }
-        incomingDamage *= 1 + rollCrit();
+        incomingDamage *= 1 + RollCrit();
 
         Debug.Log("ed: " + elementalDamage);
         monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
@@ -251,7 +284,7 @@ public class Combat : MonoBehaviour
         CheckCombatOver();
     }
 
-    private float rollCrit()
+    private float RollCrit()
     {
         float critValue = 0;
         System.Random rand = new System.Random(100);
@@ -277,15 +310,18 @@ public class Combat : MonoBehaviour
 
     private void HandleEntranceRoutine()
     {
-        //Debug.Log("Time: " + enterTimer / ENTER_TIME);
+        float amountThrough = enterTimer / ENTER_TIME;
+
+        combatDarkening.material.SetFloat("_Alpha", amountThrough / 2.0f);
+        
         Vector3 startPos = monsterStats.startPositionOnScreen;
         Vector3 targetPos = monsterStats.homePositionOnScreen;
-        Vector3 lerpedPos = Vector3.Lerp(startPos, targetPos, enterTimer / ENTER_TIME);
+        Vector3 lerpedPos = Vector3.Lerp(startPos, targetPos, amountThrough);
         monsterSprite.transform.localPosition = lerpedPos;
 
         startPos = playerStats.startPositionOnScreen;
         targetPos = playerStats.homePositionOnScreen;
-        lerpedPos = Vector3.Lerp(startPos, targetPos, enterTimer / ENTER_TIME);
+        lerpedPos = Vector3.Lerp(startPos, targetPos, amountThrough);
         playerSprite.transform.localPosition = lerpedPos;
 
         enterTimer += Time.deltaTime;
