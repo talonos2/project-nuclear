@@ -1,60 +1,94 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Stranger
-$@place Dorara
-$@place Phillip
+
+@fwspawnvfx x:0 y:-13 z:0 Vfx:Stranger
+@fwturnpawn n:Stranger d:s
+@fwspawnvfx x:0 y:-20 z:0 Vfx:Dorara
+@fwturnpawn n:Dorara d:s
+@fwspawnvfx x:0 y:-21 z:0 Vfx:Phillip
+@fwturnpawn n:Phillip d:n
+
+
 
 @char Phillip
 No! stop! Please don't hurt me!
-
-@char Dorara
+@hidechars time:0
+@char Dorara  wait: false
 You know how this goes, give me your valuables before I-
 
-@fwmovepawn Stranger (moving about in background)
+@fwmovepawn n:Stranger d:s
+@fwmovepawn n:Stranger d:s
+@fwmovepawn n:Stranger d:s
+@fwmovepawn n:Stranger d:s
+;turn on no clip
+@fwmovepawn n:Stranger d:w
 
 Hey!  What do you think you're doing?
+@hidechars time:0
 
-@fwmovepawn Dorara (moving away from Phillip)
+@fwmovepawn n:Dorara d:n
 
 @char Starnger
 What? I'm looting this place, same as you.
+@hidechars time:0
 
 @char Dorara
 Look here you lowlife, don't you dare compare what you do to what I do! I'm Pillaging! You see this sword?
+@hidechars time:0
 
-$@fwturnpawn Phillip (toward Dorara)
 @char Phillip
 Yes...?
+@hidechars time:0
 
+@fwturnpawn n:Dorara d:s
 @char Dorara
 Quiet! I'm not talking to you!
+@hidechars time:0
+@fwturnpawn n:Dorara d:n
 
-@fwmovepawn Phillip (backwards)
+;@fwmovepawn Phillip (backwards)
+
+@fwmovepawn n:Stranger d:e
+@fwturnpawn n:Stranger d:s
 
 @char Stranger
 Look, I'm trying not to call attention to myself.
+@hidechars time:0
 
-@fwmovepawn Phillip (backwards)
+;@fwmovepawn Phillip (backwards)
 
 @char Dorara
 That's my point! We may be ruining these people's lives, but if I'm going to stab someone in the back at least I'm going to  do it to their face!
+@hidechars time:0
 
-$@animate curse Stranger
+@fwspawnvfx x:-1 y:-17 z:0 Vfx:Firework
 
-$@setspeed Phillip fast
-@fwmovepawn Phillip (runs off)
-$@setspeed Stranger fast
-@fwmovepawn Stranger (to shrine)
 
-@char Dorara
+@char Dorara  wait: false
 Hey, maybe you can sneak by when the monster's backs are turned! Loot-ser!
+@hidechars time:0
+
+;$@setspeed Phillip fast
+;$@setspeed Stranger fast
+
+@fwmovepawn n:Phillip d:w
+@fwmovepawn n:Phillip d:w
+@fwmovepawn n:Phillip d:w
+@fwmovepawn n:Phillip d:w
+@fwmovepawn n:Phillip d:w
+@fwmovepawn n:Phillip d:w
+
+@fwmovepawn n:Stranger d:n
+@fwmovepawn n:Stranger d:n
+@fwmovepawn n:Stranger d:n
+@fwmovepawn n:Stranger d:n
+@fwmovepawn n:Stranger d:n
+@fwmovepawn n:Stranger d:n
 
 
 
-
-
-$@startRun
+;$@startRun
 
 @stop

@@ -1,21 +1,60 @@
 #start
 
-$@scene= church
+;$@scene= church
 
-$@place Melvardius
-$@place Metra
-$@place Paul
-$@place Mark
+@fwspawnvfx x:-1 y:-5 z:0 Vfx:Melvardius
+@fwturnpawn n:Melvardius d:n
+@fwspawnvfx x:0 y:-5 z:0 Vfx:Metra
+@fwturnpawn n:Metra d:e
+@fwspawnvfx x:-5 y:-2 z:0 Vfx:Paul
+@fwturnpawn n:Paul d:w
+@fwspawnvfx x:-1 y:3 z:0 Vfx:Mark
+@fwturnpawn n:Mark d:n
+
+
 
 @char Metra
 Why is this happening?[br]Why is evil allowed to run rampant?
+@hidechars time:0
 @char Melvardius
 Look into the pool.  What do you see?
+@hidechars time:0
+@fwturnpawn n:Metra d:n
 
-(turn to look at pool)
+@char Metra
+I see a few coins.[br]They were tossed in by devotees I suppose.
+@hidechars time:0
+@char Melvardius
+I see the image of Cedeej the mighty.
+@hidechars time:0
+@fwturnpawn n:Metra d:e
+@char Metra
+That's just the reflection of his statue.
+@hidechars time:0
+@char Melvardius
+There are many ways to look at a thing.[br]Some only see the darkness of the curse, but I wonder about the light.
+@hidechars time:0
+@char Metra
+I'm not sure I see the light in all this.
+@hidechars time:0
+
+@fwspawnvfx x:-1 y:-5 z:0 Vfx:Firework
+
+@fwturnpawn n:Paul d:s
+@fwturnpawn n:Mark d:s
+
+@char Melvardius
+Did you see it that time?
+@hidechars time:0
+
+@fwmovepawn n:Melvardius d:s
+@fwturnpawn n:Metra d:s
+@fwmovepawn n:Melvardius d:s
+@fwmovepawn n:Melvardius d:s
+@fwmovepawn n:Melvardius d:s
 
 
 
-$@startRun
+;$@startRun
 
-@stop
+@exit

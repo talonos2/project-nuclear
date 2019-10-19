@@ -1,42 +1,65 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Jerene
-$@place Norma
-$@place Paul
-$@place Fluer
+@fwspawnvfx x:2 y:25 z:0 Vfx:dummy
+@fwspawnvfx x:3 y:25 z:0 Vfx:dummy
+@fwspawnvfx x:4 y:25 z:0 Vfx:dummy
 
-$@place scarecrow1
-$@place scarecrow2
-$@place scarecrow3
+@fwspawnvfx x:2 y:24 z:0 Vfx:Paul
+@fwturnpawn n:Paul d:n
+@fwspawnvfx x:3 y:24 z:0 Vfx:Norma
+@fwturnpawn n:Norma d:n
+@fwspawnvfx x:4 y:24 z:0 Vfx:Fluer
+@fwturnpawn n:Fluer d:n
+@fwspawnvfx x:0 y:23 z:0 Vfx:Jerene
+@fwturnpawn n:Jerene d:e
+
+
 
 @char Jerene
 Again!
 
-$@animate hit scarecrow1
-$@animate hit scarecrow2
-$@animate hit scarecrow3
+;breif pause between each
+@fwspawnvfx x:2 y:25 z:0 Vfx:Firework ;thwack VFX
+@fwspawnvfx x:3 y:25 z:0 Vfx:Firework
+@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+
 
 @char Jerene
 Again!
 
-$@animate hit scarecrow1
-$@animate hit scarecrow2
-$@animate hit scarecrow3
-$@animate Fluer collapse
+@fwspawnvfx x:2 y:25 z:0 Vfx:Firework
+@fwspawnvfx x:3 y:25 z:0 Vfx:Firework
+@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+
+;@fwspawnvfx x:4 y:24 z:0 Vfx:collapse ;fluer falls over
+
 
 @char Jerene
 Ugh, take five.
 
 
-$@animate curse Norma
+@fwspawnvfx x:3 y:25 z:0 Vfx:Firework
 
-(Norma runs off screen)
-
-@char Jerene
+@char Jerene  wait: false
 On second thought, get up!
 
-$@startRun
 
-@stop
+@fwmovepawn n:Norma d:s
+@fwmovepawn n:Norma d:e
+@fwmovepawn n:Norma d:e
+@fwmovepawn n:Norma d:s
+@fwmovepawn n:Norma d:s
+@fwmovepawn n:Norma d:s
+@fwmovepawn n:Norma d:s
+@fwmovepawn n:Norma d:e
+@fwmovepawn n:Norma d:e
+@fwmovepawn n:Norma d:e
+@fwmovepawn n:Norma d:e
+
+
+
+;$@startRun
+
+@exit

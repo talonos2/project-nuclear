@@ -1,31 +1,44 @@
 #start
 
-$@scene= town
+;$@scene= town
 
 $@place Meyster
 $@place Pendleton
 
+@fwspawnvfx x:0 y:9 z:0 Vfx:Meyster
+@fwturnpawn n:Meyster d:e
+@fwspawnvfx x:0 y:8 z:0 Vfx:Pendleton
+@fwturnpawn n:Pendleton d:e
+
 @char Meyster
 Take a look squire.  The den of evil.
-
+@hidechars time:0
 @char Pendleton
 Yes sire.
-
+@hidechars time:0
 @char Meyster
 I would purge it right now, if only there were not so much evil in the town itself.
-
+@hidechars time:0
 @char Pendleton
 Of course sire.
-
+@hidechars time:0
 @char Meyster
 Do not worry frail squire. Soon a hero will save this town.
+@hidechars time:0
 
-$@animate curse Pendleton
-char Pendleton
+@fwspawnvfx x:0 y:8 z:0 Vfx:Firework
+@char Pendleton
 We shall see sire.
+@hidechars time:0
 
-@fwmovepawn Pendleton (to shrine)
+@fwmovepawn n:Pendleton d:e
+@fwmovepawn n:Pendleton d:e
+@fwmovepawn n:Pendleton d:e
+@fwmovepawn n:Pendleton d:e
+@fwmovepawn n:Pendleton d:n
 
-$@startRun
+;remove Pendleton
 
-@stop
+;$@startRun
+
+@exit
