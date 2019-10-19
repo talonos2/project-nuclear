@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeController : EntityData
+public class SpikeController : DoodadData
 {
 
     private Vector2Int SpikeLocation;
-    private GameObject MapGrid;
-    private Vector2 MapZeroLocation;
     protected bool isAnimating;
     public float AnimationSpeed = 6;
     protected float timeSinceLastFrame = 0;
@@ -19,9 +17,9 @@ public class SpikeController : EntityData
     protected int frameToSet = 0;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        InitializeSpriteLocation();
+        base.Start();
         gameData = GameObject.Find("GameStateData").GetComponent<GameData>();
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);

@@ -14,15 +14,16 @@ public class DoodadData : MonoBehaviour
     public bool isBlockableTerrain = false;
     public bool isTallBlockableTerrain = false;
     public bool isBackgroundCharacter = false;
+    public bool isSpike = false;
+    public bool isPassable = false;
 
     protected Vector2Int DoodadLocation;
     protected GameObject MapGrid;
     protected Vector2 MapZeroLocation;
-    void Start()
-    {
+
+    public void Start() {
         InitializeDoodadNewMap();
     }
-
 
     protected void InitializeDoodadNewMap()
     {

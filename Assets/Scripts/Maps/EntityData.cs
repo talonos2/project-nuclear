@@ -13,8 +13,8 @@ public class EntityData : MonoBehaviour
     public bool isItem = false;
     public bool isSwitch = false;
     public bool isNPC = false;
-    public bool isSpike = false;
-    public bool isPassable = false;
+    //public bool isSpike = false;
+    //public bool isPassable = false;
 
     public virtual void ProcessClick(CharacterStats stats)
     {
