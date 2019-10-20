@@ -1,48 +1,67 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Phillip
-$@place Paul
+@fwspawnvfx x:4 y:7 z:0 Vfx:Paul
+@fwspawnvfx x:5 y:7 z:0 Vfx:Phillip
 
 
 
 
 @char Phillip
 Quite a lot of loot coming in from that cave.
-
+@hidechars time:0
 @char Paul
 I guess, if you need hatchets.
-
+@hidechars time:0
 @char Phillip
 There’s more than that in there.  I bet someone out there would buy monster bones.
-
+@hidechars time:0
 @char Paul
 There's a pleasant thought.
-
+@hidechars time:0
 @char Phillip
 Hey, if we don’t get something out of this you’re going to be destitute.
-
+@hidechars time:0
 @char Paul
 You mean we’re going to be destitute.
-
+@hidechars time:0
 @char Phillip
 that’s what I said.
-
+@hidechars time:0
+@fwturnpawn n:Paul d:e
 @char Paul
 No, I mean... won’t you be destitute too?
-
+@hidechars time:0
+@fwturnpawn n:Phillip d:e
 @char Phillip
 I, well... this is difficult to explain... You see—
+@hidechars time:0
 
-$@animate curse Phillip
+@fwspawnvfx x:-6 y:-10 z:0 Vfx:Firework ;cursed
 
 @char Phillip
-Oh thank (diety)
+Oh thank Cedeej.
+@hidechars time:0
+
+
+@fwmovepawn n:Phillip d:e
+@fwmovepawn n:Phillip d:n
+@fwmovepawn n:Phillip d:n
+@fwmovepawn n:Phillip d:n
+@fwmovepawn n:Phillip d:n
+@fwmovepawn n:Phillip d:n
+@fwmovepawn n:Phillip d:n
+@fwmovepawn n:Phillip d:n
+@fwmovepawn n:Phillip d:n
+@fwmovepawn n:Phillip d:n
+
+
+
 
 @fwmovepawn Phillip (to exit)
 
 
-$@startRun
+;$@startRun
 
 @stop
