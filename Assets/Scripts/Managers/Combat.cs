@@ -40,6 +40,7 @@ public class Combat : MonoBehaviour
 
     private GameObject combatFolder;
     private int phaseLastFrame;
+    private GameData gameData;
 
     GameObject hitsplatTemplate;
 
@@ -50,7 +51,7 @@ public class Combat : MonoBehaviour
         this.monsterStats = monsterStats;
         this.playerStats = playerStats;
         this.monsterToDelete = monsterToDelete;
-
+        gameData= GameObject.Find("GameStateData").GetComponent<GameData>();
         //Create monster sprites:
 
         monsterSprite = new GameObject("Monster Sprite");
@@ -196,7 +197,7 @@ public class Combat : MonoBehaviour
     private void CheckCombatOver()
     {
         //TODO: If the time is up, combat ends immediately.
-        if (false/*TimeIsUp()*/)
+        if (gameData.minutes==10)
         {
             combatEnded = true;
             GameState.endRunFlag = true;

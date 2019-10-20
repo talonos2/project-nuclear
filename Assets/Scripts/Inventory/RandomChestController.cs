@@ -42,6 +42,7 @@ public class RandomChestController : EntityData
     public GameObject itemPrefab;
     public GameObject itemBreaking;
     public GameObject rareItemPrefab;
+    public GameObject rareItemBreaking;
     public GameObject crystalPrefab;
     public GameObject manaFountainBreaking;
 
@@ -291,6 +292,9 @@ public class RandomChestController : EntityData
                 playerData.accessory = rareItemFound;
                 playerData.setAccessoryStats(rareItemFound);
             }
+            Instantiate(rareItemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Destroy(instanciatedObject);
+
         }
         else if (healingFountain)
         {

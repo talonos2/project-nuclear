@@ -33,7 +33,7 @@ public class MonsterMovement : SpriteMovement
     private float LookTiming = 0;
     private int CurrentFacing = 0;
     private int stuck = 0;
-    private float waitTimer = 0;
+    
     
 
 
@@ -175,6 +175,9 @@ public class MonsterMovement : SpriteMovement
     private void CheckForFight(int locX, int locY)
     {
         if (!IsLocationDoodadMonsterPassible(locX, locY)) {
+            return;
+        }
+        if (gameData.dashing||gameData.stealthed){
             return;
         }
         GameObject EnemyToFight = isThereAPlayer(locX, locY);

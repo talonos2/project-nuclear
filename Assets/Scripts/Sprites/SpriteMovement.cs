@@ -36,7 +36,7 @@ public class SpriteMovement : MonoBehaviour
     protected float tempFramesPerSecond = 0;
     protected float tempMovementSpeed;
     protected bool jumping;
-    protected bool dashing;
+    //protected bool dashing;
     protected GameData gameData;
 
     protected Vector2Int characterLocation;
@@ -46,6 +46,7 @@ public class SpriteMovement : MonoBehaviour
     protected Renderer sRender;
     protected Vector2Int homeLocation;
     protected Vector2Int exitLocation = new Vector2Int(0, 0);
+    protected float waitTimer = 0;
 
     public enum DirectionMoved
     { NONE, UP, RIGHT, DOWN, LEFT }
@@ -663,6 +664,9 @@ public class SpriteMovement : MonoBehaviour
 
     protected DirectionMoved GetChaseStep()
     {
+        if (gameData.stealthed) {
+            return DirectionMoved.NONE;
+        }
         int TempX = ThePlayer.GetComponent<CharacterMovement>().characterLocation.x - characterLocation.x;
         int TempY = ThePlayer.GetComponent<CharacterMovement>().characterLocation.y - characterLocation.y;
         if (TempX == 0 && TempY == 0)
