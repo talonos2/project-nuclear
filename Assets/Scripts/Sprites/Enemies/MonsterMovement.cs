@@ -174,6 +174,9 @@ public class MonsterMovement : SpriteMovement
 
     private void CheckForFight(int locX, int locY)
     {
+        if (!IsLocationDoodadMonsterPassible(locX, locY)) {
+            return;
+        }
         GameObject EnemyToFight = isThereAPlayer(locX, locY);
         if (EnemyToFight != null)
         {
@@ -228,6 +231,9 @@ public class MonsterMovement : SpriteMovement
 
     private bool IsPlayerInView()
     {
+        if (gameData.stealthed) {
+            return false;
+        }
         bool PlayerFound = false;
         //
         for (int i = 0; i < 3; i++) {

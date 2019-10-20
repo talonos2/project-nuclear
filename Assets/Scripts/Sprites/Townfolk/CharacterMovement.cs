@@ -13,7 +13,7 @@ public class CharacterMovement : SpriteMovement
     private bool windJump;
     private float hasteSpeed = 2;
     private float stealthspeed = .75f;
-    private int actionTicker=0;
+
 
 
     new void Start()
@@ -32,11 +32,33 @@ public class CharacterMovement : SpriteMovement
             return;
         }
 
-        if (hasted) {
-
+        if (gameData.hasted) {
+            if (gameData.timerTrigger) {
+                if (playerStats.mana >= 12)
+                {
+                    playerStats.mana -= 12;
+                    tempMovementSpeed = MoveSpeed * hasteSpeed;
+                }
+                else {
+                    gameData.hasted = false;
+                    tempMovementSpeed = MoveSpeed;
+                }
+            }
         }
-        if (stealthed) {
-
+        if (gameData.stealthed) {
+            if (gameData.timerTrigger)
+            {
+                if (playerStats.mana >= 4)
+                {
+                    playerStats.mana -= 4;
+                    tempMovementSpeed = MoveSpeed * stealthspeed;
+                }
+                else
+                {
+                    gameData.stealthed = false;
+                    tempMovementSpeed = MoveSpeed;
+                }
+            }
         }
 
         if (!currentlyMoving && windJump) {
@@ -285,12 +307,52 @@ public class CharacterMovement : SpriteMovement
 
     private void ActivateHaste()
     {
-        throw new NotImplementedException();
+        if (gameData.hasted)
+        {
+            gameData.hasted = false;
+            tempMovementSpeed = MoveSpeed;
+        }
+        else
+        {
+            if (playerStats.mana >= 6)
+            {
+                playerStats.mana -= 6;
+                tempMovementSpeed = MoveSpeed * hasteSpeed;
+                gameData.hasted = true;
+                gameData.stealthed = false;
+            }
+            else
+            {
+                gameData.hasted = false;
+                tempMovementSpeed = MoveSpeed;
+            }
+        }
+
+       
     }
 
     private void ActivateInvisibility()
     {
-        throw new NotImplementedException();
+        if (gameData.stealthed)
+        {
+            gameData.stealthed = false;
+            tempMovementSpeed = MoveSpeed;
+        }
+        else
+        {
+            if (playerStats.mana >= 2)
+            {
+                playerStats.mana -= 2;
+                tempMovementSpeed = MoveSpeed * stealthspeed;
+                gameData.stealthed = true;
+                gameData.hasted = false;
+            }
+            else
+            {
+                gameData.hasted = false;
+                tempMovementSpeed = MoveSpeed;
+            }
+        }
     }
 
     private void ActivateShieldDash()
@@ -397,19 +459,19 @@ public class CharacterMovement : SpriteMovement
         float finishedMoving=0;
         if (facedDirection == DirectionMoved.UP)
         {
-            finishedMoving = MoveUp(MoveSpeed);
+            finishedMoving = MoveUp(tempMovementSpeed);
         }
         if (facedDirection == DirectionMoved.DOWN)
         {
-            finishedMoving = MoveDown(MoveSpeed);
+            finishedMoving = MoveDown(tempMovementSpeed);
         }
         if (facedDirection == DirectionMoved.LEFT)
         {
-            finishedMoving = MoveLeft(MoveSpeed);
+            finishedMoving = MoveLeft(tempMovementSpeed);
         }
         if (facedDirection == DirectionMoved.RIGHT)
         {
-            finishedMoving = MoveRight(MoveSpeed);
+            finishedMoving = MoveRight(tempMovementSpeed);
         }
         return finishedMoving;
     }
@@ -419,19 +481,19 @@ public class CharacterMovement : SpriteMovement
         float finishedMoving = 0;
         if (facedDirection == DirectionMoved.UP)
         {
-            finishedMoving = JumpUp(MoveSpeed * jumpSpeed);
+            finishedMoving = JumpUp(tempMovementSpeed * jumpSpeed);
         }
         if (facedDirection == DirectionMoved.DOWN)
         {
-            finishedMoving = JumpDown(MoveSpeed * jumpSpeed);
+            finishedMoving = JumpDown(tempMovementSpeed * jumpSpeed);
         }
         if (facedDirection == DirectionMoved.LEFT)
         {
-            finishedMoving = JumpLeft(MoveSpeed * jumpSpeed);
+            finishedMoving = JumpLeft(tempMovementSpeed * jumpSpeed);
         }
         if (facedDirection == DirectionMoved.RIGHT)
         {
-            finishedMoving = JumpRight(MoveSpeed * jumpSpeed);
+            finishedMoving = JumpRight(tempMovementSpeed * jumpSpeed);
         }
         return finishedMoving;
     }

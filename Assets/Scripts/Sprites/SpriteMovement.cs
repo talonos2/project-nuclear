@@ -34,10 +34,9 @@ public class SpriteMovement : MonoBehaviour
     protected bool dashQued = false;
     protected float queDistance = .75f;
     protected float tempFramesPerSecond = 0;
+    protected float tempMovementSpeed;
     protected bool jumping;
     protected bool dashing;
-    protected bool stealthed;
-    protected bool hasted;
     protected GameData gameData;
 
     protected Vector2Int characterLocation;
@@ -60,6 +59,7 @@ public class SpriteMovement : MonoBehaviour
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
         gameData =GameObject.Find("GameStateData").GetComponent<GameData>();
         tempFramesPerSecond = framesPerSecond;
+        tempMovementSpeed = MoveSpeed;
 
 
     }
@@ -90,19 +90,19 @@ public class SpriteMovement : MonoBehaviour
         float finishedMoving = 0;
         if (facedDirection == DirectionMoved.LEFT)
         {
-            finishedMoving = MoveLeft(MoveSpeed);
+            finishedMoving = MoveLeft(tempMovementSpeed);
         }
         if (facedDirection == DirectionMoved.RIGHT)
         {
-            finishedMoving = MoveRight(MoveSpeed);
+            finishedMoving = MoveRight(tempMovementSpeed);
         }
         if (facedDirection == DirectionMoved.UP)
         {
-            finishedMoving = MoveUp(MoveSpeed);
+            finishedMoving = MoveUp(tempMovementSpeed);
         }
         if (facedDirection == DirectionMoved.DOWN)
         {
-            finishedMoving = MoveDown(MoveSpeed);
+            finishedMoving = MoveDown(tempMovementSpeed);
         }
         return finishedMoving;
     }
@@ -150,7 +150,7 @@ public class SpriteMovement : MonoBehaviour
 
 
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL  || IsPlatformUp(LocX, LocY)) {
-            if (IsLocationDoodadFree(LocX, LocY) && IsLocationEntityFree(LocX, LocY))
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
            
@@ -166,7 +166,7 @@ public class SpriteMovement : MonoBehaviour
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
             || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
         {
-            if (IsLocationDoodadFree(LocX, LocY) && IsLocationEntityFree(LocX, LocY))
+            if (IsLocationDoodadPlayerPassible(LocX, LocY) && IsLocationPlayerEntityPassable(LocX, LocY))
                 MoveableLocation = true;
         }
         return MoveableLocation;
@@ -179,7 +179,7 @@ public class SpriteMovement : MonoBehaviour
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
             || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
         {
-            if (IsLocationDoodadFree(LocX, LocY) && IsLocationEntityFree(LocX, LocY))
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
 
@@ -213,7 +213,7 @@ public class SpriteMovement : MonoBehaviour
         bool MoveableLocation = false;
 
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER) {
-            if (IsLocationDoodadFree(LocX, LocY) && IsLocationEntityFree(LocX, LocY))
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
            
@@ -224,31 +224,59 @@ public class SpriteMovement : MonoBehaviour
 
     }
 
-    protected bool IsLocationDoodadFree(int LocX, int LocY) {
-        bool MoveableLocation = true;
+    protected bool IsLocationDoodadPlayerPassible(int LocX, int LocY) {
+        bool MoveableLocation = false;
 
         GameObject DoddadObject = MapGrid.GetComponent<DoodadGrid>().grid[LocX, LocY];
-        if (DoddadObject != null)
+        if (DoddadObject == null)
         {
-            if (DoddadObject.GetComponent<DoodadData>().isBlockableTerrain)
-                MoveableLocation = false;
-            if (DoddadObject.GetComponent<DoodadData>().isBackgroundCharacter)
-                MoveableLocation = false;
+            MoveableLocation = true;
+        }
+        else {
+            DoodadData doodadObject = DoddadObject.GetComponent<DoodadData>();
+            if (doodadObject.isPassable)
+                MoveableLocation = true ;
+            if (doodadObject.isSpike && gameData.hasted)
+                MoveableLocation = true;
+            if (doodadObject.isExit || doodadObject.isWindShifter || doodadObject.isPlatformTerrain)
+                MoveableLocation = true;
+
+        }
+        return MoveableLocation;
+
+    }
+    protected bool IsLocationDoodadMonsterPassible(int LocX, int LocY)
+    {
+        bool MoveableLocation = false;
+
+        GameObject DoddadObject = MapGrid.GetComponent<DoodadGrid>().grid[LocX, LocY];
+        if (DoddadObject == null)
+        {
+            MoveableLocation = true;
+        }
+        else
+        {
+            if (DoddadObject.GetComponent<DoodadData>().isPassable|| DoddadObject.GetComponent<DoodadData>().isPlatformTerrain)
+                MoveableLocation = true;
         }
         return MoveableLocation;
 
     }
 
-    protected bool IsLocationEntityFree(int LocX, int LocY) {
+    protected bool IsLocationEntityPassible(int LocX, int LocY) {
         bool MoveableLocation = false;
         GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
         if (entityInLocation == null)
             MoveableLocation = true;
-        else if (entityInLocation.GetComponent<EntityData>().isPassable)
+        return MoveableLocation;
+    }
+
+    protected bool IsLocationPlayerEntityPassable(int LocX, int LocY)
+    {
+        bool MoveableLocation = false;
+        GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
+        if (entityInLocation == null)
             MoveableLocation = true;
-
-
-
         return MoveableLocation;
     }
 
@@ -331,9 +359,10 @@ public class SpriteMovement : MonoBehaviour
 
 
 
-    public float MoveDown(float MoveSpeed){
+    public float MoveDown(float tempMovementSpeed)
+    {
 
-        float DistanceToMove = Time.deltaTime * MoveSpeed;
+        float DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
 
         AnimateMoveDown();
@@ -367,11 +396,11 @@ public class SpriteMovement : MonoBehaviour
 
     }
 
-    public float MoveUp(float MoveSpeed)
+    public float MoveUp(float tempMovementSpeed)
     {
     
         float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * MoveSpeed;
+        DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
 
         AnimateMoveUp();
@@ -529,10 +558,10 @@ public class SpriteMovement : MonoBehaviour
     }
 
 
-    public float MoveLeft(float MoveSpeed)
+    public float MoveLeft(float tempMovementSpeed)
     {
         float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * MoveSpeed;
+        DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
 
         AnimateMoveLeft();
@@ -565,10 +594,10 @@ public class SpriteMovement : MonoBehaviour
         }
 
     }
-    public float MoveRight(float MoveSpeed)
+    public float MoveRight(float tempMovementSpeed)
     {
         float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * MoveSpeed;
+        DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
         AnimateMoveRight();
         if (movedSoFar > 1)

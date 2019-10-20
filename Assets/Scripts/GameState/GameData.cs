@@ -16,6 +16,9 @@ public class GameData : MonoBehaviour
     public int FloorNumber = 1;
     public int RunNumber = 1;
     public int PowersGained = 0;
+    public bool timerTrigger;
+    public bool hasted;
+    public bool stealthed;
 
 
 
@@ -45,6 +48,13 @@ public class GameData : MonoBehaviour
 
     void Update()
     {
+
+        int tempSeconds = (int)(timer + Time.deltaTime);
+        if (tempSeconds > (int)timer)
+        {
+            timerTrigger = true;
+        }
+        else timerTrigger = false;
         timer += Time.deltaTime;
         seconds = (int)(timer % 60);
         minutes = (int)(timer / 60);
