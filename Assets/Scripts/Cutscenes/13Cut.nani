@@ -1,25 +1,51 @@
 #start
 
-$@scene= office
+;$@scene= office
 
-$@place Tedd
-$@palce Wilson
+@fwspawnvfx x:-6 y:-1 z:0 Vfx:Tristana
+@fwturnpawn n:Nelson d:e
+@fwspawnvfx x:-5 y:-1 z:0 Vfx:Wilson
+@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-4 y:0 z:0 Vfx:Jerene
+@fwturnpawn n:Jerene d:e
+@fwspawnvfx x:-1 y:2 z:0 Vfx:Nelson
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:Phillip
+@fwspawnvfx x:2 y:-3 z:0 Vfx:Murtough
+@fwturnpawn n:Murtough d:w
 
 
+@char Tristana
+It seems like a hopeless situation. Why don't you evacuate?
+@hidechars time:0
 @char Wilson
-I have to stay but you should go son! A mayor always goes down with his town!
+A pox spreads with those who leave. No, We are staying.[br]You won't talk us out of it.
+@hidechars time:0
+@char Jerene
+We all have noble and great reasons for standing against evil.
+@hidechars time:0
+@char Murtough
+Except me.
+@hidechars time:0
+@char Jerene
+Yes, except him.
+@hidechars time:0
+@fwspawnvfx x:3 y:-3 z:0 Vfx:Firework ;cursed
+@char Murtough
+Figures.
+@hidechars time:0
 
-@char Tedd
-I keep telling you you're thinking of a different job! Either way, I'm not leaving your side!
+;speedup Murtough
+@fwmovepawn n:Murtough d:s
+@fwmovepawn n:Murtough d:w
+@fwmovepawn n:Murtough d:w
+@fwmovepawn n:Murtough d:w
+@fwmovepawn n:Murtough d:w
+@fwmovepawn n:Murtough d:w
+@fwmovepawn n:Murtough d:w
+@fwmovepawn n:Murtough d:w
+;remove Murtough
 
-$@animate curse Tedd
 
-@char Tedd
-After this!
-
-@fwmovepawn Tedd (to exit)
-
-
-$@startRun
+;$@startRun
 
 @stop

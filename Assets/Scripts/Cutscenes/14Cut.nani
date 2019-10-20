@@ -1,25 +1,48 @@
 #start
 
-$@scene= office
+;$@scene= office
 
-$@place Tedd
-$@palce Wilson
+@fwspawnvfx x:-6 y:-10 z:0 Vfx:Tedd
+@fwturnpawn n:Nelson d:e
+@fwspawnvfx x:-10 y:0 z:0 Vfx:wilson
+@fwturnpawn n:Jezerine d:s
+
 
 
 @char Wilson
 I have to stay but you should go son! A mayor always goes down with his town!
-
+@hidechars time:0
 @char Tedd
 I keep telling you you're thinking of a different job! Either way, I'm not leaving your side!
+@hidechars time:0
 
-$@animate curse Tedd
+@fwspawnvfx x:-6 y:-10 z:0 Vfx:Firework ;cursed
 
 @char Tedd
 After this!
+@hidechars time:0
 
-@fwmovepawn Tedd (to exit)
+;speed up Tedd
+@fwmovepawn n:Tedd d:e
+@fwmovepawn n:Tedd d:s
+@fwmovepawn n:Tedd d:s
+@fwmovepawn n:Tedd d:s
+@fwmovepawn n:Tedd d:s
 
+@fwmovepawn n:Tedd d:e
+@fwmovepawn n:Tedd d:e
+@fwmovepawn n:Tedd d:e
+@fwmovepawn n:Tedd d:e
+@fwmovepawn n:Tedd d:e
+@fwmovepawn n:Tedd d:e
+@fwmovepawn n:Tedd d:e
+@fwmovepawn n:Tedd d:e
 
-$@startRun
+@fwmovepawn n:Tedd d:s
+@fwmovepawn n:Tedd d:s
+
+;remove Tedd
+
+;$@startRun
 
 @stop

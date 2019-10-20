@@ -1,53 +1,76 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Jezerine
-$@place Nelson
+
+@fwspawnvfx x:-6 y:-10 z:0 Vfx:Nelson
+@fwturnpawn n:Nelson d:s
+@fwspawnvfx x:-7 y:-13 z:0 Vfx:Jezerine
+@fwturnpawn n:Jezerine d:e
+@fwspawnvfx x:-5 y:-13 z:0 Vfx:dummy
+
+
 
 @char Nelson
 Come inside, you'll catch your death of cold.
-
+@hidechars time:0
 @char Jezerine
 I will catch death
+@hidechars time:0
 
-@fwmovepawn Jezerine east
-@fwmovepawn Jezerine east
-$@animate dummy swordhit
-@fwmovepawn Jezerine east
-@fwmovepawn Jezerine east
+;noclip on Jezerine
+@fwmovepawn n:Jezerine d:e
+@fwmovepawn n:Jezerine d:e
+@fwspawnvfx x:-5 y:-13 z:0 Vfx:Firework
+@fwmovepawn n:Jezerine d:e
+@fwmovepawn n:Jezerine d:e
 
 @char Jezerine
 And it will meet its end.
-
+@hidechars time:0
 @char Nelson
 It is not becoming of a young lady to play with swords.
+@hidechars time:0
 
-@fwmovepawn Jezerine west
-@fwmovepawn Jezerine west
-$@animate dummy swordhit
-@fwmovepawn Jezerine west
-@fwmovepawn Jezerine west
+@fwmovepawn n:Jezerine d:w
+@fwmovepawn n:Jezerine d:w
+@fwspawnvfx x:-5 y:-13 z:0 Vfx:Firework
+@fwmovepawn n:Jezerine d:w
+@fwmovepawn n:Jezerine d:w
 
 @char Jezerine
 What will become of any of us if I do not?
+@hidechars time:0
 
-$@animate curse Jezerine
+@fwspawnvfx x:-7 y:-13 z:0 Vfx:Firework ;cursed
 
 @fwmovepawn Nelson (toward Jezerine)
 
 @char Jezerine
 Still going to try to talk me out of it?
+@hidechars time:0
 
-$@fwturnpawn Jezerine (toward Nelson)
+@fwmovepawn n:Nelson d:s
+@fwmovepawn n:Nelson d:s
+@fwmovepawn n:Nelson d:s
+@fwturnpawn n:Nelson d:w
+@fwturnpawn n:Jezerine d:e
+
 
 @char Nelson
-No. Here, take this.
+No.[br]Here, take this. I hear it's cold in there.
+@hidechars time:0
 
-$@dispay "you recieved sweater"
+;$@dispay "you recieved sweater"
 
-@fwmovepawn Jezerine (toward cave)
+@fwturnpawn n:Jezerine d:n
+@fwturnpawn n:Jezerine d:e
+@fwturnpawn n:Jezerine d:e
+@fwturnpawn n:Jezerine d:e
+@fwturnpawn n:Jezerine d:e
+@fwturnpawn n:Jezerine d:e
+@fwturnpawn n:Jezerine d:e
 
-$@startRun
+;$@startRun
 
-@stop
+@exit
