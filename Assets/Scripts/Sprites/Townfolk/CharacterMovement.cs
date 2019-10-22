@@ -119,7 +119,8 @@ public class CharacterMovement : SpriteMovement
             totalDashed += Time.deltaTime * tempMovementSpeed;
             if (!continueDashing)
             {
-                if (totalDashed >= 30)
+
+                if (totalDashed >= 25)
                 {
                     tiePositionToGrid();
                     gameData.dashing = false;
@@ -171,6 +172,7 @@ public class CharacterMovement : SpriteMovement
             characterLocation = characterNextLocation;
             continueDashing = true;
         }
+
     }
 
     internal void PowerDownCheat()
@@ -215,6 +217,11 @@ public class CharacterMovement : SpriteMovement
             return;
         }
 
+        if (waitTimer >= 0 && inputDirection != (int)DirectionMoved.NONE) {
+            facedDirection = inputDirection;
+            SetLookDirection();
+        }
+
         if (!currentlyMoving && !jumping && !gameData.dashing && !jumpQued&&!windJump )
         {
             if (inputDirection == (int)DirectionMoved.NONE)
@@ -224,6 +231,7 @@ public class CharacterMovement : SpriteMovement
             }
 
             facedDirection = inputDirection;
+
             SetNextLocation(inputDirection);
             if (IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
             {
@@ -235,6 +243,7 @@ public class CharacterMovement : SpriteMovement
                 currentlyMoving = true;
 
             }
+            else { SetLookDirection(); }
 
             //Check if a monster is in the next location, and initiate combat if so
             GameObject EnemyToFight = isThereAMonster();
@@ -364,6 +373,7 @@ public class CharacterMovement : SpriteMovement
         {
             gameData.hasted = false;
             tempMovementSpeed = MoveSpeed;
+            tempFramesPerSecond = framesPerSecond;
         }
         else
         {
@@ -371,6 +381,7 @@ public class CharacterMovement : SpriteMovement
             {
                 playerStats.mana -= 6;
                 tempMovementSpeed = MoveSpeed * hasteSpeed;
+                tempFramesPerSecond = framesPerSecond*hasteSpeed;
                 gameData.hasted = true;
                 gameData.stealthed = false;
             }
@@ -378,6 +389,7 @@ public class CharacterMovement : SpriteMovement
             {
                 gameData.hasted = false;
                 tempMovementSpeed = MoveSpeed;
+                tempFramesPerSecond = framesPerSecond;
             }
         }
 
@@ -390,6 +402,7 @@ public class CharacterMovement : SpriteMovement
         {
             gameData.stealthed = false;
             tempMovementSpeed = MoveSpeed;
+            tempFramesPerSecond = framesPerSecond;
         }
         else
         {
@@ -397,6 +410,7 @@ public class CharacterMovement : SpriteMovement
             {
                 playerStats.mana -= 2;
                 tempMovementSpeed = MoveSpeed * stealthspeed;
+                tempFramesPerSecond = framesPerSecond*stealthspeed;
                 gameData.stealthed = true;
                 gameData.hasted = false;
             }
@@ -404,6 +418,7 @@ public class CharacterMovement : SpriteMovement
             {
                 gameData.hasted = false;
                 tempMovementSpeed = MoveSpeed;
+                tempFramesPerSecond = framesPerSecond;
             }
         }
     }

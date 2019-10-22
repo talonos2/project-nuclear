@@ -274,14 +274,13 @@ public class Combat : MonoBehaviour
         }
         incomingDamage *= 1 + RollCrit();
 
-        Debug.Log("ed: " + elementalDamage);
         monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
 
         //need elemental hit-splat if elemental damage is > 0
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
-        Debug.Log("Monster HP:" + monsterStats.HP);
+        //Debug.Log("Monster HP:" + monsterStats.HP);
         CheckCombatOver();
     }
 
@@ -305,7 +304,7 @@ public class Combat : MonoBehaviour
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
-        Debug.Log("Player HP:" + playerStats.HP);
+        //Debug.Log("Player HP:" + playerStats.HP);
         CheckCombatOver();
     }
 

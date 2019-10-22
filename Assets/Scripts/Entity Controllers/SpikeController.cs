@@ -16,6 +16,7 @@ public class SpikeController : DoodadData
     protected bool animateRise = false;
     protected int frameToSet = 0;
 
+
     // Start is called before the first frame update
     new void Start()
     {
@@ -24,6 +25,8 @@ public class SpikeController : DoodadData
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
     }
+
+
 
 
     private void InitializeSpriteLocation()
@@ -35,6 +38,7 @@ public class SpikeController : DoodadData
         MapGrid.GetComponent<EntityGrid>().grid[SpikeLocation.x, SpikeLocation.y] = this.gameObject;
 
     }
+
 
     public void LowerSpikeAnimation() {
         isAnimating = true;
