@@ -20,6 +20,7 @@ public class SwitchEntityData : EntityData
     private int animationCounter=0;
     private bool activeSwitch = true;
     public float timeTillReset = 0;
+    public bool prePressed;
     private float tempResetTime = 0;
     private bool timerSet = false;
     // Start is called before the first frame update
@@ -28,6 +29,9 @@ public class SwitchEntityData : EntityData
         InitializeSpriteLocation();
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
+        if (prePressed) {
+            this.ProcessClick(null);
+        }
     }
 
 

@@ -120,7 +120,7 @@ public class CharacterMovement : SpriteMovement
             if (!continueDashing)
             {
 
-                if (totalDashed >= 25)
+                if (totalDashed >= 28)
                 {
                     tiePositionToGrid();
                     gameData.dashing = false;
