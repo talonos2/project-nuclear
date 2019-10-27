@@ -186,12 +186,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainCharacter: 0
   isAMonster: 1
+  isLargeMonster: 0
   isInteractableObject: 0
   isItem: 0
   isSwitch: 0
   isNPC: 0
-  isSpike: 0
-  isPassable: 0
 --- !u!65 &4634487190051776848
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -222,9 +221,9 @@ MonoBehaviour:
   attack: 49
   defense: 14
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.6, y: 0.1}
+  homePositionOnScreen: {x: 0.2, y: -0.7}
   strikingPointOffset: {x: 0, y: 0}
-  gettingStruckPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0.2, y: 0.3}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Earth Spirit

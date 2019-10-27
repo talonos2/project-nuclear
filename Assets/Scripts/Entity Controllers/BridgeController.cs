@@ -7,11 +7,11 @@ public class BridgeController : DoodadData
 
     public void removePlatform() {
         this.isPlatformTerrain = false;
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
     }
     public void addPlatform() {
         this.isPlatformTerrain = true;
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
     }
     // Update is called once per frame
     void Update()

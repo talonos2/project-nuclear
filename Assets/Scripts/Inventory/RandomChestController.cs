@@ -45,6 +45,7 @@ public class RandomChestController : EntityData
     public GameObject rareItemBreaking;
     public GameObject crystalPrefab;
     public GameObject manaFountainBreaking;
+    public GameObject healthFountainBreaking;
 
     void Start()
     {
@@ -301,7 +302,7 @@ public class RandomChestController : EntityData
             amountGained = 20 + rarity * healingFactor;
             playerData.HP += amountGained;
             if (playerData.HP > playerData.MaxHP) playerData.HP = playerData.MaxHP;
-            Instantiate(manaFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Instantiate(healthFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
         else if (manaFountain)
