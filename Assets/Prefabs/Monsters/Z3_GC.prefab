@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bbabb577345f240886179cc01bde1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
+  MoveSpeed: 7
   framesPerSecond: 8
   facedDirection: 4
   PathRandomly: 1
@@ -81,12 +81,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainCharacter: 0
   isAMonster: 1
+  isLargeMonster: 0
   isInteractableObject: 0
   isItem: 0
   isSwitch: 0
   isNPC: 0
-  isSpike: 0
-  isPassable: 0
 --- !u!65 &6622165687117483735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -117,8 +116,8 @@ MonoBehaviour:
   attack: 74
   defense: 8
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.6, y: 0.1}
-  strikingPointOffset: {x: 0, y: 0}
+  homePositionOnScreen: {x: 0.4, y: -0.5}
+  strikingPointOffset: {x: 0.18, y: 0.2}
   gettingStruckPointOffset: {x: 0, y: 0}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
