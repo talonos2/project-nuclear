@@ -19,13 +19,19 @@ public class SwitchEntityData : EntityData
     private bool forwardAnimation;
     private int animationCounter=0;
     private bool activeSwitch = true;
-    public double timeTillReset = 0;
+    public float timeTillReset = 0;
+    public bool prePressed;
+    private float tempResetTime = 0;
+    private bool timerSet = false;
     // Start is called before the first frame update
     void Start()
     {
         InitializeSpriteLocation();
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
+        if (prePressed) {
+            this.ProcessClick(null);
+        }
     }
 
 
@@ -40,8 +46,21 @@ public class SwitchEntityData : EntityData
     }
 
     override public void ProcessClick(CharacterStats stats) {
-        if (isAnimating) { return; }
 
+        if (isAnimating) { return; }
+        if (stats == null)
+        {
+            timerSet = false;
+        }
+        else { timerSet = true;
+            tempResetTime = timeTillReset;
+        }
+        ToggleTiedObjects();
+        
+    }
+
+    private void ToggleTiedObjects()
+    {
         if (activeSwitch)
         {
             foreach (GameObject tiedEntity in TiedEntities)
@@ -64,7 +83,8 @@ public class SwitchEntityData : EntityData
             activeSwitch = false;
             SwitchAnimation();
         }
-        else {
+        else
+        {
             foreach (GameObject tiedEntity in TiedEntities)
             {
                 SpikeController spikeControlled = tiedEntity.GetComponent<SpikeController>();
@@ -77,7 +97,7 @@ public class SwitchEntityData : EntityData
                 if (bridgeControlled != null)
                 {
                     if (bridgeControlled.isPlatformTerrain) { bridgeControlled.removePlatform(); }
-                        else { bridgeControlled.addPlatform(); }
+                    else { bridgeControlled.addPlatform(); }
                 }
 
 
@@ -103,11 +123,21 @@ public class SwitchEntityData : EntityData
 
     void Update()
     {
-        if (!isAnimating) { return; }
+
         if (GameState.isInBattle == true)
         {
             return;
         }
+
+        if (timerSet && timeTillReset>0) {
+            tempResetTime -= Time.deltaTime;
+            if (tempResetTime <= 0) {
+                ProcessClick(null);
+            }
+        }
+
+        //Animate the switch section
+        if (!isAnimating) { return; }
         timeSinceLastFrame += Time.deltaTime;
 
         if (timeSinceLastFrame >= 1 / AnimationSpeed) {

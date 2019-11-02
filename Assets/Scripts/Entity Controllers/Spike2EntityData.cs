@@ -9,6 +9,7 @@ public class Spike2EntityData : SpikeController
     private int totalFrames = 7;
     void Update()
     {
+
         if (!isAnimating || GameState.isInBattle) { return; }
         timeSinceLastFrame += Time.deltaTime;
         if (timeSinceLastFrame >= 1 / AnimationSpeed)

@@ -40,6 +40,7 @@ public class Combat : MonoBehaviour
 
     private GameObject combatFolder;
     private int phaseLastFrame;
+    private GameData gameData;
 
     GameObject hitsplatTemplate;
 
@@ -50,7 +51,7 @@ public class Combat : MonoBehaviour
         this.monsterStats = monsterStats;
         this.playerStats = playerStats;
         this.monsterToDelete = monsterToDelete;
-
+        gameData= GameObject.Find("GameStateData").GetComponent<GameData>();
         //Create monster sprites:
 
         monsterSprite = new GameObject("Monster Sprite");
@@ -196,7 +197,7 @@ public class Combat : MonoBehaviour
     private void CheckCombatOver()
     {
         //TODO: If the time is up, combat ends immediately.
-        if (false/*TimeIsUp()*/)
+        if (gameData.minutes==10)
         {
             combatEnded = true;
             GameState.endRunFlag = true;
@@ -273,14 +274,13 @@ public class Combat : MonoBehaviour
         }
         incomingDamage *= 1 + RollCrit();
 
-        Debug.Log("ed: " + elementalDamage);
         monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
 
         //need elemental hit-splat if elemental damage is > 0
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
-        Debug.Log("Monster HP:" + monsterStats.HP);
+        //Debug.Log("Monster HP:" + monsterStats.HP);
         CheckCombatOver();
     }
 
@@ -304,7 +304,7 @@ public class Combat : MonoBehaviour
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
-        Debug.Log("Player HP:" + playerStats.HP);
+        //Debug.Log("Player HP:" + playerStats.HP);
         CheckCombatOver();
     }
 

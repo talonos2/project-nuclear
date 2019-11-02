@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4775031707782143768}
   - component: {fileID: 8323264096586742577}
   m_Layer: 0
-  m_Name: Z3_Drone
+  m_Name: Z1_Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,8 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 7
   framesPerSecond: 10
-  CharacterLocation: {x: 0, y: 0}
-  CharacterNextLocation: {x: 0, y: 0}
+  facedDirection: 4
   PathRandomly: 1
   PathViaSteps: 0
   Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
@@ -203,12 +202,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainCharacter: 0
   isAMonster: 1
+  isLargeMonster: 0
   isInteractableObject: 0
   isItem: 0
   isSwitch: 0
   isNPC: 0
-  isSpike: 0
-  isPassable: 0
 --- !u!65 &4775031707782143768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -242,6 +240,8 @@ MonoBehaviour:
   homePositionOnScreen: {x: 0.6, y: 0}
   strikingPointOffset: {x: 0, y: 0}
   gettingStruckPointOffset: {x: 0, y: 0}
+  scale: {x: 1, y: 1}
+  forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Drone
   ExpGiven: 90
   weakness: 2

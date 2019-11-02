@@ -65,8 +65,6 @@ MonoBehaviour:
   isItem: 1
   isSwitch: 0
   isNPC: 0
-  isSpike: 0
-  isPassable: 0
   itemChestChance: 45
   goldItemChestChance: 5
   crystalChance: 20
@@ -92,9 +90,13 @@ MonoBehaviour:
     type: 3}
   rareItemPrefab: {fileID: 6884372004519679543, guid: ac464cf45f7d9b0429d027493828e00f,
     type: 3}
+  rareItemBreaking: {fileID: 2149071705929039163, guid: 43ce47e734a6c764b988599c2ef89a7b,
+    type: 3}
   crystalPrefab: {fileID: 4372632286479124443, guid: 6ae31ac11f8a1a44faefea24942dc594,
     type: 3}
   manaFountainBreaking: {fileID: 6779871452013414145, guid: 3b06bb234ecfa674d981ceeb0d493268,
+    type: 3}
+  healthFountainBreaking: {fileID: 6779871452013414145, guid: c8539eec096b5f149aab0baa71d8d1c6,
     type: 3}
 --- !u!212 &8332177918306501506
 SpriteRenderer:

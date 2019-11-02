@@ -13,6 +13,9 @@ public class CharacterMovement : SpriteMovement
     private bool windJump;
     private float hasteSpeed = 2;
     private float stealthspeed = .75f;
+    private float dashSpeed = 4;
+    private float totalDashed = 0;
+    private bool continueDashing = false;
 
 
 
@@ -31,6 +34,12 @@ public class CharacterMovement : SpriteMovement
         {
             return;
         }
+        if (!currentlyMoving && waitTimer >= 0)
+        {
+            waitTimer -= Time.deltaTime;
+            return;
+        }
+
 
         if (gameData.hasted) {
             if (gameData.timerTrigger) {
@@ -38,10 +47,12 @@ public class CharacterMovement : SpriteMovement
                 {
                     playerStats.mana -= 12;
                     tempMovementSpeed = MoveSpeed * hasteSpeed;
+                    tempFramesPerSecond = framesPerSecond * hasteSpeed;
                 }
                 else {
                     gameData.hasted = false;
                     tempMovementSpeed = MoveSpeed;
+                    tempFramesPerSecond = framesPerSecond;
                 }
             }
         }
@@ -52,11 +63,13 @@ public class CharacterMovement : SpriteMovement
                 {
                     playerStats.mana -= 4;
                     tempMovementSpeed = MoveSpeed * stealthspeed;
+                    tempFramesPerSecond = framesPerSecond * stealthspeed;
                 }
                 else
                 {
                     gameData.stealthed = false;
                     tempMovementSpeed = MoveSpeed;
+                    tempFramesPerSecond = framesPerSecond;
                 }
             }
         }
@@ -97,7 +110,34 @@ public class CharacterMovement : SpriteMovement
             }
         }
 
-        if (!currentlyMoving && dashing) {
+        if (!currentlyMoving && gameData.dashing || continueDashing) {
+            if (waitTimer >= 0)
+            {
+                waitTimer -= Time.deltaTime;
+                return;
+            }
+            totalDashed += Time.deltaTime * tempMovementSpeed;
+            if (!continueDashing)
+            {
+
+                if (totalDashed >= 28)
+                {
+                    tiePositionToGrid();
+                    gameData.dashing = false;
+                    CheckWindJumpStatus();
+                    CheckExitStatus();
+                    tempFramesPerSecond = framesPerSecond; ;
+                    tempMovementSpeed = MoveSpeed;
+                }else SetNextDashLocation();
+            }
+
+            if (continueDashing) {
+                if (ContinueMoving() == 0)
+                {
+                    continueDashing = false;
+                    
+                }
+            }
 
         }
 
@@ -117,6 +157,21 @@ public class CharacterMovement : SpriteMovement
         }
 
 
+
+    }
+
+    private void SetNextDashLocation()
+    {
+        SetNextLocation(facedDirection);
+        if (IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
+        {
+            //if it is possible, check for a monster attack
+            //Needs to be refractored a bit
+            UpdateNewEntityGridLocation();
+            RemoveOldEntityGridLocation();
+            characterLocation = characterNextLocation;
+            continueDashing = true;
+        }
 
     }
 
@@ -162,7 +217,12 @@ public class CharacterMovement : SpriteMovement
             return;
         }
 
-        if (!currentlyMoving && !jumping && !dashing && !jumpQued&&!windJump)
+        if (waitTimer >= 0 && inputDirection != (int)DirectionMoved.NONE) {
+            facedDirection = inputDirection;
+            SetLookDirection();
+        }
+
+        if (!currentlyMoving && !jumping && !gameData.dashing && !jumpQued&&!windJump )
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
@@ -171,6 +231,7 @@ public class CharacterMovement : SpriteMovement
             }
 
             facedDirection = inputDirection;
+
             SetNextLocation(inputDirection);
             if (IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
             {
@@ -182,10 +243,11 @@ public class CharacterMovement : SpriteMovement
                 currentlyMoving = true;
 
             }
+            else { SetLookDirection(); }
 
             //Check if a monster is in the next location, and initiate combat if so
             GameObject EnemyToFight = isThereAMonster();
-            if (EnemyToFight != null)
+            if (EnemyToFight != null && !gameData.dashing)
             {
                 Combat.InitiateFight(this.gameObject, EnemyToFight);
             }
@@ -198,7 +260,7 @@ public class CharacterMovement : SpriteMovement
         {
             return;
         }
-        if (!jumping && !dashing )
+        if (!jumping && !gameData.dashing)
         {
             switch (playerStats.currentPower)
             {
@@ -311,6 +373,7 @@ public class CharacterMovement : SpriteMovement
         {
             gameData.hasted = false;
             tempMovementSpeed = MoveSpeed;
+            tempFramesPerSecond = framesPerSecond;
         }
         else
         {
@@ -318,6 +381,7 @@ public class CharacterMovement : SpriteMovement
             {
                 playerStats.mana -= 6;
                 tempMovementSpeed = MoveSpeed * hasteSpeed;
+                tempFramesPerSecond = framesPerSecond*hasteSpeed;
                 gameData.hasted = true;
                 gameData.stealthed = false;
             }
@@ -325,6 +389,7 @@ public class CharacterMovement : SpriteMovement
             {
                 gameData.hasted = false;
                 tempMovementSpeed = MoveSpeed;
+                tempFramesPerSecond = framesPerSecond;
             }
         }
 
@@ -337,6 +402,7 @@ public class CharacterMovement : SpriteMovement
         {
             gameData.stealthed = false;
             tempMovementSpeed = MoveSpeed;
+            tempFramesPerSecond = framesPerSecond;
         }
         else
         {
@@ -344,6 +410,7 @@ public class CharacterMovement : SpriteMovement
             {
                 playerStats.mana -= 2;
                 tempMovementSpeed = MoveSpeed * stealthspeed;
+                tempFramesPerSecond = framesPerSecond*stealthspeed;
                 gameData.stealthed = true;
                 gameData.hasted = false;
             }
@@ -351,13 +418,23 @@ public class CharacterMovement : SpriteMovement
             {
                 gameData.hasted = false;
                 tempMovementSpeed = MoveSpeed;
+                tempFramesPerSecond = framesPerSecond;
             }
         }
     }
 
     private void ActivateShieldDash()
     {
-        throw new NotImplementedException();
+        if (playerStats.mana >= 5) {
+            playerStats.mana -= 5;
+            gameData.dashing = true;
+            gameData.hasted = false;
+            gameData.stealthed = false;
+            tempMovementSpeed = MoveSpeed * dashSpeed;
+            tempFramesPerSecond = framesPerSecond * dashSpeed;
+            waitTimer = .4f;
+            totalDashed = 0;
+        }
     }
 
     internal void PowerToggleLeftKeyReceived()
@@ -389,7 +466,7 @@ public class CharacterMovement : SpriteMovement
             return;
         }
         GameObject entityToCheck = null;
-        if (!currentlyMoving && !jumping &&!dashing) {
+        if (!currentlyMoving && !jumping &&!gameData.dashing) {
             switch (facedDirection) {
                 case DirectionMoved.UP:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y+1];

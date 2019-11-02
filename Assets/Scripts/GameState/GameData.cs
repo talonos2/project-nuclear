@@ -19,6 +19,7 @@ public class GameData : MonoBehaviour
     public bool timerTrigger;
     public bool hasted;
     public bool stealthed;
+    public bool dashing;
 
 
 
