@@ -8,10 +8,14 @@ public class EntityGrid : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject[,] grid;
+    private int width;
+    private int height;
 
     void Start()
     {
         InitializeEntityMap();
+        width = this.GetComponentInParent<PassabilityGrid>().width;
+        height = this.GetComponentInParent<PassabilityGrid>().height;
     }
 
     public void InitializeEntityMap()
@@ -43,8 +47,7 @@ public class EntityGrid : MonoBehaviour
 
     private void printEntityGridToScreen()
     {
-        int width = this.GetComponentInParent<PassabilityGrid>().width;
-        int height = this.GetComponentInParent<PassabilityGrid>().height;
+
         if (grid == null)
         {
             return;
@@ -87,5 +90,18 @@ public class EntityGrid : MonoBehaviour
 
             }
         }
+    }
+
+    internal GameObject GetEntity(int charLocX, int charLocY)
+    {
+        if (charLocX < 0 || charLocY < 0)
+        {
+            return null;
+        }
+
+        if (charLocX < width && charLocY < height)
+            return grid[charLocX, charLocY];
+        else return null;
+
     }
 }

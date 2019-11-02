@@ -59,14 +59,15 @@ MonoBehaviour:
   MoveSpeed: 8
   framesPerSecond: 12
   facedDirection: 4
-  PathRandomly: 1
+  PathRandomly: 0
+  PathAntiRandomly: 0
   PathViaSteps: 0
   Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
-  SpotterMonster: 0
-  SpottingDistance: 6
+  SpotterMonster: 1
+  SpottingDistance: 4
   LookDuration: 20
   ChaseRange: 15
-  LookPattern: 
+  LookPattern: 0000000000000000
 --- !u!114 &6622165687117483729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,12 +82,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainCharacter: 0
   isAMonster: 1
+  isLargeMonster: 0
   isInteractableObject: 0
   isItem: 0
   isSwitch: 0
   isNPC: 0
-  isSpike: 0
-  isPassable: 0
 --- !u!65 &6622165687117483735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   attack: 100
   defense: 10
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.6, y: 0.1}
+  homePositionOnScreen: {x: 0.4, y: -0.3}
   strikingPointOffset: {x: 0, y: 0}
   gettingStruckPointOffset: {x: 0, y: 0}
   scale: {x: 1, y: 1}
