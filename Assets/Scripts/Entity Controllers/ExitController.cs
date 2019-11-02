@@ -16,7 +16,7 @@ public class ExitController : DoodadData
 
     public void TransitionMap()
     {
-        GameData gameData= GameObject.Find("GameStateData").GetComponent<GameData>();
+        GameData gameData= GameData.Instance;
         gameData.FloorNumber +=1;
 
         gameData.SetNextLocation(exitPosition, exitFacing);

@@ -14,7 +14,7 @@ public class PuzzleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameData= GameObject.Find("GameStateData").GetComponent<GameData>();
+        gameData= GameData.Instance;
         if (SetAlgorythm) { Map01Setup(); }
     }
 

@@ -12,7 +12,7 @@ public class SpawnPlayer : MonoBehaviour
     void Start()
     {
 
-        gameData = GameObject.Find("GameStateData").GetComponent<GameData>();
+        gameData = GameData.Instance;
 
         if (gameData.nextLocationSet)
         { newPlayer = Instantiate(Players[gameData.RunNumber - 1], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity); }
