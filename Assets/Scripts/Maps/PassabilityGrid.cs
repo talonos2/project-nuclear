@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -110,5 +111,15 @@ public class PassabilityGrid : MonoBehaviour
     public Vector2 GridToTransform(Vector2 gridPosition)
     {
         return new Vector2(gridPosition.x - width / 2, gridPosition.y - height / 2);
+    }
+
+    internal bool InRange(int locX, int locY)
+    {
+        if (locX < 0 || locY < 0 || locX >= width || locY >= width)
+        {
+            return false;
+        }
+        else return true ;
+        
     }
 }

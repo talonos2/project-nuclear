@@ -150,7 +150,7 @@ public class SpriteMovement : MonoBehaviour
         bool MoveableLocation = false;
 
 
-        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL  || IsPlatformUp(LocX, LocY)) {
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY)) {
             if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
@@ -176,6 +176,7 @@ public class SpriteMovement : MonoBehaviour
     protected bool IsMoveLocationMonsterChaseable(int LocX, int LocY) {
         bool MoveableLocation = false;
 
+        if (!MapGrid.GetComponent<PassabilityGrid>().InRange(LocX, LocY)) { return false; }
 
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
             || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
@@ -220,6 +221,24 @@ public class SpriteMovement : MonoBehaviour
            
         //Toggleable Terrain check
        
+
+        return MoveableLocation;
+
+    }
+
+    protected bool IsAntiRandomMoveLocationPassable(int LocX, int LocY)
+    {
+
+        bool MoveableLocation = false;
+
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL)
+        {
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
+                MoveableLocation = true;
+        }
+
+        //Toggleable Terrain check
+
 
         return MoveableLocation;
 
@@ -295,8 +314,10 @@ public class SpriteMovement : MonoBehaviour
 
     protected GameObject isThereAPlayer(int CharLocX, int CharLocY)
     {
+
         GameObject EnemyPresent = null;
-        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[CharLocX, CharLocY]; 
+        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().GetEntity(CharLocX, CharLocY); 
+        //Make internal function to pull entity from entity grid and make boundery checks. 
 
         if (EntityToFight != null)
         {
@@ -356,9 +377,6 @@ public class SpriteMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-
-
-
 
     public float MoveDown(float tempMovementSpeed)
     {

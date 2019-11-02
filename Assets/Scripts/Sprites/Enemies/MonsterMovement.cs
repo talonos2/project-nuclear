@@ -13,6 +13,7 @@ public class MonsterMovement : SpriteMovement
     private float finishedMoving;
 
     public bool PathRandomly;
+    public bool PathAntiRandomly;
     public bool PathViaSteps;
 
     public DirectionMoved[] Pathing = {DirectionMoved.UP, DirectionMoved.UP, DirectionMoved.UP,
@@ -86,6 +87,31 @@ public class MonsterMovement : SpriteMovement
                 }
 
                 if (IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y))
+                    CheckForFight(characterNextLocation.x, characterNextLocation.y);
+            }
+
+            if (PathAntiRandomly)
+            {
+                if (waitTimer >= 0)
+                {
+                    waitTimer -= Time.deltaTime;
+                    return;
+                }
+                NextStep = GetRandomStep();
+                SetNextLocation(NextStep);
+                facedDirection = NextStep;
+                if (IsAntiRandomMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
+                {
+                    UpdateNewEntityGridLocation();
+                    RemoveOldEntityGridLocation();
+                    characterLocation = characterNextLocation;
+                    currentlyMoving = true;
+                }
+                else
+                {
+                    waitTimer = .25f;
+                    SetLookDirection();
+                }
                     CheckForFight(characterNextLocation.x, characterNextLocation.y);
             }
 
@@ -288,8 +314,8 @@ public class MonsterMovement : SpriteMovement
     {
         //DirectionMoved nexstp = 0;
         System.Random rand = new System.Random();
-        int dirOrdinal = rand.Next(8)+1;
-        if (dirOrdinal > 4) dirOrdinal = (int)facedDirection;
+        int dirOrdinal = rand.Next(4)+1;
+        //if (dirOrdinal > 4) dirOrdinal = (int)facedDirection;
         return (DirectionMoved)dirOrdinal;
     }
 
