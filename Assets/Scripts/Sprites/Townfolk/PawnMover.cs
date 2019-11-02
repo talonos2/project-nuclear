@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PawnMover : SpriteMovement
 {
 
-    public Queue<DirectionMoved> movementQueue = new Queue<DirectionMoved>();
+    Queue<MovementWrapper> movementQueue = new Queue<MovementWrapper>();
 
     // Update is called once per frame
     void Update()
@@ -37,14 +37,29 @@ public class PawnMover : SpriteMovement
         {
             if (movementQueue.Count > 0)
             {
-                //Debug.Log("Moving!");
-                MoveKeyReceived(movementQueue.Dequeue());
+                MovementWrapper move = movementQueue.Dequeue();
+                switch (move.t)
+                {
+                    case Task.MOVE:
+                        MoveKeyReceived(move.d);
+                        break;
+                    case Task.TURN:
+                        TurnKeyReceived(move.d);
+                        break;
+                }
             }
             else
             {
                 //Debug.Log("No direction to move to!");
             }
         }
+    }
+
+    internal void EnqueueTurn(string direction)
+    {
+        DirectionMoved d = GetDirectionFromString(direction);
+        direction = direction.ToLower();
+        movementQueue.Enqueue(new MovementWrapper(d, Task.TURN));
     }
 
     //Key command received from CharacterInputController script
@@ -68,9 +83,20 @@ public class PawnMover : SpriteMovement
         }
     }
 
+    //Key command received from CharacterInputController script
+    private void TurnKeyReceived(DirectionMoved inputDirection)
+    {
+        if (inputDirection != (int)DirectionMoved.NONE)
+        {
+            facedDirection = inputDirection;
+            SetLookDirection();
+            return;
+        }
+    }
+
     private float ContinueMoving()
     {
-        float finishedMoving=0;
+        float finishedMoving = 0;
         if (facedDirection == DirectionMoved.UP)
         {
             finishedMoving = MoveUp(MoveSpeed);
@@ -92,60 +118,65 @@ public class PawnMover : SpriteMovement
 
     public void EnqueueMovement(String direction)
     {
+        DirectionMoved d = GetDirectionFromString(direction);
         direction = direction.ToLower();
+        movementQueue.Enqueue(new MovementWrapper(d, Task.MOVE));
+    }
+
+    private DirectionMoved GetDirectionFromString(string direction)
+    {
         switch (direction)
         {
             case "up":
-                movementQueue.Enqueue(DirectionMoved.UP);
-                break;
+                return DirectionMoved.UP;
             case "u":
-                movementQueue.Enqueue(DirectionMoved.UP);
-                break;
+                return DirectionMoved.UP;
             case "north":
-                movementQueue.Enqueue(DirectionMoved.UP);
-                break;
+                return DirectionMoved.UP;
             case "n":
-                movementQueue.Enqueue(DirectionMoved.UP);
-                break;
+                return DirectionMoved.UP;
             case "down":
-                movementQueue.Enqueue(DirectionMoved.DOWN);
-                break;
+                return DirectionMoved.DOWN;
             case "d":
-                movementQueue.Enqueue(DirectionMoved.DOWN);
-                break;
+                return DirectionMoved.DOWN;
             case "south":
-                movementQueue.Enqueue(DirectionMoved.DOWN);
-                break;
+                return DirectionMoved.DOWN;
             case "s":
-                movementQueue.Enqueue(DirectionMoved.DOWN);
-                break;
+                return DirectionMoved.DOWN;
             case "left":
-                movementQueue.Enqueue(DirectionMoved.LEFT);
-                break;
+                return DirectionMoved.LEFT;
             case "l":
-                movementQueue.Enqueue(DirectionMoved.LEFT);
-                break;
+                return DirectionMoved.LEFT;
             case "west":
-                movementQueue.Enqueue(DirectionMoved.LEFT);
-                break;
+                return DirectionMoved.LEFT;
             case "w":
-                movementQueue.Enqueue(DirectionMoved.LEFT);
-                break;
+                return DirectionMoved.LEFT;
             case "right":
-                movementQueue.Enqueue(DirectionMoved.RIGHT);
-                break;
+                return DirectionMoved.RIGHT;
             case "r":
-                movementQueue.Enqueue(DirectionMoved.RIGHT);
-                break;
+                return DirectionMoved.RIGHT;
             case "east":
-                movementQueue.Enqueue(DirectionMoved.RIGHT);
-                break;
+                return DirectionMoved.RIGHT;
             case "e":
-                movementQueue.Enqueue(DirectionMoved.RIGHT);
-                break;
+                return DirectionMoved.RIGHT;
             default:
-                Debug.LogWarning("Unrecognized movement direction: "+direction+" Passed in via the MovePawn command.");
+                Debug.LogWarning("Unrecognized movement direction: " + direction + " Passed in via the MovePawn command.");
+                return DirectionMoved.NONE;
                 break;
         }
     }
+
+    internal struct MovementWrapper
+    {
+        internal readonly DirectionMoved d;
+        internal readonly Task t;
+
+        public MovementWrapper(DirectionMoved d, Task t) : this()
+        {
+            this.d = d;
+            this.t = t;
+        }
+    }
+
+    internal enum Task {MOVE,TURN};
 }
