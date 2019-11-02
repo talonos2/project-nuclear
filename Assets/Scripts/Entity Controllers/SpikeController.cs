@@ -21,7 +21,7 @@ public class SpikeController : DoodadData
     new void Start()
     {
         base.Start();
-        gameData = GameObject.Find("GameStateData").GetComponent<GameData>();
+        gameData = GameData.Instance;
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
     }

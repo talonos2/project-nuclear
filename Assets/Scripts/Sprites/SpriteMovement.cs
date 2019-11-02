@@ -58,7 +58,7 @@ public class SpriteMovement : MonoBehaviour
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
-        gameData =GameObject.Find("GameStateData").GetComponent<GameData>();
+        gameData = GameData.Instance;
         tempFramesPerSecond = framesPerSecond;
         tempMovementSpeed = MoveSpeed;
 

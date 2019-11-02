@@ -51,8 +51,7 @@ public class RandomChestController : EntityData
     {
         InitializeNewMap();
         InitializeSpriteLocation();
-        gameStateData = GameObject.Find("GameStateData");
-        gameData = gameStateData.GetComponent<GameData>();
+        gameData = GameData.Instance;
         itemListData = GameObject.Find("EquipmentData").GetComponent<EquipmentData>();
         RollRandomChest();
         InstantiateChestSprite();

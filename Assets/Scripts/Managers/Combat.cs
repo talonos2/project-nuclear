@@ -51,7 +51,7 @@ public class Combat : MonoBehaviour
         this.monsterStats = monsterStats;
         this.playerStats = playerStats;
         this.monsterToDelete = monsterToDelete;
-        gameData= GameObject.Find("GameStateData").GetComponent<GameData>();
+        gameData= GameData.Instance;
         //Create monster sprites:
 
         monsterSprite = new GameObject("Monster Sprite");
