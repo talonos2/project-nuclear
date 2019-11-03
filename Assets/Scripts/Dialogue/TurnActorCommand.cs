@@ -22,6 +22,11 @@ public class TurnActorCommand : Naninovel.Commands.Command
             return Task.CompletedTask;
         }
         PawnMover mover = go.GetComponent<PawnMover>();
+        Debug.Log(go);
+        foreach (MonoBehaviour m in go.GetComponents<MonoBehaviour>())
+        {
+            Debug.Log(m);
+        }
         if (mover == null)
         {
             Debug.LogWarning("No PawnMover on " + n + " to move with fwturnpawn!");
