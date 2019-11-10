@@ -35,9 +35,26 @@ using UnityEngine;
 
 public class BobPrim : MonoBehaviour
 {
+
+    public int numNodes = 9;
+    public String[] connectionStrings;
+    private int connectionCount;
+    public int[,] connections;
+    public bool[] result;
     void Start()
     {
+        connectionCount = connectionStrings.Length;
+        connections = new int[connectionCount, 2];
+        //Debug.Log("hm"+  connections.Length);
+        int i = 0;
+        foreach (String str in connectionStrings){
+            string[] numbers = str.Split(' ');
+            connections[i, 0] = System.Convert.ToInt32(numbers[0]);
+            connections[i, 1] = System.Convert.ToInt32(numbers[1]);
+            i++;
+        }
 
+        result = Iterate(numNodes, connections, connectionCount);
 /*
         int numNodes = 9;
         int[,] connections = {
@@ -63,11 +80,11 @@ public class BobPrim : MonoBehaviour
         */
     }
 
-    bool[] Iterate(int numNodes, int [,] connections)
+    bool[] Iterate(int numNodes, int [,] connections, int connectionNum)
     {
         System.Random rand = new System.Random();
-        bool[] final = new bool[connections.Length];  //bool list to output
-        int[] consider = new int[connections.Length];
+        bool[] final = new bool[connectionNum];  //bool list to output
+        int[] consider = new int[connectionNum];
 
         int i;
         int wallington = (connections.Length / 2);
