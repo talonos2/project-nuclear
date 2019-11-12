@@ -1,51 +1,76 @@
 #start
 
-$@scene= sagehut
+;@scene= sagehut
 
-$@place Logos
-$@place Metra
+@fwspawnvfx x:-1 y:4 z:0 Vfx:metra
+@fwturnpawn n:metra d:s
+@fwspawnvfx x:-2 y:4 z:0 Vfx:logos
+@fwturnpawn n:logos d:e
+
 
 @char Logos
 Okay, now try to open your third eye.
+@hidechars time:0
 
-@char Mara
+@wait: 30.0
+
+@char Metra
 I see some bears, looks like they're sleeping.
+@hidechars time:0
 
+@fwmovepawn n:logos d:s
+@fwturnpawn n:logos d:e
 @char Logos
-Oh!  You be seeing another cave...  Wait, are those pandas?
+Oh!  You must be seeing another cave...  Wait, are those pandas?
+@hidechars time:0
 
-@char Mara
+@char Metra
 Oh right, those aren't actually bears are they?
+@hidechars time:0
 
 @char Logos
 No, they are, it's just... Um, try again.
+@hidechars time:0
 
-@char Mara
+@char Metra
 Okay, I see monsters, but it's not a cave.  I can tell because of the three suns.
+@hidechars time:0
 
 @char Logos
 Yes that's... somewhere else.  Hold on a second, let me have a look in there.
+@hidechars time:0
 
-#@fwturnpawn Mara east
-#@fwturnpawn Mara west
+@fwmovepawn n:logos d:n
+@fwturnpawn n:logos d:e
+@fwturnpawn n:metra d:w
 
 @char Logos
-Okay, how about this time, you close your 4th through 17th eye, and trying looking again.
+Okay, how about this time you close your 4th through 17th eye, and trying looking again.
+@hidechars time:0
 
-$@animate curse Logos
-@fwmovepawn Logos (halfway toward exit)
+;@animate curse Logos
+@fwmovepawn n:logos d:s wait:true
+@fwmovepawn n:logos d:s wait:true
+@fwmovepawn n:logos d:s wait:true
+@fwmovepawn n:logos d:s wait:true
+@fwmovepawn n:logos d:s wait:true
+@fwmovepawn n:logos d:s wait:true
+@fwmovepawn n:logos d:s wait:true
+@wait 30.0 wait:true
 
-@char Mara
+@char Metra
 But, but- We aren't done with the lessons!
+@hidechars time:0
 
-#@fwturnpawn Logos North
+@fwturnpawn n:logos d:n
 
 @char Logos
 I think you'll do fine.
+@hidechars time:0
 
-@fwmovepawn Logos (toward exit)
+@fwmovepawn n:logos d:s wait:true
 
 
-$@startRun
+;@startRun
 
-@stop
+@exit
