@@ -18,13 +18,13 @@ public class SwitchEntityData : EntityData
     private Renderer sRender;
     private bool forwardAnimation;
     private int animationCounter=0;
-    private bool activeSwitch = true;
+    protected bool activeSwitch = true;
     public float timeTillReset = 0;
     public bool prePressed;
     private float tempResetTime = 0;
     private bool timerSet = false;
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         InitializeSpriteLocation();
         this.sRender = this.GetComponentInChildren<Renderer>();
@@ -108,7 +108,7 @@ public class SwitchEntityData : EntityData
         }
     }
 
-    private void SwitchAnimation()
+    protected void SwitchAnimation()
     {
         isAnimating = true;
         forwardAnimation = true;

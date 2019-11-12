@@ -5,6 +5,18 @@ using UnityEngine;
 public class BridgeController : DoodadData
 {
     public bool tempBridge;
+    public bool primBridge;
+    public int primConnectionNumber;
+
+    new void Start()
+    {
+        base.Start();
+        if (primBridge) {
+
+        }
+
+
+    }
     public void removePlatform() {
         this.isPlatformTerrain = false;
         if (tempBridge) {

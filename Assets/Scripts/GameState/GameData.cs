@@ -42,6 +42,8 @@ public class GameData : Singleton<GameData>
       [HideInInspector]
     public bool nextLocationSet;
 
+    public bool map5_3Shortcut;
+
     public void SetNextLocation(Vector2Int location, SpriteMovement.DirectionMoved facing) {
         nextLocaiton = location;
         nextFacing = facing;
