@@ -1,34 +1,59 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Fluer
-$@place Paul
+;@fwspawnvfx x:4 y:25 z:0 Vfx:wooden
+
+
+@fwspawnvfx x:2 y:24 z:0 Vfx:Fluer
+@fwturnpawn n:fluer d:e
+@fwspawnvfx x:4 y:24 z:0 Vfx:Paul
+@fwturnpawn n:paul d:n
+
+
 
 @char Fluer
 You know, I really have to admire your handiwork on this.  It's so richly detailed.
+@hidechars time:0
 
-$@animate carvesound dummy
+;$@animate carvesound dummy
+;$@wait
 
 @char Fluer
 You must have spent hours studying how those beasties look.
+@hidechars time:0
 
-$@animate carvesound dummy
+;$@animate carvesound dummy
+;$@wait
 
 @char Fluer
 Well... it um, looks like you're just about done.
+@hidechars time:0
 
 @char Paul
 Yep, just need to make one last cut.
+@hidechars time:0
 
-$@animate break dummy
+;$@animate break dummy
 
-$@wait
+;$@wait
 
-$@animate curse Paul
+;$@animate curse Paul
 
-@fwmovepawn Paul (toward cave, slower than most)
+;@fwmovepawn Paul (toward cave, slower than most)
+@fwmovepawn n:paul d:e wait:true
+@fwmovepawn n:paul d:e wait:true
+@fwmovepawn n:paul d:s wait:true
+@fwmovepawn n:paul d:s wait:true
+@fwmovepawn n:paul d:s wait:true
+@fwmovepawn n:paul d:s wait:true
+@fwmovepawn n:paul d:e wait:true
+@fwmovepawn n:paul d:e wait:true
+@fwmovepawn n:paul d:e wait:true
+@fwmovepawn n:paul d:e wait:true
+@fwmovepawn n:paul d:e wait:true
+@fwmovepawn n:paul d:e wait:true
 
-$@startRun
+;$@startRun
 
-@stop
+@exit

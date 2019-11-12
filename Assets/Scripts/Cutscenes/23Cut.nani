@@ -1,50 +1,81 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Fluer
-$@place Patrick
+@fwspawnvfx x:-7 y:-7 z:0 Vfx:Patrick
+@fwturnpawn n:patrick d:e
+@fwspawnvfx x:-6 y:-7 z:0 Vfx:Fluer
+@fwturnpawn n:fluer d:w
+
 
 
 @char Fluer
 What am I going to do?  What if I have to go in next?!
 I don't think I could hurt something even if it is a monster!
+@hidechars time:0
 
 @char Patrick
 You?  You reccomend amputations for everything!
+@hidechars time:0
 
 @char Fluer
 No I don't.
+@hidechars time:0
 
 @char Patrick
 You wanted to cut off the mayor's nose to cure his cold!
+@hidechars time:0
 
 @char Fluer
 It would have kept it from being stuffed up.
+@hidechars time:0
 
 @char Patrick
 You named your bonesaw.
+@hidechars time:0
 
 @char Fluer
 You leave Josephine out of this.
+@hidechars time:0
 
 @char Patrick
 And then there's your 'bacterial coliseum' method.
+@hidechars time:0
 
 @char Fluer
 Hey, if you had let me infect you with cholera it would have wiped out that flue!
+@hidechars time:0
 
 $@animate curse Fluer
 
 @char Fluer
 Oh no!  What am I going to do!?
+@hidechars time:0
 
 @char Patrick
 just pretend they're all patients.
+@hidechars time:0
+
+@fwmovepawn n:Fluer d:s
+@fwmovepawn n:Fluer d:s
+@fwmovepawn n:Fluer d:s
+@fwmovepawn n:Fluer d:s
+@fwmovepawn n:Fluer d:s
+@fwmovepawn n:Fluer d:e
+@fwmovepawn n:Fluer d:e
+@fwmovepawn n:Fluer d:e
+@fwmovepawn n:Fluer d:e
+@fwmovepawn n:Fluer d:e
+@fwmovepawn n:Fluer d:e
+@fwmovepawn n:Fluer d:e
+@fwmovepawn n:Fluer d:e
+@fwmovepawn n:Fluer d:e
+@fwmovepawn n:Fluer d:e
 
 
-@fwmovepawn Fluer (toward cave)
 
-$@startRun
+;@fwmovepawn Fluer (toward cave)
 
-@stop
+;$@startRun
+
+@exit

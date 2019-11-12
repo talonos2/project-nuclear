@@ -1,36 +1,69 @@
 #start
 
-$@scene= town
+;$@scene= manor
 
 $@place Mara
 $@place Wilson
 
+@fwspawnvfx x:2 y:3 z:0 Vfx:Mara
+@fwturnpawn n:mara d:n
+@fwspawnvfx x:2 y:-2 z:0 Vfx:Wilson
+@fwturnpawn n:wilson d:n
+
+
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+
 @char Wilson
 So, shouldn't you be maintaining the viewing portal?
+@hidechars time:0
+
+@fwturnpawn n:mara d:s
 
 @char Mara
 Oh it's fine.
+@hidechars time:0
 
 @char Wilson
 Logos nearly wore himself out concentrating on keeping the view open.
+@hidechars time:0
 
 @char Mara
 Really?  I wondered why he always looked so tired.
+@hidechars time:0
 
-$@animate curse Mara
+;$@animate curse Mara
 
 @char Wilson
 Oh no... what will we do now?
+@hidechars time:0
 
 @char Mara
 It's okay! i set it up to run on its own.
+@hidechars time:0
 
-@fwmovepawn Jezerine (toward cave)
+@fwmovepawn n:mara d:w
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:s
+@fwmovepawn n:mara d:w
+@fwmovepawn n:mara d:w
+
+
+;delete mara
 
 @char Wilson
 Wait, what?
+@hidechars time:0
 
-
-$@startRun
+;$@startRun
 
 @stop
