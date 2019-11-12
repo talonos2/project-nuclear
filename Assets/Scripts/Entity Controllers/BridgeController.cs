@@ -7,11 +7,21 @@ public class BridgeController : DoodadData
     public bool tempBridge;
     public bool primBridge;
     public int primConnectionNumber;
+    private BobPrim primToCheck;
 
     new void Start()
     {
         base.Start();
+        primToCheck = GameObject.Find("Grid").GetComponent<BobPrim>();
         if (primBridge) {
+            if (primToCheck.result[primConnectionNumber])
+            {
+                addPlatform();
+            }
+            else
+            {
+                removePlatform();
+            }
 
         }
 
