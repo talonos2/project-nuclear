@@ -10,7 +10,7 @@ public class SwitchEntityData : EntityData
     private GameObject MapGrid;
     private Vector2 MapZeroLocation;
     public GameObject[] TiedEntities;
-    private bool isAnimating;
+    protected bool isAnimating;
     public float AnimationSpeed=6;
     private float timeSinceLastFrame = 0;
     private int frameNumber = 0;
