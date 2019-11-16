@@ -12,6 +12,8 @@
 Okay, now try to open your third eye.
 @hidechars time:0
 
+@wait: 30.0
+
 @char Metra
 I see some bears, looks like they're sleeping.
 @hidechars time:0
@@ -19,7 +21,7 @@ I see some bears, looks like they're sleeping.
 @fwmovepawn n:logos d:s
 @fwturnpawn n:logos d:e
 @char Logos
-Oh!  You be seeing another cave...  Wait, are those pandas?
+Oh!  You must be seeing another cave...  Wait, are those pandas?
 @hidechars time:0
 
 @char Metra
@@ -54,7 +56,7 @@ Okay, how about this time you close your 4th through 17th eye, and trying lookin
 @fwmovepawn n:logos d:s wait:true
 @fwmovepawn n:logos d:s wait:true
 @fwmovepawn n:logos d:s wait:true
-@wait 30.0 wait:true
+;@wait 30.0 wait:true
 
 @char Metra
 But, but- We aren't done with the lessons!
