@@ -6,6 +6,7 @@ public class BridgeController : DoodadData
 {
     public bool tempBridge;
     public bool primBridge;
+    public bool primShortcutBridge;
     public int primConnectionNumber;
     private BobPrim primToCheck;
 
@@ -14,18 +15,21 @@ public class BridgeController : DoodadData
         base.Start();
         primToCheck = GameObject.Find("Grid").GetComponent<BobPrim>();
         if (primBridge) {
-            if (primToCheck.result[primConnectionNumber])
-            {
-                addPlatform();
-            }
-            else
-            {
-                removePlatform();
-            }
-
+            RunPrimAlgorythm();
         }
 
 
+    }
+
+    public void RunPrimAlgorythm() {
+        if (primToCheck.result[primConnectionNumber])
+        {
+            addPlatform();
+        }
+        else
+        {
+            removePlatform();
+        }
     }
     public void removePlatform() {
         this.isPlatformTerrain = false;

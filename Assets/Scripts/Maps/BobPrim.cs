@@ -52,7 +52,7 @@ public class BobPrim : MonoBehaviour
             string[] numbers = str.Split(' ');
             connections[i, 0] = System.Convert.ToInt32(numbers[0]);
             connections[i, 1] = System.Convert.ToInt32(numbers[1]);
-            Debug.Log("i " + i + "  is " + connections[i, 0] + " " + connections[i, 1]);
+            //Debug.Log("i " + i + "  is " + connections[i, 0] + " " + connections[i, 1]);
             i++;
         }
 
@@ -113,7 +113,7 @@ public class BobPrim : MonoBehaviour
             }
         }
 
-        Debug.Log("first room" + lead);
+       // Debug.Log("first room" + lead);
 
         i = 0;
 
@@ -144,23 +144,23 @@ public class BobPrim : MonoBehaviour
             {
  //               Debug.Log("main if");
                 final[walls[check]] = false;
-                Debug.Log("final " + walls[check] + " is false");
+                //Debug.Log("final " + walls[check] + " is false");
 
             }
             else
             {
                 final[walls[check]] = true;
-                Debug.Log("final " + walls[check] + " is true");
+                //Debug.Log("final " + walls[check] + " is true");
                 if (inside.Contains(connections[walls[check], 0]))
                 {
-                    Debug.Log("final : inside true");
+                   // Debug.Log("final : inside true");
                     //                    Debug.Log("second if");
                     //                    Console.WriteLine(connections[walls[check], 1]);
                     ///////if (walls.Contains(connections[walls[check], 1]) == false)
                     if (inside.Contains(connections[walls[check], 1])==false)  ////is it breaking here?
                     {
                         inside.Add(connections[walls[check], 1]);
-                        Debug.Log("new inside = " + connections[walls[check], 1]);
+                        //Debug.Log("new inside = " + connections[walls[check], 1]);
                     }
 
                     for (i = 0; i < wallington; i++)
@@ -180,7 +180,7 @@ public class BobPrim : MonoBehaviour
                     if (inside.Contains(connections[walls[check], 0]) == false)
                     {
                         inside.Add(connections[walls[check], 0]);
-                        Debug.Log("new inside = " + connections[walls[check], 0]);
+                        //Debug.Log("new inside = " + connections[walls[check], 0]);
                     }
 
                     for (i = 0; i < wallington; i++)
@@ -203,16 +203,16 @@ public class BobPrim : MonoBehaviour
 
             foreach (int room in inside)
             {
-                Debug.Log("insides #" + walliter + "    " + room);
+                //Debug.Log("insides #" + walliter + "    " + room);
             }
 
             foreach (int wall in walls)
             {
-                Debug.Log("walls #" + walliter + "    " + wall + "  is " + connections[wall, 0] + " " + connections[wall, 1]);
+                //Debug.Log("walls #" + walliter + "    " + wall + "  is " + connections[wall, 0] + " " + connections[wall, 1]);
             }
             walliter++;
 
-            Debug.Log("removing   " + walls[check]);
+            //Debug.Log("removing   " + walls[check]);
             walls.Remove(walls[check]);
 
 
@@ -222,9 +222,9 @@ public class BobPrim : MonoBehaviour
 
 
 
-        Debug.Log("it ends");
-        for (i = 0; i < wallington; i++)
-            Debug.Log("i is " + i + " " + final[i]);
+        //Debug.Log("it ends");
+        //for (i = 0; i < wallington; i++)
+            //Debug.Log("i is " + i + " " + final[i]);
         return final;
     }
 }
