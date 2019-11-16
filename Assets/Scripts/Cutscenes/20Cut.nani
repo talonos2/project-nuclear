@@ -1,39 +1,60 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Dorara
-$@place Jerene
+;$@place Dorara
+;$@place Jerene
+
+@fwspawnvfx x:-2 y:0 z:0 Vfx:Dorara
+@fwturnpawn n:dorara d:e
+@fwspawnvfx x:0 y:0 z:0 Vfx:Jerene
+@fwturnpawn n:jerene d:w
+
+
 
 @char Dorara
 I said, give me that blade.
+@hidechars time:0
 
 @char Jerene
 No.
+@hidechars time:0
 
 @char Dorara
 I've seen ya'll take some real shiny loot out of that cave, and I want it.
+@hidechars time:0
 
 @char Jerene
 You'll have to go through me.
+@hidechars time:0
 
 @char Dorara
 Fine, I was getting tired of idle threats.
+@hidechars time:0
 
-$@animate curse Dorara
+@fwmovepawn n:dorara d:e
+
+;$@animate curse Dorara
+
+;@wait
 
 @char Jerene
 Take the blade.
+@hidechars time:0
 
 @char Dorara
 I, uh.
+@hidechars time:0
+
+@fwturnpawn n:jerene d:n
+;@Jerene step backwards
 
 @char Jerene
 You take it, or you'll have to go through me.
+@hidechars time:0
 
+;@fwmovepawn Dorara (to chest and then cave)
 
-@fwmovepawn Dorara (to chest and then cave)
+;$@startRun
 
-$@startRun
-
-@stop
+@exit

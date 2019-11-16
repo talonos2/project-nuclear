@@ -30,7 +30,7 @@ public class GameData : Singleton<GameData>
 
     public bool Paused = false;
 
-    public bool Shortcut1 = false;
+    //public bool Shortcut1 = false;
 
     public bool RunSetupFinished = false;
 
@@ -41,6 +41,9 @@ public class GameData : Singleton<GameData>
     public SpriteMovement.DirectionMoved nextFacing = SpriteMovement.DirectionMoved.LEFT;
       [HideInInspector]
     public bool nextLocationSet;
+
+    public bool map5_2Shortcut;
+    public bool map5_3Shortcut;
 
     public void SetNextLocation(Vector2Int location, SpriteMovement.DirectionMoved facing) {
         nextLocaiton = location;

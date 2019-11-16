@@ -5,23 +5,49 @@ $@scene= town
 $@place Tristana
 $@place Wilson
 
+@fwspawnvfx x:6 y:-10 z:0 Vfx:Tristana
+@fwturnpawn n:tristana d:w
+@fwspawnvfx x:2 y:-10 z:0 Vfx:Wilson
+@fwturnpawn n:wilson d:n
+
+@fwmovepawn n:tristana d:w
+@fwmovepawn n:tristana d:w
+@fwmovepawn n:tristana d:w
+@fwturnpawn n:wilson d:e
+
 @char Tristana
 Here, it's all that I've written so far.
+@hidechars time:0
 
 @char Wilson
 Why are you giving it to me?
+@hidechars time:0
 
 @char Tristana
 Because I know I won't leave without it. And now that I know your stories, I don't want to just leave you behind.
+@hidechars time:0
 
-$@animate curse Wilson
+;$@animate curse Wilson
 
 @char Tristana
 Go on sir, its your turn.
+@hidechars time:0
 
+
+
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
+@fwmovepawn n:wilson d:n
 
 @fwmovepawn Wilson (toward cave)
 
-$@startRun
+;$@startRun
 
-@stop
+@exit
