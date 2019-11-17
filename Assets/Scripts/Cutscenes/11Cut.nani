@@ -3,36 +3,42 @@
 ;$@scene= town
 
 
-@fwspawnvfx x:0 y:-13 z:0 Vfx:Stranger
-@fwturnpawn n:Stranger d:s
-@fwspawnvfx x:0 y:-20 z:0 Vfx:Dorara
-@fwturnpawn n:Dorara d:s
-@fwspawnvfx x:0 y:-21 z:0 Vfx:Phillip
-@fwturnpawn n:Phillip d:n
+@fwspawnvfx x:8 y:12 z:0 Vfx:PawnStranger
+@fwturnpawn n:PawnStranger d:s
+@fwspawnvfx x:8 y:5 z:0 Vfx:PawnDorara
+@fwturnpawn n:PawnDorara d:s
+@fwspawnvfx x:8 y:4 z:0 Vfx:PawnPhillip
+@fwturnpawn n:PawnPhillip d:n
 
 
 
 @char Phillip
 No! stop! Please don't hurt me!
 @hidechars time:0
-@char Dorara  wait: false
+@char Dorara  wait:false
 You know how this goes, give me your valuables before I-
 
-@fwmovepawn n:Stranger d:s
-@fwmovepawn n:Stranger d:s
-@fwmovepawn n:Stranger d:s
-@fwmovepawn n:Stranger d:s
-;turn on no clip
-@fwmovepawn n:Stranger d:w
+@fwmovepawn n:PawnStranger d:s
+@fwmovepawn n:PawnStranger d:s
+@fwmovepawn n:PawnStranger d:s
+@fwmovepawn n:PawnStranger d:s
+@fwturnpawn n:PawnStranger d:e
+
+
+
 
 Hey!  What do you think you're doing?
 @hidechars time:0
 
-@fwmovepawn n:Dorara d:n
+@fwturnpawn n:PawnDorara d:n
+
+@fwturnpawn n:PawnStranger d:s
 
 @char Starnger
 What? I'm looting this place, same as you.
 @hidechars time:0
+
+@fwmovepawn n:PawnDorara d:n
 
 @char Dorara
 Look here you lowlife, don't you dare compare what you do to what I do! I'm Pillaging! You see this sword?
@@ -42,16 +48,16 @@ Look here you lowlife, don't you dare compare what you do to what I do! I'm Pill
 Yes...?
 @hidechars time:0
 
-@fwturnpawn n:Dorara d:s
+@fwturnpawn n:PawnDorara d:s
 @char Dorara
 Quiet! I'm not talking to you!
 @hidechars time:0
-@fwturnpawn n:Dorara d:n
+@fwturnpawn n:PawnDorara d:n
 
 ;@fwmovepawn Phillip south (backwards)
 
-@fwmovepawn n:Stranger d:e
-@fwturnpawn n:Stranger d:s
+
+@fwturnpawn n:PawnStranger d:s
 
 @char Stranger
 Look, I'm trying not to call attention to myself.
@@ -66,29 +72,32 @@ That's my point! We may be ruining these people's lives, but if I'm going to sta
 @fwspawnvfx x:-1 y:-17 z:0 Vfx:Firework
 
 
-@char Dorara  wait: false
-Hey, maybe you can sneak by when the monster's backs are turned! Loot-ser!
-@hidechars time:0
 
 ;$@setspeed Phillip fast
 ;$@setspeed Stranger fast
 
-@fwmovepawn n:Phillip d:w
-@fwmovepawn n:Phillip d:w
-@fwmovepawn n:Phillip d:w
-@fwmovepawn n:Phillip d:w
-@fwmovepawn n:Phillip d:w
-@fwmovepawn n:Phillip d:w
+@fwmovepawn n:PawnPhillip d:w
+@fwmovepawn n:PawnPhillip d:w
+@fwmovepawn n:PawnPhillip d:w
+@fwmovepawn n:PawnPhillip d:w
+@fwmovepawn n:PawnPhillip d:w
+@fwmovepawn n:PawnPhillip d:w
 
-@fwmovepawn n:Stranger d:n
-@fwmovepawn n:Stranger d:n
-@fwmovepawn n:Stranger d:n
-@fwmovepawn n:Stranger d:n
-@fwmovepawn n:Stranger d:n
-@fwmovepawn n:Stranger d:n
+@fwmovepawn n:PawnStranger d:n
+@fwmovepawn n:PawnStranger d:n
+@fwmovepawn n:PawnStranger d:n
+@fwmovepawn n:PawnStranger d:n
+@fwmovepawn n:PawnStranger d:n
+@fwmovepawn n:PawnStranger d:n
 
 
+@char Dorara  wait:false
+Hey, maybe you can sneak by when the monster's backs are turned! Loot-ser!
+@hidechars time:0
+
+
+;@fwdeletego n:PawnStranger
 
 ;$@startRun
 
-@stop
+@exit

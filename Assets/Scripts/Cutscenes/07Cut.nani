@@ -2,14 +2,14 @@
 
 ;$@scene= church
 
-@fwspawnvfx x:-1 y:-5 z:0 Vfx:Melvardius
-@fwturnpawn n:Melvardius d:n
-@fwspawnvfx x:0 y:-5 z:0 Vfx:Metra
-@fwturnpawn n:Metra d:e
-@fwspawnvfx x:-5 y:-2 z:0 Vfx:Paul
-@fwturnpawn n:Paul d:w
-@fwspawnvfx x:-1 y:3 z:0 Vfx:Mark
-@fwturnpawn n:Mark d:n
+@fwspawnvfx x:-1 y:-5 z:0 Vfx:PawnMelvardius
+@fwturnpawn n:PawnMelvardius d:n
+@fwspawnvfx x:0 y:-5 z:0 Vfx:PawnMetra
+@fwturnpawn n:PawnMetra d:e
+@fwspawnvfx x:-5 y:-2 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:w
+@fwspawnvfx x:-1 y:3 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:n
 
 
 
@@ -19,7 +19,7 @@ Why is this happening?[br]Why is evil allowed to run rampant?
 @char Melvardius
 Look into the pool.  What do you see?
 @hidechars time:0
-@fwturnpawn n:Metra d:n
+@fwturnpawn n:PawnMetra d:n
 
 @char Metra
 I see a few coins.[br]They were tossed in by devotees I suppose.
@@ -27,7 +27,7 @@ I see a few coins.[br]They were tossed in by devotees I suppose.
 @char Melvardius
 I see the image of Cedeej the mighty.
 @hidechars time:0
-@fwturnpawn n:Metra d:e
+@fwturnpawn n:PawnMetra d:e
 @char Metra
 That's just the reflection of his statue.
 @hidechars time:0
@@ -40,20 +40,21 @@ I'm not sure I see the light in all this.
 
 @fwspawnvfx x:-1 y:-5 z:0 Vfx:Firework
 
-@fwturnpawn n:Paul d:s
-@fwturnpawn n:Mark d:s
+@fwturnpawn n:PawnPaul d:s
+@fwturnpawn n:PawnNelson d:s
+@fwturnpawn n:PawnMetra d:s
 
 @char Melvardius
 Did you see it that time?
 @hidechars time:0
 
-@fwmovepawn n:Melvardius d:s
-@fwturnpawn n:Metra d:s
-@fwmovepawn n:Melvardius d:s
-@fwmovepawn n:Melvardius d:s
-@fwmovepawn n:Melvardius d:s
+@fwmovepawn n:PawnMelvardius d:s
+@fwturnpawn n:PawnMetra d:s
+@fwmovepawn n:PawnMelvardius d:s
+@fwmovepawn n:PawnMelvardius d:s
+@fwmovepawn n:PawnMelvardius d:s
 
-
+@fwdeletego n:PawnMelvardius
 
 ;$@startRun
 

@@ -1,84 +1,10 @@
-#start
-
-;@scene= sagehut
-
-@fwspawnvfx x:-1 y:4 z:0 Vfx:metra
-@fwturnpawn n:metra d:s
-@fwspawnvfx x:-2 y:4 z:0 Vfx:logos
-@fwturnpawn n:logos d:e
+;@goto day2 if:GetDay()>=2
+;@goto day3 if:GetDay()>=3
+;@goto day4 if:GetDay()>=4
 
 
-@char Logos
-Okay, now try to open your third eye.
-@hidechars time:0
-
-@wait: 30.0
-
-@char Metra
-I see some bears, looks like they're sleeping.
-@hidechars time:0
-
-@fwmovepawn n:logos d:s
-@fwturnpawn n:logos d:e
-@char Logos
-Oh!  You must be seeing another cave...  Wait, are those pandas?
-@hidechars time:0
-
-@char Metra
-Oh right, those aren't actually bears are they?
-@hidechars time:0
-
-@char Logos
-No, they are, it's just... Um, try again.
-@hidechars time:0
-
-@char Metra
-Okay, I see monsters, but it's not a cave.  I can tell because of the three suns.
-@hidechars time:0
-
-@char Logos
-Yes that's... somewhere else.  Hold on a second, let me have a look in there.
-@hidechars time:0
-
-@fwmovepawn n:logos d:n
-@fwturnpawn n:logos d:e
-@fwturnpawn n:metra d:w
-
-@char Logos
-Okay, how about this time you close your 4th through 17th eye, and trying looking again.
-@hidechars time:0
-
-;@animate curse Logos
-@fwmovepawn n:logos d:s wait:true
-@fwmovepawn n:logos d:s wait:true
-@fwmovepawn n:logos d:s wait:true
-@fwmovepawn n:logos d:s wait:true
-@fwmovepawn n:logos d:s wait:true
-@fwmovepawn n:logos d:s wait:true
-@fwmovepawn n:logos d:s wait:true
-;@wait 30.0 wait:true
-
-@char Metra
-But, but- We aren't done with the lessons!
-@hidechars time:0
-
-@fwturnpawn n:logos d:n
-
-@char Logos
-I think you'll do fine.
-@hidechars time:0
-
-@fwmovepawn n:logos d:s wait:true
-
-
-;@startRun
-
-@exit
-
-
-
-@fwspawnvfx x:-4 y:-2 z:0 Vfx:Douglass
-@fwturnpawn n:Meyster d:n
+;@fwspawnvfx x:-4 y:-2 z:0 Vfx:Douglass
+;@fwturnpawn n:Meyster d:n
 
 @fwspawnvfx x:1 y:-2 z:0 Vfx:Meyster
 @fwturnpawn n:Meyster d:n

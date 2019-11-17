@@ -4,8 +4,8 @@
 
 ;$@place Jinn
 
-@fwspawnvfx x:2 y:24 z:0 Vfx:Jinn
-@fwturnpawn n:jinn d:e
+@fwspawnvfx x:2 y:24 z:0 Vfx:PawnJinn
+@fwturnpawn n:PawnJinn d:e
 
 
 @char Jinn
@@ -13,7 +13,7 @@ So cave, how many of my students have you taken over the years?
 @hidechars time:0
 
 ;@wait
-@fwturnpawn n:jinn d:w
+@fwturnpawn n:PawnJinn d:w
 ;@wait
 
 @char Jinn
@@ -28,9 +28,10 @@ I did my best to teach them to stay away from you.
 Now it's time to teach you a lesson.
 @hidechars time:0
 
-@fwmovepawn n:jinn d:e
-@fwmovepawn n:jinn d:e
+@fwmovepawn n:PawnJinn d:e
+@fwmovepawn n:PawnJinn d:e
 
+@fwdeletego n:PawnJinn
 
 
 ;$@startRun

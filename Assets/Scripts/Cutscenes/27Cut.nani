@@ -1,9 +1,9 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Svenra
-$@place Tristana
+;$@place Svenra
+;$@place Tristana
 
 
 @char Svenra
@@ -24,7 +24,7 @@ What?
 @char Tristana
 You’re always telling people to leave, and now they have.
 
-@fwmovepawn Svenra (moves away a bit)
+;@fwmovepawn Svenra (moves away a bit)
 
 @char Svenra
 Well, it isn't terrible.  I do want to be left alone.
@@ -36,12 +36,14 @@ So you tricked everyone into thinking you had evil magical powers just to get pr
 @char Svenra
 Tricked?
 
-$@animate curse Svenra
+;$@animate curse Svenra
 
 @char svenra
 Well, gotta go.
 
-@fwmovepawn Svenra (toward cave)
-$@startRun
+@fwdeletego n:PawnSvenra
+
+;@fwmovepawn Svenra (toward cave)
+;$@startRun
 
 @stop

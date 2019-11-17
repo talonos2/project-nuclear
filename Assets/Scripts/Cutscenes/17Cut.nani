@@ -5,10 +5,10 @@
 ;@fwspawnvfx x:4 y:25 z:0 Vfx:wooden
 
 
-@fwspawnvfx x:2 y:24 z:0 Vfx:Fluer
-@fwturnpawn n:fluer d:e
-@fwspawnvfx x:4 y:24 z:0 Vfx:Paul
-@fwturnpawn n:paul d:n
+@fwspawnvfx x:2 y:24 z:0 Vfx:PawnFluer
+@fwturnpawn n:PawnFluer d:e
+@fwspawnvfx x:4 y:24 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:n
 
 
 
@@ -41,18 +41,20 @@ Yep, just need to make one last cut.
 ;$@animate curse Paul
 
 ;@fwmovepawn Paul (toward cave, slower than most)
-@fwmovepawn n:paul d:e
-@fwmovepawn n:paul d:e
-@fwmovepawn n:paul d:s
-@fwmovepawn n:paul d:s
-@fwmovepawn n:paul d:s
-@fwmovepawn n:paul d:s
-@fwmovepawn n:paul d:e
-@fwmovepawn n:paul d:e
-@fwmovepawn n:paul d:e
-@fwmovepawn n:paul d:e
-@fwmovepawn n:paul d:e
-@fwmovepawn n:paul d:e
+@fwmovepawn n:PawnPaul d:e
+@fwmovepawn n:PawnPaul d:e
+@fwmovepawn n:PawnPaul d:s
+@fwmovepawn n:PawnPaul d:s
+@fwmovepawn n:PawnPaul d:s
+@fwmovepawn n:PawnPaul d:s
+@fwmovepawn n:PawnPaul d:e
+@fwmovepawn n:PawnPaul d:e
+@fwmovepawn n:PawnPaul d:e
+@fwmovepawn n:PawnPaul d:e
+@fwmovepawn n:PawnPaul d:e
+@fwmovepawn n:PawnPaul d:e
+
+@fwdeletego n:PawnPaul
 
 ;$@startRun
 

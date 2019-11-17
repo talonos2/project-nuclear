@@ -2,24 +2,24 @@
 
 ;$@scene= bar
 
-@fwspawnvfx x:1 y:-2 z:0 Vfx:Meyster
-@fwturnpawn n:Meyster d:s
-@fwspawnvfx x:1 y:-4 z:0 Vfx:Jezerine
-@fwturnpawn n:Jezerine d:n
-@fwspawnvfx x:0 y:-3 z:0 Vfx:Mcdermit
-@fwturnpawn n:Mcdermit d:e
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Paul
-@fwturnpawn n:Paul d:w
+@fwspawnvfx x:1 y:-2 z:0 Vfx:PawnMeyster
+@fwturnpawn n:PawnMeyster d:s
+@fwspawnvfx x:1 y:-4 z:0 Vfx:PawnJezerine
+@fwturnpawn n:PawnJezerine d:n
+@fwspawnvfx x:0 y:-3 z:0 Vfx:PawnMcDermit
+@fwturnpawn n:PawnMcDermit d:e
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:w
 
-@fwspawnvfx x:-3 y:-2 z:0 Vfx:Sara
-@fwturnpawn n:Sara d:e
-
-
+@fwspawnvfx x:-3 y:-2 z:0 Vfx:PawnSara
+@fwturnpawn n:PawnSara d:e
 
 
-@fwmovepawn n:Sara d:e
-@fwmovepawn n:Sara d:e
-@fwmovepawn n:Sara d:e
+
+
+@fwmovepawn n:PawnSara d:e
+@fwmovepawn n:PawnSara d:e
+@fwmovepawn n:PawnSara d:e
 
 @char Sara
 Sara: The hero is gone... What will we do now?
@@ -40,23 +40,30 @@ Jezerine: Hear Hear!
 @fwspawnvfx x:0 y:-2 z:0 Vfx:Firework
 
 
-@char Sara wait:false
-Sara: Aaaaah!  The weapons![BR]Where did we put the weapons?!
-@hidechars
-@char Meyster  wait:false
-Meyster: Well then...
+@fwmovepawn n:PawnSara d:w
+@fwmovepawn n:PawnSara d:w
+@fwmovepawn n:PawnSara d:w
+@fwmovepawn n:PawnSara d:w
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
 
-@fwmovepawn n:Sara d:w
-@fwmovepawn n:Sara d:w
-@fwmovepawn n:Sara d:w
-@fwmovepawn n:Sara d:w
-@fwmovepawn n:Sara d:s
-@fwmovepawn n:Sara d:s
-@fwmovepawn n:Sara d:s
-@fwmovepawn n:Sara d:s
-@fwmovepawn n:Sara d:s
+@char Sara
+Sara: Aaaaah!  The weapons![BR]Where did we put the weapons?! 
+@hidechars time:0
+@char Meyster
+Meyster: Well then... 
+@hidechars time:0
+
+
+
+@fwdeletego n:PawnSara
+
+
 
 
 ;$@startRun
 
-@stop
+@exit

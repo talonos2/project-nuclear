@@ -2,8 +2,8 @@
 
 ;$@scene= town
 
-@fwspawnvfx x:4 y:7 z:0 Vfx:Paul
-@fwspawnvfx x:5 y:7 z:0 Vfx:Phillip
+@fwspawnvfx x:4 y:7 z:0 Vfx:PawnPaul
+@fwspawnvfx x:5 y:7 z:0 Vfx:PawnPhillip
 
 
 
@@ -29,11 +29,11 @@ You mean we’re going to be destitute.
 @char Phillip
 that’s what I said.
 @hidechars time:0
-@fwturnpawn n:Paul d:e
+@fwturnpawn n:PawnPaul d:e
 @char Paul
 No, I mean... won’t you be destitute too?
 @hidechars time:0
-@fwturnpawn n:Phillip d:e
+@fwturnpawn n:PawnPhillip d:e
 @char Phillip
 I, well... this is difficult to explain... You see—
 @hidechars time:0
@@ -45,19 +45,19 @@ Oh thank Cedeej.
 @hidechars time:0
 
 
-@fwmovepawn n:Phillip d:e
-@fwmovepawn n:Phillip d:n
-@fwmovepawn n:Phillip d:n
-@fwmovepawn n:Phillip d:n
-@fwmovepawn n:Phillip d:n
-@fwmovepawn n:Phillip d:n
-@fwmovepawn n:Phillip d:n
-@fwmovepawn n:Phillip d:n
-@fwmovepawn n:Phillip d:n
-@fwmovepawn n:Phillip d:n
+@fwmovepawn n:PawnPhillip d:e
+@fwmovepawn n:PawnPhillip d:n
+@fwmovepawn n:PawnPhillip d:n
+@fwmovepawn n:PawnPhillip d:n
+@fwmovepawn n:PawnPhillip d:n
+@fwmovepawn n:PawnPhillip d:n
+@fwmovepawn n:PawnPhillip d:n
+@fwmovepawn n:PawnPhillip d:n
+@fwmovepawn n:PawnPhillip d:n
+@fwmovepawn n:PawnPhillip d:n
 
 
-
+@fwdeletego n:PawnPhillip
 
 ;@fwmovepawn Phillip (to exit)
 

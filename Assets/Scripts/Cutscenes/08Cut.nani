@@ -2,13 +2,13 @@
 
 ;$@scene= bar
 
-@fwspawnvfx x:4 y:2 z:0 Vfx:Mara
-@fwspawnvfx x:4 y:0 z:0 Vfx:Paul
-
+@fwspawnvfx x:0 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:0 y:0 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:n
 
 
 @char Paul
-It was two years ago ya-know, back when it only grabbed people foolish enough to get close.
+It was five years ago ya-know, back before they sealed the entrance.
 @hidechars time:0
 @char Mara
 Uh huh.
@@ -21,80 +21,88 @@ Sometimes I still think he'll be coming home any second, calling to show me a fu
 Uh huh.
 @hidechars time:0
 @char Paul
-But now's my chance! I won't let anythingstop me! When I see whatever fiend is causing this I'm gonna-
+But now's my chance! I won't let anything stop me! When I see whatever fiend is causing this I'm gonna-
 @hidechars time:0
 @char Mara
 Woah there sugar, don't go tempting fate like that, remember what happened to Douglass?
 @hidechars time:0
-@fwturnpawn n:Paul d:s
+@fwturnpawn n:PawnPaul d:s
 
 
 ;(animation runs paralell to following text, scene stops when mara exits)
-@char Paul  wait: false
+
+
+
+
+
+@wait 2
+@fwspawnvfx x:0 y:2 z:0 Vfx:Firework
+;$@setspeed mara veryhigh
+
+
+@fwmovepawn n:PawnMara d:w
+@wait 0.2
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:e
+@wait 0.2
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@wait 0.2
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:e
+@wait 0.2
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@wait 0.2
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:e
+@wait 0.2
+
+;$@setspeed mara veryhigh
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+
+@fwmovepawn n:PawnMara d:s
+@fwturnpawn n:PawnPaul d:e
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:s
+;quene removal
+
+@char Paul  wait:false
 So what!? I don't care! In fact, I want the curse! Do you hear me?! Paul Dodger is here! Take your best shot!...
 
-@char Paul  wait: false
+@char Paul  wait:false
 Or are you too much of a coward?  Is that the problem ya cave!  I may be a simple woodsman, but you'll see.
 
-@char Paul  wait: false
+@char Paul  wait:false
 I'm pretty handy with an ax.  I'll fell you just like a tree!  Trees are pretty tough.  
 
-@char Paul  wait: false
+@char Paul  wait:false
 They don't move around much... but they can't be too different right?
 
-@char Paul  wait: false
+@char Paul  wait:false
 Maybe the evil is a tree.  You never know. That'd be pretty conveniant.  I mean, Douglass didn't bring an axe did he?
 
-@char Paul  wait: false
+@char Paul  wait:false
 I think I saw someone bring a hatchet. They probably didn't know how to use it though.
 
-@char Paul  wait: false
+@char Paul  wait:false
 Not to be rude of course. But there's a reason I'm the woodsman in this town.
 @hidechars time:0
 
-
-
-
-;$@wait (about two seconds)
-@fwspawnvfx x:4 y:2 z:0 Vfx:Firework
-;$@setspeed mara veryhigh
-
-
-@fwmovepawn n:Mara d:w
-;$@wait 20 frames
-@fwmovepawn n:Mara d:e
-@fwmovepawn n:Mara d:e
-;$@wait 20 frames
-@fwmovepawn n:Mara d:w
-@fwmovepawn n:Mara d:w
-;$@wait 20 frames
-@fwmovepawn n:Mara d:e
-@fwmovepawn n:Mara d:e
-;$@wait 20 frames
-@fwmovepawn n:Mara d:w
-@fwmovepawn n:Mara d:w
-;$@wait 20 frames
-@fwmovepawn n:Mara d:e
-@fwmovepawn n:Mara d:e
-;$@wait 20 frames
-
-;$@setspeed mara veryhigh
-@fwmovepawn n:Mara d:w
-@fwmovepawn n:Mara d:w
-@fwmovepawn n:Mara d:w
-@fwmovepawn n:Mara d:w
-@fwmovepawn n:Mara d:w
-
-@fwmovepawn n:Mara d:s
-@fwmovepawn n:Mara d:s
-@fwmovepawn n:Mara d:s
-@fwmovepawn n:Mara d:s
-@fwmovepawn n:Mara d:s
-@fwmovepawn n:Mara d:e
-@fwmovepawn n:Mara d:s
-@fwmovepawn n:Mara d:s
-
-;$@remove Mara
+;@fwdeletego n:PawnMara
 
 ;$@startRun
 

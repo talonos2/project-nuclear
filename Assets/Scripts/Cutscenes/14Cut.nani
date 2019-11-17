@@ -2,10 +2,10 @@
 
 ;$@scene= office
 
-@fwspawnvfx x:-6 y:-10 z:0 Vfx:Tedd
-@fwturnpawn n:Nelson d:e
-@fwspawnvfx x:-10 y:0 z:0 Vfx:wilson
-@fwturnpawn n:Jezerine d:s
+@fwspawnvfx x:-6 y:-10 z:0 Vfx:PawnTedd
+@fwturnpawn n:PawnNelson d:e
+@fwspawnvfx x:-10 y:0 z:0 Vfx:Pawnwilson
+@fwturnpawn n:PawnJezerine d:s
 
 
 
@@ -23,25 +23,26 @@ After this!
 @hidechars time:0
 
 ;speed up Tedd
-@fwmovepawn n:Tedd d:e
-@fwmovepawn n:Tedd d:s
-@fwmovepawn n:Tedd d:s
-@fwmovepawn n:Tedd d:s
-@fwmovepawn n:Tedd d:s
+@fwmovepawn n:PawnTedd d:e
+@fwmovepawn n:PawnTedd d:s
+@fwmovepawn n:PawnTedd d:s
+@fwmovepawn n:PawnTedd d:s
+@fwmovepawn n:PawnTedd d:s
 
-@fwmovepawn n:Tedd d:e
-@fwmovepawn n:Tedd d:e
-@fwmovepawn n:Tedd d:e
-@fwmovepawn n:Tedd d:e
-@fwmovepawn n:Tedd d:e
-@fwmovepawn n:Tedd d:e
-@fwmovepawn n:Tedd d:e
-@fwmovepawn n:Tedd d:e
+@fwmovepawn n:PawnTedd d:e
+@fwmovepawn n:PawnTedd d:e
+@fwmovepawn n:PawnTedd d:e
+@fwmovepawn n:PawnTedd d:e
+@fwmovepawn n:PawnTedd d:e
+@fwmovepawn n:PawnTedd d:e
+@fwmovepawn n:PawnTedd d:e
+@fwmovepawn n:PawnTedd d:e
 
-@fwmovepawn n:Tedd d:s
-@fwmovepawn n:Tedd d:s
+@fwmovepawn n:PawnTedd d:s
+@fwmovepawn n:PawnTedd d:s
 
-;remove Tedd
+@fwdeletego n:PawnTedd
+
 
 ;$@startRun
 

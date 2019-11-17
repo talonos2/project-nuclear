@@ -2,16 +2,16 @@
 
 ;$@scene= office
 
-@fwspawnvfx x:-6 y:-1 z:0 Vfx:Tristana
-@fwturnpawn n:Nelson d:e
-@fwspawnvfx x:-5 y:-1 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
-@fwspawnvfx x:-4 y:0 z:0 Vfx:Jerene
-@fwturnpawn n:Jerene d:e
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Nelson
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Phillip
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Murtough
-@fwturnpawn n:Murtough d:w
+@fwspawnvfx x:-6 y:-1 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnNelson d:e
+@fwspawnvfx x:-5 y:-1 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
+@fwspawnvfx x:-4 y:0 z:0 Vfx:PawnJerene
+@fwturnpawn n:PawnJerene d:e
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnNelson
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnPhillip
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnMurtough
+@fwturnpawn n:PawnMurtough d:w
 
 
 @char Tristana
@@ -35,16 +35,16 @@ Figures.
 @hidechars time:0
 
 ;speedup Murtough
-@fwmovepawn n:Murtough d:s
-@fwmovepawn n:Murtough d:w
-@fwmovepawn n:Murtough d:w
-@fwmovepawn n:Murtough d:w
-@fwmovepawn n:Murtough d:w
-@fwmovepawn n:Murtough d:w
-@fwmovepawn n:Murtough d:w
-@fwmovepawn n:Murtough d:w
-;remove Murtough
+@fwmovepawn n:PawnMurtough d:s
+@fwmovepawn n:PawnMurtough d:w
+@fwmovepawn n:PawnMurtough d:w
+@fwmovepawn n:PawnMurtough d:w
+@fwmovepawn n:PawnMurtough d:w
+@fwmovepawn n:PawnMurtough d:w
+@fwmovepawn n:PawnMurtough d:w
+@fwmovepawn n:PawnMurtough d:w
 
+@fwdeletego n:PawnMurtough
 
 ;$@startRun
 

@@ -2,10 +2,10 @@
 
 ;$@scene= town
 
-@fwspawnvfx x:0 y:9 z:0 Vfx:Meyster
-@fwturnpawn n:Meyster d:e
-@fwspawnvfx x:0 y:8 z:0 Vfx:Pendleton
-@fwturnpawn n:Pendleton d:e
+@fwspawnvfx x:7 y:20 z:0 Vfx:PawnMeyster
+@fwturnpawn n:PawnMeyster d:e
+@fwspawnvfx x:7 y:19 z:0 Vfx:PawnPendleton
+@fwturnpawn n:PawnPendleton d:e
 
 @char Meyster
 Take a look squire.  The den of evil.
@@ -23,18 +23,20 @@ Of course sire.
 Do not worry frail squire. Soon a hero will save this town.
 @hidechars time:0
 
-@fwspawnvfx x:0 y:8 z:0 Vfx:Firework
+@fwspawnvfx x:7 y:19 z:0 Vfx:Firework
 @char Pendleton
 We shall see sire.
 @hidechars time:0
 
-@fwmovepawn n:Pendleton d:e
-@fwmovepawn n:Pendleton d:e
-@fwmovepawn n:Pendleton d:e
-@fwmovepawn n:Pendleton d:e
-@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:PawnPendleton d:e
+@fwmovepawn n:PawnPendleton d:e
+@fwmovepawn n:PawnPendleton d:e
+@fwmovepawn n:PawnPendleton d:e
+@fwmovepawn n:PawnPendleton d:n
 
-;remove Pendleton
+
+;@fwdeletego n:PawnPendleton
+
 
 ;$@startRun
 

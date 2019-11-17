@@ -3,10 +3,10 @@
 ;$@scene= town
 
 
-@fwspawnvfx x:-6 y:-10 z:0 Vfx:Nelson
-@fwturnpawn n:Nelson d:s
-@fwspawnvfx x:-7 y:-13 z:0 Vfx:Jezerine
-@fwturnpawn n:Jezerine d:e
+@fwspawnvfx x:-6 y:-10 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:s
+@fwspawnvfx x:-7 y:-13 z:0 Vfx:PawnJezerine
+@fwturnpawn n:PawnJezerine d:e
 @fwspawnvfx x:-5 y:-13 z:0 Vfx:dummy
 
 
@@ -19,11 +19,11 @@ I will catch death
 @hidechars time:0
 
 ;noclip on Jezerine
-@fwmovepawn n:Jezerine d:e
-@fwmovepawn n:Jezerine d:e
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:e
 @fwspawnvfx x:-5 y:-13 z:0 Vfx:Firework
-@fwmovepawn n:Jezerine d:e
-@fwmovepawn n:Jezerine d:e
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:e
 
 @char Jezerine
 And it will meet its end.
@@ -32,29 +32,29 @@ And it will meet its end.
 It is not becoming of a young lady to play with swords.
 @hidechars time:0
 
-@fwmovepawn n:Jezerine d:w
-@fwmovepawn n:Jezerine d:w
+@fwmovepawn n:PawnJezerine d:w
+@fwmovepawn n:PawnJezerine d:w
 @fwspawnvfx x:-5 y:-13 z:0 Vfx:Firework
-@fwmovepawn n:Jezerine d:w
-@fwmovepawn n:Jezerine d:w
+@fwmovepawn n:PawnJezerine d:w
+@fwmovepawn n:PawnJezerine d:w
 
 @char Jezerine
 What will become of any of us if I do not?
 @hidechars time:0
 
-@fwspawnvfx x:-7 y:-13 z:0 Vfx:Firework ;cursed
+@fwspawnvfx x:-7 y:-13 z:0 Vfx:Firework
 
-@fwmovepawn Nelson (toward Jezerine)
+;@fwmovepawn Nelson (toward Jezerine)
 
 @char Jezerine
 Still going to try to talk me out of it?
 @hidechars time:0
 
-@fwmovepawn n:Nelson d:s
-@fwmovepawn n:Nelson d:s
-@fwmovepawn n:Nelson d:s
-@fwturnpawn n:Nelson d:w
-@fwturnpawn n:Jezerine d:e
+@fwmovepawn n:PawnNelson d:s
+@fwmovepawn n:PawnNelson d:s
+@fwmovepawn n:PawnNelson d:s
+@fwturnpawn n:PawnNelson d:w
+@fwturnpawn n:PawnJezerine d:e
 
 
 @char Nelson
@@ -63,14 +63,16 @@ No.[br]Here, take this. I hear it's cold in there.
 
 ;$@dispay "you recieved sweater"
 
-@fwturnpawn n:Jezerine d:n
-@fwturnpawn n:Jezerine d:e
-@fwturnpawn n:Jezerine d:e
-@fwturnpawn n:Jezerine d:e
-@fwturnpawn n:Jezerine d:e
-@fwturnpawn n:Jezerine d:e
-@fwturnpawn n:Jezerine d:e
+@fwmovepawn n:PawnJezerine d:n
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:e
 
+
+@fwdeletego n:PawnJezerine
 ;$@startRun
 
 @exit

@@ -5,15 +5,15 @@ $@scene= town
 $@place Tristana
 $@place Wilson
 
-@fwspawnvfx x:6 y:-10 z:0 Vfx:Tristana
-@fwturnpawn n:tristana d:w
-@fwspawnvfx x:2 y:-10 z:0 Vfx:Wilson
-@fwturnpawn n:wilson d:n
+@fwspawnvfx x:6 y:-10 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnTristana d:w
+@fwspawnvfx x:2 y:-10 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:n
 
-@fwmovepawn n:tristana d:w
-@fwmovepawn n:tristana d:w
-@fwmovepawn n:tristana d:w
-@fwturnpawn n:wilson d:e
+@fwmovepawn n:PawnTristana d:w
+@fwmovepawn n:PawnTristana d:w
+@fwmovepawn n:PawnTristana d:w
+@fwturnpawn n:PawnWilson d:e
 
 @char Tristana
 Here, it's all that I've written so far.
@@ -35,18 +35,20 @@ Go on sir, its your turn.
 
 
 
-@fwmovepawn n:wilson d:n
-@fwmovepawn n:wilson d:n
-@fwmovepawn n:wilson d:n
-@fwmovepawn n:wilson d:n
-@fwmovepawn n:wilson d:n
-@fwmovepawn n:wilson d:n
-@fwmovepawn n:wilson d:n
-@fwmovepawn n:wilson d:n
-@fwmovepawn n:wilson d:n
-@fwmovepawn n:wilson d:n
+@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:n
 
-@fwmovepawn Wilson (toward cave)
+;@fwmovepawn Wilson (toward cave)
+
+@fwdeletego n:PawnWilson
 
 ;$@startRun
 

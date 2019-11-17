@@ -4,19 +4,19 @@
 
 
 
-@fwspawnvfx x:7 y:10 z:0 Vfx:Devon
-@fwspawnvfx x:7 y:6 z:0 Vfx:Pendleton
+@fwspawnvfx x:7 y:10 z:0 Vfx:PawnDevon
+@fwspawnvfx x:7 y:6 z:0 Vfx:PawnPendleton
 
-@fwmovepawn n:Devon d:s
-@fwmovepawn n:Devon d:s
+@fwmovepawn n:PawnDevon d:s
+@fwmovepawn n:PawnDevon d:s
 
 @char Devon
 Furs for sale! Get your furs!
 @hidechars time:0
 ;wait halfsecond
-@fwturnpawn n:Devon d:e
+@fwturnpawn n:PawnDevon d:e
 ;wait halfsecond
-@fwturnpawn n:Devon d:w
+@fwturnpawn n:PawnDevon d:w
 @char Devon
 Man, quiet town.
 @hidechars time:0
@@ -28,27 +28,30 @@ Get in the cave!
 
 ;$@setspeed Pendleton fast
 
-@fwmovepawn n:Pendleton d:n
-@fwmovepawn n:Pendleton d:n
-@fwmovepawn n:Pendleton d:n
-@fwmovepawn n:Pendleton d:n
-@fwmovepawn n:Pendleton d:n
+;wait = true
+@fwmovepawn n:PawnPendleton d:n
+@fwmovepawn n:PawnPendleton d:n
+@fwmovepawn n:PawnPendleton d:n
+@fwmovepawn n:PawnPendleton d:n
+@fwmovepawn n:PawnPendleton d:n
 
-@char Pendleton wait: false
-Get in the cave! GET IN THE CAVE! GETINTHECAVE!
 
 ;#@setspeed Devon fast
 
-@fwmovepawn n:Devon d:n
-@fwmovepawn n:Pendleton d:n
-@fwmovepawn n:Devon d:n
-@fwmovepawn n:Pendleton d:n
-@fwmovepawn n:Devon d:n
-@fwmovepawn n:Pendleton d:n
-@fwmovepawn n:Devon d:n
-@fwmovepawn n:Pendleton d:n
-@fwmovepawn n:Devon d:n
-@fwmovepawn n:Pendleton d:n
+@fwmovepawn n:PawnDevon d:n
+@fwmovepawn n:PawnPendleton d:n
+@fwmovepawn n:PawnDevon d:n
+@fwmovepawn n:PawnPendleton d:n
+@fwmovepawn n:PawnDevon d:n
+@fwmovepawn n:PawnPendleton d:n
+@fwmovepawn n:PawnDevon d:n
+@fwmovepawn n:PawnPendleton d:n
+@fwmovepawn n:PawnDevon d:n
+@fwmovepawn n:PawnPendleton d:n
+@char Pendleton
+Get in the cave! GET IN THE CAVE! GETINTHECAVE!
+@hidechars time:0
+
 
 $@startRun
 

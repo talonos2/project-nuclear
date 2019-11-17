@@ -9,10 +9,10 @@
 @fwspawnvfx x:-4 y:-14 z:0 Vfx:Dummy
 @fwspawnvfx x:-6 y:-14 z:0 Vfx:Dummy
 
-@fwspawnvfx x:-4 y:-15 z:0 Vfx:Elder
-@fwturnpawn n:elder d:n
-@fwspawnvfx x:-5 y:-16 z:0 Vfx:Jerene
-@fwturnpawn n:jerene d:e
+@fwspawnvfx x:-4 y:-15 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:n
+@fwspawnvfx x:-5 y:-16 z:0 Vfx:PawnJerene
+@fwturnpawn n:PawnJerene d:e
 
 
 @char Jerene
@@ -28,20 +28,20 @@ Oh, okay then.
 @hidechars time:0
 
 ;$@wait
-@fwturnpawn n:jerene d:w
+@fwturnpawn n:PawnJerene d:w
 
 @char Jerene
 When you see the flying machine made of knives make sure to let it know that your reflexes aren't what they used to be.
 I'm sure it'll slow down.
 @hidechars time:0
 
-@fwturnpawn n:elder d:w
+@fwturnpawn n:PawnElder d:w
 
 @char Elder
 Yes, I understa—
 @hidechars time:0
 
-@fwmovepawn n:jerene d:w
+@fwmovepawn n:PawnJerene d:w
 
 @char Jerene
 And when the monster tries to scald you with boiling lava, let it know that smoke is bad for your lungs.
@@ -61,16 +61,16 @@ I'm sure it'll take that into account and make sure to crack easier for you.
 I GET IT!
 @hidechars time:0
 
-@fwturnpawn n:jerene d:e
+@fwturnpawn n:PawnJerene d:e
 
 @char Jerene
 DO YOU?!
 @hidechars time:0
 
-@fwmovepawn n:jerene d:e
-@fwmovepawn n:jerene d:e
-@fwturnpawn n:jerene d:n
-@fwturnpawn n:elder d:s
+@fwmovepawn n:PawnJerene d:e
+@fwmovepawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:n
+@fwturnpawn n:PawnElder d:s
 
 @char Jerene
 How many people have gone in there?!  How many have YOU seen come out?!
@@ -88,20 +88,22 @@ $@animate curse Jerene
 I'll do more than try.
 @hidechars time:0
 
-@fwturnpawn n:jerene d:e
-@fwturnpawn n:jerene d:n
-@fwturnpawn n:elder d:e
-@fwturnpawn n:jerene d:n
-@fwturnpawn n:jerene d:n
-@fwturnpawn n:jerene d:e
-@fwturnpawn n:jerene d:e
-@fwturnpawn n:jerene d:e
-@fwturnpawn n:jerene d:e
-@fwturnpawn n:jerene d:e
-@fwturnpawn n:jerene d:e
-@fwturnpawn n:jerene d:e
-@fwturnpawn n:jerene d:e
-@fwturnpawn n:jerene d:e
+@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:n
+@fwturnpawn n:PawnElder d:e
+@fwturnpawn n:PawnJerene d:n
+@fwturnpawn n:PawnJerene d:n
+@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:e
+
+@fwdeletego n:PawnJerene
 
 ;$@startRun
 

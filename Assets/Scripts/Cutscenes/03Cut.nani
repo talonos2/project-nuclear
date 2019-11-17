@@ -1,25 +1,41 @@
 #start
 
-	@fwspawnvfx x:0 y:0 z:0 Vfx:Paul
-	@fwspawnvfx x:2 y:0 z:0 Vfx:Jerene
-  @fwspawnvfx x:0 y:-3 z:0 Vfx:Mcdermit
+;@scene exterior town
+
+@fwspawnvfx x:-4 y:-13 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:s
+@fwspawnvfx x:-6 y:-15 z:0 Vfx:PawnJerene
+@fwturnpawn n:PawnJerene d:e
+@fwspawnvfx x:-5 y:-16 z:0 Vfx:PawnMcDermit
+@fwturnpawn n:PawnMcDermit d:n
 
 
 
 @char McDermit
-Is this how it's going to end?[br]We just stand here and watch as the civilians are sent to their doom?
+Is this how it's going to end?[BR]We just stand here and watch as the civilians are sent to their doom?
+@hidechars time:0
 
-@fwspawnvfx x:0 y:-3 z:0 Vfx:Firework
+@fwspawnvfx x:-5 y:-16 z:0 Vfx:Firework
 
 @char Jerene
 Guess not.
+@hidechars time:0
 
-@fwmovepawn n:Mcdermit d:s
-@fwmovepawn n:Mcdermit d:s
-@fwmovepawn n:Mcdermit d:s
-@fwmovepawn n:Mcdermit d:s
+@fwmovepawn n:PawnMcDermit d:e
+@fwmovepawn n:PawnMcDermit d:e
+@fwmovepawn n:PawnMcDermit d:e
+@fwmovepawn n:PawnMcDermit d:n
+@fwmovepawn n:PawnMcDermit d:n
+@fwmovepawn n:PawnMcDermit d:n
+@fwmovepawn n:PawnMcDermit d:e
+@fwmovepawn n:PawnMcDermit d:e
+@fwmovepawn n:PawnMcDermit d:e
+@fwmovepawn n:PawnMcDermit d:e
+@fwmovepawn n:PawnMcDermit d:e
+@fwmovepawn n:PawnMcDermit d:e
+@fwmovepawn n:PawnMcDermit d:e
 
-
+;@fwdeletego n:PawnMcDermit
 
 
 @exit
