@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 8043389666066259187}
   - component: {fileID: 8043389666066259185}
   - component: {fileID: 8280000497408130495}
+  - component: {fileID: 3173064278397565638}
   m_Layer: 0
   m_Name: Z1_B
   m_TagString: Untagged
@@ -179,9 +180,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 6.5
   framesPerSecond: 10
-  CharacterLocation: {x: 0, y: 0}
-  CharacterNextLocation: {x: 0, y: 0}
+  facedDirection: 4
   PathRandomly: 0
+  PathAntiRandomly: 0
   PathViaSteps: 0
   Pathing: 0300000003000000030000000300000001000000010000000100000001000000
   SpotterMonster: 1
@@ -203,12 +204,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainCharacter: 0
   isAMonster: 1
+  isLargeMonster: 0
   isInteractableObject: 0
   isItem: 0
   isSwitch: 0
   isNPC: 0
-  isSpike: 0
-  isPassable: 0
 --- !u!65 &8043389666066259185
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -242,6 +242,8 @@ MonoBehaviour:
   homePositionOnScreen: {x: 0.6, y: 0}
   strikingPointOffset: {x: 0, y: 0}
   gettingStruckPointOffset: {x: 0, y: 0}
+  scale: {x: 1, y: 1}
+  forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Frost Giant
   ExpGiven: 750
   weakness: 1
@@ -252,3 +254,18 @@ MonoBehaviour:
   - {fileID: -404747782666905900, guid: 8086b17eadb487f44b1b43e894ed2099, type: 3}
   - {fileID: 8039505293157929984, guid: 8086b17eadb487f44b1b43e894ed2099, type: 3}
   - {fileID: 6505660541132300591, guid: 8086b17eadb487f44b1b43e894ed2099, type: 3}
+--- !u!114 &3173064278397565638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043389666066259198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d53f9fa64990149a2004edec47788e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalFrames: 6
+  framesPerSecond: 5
+  frameCounter: 0

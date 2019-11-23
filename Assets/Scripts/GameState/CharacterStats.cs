@@ -62,6 +62,7 @@ public class CharacterStats : Stats
     private CharacterStats SavedStats;
     private GameObject equipmentData;
     private EquipmentData itemData;
+    private float regenerationCounter;
 
     void Start()
     {
@@ -278,6 +279,17 @@ public class CharacterStats : Stats
     // Update is called once per frame
     void Update()
     {
-        
+        regenerationCounter += Time.deltaTime;
+        if (regenerationCounter >= 3) {
+            HP += (int)(MaxHP * .01f);
+            mana += (int)(MaxMana * .01f);
+            if (HP > MaxHP)
+                HP = MaxHP;
+            if (mana > MaxMana)
+                mana = MaxMana;
+            PushCharacterData();
+
+            regenerationCounter = 0;
+        }
     }
 }

@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6622165687117483734}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.3, y: 3.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -68,6 +68,7 @@ MonoBehaviour:
   LookDuration: 20
   ChaseRange: 15
   LookPattern: 0000000000000000
+  bossMonster: 0
 --- !u!114 &6622165687117483729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,9 +118,9 @@ MonoBehaviour:
   attack: 142
   defense: 29
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.6, y: 0.1}
+  homePositionOnScreen: {x: 0.4, y: -0.5}
   strikingPointOffset: {x: 0, y: 0}
-  gettingStruckPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: -0.1, y: 0.1}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Reaper
