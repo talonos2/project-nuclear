@@ -1,31 +1,48 @@
+@goto day2 if:GetDay()>=2
+@goto day3 if:GetDay()>=3
+@goto day4 if:GetDay()>=4
+@goto day5 if:GetDay()>=5
+@goto day6 if:GetDay()>=6
+@exit if:GetDay()>=7
+@exit if:GetDay()>=8
+@goto day9 if:GetDay()>=9
+
+@exit
+
 #day2
 
 @fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@exit
 
 
 #day3
 
 @fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@exit
 
 
 #day4
 
 @fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@exit
 
 
 #day5
 
 @fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@exit
 
 
 #day6
 
 @fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@exit
 
 
 #day9
 
 @fwspawnvfx x:12 y:9 z:0 Vfx:Elder
+@exit
 
 
-@stop
+@exit

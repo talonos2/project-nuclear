@@ -1,47 +1,81 @@
+@goto day2 if:GetDay()>=2
+@goto day3 if:GetDay()>=3
+@goto day4 if:GetDay()>=4
+@goto day5 if:GetDay()>=5
+@goto day6 if:GetDay()>=6
+@goto day7 if:GetDay()>=7
+@goto day10 if:GetDay()>=10
+@goto day11 if:GetDay()>=11
+@goto day12 if:GetDay()>=12
+@goto day13 if:GetDay()>=13
+@goto day16 if:GetDay()>=16
+@goto day17 if:GetDay()>=17
+@goto day18 if:GetDay()>=18
+@goto day20 if:GetDay()>=20
+@goto day21 if:GetDay()>=21
+@goto day22 if:GetDay()>=22
+@goto day24 if:GetDay()>=24
+@goto day25 if:GetDay()>=25
+@goto day26 if:GetDay()>=26
+@goto day27 if:GetDay()>=27
+@goto day28 if:GetDay()>=28
+@goto day29 if:GetDay()>=29
+@goto day30 if:GetDay()>=30
+@exit
+
 #day2
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:Malvardius
 @fwspawnvfx x:3 y:-2 z:0 Vfx:Elder
+@exit
 
 #day3
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:Malvardius
+@exit
 
 #day4
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:Malvardius
 @fwspawnvfx x:-5 y:-2 z:0 Vfx:Elder
 @fwturnpawn n:Elder d:w
+@exit
 
 #day5
 
 @fwspawnvfx x:-1 y:-5 z:0 Vfx:Malvardius
 @fwturnpawn n:Malvardius d:n
+@exit
 
 #day6
 
 @fwspawnvfx x:-1 y:-5 z:0 Vfx:Malvardius
 @fwspawnvfx x:-4 y:-2 z:0 Vfx:Jinn
 @fwturnpawn n:Jinn d:e
+@exit
 
 #day7
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:Malvardius
+@exit
 
 #day10
 
 @fwspawnvfx x:-1 y:-5 z:0 Vfx:Patrick
 @fwturnpawn n:Patrick d:n
+@exit
 
 #day11
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:Tedd
 @fwturnpawn n:Tedd d:n
+@exit
 
 #day12
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:Metra
 @fwturnpawn n:Metra d:n
+@exit
 
 #day13
 
@@ -49,26 +83,31 @@
 @fwturnpawn n:Patrick d:n
 @fwspawnvfx x:-5 y:-2 z:0 Vfx:Jinn
 @fwturnpawn n:Jinn d:w
+@exit
 
 #day16
 
 @fwspawnvfx x:-5 y:-2 z:0 Vfx:Jinn
 @fwturnpawn n:Svenra d:w
+@exit
 
 #day17
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:Meyster
 @fwspawnvfx x:3 y:-2 z:0 Vfx:Elder
 @fwturnpawn n:Elder d:e
+@exit
 
 #day18
 
 @fwspawnvfx x:-1 y:-5 z:0 Vfx:Meyster
 @fwturnpawn n:Meyster d:n
+@exit
 
 #day20
 
 @fwspawnvfx x:-1 y:-5 z:0 Vfx:Tristana
+@exit
 
 
 #day21
@@ -77,11 +116,13 @@
 @fwturnpawn n:Tristana d:w
 @fwspawnvfx x:-5 y:-2 z:0 Vfx:Patrick
 @fwturnpawn n:Patrick d:w
+@exit
 
 #day22
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:JohnDoe
 @fwturnpawn n:JohnDoe d:n
+@exit
 
 #day24
 
@@ -92,4 +133,4 @@
 
 
 
-@stop
+@exit
