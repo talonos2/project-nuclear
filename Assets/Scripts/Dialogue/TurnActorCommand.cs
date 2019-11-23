@@ -22,7 +22,6 @@ public class TurnActorCommand : Naninovel.Commands.Command
             return Task.CompletedTask;
         }
         PawnMover mover = go.GetComponent<PawnMover>();
-        Debug.Log(go);
         foreach (MonoBehaviour m in go.GetComponents<MonoBehaviour>())
         {
             Debug.Log(m);
