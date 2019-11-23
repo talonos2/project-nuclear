@@ -302,7 +302,8 @@ public class Combat : MonoBehaviour
 
     private void DealDamageToEnemy()
     {
-        float incomingDamage = (int)playerStats.attack + playerStats.weaponBonusAttack+playerStats.accessoryAttack;
+        float incomingDamage = (int)playerStats.attack + playerStats.weaponBonusAttack + playerStats.accessoryAttack;
+        if (goodHit) {incomingDamage *= 1.25f; }
         incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent);
         incomingDamage -= monsterStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
@@ -352,8 +353,9 @@ public class Combat : MonoBehaviour
     private void DealDamageToPlayer()
     {
         
-        int incomingDamage = (int)monsterStats.attack;
-        incomingDamage -= (int)(playerStats.defense+playerStats.armorBonusDefense);
+        float incomingDamage = monsterStats.attack;
+        if (goodBlock) { incomingDamage *= .8f; }
+        incomingDamage -= (playerStats.defense+playerStats.armorBonusDefense);
         incomingDamage = Math.Max(incomingDamage, 0);
         playerStats.HP -= Mathf.RoundToInt(incomingDamage);
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
