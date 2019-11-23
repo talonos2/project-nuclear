@@ -1,32 +1,32 @@
-@goto day2 if:GetDay()>=2
-@goto day3 if:GetDay()>=3
-@goto day4 if:GetDay()>=4
-@goto day5 if:GetDay()>=5
-@goto day6 if:GetDay()>=6
-@goto day7 if:GetDay()>=7
-@goto day8 if:GetDay()>=8
-@goto day9 if:GetDay()>=9
-@goto day10 if:GetDay()>=10
-@goto day11 if:GetDay()>=11
-@goto day12 if:GetDay()>=12
-@goto day13 if:GetDay()>=13
-@goto day14 if:GetDay()>=14
-@goto day15 if:GetDay()>=15
-@goto day16 if:GetDay()>=16
-@goto day17 if:GetDay()>=17
-@goto day18 if:GetDay()>=18
-@goto day19 if:GetDay()>=19
-@goto day20 if:GetDay()>=20
-@goto day21 if:GetDay()>=21
-@goto day22 if:GetDay()>=22
-@goto day23 if:GetDay()>=23
-@goto day24 if:GetDay()>=24
-@goto day25 if:GetDay()>=25
-@goto day26 if:GetDay()>=26
-@goto day27 if:GetDay()>=27
-@goto day28 if:GetDay()>=28
-@goto day29 if:GetDay()>=29
-@goto day30 if:GetDay()>=30
+@goto .day2 if:GetDay()=2
+@goto .day3 if:GetDay()=3
+@goto .day4 if:GetDay()=4
+@goto .day5 if:GetDay()=5
+@goto .day6 if:GetDay()=6
+@goto .day7 if:GetDay()=7
+@goto .day8 if:GetDay()=8
+@goto .day9 if:GetDay()=9
+@goto .day10 if:GetDay()=10
+@goto .day11 if:GetDay()=11
+@goto .day12 if:GetDay()=12
+@goto .day13 if:GetDay()=13
+@goto .day14 if:GetDay()=14
+@goto .day15 if:GetDay()=15
+@goto .day16 if:GetDay()=16
+@goto .day17 if:GetDay()=17
+@goto .day18 if:GetDay()=18
+@goto .day19 if:GetDay()=19
+@goto .day20 if:GetDay()=20
+@goto .day21 if:GetDay()=21
+@goto .day22 if:GetDay()=22
+@goto .day23 if:GetDay()=23
+@goto .day24 if:GetDay()=24
+@goto .day25 if:GetDay()=25
+@goto .day26 if:GetDay()=26
+@goto .day27 if:GetDay()=27
+@goto .day28 if:GetDay()=28
+@goto .day29 if:GetDay()=29
+@goto .day30 if:GetDay()=30
 @exit
 
 
@@ -34,116 +34,116 @@
 
 #day2
 
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Paul
-@fwspawnvfx x:-4 y:0 z:0 Vfx:Norma
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPaul
+@fwspawnvfx x:-4 y:0 z:0 Vfx:PawnNorma
 
-@fwspawnvfx x:-10 y:0 z:0 Vfx:Tedd
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-10 y:0 z:0 Vfx:PawnTedd
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:7 y:-3 z:0 Vfx:Nelson
-@fwturnpawn n:Nelson d:n
+@fwspawnvfx x:7 y:-3 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:n
 @exit
 
 #day3
 
-@fwspawnvfx x:-2 y:0 z:0 Vfx:Tedd
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-2 y:0 z:0 Vfx:PawnTedd
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:7 y:2 z:0 Vfx:Nelson
+@fwspawnvfx x:7 y:2 z:0 Vfx:PawnNelson
 @exit
 
 #day4
 
-@fwspawnvfx x:6 y:3 z:0 Vfx:Metra
-@fwturnpawn n:Metra d:n
+@fwspawnvfx x:6 y:3 z:0 Vfx:PawnMetra
+@fwturnpawn n:PawnMetra d:n
 
-@fwspawnvfx x:-7 y:0 z:0 Vfx:Tedd
+@fwspawnvfx x:-7 y:0 z:0 Vfx:PawnTedd
 
-@fwspawnvfx x:6 y:0 z:0 Vfx:Nelson
-@fwturnpawn n:Nelson d:e
+@fwspawnvfx x:6 y:0 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:e
 @exit
 
 #day5
 
-@fwspawnvfx x:-11 y:2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:w
+@fwspawnvfx x:-11 y:2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:w
 
-@fwspawnvfx x:-10 y:2 z:0 Vfx:Tedd
+@fwspawnvfx x:-10 y:2 z:0 Vfx:PawnTedd
 
-@fwspawnvfx x:-4 y:-2 z:0 Vfx:Jezerine
+@fwspawnvfx x:-4 y:-2 z:0 Vfx:PawnJezerine
 
 
-@fwspawnvfx x:8 y:-2 z:0 Vfx:Nelson
-@fwturnpawn n:Nelson d:w
+@fwspawnvfx x:8 y:-2 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:w
 @exit
 
 #day6
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:1 y:0 z:0 Vfx:Tedd
-@fwturnpawn n:Tedd d:e
+@fwspawnvfx x:1 y:0 z:0 Vfx:PawnTedd
+@fwturnpawn n:PawnTedd d:e
 
-@fwspawnvfx x:2 y:0 z:0 Vfx:Tristana
-@fwturnpawn n:Tristana d:w
+@fwspawnvfx x:2 y:0 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnTristana d:w
 
-@fwspawnvfx x:8 y:0 z:0 Vfx:Nelson
-@fwturnpawn n:Nelson d:w
+@fwspawnvfx x:8 y:0 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:w
 @exit
 
 #day7
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-9 y:-2 z:0 Vfx:Elder
-@fwturnpawn n:Elder d:w
+@fwspawnvfx x:-9 y:-2 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:w
 @exit
 
 #day8
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-9 y:-2 z:0 Vfx:Tristana
-@fwturnpawn n:Tristana d:w
+@fwspawnvfx x:-9 y:-2 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnTristana d:w
 
-@fwspawnvfx x:3 y:0 z:0 Vfx:Nelson
-@fwturnpawn n:Nelson d:e
+@fwspawnvfx x:3 y:0 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:e
 
-@fwspawnvfx x:5 y:3 z:0 Vfx:Tedd
+@fwspawnvfx x:5 y:3 z:0 Vfx:PawnTedd
 @exit
 
 #day9
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 @exit
 
 #day10
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-9 y:-2 z:0 Vfx:Elder
-@fwturnpawn n:Elder d:w
+@fwspawnvfx x:-9 y:-2 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:w
 @exit
 
 #day11
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 @exit
 
 #day12
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-10 y:0 z:0 Vfx:Tedd
+@fwspawnvfx x:-10 y:0 z:0 Vfx:PawnTedd
 @exit
 
 #day13
@@ -152,146 +152,146 @@
 
 #day14
 
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Metra
-@fwturnpawn n:Metra d:e
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMetra
+@fwturnpawn n:PawnMetra d:e
 
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Patrick
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnPatrick
 
 @exit
 
 #day15
 
-@fwspawnvfx x:3 y:0 z:0 Vfx:Metra
-@fwturnpawn n:Metra d:e
+@fwspawnvfx x:3 y:0 z:0 Vfx:PawnMetra
+@fwturnpawn n:PawnMetra d:e
 
-@fwspawnvfx x:-9 y:-2 z:0 Vfx:Elder
-@fwturnpawn n:Elder d:w
+@fwspawnvfx x:-9 y:-2 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:w
 @exit
 
 #day16
 
-@fwspawnvfx x:0 y:0 z:0 Vfx:Nelson
-@fwturnpawn n:Nelson d:n
+@fwspawnvfx x:0 y:0 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:n
 @exit
 
 #day17
 
-@fwspawnvfx x:0 y:-3 z:0 Vfx:Nelson
+@fwspawnvfx x:0 y:-3 z:0 Vfx:PawnNelson
 @exit
 
 #day18
 
-@fwspawnvfx x:8 y:-1 z:0 Vfx:Nelson
-@fwturnpawn n:Nelson d:w
+@fwspawnvfx x:8 y:-1 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:w
 @exit
 
 #day19
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Patrick
-@fwturnpawn n:Patrick d:w
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnPatrick
+@fwturnpawn n:PawnPatrick d:w
 
-@fwspawnvfx x:-5 y:-3 z:0 Vfx:Elder
+@fwspawnvfx x:-5 y:-3 z:0 Vfx:PawnElder
 @exit
 
 #day20
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:6 y:1 z:0 Vfx:Metra
-@fwturnpawn n:Metra d:e
+@fwspawnvfx x:6 y:1 z:0 Vfx:PawnMetra
+@fwturnpawn n:PawnMetra d:e
 @exit
 
 #day21
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-9 y:-2 z:0 Vfx:Svenra
-@fwturnpawn n:Svenra d:w
+@fwspawnvfx x:-9 y:-2 z:0 Vfx:PawnSvenra
+@fwturnpawn n:PawnSvenra d:w
 @exit
 
 #day22
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-9 y:-2 z:0 Vfx:Svenra
-@fwturnpawn n:Svenra d:w
+@fwspawnvfx x:-9 y:-2 z:0 Vfx:PawnSvenra
+@fwturnpawn n:PawnSvenra d:w
 
-@fwspawnvfx x:1 y:-2 z:0 Vfx:Elder
-@fwturnpawn n:Elder d:w
+@fwspawnvfx x:1 y:-2 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:w
 
-@fwspawnvfx x:0 y:-2 z:0 Vfx:Tristana
-@fwturnpawn n:Tristana d:e
+@fwspawnvfx x:0 y:-2 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnTristana d:e
 @exit
 
 #day23
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-10 y:2 z:0 Vfx:Tristana
-@fwturnpawn n:Tristana d:n
+@fwspawnvfx x:-10 y:2 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnTristana d:n
 
-@fwspawnvfx x:0 y:-1 z:0 Vfx:Elder
-@fwturnpawn n:Elder d:w
+@fwspawnvfx x:0 y:-1 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:w
 ;standing around map with pins
-@fwspawnvfx x:-2 y:-1 z:0 Vfx:Svenra
-@fwturnpawn n:Svenra d:e
+@fwspawnvfx x:-2 y:-1 z:0 Vfx:PawnSvenra
+@fwturnpawn n:PawnSvenra d:e
 @exit
 
 #day24
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-10 y:-4 z:0 Vfx:Patrick
-@fwturnpawn n:Patrick d:n
+@fwspawnvfx x:-10 y:-4 z:0 Vfx:PawnPatrick
+@fwturnpawn n:PawnPatrick d:n
 
-@fwspawnvfx x:-10 y:0 z:0 Vfx:Tristana
+@fwspawnvfx x:-10 y:0 z:0 Vfx:PawnTristana
 
-@fwspawnvfx x:1 y:-3 z:0 Vfx:Svenra
+@fwspawnvfx x:1 y:-3 z:0 Vfx:PawnSvenra
 @exit
 
 #day25
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-2 y:-1 z:0 Vfx:Patrick
-@fwturnpawn n:Patrick d:e
+@fwspawnvfx x:-2 y:-1 z:0 Vfx:PawnPatrick
+@fwturnpawn n:PawnPatrick d:e
 @exit
 
 #day26
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Wilson
-@fwturnpawn n:Wilson d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-@fwspawnvfx x:-1 y:0 z:0 Vfx:Elder
+@fwspawnvfx x:-1 y:0 z:0 Vfx:PawnElder
 
 ;standing around map with pins
-@fwspawnvfx x:-2 y:-1 z:0 Vfx:Patrick
-@fwturnpawn n:Patrick d:e
+@fwspawnvfx x:-2 y:-1 z:0 Vfx:PawnPatrick
+@fwturnpawn n:PawnPatrick d:e
 @exit
 
 #day27
 
-@fwspawnvfx x:-11 y:-2 z:0 Vfx:Svenra
-@fwturnpawn n:Svenra d:e
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnSvenra
+@fwturnpawn n:PawnSvenra d:e
 
-@fwspawnvfx x:-8 y:2 z:0 Vfx:Elder
-@fwturnpawn n:Elder d:n
+@fwspawnvfx x:-8 y:2 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:n
 
-@fwspawnvfx x:-2 y:-1 z:0 Vfx:Patrick
-@fwturnpawn n:Patrick d:e
+@fwspawnvfx x:-2 y:-1 z:0 Vfx:PawnPatrick
+@fwturnpawn n:PawnPatrick d:e
 @exit
 
 #day28
-@fwspawnvfx x:-1 y:0 z:0 Vfx:Patrick
+@fwspawnvfx x:-1 y:0 z:0 Vfx:PawnPatrick
 
 @exit
 

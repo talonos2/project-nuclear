@@ -1,157 +1,157 @@
-@goto day2 if:GetDay()>=2
-@goto day3 if:GetDay()>=3
-@goto day4 if:GetDay()>=4
-@goto day5 if:GetDay()>=5
-@goto day6 if:GetDay()>=6
-@goto day7 if:GetDay()>=7
-@goto day8 if:GetDay()>=8
-@goto day9 if:GetDay()>=9
-@goto day10 if:GetDay()>=10
-@goto day11 if:GetDay()>=11
-@goto day12 if:GetDay()>=12
-@goto day13 if:GetDay()>=13
-@goto day14 if:GetDay()>=14
-@goto day15 if:GetDay()>=15
-@goto day16 if:GetDay()>=16
-@goto day17 if:GetDay()>=17
-@goto day18 if:GetDay()>=18
-@goto day19 if:GetDay()>=19
-@goto day20 if:GetDay()>=20
-@goto day21 if:GetDay()>=21
-@goto day22 if:GetDay()>=22
-@goto day23 if:GetDay()>=23
-@goto day24 if:GetDay()>=24
-@goto day25 if:GetDay()>=25
-@goto day26 if:GetDay()>=26
-@goto day27 if:GetDay()>=27
-@goto day28 if:GetDay()>=28
-@goto day29 if:GetDay()>=29
-@goto day30 if:GetDay()>=30
+@goto .day2 if:GetDay()=2
+@goto .day3 if:GetDay()=3
+@goto .day4 if:GetDay()=4
+@goto .day5 if:GetDay()=5
+@goto .day6 if:GetDay()=6
+@goto .day7 if:GetDay()=7
+@goto .day8 if:GetDay()=8
+@goto .day9 if:GetDay()=9
+@goto .day10 if:GetDay()=10
+@goto .day11 if:GetDay()=11
+@goto .day12 if:GetDay()=12
+@goto .day13 if:GetDay()=13
+@goto .day14 if:GetDay()=14
+@goto .day15 if:GetDay()=15
+@goto .day16 if:GetDay()=16
+@goto .day17 if:GetDay()=17
+@goto .day18 if:GetDay()=18
+@goto .day19 if:GetDay()=19
+@goto .day20 if:GetDay()=20
+@goto .day21 if:GetDay()=21
+@goto .day22 if:GetDay()=22
+@goto .day23 if:GetDay()=23
+@goto .day24 if:GetDay()=24
+@goto .day25 if:GetDay()=25
+@goto .day26 if:GetDay()=26
+@goto .day27 if:GetDay()=27
+@goto .day28 if:GetDay()=28
+@goto .day29 if:GetDay()=29
+@goto .day30 if:GetDay()=30
 @exit
 
 #day2
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Mara
-@fwspawnvfx x:-3 y:-1 z:0 Vfx:Jinn
-@fwturnpawn n:Jinn d:w
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Murtough
-@fwspawnvfx x:1 y:-2 z:0 Vfx:Phillip
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:-3 y:-1 z:0 Vfx:PawnJinn
+@fwturnpawn n:PawnJinn d:w
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMurtough
+@fwspawnvfx x:1 y:-2 z:0 Vfx:PawnPhillip
 @exit
 
 
 #day3
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Mara
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Murtough
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Paul
-@fwmovepawn n:Paul d:w
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMurtough
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPaul
+@fwmovepawn n:PawnPaul d:w
 @exit
 
 
 #day4
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Mara
-@fwspawnvfx x:4 y:-2 z:0 Vfx:Paul
-@fwturnpawn n:Paul d:e
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Murtough
-@fwspawnvfx x:4 y:0 z:0 Vfx:Phillip
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:4 y:-2 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:e
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMurtough
+@fwspawnvfx x:4 y:0 z:0 Vfx:PawnPhillip
 @exit
 
 #day5
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Mara
-@fwspawnvfx x:4 y:0 z:0 Vfx:Jinn
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Murtough
-@fwspawnvfx x:-1 y:-1 z:0 Vfx:Paul
-@fwturnpawn n:Paul d:e
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Phillip
-@fwturnpawn n:Phillip d:w
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:4 y:0 z:0 Vfx:PawnJinn
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMurtough
+@fwspawnvfx x:-1 y:-1 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:e
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
+@fwturnpawn n:PawnPhillip d:w
 @exit
 
 #day6
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Mara
-@fwspawnvfx x:-5 y:-1 z:0 Vfx:Phillip
-@fwturnpawn n:Phillip d:e
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Murtough
-@fwspawnvfx x:1 y:-2 z:0 Vfx:Paul
-@fwturnpawn n:Paul d:w
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:-5 y:-1 z:0 Vfx:PawnPhillip
+@fwturnpawn n:PawnPhillip d:e
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMurtough
+@fwspawnvfx x:1 y:-2 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:w
 @exit
 
 #day7
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Mara
-@fwspawnvfx x:-2 y:-4 z:0 Vfx:paul
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Murtough
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Phillip
-@fwturnpawn n:Phillip d:w
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:-2 y:-4 z:0 Vfx:Pawnpaul
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMurtough
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
+@fwturnpawn n:PawnPhillip d:w
 @exit
 
 #day8
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Mara
-@fwspawnvfx x:1 y:-2 z:0 Vfx:Paul
-@fwturnpawn n:Paul d:n
-@fwspawnvfx x:1 y:-4 z:0 Vfx:Murtough
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Phillip
-@fwturnpawn n:Phillip d:w
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:1 y:-2 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:n
+@fwspawnvfx x:1 y:-4 z:0 Vfx:PawnMurtough
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
+@fwturnpawn n:PawnPhillip d:w
 @exit
 
 #day8
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Mara
-@fwspawnvfx x:1 y:-2 z:0 Vfx:Paul
-@fwspawnvfx x:1 y:-4 z:0 Vfx:Murtough
-@fwturnpawn n:Murtough d:n
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Phillip
-@fwturnpawn n:Phillip d:w
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:1 y:-2 z:0 Vfx:PawnPaul
+@fwspawnvfx x:1 y:-4 z:0 Vfx:PawnMurtough
+@fwturnpawn n:PawnMurtough d:n
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
+@fwturnpawn n:PawnPhillip d:w
 @exit
 
 #day9
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Nelson
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Paul
-@fwspawnvfx x:-3 y:-1 z:0 Vfx:Murtough
-@fwturnpawn n:Murtough d:w
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Phillip
-@fwturnpawn n:Phillip d:w
-@fwspawnvfx x:-4 y:2 z:0 Vfx:Jinn
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnNelson
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnPaul
+@fwspawnvfx x:-3 y:-1 z:0 Vfx:PawnMurtough
+@fwturnpawn n:PawnMurtough d:w
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
+@fwturnpawn n:PawnPhillip d:w
+@fwspawnvfx x:-4 y:2 z:0 Vfx:PawnJinn
 @exit
 
 #day10
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Nelson
-@fwspawnvfx x:-1 y:0 z:0 Vfx:Jinn
-@fwturnpawn n:Jinn d:n
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnNelson
+@fwspawnvfx x:-1 y:0 z:0 Vfx:PawnJinn
+@fwturnpawn n:PawnJinn d:n
 @exit
 
 #day11
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Nelson
-@fwspawnvfx x:-4 y:0 z:0 Vfx:Murtough
-@fwspawnvfx x:-4 y:-2 z:0 Vfx:Tristana
-@fwturnpawn n:Tristana d:n
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnNelson
+@fwspawnvfx x:-4 y:0 z:0 Vfx:PawnMurtough
+@fwspawnvfx x:-4 y:-2 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnTristana d:n
 @exit
 
 #day12
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Nelson
-@fwspawnvfx x:-3 y:-3 z:0 Vfx:Murtough
-@fwturnpawn n:Murtough d:e
-@fwspawnvfx x:1 y:-2 z:0 Vfx:Jerene
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnNelson
+@fwspawnvfx x:-3 y:-3 z:0 Vfx:PawnMurtough
+@fwturnpawn n:PawnMurtough d:e
+@fwspawnvfx x:1 y:-2 z:0 Vfx:PawnJerene
 @exit
 
 #day13
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Nelson
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:Phillip
-@fwspawnvfx x:2 y:-3 z:0 Vfx:Murtough
-@fwturnpawn n:Murtough d:w
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnNelson
+@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnPhillip
+@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnMurtough
+@fwturnpawn n:PawnMurtough d:w
 @exit
 
 #day14
 
-@fwspawnvfx x:-1 y:2 z:0 Vfx:Nelson
+@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnNelson
 @exit
 
 

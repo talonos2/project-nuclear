@@ -1,47 +1,47 @@
-@goto day2 if:GetDay()>=2
-@goto day3 if:GetDay()>=3
-@goto day4 if:GetDay()>=4
-@goto day5 if:GetDay()>=5
-@goto day6 if:GetDay()>=6
-@exit if:GetDay()>=7
-@exit if:GetDay()>=8
-@goto day9 if:GetDay()>=9
+@goto .day2 if:GetDay()=2
+@goto .day3 if:GetDay()=3
+@goto .day4 if:GetDay()=4
+@goto .day5 if:GetDay()=5
+@goto .day6 if:GetDay()=6
+@exit if:GetDay()=7
+@exit if:GetDay()=8
+@goto .day9 if:GetDay()=9
 
 @exit
 
 #day2
 
-@fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@fwspawnvfx x:14 y:9 z:0 Vfx:PawnDerringer
 @exit
 
 
 #day3
 
-@fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@fwspawnvfx x:14 y:9 z:0 Vfx:PawnDerringer
 @exit
 
 
 #day4
 
-@fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@fwspawnvfx x:14 y:9 z:0 Vfx:PawnDerringer
 @exit
 
 
 #day5
 
-@fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@fwspawnvfx x:14 y:9 z:0 Vfx:PawnDerringer
 @exit
 
 
 #day6
 
-@fwspawnvfx x:14 y:9 z:0 Vfx:Derringer
+@fwspawnvfx x:14 y:9 z:0 Vfx:PawnDerringer
 @exit
 
 
 #day9
 
-@fwspawnvfx x:12 y:9 z:0 Vfx:Elder
+@fwspawnvfx x:12 y:9 z:0 Vfx:PawnElder
 @exit
 
 
