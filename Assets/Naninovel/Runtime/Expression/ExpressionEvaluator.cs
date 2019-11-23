@@ -31,7 +31,8 @@ namespace Naninovel
                     Example = example;
                 }
             }
-
+            [Doc("Get what day it is in Final Winter")]
+            public static int GetDay() => GameData.Instance.RunNumber;
             [Doc("Return a random float number between min [inclusive] and max [inclusive].", "Random(0.1, 0.85)")]
             public static float Random (double min, double max) => UnityEngine.Random.Range((float)min, (float)max);
             [Doc("Return a random integer number between min [inclusive] and max [inclusive].", "Random(0, 100)")]
@@ -94,7 +95,6 @@ namespace Naninovel
                     onError?.Invoke($"Expression `{expressionString}` syntax error: {expression.Error}");
                     return default;
                 }
-
                 var resultObj = expression.Evaluate();
                 if (resultObj is null)
                 {

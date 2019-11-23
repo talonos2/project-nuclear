@@ -127,8 +127,7 @@ public class PawnMover : SpriteMovement
 
     public void EnqueueMovement(String direction)
     {
-        float time;
-        if (float.TryParse(direction, out time))
+        if (float.TryParse(direction, out float time))
         {
             while (time > .1f)
             {
@@ -183,7 +182,6 @@ public class PawnMover : SpriteMovement
             default:
                 Debug.LogWarning("Unrecognized movement direction: " + direction + " Passed in via the MovePawn command.");
                 return DirectionMoved.NONE;
-                break;
         }
     }
 
