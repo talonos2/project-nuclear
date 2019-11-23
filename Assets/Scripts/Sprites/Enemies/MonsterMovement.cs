@@ -34,6 +34,7 @@ public class MonsterMovement : SpriteMovement
     private float LookTiming = 0;
     private int CurrentFacing = 0;
     private int stuck = 0;
+    public bool bossMonster;
     
     
 
@@ -45,7 +46,10 @@ public class MonsterMovement : SpriteMovement
         if (GameState.isInBattle==true) {
             return; 
         }
-
+        if (bossMonster)
+        {
+            return;
+        }
 
         if (!currentlyMoving)
         {

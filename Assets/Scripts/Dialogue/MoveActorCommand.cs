@@ -14,7 +14,6 @@ public class MoveActorCommand : Naninovel.Commands.Command
 
     public override Task ExecuteAsync()
     {
-        Debug.Log("Trying to move " + n);
         GameObject go = GameObject.Find(n);
         if (go == null)
         {
