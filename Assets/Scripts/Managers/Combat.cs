@@ -202,12 +202,12 @@ public class Combat : MonoBehaviour
         {
             Debug.Log("E-A: " + (enemyDamagePoint - amountThrough) + ", P-A: " + (playerDamagePoint - amountThrough));
             buttonPressedTime = 0;
-            if (playerDamagePoint - amountThrough < SWAY_TOLERANCE && playerDamagePoint - amountThrough > 0)
+            if (playerDamagePoint - amountThrough < SWAY_TOLERANCE / 2.0f && playerDamagePoint - amountThrough > SWAY_TOLERANCE / -2.0f)
             {
                 goodHit = true;
                 blade.SpawnGoodParticles();
             }
-            else if (enemyDamagePoint - amountThrough < SWAY_TOLERANCE && enemyDamagePoint - amountThrough > 0)
+            else if (enemyDamagePoint - amountThrough < SWAY_TOLERANCE/2.0f && enemyDamagePoint - amountThrough > SWAY_TOLERANCE / -2.0f)
             {
                 goodBlock = true;
                 blade.SpawnGoodParticles();
@@ -232,12 +232,12 @@ public class Combat : MonoBehaviour
         {
             monsterDidDamageRecently = false;
         }
-        if (!playerDidDamageRecently && timeSinceLastPlayerAttack > AttackAnimation.HOP.GetDamagePoint())
+        if (!playerDidDamageRecently && timeSinceLastPlayerAttack > AttackAnimation.HOP.GetDamagePoint() + (SWAY_TOLERANCE/2.0f))
         {
             this.DealDamageToEnemy();
             playerDidDamageRecently = true;
         }
-        if (!monsterDidDamageRecently && timeSinceLastMonsterAttack > AttackAnimation.HOP.GetDamagePoint())
+        if (!monsterDidDamageRecently && timeSinceLastMonsterAttack > AttackAnimation.HOP.GetDamagePoint() + (SWAY_TOLERANCE / 2.0f))
         {
             this.DealDamageToPlayer();
             monsterDidDamageRecently = true;
