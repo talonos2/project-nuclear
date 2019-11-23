@@ -1,0 +1,52 @@
+#start
+
+;$@scene= bar
+
+@fwspawnvfx x:0 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:0 y:0 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:n
+
+
+
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:2
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:2
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:2
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:2
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:2
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:2
+
+;$@setspeed mara veryhigh
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:w
+
+@fwmovepawn n:PawnMara d:s
+@fwturnpawn n:PawnPaul d:e
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:e
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:s
+@fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:s
+
+
+
+@exit
