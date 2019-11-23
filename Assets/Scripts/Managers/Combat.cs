@@ -60,16 +60,20 @@ public class Combat : MonoBehaviour
         pRenderer = playerSprite.AddComponent<SpriteRenderer>();
         pRenderer.flipX = true;
         pRenderer.sprite = Resources.LoadAll<Sprite>("DELETE LATER")[1];
-        pRenderer.sortingOrder = 3;
+        pRenderer.sortingOrder = 10;
 
         eRenderer = monsterSprite.AddComponent<SpriteRenderer>();
         eRenderer.flipX = true;
         eRenderer.sprite = monsterStats.combatSprites[0];
-        eRenderer.sortingOrder = 2;
+        eRenderer.sortingOrder = 9;
 
         combatFolder = Camera.main.transform.Find("UI").Find("Combat").gameObject;
         combatDarkening = Camera.main.transform.Find("UI").Find("DarkeningPlane").gameObject.GetComponent<Renderer>();
         combatDarkening.sortingOrder = 1;
+
+        blade = Camera.main.transform.Find("UI").Find("Switchblade").Find("blade").gameObject.GetComponent<UISwitchbladeScript>();
+        blade.StartOpen();
+        blade.GetComponent<Renderer>().sortingOrder = 5;
 
         playerSprite.transform.SetParent(combatFolder.transform);
         playerSprite.transform.localPosition = playerStats.startPositionOnScreen;
@@ -87,7 +91,7 @@ public class Combat : MonoBehaviour
         Vector3 pScale = (Vector3)(playerStats.scale * monsterStats.forceOpponentAdditionalScale) + new Vector3(0, 0, 1);
         playerSprite.transform.localScale = pScale*1/6;
 
-        Vector3 mScale = (Vector3)(playerStats.scale * monsterStats.forceOpponentAdditionalScale) + new Vector3(0, 0, 1);
+        Vector3 mScale = (Vector3)(monsterStats.scale * playerStats.forceOpponentAdditionalScale) + new Vector3(0, 0, 1);
         monsterSprite.transform.localScale = pScale * 1 / 6;
     }
 
@@ -111,6 +115,8 @@ public class Combat : MonoBehaviour
             GameState.isInBattle = false;
             Destroy(monsterSprite.gameObject);
             Destroy(playerSprite.gameObject);
+            combatDarkening.material.SetFloat("_Alpha", 0);
+            blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
             Destroy(this);
         }
 
@@ -130,6 +136,8 @@ public class Combat : MonoBehaviour
 
         combatDarkening.material.SetFloat("_Alpha", (1-amountThrough) / 2.0f);
 
+        blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1-amountThrough);
+
         monsterSprite.GetComponent<SpriteRenderer>().color = new Color((1 - amountThrough), (1 - amountThrough), (1 - amountThrough), (1 - amountThrough));
 
         Vector3 targetPos = monsterStats.startPositionOnScreen;
@@ -144,11 +152,14 @@ public class Combat : MonoBehaviour
     bool monsterDidDamageRecently;
     float previousTimeSinceLastMonsterAttack = -1000;
     float previousTimeSinceLastPlayerAttack = -1000;
+    private UISwitchbladeScript blade;
+    float buttonPressedTime = 1000;
+    bool goodBlock = false;
+    bool goodHit = false;
+    float SWAY_TOLERANCE = .1f;
 
     private void HandleCombatLoop()
     {
-        combatTimer += Time.deltaTime;
-
         if (Application.isEditor)
         {
             SetMonsterAndPlayerScale();
@@ -160,9 +171,25 @@ public class Combat : MonoBehaviour
         float enemyAttackTime = AttackAnimation.HOP.GetAnimationLength();
         float totalTime = playerAttackTime + enemyAttackTime;
 
-        float totalAnimationTime = AttackAnimation.HOP.GetAnimationLength() + AttackAnimation.HOP.GetAnimationLength();
-        float timeSinceLastPlayerAttack = combatTimer % totalAnimationTime;
-        float timeSinceLastMonsterAttack = (combatTimer > enemyAttackTime ? (combatTimer - enemyAttackTime) % totalAnimationTime : 0);
+        float timeSinceLastPlayerAttack = combatTimer % totalTime;
+        float timeSinceLastMonsterAttack = (combatTimer > enemyAttackTime ? (combatTimer - enemyAttackTime) % totalTime : 0);
+
+        float playerDamagePoint = AttackAnimation.HOP.GetDamagePoint();
+        float enemyDamagePoint = playerAttackTime + AttackAnimation.HOP.GetDamagePoint();
+        float rightSideTime = enemyDamagePoint - playerDamagePoint;
+        float leftSideTime = totalTime - rightSideTime;
+
+        float amountThrough = combatTimer % totalTime;
+        bool swayIsRightSide = (amountThrough > playerDamagePoint && amountThrough < enemyDamagePoint);
+
+        if (swayIsRightSide)
+        {
+            blade.HandleRightSideSway((amountThrough - playerDamagePoint) / rightSideTime);
+        }
+        else
+        {
+            blade.HandleLeftSideSway(((totalTime+  amountThrough - enemyDamagePoint)%totalTime) / leftSideTime);
+        }
 
         //Debug.Log("Player:" + playerStats.homePositionOnScreen);
 
@@ -170,6 +197,31 @@ public class Combat : MonoBehaviour
         int enemyFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
         playerSprite.GetComponent<SpriteRenderer>().sprite = playerStats.combatSprites[playerFrame];
         monsterSprite.GetComponent<SpriteRenderer>().sprite = monsterStats.combatSprites[enemyFrame];
+
+        if (Input.GetButtonDown("Attack/Defend") && buttonPressedTime > .5f)
+        {
+            Debug.Log("E-A: " + (enemyDamagePoint - amountThrough) + ", P-A: " + (playerDamagePoint - amountThrough));
+            buttonPressedTime = 0;
+            if (playerDamagePoint - amountThrough < SWAY_TOLERANCE && playerDamagePoint - amountThrough > 0)
+            {
+                goodHit = true;
+                blade.SpawnGoodParticles();
+            }
+            else if (enemyDamagePoint - amountThrough < SWAY_TOLERANCE && enemyDamagePoint - amountThrough > 0)
+            {
+                goodBlock = true;
+                blade.SpawnGoodParticles();
+            }
+            else
+            {
+                blade.SpawnErrorParticles();
+            }
+        }
+        else
+        {
+            buttonPressedTime += Time.deltaTime;
+        }
+        combatTimer += Time.deltaTime;
 
         //Handle damage:
         if (timeSinceLastPlayerAttack < previousTimeSinceLastPlayerAttack)
@@ -200,17 +252,20 @@ public class Combat : MonoBehaviour
         if (gameData.minutes==10)
         {
             combatEnded = true;
+            blade.StartClose();
             GameState.endRunFlag = true;
             GameState.isInBattle = false;
         }
         if (playerStats.HP <= 0)
         {
             combatEnded = true;
+            blade.StartClose();
             GameState.endRunFlag = true;
             GameState.isInBattle = false;
         }
         if (monsterStats.HP <= 0)
         {
+            blade.StartClose();
             combatEnded = true;
         }
     }
@@ -312,8 +367,11 @@ public class Combat : MonoBehaviour
     {
         float amountThrough = enterTimer / ENTER_TIME;
 
+        blade.HandleLeftSideSway(.5f);
+
         combatDarkening.material.SetFloat("_Alpha", amountThrough / 2.0f);
-        
+        blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, amountThrough);
+
         Vector3 startPos = monsterStats.startPositionOnScreen;
         Vector3 targetPos = monsterStats.homePositionOnScreen;
         Vector3 lerpedPos = Vector3.Lerp(startPos, targetPos, amountThrough);

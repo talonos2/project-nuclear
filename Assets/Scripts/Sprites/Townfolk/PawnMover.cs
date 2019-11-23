@@ -46,6 +46,15 @@ public class PawnMover : SpriteMovement
                     case Task.TURN:
                         TurnKeyReceived(move.d);
                         break;
+                    case Task.WAIT:
+                        waitTimer += .1f;
+                        currentlyMoving = true;
+                        while (movementQueue.Peek().t == Task.WAIT)
+                        {
+                            movementQueue.Dequeue();
+                            waitTimer += .1f;
+                        }
+                        break;
                 }
             }
             else
@@ -118,9 +127,21 @@ public class PawnMover : SpriteMovement
 
     public void EnqueueMovement(String direction)
     {
-        DirectionMoved d = GetDirectionFromString(direction);
-        direction = direction.ToLower();
-        movementQueue.Enqueue(new MovementWrapper(d, Task.MOVE));
+        float time;
+        if (float.TryParse(direction, out time))
+        {
+            while (time > .1f)
+            {
+                movementQueue.Enqueue(new MovementWrapper(DirectionMoved.NONE, Task.WAIT));
+                time -= .1f;
+            }
+        }
+        else
+        {
+            DirectionMoved d = GetDirectionFromString(direction);
+            direction = direction.ToLower();
+            movementQueue.Enqueue(new MovementWrapper(d, Task.MOVE));
+        }
     }
 
     private DirectionMoved GetDirectionFromString(string direction)
@@ -178,5 +199,5 @@ public class PawnMover : SpriteMovement
         }
     }
 
-    internal enum Task {MOVE,TURN};
+    internal enum Task {MOVE,TURN, WAIT };
 }
