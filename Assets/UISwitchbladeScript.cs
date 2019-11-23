@@ -6,6 +6,7 @@ using UnityEngine;
 public class UISwitchbladeScript : MonoBehaviour
 {
     public Sprite[] switchbladeSprites;
+    public Sprite[] goodSwitchbladeSprites;
     private bool open = false;
     private int spriteNum = 0;
     private bool close = false;
@@ -13,6 +14,9 @@ public class UISwitchbladeScript : MonoBehaviour
     public Transform swayBall;
     public GameObject errorParticlePrefab;
     public GameObject goodParticlePrefab;
+    private int goodFramesLeft = 0;
+
+    private int DEBUG_Script = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +27,16 @@ public class UISwitchbladeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (open)
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            this.GetComponent<SpriteRenderer>().sprite = switchbladeSprites[DEBUG_Script++];
+        }
+        if (goodFramesLeft > 0)
+        {
+            goodFramesLeft--;
+            this.GetComponent<SpriteRenderer>().sprite = goodSwitchbladeSprites[goodFramesLeft/3];
+        }
+        else if (open)
         {
             spriteNum++;
             this.GetComponent<SpriteRenderer>().sprite = switchbladeSprites[spriteNum];
@@ -32,7 +45,7 @@ public class UISwitchbladeScript : MonoBehaviour
                 open = false;
             }
         }
-        if (close)
+        else if (close)
         {
             spriteNum--;
             this.GetComponent<SpriteRenderer>().sprite = switchbladeSprites[spriteNum];
@@ -78,6 +91,6 @@ public class UISwitchbladeScript : MonoBehaviour
 
     internal void SpawnGoodParticles()
     {
-        GameObject particles = GameObject.Instantiate(goodParticlePrefab, new Vector3(transform.position.x, transform.position.y+4.8f, transform.position.z), Quaternion.Euler(0, 0, 0));
+        goodFramesLeft = 18;
     }
 }
