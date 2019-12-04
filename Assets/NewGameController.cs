@@ -10,6 +10,8 @@ public class NewGameController : MonoBehaviour
 
     public GameObject RunNumberTextField;
     public Vector2Int Map1EntrancePoint;
+    public Vector2Int TownSpawnPosition;
+    public SpriteMovement.DirectionMoved TownSpwanFacing;
     public SpriteMovement.DirectionMoved Map1Facing;
     // Start is called before the first frame update
     void Start()
@@ -29,10 +31,13 @@ public class NewGameController : MonoBehaviour
         if (runVariable.text == "")
         {
             GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
+            GameData.Instance.FloorNumber = 1;
             SceneManager.LoadScene("Map1-1");
         }
         else {
+            GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
             GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
+            GameData.Instance.FloorNumber = 0;
             SceneManager.LoadScene("TownMap_1");
         }
             
