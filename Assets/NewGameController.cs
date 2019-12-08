@@ -14,16 +14,7 @@ public class NewGameController : MonoBehaviour
     public SpriteMovement.DirectionMoved TownSpwanFacing;
     public SpriteMovement.DirectionMoved Map1Facing;
     // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void StartNewGame (){
         Text runVariable=RunNumberTextField.GetComponent <Text> ();
