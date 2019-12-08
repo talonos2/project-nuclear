@@ -19,7 +19,7 @@ public class NewGameController : MonoBehaviour
     public void StartNewGame (){
         Text runVariable=RunNumberTextField.GetComponent <Text> ();
         Debug.Log("hmm " + runVariable.text);
-        if (runVariable.text == "")
+        if (runVariable.text == "" || Convert.ToInt32(runVariable.text)==1)
         {
             GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
             GameData.Instance.FloorNumber = 1;
