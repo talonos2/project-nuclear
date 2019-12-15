@@ -5,45 +5,83 @@
 ;$@place Svenra
 ;$@place Tristana
 
+@fwspawnvfx x:6 y:22 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnTristana d:n
+@fwspawnvfx x:1 y:24 z:0 Vfx:PawnSvenra
+@fwturnpawn n:PawnSvenra d:w
+
+@fwmovepawn n:PawnTristana d:n
+@fwmovepawn n:PawnTristana d:n
+@fwmovepawn n:PawnTristana d:w
+@fwmovepawn n:PawnTristana d:w
+@fwmovepawn n:PawnTristana d:w
+
+@fwturnpawn n:PawnSvenra d:e
+
 
 @char Svenra
 I told you to stay away.  Isn’t there someone else you can bother?
+@hidechars time:0
 
 @char Tristana
 Not really...
+@hidechars time:0
 
 @char Svenra
 They’re gone?  All of them?
+@hidechars time:0
 
 @char Tristana
 Does it make you as happy as you thought it would?
+@hidechars time:0
 
 @char Svenra
 What?
+@hidechars time:0
 
 @char Tristana
 You’re always telling people to leave, and now they have.
+@hidechars time:0
 
 ;@fwmovepawn Svenra (moves away a bit)
 
 @char Svenra
 Well, it isn't terrible.  I do want to be left alone.
 It's not like I wanted everyone to die for it.
+@hidechars time:0
 
 @char Tristana
 So you tricked everyone into thinking you had evil magical powers just to get privacy?
+@hidechars time:0
 
 @char Svenra
 Tricked?
+@hidechars time:0
 
 ;$@animate curse Svenra
 
 @char svenra
 Well, gotta go.
+@hidechars time:0
 
-@fwdeletego n:PawnSvenra
+;@fwdeletego n:PawnSvenra
+
+
+@fwmovepawn n:PawnSvenra d:s
+@fwmovepawn n:PawnSvenra d:e
+@fwmovepawn n:PawnSvenra d:e
+@fwmovepawn n:PawnSvenra d:e
+@fwmovepawn n:PawnSvenra d:e
+@fwmovepawn n:PawnSvenra d:s
+@fwmovepawn n:PawnSvenra d:s
+@fwmovepawn n:PawnSvenra d:e
+@fwmovepawn n:PawnSvenra d:e
+@fwmovepawn n:PawnSvenra d:e
+@fwmovepawn n:PawnSvenra d:e
+@fwmovepawn n:PawnSvenra d:e
+@fwmovepawn n:PawnSvenra d:e
 
 ;@fwmovepawn Svenra (toward cave)
 ;$@startRun
 
-@stop
+@exit

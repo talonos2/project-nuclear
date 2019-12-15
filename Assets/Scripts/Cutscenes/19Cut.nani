@@ -4,10 +4,77 @@ $@scene= town
 
 $@place Meyster
 
+@fwspawnvfx x:-15 y:-12 z:0 Vfx:PawnMeyster
+@fwturnpawn n:PawnMeyster d:w
+@fwspawnvfx x:-9 y:-13 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:w
+
+@fwmovepawn n:PawnNelson d:w
+@fwmovepawn n:PawnNelson d:w
+@fwmovepawn n:PawnNelson d:w
+@fwmovepawn n:PawnNelson d:w
+@fwmovepawn n:PawnNelson d:w
+@fwmovepawn n:PawnNelson d:w
+
+@char Meyster
+Has anyone seen my sword?
+@hidechars time:0
+
+@char Nelson
+Can't say that I have.
+@hidechars time:0
+
+@char Meyster
+Oh, no trouble, I'm sure it'll turn up.
+;add a wait?
+I miss Pendleton.
+I even miss how he would constantly bother me with mundane things.
+@hidechars time:0
+
+
+
+@char Nelson
+Such as, always telling you where you sword was?
+@hidechars time:0
+
+@char Meyster
+Yeah, he'd always badger me about that.
+@hidechars time:0
+
+@char Nelson
+Well, how kind of you to put up with him.
+@hidechars time:0
+
+;animate curse paladin
+
+@char Meyster
+But... my sword!
+@hidechars time:0
+
+@char Nelson
+I'm sure they've found something else you can use.
+@hidechars time:0
+
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
+@fwmovepawn n:PawnNelson d:e
 
 
 ;@fwmovepawn Meyster (toward cave)
 
-$@startRun
+;@startRun
 
-@stop
+@exit
+
+
+
+
