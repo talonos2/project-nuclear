@@ -1,12 +1,86 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Jezerine
+@fwspawnvfx x:4 y:7 z:0 Vfx:PawnSvenra
+@fwturnpawn n:PawnSvenra d:e
+@fwspawnvfx x:5 y:7 z:0 Vfx:PawnPatrick
+@fwturnpawn n:PawnPatrick d:w
+@fwspawnvfx x:8 y:-11 z:0 Vfx:PawnJohnDoe
+@fwturnpawn n:PawnJohnDoe d:n
 
 
-;@fwmovepawn Jezerine (toward cave)
+@char Svenra
+That's what I said! I'm tired of your moping.
+@hidechars time:0
 
-$@startRun
+@char Patrick
+How can that be bothering you?
+At least I'm quiet about it.
+@hidechars time:0
+
+@char Svenra
+Oh sure, not bothinga anyone.
+Just sprinkling a little more doom and gloom around.
+Not bothering anyone at all.
+@hidechars time:0
+
+
+
+@fwspawnvfx x:8 y:-11 z:0 Vfx:Firework
+
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+
+@char JohnDoe
+I better get parole for this!
+@hidechars time:0
+
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+@fwmovepawn n:PawnJohnDoe d:n
+
+
+@fwturnpawn n:PawnSvenra d:n
+@fwturnpawn n:PawnPatrick d:n
+
+@wait 1
+
+@fwturnpawn n:PawnSvenra d:e
+@fwturnpawn n:PawnPatrick d:w
+
+@wait 1
+
+@char Svenra
+As I was saying...
+@hidechars time:0
+
+
+;$@startRun
 
 @exit
