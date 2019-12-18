@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,10 @@ public class SpawnPlayer : MonoBehaviour
     {
 
         gameData = GameData.Instance;
-
+        if (gameData.isCutscene) {
+            runCutscene();
+            return;
+        }
         if (gameData.nextLocationSet)
         {
             if (GameData.Instance.FloorNumber == 0) {
@@ -43,4 +47,8 @@ public class SpawnPlayer : MonoBehaviour
         characterMovement.SetLookDirection();
     }
 
+    private void runCutscene()
+    {
+        this.GetComponentInParent<CutsceneLoader>().RunCutscene();
+    }
 }

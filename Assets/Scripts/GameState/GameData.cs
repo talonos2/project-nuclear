@@ -21,6 +21,7 @@ public class GameData : Singleton<GameData>
     public bool hasted;
     public bool stealthed;
     public bool dashing;
+    public bool isCutscene;
     
 
 
