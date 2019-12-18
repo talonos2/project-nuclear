@@ -9,6 +9,10 @@ public class NPCDialogeController : MonoBehaviour
     public string DailyDialogue;
     void Start()
     {
+        if (GameData.Instance.isCutscene) {
+            return;
+        }
+
         RuntimeInitializer.InitializeAsync();
         Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(DailyDialogue);
     }
