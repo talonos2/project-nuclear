@@ -14,8 +14,8 @@ public class CutsceneLoader : MonoBehaviour
         switch (GameData.Instance.RunNumber)
         {
             case 1:
-                Instantiate(cutScenePlayer, new Vector3(cameraLocation[gameData.RunNumber - 1].x, cameraLocation[gameData.RunNumber - 1].y, 0), Quaternion.identity);
-                Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[gameData.RunNumber - 1]);
+                Instantiate(cutScenePlayer, new Vector3(cameraLocation[GameData.Instance.RunNumber - 1].x, cameraLocation[GameData.Instance.RunNumber - 1].y, 0), Quaternion.identity);
+                Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[GameData.Instance.RunNumber - 1]);
                 break;
             case 2:
 
