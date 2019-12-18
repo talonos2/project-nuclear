@@ -42,13 +42,12 @@ public class NewGameController : MonoBehaviour
             if (runVariable.text == "" || Convert.ToInt32(runVariable.text)==0 )
             {
                 GameData.Instance.RunNumber = 1;
-                SceneManager.LoadScene("TownMap_1");
             }
             else {
                 //load cutscene runvar-1
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
-                SceneManager.LoadScene("TownMap_1"); //I need to know which map each are in
             }
+            CutsceneLoader.LoadCutscene();
             
         }
         if (runType.value == 2) {
