@@ -6,14 +6,8 @@ public class GroundShadow : MonoBehaviour
 {
     // Start is called before the first frame update
     public Texture shadowTexture;
-    void Start()
-    {
-        
-    }
+    public Texture glowTexture;
+    public Vector2 mapOffset;
+     
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
