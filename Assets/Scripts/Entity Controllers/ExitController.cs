@@ -11,6 +11,7 @@ public class ExitController : DoodadData
 
     public String mapToLoad;
     public Vector2Int exitPosition;
+    public bool townMap;
     public SpriteMovement.DirectionMoved exitFacing;
 
 
@@ -18,6 +19,9 @@ public class ExitController : DoodadData
     {
         GameData gameData= GameData.Instance;
         gameData.FloorNumber +=1;
+        if (townMap) {
+            gameData.FloorNumber = 0;
+        }
 
         gameData.SetNextLocation(exitPosition, exitFacing);
         
