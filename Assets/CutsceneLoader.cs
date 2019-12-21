@@ -99,7 +99,7 @@ public class CutsceneLoader : MonoBehaviour
                 SceneManager.LoadScene("TownMap_1");
                 break;
             case 28:
-                SceneManager.LoadScene("TownMap_1");
+                SceneManager.LoadScene("TownInterior_SeersCottege_1");
                 break;
             case 29:
                 SceneManager.LoadScene("TownMap_1");
