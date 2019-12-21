@@ -1,24 +1,24 @@
-;@goto .day2 if:GetDay()=2
-;@goto .day3 if:GetDay()=3
-;@goto .day4 if:GetDay()=4
+@goto .day2 if:GetDay()=2
+@goto .day3 if:GetDay()=3
+@goto .day4 if:GetDay()=4
 
 
 
 		#day2
 		@char Todd
-		Don't worry.  I'm sure you'll serve in the new world as well.
+		Todd: Don't worry.  I'm sure you'll serve in the new world as well.
 		@exit
 
 
 		#day3
 		@char Todd
-		You're watching the animals right?  Could I borrow a goat?
+		Todd: You're watching the animals right?  Could I borrow a goat?
 		@exit
 		
 
 		#day4
 		@char Todd
-		What does she know...
+		Todd: What does she know...
 		@exit
 		
 
