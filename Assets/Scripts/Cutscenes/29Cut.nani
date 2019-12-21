@@ -2,10 +2,82 @@
 
 $@scene= town
 
-$@place Jezerine
+@fwspawnvfx x:10 y:21 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnTristana d:e
+@fwspawnvfx x:8 y:12 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:n
 
 
-;@fwmovepawn Jezerine (toward cave)
+
+@fwmovepawn n:PawnElder d:n
+@fwmovepawn n:PawnElder d:n
+@fwmovepawn n:PawnElder d:n
+@fwmovepawn n:PawnElder d:n
+@fwmovepawn n:PawnElder d:n
+@fwmovepawn n:PawnElder d:n
+@fwmovepawn n:PawnElder d:n
+@fwmovepawn n:PawnElder d:e
+@fwmovepawn n:PawnElder d:e
+
+@fwturnpawn n:PawnElder d:n
+
+@char Elder
+Waiting?
+@hidechars time:0
+
+@char Tristana
+Yeah.
+@hidechars time:0
+
+@fwturnpawn n:PawnElder d:e
+
+@wait 2
+
+@char Elder
+You know.  You've done a lot of your interviews, but I'm not sure we got to know too much about you.
+@hidechars time:0
+
+@char Tristana
+You're not supposed to.
+@hidechars time:0
+
+@fwmovepawn n:PawnTristana d:n
+
+@char Tristana
+I'm supposed to be the objective observer.
+Stay in the backgrouund.[br]Keep my feelings out of it.
+Don't get involved.
+@hidechars time:0
+
+@fwturnpawn n:PawnTristana d:s
+
+@char Tristana
+I don't think I did any of it right.
+@hidechars time:0
+
+@char Elder
+Yes, it was very unprofessional.
+@hidechars time:0
+
+@char Tristana
+...
+@hidechars time:0
+
+@fwspawnvfx x:10 y:22 z:0 Vfx:Firework
+
+@char Tristana
+Well, time to get involved.
+@hidechars time:0
+
+@char Elder
+Make sure to be unprofessional.
+@hidechars time:0
+
+@fwmovepawn n:PawnTristana d:s
+@fwmovepawn n:PawnTristana d:e
+@fwmovepawn n:PawnTristana d:e
+@fwmovepawn n:PawnTristana d:e
+
 
 $@startRun
 
