@@ -19,7 +19,7 @@ public class CutsceneLoader : MonoBehaviour
                 SceneManager.LoadScene("TownMap_1");
                 break;
             case 2:
-                SceneManager.LoadScene("TownMap_1");
+                SceneManager.LoadScene("TownInterior_Pub_1");
                 break;
             case 3:
                 SceneManager.LoadScene("TownMap_1");
@@ -32,12 +32,13 @@ public class CutsceneLoader : MonoBehaviour
                 break;
             case 6:
                 SceneManager.LoadScene("TownMap_1");
+                //blacksmith
                 break;
             case 7:
-                SceneManager.LoadScene("TownMap_1");
+                SceneManager.LoadScene("TownInterior_Church_1");
                 break;
             case 8:
-                SceneManager.LoadScene("TownMap_1");
+                SceneManager.LoadScene("TownInterior_Pub_1");
                 break;
             case 9:
                 SceneManager.LoadScene("TownMap_1");
@@ -52,16 +53,17 @@ public class CutsceneLoader : MonoBehaviour
                 SceneManager.LoadScene("TownMap_1");
                 break;
             case 13:
-                SceneManager.LoadScene("TownMap_1");
+                SceneManager.LoadScene("TownInterior_Manor_1");
                 break;
             case 14:
-                SceneManager.LoadScene("TownMap_1");
+                SceneManager.LoadScene("TownInterior_Manor_1");
                 break;
             case 15:
                 SceneManager.LoadScene("TownMap_1");
                 break;
             case 16:
-                SceneManager.LoadScene("TownMap_1");
+                SceneManager.LoadScene("TownInterior_SeersCottege_1");
+                //sagehut
                 break;
             case 17:
                 SceneManager.LoadScene("TownMap_1");
@@ -88,7 +90,7 @@ public class CutsceneLoader : MonoBehaviour
                 SceneManager.LoadScene("TownMap_1");
                 break;
             case 25:
-                SceneManager.LoadScene("TownMap_1");
+                SceneManager.LoadScene("TownInterior_Manor_1");
                 break;
             case 26:
                 SceneManager.LoadScene("TownMap_1");
@@ -111,8 +113,8 @@ public class CutsceneLoader : MonoBehaviour
         RuntimeInitializer.InitializeAsync();
         GameData gameData = GameData.Instance;
 
-        Instantiate(cutScenePlayer, new Vector3(cameraLocation[gameData.RunNumber-1].x, cameraLocation[gameData.RunNumber - 1].y, 0), Quaternion.identity);
-        Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[gameData.RunNumber-1]);
+        Instantiate(cutScenePlayer, new Vector3(cameraLocation[gameData.RunNumber].x, cameraLocation[gameData.RunNumber].y, 0), Quaternion.identity);
+        Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[gameData.RunNumber]);
      
     }
 }
