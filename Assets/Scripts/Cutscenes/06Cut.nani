@@ -11,22 +11,24 @@ Is it nearly done?
 
 
 @char Derringer
-I'm afraid these things take time.[br]I can't risk cracking the blade.
+Derringer: I'm afraid these things take time.[br]I can't risk cracking the blade.
 @hidechars time:0
 
 @char Jezerine
-How much longer will it take?
+Jezerine: How much longer will it take?
 @hidechars time:0
 
-$@animate curse Derringer
+;@fwspawnvfx x:-1 y:-17 z:0 Vfx:Firework
+
+;$@animate curse Derringer
 
 @char Derringer
-I'm afraid it's longer than ten minutes.
+Derringer: I'm afraid it's longer than ten minutes.
 
 (walk around table)
 
 @char Derringer
-I'm afraid I must be going.
+Derringer: I'm afraid I must be going.
 @hidechars time:0
 
 (leave)
