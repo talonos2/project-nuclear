@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,12 @@ public class GameData : Singleton<GameData>
     public int AttackCrystalBonus;
     public int DefenseCrystalBonus;
     public int FloorNumber = 0;
+
+    internal bool IsInTown()
+    {
+        return FloorNumber == 0;
+    }
+
     public int RunNumber = 1;
     public int PowersGained = 0;
     public bool timerTrigger;
