@@ -3,7 +3,7 @@
 ;$@scene= town
 
 ;@fwspawnvfx x:4 y:25 z:0 Vfx:wooden
-
+@fwspawnvfx x:4 y:25 z:0 Vfx:PawnDouglass
 
 @fwspawnvfx x:2 y:24 z:0 Vfx:PawnFluer
 @fwturnpawn n:PawnFluer d:e
@@ -13,32 +13,38 @@
 
 
 @char Fluer
-You know, I really have to admire your handiwork on this.  It's so richly detailed.
+Fluer: You know, I really have to admire your handiwork on this.  It's so richly detailed.
 @hidechars time:0
 
 ;$@animate carvesound dummy
+@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 ;$@wait
 
 @char Fluer
-You must have spent hours studying how those beasties look.
+Fluer: You must have spent hours studying how those beasties look.
 @hidechars time:0
 
 ;$@animate carvesound dummy
+@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 ;$@wait
 
 @char Fluer
-Well... it um, looks like you're just about done.
+Fluer: Well... it um, looks like you're just about done.
 @hidechars time:0
 
 @char Paul
-Yep, just need to make one last cut.
+Paul: Yep, just need to make one last cut.
 @hidechars time:0
 
 ;$@animate break dummy
-
+@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 ;$@wait
 
 ;$@animate curse Paul
+
+@fwspawnvfx x:4 y:24 z:0 Vfx:Firework
 
 ;@fwmovepawn Paul (toward cave, slower than most)
 @fwmovepawn n:PawnPaul d:e
