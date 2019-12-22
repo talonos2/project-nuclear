@@ -38,6 +38,7 @@ public class SpriteMovement : MonoBehaviour
     protected bool jumping;
     //protected bool dashing;
     protected GameData gameData;
+    protected float offsetFix = .00001f;
 
     protected Vector2Int characterLocation;
     protected Vector2Int characterNextLocation;
@@ -400,7 +401,7 @@ public class SpriteMovement : MonoBehaviour
 
     public void FaceDown()
     {
-        sRender.material.SetInt("_Frame", 0);
+        sRender.material.SetFloat("_Frame", 0+ offsetFix);
         animationStep = 0;
     }
 
@@ -410,7 +411,7 @@ public class SpriteMovement : MonoBehaviour
         if (timeSinceLastAnimation >= 1 / tempFramesPerSecond) { timeSinceLastAnimation = 0;
             animationStep += 1;
             if (animationStep > 6) { animationStep = 1;  }
-            sRender.material.SetInt("_Frame", animationStep);
+            sRender.material.SetFloat("_Frame", animationStep+offsetFix);
         }
 
     }
@@ -437,7 +438,7 @@ public class SpriteMovement : MonoBehaviour
 
     public void FaceUp()
     {
-        sRender.material.SetInt("_Frame", 21);
+        sRender.material.SetFloat("_Frame", 21+offsetFix);
         animationStep = 0;
     }
 
@@ -451,7 +452,7 @@ public class SpriteMovement : MonoBehaviour
             timeSinceLastAnimation = 0;
             animationStep += 1;
             if (animationStep > 6) { animationStep = 1; }
-            sRender.material.SetInt("_Frame", animationStep+21);
+            sRender.material.SetFloat("_Frame", animationStep+21+ offsetFix);
         }
       
     }
@@ -597,7 +598,7 @@ public class SpriteMovement : MonoBehaviour
 
     public void FaceLeft()
     {
-        sRender.material.SetInt("_Frame", 7);
+        sRender.material.SetFloat("_Frame", 7+ offsetFix);
         animationStep = 0;
     }
 
@@ -609,7 +610,7 @@ public class SpriteMovement : MonoBehaviour
             timeSinceLastAnimation = 0;
             animationStep += 1;
             if (animationStep > 6) { animationStep = 1; }
-            sRender.material.SetInt("_Frame", animationStep+7);
+            sRender.material.SetFloat("_Frame", animationStep+7+offsetFix);
         }
 
     }
@@ -632,7 +633,7 @@ public class SpriteMovement : MonoBehaviour
 
     public void FaceRight()
     {
-        sRender.material.SetInt("_Frame", 14);
+        sRender.material.SetFloat("_Frame", 14+ offsetFix);
         animationStep = 0;
     }
 
@@ -644,7 +645,7 @@ public class SpriteMovement : MonoBehaviour
             timeSinceLastAnimation = 0;
             animationStep += 1;
             if (animationStep > 6) { animationStep = 1; }
-            sRender.material.SetInt("_Frame", animationStep+14);
+            sRender.material.SetFloat("_Frame", animationStep+14+offsetFix);
         }
        
     }
