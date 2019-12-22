@@ -16,55 +16,55 @@
 
 
 @char Jerene
-Your form needs work.  You stumble on the follow-through.
+Jerene: Your form needs work.  You stumble on the follow-through.
 @hidechars time:0
 
 @char Elder
-I'm not the spry young man I once was.
+Elder: I'm not the spry young man I once was.
 @hidechars time:0
 
 @char Jerene
-Oh, okay then.
+Jerene: Oh, okay then.
 @hidechars time:0
 
 ;$@wait
 @fwturnpawn n:PawnJerene d:w
 
 @char Jerene
-When you see the flying machine made of knives make sure to let it know that your reflexes aren't what they used to be.
-I'm sure it'll slow down.
+Jerene: When you see the flying machine made of knives make sure to let it know that your reflexes aren't what they used to be.
+Jerene: I'm sure it'll slow down.
 @hidechars time:0
 
 @fwturnpawn n:PawnElder d:w
 
 @char Elder
-Yes, I understa—
+Elder: Yes, I understa—
 @hidechars time:0
 
 @fwmovepawn n:PawnJerene d:w
 
 @char Jerene
-And when the monster tries to scald you with boiling lava, let it know that smoke is bad for your lungs.
-I'm sure it will tone that down for you.
+Jerene: And when the monster tries to scald you with boiling lava, let it know that smoke is bad for your lungs.
+Jerene: I'm sure it will tone that down for you.
 @hidechars time:0
 
 @char Elder
-Yes, I get—
+Elder: Yes, I get—
 @hidechars time:0
 
 @char Jerene
-Oh, when the monster made of stone comes at you, make sure to let it know that your joints ache.
-I'm sure it'll take that into account and make sure to crack easier for you.
+Jerene: Oh, when the monster made of stone comes at you, make sure to let it know that your joints ache.
+Jerene: I'm sure it'll take that into account and make sure to crack easier for you.
 @hidechars time:0
 
 @char Elder
-I GET IT!
+Elder: I GET IT!
 @hidechars time:0
 
 @fwturnpawn n:PawnJerene d:e
 
 @char Jerene
-DO YOU?!
+Jerene: DO YOU?!
 @hidechars time:0
 
 @fwmovepawn n:PawnJerene d:e
@@ -73,19 +73,20 @@ DO YOU?!
 @fwturnpawn n:PawnElder d:s
 
 @char Jerene
-How many people have gone in there?!  How many have YOU seen come out?!
-I taught them everything I know!   Everything!  What was the point of any of it?!
-Of anything I ever did?...
+Jerene: How many people have gone in there?!  How many have YOU seen come out?!
+Jerene: I taught them everything I know!   Everything!  What was the point of any of it?!
+Jerene: Of anything I ever did?...
 @hidechars time:0
 
 @char Elder
-You tried... it's all any of us can do.
+Elder: You tried... it's all any of us can do.
 @hidechars time:0
 
-$@animate curse Jerene
+;$@animate curse Jerene
+@fwspawnvfx x:-3 y:-16 z:0 Vfx:PawnJerene
 
 @char Jerene
-I'll do more than try.
+Jerene: I'll do more than try.
 @hidechars time:0
 
 @fwturnpawn n:PawnJerene d:e

@@ -13,44 +13,47 @@
 
 
 @char Dorara
-I said, give me that blade.
+Dorara: I said, give me that blade.
 @hidechars time:0
 
 @char Jerene
-No.
+Jerene: No.
 @hidechars time:0
 
 @char Dorara
-I've seen ya'll take some real shiny loot out of that cave, and I want it.
+Dorara: I've seen ya'll take some real shiny loot out of that cave, and I want it.
 @hidechars time:0
 
 @char Jerene
-You'll have to go through me.
+Jerene: You'll have to go through me.
 @hidechars time:0
 
 @char Dorara
-Fine, I was getting tired of idle threats.
+Dorara: Fine, I was getting tired of idle threats.
 @hidechars time:0
 
 @fwmovepawn n:PawnDorara d:e
 
+@fwspawnvfx x:-1 y:0 z:0 Vfx:firework
+
 ;$@animate curse Dorara
 
-;@wait
+@wait 1
 
 @char Jerene
-Take the blade.
+Jerene: Take the blade.
 @hidechars time:0
 
 @char Dorara
-I, uh.
+Dorara: I, uh.
 @hidechars time:0
 
+@fwmovepawn n:PawnJerene d:s
 @fwturnpawn n:PawnJerene d:n
 ;@Jerene step backwards
 
 @char Jerene
-You take it, or you'll have to go through me.
+Jerene: You take it, or you'll have to go through me.
 @hidechars time:0
 
 ;@fwmovepawn Dorara (to chest and then cave)
