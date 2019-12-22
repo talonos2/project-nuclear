@@ -9,12 +9,13 @@ public class AnimateBreaking : MonoBehaviour
     public int maxFrames;
     public int framesPerSecond = 6;
     private float timeSinceLastFrame = 0;
+    private float offsetFix = .00001f;
     public int currentFrame = 0;
     void Start()
     {
         this.sRender = this.GetComponentInChildren<MeshRenderer>();
         this.sRender.material = new Material(this.sRender.material);
-        sRender.material.SetInt("_Frame", currentFrame);
+        sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class AnimateBreaking : MonoBehaviour
             timeSinceLastFrame = 0;
                 currentFrame += 1;
         }
-        sRender.material.SetInt("_Frame", currentFrame);
+        sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
 
     }
 

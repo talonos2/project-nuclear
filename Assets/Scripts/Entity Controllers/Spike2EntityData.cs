@@ -7,6 +7,7 @@ public class Spike2EntityData : SpikeController
 {
 
     private int totalFrames = 7;
+    private float offsetFix = .00001f;
     void Update()
     {
 
@@ -15,8 +16,8 @@ public class Spike2EntityData : SpikeController
         if (timeSinceLastFrame >= 1 / AnimationSpeed)
         {
             frameNumber += 1;
-            if (animateRise) sRender.material.SetInt("_Frame", totalFrames - frameNumber-1) ;
-                else sRender.material.SetInt("_Frame", frameNumber);
+            if (animateRise) sRender.material.SetFloat("_Frame", totalFrames - frameNumber-1+ offsetFix) ;
+                else sRender.material.SetFloat("_Frame", frameNumber+ offsetFix);
             timeSinceLastFrame = 0;
             if (frameNumber == totalFrames - 1) { isAnimating = false;
                 frameNumber = 0;

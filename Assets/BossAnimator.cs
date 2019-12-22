@@ -11,6 +11,7 @@ public class BossAnimator : MonoBehaviour
     private float frameCounter = 0;
     private int currentFrame=0;
     protected Renderer sRender;
+    private float offsetFix = .00001f;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class BossAnimator : MonoBehaviour
             }
                 
 
-            sRender.material.SetInt("_Frame", currentFrame);
+            sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
             frameCounter = 0;
         }
     }
