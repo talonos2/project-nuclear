@@ -43,7 +43,7 @@ public class MonsterMovement : SpriteMovement
     void Update()
     {
 
-        if (GameState.isInBattle==true) {
+        if (GameState.isInBattle||GameState.fullPause) {
             return; 
         }
         if (bossMonster)

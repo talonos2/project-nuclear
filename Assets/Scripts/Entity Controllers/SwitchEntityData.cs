@@ -125,7 +125,7 @@ public class SwitchEntityData : EntityData
     void Update()
     {
 
-        if (GameState.isInBattle == true)
+        if (GameState.isInBattle || GameState.fullPause)
         {
             return;
         }

@@ -36,6 +36,7 @@ public class PawnInteraction : EntityData
 
     public override void ProcessClick(CharacterStats stats)
     {
+        if (GameState.fullPause == true) return;
         if (GameState.isInBattle == false)
         {
             GameState.isInBattle = true;

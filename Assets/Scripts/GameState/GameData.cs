@@ -15,6 +15,12 @@ public class GameData : Singleton<GameData>
     public int ManaCrystalBonus;
     public int AttackCrystalBonus;
     public int DefenseCrystalBonus;
+
+    public int HealhCrystalTotal=0;
+    public int ManaCrystalTotal=0;
+    public int AttackCrystalTotal=0;
+    public int DefenseCrystalTotal=0;
+
     public int FloorNumber = 0;
 
     internal bool IsInTown()
@@ -41,7 +47,7 @@ public class GameData : Singleton<GameData>
 
     //public bool Shortcut1 = false;
 
-    public bool RunSetupFinished = false;
+    //public bool RunSetupFinished = false;
 
 
       [HideInInspector]
@@ -60,8 +66,24 @@ public class GameData : Singleton<GameData>
         nextLocationSet = true;
     }
 
+    public void resetTimer() {
+        timer = 0;
+    }
+
+    public bool addHealToTimer() {
+        if (timer >= 570)
+            return false;
+        else {
+            timer += 30;
+            return true;
+        }
+
+    }
+
+
     void Update()
     {
+        if (GameState.fullPause || FloorNumber==0 ) { return; }
 
         int tempSeconds = (int)(timer + Time.deltaTime);
         if (tempSeconds > (int)timer)

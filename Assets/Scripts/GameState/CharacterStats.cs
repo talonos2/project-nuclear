@@ -73,15 +73,14 @@ public class CharacterStats : Stats
         gameData = gameStateData.GetComponent <GameData> ();
         itemData = equipmentData.GetComponent<EquipmentData>();
         SavedStats = gameStateData.GetComponent<CharacterStats>();
-        if (!gameData.RunSetupFinished)
-        {
+        if (gameData.FloorNumber==1)
+        {            
             SetupBaseStats();
             PushCharacterData();
-            gameData.RunSetupFinished = true;
         }
-        else { SetupBaseStats();
-            PullCharacterData(); }
-               
+        else {
+            SetupBaseStats();            
+            PullCharacterData(); }              
     }
 
     private void PullCharacterData()
@@ -142,10 +141,10 @@ public class CharacterStats : Stats
     private void SetupBaseStats()
     {
 
-        //HealthCrystalBuff = GetHealthCrystalBuff();
-        //ManaCrystalBuff= GetManaCrystalBuff()
-        //AttackCrystalBuff = GetAttackCrystalBuff()
-        //defenseCrystalBuff = GetdefenseCrystalBuff()
+        HealthCrystalBuff = GameData.Instance.HealhCrystalBonus;
+        ManaCrystalBuff = GameData.Instance.ManaCrystalBonus;
+        AttackCrystalBuff = GameData.Instance.AttackCrystalBonus;
+        defenseCrystalBuff = GameData.Instance.DefenseCrystalBonus;
         Level = 1;
         SetExpToNextLevel();
         
