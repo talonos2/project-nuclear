@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class transitionToEndRunScreen : MonoBehaviour
 {
-    public void LoadEndRunScene() {
+    public static void LoadEndRunScene() {
         SceneManager.LoadScene("EndRunScreen");
     }
 }

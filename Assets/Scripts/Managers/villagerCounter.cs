@@ -27,6 +27,10 @@ public class villagerCounter : MonoBehaviour
         delay -= Time.deltaTime;
         if (delay <= 0) {
             textField.text = ""+(30 - gameData.RunNumber);
+            textField.color = Color.red;
+        }
+        if (delay <= -8) {
+            transitionToEndRunScreen.LoadEndRunScene();
         }
     }
 }
