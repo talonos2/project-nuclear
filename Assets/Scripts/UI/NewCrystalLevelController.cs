@@ -121,6 +121,17 @@ public class NewCrystalLevelController : MonoBehaviour
 
     public static void SetCrystalBuffs()
     {
+        CharacterStats savedStats= GameObject.Find("GameStateData").GetComponent<CharacterStats>();
+        GameData gameData = GameData.Instance;
+        gameData.AttackCrystalTotal += savedStats.AttackCrystalsGained;
+        savedStats.AttackCrystalsGained = 0;
+        gameData.DefenseCrystalTotal += savedStats.defenseCrystalsGained;
+        savedStats.defenseCrystalsGained = 0;
+        gameData.HealhCrystalTotal += savedStats.HealthCrystalsGained;
+        savedStats.HealthCrystalsGained = 0;
+        gameData.ManaCrystalTotal += savedStats.ManaCrystalsGained;
+        savedStats.ManaCrystalsGained = 0;
+
         SetHealthBuff();
         SetManaBuff();
         SetAttackBuff();

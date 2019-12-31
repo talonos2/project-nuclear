@@ -154,7 +154,7 @@ public class CharacterStats : Stats
             AttackPerLevel = 2f;
             DefensePerLevel = 1;
 
-            MaxHP = 140+ HealthPerLevel*Level+ HealthCrystalBuff;
+            MaxHP = 140+ HealthPerLevel*Level;
             MaxMana=95+ ManaPerLevel*Level;
 
             attack=10+(int)AttackPerLevel*Level;

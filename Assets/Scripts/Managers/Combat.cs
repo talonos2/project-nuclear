@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Combat : MonoBehaviour
 {
@@ -253,14 +254,16 @@ public class Combat : MonoBehaviour
         {
             combatEnded = true;
             blade.StartClose();
-            GameState.endRunFlag = true;
+            //GameState.endRunFlag = true;
+            KillPlayerAndLoadNextScene();
             GameState.isInBattle = false;
         }
         if (playerStats.HP <= 0)
         {
             combatEnded = true;
             blade.StartClose();
-            GameState.endRunFlag = true;
+            //GameState.endRunFlag = true;
+            KillPlayerAndLoadNextScene();
             GameState.isInBattle = false;
         }
         if (monsterStats.HP <= 0)
@@ -268,6 +271,21 @@ public class Combat : MonoBehaviour
             blade.StartClose();
             combatEnded = true;
         }
+    }
+
+    private void KillPlayerAndLoadNextScene() {
+        //
+        GameState.isInBattle = false;
+        Destroy(monsterSprite.gameObject);
+        Destroy(playerSprite.gameObject);
+        combatDarkening.material.SetFloat("_Alpha", 0);
+        blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
+        Destroy(this);
+        //At this point play 'death' animation on player, which should end in a death of the player. 
+        //For now doing the scene transition to the death scene right away
+        SceneManager.LoadScene("DeathScene");
+
+
     }
 
     private void KillMonsterAndGetRewards()
