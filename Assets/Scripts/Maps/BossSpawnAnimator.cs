@@ -12,7 +12,8 @@ public class BossSpawnAnimator : MonoBehaviour
     protected Renderer sRender;
     protected GameObject ThePlayer;
     private bool spawnBoss;
-    public GameObject bossSpawnedPrefab; 
+    public GameObject bossSpawnedPrefab;
+    private float offsetFix = .00001f;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class BossSpawnAnimator : MonoBehaviour
         if (ThePlayer.transform.position.y>-9.5f&& !spawnBoss) {
             spawnBoss = true;
             sRender.enabled = true;
-            sRender.material.SetInt("_Frame", currentFrame);
+            sRender.material.SetFloat("_Frame", currentFrame+offsetFix);
             Debug.Log("Did I transform?");
         }
         if (!spawnBoss) {
@@ -44,7 +45,7 @@ public class BossSpawnAnimator : MonoBehaviour
                 Destroy(this.gameObject);
             }
             else {
-                sRender.material.SetInt("_Frame", currentFrame);
+                sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
                 frameCounter = 0;
             }
 

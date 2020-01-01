@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameData : Singleton<GameData>
 
@@ -15,11 +16,22 @@ public class GameData : Singleton<GameData>
     public int ManaCrystalBonus;
     public int AttackCrystalBonus;
     public int DefenseCrystalBonus;
+
+    public int HealhCrystalTotal=0;
+    public int ManaCrystalTotal=0;
+    public int AttackCrystalTotal=0;
+    public int DefenseCrystalTotal=0;
+
     public int FloorNumber = 0;
 
     internal bool IsInTown()
     {
         return FloorNumber == 0;
+    }
+
+    internal void autoSaveStats()
+    {
+        Debug.Log("Saving game not implementd yet");
     }
 
     public int RunNumber = 1;
@@ -29,9 +41,7 @@ public class GameData : Singleton<GameData>
     public bool stealthed;
     public bool dashing;
     public bool isCutscene;
-    
-
-
+    public bool pauseTimer;
 
     public List<GameObject> townWeapons = new List<GameObject>();
     public List<GameObject> townArmor = new List<GameObject>();
@@ -41,7 +51,7 @@ public class GameData : Singleton<GameData>
 
     //public bool Shortcut1 = false;
 
-    public bool RunSetupFinished = false;
+    //public bool RunSetupFinished = false;
 
 
       [HideInInspector]
@@ -60,8 +70,25 @@ public class GameData : Singleton<GameData>
         nextLocationSet = true;
     }
 
+    public void resetTimer() {
+        timer = 0;
+        pauseTimer = false;
+    }
+
+    public bool addHealToTimer() {
+        if (timer >= 570)
+            return false;
+        else {
+            timer += 30;
+            return true;
+        }
+
+    }
+
+
     void Update()
     {
+        if (GameState.fullPause || FloorNumber==0 || pauseTimer ) { return; }
 
         int tempSeconds = (int)(timer + Time.deltaTime);
         if (tempSeconds > (int)timer)
@@ -72,6 +99,10 @@ public class GameData : Singleton<GameData>
         timer += Time.deltaTime;
         seconds = (int)(timer % 60);
         minutes = (int)(timer / 60);
-        if (minutes == 10) { Debug.Log("Run Over. You are dead."); }
+        if (minutes == 10) {
+            //Needs to really call the 'kill player' animation and then load deathscene from that script. That script should 'pause' the timer. 
+            SceneManager.LoadScene("DeathScene");
+            pauseTimer = true;
+        }
     }
 }

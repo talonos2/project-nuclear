@@ -30,7 +30,7 @@ public class CharacterMovement : SpriteMovement
     {
 
 
-        if (GameState.isInBattle == true)
+        if (GameState.isInBattle || GameState.fullPause)
         {
             return;
         }
@@ -160,6 +160,20 @@ public class CharacterMovement : SpriteMovement
 
     }
 
+    internal void attemptRest()
+    {
+        if (GameState.isInBattle) return;
+        if (playerStats.mana < playerStats.MaxMana || playerStats.HP < playerStats.MaxHP) {
+            if (gameData.addHealToTimer()) {
+                //Play a resting doodad
+                playerStats.mana += (int)(playerStats.MaxMana * .12f);
+                playerStats.HP += (int)(playerStats.MaxHP * .12f);
+                if (playerStats.mana > playerStats.MaxMana) playerStats.mana = playerStats.MaxMana;
+                if (playerStats.HP > playerStats.MaxHP) playerStats.HP = playerStats.MaxHP;
+            }
+        }
+    }
+
     private void SetNextDashLocation()
     {
         SetNextLocation(facedDirection);
@@ -212,7 +226,7 @@ public class CharacterMovement : SpriteMovement
     //Key command received from CharacterInputController script
     public void MoveKeyReceived(DirectionMoved inputDirection) {
 
-        if (GameState.isInBattle == true)
+        if (GameState.isInBattle || GameState.fullPause)
         {
             return;
         }
@@ -256,7 +270,7 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerActivateKeyReceived()
     {
-        if (GameState.isInBattle == true)
+        if (GameState.isInBattle || GameState.fullPause)
         {
             return;
         }
@@ -461,7 +475,7 @@ public class CharacterMovement : SpriteMovement
     }
 
     public void ActivateKeyReceived() {
-        if (GameState.isInBattle == true)
+        if (GameState.isInBattle || GameState.fullPause)
         {
             return;
         }

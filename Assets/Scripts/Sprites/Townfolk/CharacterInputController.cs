@@ -19,7 +19,7 @@ public class CharacterInputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!moveable) { return; }
+        if (!moveable || GameState.fullPause) { return; }
 
         if (Input.GetButtonDown("Submit")){
             characterController.ActivateKeyReceived();
@@ -40,6 +40,10 @@ public class CharacterInputController : MonoBehaviour
         if (Input.GetButtonDown("PowerDown"))
         {
             characterController.PowerDownCheat();
+        }
+        if (Input.GetButtonDown("Rest"))
+        {
+            characterController.attemptRest();
         }
         characterController.MoveKeyReceived(GetInputDirection());
        

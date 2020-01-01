@@ -38,7 +38,6 @@ public class NewGameController : MonoBehaviour
             }
         }
         if (runType.value == 1) {
-            GameData.Instance.isCutscene = true;
             if (runVariable.text == "" || Convert.ToInt32(runVariable.text)==0 )
             {
                 GameData.Instance.RunNumber = 1;

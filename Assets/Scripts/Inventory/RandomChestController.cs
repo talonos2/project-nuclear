@@ -36,6 +36,7 @@ public class RandomChestController : EntityData
     public float framesPerSecond;
     private float timeSinceLastFrame=0;
     private int currentFrame = 0;
+    private float offsetFix = .00001f;
 
     private Renderer sRender;
     public GameObject fountainPrefab;
@@ -72,28 +73,28 @@ public class RandomChestController : EntityData
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
             currentFrame = 16;
-            sRender.material.SetInt("_Frame", currentFrame);
+            sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
         }
         if (armorCrystal) {
             instanciatedObject = Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
             currentFrame = 32;
-            sRender.material.SetInt("_Frame", currentFrame);
+            sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
         }
         if (healthCrystal) {
             instanciatedObject = Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
             currentFrame = 48;
-            sRender.material.SetInt("_Frame", currentFrame);
+            sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
         }
         if (manaCrystal) {
             instanciatedObject = Instantiate(crystalPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
             currentFrame = 0;
-            sRender.material.SetInt("_Frame", currentFrame);
+            sRender.material.SetFloat("_Frame", currentFrame+offsetFix);
         }
         if (itemChest) {
             instanciatedObject = Instantiate(itemPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
@@ -110,20 +111,20 @@ public class RandomChestController : EntityData
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
             currentFrame = 10;
-            sRender.material.SetInt("_Frame", currentFrame);
+            sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
         }
         if (manaFountain) {
             instanciatedObject = Instantiate(fountainPrefab, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             this.sRender = this.GetComponentInChildren<MeshRenderer>();
             this.sRender.material = new Material(this.sRender.material);
             currentFrame = 20;
-            sRender.material.SetInt("_Frame", currentFrame);
+            sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
         }        
     }
 
     void Update()
     {
-        if (GameState.isInBattle == true)
+        if (GameState.isInBattle || GameState.fullPause)
         {
             return;
         }
@@ -172,7 +173,7 @@ public class RandomChestController : EntityData
                     currentFrame = 32;
             }
             
-            sRender.material.SetInt("_Frame", currentFrame);
+            sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
         }
     }
 

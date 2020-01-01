@@ -23,6 +23,7 @@ public class SwitchEntityData : EntityData
     public bool prePressed;
     private float tempResetTime = 0;
     private bool timerSet = false;
+    private float offsetFix = .00001f;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -124,7 +125,7 @@ public class SwitchEntityData : EntityData
     void Update()
     {
 
-        if (GameState.isInBattle == true)
+        if (GameState.isInBattle || GameState.fullPause)
         {
             return;
         }
@@ -144,7 +145,7 @@ public class SwitchEntityData : EntityData
             if (forwardAnimation) frameNumber += 1;
             else frameNumber -= 1;
             animationCounter += 1;
-            sRender.material.SetInt("_Frame", frameNumber);
+            sRender.material.SetFloat("_Frame", frameNumber+ offsetFix);
             timeSinceLastFrame = 0;
             if (animationCounter == totalFrames - 1)
             {
