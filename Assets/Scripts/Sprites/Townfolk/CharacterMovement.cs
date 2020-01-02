@@ -126,7 +126,7 @@ public class CharacterMovement : SpriteMovement
                     gameData.dashing = false;
                     CheckWindJumpStatus();
                     CheckExitStatus();
-                    tempFramesPerSecond = framesPerSecond; ;
+                    tempFramesPerSecond = framesPerSecond; 
                     tempMovementSpeed = MoveSpeed;
                 }else SetNextDashLocation();
             }
@@ -158,6 +158,12 @@ public class CharacterMovement : SpriteMovement
 
 
 
+    }
+
+    internal void MurderPlayer()
+    {
+        Debug.Log("hasdf");
+        GameData.Instance.killPlayer();
     }
 
     internal void attemptRest()

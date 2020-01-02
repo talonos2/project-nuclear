@@ -105,4 +105,9 @@ public class GameData : Singleton<GameData>
             pauseTimer = true;
         }
     }
+
+    internal void killPlayer()
+    {
+        timer = 600;
+    }
 }
