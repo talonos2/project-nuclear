@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
@@ -11,4 +11,5 @@ public class InventoryItem : MonoBehaviour
     public bool Armor;
     public bool Accessory;
     public bool Rare;
+    public Sprite itemIcon;
 }

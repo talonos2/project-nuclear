@@ -252,6 +252,11 @@ public class RandomChestController : EntityData
         {
             GameObject itemFound=itemListData.getRandomCommonItem(rarity);
             InventoryItem itemTypeCheck = itemFound.GetComponent<InventoryItem>();
+            //Activate item, aka activate canvas. How do I attach the canvas to the chests?
+            //Maybe have the ui canvas self register in the gameData scrip at the start of each room?
+            //Both for gabText and for select item things
+            //on enable the ui freezes the scene in the background similar to combat, then controlls the things until a selection is made
+
             if (itemTypeCheck.Weapon)
             {
                if (playerData.weapon!=null) gameData.townWeapons.Add(playerData.weapon);
