@@ -252,17 +252,8 @@ public class RandomChestController : EntityData
         {
             GameObject itemFound=itemListData.getRandomCommonItem(rarity);
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
-            //GameObject.Find("Canvas_SelectItem");
-            //foundCanvas.SetActive(true);
             uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, itemFound);
 
-            //load item ui and set it up. Okay to set 'destroy'item option. below but will need to 'pause' game upon activation, and unpause on de-activation
-
-            InventoryItem itemTypeCheck = itemFound.GetComponent<InventoryItem>();
-            //Activate item, aka activate canvas. How do I attach the canvas to the chests?
-            //Maybe have the ui canvas self register in the gameData scrip at the start of each room?
-            //Both for gabText and for select item things
-            //on enable the ui freezes the scene in the background similar to combat, then controlls the things until a selection is made
 
             
             Instantiate(itemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
@@ -272,9 +263,8 @@ public class RandomChestController : EntityData
         {
             GameObject rareItemFound = itemListData.getRandomRareItem(rarity);
             //InventoryItem itemTypeCheck = rareItemFound.GetComponent<InventoryItem>();
-            GameObject foundCanvas = GameObject.Find("Canvas_SelectItem");
-            foundCanvas.SetActive(true);
-            foundCanvas.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, rareItemFound);
+            GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
+            uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, rareItemFound);
 
             Instantiate(rareItemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
