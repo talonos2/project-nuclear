@@ -61,20 +61,16 @@ public class Combat : MonoBehaviour
         pRenderer = playerSprite.AddComponent<SpriteRenderer>();
         pRenderer.flipX = true;
         pRenderer.sprite = Resources.LoadAll<Sprite>("DELETE LATER")[1];
-        pRenderer.sortingOrder = 10;
 
         eRenderer = monsterSprite.AddComponent<SpriteRenderer>();
         eRenderer.flipX = true;
         eRenderer.sprite = monsterStats.combatSprites[0];
-        eRenderer.sortingOrder = 9;
 
         combatFolder = Camera.main.transform.Find("UI").Find("Combat").gameObject;
         combatDarkening = Camera.main.transform.Find("UI").Find("DarkeningPlane").gameObject.GetComponent<Renderer>();
-        combatDarkening.sortingOrder = 1;
 
         blade = Camera.main.transform.Find("UI").Find("Switchblade").Find("blade").gameObject.GetComponent<UISwitchbladeScript>();
         blade.StartOpen();
-        blade.GetComponent<Renderer>().sortingOrder = 5;
 
         playerSprite.transform.SetParent(combatFolder.transform);
         playerSprite.transform.localPosition = playerStats.startPositionOnScreen;

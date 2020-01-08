@@ -14,8 +14,6 @@ public class UIHPScript : MonoBehaviour
     {
         text = GetComponent<TextMeshPro>();
         stats = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
-        text.renderer.sortingOrder = 50;
-        bar.canvas.sortingOrder = 50;
     }
 
     // Update is called once per frame
