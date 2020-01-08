@@ -30,7 +30,7 @@ public class Hitsplat : MonoBehaviour
     {
         if (isBouncing)
         {
-            transform.position = new Vector3(0, height, 0)+startPosition;
+            transform.position = new Vector3(startPosition.x, height + startPosition.y, -99);
             height += yVelo;
             yVelo -= gravity;
             if (height <= baseHeight)

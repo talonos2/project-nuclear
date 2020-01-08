@@ -60,7 +60,7 @@ public class Combat : MonoBehaviour
 
         pRenderer = playerSprite.AddComponent<SpriteRenderer>();
         pRenderer.flipX = true;
-        pRenderer.sprite = Resources.LoadAll<Sprite>("DELETE LATER")[1];
+        pRenderer.sprite = playerStats.combatSprites[0];
 
         eRenderer = monsterSprite.AddComponent<SpriteRenderer>();
         eRenderer.flipX = true;
@@ -193,6 +193,7 @@ public class Combat : MonoBehaviour
         int playerFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
         int enemyFrame = monsterStats.attackAnimation.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
         playerSprite.GetComponent<SpriteRenderer>().sprite = playerStats.combatSprites[playerFrame];
+        playerSprite.transform.localPosition = new Vector3(playerSprite.transform.localPosition.x, playerSprite.transform.localPosition.y, -.05f);
         monsterSprite.GetComponent<SpriteRenderer>().sprite = monsterStats.combatSprites[enemyFrame];
 
         if (Input.GetButtonDown("Attack/Defend") && buttonPressedTime > .5f)
