@@ -169,14 +169,14 @@ public class Combat : MonoBehaviour
         //float playerAttackTime = playerStats.animation.GetAnimationLength();
         float playerAttackTime = AttackAnimation.HOP.GetAnimationLength();
         //float enemyAttackTime = playerStats.animation.GetAnimationLength();
-        float enemyAttackTime = AttackAnimation.HOP.GetAnimationLength();
+        float enemyAttackTime = monsterStats.attackAnimation.GetAnimationLength();
         float totalTime = playerAttackTime + enemyAttackTime;
 
         float timeSinceLastPlayerAttack = combatTimer % totalTime;
         float timeSinceLastMonsterAttack = (combatTimer > enemyAttackTime ? (combatTimer - enemyAttackTime) % totalTime : 0);
 
         float playerDamagePoint = AttackAnimation.HOP.GetDamagePoint();
-        float enemyDamagePoint = playerAttackTime + AttackAnimation.HOP.GetDamagePoint();
+        float enemyDamagePoint = playerAttackTime + monsterStats.attackAnimation.GetDamagePoint();
         float rightSideTime = enemyDamagePoint - playerDamagePoint;
         float leftSideTime = totalTime - rightSideTime;
 
@@ -195,7 +195,7 @@ public class Combat : MonoBehaviour
         //Debug.Log("Player:" + playerStats.homePositionOnScreen);
 
         int playerFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
-        int enemyFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
+        int enemyFrame = monsterStats.attackAnimation.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
         playerSprite.GetComponent<SpriteRenderer>().sprite = playerStats.combatSprites[playerFrame];
         monsterSprite.GetComponent<SpriteRenderer>().sprite = monsterStats.combatSprites[enemyFrame];
 
@@ -238,7 +238,7 @@ public class Combat : MonoBehaviour
             this.DealDamageToEnemy();
             playerDidDamageRecently = true;
         }
-        if (!monsterDidDamageRecently && timeSinceLastMonsterAttack > AttackAnimation.HOP.GetDamagePoint() + (SWAY_TOLERANCE / 2.0f))
+        if (!monsterDidDamageRecently && timeSinceLastMonsterAttack > monsterStats.attackAnimation.GetDamagePoint() + (SWAY_TOLERANCE / 2.0f))
         {
             this.DealDamageToPlayer();
             monsterDidDamageRecently = true;

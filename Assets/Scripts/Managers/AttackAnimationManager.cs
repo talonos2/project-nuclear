@@ -26,6 +26,15 @@ public class AttackAnimationManager : Singleton<AttackAnimationManager>
     public float defaultAttackFrameTime = .1f;
     public float timeWarp = 1;
 
+    public float initialBlastImpactTime = .35f;
+    public float blastRecoilFinishTime = .55f;
+    public Vector2 blastRecoilAmount = new Vector2(.2f, .2f);
+    public float blastRecoilFriction = .5f;
+    public float returnRecoilStart = .75f;
+    public float returnRecoilReturnDuration = .25f;
+    public float blastWarmupDuration = .2f;
+    public Vector4 blastFrameTime= new Vector4(.25f,.075f,.075f,.2f);
+
     // Start is called before the first frame update
     void Start()
     {

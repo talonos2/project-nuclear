@@ -25,14 +25,14 @@
 
 		#day3
 		@char Jinn
-		Jinn: Why am I still here?...
+		Jinn: Why am I still here?
 		Jinn: Shoot, why am I here?
 		@exit
 		
 
 		#day4
 		@char Jinn
-		Jinn: You should have paid more attention in history.  I don't think your runes mean what you think.
+		Jinn: You should have paid more attention in history.  I don't think your runes mean what you think.   (weak joke, fix me)
 		@hidechars time:0
 		@char Todd
 		Todd: They say "death to the unworthy"
@@ -47,13 +47,13 @@
 
 		#day5
 		@char Jinn
-		Jinn: How do you think the cave chooses?  It doesn't seem to be the closest people...
+		Jinn: How do you think the cave chooses?  It doesn't seem to take the closest people...
 		@exit
 
 		
 		#day6
 		@char Jinn
-		Jinn: Don't worry about me, I'm alright.
+		Jinn: Don't worry about me. I'm alright.
 		@exit
 
 		
@@ -83,11 +83,12 @@
 
 		
 		#day10
+		@fwturnpawn n:PawnJinn d:n
 		@char Jinn
 		Jinn: You shur you can do ziss yourself?
 		@hidechars time:0
 		@char Nelson
-		Unlike our former bartender, I am much more apt to 'cut one off'.
+		Nelson: Yes.<br>And unlike our former bartender, I am much more apt to 'cut one off'.
 		@exit
 
 		
