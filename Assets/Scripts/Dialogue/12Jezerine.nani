@@ -22,7 +22,7 @@
 		Jezerine: Need help seeing to the horses?
 		@hidechars time:0
 		@char Norma
-		Not after last time I don't.
+		Norma: Not after last time I don't.
 		@exit
 		
 
@@ -31,13 +31,13 @@
 		Jezerine: Do you think more adventurers are going to arrive?
 		@hidechars time:0
 		@char Norma
-		Norma: If Patric got the word out, mabye.
+		Norma: If Patric got the word out? Mabye.
 		@exit
 		
 
 		#day5
 		@char Jezerine
-		Jezerine: I hear Ms Smythe is starting a boot camp?!
+		Jezerine: I hear Ms. Smythe is starting a boot camp?
 		@exit
 
 		
@@ -71,6 +71,7 @@
 		#day10
 		@char Jezerine
 		Jezerine: That has-been thinks she has soooo much to teach...
+		@fwturnpawn n:PawnJezerine d:e
 		@exit
 
 		
