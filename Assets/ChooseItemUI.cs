@@ -75,6 +75,7 @@ public class ChooseItemUI : MonoBehaviour
 
     private void ChooseItem()
     {
+        if (!pickingItem) { return; }
 
         if (itemTypeCheck.Weapon)
         {
