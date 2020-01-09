@@ -12,7 +12,7 @@ public class PawnMover : SpriteMovement
     // Update is called once per frame
     void Update()
     {
-        if (gameData.Paused == true)
+        if (GameState.isInBattle == true)
         {
             return;
         }

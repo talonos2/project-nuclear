@@ -60,21 +60,17 @@ public class Combat : MonoBehaviour
 
         pRenderer = playerSprite.AddComponent<SpriteRenderer>();
         pRenderer.flipX = true;
-        pRenderer.sprite = Resources.LoadAll<Sprite>("DELETE LATER")[1];
-        pRenderer.sortingOrder = 10;
+        pRenderer.sprite = playerStats.combatSprites[0];
 
         eRenderer = monsterSprite.AddComponent<SpriteRenderer>();
         eRenderer.flipX = true;
         eRenderer.sprite = monsterStats.combatSprites[0];
-        eRenderer.sortingOrder = 9;
 
         combatFolder = Camera.main.transform.Find("UI").Find("Combat").gameObject;
         combatDarkening = Camera.main.transform.Find("UI").Find("DarkeningPlane").gameObject.GetComponent<Renderer>();
-        combatDarkening.sortingOrder = 1;
 
         blade = Camera.main.transform.Find("UI").Find("Switchblade").Find("blade").gameObject.GetComponent<UISwitchbladeScript>();
         blade.StartOpen();
-        blade.GetComponent<Renderer>().sortingOrder = 5;
 
         playerSprite.transform.SetParent(combatFolder.transform);
         playerSprite.transform.localPosition = playerStats.startPositionOnScreen;
@@ -169,14 +165,14 @@ public class Combat : MonoBehaviour
         //float playerAttackTime = playerStats.animation.GetAnimationLength();
         float playerAttackTime = AttackAnimation.HOP.GetAnimationLength();
         //float enemyAttackTime = playerStats.animation.GetAnimationLength();
-        float enemyAttackTime = AttackAnimation.HOP.GetAnimationLength();
+        float enemyAttackTime = monsterStats.attackAnimation.GetAnimationLength();
         float totalTime = playerAttackTime + enemyAttackTime;
 
         float timeSinceLastPlayerAttack = combatTimer % totalTime;
         float timeSinceLastMonsterAttack = (combatTimer > enemyAttackTime ? (combatTimer - enemyAttackTime) % totalTime : 0);
 
         float playerDamagePoint = AttackAnimation.HOP.GetDamagePoint();
-        float enemyDamagePoint = playerAttackTime + AttackAnimation.HOP.GetDamagePoint();
+        float enemyDamagePoint = playerAttackTime + monsterStats.attackAnimation.GetDamagePoint();
         float rightSideTime = enemyDamagePoint - playerDamagePoint;
         float leftSideTime = totalTime - rightSideTime;
 
@@ -195,8 +191,9 @@ public class Combat : MonoBehaviour
         //Debug.Log("Player:" + playerStats.homePositionOnScreen);
 
         int playerFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
-        int enemyFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
+        int enemyFrame = monsterStats.attackAnimation.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
         playerSprite.GetComponent<SpriteRenderer>().sprite = playerStats.combatSprites[playerFrame];
+        playerSprite.transform.localPosition = new Vector3(playerSprite.transform.localPosition.x, playerSprite.transform.localPosition.y, -.05f);
         monsterSprite.GetComponent<SpriteRenderer>().sprite = monsterStats.combatSprites[enemyFrame];
 
         if (Input.GetButtonDown("Attack/Defend") && buttonPressedTime > .5f)
@@ -238,7 +235,7 @@ public class Combat : MonoBehaviour
             this.DealDamageToEnemy();
             playerDidDamageRecently = true;
         }
-        if (!monsterDidDamageRecently && timeSinceLastMonsterAttack > AttackAnimation.HOP.GetDamagePoint() + (SWAY_TOLERANCE / 2.0f))
+        if (!monsterDidDamageRecently && timeSinceLastMonsterAttack > monsterStats.attackAnimation.GetDamagePoint() + (SWAY_TOLERANCE / 2.0f))
         {
             this.DealDamageToPlayer();
             monsterDidDamageRecently = true;

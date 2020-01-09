@@ -12,8 +12,7 @@ public class Enemy : Stats
     public int crystalDropAmount;
 
     public Sprite[] combatSprites;
-
-    //public Vector2 expectedPositionOnScreen = new Vector2(-;
+    public AttackAnimation attackAnimation = AttackAnimation.HOP;
 
     public
     // Start is called before the first frame update

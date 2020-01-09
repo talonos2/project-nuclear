@@ -213,7 +213,6 @@ public class CharacterStats : Stats
         }
         else {
             weapon = itemData.getRunTwoWeapon();
-
         }
         armor = itemData.getDefaultArmor();
         setWeaponStats(weapon);
@@ -255,8 +254,6 @@ public class CharacterStats : Stats
         accessoryMPVamp = 0;
         accessoryDodgeBonus = 0;
         accessoryAttackPercent = 0;
-
-
 
 }
 

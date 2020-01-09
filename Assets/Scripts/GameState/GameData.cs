@@ -47,7 +47,7 @@ public class GameData : Singleton<GameData>
     public List<GameObject> townArmor = new List<GameObject>();
     public List<GameObject> townAccessories = new List<GameObject>();
 
-    public bool Paused = false;
+//    public bool Paused = false;
 
     //public bool Shortcut1 = false;
 

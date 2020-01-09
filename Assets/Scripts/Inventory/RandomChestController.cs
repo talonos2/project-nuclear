@@ -251,53 +251,21 @@ public class RandomChestController : EntityData
         else if (itemChest)
         {
             GameObject itemFound=itemListData.getRandomCommonItem(rarity);
-            InventoryItem itemTypeCheck = itemFound.GetComponent<InventoryItem>();
-            //Activate item, aka activate canvas. How do I attach the canvas to the chests?
-            //Maybe have the ui canvas self register in the gameData scrip at the start of each room?
-            //Both for gabText and for select item things
-            //on enable the ui freezes the scene in the background similar to combat, then controlls the things until a selection is made
+            GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
+            uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, itemFound);
 
-            if (itemTypeCheck.Weapon)
-            {
-               if (playerData.weapon!=null) gameData.townWeapons.Add(playerData.weapon);
-                playerData.weapon = itemFound;
-                playerData.setWeaponStats(itemFound);
-            }
-            else if (itemTypeCheck.Armor) {
-                if (playerData.armor != null) gameData.townArmor.Add(playerData.armor);
-                playerData.armor = itemFound;
-                playerData.setArmorStats(itemFound);
-            }
-            else if (itemTypeCheck.Accessory){
-                if (playerData.accessory != null) gameData.townAccessories.Add(playerData.accessory);
-                playerData.accessory = itemFound;
-                playerData.setAccessoryStats(itemFound);
-            }
+
+            
             Instantiate(itemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
         else if (rareItemChest)
         {
             GameObject rareItemFound = itemListData.getRandomRareItem(rarity);
-            InventoryItem itemTypeCheck = rareItemFound.GetComponent<InventoryItem>();
-            if (itemTypeCheck.Weapon)
-            {
-                if (playerData.weapon != null) gameData.townWeapons.Add(playerData.weapon);
-                playerData.weapon = rareItemFound;
-                playerData.setWeaponStats(rareItemFound);
-            }
-            else if (itemTypeCheck.Armor)
-            {
-                if (playerData.armor != null) gameData.townArmor.Add(playerData.armor);
-                playerData.armor = rareItemFound;
-                playerData.setArmorStats(rareItemFound);
-            }
-            else if (itemTypeCheck.Accessory)
-            {
-                if (playerData.accessory != null) gameData.townAccessories.Add(playerData.accessory);
-                playerData.accessory = rareItemFound;
-                playerData.setAccessoryStats(rareItemFound);
-            }
+            //InventoryItem itemTypeCheck = rareItemFound.GetComponent<InventoryItem>();
+            GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
+            uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, rareItemFound);
+
             Instantiate(rareItemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
 
