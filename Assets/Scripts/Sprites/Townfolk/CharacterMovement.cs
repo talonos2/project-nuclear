@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CharacterMovement : SpriteMovement
 {
+    private static float DASH_LENGTH = 27;
 
     public CharacterStats playerStats;
     private Vector2Int jumpTarget;
@@ -36,6 +37,10 @@ public class CharacterMovement : SpriteMovement
         }
         if (!currentlyMoving && waitTimer >= 0)
         {
+            if (gameData.dashing)
+            {
+                SetShieldGraphic(waitTimer, true);
+            }
             waitTimer -= Time.deltaTime;
             return;
         }
@@ -110,32 +115,40 @@ public class CharacterMovement : SpriteMovement
             }
         }
 
-        if (!currentlyMoving && gameData.dashing || continueDashing) {
+        //if ()
+        if (!currentlyMoving && gameData.dashing || continueDashing)
+        {
             if (waitTimer >= 0)
             {
+                Debug.Log("HI!! :D I don't think this is ever called. If you see me, come check out CharacterMovement.cs to see what changed!");
                 waitTimer -= Time.deltaTime;
+                SetShieldGraphic(waitTimer, true);
                 return;
             }
             totalDashed += Time.deltaTime * tempMovementSpeed;
             if (!continueDashing)
             {
-
-                if (totalDashed >= 27)
+                if (totalDashed >= DASH_LENGTH)
                 {
                     tiePositionToGrid();
                     gameData.dashing = false;
+                    sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                     CheckWindJumpStatus();
                     CheckExitStatus();
-                    tempFramesPerSecond = framesPerSecond; 
+                    tempFramesPerSecond = framesPerSecond;
                     tempMovementSpeed = MoveSpeed;
-                }else SetNextDashLocation();
+                }
+                else
+                {
+                    SetShieldGraphic(totalDashed, false);
+                    SetNextDashLocation();
+                }
             }
 
             if (continueDashing) {
                 if (ContinueMoving() == 0)
                 {
-                    continueDashing = false;
-                    
+                    continueDashing = false; 
                 }
             }
 
@@ -160,13 +173,46 @@ public class CharacterMovement : SpriteMovement
 
     }
 
+    private void SetShieldGraphic(float amount, bool isCharging)
+    {
+        GameObject shield = sRender.gameObject.transform.GetChild(0).gameObject;
+        Material m = shield.GetComponent<Renderer>().material;
+        if (isCharging)
+        {
+            Debug.Log(amount);
+            float amountThrough;
+            if (amount > .3f)
+            {
+                amountThrough = (amount - .3f) * 10;
+                m.SetFloat("_fpower", Mathf.Lerp(0, 3, amountThrough));
+                m.SetFloat("_offset", Mathf.Lerp(0, 2, amountThrough));
+                return;
+            }
+            if (amount > .2f)
+            {
+                amountThrough = (amount - .2f) * 10;
+                m.SetFloat("_fpower", 0);
+                m.SetFloat("_offset", Mathf.Lerp(2, 0, amountThrough));
+                return;
+            }
+            m.SetFloat("_fpower", 0);
+            m.SetFloat("_offset", 2);
+            return;
+        }
+        else
+        {
+            float amountThrough = amount / DASH_LENGTH;
+            m.SetFloat("_fpower", Mathf.Lerp(0, 3, amountThrough));
+        }
+    }
+
     internal void MurderPlayer()
     {
         Debug.Log("hasdf");
         GameData.Instance.killPlayer();
     }
 
-    internal void attemptRest()
+    internal void AttemptRest()
     {
         if (GameState.isInBattle) return;
         if (playerStats.mana < playerStats.MaxMana || playerStats.HP < playerStats.MaxHP) {
@@ -445,7 +491,9 @@ public class CharacterMovement : SpriteMovement
 
     private void ActivateShieldDash()
     {
-        if (playerStats.mana >= 5) {
+        if (playerStats.mana >= 5)
+        {
+            sRender.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             playerStats.mana -= 5;
             gameData.dashing = true;
             gameData.hasted = false;

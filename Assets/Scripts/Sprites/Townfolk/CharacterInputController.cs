@@ -47,7 +47,7 @@ public class CharacterInputController : MonoBehaviour
         }
         if (Input.GetButtonDown("Rest"))
         {
-            characterController.attemptRest();
+            characterController.AttemptRest();
         }
         characterController.MoveKeyReceived(GetInputDirection());
        
