@@ -140,8 +140,8 @@ public class RandomChestController : EntityData
             timeSinceLastFrame = 0;
             if (healingFountain) {
                 currentFrame += 1;
-                if (currentFrame > 9)
-                    currentFrame = 0;
+                if (currentFrame > 19)
+                    currentFrame = 10;
             }
             if (manaFountain) {
                 currentFrame += 1;

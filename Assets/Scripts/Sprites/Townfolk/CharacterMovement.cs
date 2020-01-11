@@ -116,6 +116,8 @@ public class CharacterMovement : SpriteMovement
                 waitTimer -= Time.deltaTime;
                 return;
             }
+            tempMovementSpeed = MoveSpeed * dashSpeed;
+            tempFramesPerSecond = framesPerSecond * dashSpeed;
             totalDashed += Time.deltaTime * tempMovementSpeed;
             if (!continueDashing)
             {
@@ -450,8 +452,6 @@ public class CharacterMovement : SpriteMovement
             gameData.dashing = true;
             gameData.hasted = false;
             gameData.stealthed = false;
-            tempMovementSpeed = MoveSpeed * dashSpeed;
-            tempFramesPerSecond = framesPerSecond * dashSpeed;
             waitTimer = .4f;
             totalDashed = 0;
         }
