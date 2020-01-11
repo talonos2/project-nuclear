@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CharacterMovement : SpriteMovement
 {
+    private static float DASH_LENGTH = 27;
 
     public CharacterStats playerStats;
     private Vector2Int jumpTarget;
@@ -16,6 +17,7 @@ public class CharacterMovement : SpriteMovement
     private float dashSpeed = 4;
     private float totalDashed = 0;
     private bool continueDashing = false;
+    private Transform jumpPivot;
 
 
 
@@ -23,6 +25,7 @@ public class CharacterMovement : SpriteMovement
     {
         base.Start();
         playerStats = this.GetComponent<CharacterStats>();
+        jumpPivot = sRender.transform.parent;
 
     }
     // Update is called once per frame
@@ -36,6 +39,10 @@ public class CharacterMovement : SpriteMovement
         }
         if (!currentlyMoving && waitTimer >= 0)
         {
+            if (gameData.dashing)
+            {
+                SetShieldGraphic(waitTimer, true);
+            }
             waitTimer -= Time.deltaTime;
             return;
         }
@@ -80,40 +87,45 @@ public class CharacterMovement : SpriteMovement
             {
                 currentlyMoving = false;
                 windJump = false;
-                tiePositionToGrid();
+                TiePositionToGrid();
                 tempFramesPerSecond = framesPerSecond;
                 CheckWindJumpStatus();
             }
         }
     
 
-        if (!currentlyMoving && (jumping|| jumpQued)) {
-
-
-            if (jumpQued &&!jumping) {
+        if (!currentlyMoving && (jumping|| jumpQued))
+        {
+            if (jumpQued &&!jumping)
+            {
                 jumping = ActivateJump();
                 jumpQued = false;
             }
 
-            if (jumping) { 
-                float finishedMoving = ContinueJumping();
-                if (finishedMoving == 0)
+            if (jumping)
+            { 
+                bool finishedMoving = ContinueJumping();
+                if (finishedMoving)
                 {
                     currentlyMoving = false;
                     jumping = false;
                     tempFramesPerSecond = framesPerSecond;
                     //   SetCurrentLocation();
-                    tiePositionToGrid();
+                    TiePositionToGrid();
                     CheckExitStatus();
                     CheckWindJumpStatus();
                 }
             }
         }
 
-        if (!currentlyMoving && gameData.dashing || continueDashing) {
+        //if ()
+        if (!currentlyMoving && gameData.dashing || continueDashing)
+        {
             if (waitTimer >= 0)
             {
+                Debug.Log("HI!! :D I don't think this is ever called. If you see me, come check out CharacterMovement.cs to see what changed!");
                 waitTimer -= Time.deltaTime;
+                SetShieldGraphic(waitTimer, true);
                 return;
             }
             tempMovementSpeed = MoveSpeed * dashSpeed;
@@ -121,23 +133,27 @@ public class CharacterMovement : SpriteMovement
             totalDashed += Time.deltaTime * tempMovementSpeed;
             if (!continueDashing)
             {
-
-                if (totalDashed >= 27)
+                if (totalDashed >= DASH_LENGTH)
                 {
-                    tiePositionToGrid();
+                    TiePositionToGrid();
                     gameData.dashing = false;
+                    sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                     CheckWindJumpStatus();
                     CheckExitStatus();
-                    tempFramesPerSecond = framesPerSecond; 
+                    tempFramesPerSecond = framesPerSecond;
                     tempMovementSpeed = MoveSpeed;
-                }else SetNextDashLocation();
+                }
+                else
+                {
+                    SetShieldGraphic(totalDashed, false);
+                    SetNextDashLocation();
+                }
             }
 
             if (continueDashing) {
                 if (ContinueMoving() == 0)
                 {
-                    continueDashing = false;
-                    
+                    continueDashing = false; 
                 }
             }
 
@@ -151,7 +167,7 @@ public class CharacterMovement : SpriteMovement
             if (finishedMoving == 0)
             {
                 currentlyMoving = false;
-                tiePositionToGrid();
+                TiePositionToGrid();
                 //  SetCurrentLocation();
                 CheckWindJumpStatus();
                 CheckExitStatus();
@@ -162,13 +178,46 @@ public class CharacterMovement : SpriteMovement
 
     }
 
+    private void SetShieldGraphic(float amount, bool isCharging)
+    {
+        GameObject shield = sRender.gameObject.transform.GetChild(0).gameObject;
+        Material m = shield.GetComponent<Renderer>().material;
+        if (isCharging)
+        {
+            Debug.Log(amount);
+            float amountThrough;
+            if (amount > .3f)
+            {
+                amountThrough = (amount - .3f) * 10;
+                m.SetFloat("_fpower", Mathf.Lerp(0, 3, amountThrough));
+                m.SetFloat("_offset", Mathf.Lerp(0, 2, amountThrough));
+                return;
+            }
+            if (amount > .2f)
+            {
+                amountThrough = (amount - .2f) * 10;
+                m.SetFloat("_fpower", 0);
+                m.SetFloat("_offset", Mathf.Lerp(2, 0, amountThrough));
+                return;
+            }
+            m.SetFloat("_fpower", 0);
+            m.SetFloat("_offset", 2);
+            return;
+        }
+        else
+        {
+            float amountThrough = amount / DASH_LENGTH;
+            m.SetFloat("_fpower", Mathf.Lerp(0, 3, amountThrough));
+        }
+    }
+
     internal void MurderPlayer()
     {
         Debug.Log("hasdf");
         GameData.Instance.killPlayer();
     }
 
-    internal void attemptRest()
+    internal void AttemptRest()
     {
         if (GameState.isInBattle) return;
         if (playerStats.mana < playerStats.MaxMana || playerStats.HP < playerStats.MaxHP) {
@@ -307,57 +356,60 @@ public class CharacterMovement : SpriteMovement
 
     private bool ActivateJump()
     {
-        bool jumpingTemp = true; ;
-        if (playerStats.mana < 10) {
-            jumpingTemp = false;
-            return jumpingTemp;
+        if (playerStats.mana < 10)
+        {
+            //TODO: Play buzzing Sound
+            //TODO: Make MP bar flash
+            return false;
         }
-            switch (facedDirection)
-            {
-                case DirectionMoved.UP:
+
+        bool jumpingTemp = true;
+        switch (facedDirection)
+        {
+            case DirectionMoved.UP:
                 if (isLocationJumpOverable(characterLocation.x, characterLocation.y + 1) && IsPlayerMoveLocationPassable(characterLocation.x, characterLocation.y + 2))
                 {
 
                     SetNextLocationActual(characterLocation.x, characterLocation.y + 2);
-                  //  jumping = true;
                     tempFramesPerSecond *= jumpSpeed;
                 }
-                else jumpingTemp = false;
-                //  entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y + 1];
+                else
+                {
+                    jumpingTemp = false;
+                }
                 break;
-                case DirectionMoved.DOWN:
+            case DirectionMoved.DOWN:
                 if (isLocationJumpOverable(characterLocation.x, characterLocation.y - 1) && IsPlayerMoveLocationPassable(characterLocation.x, characterLocation.y - 2))
                 {
 
                     SetNextLocationActual(characterLocation.x, characterLocation.y - 2);
-                    //jumping = true;
+                    tempFramesPerSecond *= jumpSpeed;
+                }
+                else
+                {
+                    jumpingTemp = false;
+                }
+                break;
+            case DirectionMoved.LEFT:
+                if (isLocationJumpOverable(characterLocation.x - 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x - 2, characterLocation.y))
+                {
+
+                    SetNextLocationActual(characterLocation.x - 2, characterLocation.y);
                     tempFramesPerSecond *= jumpSpeed;
                 }
                 else jumpingTemp = false;
-                // entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y - 1];
                 break;
-                case DirectionMoved.LEFT:
-                    if (isLocationJumpOverable(characterLocation.x - 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x - 2, characterLocation.y)) {
-                        
-                        SetNextLocationActual(characterLocation.x - 2, characterLocation.y);                        
-                       // jumping = true;
-                    tempFramesPerSecond *= jumpSpeed;
-                    }
-                else jumpingTemp = false;
-                break;
-                case DirectionMoved.RIGHT:
+            case DirectionMoved.RIGHT:
                 if (isLocationJumpOverable(characterLocation.x + 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x + 2, characterLocation.y))
                 {
 
                     SetNextLocationActual(characterLocation.x + 2, characterLocation.y);
-                   // jumping = true;
                     tempFramesPerSecond *= jumpSpeed;
                 }
                 else jumpingTemp = false;
-                //  entityToCheck = mapEntityGrid.grid[characterLocation.x + 1, characterLocation.y];
                 break;
 
-            }
+        }
         if (jumpingTemp == true) { playerStats.mana -= 10; }
         return jumpingTemp;
     }
@@ -447,7 +499,9 @@ public class CharacterMovement : SpriteMovement
 
     private void ActivateShieldDash()
     {
-        if (playerStats.mana >= 5) {
+        if (playerStats.mana >= 5)
+        {
+            sRender.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             playerStats.mana -= 5;
             gameData.dashing = true;
             gameData.hasted = false;
@@ -573,25 +627,28 @@ public class CharacterMovement : SpriteMovement
         return finishedMoving;
     }
 
-    private float ContinueJumping()
+    private bool ContinueJumping()
     {
-        float finishedMoving = 0;
-        if (facedDirection == DirectionMoved.UP)
+        return Jump(tempMovementSpeed * jumpSpeed, facedDirection);
+    }
+
+    public bool Jump(float jumpMoveSpeed, DirectionMoved dir)
+    {
+        float DistanceToMove = Time.deltaTime * jumpMoveSpeed;
+        movedSoFar += DistanceToMove;
+
+        AnimateMove(dir);
+        if (movedSoFar > 2)
         {
-            finishedMoving = JumpUp(tempMovementSpeed * jumpSpeed);
+            TiePositionToGrid();
+            jumpPivot.transform.localPosition = Vector3.zero;
+            movedSoFar = 0;
+            return true;
         }
-        if (facedDirection == DirectionMoved.DOWN)
-        {
-            finishedMoving = JumpDown(tempMovementSpeed * jumpSpeed);
-        }
-        if (facedDirection == DirectionMoved.LEFT)
-        {
-            finishedMoving = JumpLeft(tempMovementSpeed * jumpSpeed);
-        }
-        if (facedDirection == DirectionMoved.RIGHT)
-        {
-            finishedMoving = JumpRight(tempMovementSpeed * jumpSpeed);
-        }
-        return finishedMoving;
+
+        jumpPivot.transform.localPosition = new Vector3(0,JUMP_HEIGHT*(-movedSoFar * movedSoFar + 2* movedSoFar), 0);
+        transform.Translate(dir.GetDirectionVector()*DistanceToMove);
+
+        return false;
     }
 }

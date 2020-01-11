@@ -7,10 +7,15 @@ using Random = UnityEngine.Random;
 
 public class SpriteMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Constants:
+    protected const float JUMP_HEIGHT = 1f;
+    protected float FLOATING_POINT_FIX = .00001f;
 
-   // public Sprite MovementSprite;
-    //public Sprite[] MovementSprites;
+    //Sprite Animation:
+    private float timeSinceLastAnimation = 0;
+    private int animationStep = 0;
+    private DirectionMoved lastAnimatedFacing = DirectionMoved.DOWN;
+
     public float MoveSpeed = 6;
     public float framesPerSecond = 30;
 
@@ -20,15 +25,11 @@ public class SpriteMovement : MonoBehaviour
     protected bool currentlyMoving = false;
     protected GameObject ThePlayer;
 
-    //private SpriteRenderer spriteR;
     private string spriteNames;
 
-    private float movedSoFar = 0;
+    protected float movedSoFar = 0;
     protected float movedSoFarX = 0;
     protected float movedSoFarY = 0;
-    private float timeSinceLastAnimation = 0;
-    private int animationStep = 0;
-    protected float jumpHeight = .25f;
     protected float jumpSpeed = 1.25f;
     protected bool jumpQued = false;
     protected bool dashQued = false;
@@ -36,9 +37,7 @@ public class SpriteMovement : MonoBehaviour
     protected float tempFramesPerSecond = 0;
     protected float tempMovementSpeed;
     protected bool jumping;
-    //protected bool dashing;
     protected GameData gameData;
-    protected float offsetFix = .00001f;
 
     protected Vector2Int characterLocation;
     protected Vector2Int characterNextLocation;
@@ -385,7 +384,7 @@ public class SpriteMovement : MonoBehaviour
         float DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
 
-        AnimateMoveDown();
+        AnimateMove(DirectionMoved.DOWN);
 
 
         if (movedSoFar > 1)
@@ -395,25 +394,45 @@ public class SpriteMovement : MonoBehaviour
         }
         Vector3 getMotion = new Vector3(0.0f, -DistanceToMove, 0.0f);
         transform.position = transform.position + getMotion;
-        //transform.position.y = (float)(int)Math.Round(transform.position.y);
         return movedSoFar;
     }
 
     public void FaceDown()
     {
-        sRender.material.SetFloat("_Frame", 0+ offsetFix);
+        sRender.material.SetFloat("_Frame", 0+ FLOATING_POINT_FIX);
         animationStep = 0;
     }
 
-    private void AnimateMoveDown()
+    protected void AnimateMove(DirectionMoved dir)
     {
+        bool changed = false;
         timeSinceLastAnimation += Time.deltaTime;
-        if (timeSinceLastAnimation >= 1 / tempFramesPerSecond) { timeSinceLastAnimation = 0;
-            animationStep += 1;
-            if (animationStep > 6) { animationStep = 1;  }
-            sRender.material.SetFloat("_Frame", animationStep+offsetFix);
+        if (timeSinceLastAnimation >= 1 / tempFramesPerSecond)
+        {
+            timeSinceLastAnimation = 0;
+            animationStep = (animationStep + 1) % GetFramesInFilmstrip();
+            changed = true;
+        }
+        if (facedDirection != lastAnimatedFacing)
+        {
+            lastAnimatedFacing = facedDirection;
+            changed = true;
+        }
+        if (changed)
+        {
+            sRender.material.SetFloat("_Frame", animationStep + FLOATING_POINT_FIX+(dir.GetHeroSpriteOffeset()*(GetFramesInFilmstrip()+GetNumberOfIdleFrames())));
         }
 
+    }
+
+    protected virtual int GetFramesInFilmstrip()
+    {
+        return 6;
+    }
+
+    protected virtual int GetNumberOfIdleFrames()
+    {
+        return 1;
     }
 
     public float MoveUp(float tempMovementSpeed)
@@ -423,7 +442,7 @@ public class SpriteMovement : MonoBehaviour
         DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
 
-        AnimateMoveUp();
+        AnimateMove(DirectionMoved.UP);
 
         if (movedSoFar > 1)
         {
@@ -438,23 +457,8 @@ public class SpriteMovement : MonoBehaviour
 
     public void FaceUp()
     {
-        sRender.material.SetFloat("_Frame", 21+offsetFix);
+        sRender.material.SetFloat("_Frame", 21+FLOATING_POINT_FIX);
         animationStep = 0;
-    }
-
-    
-    private void AnimateMoveUp()
-    {
-
-        timeSinceLastAnimation += Time.deltaTime;
-        if (timeSinceLastAnimation >= 1 / tempFramesPerSecond)
-        {
-            timeSinceLastAnimation = 0;
-            animationStep += 1;
-            if (animationStep > 6) { animationStep = 1; }
-            sRender.material.SetFloat("_Frame", animationStep+21+ offsetFix);
-        }
-      
     }
 
     public bool JumpToTarget(float jumpMoveSpeed,Vector2Int jumpDistance) {
@@ -465,7 +469,6 @@ public class SpriteMovement : MonoBehaviour
         movedSoFarY += DistanceToMoveY;
 
         //AnimateSpinning();
-
 
         if (Math.Abs(movedSoFarX) > Math.Abs(jumpDistance.x) || Math.Abs(movedSoFarY) > Math.Abs(jumpDistance.y))
         {
@@ -479,112 +482,13 @@ public class SpriteMovement : MonoBehaviour
         return false;
     }
 
-    public float JumpLeft(float jumpMoveSpeed)
-    {
-        float TotalDistance = 2;
-        float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * jumpMoveSpeed;
-        movedSoFar += DistanceToMove;
-
-        AnimateMoveLeft();
-        if (movedSoFar > 2)
-        {
-            DistanceToMove = DistanceToMove - (movedSoFar/TotalDistance - 1);
-            movedSoFar = 0;
-        }
-        Vector3 getMotion = new Vector3(-DistanceToMove, JumpHorizontalCalc(jumpHeight,movedSoFar/TotalDistance), 0.0f);
-        transform.position = transform.position + getMotion;
-        if (movedSoFar == 0) tiePositionToGrid(); 
-
-        return movedSoFar;
-    }
-
-    public float JumpRight(float jumpMoveSpeed)
-    {
-        float TotalDistance = 2;
-        float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * jumpMoveSpeed;
-        movedSoFar += DistanceToMove;
-
-        AnimateMoveRight();
-        if (movedSoFar > 2)
-        {
-            DistanceToMove = DistanceToMove - (movedSoFar / TotalDistance - 1);
-            movedSoFar = 0;
-        }
-        Vector3 getMotion = new Vector3(DistanceToMove, JumpHorizontalCalc(jumpHeight, movedSoFar / TotalDistance), 0.0f);
-        transform.position = transform.position + getMotion;
-        if (movedSoFar == 0) tiePositionToGrid();
-
-        return movedSoFar;
-    }
-
-    private float JumpVerticalCalc(float height, float aveMovedSoFar, float timedDistance)
-    {
-
-        float calcHeightChange;
-        //Debug.Log("moved so far in jump calc " + movedSoFar + " sin value " + (float)Math.Sin(movedSoFar * Math.PI));
-        //when x=0, y=0, x=1, y=1, x=2, y=0;
-        //moved so far is between 0 and 1. 0@0, 1@90, 
-        calcHeightChange = height * (float)Math.Sin(aveMovedSoFar * Math.PI);
-        //Debug.Log(movedSoFar + " actual height " + calcHeightChange);
-        if (aveMovedSoFar > .5)
-            calcHeightChange *= -.9f;
-        //timedDistance +
-        calcHeightChange += timedDistance;
-        //if (calcHeightChange < 0) calcHeightChange = 0;
-        return calcHeightChange;
-    }
-
-    public float JumpUp(float jumpMoveSpeed)
-    {
-        float TotalDistance = 2;
-        float DistanceToMove = 1;
-      
-        DistanceToMove = Time.deltaTime * jumpMoveSpeed;
-        movedSoFar += DistanceToMove;
-        AnimateMoveUp();
-        if (movedSoFar > TotalDistance)
-        {
-            DistanceToMove = DistanceToMove - (movedSoFar - TotalDistance);
-            movedSoFar = 0;
-        }
-        Vector3 getMotion = new Vector3(0.0f, JumpVerticalCalc(jumpHeight, movedSoFar / TotalDistance, DistanceToMove),  0.0f);
-
-        transform.position = transform.position + getMotion;
-        //Debug.Log(" y pos " + transform.position.y);
-        if (movedSoFar == 0) tiePositionToGrid();
-
-        return movedSoFar;
-    }
-    public float JumpDown(float jumpMoveSpeed)
-    {
-        float TotalDistance = 2;
-        float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * jumpMoveSpeed;
-        movedSoFar += DistanceToMove;
-
-        AnimateMoveDown();
-        if (movedSoFar > 2)
-        {
-            DistanceToMove = DistanceToMove - (movedSoFar / TotalDistance - 1);
-            movedSoFar = 0;
-        }
-        Vector3 getMotion = new Vector3(0.0f, - JumpVerticalCalc(jumpHeight, movedSoFar / TotalDistance, DistanceToMove),  0.0f);
-        transform.position = transform.position + getMotion;
-        if (movedSoFar == 0) tiePositionToGrid();
-
-        return movedSoFar;
-    }
-
-
     public float MoveLeft(float tempMovementSpeed)
     {
         float DistanceToMove = 1;
         DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
 
-        AnimateMoveLeft();
+        AnimateMove(DirectionMoved.LEFT);
         if (movedSoFar > 1)
         {
             DistanceToMove = DistanceToMove - (movedSoFar - 1);
@@ -598,28 +502,15 @@ public class SpriteMovement : MonoBehaviour
 
     public void FaceLeft()
     {
-        sRender.material.SetFloat("_Frame", 7+ offsetFix);
+        sRender.material.SetFloat("_Frame", 7+ FLOATING_POINT_FIX);
         animationStep = 0;
-    }
-
-    private void AnimateMoveLeft()
-    {
-        timeSinceLastAnimation += Time.deltaTime;
-        if (timeSinceLastAnimation >= 1 / tempFramesPerSecond)
-        {
-            timeSinceLastAnimation = 0;
-            animationStep += 1;
-            if (animationStep > 6) { animationStep = 1; }
-            sRender.material.SetFloat("_Frame", animationStep+7+offsetFix);
-        }
-
     }
     public float MoveRight(float tempMovementSpeed)
     {
         float DistanceToMove = 1;
         DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
-        AnimateMoveRight();
+        AnimateMove(DirectionMoved.RIGHT);
         if (movedSoFar > 1)
         {
             DistanceToMove = DistanceToMove - (movedSoFar - 1);
@@ -633,21 +524,8 @@ public class SpriteMovement : MonoBehaviour
 
     public void FaceRight()
     {
-        sRender.material.SetFloat("_Frame", 14+ offsetFix);
+        sRender.material.SetFloat("_Frame", 14+ FLOATING_POINT_FIX);
         animationStep = 0;
-    }
-
-    private void AnimateMoveRight()
-    {
-        timeSinceLastAnimation += Time.deltaTime;
-        if (timeSinceLastAnimation >= 1 / tempFramesPerSecond)
-        {
-            timeSinceLastAnimation = 0;
-            animationStep += 1;
-            if (animationStep > 6) { animationStep = 1; }
-            sRender.material.SetFloat("_Frame", animationStep+14+offsetFix);
-        }
-       
     }
 
     public void SetLookDirection()
@@ -662,24 +540,10 @@ public class SpriteMovement : MonoBehaviour
             FaceRight();
     }
 
-    protected void tiePositionToGrid()
+    protected void TiePositionToGrid()
     {
         transform.position = new Vector3(characterLocation.x + (int)mapZeroLocation.x, characterLocation.y + (int)mapZeroLocation.y, transform.position.z);
     }
-
-    private float JumpHorizontalCalc(float height, float movedSoFar)
-    {
-        float calcHeightChange;
-        //when x=0, y=0, x=1, y=1, x=2, y=0;
-        //moved so far is between 0 and 1. 0@0, 1@90, 
-        calcHeightChange = height * (float)Math.Sin(movedSoFar * Math.PI);
-        //Debug.Log(movedSoFar+" actual height "+calcHeightChange);
-        if (movedSoFar > .5)
-            calcHeightChange *= -1;
-        return calcHeightChange;
-    }
-
-    
 
     protected DirectionMoved GetChaseStep()
     {
@@ -707,7 +571,39 @@ public class SpriteMovement : MonoBehaviour
             else { return DirectionMoved.UP; }
         }
     }
+}
 
+public static class DirectionExtensions
+{
+    public static Vector3 GetDirectionVector(this SpriteMovement.DirectionMoved dir)
+    {
+        switch (dir)
+        {
+            case SpriteMovement.DirectionMoved.LEFT:
+                return Vector3.left;
+            case SpriteMovement.DirectionMoved.RIGHT:
+                return Vector3.right;
+            case SpriteMovement.DirectionMoved.UP:
+                return Vector3.up;
+            case SpriteMovement.DirectionMoved.DOWN:
+                return Vector3.down;
+        }
+        return Vector3.zero;
+    }
 
-
+    public static int GetHeroSpriteOffeset(this SpriteMovement.DirectionMoved dir)
+    {
+        switch (dir)
+        {
+            case SpriteMovement.DirectionMoved.LEFT:
+                return 1;
+            case SpriteMovement.DirectionMoved.RIGHT:
+                return 2;
+            case SpriteMovement.DirectionMoved.UP:
+                return 3;
+            case SpriteMovement.DirectionMoved.DOWN:
+                return 0;
+        }
+        return 0;
+    }
 }
