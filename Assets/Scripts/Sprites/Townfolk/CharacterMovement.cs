@@ -17,6 +17,7 @@ public class CharacterMovement : SpriteMovement
     private float dashSpeed = 4;
     private float totalDashed = 0;
     private bool continueDashing = false;
+    private Transform jumpPivot;
 
 
 
@@ -24,6 +25,7 @@ public class CharacterMovement : SpriteMovement
     {
         base.Start();
         playerStats = this.GetComponent<CharacterStats>();
+        jumpPivot = sRender.transform.parent;
 
     }
     // Update is called once per frame
@@ -85,30 +87,31 @@ public class CharacterMovement : SpriteMovement
             {
                 currentlyMoving = false;
                 windJump = false;
-                tiePositionToGrid();
+                TiePositionToGrid();
                 tempFramesPerSecond = framesPerSecond;
                 CheckWindJumpStatus();
             }
         }
     
 
-        if (!currentlyMoving && (jumping|| jumpQued)) {
-
-
-            if (jumpQued &&!jumping) {
+        if (!currentlyMoving && (jumping|| jumpQued))
+        {
+            if (jumpQued &&!jumping)
+            {
                 jumping = ActivateJump();
                 jumpQued = false;
             }
 
-            if (jumping) { 
-                float finishedMoving = ContinueJumping();
-                if (finishedMoving == 0)
+            if (jumping)
+            { 
+                bool finishedMoving = ContinueJumping();
+                if (finishedMoving)
                 {
                     currentlyMoving = false;
                     jumping = false;
                     tempFramesPerSecond = framesPerSecond;
                     //   SetCurrentLocation();
-                    tiePositionToGrid();
+                    TiePositionToGrid();
                     CheckExitStatus();
                     CheckWindJumpStatus();
                 }
@@ -130,7 +133,7 @@ public class CharacterMovement : SpriteMovement
             {
                 if (totalDashed >= DASH_LENGTH)
                 {
-                    tiePositionToGrid();
+                    TiePositionToGrid();
                     gameData.dashing = false;
                     sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                     CheckWindJumpStatus();
@@ -162,7 +165,7 @@ public class CharacterMovement : SpriteMovement
             if (finishedMoving == 0)
             {
                 currentlyMoving = false;
-                tiePositionToGrid();
+                TiePositionToGrid();
                 //  SetCurrentLocation();
                 CheckWindJumpStatus();
                 CheckExitStatus();
@@ -351,57 +354,60 @@ public class CharacterMovement : SpriteMovement
 
     private bool ActivateJump()
     {
-        bool jumpingTemp = true; ;
-        if (playerStats.mana < 10) {
-            jumpingTemp = false;
-            return jumpingTemp;
+        if (playerStats.mana < 10)
+        {
+            //TODO: Play buzzing Sound
+            //TODO: Make MP bar flash
+            return false;
         }
-            switch (facedDirection)
-            {
-                case DirectionMoved.UP:
+
+        bool jumpingTemp = true;
+        switch (facedDirection)
+        {
+            case DirectionMoved.UP:
                 if (isLocationJumpOverable(characterLocation.x, characterLocation.y + 1) && IsPlayerMoveLocationPassable(characterLocation.x, characterLocation.y + 2))
                 {
 
                     SetNextLocationActual(characterLocation.x, characterLocation.y + 2);
-                  //  jumping = true;
                     tempFramesPerSecond *= jumpSpeed;
                 }
-                else jumpingTemp = false;
-                //  entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y + 1];
+                else
+                {
+                    jumpingTemp = false;
+                }
                 break;
-                case DirectionMoved.DOWN:
+            case DirectionMoved.DOWN:
                 if (isLocationJumpOverable(characterLocation.x, characterLocation.y - 1) && IsPlayerMoveLocationPassable(characterLocation.x, characterLocation.y - 2))
                 {
 
                     SetNextLocationActual(characterLocation.x, characterLocation.y - 2);
-                    //jumping = true;
+                    tempFramesPerSecond *= jumpSpeed;
+                }
+                else
+                {
+                    jumpingTemp = false;
+                }
+                break;
+            case DirectionMoved.LEFT:
+                if (isLocationJumpOverable(characterLocation.x - 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x - 2, characterLocation.y))
+                {
+
+                    SetNextLocationActual(characterLocation.x - 2, characterLocation.y);
                     tempFramesPerSecond *= jumpSpeed;
                 }
                 else jumpingTemp = false;
-                // entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y - 1];
                 break;
-                case DirectionMoved.LEFT:
-                    if (isLocationJumpOverable(characterLocation.x - 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x - 2, characterLocation.y)) {
-                        
-                        SetNextLocationActual(characterLocation.x - 2, characterLocation.y);                        
-                       // jumping = true;
-                    tempFramesPerSecond *= jumpSpeed;
-                    }
-                else jumpingTemp = false;
-                break;
-                case DirectionMoved.RIGHT:
+            case DirectionMoved.RIGHT:
                 if (isLocationJumpOverable(characterLocation.x + 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x + 2, characterLocation.y))
                 {
 
                     SetNextLocationActual(characterLocation.x + 2, characterLocation.y);
-                   // jumping = true;
                     tempFramesPerSecond *= jumpSpeed;
                 }
                 else jumpingTemp = false;
-                //  entityToCheck = mapEntityGrid.grid[characterLocation.x + 1, characterLocation.y];
                 break;
 
-            }
+        }
         if (jumpingTemp == true) { playerStats.mana -= 10; }
         return jumpingTemp;
     }
@@ -621,25 +627,28 @@ public class CharacterMovement : SpriteMovement
         return finishedMoving;
     }
 
-    private float ContinueJumping()
+    private bool ContinueJumping()
     {
-        float finishedMoving = 0;
-        if (facedDirection == DirectionMoved.UP)
+        return Jump(tempMovementSpeed * jumpSpeed, facedDirection);
+    }
+
+    public bool Jump(float jumpMoveSpeed, DirectionMoved dir)
+    {
+        float DistanceToMove = Time.deltaTime * jumpMoveSpeed;
+        movedSoFar += DistanceToMove;
+
+        AnimateMove(dir);
+        if (movedSoFar > 2)
         {
-            finishedMoving = JumpUp(tempMovementSpeed * jumpSpeed);
+            TiePositionToGrid();
+            jumpPivot.transform.localPosition = Vector3.zero;
+            movedSoFar = 0;
+            return true;
         }
-        if (facedDirection == DirectionMoved.DOWN)
-        {
-            finishedMoving = JumpDown(tempMovementSpeed * jumpSpeed);
-        }
-        if (facedDirection == DirectionMoved.LEFT)
-        {
-            finishedMoving = JumpLeft(tempMovementSpeed * jumpSpeed);
-        }
-        if (facedDirection == DirectionMoved.RIGHT)
-        {
-            finishedMoving = JumpRight(tempMovementSpeed * jumpSpeed);
-        }
-        return finishedMoving;
+
+        jumpPivot.transform.localPosition = new Vector3(0,JUMP_HEIGHT*(-movedSoFar * movedSoFar + 2* movedSoFar), 0);
+        transform.Translate(dir.GetDirectionVector()*DistanceToMove);
+
+        return false;
     }
 }
