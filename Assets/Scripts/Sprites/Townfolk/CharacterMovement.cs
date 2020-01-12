@@ -11,7 +11,7 @@ public class CharacterMovement : SpriteMovement
     public CharacterStats playerStats;
     private Vector2Int jumpTarget;
     private float windJumpSpeed=0;
-    private bool windJump;
+    public static bool windJump;
     private float hasteSpeed = 2;
     private float stealthspeed = .75f;
     private float dashSpeed = 4;
