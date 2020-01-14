@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class SwitchEntityData : EntityData
 {
-
     private Vector2Int SwitchLocation;
     private GameObject MapGrid;
-    private Vector2 MapZeroLocation;
+    private Vector2 mapZeroLocation;
     public GameObject[] TiedEntities;
+    public float[] times;
+    public SpriteMovement.DirectionMoved[] particlePath;
+    public SwitchTrailMover mover;
     protected bool isAnimating;
     public float AnimationSpeed=6;
     private float timeSinceLastFrame = 0;
@@ -39,9 +41,9 @@ public class SwitchEntityData : EntityData
     private void InitializeSpriteLocation()
     {
         MapGrid = GameObject.Find("Grid");
-        MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
-        SwitchLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
-        SwitchLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
+        mapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
+        SwitchLocation.x = (int)Math.Round(this.transform.position.x) - (int)mapZeroLocation.x;
+        SwitchLocation.y = (int)Math.Round(this.transform.position.y) - (int)mapZeroLocation.y;
         MapGrid.GetComponent<EntityGrid>().grid[SwitchLocation.x, SwitchLocation.y] = this.gameObject;
 
     }
@@ -64,14 +66,15 @@ public class SwitchEntityData : EntityData
     {
         if (activeSwitch)
         {
-            foreach (GameObject tiedEntity in TiedEntities)
+            for (int x = 0; x < TiedEntities.Length; x++)
             {
+                GameObject tiedEntity = TiedEntities[x];
+                float time = (times.Length > x ? times[x]:0);
                 SpikeController spikeControlled = tiedEntity.GetComponent<SpikeController>();
                 BridgeController bridgeControlled = tiedEntity.GetComponent<BridgeController>();
                 if (spikeControlled != null)
                 {
-                    spikeControlled.isPassable = true;
-                    spikeControlled.LowerSpikeAnimation();
+                    spikeControlled.OpenAfterTime(time);
                 }
                 if (bridgeControlled != null)
                 {
@@ -83,6 +86,10 @@ public class SwitchEntityData : EntityData
             }
             activeSwitch = false;
             SwitchAnimation();
+            SwitchTrailMover trail = GameObject.Instantiate<SwitchTrailMover>(mover);
+            trail.gameObject.transform.position = new Vector3(Mathf.RoundToInt(sRender.transform.position.x*2f)/2f, Mathf.RoundToInt(sRender.transform.position.y * 2f) / 2f,-.001f); ;
+            trail.InitStart();
+            trail.path = particlePath;
         }
         else
         {

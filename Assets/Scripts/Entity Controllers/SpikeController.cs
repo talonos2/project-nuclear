@@ -16,6 +16,8 @@ public class SpikeController : DoodadData
     protected bool animateRise = false;
     protected int frameToSet = 0;
 
+    private float timeUntilOpen = 0;
+
 
     // Start is called before the first frame update
     new void Start()
@@ -26,7 +28,27 @@ public class SpikeController : DoodadData
         this.sRender.material = new Material(this.sRender.material);
     }
 
+    protected void Update()
+    {
+        Debug.Log(timeUntilOpen);
+        if (timeUntilOpen != 0)
+        {
+            timeUntilOpen -= Time.deltaTime;
+            Debug.Log(timeUntilOpen);
+            if (timeUntilOpen <=0)
+            {
+                timeUntilOpen = 0;
+                Open();
+            }
+        }
+    }
 
+    private void Open()
+    {
+        Debug.Log("OPEN!");
+        this.isPassable = true;
+        this.LowerSpikeAnimation();
+    }
 
 
     private void InitializeSpriteLocation()
@@ -39,6 +61,17 @@ public class SpikeController : DoodadData
 
     }
 
+    internal void OpenAfterTime(float time)
+    {
+        if (time == 0)
+        {
+            Open();
+        }
+        else
+        {
+            timeUntilOpen = time;
+        }
+    }
 
     public void LowerSpikeAnimation() {
         isAnimating = true;

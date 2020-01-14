@@ -9,8 +9,9 @@ public class SpikeEntityData : SpikeController
     private int totalFrames = 8;
     private float offsetFix = .00001f;
 
-    void Update()
+    new void Update()
     {
+        base.Update();
         if (!isAnimating|| GameState.isInBattle || GameState.fullPause) { return; }
         timeSinceLastFrame += Time.deltaTime;
         if (timeSinceLastFrame >= 1 / AnimationSpeed)
