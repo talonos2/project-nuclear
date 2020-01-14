@@ -214,26 +214,3 @@ public class ChooseItemUI : MonoBehaviour
 }
 
 
-
-/*
-        if (itemTypeCheck.Weapon)
-        {
-            if (playerData.weapon != null) GameData.Instance.townWeapons.Add(playerData.weapon);
-            playerData.weapon = rolledItem;
-            playerData.setWeaponStats(rolledItem);
-        }
-        else if (itemTypeCheck.Armor)
-        {
-            if (playerData.armor != null) GameData.Instance.townArmor.Add(playerData.armor);
-            playerData.armor = rolledItem;
-            playerData.setArmorStats(rolledItem);
-        }
-        else if (itemTypeCheck.Accessory)
-        {
-            if (playerData.accessory != null) GameData.Instance.townAccessories.Add(playerData.accessory);
-            playerData.accessory = rolledItem;
-            playerData.setAccessoryStats(rolledItem);
-        }
-        */
-
-

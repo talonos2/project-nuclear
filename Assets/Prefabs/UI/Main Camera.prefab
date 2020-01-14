@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2313752508565179801}
   - component: {fileID: 2313752508565179803}
   - component: {fileID: 2313752508565179802}
+  - component: {fileID: 4379459140147681586}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -84,6 +85,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2313752508565179800}
   m_Enabled: 1
+--- !u!114 &4379459140147681586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2313752508565179800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f188e8eee5cf784aa031eb1dc0a0960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2893497968402212384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,8 +164,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8937281920251364846, guid: 630c8b0b953ea6f4a82e1e7de889b35d,
+    - target: {fileID: 3834032445214917815, guid: 630c8b0b953ea6f4a82e1e7de889b35d,
         type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415709809, guid: 630c8b0b953ea6f4a82e1e7de889b35d, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
@@ -161,7 +178,7 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6633321377595214524, guid: 630c8b0b953ea6f4a82e1e7de889b35d,
+    - target: {fileID: 8937281920251364846, guid: 630c8b0b953ea6f4a82e1e7de889b35d,
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -171,12 +188,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3834032445214917815, guid: 630c8b0b953ea6f4a82e1e7de889b35d,
+    - target: {fileID: 6633321377595214524, guid: 630c8b0b953ea6f4a82e1e7de889b35d,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1415709809, guid: 630c8b0b953ea6f4a82e1e7de889b35d, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}

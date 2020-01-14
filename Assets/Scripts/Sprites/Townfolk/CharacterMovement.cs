@@ -11,13 +11,14 @@ public class CharacterMovement : SpriteMovement
     public CharacterStats playerStats;
     private Vector2Int jumpTarget;
     private float windJumpSpeed=0;
-    private bool windJump;
+    public static bool windJump;
     private float hasteSpeed = 2;
     private float stealthspeed = .75f;
     private float dashSpeed = 4;
     private float totalDashed = 0;
     private bool continueDashing = false;
     private Transform jumpPivot;
+
 
 
 
@@ -128,6 +129,8 @@ public class CharacterMovement : SpriteMovement
                 SetShieldGraphic(waitTimer, true);
                 return;
             }
+            tempMovementSpeed = MoveSpeed * dashSpeed;
+            tempFramesPerSecond = framesPerSecond * dashSpeed;
             totalDashed += Time.deltaTime * tempMovementSpeed;
             if (!continueDashing)
             {
@@ -504,8 +507,6 @@ public class CharacterMovement : SpriteMovement
             gameData.dashing = true;
             gameData.hasted = false;
             gameData.stealthed = false;
-            tempMovementSpeed = MoveSpeed * dashSpeed;
-            tempFramesPerSecond = framesPerSecond * dashSpeed;
             waitTimer = .4f;
             totalDashed = 0;
         }

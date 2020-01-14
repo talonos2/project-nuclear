@@ -36,7 +36,7 @@ public class SpriteMovement : MonoBehaviour
     protected float queDistance = .75f;
     protected float tempFramesPerSecond = 0;
     protected float tempMovementSpeed;
-    protected bool jumping;
+    public static bool jumping;
     protected GameData gameData;
 
     protected Vector2Int characterLocation;
