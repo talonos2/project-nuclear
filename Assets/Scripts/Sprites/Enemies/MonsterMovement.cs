@@ -195,7 +195,7 @@ public class MonsterMovement : SpriteMovement
             if (finishedMoving == 0)
             {
                 currentlyMoving = false;
-                tiePositionToGrid();
+                TiePositionToGrid();
             }
         }
 
