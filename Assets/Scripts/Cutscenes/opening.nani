@@ -2,85 +2,72 @@
 
 scene= town
 
-Place camera x,y
-Place douglass faceleft x,y
-Place McDermit faceright x,y
 
-StepLeft Douglass
-StepLeft Douglass
-StepLeft Douglass
-StepLeft Douglass
-
-@char Douglass
-I hear tell that a dangerous cave has opened in this town.
-@char McDermit
-Yes, each day one of us is sacraficed to the dread-
-@char Douglass
-Excellent!  Take me to your ruler and we will discuss matters.
-@char McDermit
-You mean, the mayor?
+@fwspawnvfx x:15 y:-20 z:0 Vfx:PawnNorma
+@fwturnpawn n:PawnNorma d:e
+@fwspawnvfx x:16 y:-20 z:0 Vfx:PawnLogos
+@fwturnpawn n:Pawnlogos d:w
 
 
-scene = townhall
-Place camera x,y
-Place Douglass faceleft x,y
-Place Wilson faceright x,y
-Place Sara faceleft x,y
-Place Patrick facedown x,y
-Place Logos faceleft x,y
 
 
-@char Douglass
-So, just point me towards your weapon shop and I'll get started!
-@char Wilson
-We, don't really have a weapons shop...
-@char Douglass
-Where do the farmers of this town go when they need broadswords or full plate armor?
-@char Wilson
-Where did you come from again?
-@char Patrick
-I say we let him handle it.  The rest of us can evacuate!
-@char Wilson
-And then what? We can abandon the town, but what if the curse spreads to the whole world?
-@char Douglass
-Fear not citizens!  I will vanquis the evil!
-@char Mara
-But so many have gone in, and none have returned!
-@char Douglass
-Sure, but were they awesome?
+@char Norma
+Norma: How much longer do we have now?
+@hidechars time:0
 
-wait x milliseconds
-
-@char Mara
-Well, I kinda liked Jeffrey.
-@char Douglass
-I will rescue him and all the others.  Here, take this.
-
-Place chest facedown x,y
-
-When I find loot in the cave I will place it in my bag and it will be transported to this chest.
-Then you can take the goods to the weapon shop.
-
-@char Wilson
-Again, no weapons shop.
-@char Douglass
-Then take them to whichever enterprising citizen answers the call to be an arms dealer.
 @char Logos
-The curse strikes randomly. You cannot expect to-
+Logos: Maybe a month.
+@hidechars time:0
 
-Animate Curse Douglass
+@char Norma
+Norma: Maybe? Can't you be more exact?
+@hidechars time:0
+
+@wait 1
+
+@char Norma
+Norma: We only lose one person a day.  Can't we just count how many of us are left?
+@hidechars time:0
+
+@char Logos
+Logos: We only lose one to the cave. Others we lose to fear.
+Logos: Most have already fled, many may follow.
+@hidechars time:0
+
+
+@fwturnpawn n:PawnNorma d:s
+@char Norma
+Norma: So, less than a month then.
+@hidechars time:0
+
+@char Logos
+Logos: We only need to buy enough time for someone to answer our call for aid.
+@hidechars time:0
+
+@fwturnpawn n:PawnNorma d:e
+@char Norma
+Norma: And if nobody does?
+@hidechars time:0
+
+
+@fwturnpawn n:PawnLogos d:e
+@wait 1
+@fwturnpawn n:PawnLogos d:w
+
+@char Logos
+Logos: You have felt the ground shake.
+Logos: Terrible things happen if places like these do not recieve the sacrafices they demand.
+@hidechars time:0
+
+
+
+
+
 
 @char Douglass
-To glory!
-(various steps taking him to door)
-Remove Douglass
+Douglass: I understand you have a problem.
+@hidechars time:0
 
-@char Wilson
-At least he will buy us another day...
-@char Logos
-Maybe, but let us watch his progress with my scrying (device).
-I had not wanted to share before because what I saw was... disheartening.
-But now, seeing may just give us hope.
 
 
 @exit
