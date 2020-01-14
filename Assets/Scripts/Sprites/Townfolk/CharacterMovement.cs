@@ -21,6 +21,7 @@ public class CharacterMovement : SpriteMovement
 
 
 
+
     new void Start()
     {
         base.Start();
