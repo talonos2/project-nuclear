@@ -33,4 +33,9 @@ public class DoodadData : MonoBehaviour
         DoodadLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
         MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = this.gameObject;
     }
+
+    public Vector2Int getLocation()
+    {
+        return DoodadLocation;
+    }
 }

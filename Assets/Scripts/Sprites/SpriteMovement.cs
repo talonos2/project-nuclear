@@ -376,8 +376,6 @@ public class SpriteMovement : MonoBehaviour
         return false;
     }
 
-    // Update is called once per frame
-
     public float MoveDown(float tempMovementSpeed)
     {
 
@@ -605,5 +603,11 @@ public static class DirectionExtensions
                 return 0;
         }
         return 0;
+    }
+
+
+    public static int GiveMeOne(this Vector3 foo)
+    {
+        return 1;
     }
 }

@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fountain Material
-  m_Shader: {fileID: -6465566751694194690, guid: 6bdfe66b7a0bd5848b601b4fba9201b8,
+  m_Shader: {fileID: -6465566751694194690, guid: 555813faeadffd448b8a156dea3329da,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -53,6 +53,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 8cddad28dd0ecea4eb5243ea58260fb6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Glow:
+        m_Texture: {fileID: 2800000, guid: fd5843f93774f7542a537380b1f46877, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: f1b511f83b665a34a8b9fe5b9cdaeb22, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -74,6 +78,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_610392E: 10
+    - Vector1_83B8612A: 3
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -85,6 +91,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HasEmissive: 1
+    - _IsSmoke: 0
+    - _IsSwizzled: 0
     - _LightRad: 1
     - _Metallic: 0
     - _OcclusionStrength: 1

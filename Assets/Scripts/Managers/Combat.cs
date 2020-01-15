@@ -198,7 +198,6 @@ public class Combat : MonoBehaviour
 
         if (Input.GetButtonDown("Attack/Defend") && buttonPressedTime > .5f)
         {
-            Debug.Log("E-A: " + (enemyDamagePoint - amountThrough) + ", P-A: " + (playerDamagePoint - amountThrough));
             buttonPressedTime = 0;
             if (playerDamagePoint - amountThrough < SWAY_TOLERANCE / 2.0f && playerDamagePoint - amountThrough > SWAY_TOLERANCE / -2.0f)
             {
