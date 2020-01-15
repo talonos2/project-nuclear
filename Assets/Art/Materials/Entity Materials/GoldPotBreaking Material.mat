@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GoldPotBreaking Material
-  m_Shader: {fileID: -6465566751694194690, guid: 5ebdd28ea93acfe4880cfc259dd10ae7,
+  m_Shader: {fileID: -6465566751694194690, guid: 555813faeadffd448b8a156dea3329da,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -52,6 +52,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 9ed290b4db3bfd64a863191e9659af80, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Glow:
+        m_Texture: {fileID: 2800000, guid: fd5843f93774f7542a537380b1f46877, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 9ed290b4db3bfd64a863191e9659af80, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -74,6 +78,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - PixelSnap: 0
+    - Vector1_610392E: 1
+    - Vector1_83B8612A: 5
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -83,6 +89,9 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _HasEmissive: 0
+    - _IsSmoke: 0
+    - _IsSwizzled: 0
     - _LightRad: 1
     - _Metallic: 0
     - _Mode: 0
