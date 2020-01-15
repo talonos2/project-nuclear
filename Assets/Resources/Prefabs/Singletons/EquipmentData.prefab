@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 69
+  m_RootOrder: 70
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7173683149998384309
 MonoBehaviour:
@@ -50,6 +50,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (All elemental damage +25%)
   effectType: 5
   effectType1: 6
   effectType2: 7
@@ -294,7 +295,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 82
+  m_RootOrder: 83
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4607818815132232387
 MonoBehaviour:
@@ -308,14 +309,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentDescription: 'Rare: A mantle passed down from warrior-king to warrior-king.
-    (HP, MP + 100, Atk +12, Def +6)'
+  equipmentDescription: A mantle passed down from warrior-king to warrior-king. (HP,
+    MP + 100, Atk +12, Def +6)
   floorFoundOn: 16
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (HP, MP +100, Atk +12, Def +6)
   effectType: 1
   effectType1: 2
   effectType2: 4
@@ -355,7 +357,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 79
+  m_RootOrder: 80
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2837938200304948787
 MonoBehaviour:
@@ -377,6 +379,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Fire damage dealt +50%, +100 Mana)
   effectType: 7
   effectType1: 2
   effectType2: 0
@@ -519,7 +522,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 65
+  m_RootOrder: 66
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &213340328023190727
 MonoBehaviour:
@@ -541,6 +544,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Heals 2% max mana/hit)
   effectType: 10
   effectType1: 0
   effectType2: 0
@@ -632,7 +636,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 80
+  m_RootOrder: 81
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1636695204303253571
 MonoBehaviour:
@@ -647,13 +651,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'A cursed mana stone put to good use: drains mana and gives
-    it to the wielder. (Heals 3% max mana/hit, +100 Mana))'
+    it to the wielder. (Heals 3% max mana/hit, +100 Mana)'
   floorFoundOn: 14
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Heals 3% max mana/hit, +100 Mana)
   effectType: 10
   effectType1: 2
   effectType2: 0
@@ -797,7 +802,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 77
+  m_RootOrder: 78
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5906874613007914950
 MonoBehaviour:
@@ -819,6 +824,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (+50% EXP, +8 Atk, +4 Def)
   effectType: 12
   effectType1: 4
   effectType2: 3
@@ -1115,7 +1121,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 66
+  m_RootOrder: 67
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4407981015487462181
 MonoBehaviour:
@@ -1130,19 +1136,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Guides the wearer's hand, helping them strike vulnerable places.
-    (10% chance of x2.5 damage)
+    (5% chance of x2.5 damage)
   floorFoundOn: 16
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (5% chance of x2.5 damage)
   effectType: 11
   effectType1: 0
   effectType2: 0
   effectType3: 0
   effectType4: 0
-  effectStrength: 10
+  effectStrength: 5
   effectStrength1: 0
   effectStrength2: 0
   effectStrength3: 0
@@ -1176,7 +1183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 78
+  m_RootOrder: 79
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4257670737385960018
 MonoBehaviour:
@@ -1191,13 +1198,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: This dreaded charm absorbs the life essence of those near
-    the wearer. (Heals 3% max HP/hit)
+    the wearer. (Heals 3% max HP/hit, +100 HP)
   floorFoundOn: 12
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Heals 3% max HP/hit, +100 HP)
   effectType: 9
   effectType1: 1
   effectType2: 0
@@ -1288,7 +1296,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 85
+  m_RootOrder: 86
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1091799834789747103
 MonoBehaviour:
@@ -1302,14 +1310,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentDescription: 'Rare: Enchanted to make heroes out of commoners. (Atk, Def
-    +10, 10% damage, +50% Exp)'
+  equipmentDescription: 'Rare: Enchanted to make heroes out of commoners. (+10 Atk,
+    +10 Def, +10% Damage Dealt, +50% Exp)'
   floorFoundOn: 19
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (+10 Atk, +10 Def, +10% Damage Dealt, +50% Exp)
   effectType: 4
   effectType1: 3
   effectType2: 12
@@ -1349,7 +1358,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 58
+  m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6762954293388130018
 MonoBehaviour:
@@ -1370,6 +1379,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Def +3)
   effectType: 3
   effectType1: 0
   effectType2: 0
@@ -1409,7 +1419,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 71
+  m_RootOrder: 72
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &318960888168598803
 MonoBehaviour:
@@ -1431,6 +1441,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Ice damage dealt +50%, +50 Mana)
   effectType: 5
   effectType1: 2
   effectType2: 0
@@ -1674,7 +1685,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 62
+  m_RootOrder: 63
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3676118265154647401
 MonoBehaviour:
@@ -1696,6 +1707,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (+50% EXP)
   effectType: 12
   effectType1: 0
   effectType2: 0
@@ -1735,7 +1747,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 55
+  m_RootOrder: 56
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1276123198303584384
 MonoBehaviour:
@@ -1757,6 +1769,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (HP +50)
   effectType: 1
   effectType1: 0
   effectType2: 0
@@ -1796,7 +1809,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 61
+  m_RootOrder: 62
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4716694804900252921
 MonoBehaviour:
@@ -1811,19 +1824,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: This translucent cloak obscures your form, making you harder
-    to hit. (20% chance to avoid all damage)
+    to hit. (15% chance to avoid all damage)
   floorFoundOn: 10
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (15% chance to avoid all damage)
   effectType: 13
   effectType1: 0
   effectType2: 0
   effectType3: 0
   effectType4: 0
-  effectStrength: 20
+  effectStrength: 15
   effectStrength1: 0
   effectStrength2: 0
   effectStrength3: 0
@@ -1857,7 +1871,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 70
+  m_RootOrder: 71
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1157950112658215901
 MonoBehaviour:
@@ -1879,6 +1893,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (HP +100)
   effectType: 1
   effectType1: 0
   effectType2: 0
@@ -2124,7 +2139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 84
+  m_RootOrder: 85
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6320297407347995285
 MonoBehaviour:
@@ -2146,12 +2161,13 @@ MonoBehaviour:
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (All elemental damage +50%, +200 mana)
   effectType: 2
   effectType1: 5
   effectType2: 6
   effectType3: 7
   effectType4: 8
-  effectStrength: 250
+  effectStrength: 200
   effectStrength1: 50
   effectStrength2: 50
   effectStrength3: 50
@@ -2596,7 +2612,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 64
+  m_RootOrder: 65
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7255400255453365456
 MonoBehaviour:
@@ -2618,6 +2634,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Fire damage dealt +25%)
   effectType: 7
   effectType1: 0
   effectType2: 0
@@ -2657,7 +2674,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 60
+  m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5584657135479820714
 MonoBehaviour:
@@ -2679,6 +2696,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Earth damage dealt +25%)
   effectType: 6
   effectType1: 0
   effectType2: 0
@@ -2770,7 +2788,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 67
+  m_RootOrder: 68
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8846537732981315290
 MonoBehaviour:
@@ -2792,6 +2810,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Electrical damage dealt +25%)
   effectType: 8
   effectType1: 0
   effectType2: 0
@@ -2883,7 +2902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 75
+  m_RootOrder: 76
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2531669130222270990
 MonoBehaviour:
@@ -2905,6 +2924,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Earth damage dealt + 50%, +75 Mana)
   effectType: 6
   effectType1: 2
   effectType2: 0
@@ -2944,7 +2964,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 63
+  m_RootOrder: 64
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3344976989185780366
 MonoBehaviour:
@@ -2966,6 +2986,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: Heals 2% max HP/hit
   effectType: 9
   effectType1: 0
   effectType2: 0
@@ -3005,7 +3026,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 72
+  m_RootOrder: 73
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3662665719488269341
 MonoBehaviour:
@@ -3027,6 +3048,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (MP +100)
   effectType: 2
   effectType1: 0
   effectType2: 0
@@ -3066,7 +3088,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 56
+  m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4379561525540785179
 MonoBehaviour:
@@ -3087,6 +3109,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Ice damage dealt +25%)
   effectType: 5
   effectType1: 0
   effectType2: 0
@@ -3228,7 +3251,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 57
+  m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8248247642065337031
 MonoBehaviour:
@@ -3249,6 +3272,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (MP +50)
   effectType: 2
   effectType1: 0
   effectType2: 0
@@ -3339,7 +3363,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 68
+  m_RootOrder: 69
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2879414225268975710
 MonoBehaviour:
@@ -3360,6 +3384,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (+5% Damage)
   effectType: 14
   effectType1: 0
   effectType2: 0
@@ -3627,6 +3652,67 @@ MonoBehaviour:
   Rare: 0
   itemIcon: {fileID: 0}
   addDefense: 24
+--- !u!1 &6944858394816521650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2820756056420554964}
+  - component: {fileID: 6686728233708644856}
+  m_Layer: 0
+  m_Name: No Accessory Equipped
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2820756056420554964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944858394816521650}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475618078259157552}
+  m_RootOrder: 55
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6686728233708644856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944858394816521650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDescription: No Accessory Equipped
+  floorFoundOn: 0
+  Weapon: 0
+  Armor: 0
+  Accessory: 1
+  Rare: 0
+  itemIcon: {fileID: 21300000, guid: 53526e41b1d34064e8156eb424b47b47, type: 3}
+  equipmentStatDescription: (No Accessory Equipped)
+  effectType: 0
+  effectType1: 0
+  effectType2: 0
+  effectType3: 0
+  effectType4: 0
+  effectStrength: 0
+  effectStrength1: 0
+  effectStrength2: 0
+  effectStrength3: 0
+  effectStrength4: 0
 --- !u!1 &6949103964160091721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,7 +3742,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 73
+  m_RootOrder: 74
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6764112217031440101
 MonoBehaviour:
@@ -3677,6 +3763,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Def +5)
   effectType: 3
   effectType1: 0
   effectType2: 0
@@ -3974,6 +4061,7 @@ Transform:
   - {fileID: 1838282297755702309}
   - {fileID: 5447294010046223900}
   - {fileID: 2999283159729417423}
+  - {fileID: 2820756056420554964}
   - {fileID: 8267854555490038526}
   - {fileID: 7538832316739657211}
   - {fileID: 7152305100268609257}
@@ -4100,7 +4188,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 83
+  m_RootOrder: 84
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8341214743692483855
 MonoBehaviour:
@@ -4114,14 +4202,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentDescription: 'Rare: A stone that magically controls electrical currents.
-    (Electrical damage dealt +50%, +150 Mana)'
+  equipmentDescription: A stone that magically controls electrical currents. (Electrical
+    damage dealt +50%, +150 Mana)
   floorFoundOn: 17
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Electrical damage dealt +50%, +150 Mana)
   effectType: 8
   effectType1: 2
   effectType2: 0
@@ -4264,7 +4353,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 76
+  m_RootOrder: 77
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7290966908771578795
 MonoBehaviour:
@@ -4279,19 +4368,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: This translucent cloak obscures your form, making you harder
-    to hit. (25% chance to avoid all damage, +100 HP)
+    to hit. (20% chance to avoid all damage, +100 HP)
   floorFoundOn: 10
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (20% chance to avoid all damage, +100 HP)
   effectType: 13
   effectType1: 1
   effectType2: 0
   effectType3: 0
   effectType4: 0
-  effectStrength: 25
+  effectStrength: 20
   effectStrength1: 100
   effectStrength2: 0
   effectStrength3: 0
@@ -4479,7 +4569,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 74
+  m_RootOrder: 75
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6549925724926550818
 MonoBehaviour:
@@ -4500,6 +4590,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Atk +10)
   effectType: 4
   effectType1: 0
   effectType2: 0
@@ -4539,7 +4630,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 59
+  m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2360840783254206083
 MonoBehaviour:
@@ -4560,6 +4651,7 @@ MonoBehaviour:
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (Atk +6)
   effectType: 4
   effectType1: 0
   effectType2: 0
@@ -4752,7 +4844,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475618078259157552}
-  m_RootOrder: 81
+  m_RootOrder: 82
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3036931024992025625
 MonoBehaviour:
@@ -4767,19 +4859,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: Guides the wearer's hand, helping them strike vulnerable places.
-    (15% chance of x2.5 damage, Atk +8)
+    (10% chance of x2.5 damage, Atk +8)
   floorFoundOn: 15
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 0}
+  equipmentStatDescription: (10% chance of x2.5 damage, Atk +8)
   effectType: 11
   effectType1: 4
   effectType2: 0
   effectType3: 0
   effectType4: 0
-  effectStrength: 15
+  effectStrength: 10
   effectStrength1: 8
   effectStrength2: 0
   effectStrength3: 0
