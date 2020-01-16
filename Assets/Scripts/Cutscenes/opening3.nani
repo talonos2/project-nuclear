@@ -1,0 +1,63 @@
+
+;------------------------outside cave
+
+
+
+
+@fwspawnvfx x:9 y:16 z:0 Vfx:PawnDouglass
+@fwturnpawn n:PawnDouglass d:w
+
+@fwspawnvfx x:7 y:16 z:0 Vfx:PawnLogos
+@fwturnpawn n:PawnLogos d:e
+
+@fwspawnvfx x:7 y:20 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:s
+
+@fwspawnvfx x:9 y:21 z:0 Vfx:PawnJezerine
+@fwturnpawn n:PawnJezerine d:s
+
+
+
+@char Logos
+Logos: And what has happened to those other cities?
+@hidechars time:0
+
+@char Douglass
+Douglass: They didn't become craters. That's good enough for me.
+@hidechars time:0
+
+
+
+
+@char Douglass
+Douglass: About time.
+@hidechars time:0
+
+
+@fwmovepawn n:PawnDouglass d:n
+@fwmovepawn n:PawnDouglass d:n
+@fwmovepawn n:PawnDouglass d:n
+@fwmovepawn n:PawnDouglass d:n
+@fwmovepawn n:PawnDouglass d:e
+@fwturnpawn n:PawnDouglass d:w
+
+@char Douglass
+Douglass: Hey, don't mess with this chest.
+Douglass: It's where my magic ring sends the stuff I loot.
+@hidechars time:0
+
+@fwmovepawn n:PawnDouglass d:e
+@fwmovepawn n:PawnDouglass d:e
+@fwdeletego n:PawnDouglass
+
+@char Jezerine
+Jezerine: Now what?
+@hidechars time:0
+
+@char Logos
+Logos: That ring he carries...  It has a peculiar aura.<BR>With it as a focus we may be able to watch his journey. Come with me.
+@hidechars time:0
+
+
+
+@exit
