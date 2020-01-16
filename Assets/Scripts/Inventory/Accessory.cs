@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Accessory : InventoryItem
 {
+    public string equipmentStatDescription = "StatsPlease";
     public EffectType effectType;
     public EffectType effectType1;
     public EffectType effectType2;
