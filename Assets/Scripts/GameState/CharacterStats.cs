@@ -215,8 +215,10 @@ public class CharacterStats : Stats
             weapon = itemData.getRunTwoWeapon();
         }
         armor = itemData.getDefaultArmor();
+        accessory = itemData.getEmptyAccessory();
         setWeaponStats(weapon);
         setArmorStats(armor);
+        setAccessoryStats(accessory);
     }
 
     internal void AddExp(int expGiven)

@@ -11,6 +11,7 @@ public class EquipmentData : MonoBehaviour
     private GameObject runOneWeapon;
     private GameObject runTwoWeapon;
     private GameObject defaultArmor;
+    private GameObject noAccessoryItem;
 
     private bool EquipmentListCreated=false;
     void Start() {
@@ -82,6 +83,9 @@ public class EquipmentData : MonoBehaviour
                     {
                         defaultArmor = item.gameObject;
                     }
+                    if (item.gameObject.name == "No Accessory Equipped") {
+                        noAccessoryItem = item.gameObject;
+                    }
                     if (ItemToAdd.Rare) { RareItemList[Convert.ToInt32(floor)].EquipmentOnFloor.Add(item.gameObject); }
                     else { CommonItemList[Convert.ToInt32(floor)].EquipmentOnFloor.Add(item.gameObject); }
                 }
@@ -90,6 +94,10 @@ public class EquipmentData : MonoBehaviour
 
     }
 
+    internal GameObject getEmptyAccessory()
+    {
+        return noAccessoryItem;
+    }
 }
 
 public class EquipmentDataStorage {
