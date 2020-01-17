@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,9 @@ public class ItemHolderUI : MonoBehaviour
         itemSpriteHolder.GetComponent<Image>().sprite = ItemDetails.itemIcon;
         itemText.text = ItemDetails.name;
     }
+
+
+
     public GameObject GetItem() {
         return itemStored;
     }

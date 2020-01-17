@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,4 +13,5 @@ public class InventoryItem : MonoBehaviour
     public bool Accessory;
     public bool Rare;
     public Sprite itemIcon;
+
 }

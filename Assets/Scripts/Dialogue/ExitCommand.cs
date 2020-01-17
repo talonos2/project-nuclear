@@ -1,6 +1,7 @@
 ﻿using Naninovel;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CommandAlias("exit")]
 public class ExitDialogue : Naninovel.Commands.Command
@@ -10,8 +11,12 @@ public class ExitDialogue : Naninovel.Commands.Command
         await Engine.GetService<StateManager>().ResetStateAsync();
         GameState.isInBattle = false;
         //Assuming that this task is to exit cutscenes only:
-        if (GameData.Instance.isCutscene)
+        if (GameData.Instance.isCutscene && GameData.Instance.RunNumber >= 2)
         {
+            GameData.Instance.isCutscene = false;
+            SceneManager.LoadScene("ChooseItemScreen");
+        }
+        if (GameData.Instance.isCutscene && GameData.Instance.RunNumber == 1) {
             GameData.Instance.isCutscene = false;
             StartDungeonRun.StartRun();
         }

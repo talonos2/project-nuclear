@@ -6,13 +6,13 @@ using UnityEngine;
 public class CharacterStats : Stats
 {
     public int HealthCrystalsGained = 0;
-    private int HealthCrystalBuff = 0;
+    internal int HealthCrystalBuff = 0;
     public int ManaCrystalsGained = 0;
-    private int ManaCrystalBuff = 0;
+    internal int ManaCrystalBuff = 0;
     public int AttackCrystalsGained = 0;
-    private int AttackCrystalBuff = 0;
+    internal int AttackCrystalBuff = 0;
     public int defenseCrystalsGained = 0;
-    private int defenseCrystalBuff = 0;
+    internal int defenseCrystalBuff = 0;
 
     private int HealthPerLevel;
     private int ManaPerLevel;
