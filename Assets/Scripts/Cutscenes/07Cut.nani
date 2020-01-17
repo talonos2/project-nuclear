@@ -36,9 +36,13 @@ Melvardius: There are many ways to look at a thing.[br]Some only see the darknes
 @hidechars time:0
 @char Metra
 Metra: I'm not sure I see the light in all this.
-@hidechars time:0
+@hideChars time:0
+@hidePrinter
 
-@fwspawnvfx x:-1 y:-5 z:0 Vfx:Firework
+
+@wait 10
+@fwspawnvfx x:-1 y:-5 z:0 Vfx:CurseFX
+@wait 10
 
 @fwturnpawn n:PawnPaul d:s
 @fwturnpawn n:PawnNelson d:s
