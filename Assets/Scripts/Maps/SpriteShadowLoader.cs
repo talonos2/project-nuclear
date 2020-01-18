@@ -15,6 +15,7 @@ public class SpriteShadowLoader : MonoBehaviour
     public bool groundItem;
     public bool aboveItem;
     public bool thePlayerjumping;
+    public bool spikes;
     void Start()
     {
         groundObject = GameObject.Find("Ground").GetComponent<GroundShadow>();
@@ -55,6 +56,9 @@ public class SpriteShadowLoader : MonoBehaviour
             zPosition = -20;
         if (thePlayerjumping && (CharacterMovement.windJump || SpriteMovement.jumping)) {
             zPosition -= .01f;
+        }
+        if (spikes) {
+            zPosition += .01f;
         }
         return zPosition;
     }

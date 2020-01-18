@@ -105,6 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  groundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 1
 --- !u!1 &7020265778627500997
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,12 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723ee02ca5eb99a45b8c2d0c7f3f1fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMainCharacter: 0
-  isAMonster: 0
-  isInteractableObject: 0
-  isItem: 0
-  isSwitch: 0
-  isNPC: 0
+  isPlatformTerrain: 0
+  isWindShifter: 0
+  isTeleporter: 0
+  isExit: 0
+  isBlockableTerrain: 0
+  isTallBlockableTerrain: 0
+  isBackgroundCharacter: 0
   isSpike: 1
   isPassable: 0
   AnimationSpeed: 9
