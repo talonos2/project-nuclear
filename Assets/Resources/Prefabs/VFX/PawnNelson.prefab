@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 56715683928733432}
   - component: {fileID: 56715683928733438}
   m_Layer: 0
-  m_Name: Nelson
+  m_Name: PawnNelson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 6
-  framesPerSecond: 30
+  framesPerSecond: 8
   facedDirection: 4
 --- !u!1 &2896255952717155602
 GameObject:
@@ -196,3 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  groundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0

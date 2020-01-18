@@ -23,6 +23,8 @@
 Svenra: I told you to stay away.  Isn’t there someone else you can bother?
 @hidechars time:0
 
+@fwturnpawn n:PawnTristana d:w
+
 @char Tristana
 Tristana: Not really...
 @hidechars time:0
@@ -43,6 +45,7 @@ Svenra: What?
 Tristana: You’re always telling people to leave, and now they have.
 @hidechars time:0
 
+@fwturnpawn n:PawnSvenra d:s
 ;@fwmovepawn Svenra (moves away a bit)
 
 @char Svenra
@@ -54,10 +57,14 @@ Svenra: It's not like I wanted everyone to die for it.
 Tristana: So you tricked everyone into thinking you had evil magical powers just to get privacy?
 @hidechars time:0
 
+@fwturnpawn n:PawnSvenra d:e
+
 @char Svenra
 Svenra: Tricked?
 @hidechars time:0
 
+@fwspawnvfx x:1 y:24 z:0 Vfx:CurseFX
+@wait 1
 ;$@animate curse Svenra
 
 @char svenra
@@ -80,6 +87,12 @@ Svenra: Well, gotta go.
 @fwmovepawn n:PawnSvenra d:e
 @fwmovepawn n:PawnSvenra d:e
 @fwmovepawn n:PawnSvenra d:e
+@wait 0.8
+
+@fwturnpawn n:PawnTristana d:s
+
+
+@wait 1
 
 ;@fwmovepawn Svenra (toward cave)
 ;$@startRun

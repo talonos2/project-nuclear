@@ -13,6 +13,7 @@ public class SpriteShadowLoader : MonoBehaviour
     private GameObject ThePlayer;
     public bool actualGround;
     public bool groundItem;
+    public bool belowGroundItem;
     public bool aboveItem;
     public bool thePlayerjumping;
     public bool spikes;
@@ -52,6 +53,8 @@ public class SpriteShadowLoader : MonoBehaviour
     private float CalculateZCoor()
     {
         float zPosition= - 10 + this.transform.position.y / 100;
+        if (belowGroundItem)
+            zPosition = 1;
         if (actualGround)
             zPosition = 0;
         if (groundItem)

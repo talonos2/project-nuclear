@@ -1,6 +1,6 @@
 #start
 
-$@scene= town
+;$@scene= town
 
 @fwspawnvfx x:10 y:21 z:0 Vfx:PawnTristana
 @fwturnpawn n:PawnTristana d:e
@@ -26,7 +26,7 @@ Elder: Waiting?
 @hidechars time:0
 
 @char Tristana
-Yeah.
+Tristana: Yeah.
 @hidechars time:0
 
 @fwturnpawn n:PawnElder d:e
@@ -41,7 +41,7 @@ Elder: You know.  You've done a lot of your interviews, but I'm not sure we got 
 Tristana: You're not supposed to.
 @hidechars time:0
 
-@fwmovepawn n:PawnTristana d:n
+@fwturnpawn n:PawnTristana d:n
 
 @char Tristana
 Tristana: I'm supposed to be the objective observer.
@@ -63,7 +63,8 @@ Elder: Yes, it was very unprofessional.
 Tristana: ...
 @hidechars time:0
 
-@fwspawnvfx x:10 y:22 z:0 Vfx:Firework
+@fwspawnvfx x:10 y:22 z:0 Vfx:CurseFX
+@wait 1
 
 @char Tristana
 Tristana: Well, time to get involved.
@@ -77,8 +78,5 @@ Elder: Make sure to be unprofessional.
 @fwmovepawn n:PawnTristana d:e
 @fwmovepawn n:PawnTristana d:e
 @fwmovepawn n:PawnTristana d:e
-
-
-$@startRun
 
 @exit
