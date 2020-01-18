@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[Serializable]
 public class GameData : Singleton<GameData>
 
 {
@@ -24,16 +25,6 @@ public class GameData : Singleton<GameData>
 
     public int FloorNumber = 0;
 
-    internal bool IsInTown()
-    {
-        return FloorNumber == 0;
-    }
-
-    internal void autoSaveStats()
-    {
-        Debug.Log("Saving game not implementd yet");
-    }
-
     public int RunNumber = 1;
     public int PowersGained = 0;
     public bool timerTrigger;
@@ -42,6 +33,8 @@ public class GameData : Singleton<GameData>
     public bool dashing;
     public bool isCutscene;
     public bool pauseTimer;
+    internal int furthestFloorAchieved;
+    internal List <float> bestRunTimes;
 
     public List<GameObject> townWeapons = new List<GameObject>();
     public List<GameObject> townArmor = new List<GameObject>();
@@ -63,6 +56,16 @@ public class GameData : Singleton<GameData>
 
     public bool map5_2Shortcut;
     public bool map5_3Shortcut;
+
+    internal bool IsInTown()
+    {
+        return FloorNumber == 0;
+    }
+
+    internal void autoSaveStats()
+    {
+        Debug.Log("Saving game not implementd yet");
+    }
 
     public void SetNextLocation(Vector2Int location, SpriteMovement.DirectionMoved facing) {
         nextLocaiton = location;
