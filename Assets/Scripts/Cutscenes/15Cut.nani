@@ -38,7 +38,8 @@ Paul: No, I mean... won’t you be destitute too?
 Phillip: I, well... this is difficult to explain... You see—
 @hidechars time:0
 
-@fwspawnvfx x:-6 y:-10 z:0 Vfx:Firework ;cursed
+@fwspawnvfx x:5 y:7 z:0 Vfx:CurseFX
+@wait 1
 
 @char Phillip
 Phillip: Oh thank Cedeej.
@@ -56,10 +57,11 @@ Phillip: Oh thank Cedeej.
 @fwmovepawn n:PawnPhillip d:n
 @fwmovepawn n:PawnPhillip d:n
 
+@wait 2
 
 @fwdeletego n:PawnPhillip
 
-;@fwmovepawn Phillip (to exit)
+
 
 
 ;$@startRun

@@ -1,13 +1,13 @@
 #start
 
-;$@scene= office
+;$@scene= pub
 
 @fwspawnvfx x:-6 y:-1 z:0 Vfx:PawnTristana
 @fwturnpawn n:PawnNelson d:e
 @fwspawnvfx x:-5 y:-1 z:0 Vfx:PawnWilson
 @fwturnpawn n:PawnWilson d:e
 @fwspawnvfx x:-4 y:0 z:0 Vfx:PawnJerene
-@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnJerene d:s
 @fwspawnvfx x:-1 y:2 z:0 Vfx:PawnNelson
 @fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnPhillip
 @fwspawnvfx x:2 y:-3 z:0 Vfx:PawnMurtough
@@ -29,7 +29,8 @@ Murtough: Except me.
 @char Jerene
 Jerene: Yes, except him.
 @hidechars time:0
-@fwspawnvfx x:3 y:-3 z:0 Vfx:Firework ;cursed
+@fwspawnvfx x:2 y:-3 z:0 Vfx:CurseFX
+@wait 1
 @char Murtough
 Murtough: Figures.
 @hidechars time:0
@@ -42,7 +43,10 @@ Murtough: Figures.
 @fwmovepawn n:PawnMurtough d:w
 @fwmovepawn n:PawnMurtough d:w
 @fwmovepawn n:PawnMurtough d:w
-@fwmovepawn n:PawnMurtough d:w
+@fwmovepawn n:PawnMurtough d:s
+@fwmovepawn n:PawnMurtough d:s
+
+@wait 1.6
 
 @fwdeletego n:PawnMurtough
 

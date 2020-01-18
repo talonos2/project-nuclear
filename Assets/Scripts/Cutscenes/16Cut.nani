@@ -36,25 +36,27 @@ Metra: Okay, I see monsters, but it's not a cave.  I can tell because of the thr
 @hidechars time:0
 
 @char Logos
-Logos: Yes that's... somewhere else.  Hold on a second, let me have a look in there.
+Logos: Yes that is... somewhere else.  Hold on a second, let me have a look in there.
 @hidechars time:0
 
 @fwmovepawn n:PawnLogos d:n
 @fwturnpawn n:PawnLogos d:e
 @fwturnpawn n:PawnMetra d:w
 
+@wait 1
+
 @char Logos
-Logos: Okay, how about this time you close your 4th through 17th eye, and trying looking again.
+Logos: Okay, how about this time you close your 4th through 17th eye, and try looking again.
 @hidechars time:0
 
-;@animate curse Logos
+@fwspawnvfx x:-2 y:4 z:0 Vfx:CurseFX
+@wait 1
+
 @fwmovepawn n:PawnLogos d:s 
 @fwmovepawn n:PawnLogos d:s 
 @fwmovepawn n:PawnLogos d:s 
 @fwmovepawn n:PawnLogos d:s 
-@fwmovepawn n:PawnLogos d:s 
-@fwmovepawn n:PawnLogos d:s 
-@fwmovepawn n:PawnLogos d:s 
+
 
 
 @char Metra
@@ -67,7 +69,12 @@ Metra: But, but- We aren't done with the lessons!
 Logos: I think you'll do fine.
 @hidechars time:0
 
-@fwmovepawn n:PawnLogos d:s wait:true
+
+@fwmovepawn n:PawnLogos d:s 
+@fwmovepawn n:PawnLogos d:s 
+@fwmovepawn n:PawnLogos d:s 
+@fwmovepawn n:PawnLogos d:s
+@wait 0.8
 @fwdeletego n:PawnLogos
 
 ;@startRun

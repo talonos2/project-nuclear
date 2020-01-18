@@ -2,51 +2,32 @@
 
 ;$@scene= bar
 
-@fwspawnvfx x:0 y:2 z:0 Vfx:PawnMara
+@fwspawnvfx x:-5 y:-13 z:0 Vfx:PawnMara
 @fwspawnvfx x:0 y:0 z:0 Vfx:PawnPaul
-[br]
+@fwturnpawn n:PawnPaul d:n
+
+here we go
 
 
 
-@fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:2
-@fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:2
-@fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:2
-@fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:2
-@fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:2
-@fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:2
-
-;$@setspeed mara veryhigh
-@fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:w
 
 @fwmovepawn n:PawnMara d:s
-@fwturnpawn n:PawnPaul d:e
 @fwmovepawn n:PawnMara d:s
 @fwmovepawn n:PawnMara d:s
 @fwmovepawn n:PawnMara d:s
-@fwmovepawn n:PawnMara d:s
-@fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:s
-@fwmovepawn n:PawnMara d:s
-@fwmovepawn n:PawnMara d:s
-@fwmovepawn n:PawnMara d:s
-@fwmovepawn n:PawnMara d:w
 @fwmovepawn n:PawnMara d:s
 
+
+@wait 0.2
+@fwspawnvfx x:-5 y:-14 z:0 Vfx:firework
+@wait 0.2
+@fwspawnvfx x:-5 y:-15 z:0 Vfx:firework
+@wait 0.2
+@fwspawnvfx x:-5 y:-16 z:0 Vfx:firework
+@wait 0.2
+@fwspawnvfx x:-5 y:-17 z:0 Vfx:firework
+@wait 0.2
+@fwspawnvfx x:-5 y:-18 z:0 Vfx:firework
 
 
 @exit

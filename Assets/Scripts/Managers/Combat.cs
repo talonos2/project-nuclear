@@ -316,7 +316,7 @@ public class Combat : MonoBehaviour
 
     private void DealDamageToEnemy()
     {
-        float incomingDamage = (int)playerStats.attack + playerStats.weaponBonusAttack + playerStats.accessoryAttack;
+        float incomingDamage = (int)playerStats.attack;
         if (goodHit) {incomingDamage *= 1.25f; }
         incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent);
         incomingDamage -= monsterStats.defense;
@@ -342,9 +342,20 @@ public class Combat : MonoBehaviour
             if (playerStats.mana >= 8) { playerStats.mana -= 8; }
                 else { elementalDamage = 0; }
         }
-        incomingDamage *= 1 + RollCrit();
+        incomingDamage *= 1 + RollCrit(); //should probably have an animation too
 
         monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
+
+        if (playerStats.accessoryHPVamp > 0) {//same. should have an animation...
+            playerStats.HP = (int)((float) playerStats.HP * (1 + playerStats.accessoryHPVamp / 100));
+            if (playerStats.HP > playerStats.MaxHP)
+                { playerStats.HP = playerStats.MaxHP; }
+            }
+        if (playerStats.accessoryMPVamp > 0) {
+            playerStats.mana = (int)((float)playerStats.mana * (1 + playerStats.accessoryMPVamp / 100));
+            if (playerStats.mana > playerStats.MaxMana)
+            { playerStats.mana = playerStats.MaxMana; }
+        }
 
         //need elemental hit-splat if elemental damage is > 0
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
@@ -364,13 +375,27 @@ public class Combat : MonoBehaviour
         return critValue;
     }
 
+    private bool RollDodge()
+    {
+        bool dodgeValue = false;
+        System.Random rand = new System.Random(100);
+        int roll = rand.Next() + 1;
+        if (roll <= playerStats.accessoryDodgeBonus) { dodgeValue = true ; }
+
+        return dodgeValue;
+    }
+
     private void DealDamageToPlayer()
     {
         
         float incomingDamage = monsterStats.attack;
         if (goodBlock) { incomingDamage *= .8f; }
-        incomingDamage -= (playerStats.defense+playerStats.armorBonusDefense);
+        incomingDamage -= playerStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
+        if (RollDodge()) {
+            incomingDamage = 0;
+            //ShouldHaveDodgeEffect
+        }
         playerStats.HP -= Mathf.RoundToInt(incomingDamage);
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position;

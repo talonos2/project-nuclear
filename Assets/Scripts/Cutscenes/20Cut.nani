@@ -5,9 +5,9 @@
 ;$@place Dorara
 ;$@place Jerene
 
-@fwspawnvfx x:-2 y:0 z:0 Vfx:PawnDorara
+@fwspawnvfx x:7 y:20 z:0 Vfx:PawnDorara
 @fwturnpawn n:PawnDorara d:e
-@fwspawnvfx x:0 y:0 z:0 Vfx:PawnJerene
+@fwspawnvfx x:10 y:20 z:0 Vfx:PawnJerene
 @fwturnpawn n:PawnJerene d:w
 
 
@@ -33,16 +33,20 @@ Dorara: Fine, I was getting tired of idle threats.
 @hidechars time:0
 
 @fwmovepawn n:PawnDorara d:e
+@fwmovepawn n:PawnDorara d:e
+@wait 0.4
 
-@fwspawnvfx x:-1 y:0 z:0 Vfx:firework
 
-;$@animate curse Dorara
+@fwspawnvfx x:9 y:20 z:0 Vfx:CurseFX
+@wait 1
 
 @wait 1
 
 @char Jerene
 Jerene: Take the blade.
 @hidechars time:0
+
+@fwturnpawn n:PawnDorara d:e
 
 @char Dorara
 Dorara: I, uh.
@@ -57,6 +61,15 @@ Jerene: You take it, or you'll have to go through me.
 @hidechars time:0
 
 ;@fwmovepawn Dorara (to chest and then cave)
+
+
+@fwmovepawn n:PawnDorara d:e
+@fwturnpawn n:PawnDorara d:n
+@wait 0.5
+@fwmovepawn n:PawnDorara d:e
+@fwmovepawn n:PawnDorara d:e
+@wait 0.4
+
 
 @fwdeletego n:PawnDorara
 

@@ -13,7 +13,7 @@
 
 
 @char Meyster
-Meyster: You waste your time.[br]Ever since the quake, only the cursed may enter.
+Meyster: You waste your time.[br]Only the cursed may enter.
 Meyster: Go on squire, tell him he is wasting his time!
 @hideChars time:0
 @char Pendleton
@@ -33,18 +33,21 @@ Meyster: Squire! Apprehend that man!
 @fwmovepawn n:PawnPendleton d:n
 @fwmovepawn n:PawnPendleton d:n
 
+@wait 0.6
 
-@fwspawnvfx x:16 y:20 z:0 Vfx:Firework
+@fwspawnvfx x:16 y:20 z:0 Vfx:CurseFX
+@wait 1
 
-@fwmovepawn n:PawnTodd d:e
-@fwmovepawn n:PawnTodd d:e
-@fwmovepawn n:PawnTodd d:e
-@fwdeletego n:PawnTodd
-
+@fwmovepawn n:PawnTodd d:w
+@fwmovepawn n:PawnTodd d:w
+@fwmovepawn n:PawnTodd d:w
 
 @fwmovepawn n:PawnPendleton d:n
 @fwmovepawn n:PawnPendleton d:e
+@fwmovepawn n:PawnPendleton d:e
 
+@wait 0.6
+@fwdeletego n:PawnTodd
 
 ;@fadeout
 

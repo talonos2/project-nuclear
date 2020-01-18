@@ -24,6 +24,7 @@ Jezerine: How much longer will it take?
 @hideChars time:0
 
 @fwspawnvfx x:-19 y:-11 z:0 Vfx:CurseFX
+@wait 1
 
 @fwturnpawn n:PawnDerringer d:s
 
@@ -36,6 +37,8 @@ Derringer: I'm afraid it's longer than ten minutes.
 @fwmovepawn n:PawnDerringer d:s
 @fwmovepawn n:PawnDerringer d:e
 @fwturnpawn n:PawnDerringer d:n
+
+@wait 1
 
 @char Derringer
 Derringer: I'm afraid I must be going.
@@ -52,6 +55,8 @@ Derringer: I'm afraid I must be going.
 @fwmovepawn n:PawnDerringer d:e
 @fwmovepawn n:PawnDerringer d:e
 @fwmovepawn n:PawnDerringer d:e
+
+@wait 1.5
 
 @fwdeletego n:PawnDerringer
 
