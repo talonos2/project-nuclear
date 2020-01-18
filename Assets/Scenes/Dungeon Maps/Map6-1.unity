@@ -578,6 +578,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5515415379851588918, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5515415379851588917, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_IsActive
@@ -586,11 +591,6 @@ PrefabInstance:
     - target: {fileID: 4463955122688461023, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515415379851588918, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5105,7 +5105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83360528e91a02f43816a8a669578d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowTexture: {fileID: 2800000, guid: 135d56470d67c544ba39319638669b64, type: 3}
+  shadowTexture: {fileID: 2800000, guid: 53aa5f71768f4ea4baa2b4001460e91e, type: 3}
   glowTexture: {fileID: 2800000, guid: fd5843f93774f7542a537380b1f46877, type: 3}
   mapOffset: {x: 0, y: 0.5}
 --- !u!114 &2018926738
@@ -5123,6 +5123,8 @@ MonoBehaviour:
   actualGround: 1
   groundItem: 0
   aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0
 --- !u!1001 &2092500189
 PrefabInstance:
   m_ObjectHideFlags: 0

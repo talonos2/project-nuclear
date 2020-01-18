@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 [Serializable]
 public class GameData : Singleton<GameData>
 
@@ -35,6 +36,7 @@ public class GameData : Singleton<GameData>
     public bool pauseTimer;
     internal int furthestFloorAchieved;
     internal List <float> bestRunTimes;
+    internal List<String> savedGames;
 
     public List<GameObject> townWeapons = new List<GameObject>();
     public List<GameObject> townArmor = new List<GameObject>();
@@ -113,4 +115,40 @@ public class GameData : Singleton<GameData>
     {
         timer = 600;
     }
+
+    public void saveGame() {
+
+    }
+
+    public void loadGame() {
+
+    }
+
+    /*
+    private void SaveData(String fileName)
+    {
+        if (!Directory.Exists("Saves"))
+            Directory.CreateDirectory("Saves");
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream saveFile = File.Create("Saves/save.binary");
+
+        LocalCopyOfData = PlayerState.Instance.localPlayerData;
+
+        formatter.Serialize(saveFile, LocalCopyOfData);
+
+        saveFile.Close();
+    }
+
+    private void LoadData(String fileName)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream saveFile = File.Open("Saves/save.binary", FileMode.Open);
+
+        LocalCopyOfData = (PlayerStatistics)formatter.Deserialize(saveFile);
+
+        saveFile.Close();
+    }
+    */
+
 }
