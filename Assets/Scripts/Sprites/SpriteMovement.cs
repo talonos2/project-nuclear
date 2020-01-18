@@ -418,7 +418,7 @@ public class SpriteMovement : MonoBehaviour
         }
         if (changed)
         {
-            sRender.material.SetFloat("_Frame", animationStep + FLOATING_POINT_FIX+(dir.GetHeroSpriteOffeset()*(GetFramesInFilmstrip()+GetNumberOfIdleFrames())));
+            sRender.material.SetFloat("_Frame", animationStep + FLOATING_POINT_FIX+(dir.GetHeroSpriteOffeset()*(GetFramesInFilmstrip()+GetNumberOfIdleFrames()) + GetNumberOfIdleFrames()));
         }
 
     }
