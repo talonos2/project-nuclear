@@ -162,6 +162,9 @@ MonoBehaviour:
   itemUIPrefab: {fileID: 7450676703086245042, guid: e57c9d93702050e46ac671f994b9c66f,
     type: 3}
   itemTypeSelectedText: {fileID: 6368710174160222754}
+  itemDetailsImage: {fileID: 3342054820284388273}
+  itemDetailsName: {fileID: 5301087977402047218}
+  itemDetailsDescription: {fileID: 2846954384742447226}
 --- !u!1 &324273467792439867
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +721,7 @@ GameObject:
   - component: {fileID: 286543381512845578}
   - component: {fileID: 3342054820284388273}
   m_Layer: 0
-  m_Name: Image
+  m_Name: SelectedItemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1991,7 +1994,7 @@ GameObject:
   - component: {fileID: 2387150208575415501}
   - component: {fileID: 5301087977402047218}
   m_Layer: 0
-  m_Name: Text
+  m_Name: ItemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2013,8 +2016,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -0.97, y: 0}
+  m_SizeDelta: {x: 227.94, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2387150208575415501
 CanvasRenderer:
@@ -2640,7 +2643,7 @@ GameObject:
   - component: {fileID: 1272012280516689589}
   - component: {fileID: 2846954384742447226}
   m_Layer: 0
-  m_Name: Text
+  m_Name: ItemDetailsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3179,7 +3182,7 @@ GameObject:
   - component: {fileID: 3655647390668415323}
   - component: {fileID: 5730375886298687065}
   m_Layer: 0
-  m_Name: Image (3)
+  m_Name: CrystalBuffBackgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

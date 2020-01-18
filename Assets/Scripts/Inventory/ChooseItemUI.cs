@@ -83,8 +83,7 @@ public class ChooseItemUI : MonoBehaviour
             {
                 if (playerData.weapon != null) GameData.Instance.townWeapons.Add(playerData.weapon);
                 sendGabToTownMessage(playerData.weapon);
-                playerData.weapon = rolledItem;
-                playerData.setWeaponStats(rolledItem);
+                playerData.setWeapon(rolledItem);
 
             }
             else {
@@ -98,8 +97,7 @@ public class ChooseItemUI : MonoBehaviour
             {
                 if (playerData.armor != null) GameData.Instance.townArmor.Add(playerData.armor);
                 sendGabToTownMessage(playerData.armor);
-                playerData.armor = rolledItem;
-                playerData.setArmorStats(rolledItem);
+                playerData.setArmor(rolledItem);
             }
             else {
                 GameData.Instance.townArmor.Add(rolledItem);
@@ -112,8 +110,7 @@ public class ChooseItemUI : MonoBehaviour
             {
                 if (playerData.accessory != null) GameData.Instance.townAccessories.Add(playerData.accessory);
                 sendGabToTownMessage(playerData.accessory);
-                playerData.accessory = rolledItem;
-                playerData.setAccessoryStats(rolledItem);
+                playerData.setAccessory(rolledItem);
             }
             else {
                 GameData.Instance.townAccessories.Add(rolledItem);
