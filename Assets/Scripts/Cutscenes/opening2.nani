@@ -1,134 +1,44 @@
 
-
-
-
-camera pans over town.  Settles down on a few villagers around fire.
-
-1- How much longer do we have now?
-
-Logos- Maybe a month.
-
-1- Maybe? Can't you be more exact?
-
--pause-
-
-1- It only takes==== one person a day.  Can't we just count how many of us are left?
-
-Logos- I can't say if everyone will see it through to the end.
-
-Logos- Most have fled, many may follow.
-
-1- So, less than a month then.
-
-Logos- We only need to buy enough time for someone to answer the call.
-
-1- And if nobody does?
-
--pause-
-
-Logos- You have felt the ground shake.
-
-Logos- Terrible things happen if places like these do not recieve the sacrafices they demand.
-
-Douglass enters.
-
-Douglass- is this -nameoftown-
-
 -----mayors office
 
 
-douglass- This isn't the first cursed hole in the ground I've come across.
-
-douglass- The -old ones- left them all over the place. Each one a powder keg buried under a metropolis.
-
-mayor- But why? And how?
-
-Douglass- Those sound like philosopher questions.  I'm just the sellsword.
-
-Douglass- I don't care why, I don't even care how.  I just know that it stops if you hit it hard enough.
-
-Douglass- Next time that door opens I'll take that place apart.
-
-Teamster - Should we leave town then? It might take one of us instead of you.
-
-Douglass- Don't worry. It'll pick me. These things always do.
-
-------------------------outside cave
-
-
-Douglass (standing next to chest) is cursed. People are standing around.
-
-Douglass- About time.
-
-Douglass- Hey, don't mess with my chest.
-
-Douglass- It's where my magic ring sends the stuff I loot.
-
-
-Enters cave
-
-Now what?
-
-Logos- That ring he carries...  It has a peculiar aura. With it as a focus we may be able to watch his journey, one moment.
 
 
 
+@fwspawnvfx x:-9 y:-2 z:0 Vfx:PawnDouglass
+@fwturnpawn n:PawnDouglass d:w
 
------------------------after Douglass-----------------------------
 
-Group standing outside near shrine- logos has scrying device.
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
-(if monster kill) Sara: They... they got him.
-
-(if time up) Sara: He's gone...
-
-Fluer- What are we going to do now?
-
-McDermit- We can wait for someone else?
-
-Sara- Douglass barely came in time...
-
-Patrick- He didn't come "in time", he failed.
-
-Jezerine starts walking to chest and opens it.
-
-McDermit- Don't talk like- hey!  He said not to mess with that!
-
-(if no ice)Jezerine- His ring, it's in here.
-
-(if ice unlocked)Jezerine- His ring, it's in here.  It's... cold.
-
-Jezerine- And all his gear. At least the things he sent back.
-
-Patrick- So? What can we do with that?
-
-Elder- We can try.
+@fwspawnvfx x:-9 y:-1 z:0 Vfx:PawnPatrick
+@fwturnpawn n:PawnPatrick d:s
 
 
 
+@char Douglass
+Douglass: This isn't the first cursed hole in the ground I've come across.
+Douglass: The -old ones- left them all over the place. Each one a powder keg buried under a metropolis.
+@hidechars time:0
 
+@char Wilson
+Wilson: But why? And how?
+@hidechars time:0
 
+@char Douglass
+Douglass: Those sound like philosopher questions.  I'm just the sellsword.
+Douglass: I don't care why, I don't even care how.  I just know that it stops if you hit it hard enough.
+Douglass: Next time that door opens I'll take that place apart.
+@hidechars time:0
 
+@char Patrick
+Patrick: Should we leave town then? It might take one of us instead of you.
+@hidechars time:0
 
-------------------------Get ice-----------------
-
-(if logos is gone, skip cutscene)
-(if first run, skip cutscene)
-
-Elder- I don't know how much more of this I can watch.
-
-logos walks to chest and opens it
-
-Jerene- I wouldn't worry about that. There aren't many of us left.
-
-Logos- The ring... some of its symbols have begun to glow.
-
-Elder- Haven't we seen those?  In the cave that is.
-
-Logos- Yes, perhaps it had something to do with the larger monster...
-
-
-
+@char Douglass
+Douglass: Don't worry. It'll pick me. These things always do.
+@hidechars time:0
 
 
 @exit

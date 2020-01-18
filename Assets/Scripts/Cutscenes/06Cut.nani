@@ -2,39 +2,63 @@
 
 ;$@scene= blacksmith
 
-$@place Derringer
-$@place Jezerine
+@fwspawnvfx x:-19 y:-11 z:0 Vfx:PawnDerringer
+@fwturnpawn n:PawnDerringer d:e
+
+@fwspawnvfx x:-19 y:-12 z:0 Vfx:PawnJezerine
+@fwturnpawn n:PawnJezerine d:n
+
+
 
 
 @char Jezerine
-Is it nearly done?
-
+Jezerine: Is it nearly done?
+@hideChars time:0
 
 @char Derringer
 Derringer: I'm afraid these things take time.[br]I can't risk cracking the blade.
-@hidechars time:0
+@hideChars time:0
 
 @char Jezerine
 Jezerine: How much longer will it take?
-@hidechars time:0
+@hideChars time:0
 
-;@fwspawnvfx x:-1 y:-17 z:0 Vfx:Firework
+@fwspawnvfx x:-19 y:-11 z:0 Vfx:CurseFX
+@wait 1
 
-;$@animate curse Derringer
+@fwturnpawn n:PawnDerringer d:s
 
 @char Derringer
 Derringer: I'm afraid it's longer than ten minutes.
+@hideChars time:0
 
-(walk around table)
+@fwmovepawn n:PawnDerringer d:w
+@fwmovepawn n:PawnDerringer d:s
+@fwmovepawn n:PawnDerringer d:s
+@fwmovepawn n:PawnDerringer d:e
+@fwturnpawn n:PawnDerringer d:n
+
+@wait 1
 
 @char Derringer
 Derringer: I'm afraid I must be going.
-@hidechars time:0
+@hideChars time:0
 
-(leave)
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+@fwmovepawn n:PawnDerringer d:e
+
+@wait 1.5
 
 @fwdeletego n:PawnDerringer
 
-;$@startRun
 
 @exit

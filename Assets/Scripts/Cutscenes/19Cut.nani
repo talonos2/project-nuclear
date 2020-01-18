@@ -1,8 +1,8 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Meyster
+
 
 @fwspawnvfx x:-15 y:-12 z:0 Vfx:PawnMeyster
 @fwturnpawn n:PawnMeyster d:w
@@ -15,6 +15,8 @@ $@place Meyster
 @fwmovepawn n:PawnNelson d:w
 @fwmovepawn n:PawnNelson d:w
 @fwmovepawn n:PawnNelson d:w
+@fwturnpawn n:PawnNelson d:w
+
 
 @char Meyster
 Meyster: Has anyone seen my sword?
@@ -26,7 +28,7 @@ Nelson: Can't say that I have.
 
 @char Meyster
 Meyster: Oh, no trouble, I'm sure it'll turn up.
-;add a wait?
+@wait 1
 Meyster: I miss Pendleton.
 Meyster: I even miss how he would constantly bother me with mundane things.
 @hidechars time:0
@@ -37,6 +39,8 @@ Meyster: I even miss how he would constantly bother me with mundane things.
 Nelson: Such as, always telling you where you sword was?
 @hidechars time:0
 
+@fwturnpawn n:PawnMeyster d:n
+
 @char Meyster
 Meyster: Yeah, he'd always badger me about that.
 @hidechars time:0
@@ -45,6 +49,8 @@ Meyster: Yeah, he'd always badger me about that.
 Nelson: Well, how kind of you to put up with him.
 @hidechars time:0
 
+
+@fwspawnvfx x:-15 y:-12 z:0 Vfx:CurseFX
 ;animate curse paladin
 
 @char Meyster
@@ -55,19 +61,22 @@ Meyster: But... my sword!
 Nelson: I'm sure they've found something else you can use.
 @hidechars time:0
 
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
-@fwmovepawn n:PawnNelson d:e
+@fwturnpawn n:PawnNelson d:e
 
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+@fwmovepawn n:PawnMeyster d:e
+
+@wait 2.4
 
 ;@fwmovepawn Meyster (toward cave)
 

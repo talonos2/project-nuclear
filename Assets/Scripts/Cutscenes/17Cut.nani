@@ -18,7 +18,7 @@ Fluer: You know, I really have to admire your handiwork on this.  It's so richly
 
 ;$@animate carvesound dummy
 @fwspawnvfx x:4 y:25 z:0 Vfx:Firework
-;$@wait
+@wait 1
 
 @char Fluer
 Fluer: You must have spent hours studying how those beasties look.
@@ -27,6 +27,7 @@ Fluer: You must have spent hours studying how those beasties look.
 ;$@animate carvesound dummy
 @fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 ;$@wait
+@wait 1
 
 @char Fluer
 Fluer: Well... it um, looks like you're just about done.
@@ -38,13 +39,17 @@ Paul: Yep, just need to make one last cut.
 
 ;$@animate break dummy
 @fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+@wait 0.1
 @fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+@wait 0.2
 @fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 ;$@wait
 
-;$@animate curse Paul
 
-@fwspawnvfx x:4 y:24 z:0 Vfx:Firework
+@wait 1.5
+@fwspawnvfx x:4 y:24 z:0 Vfx:CurseFX
+@wait 2
+
 
 ;@fwmovepawn Paul (toward cave, slower than most)
 @fwmovepawn n:PawnPaul d:e
@@ -59,6 +64,8 @@ Paul: Yep, just need to make one last cut.
 @fwmovepawn n:PawnPaul d:e
 @fwmovepawn n:PawnPaul d:e
 @fwmovepawn n:PawnPaul d:e
+
+@wait 2.4
 
 @fwdeletego n:PawnPaul
 

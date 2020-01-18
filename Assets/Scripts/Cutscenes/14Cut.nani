@@ -2,21 +2,23 @@
 
 ;$@scene= office
 
-@fwspawnvfx x:-6 y:-10 z:0 Vfx:PawnTedd
-@fwturnpawn n:PawnNelson d:e
-@fwspawnvfx x:-10 y:0 z:0 Vfx:Pawnwilson
-@fwturnpawn n:PawnJezerine d:s
+@fwspawnvfx x:-10 y:0 z:0 Vfx:PawnTedd
+@fwturnpawn n:PawnTedd d:s
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
 
 
 
 @char Wilson
-Wilson: I have to stay but you should go son! A mayor always goes down with his town!
+Wilson: I have to stay but you should go son![br]A mayor always goes down with his town!
 @hidechars time:0
 @char Tedd
-Tedd: I keep telling you you're thinking of a different job! Either way, I'm not leaving your side!
+Tedd: I keep telling you you're thinking of a different job!
+Tedd: Either way, I'm not leaving your side!
 @hidechars time:0
 
-@fwspawnvfx x:-6 y:-10 z:0 Vfx:Firework ;cursed
+@fwspawnvfx x:-10 y:0 z:0 Vfx:CurseFX
+@wait 1
 
 @char Tedd
 Tedd: After this!
@@ -40,6 +42,10 @@ Tedd: After this!
 
 @fwmovepawn n:PawnTedd d:s
 @fwmovepawn n:PawnTedd d:s
+@fwmovepawn n:PawnTedd d:s
+@fwmovepawn n:PawnTedd d:s
+
+@wait 3
 
 @fwdeletego n:PawnTedd
 

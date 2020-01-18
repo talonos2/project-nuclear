@@ -12,14 +12,16 @@
 
 
 @char McDermit
-McDermit: Is this how it's going to end?[BR]We just stand here and watch as the civilians are sent to their doom?
-@hidechars time:0
+McDermit: Is this how it's going to end?[br]We just stand here and watch as the civilians are sent to their doom?
+@hideChars time:0
 
-@fwspawnvfx x:-5 y:-16 z:0 Vfx:Firework
+@fwspawnvfx x:-5 y:-16 z:0 Vfx:CurseFX
+
+@wait 1
 
 @char Jerene
 Jerene: Not for you at least.
-@hidechars time:0
+@hideChars time:0
 
 @fwmovepawn n:PawnMcDermit d:e
 @fwmovepawn n:PawnMcDermit d:e
@@ -34,6 +36,9 @@ Jerene: Not for you at least.
 @fwmovepawn n:PawnMcDermit d:e
 @fwmovepawn n:PawnMcDermit d:e
 @fwmovepawn n:PawnMcDermit d:e
+
+
+@wait 2
 
 ;@fwdeletego n:PawnMcDermit
 

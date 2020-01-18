@@ -13,38 +13,41 @@
 
 
 @char Meyster
-Meyster: You waste your time.[br]Ever since the quake, only the cursed may enter.
+Meyster: You waste your time.[br]Only the cursed may enter.
 Meyster: Go on squire, tell him he is wasting his time!
-@hidechars time:0
+@hideChars time:0
 @char Pendleton
 Pendleton: You are wasting your time.
-@hidechars time:0
+@hideChars time:0
 
 @char Todd
 Todd: It does not matter.  When my time comes I will find my way to the leader of this place, and join in his dark pact.
-@hidechars time:0
+@hideChars time:0
 
 @char Meyster
 Meyster: Not if we have anything to say about it!
 Meyster: Squire! Apprehend that man!
-@hidechars time:0
+@hideChars time:0
 
 @fwmovepawn n:PawnPendleton d:n
 @fwmovepawn n:PawnPendleton d:n
 @fwmovepawn n:PawnPendleton d:n
 
+@wait 0.6
 
-@fwspawnvfx x:16 y:20 z:0 Vfx:Firework
+@fwspawnvfx x:16 y:20 z:0 Vfx:CurseFX
+@wait 1
 
-@fwmovepawn n:PawnTodd d:e
-@fwmovepawn n:PawnTodd d:e
-@fwmovepawn n:PawnTodd d:e
-@fwdeletego n:PawnTodd
-
+@fwmovepawn n:PawnTodd d:w
+@fwmovepawn n:PawnTodd d:w
+@fwmovepawn n:PawnTodd d:w
 
 @fwmovepawn n:PawnPendleton d:n
 @fwmovepawn n:PawnPendleton d:e
+@fwmovepawn n:PawnPendleton d:e
 
+@wait 0.6
+@fwdeletego n:PawnTodd
 
 ;@fadeout
 

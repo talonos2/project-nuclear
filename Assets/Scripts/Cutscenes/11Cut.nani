@@ -15,8 +15,7 @@
 @char Phillip
 Phillip: No! stop! Please don't hurt me!
 @hidechars time:0
-@char Dorara  wait:false
-Dorara: You know how this goes, give me your valuables before I-
+
 
 @fwmovepawn n:PawnStranger d:s
 @fwmovepawn n:PawnStranger d:s
@@ -24,9 +23,8 @@ Dorara: You know how this goes, give me your valuables before I-
 @fwmovepawn n:PawnStranger d:s
 @fwturnpawn n:PawnStranger d:e
 
-
-
-
+@char Dorara
+Dorara: You know how this goes, give me your valuables before I-
 Dorara: Hey!  What do you think you're doing?
 @hidechars time:0
 
@@ -54,6 +52,9 @@ Dorara: Quiet! I'm not talking to you!
 @hidechars time:0
 @fwturnpawn n:PawnDorara d:n
 
+@fwmovepawn n:PawnPhillip d:s
+@fwturnpawn n:PawnPhillip d:n
+
 ;@fwmovepawn Phillip south (backwards)
 
 
@@ -64,24 +65,26 @@ Stranger: Look, I'm trying not to call attention to myself.
 @hidechars time:0
 
 ;@fwmovepawn Phillip south (backwards)
+@fwmovepawn n:PawnPhillip d:s
+@fwturnpawn n:PawnPhillip d:n
 
 @char Dorara
 Dorara: That's my point! We may be ruining these people's lives, but if I'm going to stab someone in the back at least I'm going to do it to their face!
 @hidechars time:0
 
-@fwspawnvfx x:-1 y:-17 z:0 Vfx:Firework
+@fwspawnvfx x:-1 y:-17 z:0 Vfx:CurseFX
+@wait 1
 
 
 
 ;$@setspeed Phillip fast
 ;$@setspeed Stranger fast
 
-@fwmovepawn n:PawnPhillip d:w
-@fwmovepawn n:PawnPhillip d:w
-@fwmovepawn n:PawnPhillip d:w
-@fwmovepawn n:PawnPhillip d:w
-@fwmovepawn n:PawnPhillip d:w
-@fwmovepawn n:PawnPhillip d:w
+@fwmovepawn n:PawnPhillip d:s
+@fwmovepawn n:PawnPhillip d:s
+@fwmovepawn n:PawnPhillip d:s
+@fwmovepawn n:PawnPhillip d:s
+@fwmovepawn n:PawnPhillip d:s
 
 @fwmovepawn n:PawnStranger d:n
 @fwmovepawn n:PawnStranger d:n
@@ -92,7 +95,7 @@ Dorara: That's my point! We may be ruining these people's lives, but if I'm goin
 
 
 @char Dorara  wait:false
-Dorara: Hey, maybe you can sneak by when the monster's backs are turned! Loot-ser!
+Dorara: Get out of here ya looter! Maybe you can sneak by when the monster's backs are turned!
 @hidechars time:0
 
 

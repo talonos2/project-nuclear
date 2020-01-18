@@ -1,0 +1,79 @@
+@fwspawnvfx x:7 y:19 z:0 Vfx:PawnLogos
+@fwturnpawn n:PawnLogos d:s
+
+@fwspawnvfx x:8 y:18 z:0 Vfx:PawnJezerine
+@fwturnpawn n:PawnJezerine d:w
+
+@fwspawnvfx x:8 y:19 z:0 Vfx:PawnSara
+@fwturnpawn n:PawnSara d:e
+
+@fwspawnvfx x:7 y:17 z:0 Vfx:PawnMcDermit
+@fwturnpawn n:PawnMcDermit d:n
+
+@fwspawnvfx x:8 y:17 z:0 Vfx:PawnPatrick
+@fwturnpawn n:PawnPatrick d:e
+
+@fwspawnvfx x:9 y:21 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:s
+
+Group standing outside near shrine- logos has scrying device.
+
+
+
+
+
+
+;(1 = if monster kill) 
+;(0 = if time up)
+@char Sara
+Sara: They... they got him. if:death()=1
+Sara: He's gone... if:death()=0
+@hidechars time:0
+
+
+@char Fluer
+Fluer: What are we going to do now?
+@hidechars time:0
+
+@char McDermit
+McDermit: We can wait for someone else?
+@hidechars time:0
+
+@char Sara
+Sara: Douglass barely came in time...
+@hidechars time:0
+
+@char Patrick
+Patrick: He didn't come "in time", he failed.
+@hidechars time:0
+
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:e
+@fwmovepawn n:PawnJezerine d:n
+@fwmovepawn n:PawnJezerine d:n
+
+@char McDermit
+McDermit: Don't talk like- hey!  He said not to mess with that!
+@hidechars time:0
+
+@fwturnpawn n:PawnJezerine d:w
+
+@char Jezerine
+Jezerine: His ring, it's in here. if:elements()=0
+Jezerine: His ring, it's in here.  It's... cold. if:elements()=1
+Jezerine: And all his gear. At least the things he sent back.
+@hidechars time:0
+
+@char Patrick
+Patrick: So? What can we do with that?
+@hidechars time:0
+
+@char Elder
+Elder: We can try.
+@hidechars time:0
+
+
+
+
+@exit
