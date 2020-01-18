@@ -30,7 +30,6 @@ public class SpikeController : DoodadData
 
     protected void Update()
     {
-        Debug.Log(timeUntilOpen);
         if (timeUntilOpen != 0)
         {
             timeUntilOpen -= Time.deltaTime;
@@ -45,7 +44,6 @@ public class SpikeController : DoodadData
 
     private void Open()
     {
-        Debug.Log("OPEN!");
         this.isPassable = true;
         this.LowerSpikeAnimation();
     }

@@ -56,22 +56,22 @@ public class CharacterStatsEditor : Editor
         equipmentBonuses = EditorGUILayout.BeginFoldoutHeaderGroup(equipmentBonuses, "Equipment Bonuses");
         if (equipmentBonuses)
         {
-            charac.armorBonusDefense = EditorGUILayout.IntField("armorBonusDefense", charac.armorBonusDefense);
-            charac.weaponBonusAttack = EditorGUILayout.IntField("weaponBonusAttack", charac.weaponBonusAttack);
-            charac.accessoryAttack = EditorGUILayout.IntField("accessoryAttack", charac.accessoryAttack);
-            charac.accessoryDefense = EditorGUILayout.IntField("accessoryDefense", charac.accessoryDefense);
-            charac.accessoryHealth = EditorGUILayout.IntField("accessoryHealth", charac.accessoryHealth);
-            charac.accessoryMana = EditorGUILayout.IntField("accessoryMana", charac.accessoryMana);
-            charac.accessoryCritChance = EditorGUILayout.IntField("accessoryCritChance", charac.accessoryCritChance);
-            charac.accessoryExpBonus = EditorGUILayout.IntField("accessoryExpBonus", charac.accessoryExpBonus);
-            charac.accessoryIceBonus = EditorGUILayout.IntField("accessoryIceBonus", charac.accessoryIceBonus);
-            charac.accessoryEarthBonus = EditorGUILayout.IntField("accessoryEarthBonus", charac.accessoryEarthBonus);
-            charac.accessoryFireBonus = EditorGUILayout.IntField("accessoryFireBonus", charac.accessoryFireBonus);
-            charac.accessoryAirBonus = EditorGUILayout.IntField("accessoryAirBonus", charac.accessoryAirBonus);
-            charac.accessoryHPVamp = EditorGUILayout.IntField("accessoryHPVamp", charac.accessoryHPVamp);
-            charac.accessoryMPVamp = EditorGUILayout.IntField("accessoryMPVamp", charac.accessoryMPVamp);
-            charac.accessoryDodgeBonus = EditorGUILayout.IntField("accessoryDodgeBonus", charac.accessoryDodgeBonus);
-            charac.accessoryAttackPercent = EditorGUILayout.IntField("accessoryAttackPercent", charac.accessoryAttackPercent);
+            charac.armorBonusDefense = EditorGUILayout.FloatField("armorBonusDefense", charac.armorBonusDefense);
+            charac.weaponBonusAttack = EditorGUILayout.FloatField("weaponBonusAttack", charac.weaponBonusAttack);
+            charac.accessoryAttack = EditorGUILayout.FloatField("accessoryAttack", charac.accessoryAttack);
+            charac.accessoryDefense = EditorGUILayout.FloatField("accessoryDefense", charac.accessoryDefense);
+            charac.accessoryHealth = EditorGUILayout.FloatField("accessoryHealth", charac.accessoryHealth);
+            charac.accessoryMana = EditorGUILayout.FloatField("accessoryMana", charac.accessoryMana);
+            charac.accessoryCritChance = EditorGUILayout.FloatField("accessoryCritChance", charac.accessoryCritChance);
+            charac.accessoryExpBonus = EditorGUILayout.FloatField("accessoryExpBonus", charac.accessoryExpBonus);
+            charac.accessoryIceBonus = EditorGUILayout.FloatField("accessoryIceBonus", charac.accessoryIceBonus);
+            charac.accessoryEarthBonus = EditorGUILayout.FloatField("accessoryEarthBonus", charac.accessoryEarthBonus);
+            charac.accessoryFireBonus = EditorGUILayout.FloatField("accessoryFireBonus", charac.accessoryFireBonus);
+            charac.accessoryAirBonus = EditorGUILayout.FloatField("accessoryAirBonus", charac.accessoryAirBonus);
+            charac.accessoryHPVamp = EditorGUILayout.FloatField("accessoryHPVamp", charac.accessoryHPVamp);
+            charac.accessoryMPVamp = EditorGUILayout.FloatField("accessoryMPVamp", charac.accessoryMPVamp);
+            charac.accessoryDodgeBonus = EditorGUILayout.FloatField("accessoryDodgeBonus", charac.accessoryDodgeBonus);
+            charac.accessoryAttackPercent = EditorGUILayout.FloatField("accessoryAttackPercent", charac.accessoryAttackPercent);
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
         combatGraphics = EditorGUILayout.BeginFoldoutHeaderGroup(combatGraphics, "Combat Graphics");

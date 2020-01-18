@@ -6,13 +6,13 @@ using UnityEngine;
 public class CharacterStats : Stats
 {
     public int HealthCrystalsGained = 0;
-    private int HealthCrystalBuff = 0;
+    internal int HealthCrystalBuff = 0;
     public int ManaCrystalsGained = 0;
-    private int ManaCrystalBuff = 0;
+    internal int ManaCrystalBuff = 0;
     public int AttackCrystalsGained = 0;
-    private int AttackCrystalBuff = 0;
+    internal int AttackCrystalBuff = 0;
     public int defenseCrystalsGained = 0;
-    private int defenseCrystalBuff = 0;
+    internal int defenseCrystalBuff = 0;
 
     private int HealthPerLevel;
     private int ManaPerLevel;
@@ -37,22 +37,27 @@ public class CharacterStats : Stats
     public GameObject armor;
     public GameObject accessory;
 
-    public int armorBonusDefense;
-    public int weaponBonusAttack;
-    public int accessoryAttack;
-    public int accessoryDefense;
-    public int accessoryHealth;
-    public int accessoryMana;
-    public int accessoryCritChance;
-    public int accessoryExpBonus;
-    public int accessoryIceBonus;
-    public int accessoryEarthBonus;
-    public int accessoryFireBonus;
-    public int accessoryAirBonus;
-    public int accessoryHPVamp;
-    public int accessoryMPVamp;
-    public int accessoryDodgeBonus;
-    public int accessoryAttackPercent;
+    public float armorBonusDefense;
+    public float weaponBonusAttack;
+    public float accessoryAttack;
+    public float accessoryDefense;
+    public float accessoryHealth;
+    public float accessoryMana;
+    public float accessoryCritChance;
+    public float accessoryExpBonus;
+    public float accessoryIceBonus;
+    public float accessoryEarthBonus;
+    public float accessoryFireBonus;
+    public float accessoryAirBonus;
+    public float accessoryHPVamp;
+    public float accessoryMPVamp;
+    public float accessoryDodgeBonus;
+    public float accessoryAttackPercent;
+
+    private int baseMaxHealth;
+    private int baseMaxMana;
+    private float baseAttack;
+    private float baseDefense;
 
     public int powersGained = 0;
     public int currentPower = 0;
@@ -73,7 +78,7 @@ public class CharacterStats : Stats
         gameData = gameStateData.GetComponent <GameData> ();
         itemData = equipmentData.GetComponent<EquipmentData>();
         SavedStats = gameStateData.GetComponent<CharacterStats>();
-        if (gameData.FloorNumber==1)
+        if (gameData.FloorNumber==0)
         {            
             SetupBaseStats();
             PushCharacterData();
@@ -154,11 +159,11 @@ public class CharacterStats : Stats
             AttackPerLevel = 2f;
             DefensePerLevel = 1;
 
-            MaxHP = 140+ HealthPerLevel*Level;
-            MaxMana=95+ ManaPerLevel*Level;
+            baseMaxHealth = 140+ HealthPerLevel*Level;
+            baseMaxMana = 95+ ManaPerLevel*Level;
 
-            attack=10+(int)AttackPerLevel*Level;
-            defense=(int)DefensePerLevel*Level;
+            baseAttack = 10+(int)AttackPerLevel*Level;
+            baseDefense = (int)DefensePerLevel*Level;
 
 }
         if (FighterClass) {
@@ -167,10 +172,10 @@ public class CharacterStats : Stats
             AttackPerLevel = 2.2f;
             DefensePerLevel = 1;
 
-            MaxHP = 140 + HealthPerLevel * Level;
-            MaxMana = 90 + ManaPerLevel * Level;
-            attack = 11 + (int)AttackPerLevel * Level;
-            defense = (int)DefensePerLevel * Level;
+            baseMaxHealth = 140 + HealthPerLevel * Level;
+            baseMaxMana = 90 + ManaPerLevel * Level;
+            baseAttack = 11 + (int)AttackPerLevel * Level;
+            baseDefense = (int)DefensePerLevel * Level;
 
 
         }
@@ -181,10 +186,10 @@ public class CharacterStats : Stats
             AttackPerLevel = 2;
             DefensePerLevel = 1.1f;
 
-            MaxHP = 140 + HealthPerLevel * Level;
-            MaxMana = 90 + ManaPerLevel * Level;
-            attack = 10 + (int)AttackPerLevel * Level;
-            defense = 1+(int)DefensePerLevel * Level;
+            baseMaxHealth = 140 + HealthPerLevel * Level;
+            baseMaxMana = 90 + ManaPerLevel * Level;
+            baseAttack = 10 + (int)AttackPerLevel * Level;
+            baseDefense = 1+(int)DefensePerLevel * Level;
 
         }
         if (ScoutClass) {
@@ -193,19 +198,12 @@ public class CharacterStats : Stats
             AttackPerLevel = 2;
             DefensePerLevel = 1;
 
-            MaxHP = 154 + HealthPerLevel * Level;
-            MaxMana = 90 + ManaPerLevel * Level;
-            attack = 10 + (int)AttackPerLevel * Level;
-            defense = (int)DefensePerLevel * Level;
+            baseMaxHealth = 154 + HealthPerLevel * Level;
+            baseMaxMana = 90 + ManaPerLevel * Level;
+            baseAttack = 10 + (int)AttackPerLevel * Level;
+            baseDefense = (int)DefensePerLevel * Level;
 
         }
-
-        MaxMana += ManaCrystalBuff;
-        MaxHP += HealthCrystalBuff;
-        HP = MaxHP;
-        mana = MaxMana;
-        attack = attack + AttackCrystalBuff;
-        defense = defense + defenseCrystalBuff;
 
         if (gameData.RunNumber == 1) {
             weapon = itemData.getRunOneWeapon();
@@ -219,10 +217,32 @@ public class CharacterStats : Stats
         setWeaponStats(weapon);
         setArmorStats(armor);
         setAccessoryStats(accessory);
+        setMaxStats();
+        setFullHPMP();
+        
+    }
+
+    internal void setFullHPMP()
+    {
+        HP = MaxHP;
+        mana = MaxMana;
+    }
+
+    private void setMaxStats()
+    {
+        MaxMana = baseMaxMana+ManaCrystalBuff+(int)accessoryMana;
+        MaxHP = baseMaxHealth + HealthCrystalBuff+(int)accessoryHealth;
+        if (HP > MaxHP)
+            HP = MaxHP;
+        if (mana > MaxMana)
+            mana = MaxMana;
+        attack = baseAttack + AttackCrystalBuff+weaponBonusAttack+accessoryAttack;
+        defense = baseDefense + defenseCrystalBuff+armorBonusDefense+accessoryDefense;
     }
 
     internal void AddExp(int expGiven)
     {
+        expGiven = (int)((float)expGiven * (float)(1+accessoryExpBonus/100));
         experience += expGiven;
         while (experience >= expToLevel) {
             experience -= expToLevel;
@@ -232,17 +252,21 @@ public class CharacterStats : Stats
         }
     }
 
-    public void setWeaponStats(GameObject weaponChanged) {
+    private void setWeaponStats(GameObject weaponChanged) {
         weaponBonusAttack = weaponChanged.GetComponent<Weapon>().addAttack;
+        setMaxStats();
     }
 
-    public void setArmorStats(GameObject armorChanged) {
+    private void setArmorStats(GameObject armorChanged) {
         armorBonusDefense = armorChanged.GetComponent<Armor>().addDefense;
+        setMaxStats();
     }
 
-    public void setAccessoryStats(GameObject accessoryChanged) {
-        Debug.Log("ToBeImplemented setting accessorys in CharacterStats.cs");
-        accessoryAttack=0;
+    private void setAccessoryStats(GameObject accessoryChanged) {
+        float oldaccHealth=accessoryHealth;
+        float oldaccMana= accessoryMana;
+
+        accessoryAttack =0;
         accessoryDefense = 0;
         accessoryHealth = 0;
         accessoryMana = 0;
@@ -257,16 +281,94 @@ public class CharacterStats : Stats
         accessoryDodgeBonus = 0;
         accessoryAttackPercent = 0;
 
-}
+        Accessory accItem = accessoryChanged.GetComponent<Accessory>();
+
+        setEffectStats(accItem.effectType, accItem.effectStrength);
+        setEffectStats(accItem.effectType1, accItem.effectStrength1);
+        setEffectStats(accItem.effectType2, accItem.effectStrength2);
+        setEffectStats(accItem.effectType3, accItem.effectStrength3);
+        setEffectStats(accItem.effectType4, accItem.effectStrength4);
+
+        float HPpercent = (float)(HP) / MaxHP;
+        HP -= (int)(HPpercent * oldaccHealth);
+        HP += (int)(HPpercent * accessoryHealth);
+
+        float manaPercent = (float)(mana) / MaxMana;
+        HP -= (int)(manaPercent * oldaccMana);
+        HP += (int)(manaPercent * accessoryMana);
+
+        setMaxStats();
+
+
+
+    }
+
+    private void setEffectStats(Accessory.EffectType effectType, float effectStrength)
+    {
+        switch (effectType) {
+            case Accessory.EffectType.None:
+                break;
+            case Accessory.EffectType.Health:
+                accessoryHealth = effectStrength;
+                break;
+            case Accessory.EffectType.Mana:
+                accessoryMana = effectStrength;
+                break;
+            case Accessory.EffectType.Defense:
+                accessoryDefense = effectStrength;
+                break;
+            case Accessory.EffectType.Attack:
+                accessoryAttack = effectStrength;
+                break;
+            case Accessory.EffectType.Ice:
+                accessoryIceBonus = effectStrength;
+                break;
+            case Accessory.EffectType.Earth:
+                accessoryEarthBonus = effectStrength;
+                break;
+            case Accessory.EffectType.Fire:
+                accessoryFireBonus = effectStrength;
+                break;
+            case Accessory.EffectType.Air:
+                accessoryAirBonus = effectStrength;
+                break;
+            case Accessory.EffectType.HPVamp:
+                accessoryHPVamp = effectStrength;
+                break;
+            case Accessory.EffectType.MPVamp:
+                accessoryMPVamp = effectStrength;
+
+                break;
+            case Accessory.EffectType.Crit:
+                accessoryCritChance = effectStrength;
+
+                break;
+            case Accessory.EffectType.XP:
+                accessoryExpBonus = effectStrength;
+
+                break;
+            case Accessory.EffectType.Dodge:
+                accessoryDodgeBonus = effectStrength;
+
+                break;
+            case Accessory.EffectType.AttackPercent:
+                accessoryAttackPercent = effectStrength;
+
+                break;
+
+
+        }
+    }
 
     private void LevelUp()
     {
-        MaxHP += HealthPerLevel;
+        baseMaxHealth += HealthPerLevel;
         HP += HealthPerLevel;
         mana += ManaPerLevel;
-        MaxMana += ManaPerLevel;
-        attack += AttackPerLevel;
-        defense += DefensePerLevel;
+        baseMaxMana += ManaPerLevel;
+        baseAttack += AttackPerLevel;
+        baseDefense += DefensePerLevel;
+        setMaxStats();
     }
 
     private void SetExpToNextLevel()
@@ -289,5 +391,23 @@ public class CharacterStats : Stats
 
             regenerationCounter = 0;
         }
+    }
+
+    internal void setAccessory(GameObject itemToSwap)
+    {
+        this.accessory = itemToSwap;
+        setAccessoryStats(itemToSwap);
+    }
+
+    internal void setWeapon(GameObject itemToSwap)
+    {
+        this.weapon = itemToSwap;
+        setWeaponStats(itemToSwap);
+    }
+
+    internal void setArmor(GameObject itemToSwap)
+    {
+        this.armor = itemToSwap;
+        setArmorStats(itemToSwap);
     }
 }
