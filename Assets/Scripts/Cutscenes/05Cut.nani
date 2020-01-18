@@ -4,43 +4,44 @@
 
 
 ;dummies
-@fwspawnvfx x:2 y:25 z:0 Vfx:PawnWilson
-@fwspawnvfx x:3 y:25 z:0 Vfx:PawnWilson
-@fwspawnvfx x:4 y:25 z:0 Vfx:PawnWilson
+@fwspawnvfx x:-7 y:-14 z:0 Vfx:PawnDouglass
+@fwspawnvfx x:-5 y:-14 z:0 Vfx:PawnDouglass
+@fwspawnvfx x:-3 y:-14 z:0 Vfx:PawnDouglass
 
-@fwspawnvfx x:2 y:24 z:0 Vfx:PawnPaul
+@fwspawnvfx x:-3 y:-15 z:0 Vfx:PawnPaul
 @fwturnpawn n:PawnPaul d:n
-@fwspawnvfx x:3 y:24 z:0 Vfx:PawnNorma
+@fwspawnvfx x:-5 y:-15 z:0 Vfx:PawnNorma
 @fwturnpawn n:PawnNorma d:n
-@fwspawnvfx x:4 y:24 z:0 Vfx:PawnFluer
+@fwspawnvfx x:-7 y:-15 z:0 Vfx:PawnFluer
 @fwturnpawn n:PawnFluer d:n
-@fwspawnvfx x:0 y:23 z:0 Vfx:PawnJerene
+@fwspawnvfx x:-8 y:-16 z:0 Vfx:PawnJerene
 @fwturnpawn n:PawnJerene d:e
 
-
-
-@char Jerene
-Jerene: Again!   (fix me  This is not the spot where the training ground is set up)
-@hidechars time:0
-
-;breif pause between each
-;thwack VFX
-@fwspawnvfx x:2 y:25 z:0 Vfx:Firework 
-@wait 0.5
-@fwspawnvfx x:3 y:25 z:0 Vfx:Firework
-@wait 0.5
-@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 
 
 @char Jerene
 Jerene: Again!
 @hidechars time:0
 
-@fwspawnvfx x:2 y:25 z:0 Vfx:Firework
+;breif pause between each
+;thwack VFX
+@fwspawnvfx x:-7 y:-14 z:0 Vfx:Firework 
 @wait 0.5
-@fwspawnvfx x:3 y:25 z:0 Vfx:Firework
+@fwspawnvfx x:-5 y:-14 z:0 Vfx:Firework
 @wait 0.5
-@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+@fwspawnvfx x:-3 y:-14 z:0 Vfx:Firework
+
+
+@char Jerene
+Jerene: Again!
+@hidechars time:0
+
+;thwack VFX
+@fwspawnvfx x:-7 y:-14 z:0 Vfx:Firework 
+@wait 0.5
+@fwspawnvfx x:-5 y:-14 z:0 Vfx:Firework
+@wait 0.5
+@fwspawnvfx x:-3 y:-14 z:0 Vfx:Firework
 
 
 ;@fwspawnvfx x:4 y:24 z:0 Vfx:collapse ;fluer falls over
@@ -50,16 +51,21 @@ Jerene: Again!
 Jerene: Ugh, take five.
 @hidechars time:0
 
-@fwspawnvfx x:3 y:25 z:0 Vfx:Firework
+@fwspawnvfx x:-5 y:-15 z:0 Vfx:CurseFX
+@wait 1
 
 
-@fwmovepawn n:PawnNorma d:s
+@fwmovepawn n:PawnNorma d:e
+
+
+@fwmovepawn n:PawnNorma d:n
+@fwmovepawn n:PawnNorma d:n
+@fwmovepawn n:PawnNorma d:n
 @fwmovepawn n:PawnNorma d:e
 @fwmovepawn n:PawnNorma d:e
-@fwmovepawn n:PawnNorma d:s
-@fwmovepawn n:PawnNorma d:s
-@fwmovepawn n:PawnNorma d:s
-@fwmovepawn n:PawnNorma d:s
+@fwmovepawn n:PawnNorma d:e
+@fwmovepawn n:PawnNorma d:e
+@fwmovepawn n:PawnNorma d:e
 @fwmovepawn n:PawnNorma d:e
 @fwmovepawn n:PawnNorma d:e
 @fwmovepawn n:PawnNorma d:e
