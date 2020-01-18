@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShieldDash Material
-  m_Shader: {fileID: -6465566751694194690, guid: 186d1ad0aef748b44bb320eb96479ece,
+  m_Name: SlimeMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: be212d9839ea1e740af0bd1d4c02ab71,
     type: 3}
-  m_ShaderKeywords: _ENVIRONMENTREFLECTIONS_OFF
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,12 +20,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_7FC7E1F7:
-        m_Texture: {fileID: 2800000, guid: 0a226732c80c13d4bb8391e24802742c, type: 3}
+    - Texture2D_393E7247:
+        m_Texture: {fileID: 2800000, guid: 3f78e399ae62d814ba8072ae5d9d5772, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 0a226732c80c13d4bb8391e24802742c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -37,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0a226732c80c13d4bb8391e24802742c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -53,14 +53,21 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_8161F07F: 0.5
+    - Vector1_1226684D: 2
+    - Vector1_370ED32A: 0
+    - Vector1_4FB17FBE: 1
+    - Vector1_7B6AB870: 8
+    - Vector1_B5E64FFE: 2
+    - Vector1_DFAF785: 0.05
+    - Vector1_FE7BE2C4: 1
+    - Vector1_FFCE4595: 6
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DstBlend: 0
-    - _EnvironmentReflections: 0
+    - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -68,22 +75,19 @@ Material:
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _fpower: 0.2
-    - _offset: 0.5
     m_Colors:
-    - Color_92C5BF4: {r: 0, g: 7.2468204, b: 8.094401, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
---- !u!114 &302136250018366368
+--- !u!114 &1397319109676739499
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
