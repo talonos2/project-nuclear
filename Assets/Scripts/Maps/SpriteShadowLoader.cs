@@ -16,6 +16,8 @@ public class SpriteShadowLoader : MonoBehaviour
     public bool aboveItem;
     public bool thePlayerjumping;
     public bool spikes;
+    private float xPosition;
+    private float yPostioin;
     void Start()
     {
         groundObject = GameObject.Find("Ground").GetComponent<GroundShadow>();
@@ -32,6 +34,8 @@ public class SpriteShadowLoader : MonoBehaviour
         sRender.material.SetInt("_LightRad", 6);
 
         transform.position=transform.position + new Vector3(groundObject.mapOffset.x, groundObject.mapOffset.y, 0);
+        xPosition = transform.localPosition.x;
+        yPostioin = transform.localPosition.y;
 
     }
 
@@ -41,7 +45,7 @@ public class SpriteShadowLoader : MonoBehaviour
 
         sRender.material.SetVector("_HeroXY", ThePlayer.transform.position);//shouldn't it be the sprite position rather than the player position?
 
-        this.transform.position = new Vector3(this.transform.position.x,this.transform.position.y,CalculateZCoor());
+        this.transform.localPosition = new Vector3(xPosition,yPostioin,CalculateZCoor());
 
     }
 
