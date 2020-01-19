@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: -4024727030979931630, guid: 3bd9f6cb9c5eb7445b89dc81e4f6b438, type: 3}
   - {fileID: -3320951097557940365, guid: 3bd9f6cb9c5eb7445b89dc81e4f6b438, type: 3}
   - {fileID: 6873886146925568638, guid: 3bd9f6cb9c5eb7445b89dc81e4f6b438, type: 3}
+  bustSprite: {fileID: 21300000, guid: 0ec6897f15a0e2a4f9172c28e317ebbf, type: 3}
   MageClass: 0
   FighterClass: 0
   SurvivorClass: 0
@@ -252,8 +253,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualGround: 0
   groundItem: 0
+  belowGroundItem: 0
   aboveItem: 0
   thePlayerjumping: 1
+  spikes: 0
 --- !u!64 &4061810269412956579
 MeshCollider:
   m_ObjectHideFlags: 0

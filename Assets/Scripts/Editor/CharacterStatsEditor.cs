@@ -79,8 +79,10 @@ public class CharacterStatsEditor : Editor
         {
             //EditorGUIUtility.LookLikeInspector();
             SerializedProperty tps = serializedObject.FindProperty("combatSprites");
+            SerializedProperty tps2 = serializedObject.FindProperty("bustSprite");
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(tps, true);
+            EditorGUILayout.PropertyField(tps2, true);
             if (EditorGUI.EndChangeCheck())
                 serializedObject.ApplyModifiedProperties();
             //EditorGUIUtility.LookLikeControls();
