@@ -2,38 +2,38 @@
 
 ;$@scene= town
 
-;$@place Dorara
-;$@place Jerene
+;$@place Reya
+;$@place Tasha
 
-@fwspawnvfx x:7 y:20 z:0 Vfx:PawnDorara
-@fwturnpawn n:PawnDorara d:e
-@fwspawnvfx x:10 y:20 z:0 Vfx:PawnJerene
-@fwturnpawn n:PawnJerene d:w
+@fwspawnvfx x:7 y:20 z:0 Vfx:PawnReya
+@fwturnpawn n:PawnReya d:e
+@fwspawnvfx x:10 y:20 z:0 Vfx:PawnTasha
+@fwturnpawn n:PawnTasha d:w
 
 
 
-@char Dorara
-Dorara: I said, give me that blade.
+@char Reya
+Reya: I said, give me that blade.
 @hidechars time:0
 
-@char Jerene
-Jerene: No.
+@char Tasha
+Tasha: No.
 @hidechars time:0
 
-@char Dorara
-Dorara: I've seen ya'll take some real shiny loot out of that cave, and I want it.
+@char Reya
+Reya: I've seen ya'll take some real shiny loot out of that cave, and I want it.
 @hidechars time:0
 
-@char Jerene
-Jerene: You'll have to go through me.
+@char Tasha
+Tasha: You'll have to go through me.
 @hidechars time:0
 
-@char Dorara
-Dorara: Fine, I was getting tired of idle threats.
+@char Reya
+Reya: Fine, I was getting tired of idle threats.
 @hidechars time:0
 
-@fwmovepawn n:PawnDorara d:e
-@fwmovepawn n:PawnDorara d:e
+@fwmovepawn n:PawnReya d:e
+@fwmovepawn n:PawnReya d:e
 @wait 0.4
 
 
@@ -42,36 +42,36 @@ Dorara: Fine, I was getting tired of idle threats.
 
 @wait 1
 
-@char Jerene
-Jerene: Take the blade.
+@char Tasha
+Tasha: Take the blade.
 @hidechars time:0
 
-@fwturnpawn n:PawnDorara d:e
+@fwturnpawn n:PawnReya d:e
 
-@char Dorara
-Dorara: I, uh.
+@char Reya
+Reya: I, uh.
 @hidechars time:0
 
-@fwmovepawn n:PawnJerene d:s
-@fwturnpawn n:PawnJerene d:n
-;@Jerene step backwards
+@fwmovepawn n:PawnTasha d:s
+@fwturnpawn n:PawnTasha d:n
+;@Tasha step backwards
 
-@char Jerene
-Jerene: You take it, or you'll have to go through me.
+@char Tasha
+Tasha: You take it, or you'll have to go through me.
 @hidechars time:0
 
-;@fwmovepawn Dorara (to chest and then cave)
+;@fwmovepawn Reya (to chest and then cave)
 
 
-@fwmovepawn n:PawnDorara d:e
-@fwturnpawn n:PawnDorara d:n
+@fwmovepawn n:PawnReya d:e
+@fwturnpawn n:PawnReya d:n
 @wait 0.5
-@fwmovepawn n:PawnDorara d:e
-@fwmovepawn n:PawnDorara d:e
+@fwmovepawn n:PawnReya d:e
+@fwmovepawn n:PawnReya d:e
 @wait 0.4
 
 
-@fwdeletego n:PawnDorara
+@fwdeletego n:PawnReya
 
 
 ;$@startRun

@@ -1,12 +1,33 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Jezerine
+@fwspawnvfx x:9 y:20 z:0 Vfx:PawnElder
+@fwturnpawn n:PawnElder d:w
+
+@char Elder
+Elder: The fires are out.
+@hidechars time:0
+
+@wait 0.5
+
+@char Elder
+Elder: Everything's stowed away.
+@hidechars time:0
+
+@wait 0.5
+
+@char Elder
+Elder: And it will either matter or it won't.
+@hidechars time:0
+
+@fwspawnvfx x:9 y:20 z:0 Vfx:CurseFX
+@wait 1
+
+@fwturnpawn n:PawnElder d:e
+
+@wait 2
 
 
-;@fwmovepawn Jezerine (toward cave)
-
-$@startRun
 
 @exit

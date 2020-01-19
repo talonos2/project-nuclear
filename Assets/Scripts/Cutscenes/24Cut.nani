@@ -2,7 +2,7 @@
 
 ;$@scene= town
 
-;$@place Jerene
+;$@place Tasha
 ;$@place Elder
 
 @fwspawnvfx x:-2 y:-14 z:0 Vfx:Dummy
@@ -11,28 +11,28 @@
 
 @fwspawnvfx x:-4 y:-15 z:0 Vfx:PawnElder
 @fwturnpawn n:PawnElder d:n
-@fwspawnvfx x:-5 y:-16 z:0 Vfx:PawnJerene
-@fwturnpawn n:PawnJerene d:e
+@fwspawnvfx x:-5 y:-16 z:0 Vfx:PawnTasha
+@fwturnpawn n:PawnTasha d:e
 
 
-@char Jerene
-Jerene: Your form needs work.  You stumble on the follow-through.
+@char Tasha
+Tasha: Your form needs work.  You stumble on the follow-through.
 @hidechars time:0
 
 @char Elder
 Elder: I'm not the spry young man I once was.
 @hidechars time:0
 
-@char Jerene
-Jerene: Oh, okay then.
+@char Tasha
+Tasha: Oh, okay then.
 @hidechars time:0
 
 ;$@wait
-@fwturnpawn n:PawnJerene d:w
+@fwturnpawn n:PawnTasha d:w
 
-@char Jerene
-Jerene: When you see the flying machine made of knives make sure to let it know that your reflexes aren't what they used to be.
-Jerene: I'm sure it'll slow down.
+@char Tasha
+Tasha: When you see the flying machine made of knives make sure to let it know that your reflexes aren't what they used to be.
+Tasha: I'm sure it'll slow down.
 @hidechars time:0
 
 @fwturnpawn n:PawnElder d:w
@@ -41,70 +41,70 @@ Jerene: I'm sure it'll slow down.
 Elder: Yes, I understa—
 @hidechars time:0
 
-@fwmovepawn n:PawnJerene d:w
+@fwmovepawn n:PawnTasha d:w
 
-@char Jerene
-Jerene: And when the monster tries to scald you with boiling lava, let it know that smoke is bad for your lungs.
-Jerene: I'm sure it will tone that down for you.
+@char Tasha
+Tasha: And when the monster tries to scald you with boiling lava, let it know that smoke is bad for your lungs.
+Tasha: I'm sure it will tone that down for you.
 @hidechars time:0
 
 @char Elder
 Elder: Yes, I get—
 @hidechars time:0
 
-@char Jerene
-Jerene: Oh, when the monster made of stone comes at you, make sure to let it know that your joints ache.
-Jerene: I'm sure it'll take that into account and make sure to crack easier for you.
+@char Tasha
+Tasha: Oh, when the monster made of stone comes at you, make sure to let it know that your joints ache.
+Tasha: I'm sure it'll take that into account and make sure to crack easier for you.
 @hidechars time:0
 
 @char Elder
 Elder: I GET IT!
 @hidechars time:0
 
-@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnTasha d:e
 
-@char Jerene
-Jerene: DO YOU?!
+@char Tasha
+Tasha: DO YOU?!
 @hidechars time:0
 
-@fwmovepawn n:PawnJerene d:e
-@fwmovepawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:n
+@fwmovepawn n:PawnTasha d:e
+@fwmovepawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:n
 @fwturnpawn n:PawnElder d:s
 
-@char Jerene
-Jerene: How many people have gone in there?!  How many have YOU seen come out?!
-Jerene: I taught them everything I know!   Everything!  What was the point of any of it?!
-Jerene: Of anything I ever did?...
+@char Tasha
+Tasha: How many people have gone in there?!  How many have YOU seen come out?!
+Tasha: I taught them everything I know!   Everything!  What was the point of any of it?!
+Tasha: Of anything I ever did?...
 @hidechars time:0
 
 @char Elder
 Elder: You tried... it's all any of us can do.
 @hidechars time:0
 
-;$@animate curse Jerene
-@fwspawnvfx x:-3 y:-16 z:0 Vfx:PawnJerene
+;$@animate curse Tasha
+@fwspawnvfx x:-3 y:-16 z:0 Vfx:PawnTasha
 
-@char Jerene
-Jerene: I'll do more than try.
+@char Tasha
+Tasha: I'll do more than try.
 @hidechars time:0
 
-@fwturnpawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:n
+@fwturnpawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:n
 @fwturnpawn n:PawnElder d:e
-@fwturnpawn n:PawnJerene d:n
-@fwturnpawn n:PawnJerene d:n
-@fwturnpawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:e
-@fwturnpawn n:PawnJerene d:e
+@fwturnpawn n:PawnTasha d:n
+@fwturnpawn n:PawnTasha d:n
+@fwturnpawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:e
+@fwturnpawn n:PawnTasha d:e
 
-@fwdeletego n:PawnJerene
+@fwdeletego n:PawnTasha
 
 ;$@startRun
 
