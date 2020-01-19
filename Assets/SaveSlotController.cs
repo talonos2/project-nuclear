@@ -8,6 +8,7 @@ public class SaveSlotController : MonoBehaviour
     public Text SaveName;
     public Text furtherstTraveled;
     public Text currentDate;
+    public Image outlineImage;
 
     // Start is called before the first frame update
     void Start()

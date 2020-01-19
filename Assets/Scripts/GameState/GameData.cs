@@ -37,7 +37,6 @@ public class GameData : Singleton<GameData>
     public bool pauseTimer;
     internal int furthestFloorAchieved;
     internal List <float> bestRunTimes;
-    internal List<String> savedGames;
 
     public List<GameObject> townWeapons = new List<GameObject>();
     public List<GameObject> townArmor = new List<GameObject>();
@@ -60,14 +59,38 @@ public class GameData : Singleton<GameData>
     public bool map5_2Shortcut;
     public bool map5_3Shortcut;
 
-    internal bool IsInTown()
+    internal void updateFields(GameData loadedData)
+    {
+
+        HealhCrystalBonus = loadedData.HealhCrystalBonus;
+        ManaCrystalBonus = loadedData.ManaCrystalBonus;
+        AttackCrystalBonus = loadedData.AttackCrystalBonus;
+        DefenseCrystalBonus = loadedData.DefenseCrystalBonus;
+        HealhCrystalTotal = loadedData.HealhCrystalTotal;
+        ManaCrystalTotal = loadedData.ManaCrystalTotal;
+        AttackCrystalTotal = loadedData.AttackCrystalTotal;
+        DefenseCrystalTotal = loadedData.DefenseCrystalTotal;
+        FloorNumber = 0;
+        RunNumber = loadedData.RunNumber;
+        PowersGained = loadedData.PowersGained;
+        furthestFloorAchieved = loadedData.furthestFloorAchieved;
+        bestRunTimes = loadedData.bestRunTimes;
+        townWeapons = loadedData.townWeapons;
+        townAccessories = loadedData.townAccessories;
+        townArmor = loadedData.townArmor;
+        map5_2Shortcut = loadedData.map5_2Shortcut;
+        map5_3Shortcut = loadedData.map5_3Shortcut;
+
+}
+
+internal bool IsInTown()
     {
         return FloorNumber == 0;
     }
 
     internal void autoSaveStats()
     {
-        Debug.Log("Saving game not implementd yet");
+        LoadSaveController.autoSave(RunNumber, furthestFloorAchieved);
     }
 
     public void SetNextLocation(Vector2Int location, SpriteMovement.DirectionMoved facing) {
@@ -91,6 +114,7 @@ public class GameData : Singleton<GameData>
 
     }
 
+   
 
     void Update()
     {
@@ -117,39 +141,7 @@ public class GameData : Singleton<GameData>
         timer = 600;
     }
 
-    public void saveGame() {
 
-    }
 
-    public void loadGame() {
-
-    }
-
-    /*
-    private void SaveData(String fileName)
-    {
-        if (!Directory.Exists("Saves"))
-            Directory.CreateDirectory("Saves");
-
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Create("Saves/save.binary");
-
-        LocalCopyOfData = PlayerState.Instance.localPlayerData;
-
-        formatter.Serialize(saveFile, LocalCopyOfData);
-
-        saveFile.Close();
-    }
-
-    private void LoadData(String fileName)
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Open("Saves/save.binary", FileMode.Open);
-
-        LocalCopyOfData = (PlayerStatistics)formatter.Deserialize(saveFile);
-
-        saveFile.Close();
-    }
-    */
 
 }
