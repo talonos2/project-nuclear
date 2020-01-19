@@ -11,6 +11,8 @@ public class Enemy : Stats
     public CrystalType crystalType = CrystalType.NULL;
     public int crystalDropAmount;
 
+    public int powerGiven;
+
     public Sprite[] combatSprites;
     public AttackAnimation attackAnimation = AttackAnimation.HOP;
 

@@ -266,6 +266,7 @@ public class Combat : MonoBehaviour
         {
             blade.StartClose();
             combatEnded = true;
+            playerStats.powersGained = Math.Max(monsterStats.powerGiven, playerStats.powersGained);
         }
     }
 
