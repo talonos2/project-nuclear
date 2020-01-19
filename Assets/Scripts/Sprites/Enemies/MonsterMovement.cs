@@ -35,8 +35,9 @@ public class MonsterMovement : SpriteMovement
     private int CurrentFacing = 0;
     private int stuck = 0;
     public bool bossMonster;
-    
-    
+    Random rand = new Random();
+
+
 
 
     // Update is called once per frame
@@ -316,10 +317,7 @@ public class MonsterMovement : SpriteMovement
 
     private DirectionMoved GetRandomStep()
     {
-        //DirectionMoved nexstp = 0;
-        System.Random rand = new System.Random();
-        int dirOrdinal = rand.Next(4)+1;
-        //if (dirOrdinal > 4) dirOrdinal = (int)facedDirection;
+        int dirOrdinal = Random.Range(1,5);
         return (DirectionMoved)dirOrdinal;
     }
 
