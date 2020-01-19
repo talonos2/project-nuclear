@@ -15,7 +15,7 @@ public class UIPortraitLoader : MonoBehaviour
         stats = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
         r = GetComponent<SpriteRenderer>();
         r.sprite = stats.bustSprite;
-        text.text = stats.name;
+        text.text = stats.charName;
     }
 
     // Update is called once per frame
