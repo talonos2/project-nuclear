@@ -27,8 +27,10 @@ public class cameraClamp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // float relativeX = mapZeroLocation.x - ThePlayer.transform.position.x - 8;
-        
+        // float relativeX = mapZeroLocation.x - ThePlayer.transform.position.x - 8;
+
+        if (GameData.Instance.FloorNumber == 0) return;
+
         float relativeYLowClamp = -mapHeight / 2 - ThePlayer.transform.position.y + 6f;
         float relativeYHighClamp = mapHeight / 2- ThePlayer.transform.position.y - 6f;
         float relativeXLowClamp = -mapWidth / 2 - ThePlayer.transform.position.x + 10.67f;
