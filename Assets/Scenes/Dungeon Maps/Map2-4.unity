@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -426,6 +426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6622165687117483730, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
         type: 3}
+      propertyPath: Pathing.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622165687117483730, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
+        type: 3}
       propertyPath: PathRandomly
       value: 0
       objectReference: {fileID: 0}
@@ -444,6 +449,16 @@ PrefabInstance:
       propertyPath: LookPattern.Array.data[0]
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6622165687117483730, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
+        type: 3}
+      propertyPath: bossMonster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622165687117483730, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
+        type: 3}
+      propertyPath: Pathing.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6622165687581963514, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -454,8 +469,7 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.75
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6622165687117483730, guid: 8e3869a8ee3aa624da07cc9de5c17beb, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e3869a8ee3aa624da07cc9de5c17beb, type: 3}
 --- !u!1 &400958061 stripped
 GameObject:
@@ -2524,7 +2538,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualGround: 1
   groundItem: 0
+  belowGroundItem: 0
   aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0
 --- !u!1001 &2085407675
 PrefabInstance:
   m_ObjectHideFlags: 0

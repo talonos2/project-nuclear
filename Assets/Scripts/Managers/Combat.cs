@@ -266,6 +266,7 @@ public class Combat : MonoBehaviour
         {
             blade.StartClose();
             combatEnded = true;
+            playerStats.powersGained = Math.Max(monsterStats.powerGiven, playerStats.powersGained);
         }
     }
 
@@ -318,6 +319,7 @@ public class Combat : MonoBehaviour
     {
         float incomingDamage = (int)playerStats.attack;
         if (goodHit) {incomingDamage *= 1.25f; }
+        goodHit = false;
         incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent);
         incomingDamage -= monsterStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
@@ -390,6 +392,7 @@ public class Combat : MonoBehaviour
         
         float incomingDamage = monsterStats.attack;
         if (goodBlock) { incomingDamage *= .8f; }
+        goodBlock = false;
         incomingDamage -= playerStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
         if (RollDodge()) {

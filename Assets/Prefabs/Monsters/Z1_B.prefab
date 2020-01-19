@@ -121,6 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  groundItem: 0
+  belowGroundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0
 --- !u!1 &8043389666066259198
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +196,7 @@ MonoBehaviour:
   LookDuration: 5
   ChaseRange: 5
   LookPattern: 03000000
+  bossMonster: 0
 --- !u!114 &8043389666066259187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,11 +256,13 @@ MonoBehaviour:
   weakness: 1
   crystalType: 5
   crystalDropAmount: 15
+  powerGiven: 1
   combatSprites:
   - {fileID: 8748901023591621794, guid: 8086b17eadb487f44b1b43e894ed2099, type: 3}
   - {fileID: -404747782666905900, guid: 8086b17eadb487f44b1b43e894ed2099, type: 3}
   - {fileID: 8039505293157929984, guid: 8086b17eadb487f44b1b43e894ed2099, type: 3}
   - {fileID: 6505660541132300591, guid: 8086b17eadb487f44b1b43e894ed2099, type: 3}
+  attackAnimation: 0
 --- !u!114 &3173064278397565638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,4 +277,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalFrames: 6
   framesPerSecond: 5
-  frameCounter: 0
+  fireBoss: 0
