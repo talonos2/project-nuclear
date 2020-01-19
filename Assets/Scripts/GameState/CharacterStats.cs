@@ -27,6 +27,7 @@ public class CharacterStats : Stats
     public int expToLevel = 90;
 
     public Sprite[] combatSprites;
+    public Sprite bustSprite;
 
     public bool MageClass;
     public bool FighterClass;
