@@ -17,6 +17,21 @@ public class NewGameController : MonoBehaviour
     // Start is called before the first frame update
 
 
+    public void StartNewGameActual() {
+        if (GameData.Instance.RunNumber==1) {
+            GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
+            GameData.Instance.FloorNumber = 1;
+            GameData.Instance.resetTimer();
+            SceneManager.LoadScene("Map1-1");
+        }
+        if (GameData.Instance.RunNumber > 1 && GameData.Instance.RunNumber <= 30) {
+            GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
+            GameData.Instance.FloorNumber = 0;
+            SceneManager.LoadScene("TownMap_1");
+        }
+
+
+    }
     public void StartNewGame (){
         Text runVariable=RunNumberTextField.GetComponent <Text> ();
         Dropdown runType = dropDown.GetComponent<Dropdown>();
@@ -27,6 +42,7 @@ public class NewGameController : MonoBehaviour
             {
                 GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
                 GameData.Instance.FloorNumber = 1;
+                GameData.Instance.resetTimer();
                 SceneManager.LoadScene("Map1-1");
             }
             else

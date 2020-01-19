@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class ItemHolderUI : MonoBehaviour
 {
 
-    private GameObject itemStored;
+    private InventoryItem itemStored;
     public GameObject itemSpriteHolder;
     public Text itemText;
     private String itemDetailsText;
     private Sprite itemSprite;
 
-    public void SetItem(GameObject itemToSet) {
+    public void SetItem(InventoryItem itemToSet) {
         itemStored = itemToSet;
         InventoryItem ItemDetails = itemStored.GetComponent<InventoryItem>();
         itemDetailsText = ItemDetails.equipmentDescription;
@@ -28,7 +28,7 @@ public class ItemHolderUI : MonoBehaviour
     public Sprite GetItemSprite() {
         return itemSprite;
     }
-    public GameObject GetItem() {
+    public InventoryItem GetItem() {
         return itemStored;
     }
 

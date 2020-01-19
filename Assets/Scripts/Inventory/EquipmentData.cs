@@ -8,10 +8,10 @@ public class EquipmentData : MonoBehaviour
 
     public EquipmentDataStorage[] CommonItemList;
     public EquipmentDataStorage[] RareItemList;
-    private GameObject runOneWeapon;
-    private GameObject runTwoWeapon;
-    private GameObject defaultArmor;
-    private GameObject noAccessoryItem;
+    private Weapon runOneWeapon;
+    private Weapon runTwoWeapon;
+    private Armor defaultArmor;
+    private Accessory noAccessoryItem;
 
     private bool EquipmentListCreated=false;
     void Start() {
@@ -28,21 +28,21 @@ public class EquipmentData : MonoBehaviour
 
     }
 
-    public GameObject getRunOneWeapon() {
+    public Weapon getRunOneWeapon() {
         return runOneWeapon;
     }
 
-    public GameObject getRunTwoWeapon()
+    public Weapon getRunTwoWeapon()
     {
         return runTwoWeapon;
     }
 
-    public GameObject getDefaultArmor()
+    public Armor getDefaultArmor()
     {
         return defaultArmor;
     }
 
-    public GameObject getRandomCommonItem(int floor) {
+    public InventoryItem getRandomCommonItem(int floor) {
         if (floor < 1 || floor > 20) return null;
         int numberOfItems = CommonItemList[floor].EquipmentOnFloor.Count;
         if (numberOfItems == 0) return null;
@@ -50,7 +50,7 @@ public class EquipmentData : MonoBehaviour
         return CommonItemList[floor].EquipmentOnFloor[UnityEngine.Random.Range(0, numberOfItems)];
     }
 
-    public GameObject getRandomRareItem(int floor) {
+    public InventoryItem getRandomRareItem(int floor) {
         {
             if (floor < 1 || floor > 20) return null;
             if (floor == 1) floor = 2;
@@ -73,38 +73,39 @@ public class EquipmentData : MonoBehaviour
                 foreach (string floor in Floors)
                 {
                     if (item.gameObject.name == "Knife") {
-                        runTwoWeapon = item.gameObject;
+                        runTwoWeapon = item.gameObject.GetComponent<Weapon>();
                     }
                     if (item.gameObject.name == "Hiro's Sword")
                     {
-                        runOneWeapon = item.gameObject;
+                        runOneWeapon = item.gameObject.GetComponent<Weapon>();
                     }
                     if (item.gameObject.name == "Warm Jacket")
                     {
-                        defaultArmor = item.gameObject;
+                        defaultArmor = item.gameObject.GetComponent<Armor>();
                     }
                     if (item.gameObject.name == "No Accessory Equipped") {
-                        noAccessoryItem = item.gameObject;
+                        noAccessoryItem = item.gameObject.GetComponent<Accessory>();
                     }
-                    if (ItemToAdd.Rare) { RareItemList[Convert.ToInt32(floor)].EquipmentOnFloor.Add(item.gameObject); }
-                    else { CommonItemList[Convert.ToInt32(floor)].EquipmentOnFloor.Add(item.gameObject); }
+
+                    if (ItemToAdd.Rare) { RareItemList[Convert.ToInt32(floor)].EquipmentOnFloor.Add(ItemToAdd); }
+                    else { CommonItemList[Convert.ToInt32(floor)].EquipmentOnFloor.Add(ItemToAdd); }
                 }
             }         
         }
 
     }
 
-    internal GameObject getEmptyAccessory()
+    internal Accessory getEmptyAccessory()
     {
         return noAccessoryItem;
     }
 }
 
 public class EquipmentDataStorage {
-    public List<GameObject> EquipmentOnFloor = new List<GameObject>();
+    public List<InventoryItem> EquipmentOnFloor = new List<InventoryItem>();
 
-    public GameObject RollRandomEquipment() {
-        GameObject RolledEquipment = null;
+    public InventoryItem RollRandomEquipment() {
+        InventoryItem RolledEquipment = null;
         if (EquipmentOnFloor.Count == 0) {
             return RolledEquipment;
         }

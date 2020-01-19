@@ -18,6 +18,11 @@ public class SpikeController : DoodadData
 
     private float timeUntilOpen = 0;
 
+    public bool primBoulder;
+    //public bool primShortcutB;
+    public int primConnectionNumber;
+    private BobPrim primToCheck;
+
 
     // Start is called before the first frame update
     new void Start()
@@ -26,6 +31,24 @@ public class SpikeController : DoodadData
         gameData = GameData.Instance;
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
+
+        primToCheck = GameObject.Find("Grid").GetComponent<BobPrim>();
+        if (primBoulder)
+        {
+            RunPrimAlgorythm();
+        }
+    }
+
+    public void RunPrimAlgorythm()
+    {
+        if (primToCheck.result[primConnectionNumber])
+        {
+            //SetBoulder(true);
+        }
+        else
+        {
+            Open();
+        }
     }
 
     protected void Update()

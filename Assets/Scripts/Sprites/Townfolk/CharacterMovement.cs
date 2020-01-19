@@ -215,7 +215,6 @@ public class CharacterMovement : SpriteMovement
 
     internal void MurderPlayer()
     {
-        Debug.Log("hasdf");
         GameData.Instance.killPlayer();
     }
 

@@ -14,16 +14,5 @@ public class Enemy : Stats
     public Sprite[] combatSprites;
     public AttackAnimation attackAnimation = AttackAnimation.HOP;
 
-    public
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

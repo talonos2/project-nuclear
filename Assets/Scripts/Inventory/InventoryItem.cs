@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class InventoryItem : MonoBehaviour
 {
     public string equipmentDescription = "Describe me please";
@@ -14,4 +15,13 @@ public class InventoryItem : MonoBehaviour
     public bool Rare;
     public Sprite itemIcon;
 
+    public void OnAfterDeserialize()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnBeforeSerialize()
+    {
+        throw new NotImplementedException();
+    }
 }

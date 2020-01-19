@@ -250,7 +250,7 @@ public class RandomChestController : EntityData
         }
         else if (itemChest)
         {
-            GameObject itemFound=itemListData.getRandomCommonItem(rarity);
+            InventoryItem itemFound=itemListData.getRandomCommonItem(rarity);
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
             uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, itemFound);
 
@@ -261,7 +261,7 @@ public class RandomChestController : EntityData
         }
         else if (rareItemChest)
         {
-            GameObject rareItemFound = itemListData.getRandomRareItem(rarity);
+            InventoryItem rareItemFound = itemListData.getRandomRareItem(rarity);
             //InventoryItem itemTypeCheck = rareItemFound.GetComponent<InventoryItem>();
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
             uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, rareItemFound);

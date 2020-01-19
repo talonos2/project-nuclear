@@ -9,6 +9,35 @@ public class BoulderController : DoodadData
     //  {
     //       
     //   }
+    public bool primBoulder;
+    //public bool primShortcutB;
+    public int primConnectionNumber;
+    private BobPrim primToCheck;
+
+    new void Start()
+    {
+        base.Start();
+        primToCheck = GameObject.Find("Grid").GetComponent<BobPrim>();
+        if (primBoulder)
+        {
+            RunPrimAlgorythm();
+        }
+
+
+
+    }
+
+    public void RunPrimAlgorythm()
+    {
+        if (primToCheck.result[primConnectionNumber])
+        {
+            SetBoulder(true);
+        }
+        else
+        {
+            SetBoulder(false);
+        }
+    }
 
     public void SetBoulder(bool active)
     {

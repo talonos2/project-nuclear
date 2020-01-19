@@ -36,9 +36,9 @@ public class CharacterStats : Stats
     public bool SurvivorClass;
     public bool ScoutClass;
 
-    public GameObject weapon;
-    public GameObject armor;
-    public GameObject accessory;
+    public Weapon weapon;
+    public Armor armor;
+    public Accessory accessory;
 
     public float armorBonusDefense;
     public float weaponBonusAttack;
@@ -73,9 +73,7 @@ public class CharacterStats : Stats
     private float regenerationCounter;
 
     void Start()
-    {
-
-        
+    {        
         gameStateData = GameObject.Find("GameStateData");
         equipmentData = GameObject.Find("EquipmentData");
         gameData = gameStateData.GetComponent <GameData> ();
@@ -255,17 +253,17 @@ public class CharacterStats : Stats
         }
     }
 
-    private void setWeaponStats(GameObject weaponChanged) {
+    private void setWeaponStats(Weapon weaponChanged) {
         weaponBonusAttack = weaponChanged.GetComponent<Weapon>().addAttack;
         setMaxStats();
     }
 
-    private void setArmorStats(GameObject armorChanged) {
+    private void setArmorStats(Armor armorChanged) {
         armorBonusDefense = armorChanged.GetComponent<Armor>().addDefense;
         setMaxStats();
     }
 
-    private void setAccessoryStats(GameObject accessoryChanged) {
+    private void setAccessoryStats(Accessory accessoryChanged) {
         float oldaccHealth=accessoryHealth;
         float oldaccMana= accessoryMana;
 
@@ -382,6 +380,9 @@ public class CharacterStats : Stats
     // Update is called once per frame
     void Update()
     {
+        if (GameState.fullPause || GameData.Instance.pauseTimer) {
+            return;
+        }
         regenerationCounter += Time.deltaTime;
         if (regenerationCounter >= 3) {
             HP += (int)(MaxHP * .01f);
@@ -396,19 +397,19 @@ public class CharacterStats : Stats
         }
     }
 
-    internal void setAccessory(GameObject itemToSwap)
+    internal void setAccessory(Accessory itemToSwap)
     {
         this.accessory = itemToSwap;
         setAccessoryStats(itemToSwap);
     }
 
-    internal void setWeapon(GameObject itemToSwap)
+    internal void setWeapon(Weapon itemToSwap)
     {
         this.weapon = itemToSwap;
         setWeaponStats(itemToSwap);
     }
 
-    internal void setArmor(GameObject itemToSwap)
+    internal void setArmor(Armor itemToSwap)
     {
         this.armor = itemToSwap;
         setArmorStats(itemToSwap);

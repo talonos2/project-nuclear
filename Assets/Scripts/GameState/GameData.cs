@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-[Serializable]
+
 public class GameData : Singleton<GameData>
 
 {
@@ -38,9 +38,9 @@ public class GameData : Singleton<GameData>
     internal int furthestFloorAchieved;
     internal List <float> bestRunTimes;
 
-    public List<GameObject> townWeapons = new List<GameObject>();
-    public List<GameObject> townArmor = new List<GameObject>();
-    public List<GameObject> townAccessories = new List<GameObject>();
+    public List<Weapon> townWeapons = new List<Weapon>();
+    public List<Armor> townArmor = new List<Armor>();
+    public List<Accessory> townAccessories = new List<Accessory>();
 
 //    public bool Paused = false;
 
@@ -59,7 +59,7 @@ public class GameData : Singleton<GameData>
     public bool map5_2Shortcut;
     public bool map5_3Shortcut;
 
-    internal void updateFields(GameData loadedData)
+   /* internal void updateFields(GameData loadedData)
     {
 
         HealhCrystalBonus = loadedData.HealhCrystalBonus;
@@ -81,7 +81,7 @@ public class GameData : Singleton<GameData>
         map5_2Shortcut = loadedData.map5_2Shortcut;
         map5_3Shortcut = loadedData.map5_3Shortcut;
 
-}
+}*/
 
 internal bool IsInTown()
     {
@@ -145,3 +145,6 @@ internal bool IsInTown()
 
 
 }
+/*
+
+    */

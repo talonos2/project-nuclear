@@ -41,9 +41,9 @@ public class CharacterStatsEditor : Editor
         equipment = EditorGUILayout.BeginFoldoutHeaderGroup(equipment, "Equipment");
         if (equipment)
         {
-            charac.weapon = (GameObject)EditorGUILayout.ObjectField("Weapon", charac.weapon, typeof(GameObject), false, null);
-            charac.armor = (GameObject)EditorGUILayout.ObjectField("Armor", charac.armor, typeof(GameObject), false, null);
-            charac.accessory = (GameObject)EditorGUILayout.ObjectField("Accessory", charac.accessory, typeof(GameObject), false, null);
+            charac.weapon = (Weapon)EditorGUILayout.ObjectField("Weapon", charac.weapon, typeof(GameObject), false, null);
+            charac.armor = (Armor)EditorGUILayout.ObjectField("Armor", charac.armor, typeof(GameObject), false, null);
+            charac.accessory = (Accessory)EditorGUILayout.ObjectField("Accessory", charac.accessory, typeof(GameObject), false, null);
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
         crystals = EditorGUILayout.BeginFoldoutHeaderGroup(crystals, "Crystals");

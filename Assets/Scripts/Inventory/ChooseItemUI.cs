@@ -22,7 +22,7 @@ public class ChooseItemUI : MonoBehaviour
     private InventoryItem itemTypeCheck;
     private bool pickingItem;
     private CharacterStats playerData;
-    private GameObject rolledItem;
+    private InventoryItem rolledItem;
 
     // Start is called before the first frame update
     void Start()
@@ -83,11 +83,11 @@ public class ChooseItemUI : MonoBehaviour
             {
                 if (playerData.weapon != null) GameData.Instance.townWeapons.Add(playerData.weapon);
                 sendGabToTownMessage(playerData.weapon);
-                playerData.setWeapon(rolledItem);
+                playerData.setWeapon((Weapon)rolledItem);
 
             }
             else {
-                GameData.Instance.townWeapons.Add(rolledItem);
+                GameData.Instance.townWeapons.Add((Weapon)rolledItem);
                 sendGabToTownMessage(rolledItem);
             }
         }
@@ -97,10 +97,10 @@ public class ChooseItemUI : MonoBehaviour
             {
                 if (playerData.armor != null) GameData.Instance.townArmor.Add(playerData.armor);
                 sendGabToTownMessage(playerData.armor);
-                playerData.setArmor(rolledItem);
+                playerData.setArmor((Armor)rolledItem);
             }
             else {
-                GameData.Instance.townArmor.Add(rolledItem);
+                GameData.Instance.townArmor.Add((Armor)rolledItem);
                 sendGabToTownMessage(rolledItem);
             }
         }
@@ -110,17 +110,17 @@ public class ChooseItemUI : MonoBehaviour
             {
                 if (playerData.accessory != null) GameData.Instance.townAccessories.Add(playerData.accessory);
                 sendGabToTownMessage(playerData.accessory);
-                playerData.setAccessory(rolledItem);
+                playerData.setAccessory((Accessory)rolledItem);
             }
             else {
-                GameData.Instance.townAccessories.Add(rolledItem);
+                GameData.Instance.townAccessories.Add((Accessory)rolledItem);
                 sendGabToTownMessage(rolledItem);
             }
         }
         closeItemPickUI(); 
     }
 
-    public void setupItemChoiceDisplay(CharacterStats playerData, GameObject rolledItem) {
+    public void setupItemChoiceDisplay(CharacterStats playerData, InventoryItem rolledItem) {
         this.playerData = playerData;
         this.rolledItem = rolledItem;
         GameState.isInBattle = true;
@@ -195,7 +195,7 @@ public class ChooseItemUI : MonoBehaviour
 
     }
 
-    private void sendGabToTownMessage(GameObject itemSent)
+    private void sendGabToTownMessage(InventoryItem itemSent)
     {
         //throw new NotImplementedException();
     }

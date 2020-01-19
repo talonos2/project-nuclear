@@ -103,7 +103,7 @@ public class SelectItemUIController : MonoBehaviour
 
         removeCurrentList();
 
-        foreach (GameObject wpnObject in GameData.Instance.townWeapons) {
+        foreach (Weapon wpnObject in GameData.Instance.townWeapons) {
             GameObject listItem = Instantiate(itemUIPrefab) as GameObject;
             listItem.GetComponent<ItemHolderUI>().SetItem(wpnObject);
             listItem.SetActive(true);
@@ -125,7 +125,7 @@ public class SelectItemUIController : MonoBehaviour
 
         removeCurrentList();
 
-        foreach (GameObject armrObject in GameData.Instance.townArmor)
+        foreach (Armor armrObject in GameData.Instance.townArmor)
         {
             GameObject listItem = Instantiate(itemUIPrefab) as GameObject;
             listItem.GetComponent<ItemHolderUI>().SetItem(armrObject);
@@ -148,7 +148,7 @@ public class SelectItemUIController : MonoBehaviour
 
         removeCurrentList();
         bool onlyOneEmptyAccessory=false;
-        foreach (GameObject accObject in GameData.Instance.townAccessories)
+        foreach (Accessory accObject in GameData.Instance.townAccessories)
         {
             if (accObject.name == "No Accessory Equipped") {
                 continue; 
@@ -556,9 +556,9 @@ public class SelectItemUIController : MonoBehaviour
     private void SwapArmor()
     {
         GameData.Instance.townArmor.Add(savedStats.armor);
-        GameObject itemToSwap= currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
-        savedStats.setArmor(itemToSwap);
-        GameData.Instance.townArmor.Remove(itemToSwap);
+        InventoryItem itemToSwap= currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
+        savedStats.setArmor((Armor)itemToSwap);
+        GameData.Instance.townArmor.Remove((Armor)itemToSwap);
         armorUIPrefab.SetItem(itemToSwap);
         showItemSelected();
         showCurrentlySelectedOption();
@@ -574,10 +574,10 @@ public class SelectItemUIController : MonoBehaviour
     {
 
         GameData.Instance.townAccessories.Add(savedStats.accessory);
-        GameObject itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
-        savedStats.setAccessory(itemToSwap);
+        InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
+        savedStats.setAccessory((Accessory)itemToSwap);
         savedStats.setFullHPMP();
-        GameData.Instance.townAccessories.Remove(itemToSwap);
+        GameData.Instance.townAccessories.Remove((Accessory)itemToSwap);
         accessoryUIPrefab.SetItem(itemToSwap);
         showItemSelected();
         showCurrentlySelectedOption();
@@ -586,9 +586,9 @@ public class SelectItemUIController : MonoBehaviour
     private void SwapWeapon()
     {
         GameData.Instance.townWeapons.Add(savedStats.weapon);
-        GameObject itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
-        savedStats.setWeapon(itemToSwap);
-        GameData.Instance.townWeapons.Remove(itemToSwap);
+        InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
+        savedStats.setWeapon((Weapon)itemToSwap);
+        GameData.Instance.townWeapons.Remove((Weapon)itemToSwap);
         weaponUIPrefab.SetItem(itemToSwap);
         showItemSelected();
         showCurrentlySelectedOption();
