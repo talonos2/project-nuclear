@@ -644,12 +644,13 @@ public class CharacterMovement : SpriteMovement
             TiePositionToGrid();
             jumpPivot.transform.localPosition = Vector3.zero;
             movedSoFar = 0;
+            GameData.Instance.jumping = false;
             return true;
         }
 
         jumpPivot.transform.localPosition = new Vector3(0,JUMP_HEIGHT*(-movedSoFar * movedSoFar + 2* movedSoFar), 0);
         transform.Translate(dir.GetDirectionVector()*DistanceToMove);
-
+        GameData.Instance.jumping = true;
         return false;
     }
 }
