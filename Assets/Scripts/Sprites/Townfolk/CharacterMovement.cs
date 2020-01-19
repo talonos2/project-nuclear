@@ -65,6 +65,7 @@ public class CharacterMovement : SpriteMovement
             }
         }
         if (gameData.stealthed) {
+
             if (gameData.timerTrigger)
             {
                 if (playerStats.mana >= 4)
@@ -175,7 +176,8 @@ public class CharacterMovement : SpriteMovement
             }
         }
 
-
+        sRender.material.SetInt("_IsSmoke", (GameData.Instance.hasted?1:0));
+        sRender.material.SetInt("_IsStealthed", (GameData.Instance.stealthed?1:0));
 
     }
 
@@ -185,7 +187,6 @@ public class CharacterMovement : SpriteMovement
         Material m = shield.GetComponent<Renderer>().material;
         if (isCharging)
         {
-            Debug.Log(amount);
             float amountThrough;
             if (amount > .3f)
             {
