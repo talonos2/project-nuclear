@@ -1,18 +1,16 @@
 #start
 
-$@scene= town
+;$@scene= town
 
-$@place Tristana
-$@place Wilson
-
-@fwspawnvfx x:6 y:-10 z:0 Vfx:PawnTristana
+@fwspawnvfx x:-7 y:-3 z:0 Vfx:PawnTristana
 @fwturnpawn n:PawnTristana d:w
-@fwspawnvfx x:2 y:-10 z:0 Vfx:PawnWilson
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:PawnWilson
 @fwturnpawn n:PawnWilson d:n
 
+@fwmovepawn n:PawnTristana d:n
 @fwmovepawn n:PawnTristana d:w
 @fwmovepawn n:PawnTristana d:w
-@fwmovepawn n:PawnTristana d:w
+@fwturnpawn n:PawnTristana d:w
 @fwturnpawn n:PawnWilson d:e
 
 @char Tristana
@@ -20,14 +18,16 @@ Tristana: Here, it's all that I've written so far.
 @hidechars time:0
 
 @char Wilson
-Wilson; Why are you giving it to me?
+Wilson: Why are you giving it to me?
 @hidechars time:0
 
 @char Tristana
-Tristana: Because I know I won't leave without it. And now that I know your stories, I don't want to just leave you behind.
+Tristana: Because I know I won't leave without it. And now that I know your stories...[br]I don't want to just leave you behind.
 @hidechars time:0
 
 ;$@animate curse Wilson
+@fwspawnvfx x:-11 y:-2 z:0 Vfx:CurseFX
+@wait 2
 
 @char Tristana
 Tristana: Go on sir, its your turn.
@@ -35,20 +35,29 @@ Tristana: Go on sir, its your turn.
 
 
 
-@fwmovepawn n:PawnWilson d:n
-@fwmovepawn n:PawnWilson d:n
-@fwmovepawn n:PawnWilson d:n
-@fwmovepawn n:PawnWilson d:n
-@fwmovepawn n:PawnWilson d:n
-@fwmovepawn n:PawnWilson d:n
-@fwmovepawn n:PawnWilson d:n
-@fwmovepawn n:PawnWilson d:n
-@fwmovepawn n:PawnWilson d:n
-@fwmovepawn n:PawnWilson d:n
+@fwmovepawn n:PawnWilson d:s
+@fwmovepawn n:PawnWilson d:s
+
+@fwmovepawn n:PawnWilson d:e
+@fwmovepawn n:PawnWilson d:e
+@fwmovepawn n:PawnWilson d:e
+@fwmovepawn n:PawnWilson d:e
+@fwmovepawn n:PawnWilson d:e
+@fwmovepawn n:PawnWilson d:e
+@fwmovepawn n:PawnWilson d:e
+@fwmovepawn n:PawnWilson d:e
+@fwmovepawn n:PawnWilson d:e
+@fwmovepawn n:PawnWilson d:e
+
+@fwmovepawn n:PawnWilson d:s
+@fwmovepawn n:PawnWilson d:s
+
+
+@wait 2
 
 ;@fwmovepawn Wilson (toward cave)
 
-@fwdeletego n:PawnWilson
+;@fwdeletego n:PawnWilson
 
 ;$@startRun
 

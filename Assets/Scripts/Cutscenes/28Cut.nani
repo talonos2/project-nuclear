@@ -4,9 +4,9 @@
 
 
 
-@fwspawnvfx x:-3 y:-2 z:0 Vfx:PawnTristana
+@fwspawnvfx x:-3 y:0 z:0 Vfx:PawnTristana
 @fwturnpawn n:PawnTristana d:s
-@fwspawnvfx x:-3 y:0 z:0 Vfx:PawnPatrick
+@fwspawnvfx x:-3 y:-2 z:0 Vfx:PawnPatrick
 @fwturnpawn n:PawnPatrick d:n
 @fwspawnvfx x:-2 y:-1 z:0 Vfx:PawnElder
 @fwturnpawn n:PawnElder d:w
@@ -18,7 +18,7 @@ Tristana: So, what are you going to do when this is all over?
 
 @char Patrick
 Patrick: Go on the road. Tell people they can come back.
-If they made it.
+Patrick: If they made it.
 @hidechars time:0
 
 @char Tristana
@@ -38,11 +38,12 @@ Tristana: I figure... start to rebuild.  I don't want to see this place just fad
 @fwturnpawn n:PawnPatrick d:n
 
 @char Elder
-Patrick: I just hope they're still alive in there.  Maybe we can all come back.
+Elder: I just hope they're still alive in there.  Maybe we can all come back.
 @hidechars time:0
 
 
-@fwspawnvfx x:-3 y:0 z:0 Vfx:Firework
+@fwspawnvfx x:-3 y:-2 z:0 Vfx:CurseFX
+@wait 1
 
 @char Patrick
 Patrick: If they can, they will.
@@ -55,9 +56,7 @@ Patrick: If they can, they will.
 @fwmovepawn n:PawnPatrick d:s
 @fwmovepawn n:PawnPatrick d:s
 
-;@fwdeletego n:PawnPatrick
+@wait 1
 
-
-;$@startRun
 
 @exit
