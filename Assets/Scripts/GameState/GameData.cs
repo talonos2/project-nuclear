@@ -32,6 +32,7 @@ public class GameData : Singleton<GameData>
     public bool hasted;
     public bool stealthed;
     public bool dashing;
+    public bool jumping;
     public bool isCutscene;
     public bool pauseTimer;
     internal int furthestFloorAchieved;

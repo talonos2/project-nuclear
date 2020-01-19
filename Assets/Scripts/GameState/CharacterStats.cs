@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CharacterStats : Stats
 {
+    public string charName = "FIX ME - I HAVE NO NAME";
+
     public int HealthCrystalsGained = 0;
     internal int HealthCrystalBuff = 0;
     public int ManaCrystalsGained = 0;
@@ -27,6 +29,7 @@ public class CharacterStats : Stats
     public int expToLevel = 90;
 
     public Sprite[] combatSprites;
+    public Sprite bustSprite;
 
     public bool MageClass;
     public bool FighterClass;
