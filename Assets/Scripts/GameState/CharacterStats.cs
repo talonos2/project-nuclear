@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CharacterStats : Stats
 {
+    public string charName = "FIX ME - I HAVE NO NAME";
+
     public int HealthCrystalsGained = 0;
     internal int HealthCrystalBuff = 0;
     public int ManaCrystalsGained = 0;

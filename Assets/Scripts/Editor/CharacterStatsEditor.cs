@@ -20,16 +20,18 @@ public class CharacterStatsEditor : Editor
         CharacterStats charac = (CharacterStats)target;
         EditorGUILayout.LabelField("Missing Something? Add it to CharacterStatsEditor.cs.");
 
+        charac.charName = EditorGUILayout.TextField("Character Name", charac.charName);
+
         baseStats = EditorGUILayout.BeginFoldoutHeaderGroup(baseStats, "Base Stats");
         if (baseStats)
         {
             charac.Level = EditorGUILayout.IntField("Level", charac.Level);
-        charac.MaxHP = EditorGUILayout.IntField("MaxHP", charac.MaxHP);
-        charac.HP = EditorGUILayout.IntField("HP", charac.HP);
-        charac.MaxMana = EditorGUILayout.IntField("MaxMana", charac.MaxMana);
-        charac.mana = EditorGUILayout.IntField("mana", charac.mana);
-        charac.attack = EditorGUILayout.FloatField("attack", charac.attack);
-        charac.defense = EditorGUILayout.FloatField("defense", charac.defense);
+            charac.MaxHP = EditorGUILayout.IntField("MaxHP", charac.MaxHP);
+            charac.HP = EditorGUILayout.IntField("HP", charac.HP);
+            charac.MaxMana = EditorGUILayout.IntField("MaxMana", charac.MaxMana);
+            charac.mana = EditorGUILayout.IntField("mana", charac.mana);
+            charac.attack = EditorGUILayout.FloatField("attack", charac.attack);
+            charac.defense = EditorGUILayout.FloatField("defense", charac.defense);
             charac.experience = EditorGUILayout.IntField("experience", charac.experience);
             charac.expToLevel = EditorGUILayout.IntField("expToLevel", charac.expToLevel);
             charac.currentPower =EditorGUILayout.IntField("currentPower", charac.currentPower);
