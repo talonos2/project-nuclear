@@ -4,22 +4,75 @@
 
 
 
-
-;mayor sends butler to get something or do a task, butler is cursed, next day mayor is wondering why the task still hasn't been done.
-
-
-
-cutscene goes here
+@fwspawnvfx x:-3 y:-4 z:0 Vfx:PawnWilson
+@fwturnpawn n:PawnWilson d:e
+@fwspawnvfx x:1 y:-4 z:0 Vfx:PawnNelson
+@fwturnpawn n:PawnNelson d:w
 
 
+@char Nelson
+Nelson: Are you sure there is nothing else I can do sir?
+@hidechars time:0
 
+@char Wilson
+Wilson: Yes, very.
+@hidechars time:0
 
+@char Nelson
+Nelson: Very well. No doubt there are a few places in town that could use a little-
+@hidechars time:0
 
+@char Wilson
+Wilson: Nelson, go home.
+@hidechars time:0
 
+@char Nelson
+Nelson: Excuse me sir?
+@hidechars time:0
 
+@char Wilson
+Wilson: Stop working. Here or anywhere.[br]Just go home.
+Wilson: Rest.
+@hidechars time:0
 
+@Wait 2
 
-;@fwmovepawn Jezerine (toward cave)
+@char Nelson
+Nelson: An employer cannot command one to not work...  On their own time.
+@hidechars time:0
+
+@char Wilson
+Wilson: Can a friend?
+Wilson: We all miss Jezerine.
+Wilson: You'd miss her too.
+Wilson: If you gave yourself time.
+@hidechars time:0
+
+@char Wilson
+Nelson: ...
+@hidechars time:0
+
+@fwmovepawn n:PawnNelson d:w
+@fwmovepawn n:PawnNelson d:w
+@fwmovepawn n:PawnNelson d:s
+
+@wait 1
+
+@fwspawnvfx x:-1 y:-5 z:0 Vfx:CurseFX
+@wait 1
+
+@fwturnpawn n:PawnNelson d:w
+
+@char Nelson
+Nelson: If you will excuse me sir.
+Nelson: It seems I do have one last job to do.
+@hidechars time:0
+
+@fwmovepawn n:PawnNelson d:s
+@fwmovepawn n:PawnNelson d:s
+@fwmovepawn n:PawnNelson d:s
+
+@wait 1
 
 ;$@startRun
 
