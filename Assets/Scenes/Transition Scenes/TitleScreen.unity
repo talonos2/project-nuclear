@@ -600,7 +600,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 359083700}
-        m_MethodName: StartNewGameActual
+        m_MethodName: StartNewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -971,7 +971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &551868214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1232,6 +1232,11 @@ PrefabInstance:
       propertyPath: dropDown
       value: 
       objectReference: {fileID: 756748469}
+    - target: {fileID: 324273467017365005, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea1df5dda9f7d2046b73f662a04e08c5, type: 3}
 --- !u!1 &699144589
@@ -1403,7 +1408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &756748470
 RectTransform:
   m_ObjectHideFlags: 0
