@@ -31,11 +31,13 @@
 
 		#day3
 		@char Tasha
-		Tasha: That poor girl, t'was no place for a maid.
+		Tasha: That poor girl. T'was no place for a maid.
 		@exit
 		
 
 		#day4
+		;stay
+		@fwturnpawn n:PawnTasha d:e
 		@char Tristana
 		Tristana: What inspired you to stay when you are too old to contribute?
 		@hidechars time:0
@@ -47,17 +49,19 @@
 
 		#day5
 		@char Tasha
-		Tasha: Yes, this looks like a good spot.
+		Tasha: Yes, this looks like a good spot.[br]Now I just need some straw.
 		@exit
 
 		
 		#day6
 		@char Tasha
-		Tasha: Good thing we had all that straw availabe.
+		Tasha: Now that's all taken care of.[br]Time to round up some recruits.
 		@exit
 
 		
 		#day7
+		;stay
+		@fwturnpawn n:PawnTasha d:e
 		@char Tasha
 		Tasha: Don't hunch over it!  It's a sword, not a newborn!
 		@exit

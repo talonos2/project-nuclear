@@ -30,16 +30,20 @@
 		Meyster: A young lad like that ought to be reading books.
 		Meyster: Well, I suppose he is.
 		Meyster: But he should be reading different books!
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 		
 
 		#day4
 		@char Meyster
 		Meyster: Don't worry ma'am.  I'll be keeping an eye on this one.
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 		
 
 		#day5
+		;stay
+		@fwturnpawn n:PawnMeyster d:s
 		@char Tristana
 		Tristana: What would you say is your biggest regret?
 		@hidechars time:0
@@ -51,12 +55,14 @@
 		#day6
 		@char Meyster
 		Meyster: Someone needs to keep an eye on this man...
+		@fwturnpawn n:PawnMeyster d:s
 		@exit
 
 		
 		#day7
 		@char Meyster
 		Meyster: She is brave, confronting a ruffian like that.
+		@fwturnpawn n:PawnMeyster d:s
 		@exit
 		
 

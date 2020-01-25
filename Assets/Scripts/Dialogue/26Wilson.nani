@@ -39,16 +39,20 @@
 		@char Wilson
 		Wilson: I had hoped the civilians would not be involved.
 		Wilson: It was a fool's hope.
+		@fwturnpawn n:PawnWilson d:e
 		@exit
 		
 
 		#day4
 		@char Wilson
 		Wilson: That boy's still out there isn't he?
+		@fwturnpawn n:PawnWilson d:e
 		@exit
 		
 
 		#day5
+		;stay
+		@fwturnpawn n:PawnWilson d:w
 		@char Wilson
 		Wilson: I had hoped...  But now he won't have the chance to change his mind.
 		@exit
@@ -57,6 +61,7 @@
 		#day6
 		@char Wilson
 		Wilson: I can keep going.[br]Just as we all must.
+		@fwturnpawn n:PawnWilson d:e
 		@exit
 
 		
