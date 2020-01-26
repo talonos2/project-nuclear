@@ -39,6 +39,7 @@
 		#day4
 		@char Metra
 		Metra: I'm looking for some straw. I feel like we're going to need some soon.
+		@fwturnpawn n:PawnMetra d:n
 		@exit
 		
 
@@ -64,12 +65,13 @@
 		#day8
 		@char Metra
 		Metra: What?  It looked like fun.
+		@fwturnpawn n:PawnMetra d:n
 		@exit
 
 		
 		#day9
 		@char Metra
-		Metra: I know we didn't want to need this place open long, but you think someone would have cleaned it by now.
+		Metra: I know we didn't want to need this place long, but you'd think someone would have cleaned it by now.
 		@exit
 
 		
@@ -88,25 +90,27 @@
 		
 		#day12
 		@char Metra
-		Metra: Do you think it's smiling or frowning?
+		Metra: Success or failure.[br]It feels like it's out of our hands.
 		@exit
 		
 
 		#day13
 		@char Metra
 		Metra: Wow, she really did a number on this thing.
+		@fwturnpawn n:PawnMetra d:n
 		@exit
 		
 
 		#day14
 		@char Metra
 		Metra: It's not hopeless, we can make this right.
+		@fwturnpawn n:PawnMetra d:e
 		@exit
 
 		
 		#day15
 		@char Metra
-		Metra: I don't think I'd ever seen dust in here before.
+		Metra: I don't think I've ever seen dust in here before.
 		@exit
 
 		
@@ -117,38 +121,43 @@
 
 		
 		#day17
+		;stay
+		@fwturnpawn n:PawnMetra d:s
 		@char Metra
 		Metra: You know, I never realized how facinating this stuff was.
 		@exit
 
 		
 		#day18
+		;stay
+		@fwturnpawn n:PawnMetra d:s
 		@char Metra
 		Metra: I'm learning so much![br]Did you know that time is curved?
 		@exit
 
 		
 		#day19
-		@char Jerene
-		Jerene: So, um, so you think they are alive?
+		@char Tasha
+		Tasha: So, um, so you think they are alive?
 		@hidechars time:0
 		@char Metra
 		Metra: Yes, I think so.
 		@hidechars time:0
-		@char Jerene
-		Jerene: I believe you.
+		@char Tasha
+		Tasha: I believe you.
 		@exit
 
 		
 		#day20
-		@char Jerene
-		Jerene: Shouldn't you be maintaining the scrying orb?
+		@char Tasha
+		Tasha: Shouldn't you be maintaining the scrying orb?
 		@hidechars time:0
 		@char Metra
 		Metra: Nah, it's okay.
 		@hidechars time:0
-		@char Jerene
-		Jerene: But...
+		@char Tasha
+		Tasha: But...
+		@fwturnpawn n:PawnMetra d:e
 		@exit
 
 		

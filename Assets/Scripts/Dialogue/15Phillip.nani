@@ -17,6 +17,7 @@
 		#day2
 		@char Phillip
 		Phillip: Well, somebody's got to eat this food before it goes bad!
+		@fwturnpawn n:PawnPhillip d:s
 		@exit
 
 
@@ -30,6 +31,7 @@
 		#day4
 		@char Phillip
 		Phillip: So, I suppose I have you to thank for this meat?  It's quite good.
+		@fwturnpawn n:PawnPhillip d:s
 		@exit
 		
 
@@ -42,6 +44,7 @@
 		@hidechars time:0
 		@char Norma
 		Norma: At least you have confidence in us...
+		@fwturnpawn n:PawnPhillip d:w
 		@exit
 
 		
@@ -66,8 +69,10 @@
 		#day9
 		@char Phillip
 		Phillip: Bout time the axeman got off his rear.
+		@fwturnpawn n:PawnPaul d:e
 		@char Paul
 		Paul: Excuse me?
+		@fwturnpawn n:PawnPhillip d:w
 		@exit
 
 		
@@ -78,12 +83,16 @@
 
 		
 		#day11
+		;stay
+		@fwturnpawn n:PawnPhillip d:n
 		@char Phillip
 		Phillip: Crazy axeman...
 		@exit
 
 		
 		#day12
+		;stay
+		@fwturnpawn n:PawnPhillip d:w
 		@char Phillip
 		Phillip: I don't carry things.[br]I hire people to carry things.
 		@exit
@@ -92,10 +101,13 @@
 		#day13
 		@char Phillip
 		Phillip: Finally a break!
+		@fwturnpawn n:PawnPhillip d:s
 		@exit
 		
 
 		#day14
+		;stay
+		@fwturnpawn n:PawnPhillip d:s
 		@char Phillip
 		Phillip: Hey, come on.  Don't we have heavy things to pick up or something?
 		@exit
@@ -106,6 +118,7 @@
 		Phillip: Oh you smile now.[br]But tomorrow I'm going to teach you how to write a shipping manafest.
 		@char Paul
 		Paul: I'll look forward to it.
+		@fwturnpawn n:PawnPhillip d:n
 		@exit
 
 

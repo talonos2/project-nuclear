@@ -30,16 +30,20 @@
 		Meyster: A young lad like that ought to be reading books.
 		Meyster: Well, I suppose he is.
 		Meyster: But he should be reading different books!
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 		
 
 		#day4
 		@char Meyster
 		Meyster: Don't worry ma'am.  I'll be keeping an eye on this one.
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 		
 
 		#day5
+		;stay
+		@fwturnpawn n:PawnMeyster d:s
 		@char Tristana
 		Tristana: What would you say is your biggest regret?
 		@hidechars time:0
@@ -51,24 +55,30 @@
 		#day6
 		@char Meyster
 		Meyster: Someone needs to keep an eye on this man...
+		@fwturnpawn n:PawnMeyster d:s
 		@exit
 
 		
 		#day7
 		@char Meyster
 		Meyster: She is brave, confronting a ruffian like that.
+		@fwturnpawn n:PawnMeyster d:s
 		@exit
 		
 
 		#day8
 		@char Meyster
 		Meyster: A scarecrow is hardly a worthy foe, but sloth has taken down many greater than I!
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 
 		
 		#day9
+		;stay
+		@fwturnpawn n:PawnMeyster d:e
 		@char Meyster
 		Meyster: You don't fight to put on a show.  It's the simple things that win.
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 
 		
@@ -107,12 +117,14 @@
 		#day15
 		@char Meyster
 		Meyster: Put your back into it!
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 
 		
 		#day16
 		@char Meyster
 		Meyster: He fell in service.  There is no better way.  Let us honor him.
+		@fwturnpawn n:PawnMeyster d:s
 		@exit
 
 		
@@ -130,7 +142,7 @@
 
 		
 		#day19
-		@char Jerene
+		@char Tasha
 		Jerene: I had another question about the footwork you used in our spar the other day.
 		@char Meyster
 		Meyster: Why? You won!

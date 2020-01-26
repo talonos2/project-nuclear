@@ -40,19 +40,19 @@
 
 		#day4
 		@char Svenra
-		Svenra: ...
+		Svenra: Just leave me alone
 		@exit
 		
 
 		#day5
 		@char Svenra
-		Svenra: ...
+		Svenra: I wouldn't even be here if I could stand traveling.
 		@exit
 
 		
 		#day6
 		@char Svenra
-		Svenra: ...
+		Svenra: I don't like the looks of this.
 		@exit
 
 		
@@ -89,6 +89,8 @@
 
 		
 		#day12
+		;stay
+		@fwturnpawn n:PawnSvenra d:e
 		@char Svenra
 		Svenra: How dare you doubt my power!
 		@char Tristana
@@ -97,6 +99,8 @@
 		
 
 		#day13
+		;stay
+		@fwturnpawn n:PawnSvenra d:e
 		@char Svenra
 		Svenra: Stay off my lawn ya scarecrow!
 		@exit
@@ -134,13 +138,13 @@
 		
 		#day19
 		@char Svenra
-		Svenra: Eh, we all die sometime lassy.
+		Svenra: Eh, we all die sometime right?
 		@exit
 
 		
 		#day20
-		@char Jerene
-		Jerene: If you're this fond of quiet why didn't you just live further away?
+		@char Tasha
+		Tasha: If you're this fond of quiet why didn't you just live further away?
 		@hidechars time:0
 		@char Svenra
 		Svenra: Eh, people have their uses.
@@ -148,6 +152,8 @@
 
 		
 		#day21
+		;stay
+		@fwturnpawn n:PawnSvenra d:w
 		@char Svenra
 		Svenra: I would like to lodge a complaint.[br]The animals have been getting into my garden.
 		@exit

@@ -8,14 +8,14 @@
 
 
 @char Paul
-Paul: It was five years ago ya-know, back before they sealed the entrance.
+Paul: Hasn't been that long now. He was one of the first ones yaknow?
 @hidechars time:0
 @char Mara
 Mara: Uh huh.
 @hidechars time:0
 
 @char Paul
-Paul: Sometimes I still think he'll be coming home any second, calling to show me a funny bug he found.
+Paul: Sometimes I still think he'll be coming home any second. Wanting to show me a funny bug he found.
 @hidechars time:0
 @char Mara
 Mara: Uh huh.
@@ -35,28 +35,28 @@ Mara: Woah there sugar, don't go tempting fate like that, remember what happened
 
 
 
-@wait 2
-@fwspawnvfx x:0 y:2 z:0 Vfx:Firework
+@wait 1
+@fwspawnvfx x:0 y:2 z:0 Vfx:CurseFX
+@wait 1
 ;$@setspeed mara veryhigh
 
-;fix me this scene does not work with current programming
 @fwmovepawn n:PawnMara d:w  
-@fwmovepawn n:PawnMara d:2
+;@fwmovepawn n:PawnMara d:2
 @fwmovepawn n:PawnMara d:e
 @fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:2
+;@fwmovepawn n:PawnMara d:2
 @fwmovepawn n:PawnMara d:w
 @fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:2
+;@fwmovepawn n:PawnMara d:2
 @fwmovepawn n:PawnMara d:e
 @fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:2
+;@fwmovepawn n:PawnMara d:2
 @fwmovepawn n:PawnMara d:w
 @fwmovepawn n:PawnMara d:w
-@fwmovepawn n:PawnMara d:2
+;@fwmovepawn n:PawnMara d:2
 @fwmovepawn n:PawnMara d:e
 @fwmovepawn n:PawnMara d:e
-@fwmovepawn n:PawnMara d:2
+;@fwmovepawn n:PawnMara d:2
 
 ;$@setspeed mara veryhigh
 @fwmovepawn n:PawnMara d:w
@@ -77,6 +77,7 @@ Mara: Woah there sugar, don't go tempting fate like that, remember what happened
 @fwmovepawn n:PawnMara d:s
 @fwmovepawn n:PawnMara d:s
 @fwmovepawn n:PawnMara d:w
+@fwmovepawn n:PawnMara d:s
 @fwmovepawn n:PawnMara d:s
 ;quene removal
 

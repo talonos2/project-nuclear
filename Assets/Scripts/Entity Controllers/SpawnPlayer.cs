@@ -25,6 +25,7 @@ public class SpawnPlayer : MonoBehaviour
                 if (runNumber==2) newPlayer = Instantiate(Players[1], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
                 if (runNumber>=3 && runNumber<=5) newPlayer = Instantiate(Players[4], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
                 if (runNumber >= 6 && runNumber <= 10) newPlayer = Instantiate(Players[9], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
+                if (runNumber >= 11 && runNumber <= 12) newPlayer = Instantiate(Players[11], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
                 if (runNumber >= 13 && runNumber <= 14) newPlayer = Instantiate(Players[13], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
                 if (runNumber >= 15 && runNumber <= 17) newPlayer = Instantiate(Players[16], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
                 if (runNumber == 18) newPlayer = Instantiate(Players[17], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
