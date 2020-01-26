@@ -17,6 +17,14 @@ public class ExitController : DoodadData
 
     public void TransitionMap()
     {
+        if (GameData.Instance.FloorNumber==0) {
+
+            GameState.fullPause = false;
+            CutsceneLoader.LoadCutscene();
+            return;
+        }
+
+
         GameData gameData= GameData.Instance;
         gameData.FloorNumber +=1;
         if (townMap) {

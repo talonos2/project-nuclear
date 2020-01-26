@@ -10,16 +10,27 @@ public class ItemHolderUI : MonoBehaviour
     private InventoryItem itemStored;
     public GameObject itemSpriteHolder;
     public Text itemText;
+    public Text itemStatText;
     private String itemDetailsText;
     private Sprite itemSprite;
 
     public void SetItem(InventoryItem itemToSet) {
-        itemStored = itemToSet;
-        InventoryItem ItemDetails = itemStored.GetComponent<InventoryItem>();
-        itemDetailsText = ItemDetails.equipmentDescription;
-        itemSpriteHolder.GetComponent<Image>().sprite = ItemDetails.itemIcon;
-        itemSprite= ItemDetails.itemIcon;
-        itemText.text = ItemDetails.name;
+        itemDetailsText = itemToSet.equipmentDescription;
+        itemSpriteHolder.GetComponent<Image>().sprite = itemToSet.itemIcon;
+        itemSprite= itemToSet.itemIcon;
+        itemText.text = itemToSet.name;
+        if (itemToSet.Weapon) {
+            Weapon tempwpn = (Weapon)itemToSet;
+            itemStatText.text = "+" + tempwpn.addAttack + " ATK";
+        }
+        if (itemToSet.Armor) {
+            Armor temparm = (Armor)itemToSet;
+            itemStatText.text = "+" + temparm.addDefense + " DEF";
+        }
+        if (itemToSet.Accessory) {
+            itemStatText.text = "Misc Item";
+        }
+
     }
 
     public String getItemDetails() {

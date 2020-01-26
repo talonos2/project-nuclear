@@ -533,6 +533,7 @@ public class CharacterMovement : SpriteMovement
     }
 
     public void ActivateKeyReceived() {
+        Debug.Log("Activating click");
         if (GameState.isInBattle || GameState.fullPause)
         {
             return;

@@ -34,10 +34,10 @@ public class GameData : Singleton<GameData>
     public bool dashing;
     public bool jumping;
     public bool isCutscene;
+    public bool isInDialogue;
     public bool pauseTimer;
     internal int furthestFloorAchieved;
     internal List <float> bestRunTimes;
-
     public List<Weapon> townWeapons = new List<Weapon>();
     public List<Armor> townArmor = new List<Armor>();
     public List<Accessory> townAccessories = new List<Accessory>();
@@ -59,31 +59,10 @@ public class GameData : Singleton<GameData>
     public bool map5_2Shortcut;
     public bool map5_3Shortcut;
 
-   /* internal void updateFields(GameData loadedData)
-    {
 
-        HealhCrystalBonus = loadedData.HealhCrystalBonus;
-        ManaCrystalBonus = loadedData.ManaCrystalBonus;
-        AttackCrystalBonus = loadedData.AttackCrystalBonus;
-        DefenseCrystalBonus = loadedData.DefenseCrystalBonus;
-        HealhCrystalTotal = loadedData.HealhCrystalTotal;
-        ManaCrystalTotal = loadedData.ManaCrystalTotal;
-        AttackCrystalTotal = loadedData.AttackCrystalTotal;
-        DefenseCrystalTotal = loadedData.DefenseCrystalTotal;
-        FloorNumber = 0;
-        RunNumber = loadedData.RunNumber;
-        PowersGained = loadedData.PowersGained;
-        furthestFloorAchieved = loadedData.furthestFloorAchieved;
-        bestRunTimes = loadedData.bestRunTimes;
-        townWeapons = loadedData.townWeapons;
-        townAccessories = loadedData.townAccessories;
-        townArmor = loadedData.townArmor;
-        map5_2Shortcut = loadedData.map5_2Shortcut;
-        map5_3Shortcut = loadedData.map5_3Shortcut;
+    
 
-}*/
-
-internal bool IsInTown()
+    internal bool IsInTown()
     {
         return FloorNumber == 0;
     }

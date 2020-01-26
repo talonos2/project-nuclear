@@ -18,5 +18,8 @@ public class DummyNaniCamera : MonoBehaviour
         {
             this.transform.SetPositionAndRotation(Camera.main.transform.position, Camera.main.transform.rotation);
         }
+        if (GameData.Instance.isCutscene) {
+            this.transform.SetPositionAndRotation(Camera.main.transform.localPosition, Camera.main.transform.localRotation);
+        }
     }
 }

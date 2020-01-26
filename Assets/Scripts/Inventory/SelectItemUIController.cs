@@ -564,7 +564,7 @@ public class SelectItemUIController : MonoBehaviour
         showCurrentlySelectedOption();
     }
 
-    private void LoadGameButtonClicked()
+    public void LoadGameButtonClicked()
     {
         GameState.fullPause = false;
         StartDungeonRun.StartRun();

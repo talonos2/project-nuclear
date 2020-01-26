@@ -9,6 +9,8 @@ public class CharacterInputController : MonoBehaviour
     CharacterMovement characterController;
     EntityData characterEntityData;
     private bool moveable;
+    private bool waitFrameAfterDialogue;
+
     void Start()
     {
         characterController = this.gameObject.GetComponent<CharacterMovement>();
@@ -19,10 +21,20 @@ public class CharacterInputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!moveable || GameState.fullPause) { return; }
+        if (GameData.Instance.isInDialogue) { waitFrameAfterDialogue = true; }
+
+        if (!moveable || GameState.fullPause || GameData.Instance.isInDialogue) { return; }
+
+        if (waitFrameAfterDialogue)
+        {
+            waitFrameAfterDialogue = false;
+            return;
+        }
+
 
         if (Input.GetButtonDown("Submit")){
-            characterController.ActivateKeyReceived();
+                characterController.ActivateKeyReceived();
+
         }
         if (Input.GetButtonDown("PowerToggleLeft")) {
             characterController.PowerToggleLeftKeyReceived();
@@ -50,7 +62,9 @@ public class CharacterInputController : MonoBehaviour
             characterController.AttemptRest();
         }
         characterController.MoveKeyReceived(GetInputDirection());
-       
+
+
+
     }
 
     private DirectionMoved GetInputDirection()

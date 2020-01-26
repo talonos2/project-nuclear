@@ -19,10 +19,9 @@ public class NewGameController : MonoBehaviour
 
     public void StartNewGameActual() {
         if (GameData.Instance.RunNumber==1) {
-            GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
-            GameData.Instance.FloorNumber = 1;
-            GameData.Instance.resetTimer();
-            SceneManager.LoadScene("Map1-1");
+            CutsceneLoader.introCutscene = true;
+            GameData.Instance.FloorNumber = 0;
+            CutsceneLoader.LoadCutscene();
         }
         if (GameData.Instance.RunNumber > 1 && GameData.Instance.RunNumber <= 30) {
             GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
@@ -40,10 +39,10 @@ public class NewGameController : MonoBehaviour
         {
             if (runVariable.text == "" || Convert.ToInt32(runVariable.text) == 1)
             {
-                GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
-                GameData.Instance.FloorNumber = 1;
-                GameData.Instance.resetTimer();
-                SceneManager.LoadScene("Map1-1");
+                GameData.Instance.RunNumber = 1;
+                CutsceneLoader.introCutscene = true;
+                GameData.Instance.FloorNumber = 0;
+                CutsceneLoader.LoadCutscene();
             }
             else
             {
@@ -57,6 +56,7 @@ public class NewGameController : MonoBehaviour
             if (runVariable.text == "" || Convert.ToInt32(runVariable.text)==0 )
             {
                 GameData.Instance.RunNumber = 1;
+                CutsceneLoader.introCutscene = true;
             }
             else {
                 //load cutscene runvar-1
