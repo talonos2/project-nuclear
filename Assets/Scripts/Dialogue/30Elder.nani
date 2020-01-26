@@ -68,6 +68,7 @@
 		#day8
 		@char Elder
 		Elder: This isn't as easy as he makes it look.
+		@fwturnpawn n:PawnElder d:n
 		@exit
 
 		
@@ -127,6 +128,8 @@
 
 		
 		#day18
+		;stay
+		@fwturnpawn n:PawnElder d:e
 		@char Elder
 		Elder: Why don't we head back sir?  I can help with whatever you need.
 		@exit

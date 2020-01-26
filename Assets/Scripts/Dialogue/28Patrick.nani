@@ -70,13 +70,15 @@
 		Patrick: What do you do when everything you've done to help just makes things worse?
 		@hidechars time:0
 		@char Pendleton
-		Pendleton: Well, Sir Meister used to say that failure teaches us more than success, and that wisdom is more valuable than heroism.
+		Pendleton: Well, Sir Meyster used to say that failure teaches us more than success, and that wisdom is more valuable than heroism.
 		Pendleton: Maybe he'll remember that.[br]Eventually.
 		@hidechars time:0
 		@exit
 
 		
 		#day9
+		;stay
+		@fwturnpawn n:PawnPatrick d:w
 		@char Tristana
 		Tristana: I just want to know what happened to the people who left with you.
 		@hidechars time:0
@@ -112,6 +114,8 @@
 		
 
 		#day14
+		;stay
+		@fwturnpawn n:PawnPatrick d:w
 		@char Patrick
 		Patrick: Do you think they're okay?
 		@hidechars time:0
@@ -128,6 +132,8 @@
 
 		
 		#day16
+		;stay
+		@fwturnpawn n:PawnPatrick d:n
 		@char Patrick
 		Patrick: Just pretend it's a slimey monster.
 		@exit
@@ -146,8 +152,10 @@
 
 		
 		#day19
+		;stay
+		@fwturnpawn n:PawnPatrick d:w
 		@char Patrick
-		Patrick: What do you have to regret?!  You told me not to leave![br]You were right!
+		Patrick: What do you have to regret? You told me not to leave![br]You were right!
 		@exit
 
 		
@@ -158,6 +166,8 @@
 
 		
 		#day21
+		;stay
+		@fwturnpawn n:PawnPatrick d:w
 		@char Patrick
 		Patrick: Look, I still don't want to talk about it.
 		@hidechars time:0

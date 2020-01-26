@@ -68,8 +68,9 @@
 
 		#day8
 		@char Paul
-		Paul: I jus' want another one of those monsters to wander out of that cave.
+		Paul: I jus' want one of those monsters to wander out of that cave.
 		Paul: So's I can give it a few whacks.
+		@fwturnpawn n:PawnPaul d:s
 		@exit
 
 		
@@ -88,12 +89,16 @@
 
 		
 		#day11
+		;stay
+		@fwturnpawn n:PawnPaul d:n
 		@char Paul
 		Paul: You think you're scary?  I ain't no crow!
 		@exit
 
 		
 		#day12
+		;stay
+		@fwturnpawn n:PawnPaul d:e
 		@char Paul
 		Paul: Come on!  It's endurance training time!  Pick up your pack!
 		@exit

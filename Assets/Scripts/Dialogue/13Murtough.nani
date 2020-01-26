@@ -57,12 +57,14 @@
 		#day8
 		@char Murtough
 		Murtough: Y'think I could be a paladin? -hic-
+		@fwturnpawn n:PawnMurtough d:n
 		@exit
 
 		
 		#day9
 		@char Murtough
 		Murtough: So, someday you'll be a big hero too huh?  -hic- ain't what it's cracked up to be.
+		@fwturnpawn n:PawnMurtough d:w
 		@exit
 
 		
@@ -76,6 +78,8 @@
 
 		
 		#day11
+		;stay
+		@fwturnpawn n:PawnMurtough d:w
 		@char Tristana
 		Tristana: That's it?  You've just been here since?
 		@char Murtough
@@ -86,12 +90,14 @@
 		#day12
 		@char Murtough
 		Murtough: Ya learned the fifty bajillion spider toenail technique yet? -hic-
+		@fwturnpawn n:PawnMurtough d:e
 		@exit
 		
 
 		#day13
 		@char Murtough
 		Murtough: Yeah, make sure to run the town real good like.  Maybe then it'll look pretty when some kids in uniform burn it down.
+		@fwturnpawn n:PawnMurtough d:w
 		@exit
 		
 

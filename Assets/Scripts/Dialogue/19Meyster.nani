@@ -69,12 +69,16 @@
 		#day8
 		@char Meyster
 		Meyster: A scarecrow is hardly a worthy foe, but sloth has taken down many greater than I!
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 
 		
 		#day9
+		;stay
+		@fwturnpawn n:PawnMeyster d:e
 		@char Meyster
 		Meyster: You don't fight to put on a show.  It's the simple things that win.
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 
 		
@@ -113,12 +117,14 @@
 		#day15
 		@char Meyster
 		Meyster: Put your back into it!
+		@fwturnpawn n:PawnMeyster d:n
 		@exit
 
 		
 		#day16
 		@char Meyster
 		Meyster: He fell in service.  There is no better way.  Let us honor him.
+		@fwturnpawn n:PawnMeyster d:s
 		@exit
 
 		
@@ -136,7 +142,7 @@
 
 		
 		#day19
-		@char Jerene
+		@char Tasha
 		Jerene: I had another question about the footwork you used in our spar the other day.
 		@char Meyster
 		Meyster: Why? You won!

@@ -43,7 +43,7 @@
 		
 		#day6
 		@char Jezerine
-		Jezerine: So, Sir Meister isnt... What I expected.
+		Jezerine: So, Sir Meyster isnt... What I expected.
 		@hidechars time:0
 		@char Pendleton
 		Pendleton: We can hardly blame him for that now can we?
@@ -64,8 +64,12 @@
 
 		
 		#day9
+		;stay
+		@fwturnpawn n:PawnJezerine d:w
 		@char Jezerine
 		Jezerine: But why don't you try a bigger windup?  like this-
+		@fwturnpawn n:PawnJezerine d:n
+		@fwspawnvfx x:-3 y:-14 z:0 Vfx:Firework
 		@exit
 
 		

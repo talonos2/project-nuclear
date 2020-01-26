@@ -68,10 +68,13 @@
 		#day7
 		@char Wilson
 		Wilson: I hear things are getting quite lively out there.
+		@fwturnpawn n:PawnWilson d:e
 		@exit
 		
 
 		#day8
+		;stay
+		@fwturnpawn n:PawnWilson d:e
 		@char Tristana
 		Tristana: But why didn't you try to do something before the curse happened?
 		@hidechars time:0
@@ -83,10 +86,12 @@
 		#day9
 		@char Wilson
 		Wilson: There are those who risk their lives every day.
+		@fwturnpawn n:PawnWilson d:e
 		@exit
 
 		
 		#day10
+		;stay
 		@fwturnpawn n:PawnWilson d:e
 		@char Wilson
 		Wilson: Surely there were times when the people had to be rallied?
@@ -96,24 +101,30 @@
 		#day11
 		@char Wilson
 		Wilson: I can think of so many things I should have done, but not anything I can do now.
+		@fwturnpawn n:PawnWilson d:e
 		@exit
 
 		
 		#day12
 		@char Wilson
-		Wilson: I know we don't agree on a few things, but I appreciate your effort.
+		Wilson: I know we don't agree on a few things Jezerine, but I appreciate your effort.
+		@fwturnpawn n:PawnWilson d:e
 		@exit
 		
 
 		#day13
+		;stay
+		@fwturnpawn n:PawnWilson d:n
 		@char Wilson
 		Wilson: I should have started doing this sooner!
 		@exit
 		
 
 		#day14
+		;stay
+		@fwturnpawn n:PawnWilson d:n
 		@char Wilson
-		Wilson: Ha!  Call me a straw man will they?
+		Wilson: Ha!  Take that straw man!
 		@exit
 
 		
@@ -130,6 +141,8 @@
 
 		
 		#day17
+		;stay
+		@fwturnpawn n:PawnWilson d:n
 		@char Wilson
 		Wilson: We aren't going to fall apart!
 		Wilson: I'll break them first!
@@ -141,11 +154,13 @@
 		Wilson: Why close it down?  There's still so much to... so much to...
 		@hidechars time:0
 		@char Jerene
-		Jerene: Sir, please go back to your office.
+		Tasha: Sir, please go back to your office.
 		@exit
 
 		
 		#day19
+		;stay
+		@fwturnpawn n:PawnWilson d:e
 		@char Wilson
 		Wilson: You left anyway![br]So what good was I?
 		@exit
@@ -158,6 +173,8 @@
 
 		
 		#day21
+		;stay
+		@fwturnpawn n:PawnWilson d:e
 		@char Wilson
 		Wilson: This... hardly seems nessissary.
 		@exit

@@ -63,6 +63,7 @@
 		#day9
 		@char Tedd
 		Tedd: Okay, my timing is still a little off...
+		@fwturnpawn n:PawnTedd d:n
 		@exit
 
 		
@@ -79,6 +80,8 @@
 
 		
 		#day12
+		;stay
+		@fwturnpawn n:PawnTedd d:s
 		@char Tedd
 		Tedd: Dad, come on. You need to get out of this room.
 		@exit
