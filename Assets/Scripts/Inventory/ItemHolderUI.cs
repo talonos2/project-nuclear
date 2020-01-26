@@ -15,6 +15,7 @@ public class ItemHolderUI : MonoBehaviour
     private Sprite itemSprite;
 
     public void SetItem(InventoryItem itemToSet) {
+        itemStored = itemToSet;
         itemDetailsText = itemToSet.equipmentDescription;
         itemSpriteHolder.GetComponent<Image>().sprite = itemToSet.itemIcon;
         itemSprite= itemToSet.itemIcon;
