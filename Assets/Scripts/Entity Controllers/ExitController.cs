@@ -12,12 +12,13 @@ public class ExitController : DoodadData
     public String mapToLoad;
     public Vector2Int exitPosition;
     public bool townMap;
+    public bool dungeonEntrance;
     public SpriteMovement.DirectionMoved exitFacing;
 
 
     public void TransitionMap()
     {
-        if (GameData.Instance.FloorNumber==0) {
+        if (GameData.Instance.FloorNumber==0 && dungeonEntrance) {
 
             GameState.fullPause = false;
             CutsceneLoader.LoadCutscene();
