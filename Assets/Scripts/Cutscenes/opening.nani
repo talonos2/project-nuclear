@@ -7,7 +7,7 @@
 @fwturnpawn n:PawnNorma d:e
 @fwspawnvfx x:16 y:-20 z:0 Vfx:PawnLogos
 @fwturnpawn n:PawnLogos d:w
-
+@fwspawnvfx x:7 y:-14 z:0 Vfx:PawnDouglass
 
 
 
@@ -60,8 +60,20 @@ Logos: Terrible things happen if places like these do not recieve the sacrafices
 @hidechars time:0
 
 
+@fwmovepawn n:PawnDouglass d:s
+@fwmovepawn n:PawnDouglass d:s
+@fwmovepawn n:PawnDouglass d:s
+@fwmovepawn n:PawnDouglass d:s
+@fwmovepawn n:PawnDouglass d:s
+@fwmovepawn n:PawnDouglass d:e
 
+@fwmovepawn n:PawnDouglass d:e
+@fwmovepawn n:PawnDouglass d:e
+@fwmovepawn n:PawnDouglass d:e
 
+@wait 1.5
+
+@fwturnpawn n:PawnDouglass d:e
 
 
 @char Douglass

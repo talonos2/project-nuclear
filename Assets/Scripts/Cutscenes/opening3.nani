@@ -46,8 +46,15 @@ Douglass: Hey, don't mess with this chest.
 Douglass: It's where my magic ring sends the stuff I loot.
 @hidechars time:0
 
+
+
+
 @fwmovepawn n:PawnDouglass d:e
 @fwmovepawn n:PawnDouglass d:e
+@fwmovepawn n:PawnDouglass d:n
+
+@wait 0.5
+
 @fwdeletego n:PawnDouglass
 
 @char Jezerine
@@ -57,6 +64,18 @@ Jezerine: Now what?
 @char Logos
 Logos: That ring he carries...  It has a peculiar aura.[br]With it as a focus we may be able to watch his journey. Come with me.
 @hidechars time:0
+
+@fwmovepawn n:PawnLogos d:w
+@fwmovepawn n:PawnLogos d:w
+@fwmovepawn n:PawnLogos d:w
+@fwmovepawn n:PawnLogos d:w
+@fwmovepawn n:PawnLogos d:n
+@fwmovepawn n:PawnLogos d:n
+@fwmovepawn n:PawnLogos d:n
+
+@wait 0.66
+
+
 
 
 
