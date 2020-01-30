@@ -58,9 +58,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 8
   framesPerSecond: 14
-  CharacterLocation: {x: 0, y: 0}
-  CharacterNextLocation: {x: 0, y: 0}
+  facedDirection: 4
   PathRandomly: 0
+  PathAntiRandomly: 0
   PathViaSteps: 0
   Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
   SpotterMonster: 1
@@ -68,6 +68,7 @@ MonoBehaviour:
   LookDuration: 10
   ChaseRange: 15
   LookPattern: 04000000
+  bossMonster: 0
 --- !u!114 &3128599578249191478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,12 +83,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainCharacter: 0
   isAMonster: 1
+  isLargeMonster: 0
   isInteractableObject: 0
   isItem: 0
   isSwitch: 0
   isNPC: 0
-  isSpike: 0
-  isPassable: 0
 --- !u!65 &3128599578249191472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -121,16 +121,20 @@ MonoBehaviour:
   homePositionOnScreen: {x: 0.6, y: 0}
   strikingPointOffset: {x: 0, y: 0}
   gettingStruckPointOffset: {x: 0, y: 0}
+  scale: {x: 1, y: 1}
+  forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Spider
   ExpGiven: 70
   weakness: 1
-  crystalType: 3
+  crystalType: 1
   crystalDropAmount: 2
+  powerGiven: 0
   combatSprites:
   - {fileID: -4480272334087500341, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
   - {fileID: -3674070280908573562, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
   - {fileID: -1709970976819407592, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
   - {fileID: -3692116549114297304, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  attackAnimation: 0
 --- !u!1 &3128599578980096542
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,3 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  groundItem: 0
+  belowGroundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0
