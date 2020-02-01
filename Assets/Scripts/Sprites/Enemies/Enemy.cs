@@ -11,10 +11,23 @@ public class Enemy : Stats
     public CrystalType crystalType = CrystalType.NULL;
     public int crystalDropAmount;
 
-    public int powerGiven;
+    
 
     public Sprite[] combatSprites;
     public AttackAnimation attackAnimation = AttackAnimation.HOP;
 
- 
+    public bool iceBoss;
+    public bool earthBoss;
+    public bool fireBoss;
+    public bool airBoss;
+
+    public void Start()
+    {
+        if (iceBoss && GameData.Instance.iceBoss1) { Destroy(this.gameObject); }
+        if (earthBoss && GameData.Instance.earthBoss1) { Destroy(this.gameObject); }
+        if (fireBoss && GameData.Instance.fireBoss1) { Destroy(this.gameObject); }
+        if (airBoss && GameData.Instance.airBoss1) { Destroy(this.gameObject); }
+    }
+
+
 }

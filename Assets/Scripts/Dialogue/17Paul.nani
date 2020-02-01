@@ -31,20 +31,23 @@
 		Paul: Fixa'whanow?
 		@hidechars time:0
 		@char Mara
-		Mara: I wouldn't be letting him near an axe honey.  Trust me on this one.
+		Mara: I wouldn't be asking him to swing that axe.  Trust me on this one.
 		@hidechars time:0
 		@exit
 		
 
 		#day4
+		;stay
+		@fwturnpawn n:PawnPaul d:e
 		@char Paul
-		Paul: You know, it was pretty hard to accept that my son died.  But I did it.  And now?[br]Now that wound is open again.
+		Paul: When my wife died I got by.[br]I still had something left after all.
+		Paul: But now?
 		@exit
 		
 
 		#day5
 		@char Paul
-		Paul: I've waited years to find some closure, what's another couple of days?
+		Paul: What's another couple of days?
 		Paul: It's just... [br]How many days?
 		@exit
 
@@ -56,6 +59,8 @@
 
 		
 		#day7
+		;stay
+		@fwturnpawn n:PawnMurtough d:e
 		@char Paul
 		Paul: Wha'd you do to get that bozo so angry anyway?
 		@exit
@@ -63,8 +68,9 @@
 
 		#day8
 		@char Paul
-		Paul: I jus' want another one of those monsters to wander out of that cave.
+		Paul: I jus' want one of those monsters to wander out of that cave.
 		Paul: So's I can give it a few whacks.
+		@fwturnpawn n:PawnPaul d:s
 		@exit
 
 		
@@ -83,12 +89,16 @@
 
 		
 		#day11
+		;stay
+		@fwturnpawn n:PawnPaul d:n
 		@char Paul
 		Paul: You think you're scary?  I ain't no crow!
 		@exit
 
 		
 		#day12
+		;stay
+		@fwturnpawn n:PawnPaul d:e
 		@char Paul
 		Paul: Come on!  It's endurance training time!  Pick up your pack!
 		@exit

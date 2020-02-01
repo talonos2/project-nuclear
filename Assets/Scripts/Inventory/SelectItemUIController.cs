@@ -42,7 +42,7 @@ public class SelectItemUIController : MonoBehaviour
         weaponUIPrefab.SetItem(savedStats.weapon);
         armorUIPrefab.SetItem(savedStats.armor);
         accessoryUIPrefab.SetItem(savedStats.accessory);
-        crystalAttackBonus.text = "+" + savedStats.AttackCrystalBuff;
+        crystalAttackBonus.text = "+" + savedStats.AttackCrystalBuff;//crystal buffs not set here
         crystalDefenseBonus.text = "+" + savedStats.defenseCrystalBuff;
         crystalManaBonus.text = "+" + savedStats.ManaCrystalBuff;
         crystalHealthBonus.text = "+" + savedStats.HealthCrystalBuff;
@@ -147,19 +147,22 @@ public class SelectItemUIController : MonoBehaviour
         itemTypeSelectedText.text = "Accessories";
 
         removeCurrentList();
-        bool onlyOneEmptyAccessory=false;
+        bool emptySet = true;
         foreach (Accessory accObject in GameData.Instance.townAccessories)
         {
+             
             if (accObject.name == "No Accessory Equipped") {
                 continue; 
             }
-
+            emptySet = false;
             GameObject listItem = Instantiate(itemUIPrefab) as GameObject;
+            
             listItem.GetComponent<ItemHolderUI>().SetItem(accObject);
             listItem.SetActive(true);
             listItem.transform.SetParent(itemContainer.transform, false);
             currentlyDisplayedItems.Add(listItem);
         }
+        if (emptySet) { selectingAnItem = false; }
 
         currentlyDisplayedItems.Sort(compareAccessories);
         SortItemListUI();
@@ -564,7 +567,7 @@ public class SelectItemUIController : MonoBehaviour
         showCurrentlySelectedOption();
     }
 
-    private void LoadGameButtonClicked()
+    public void LoadGameButtonClicked()
     {
         GameState.fullPause = false;
         StartDungeonRun.StartRun();
@@ -572,13 +575,16 @@ public class SelectItemUIController : MonoBehaviour
 
     private void SwapAccessory()
     {
-
-        GameData.Instance.townAccessories.Add(savedStats.accessory);
+        if (savedStats.accessory.name != "No Accessory Equipped") {
+            GameData.Instance.townAccessories.Add(savedStats.accessory);
+        }        
         InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
         savedStats.setAccessory((Accessory)itemToSwap);
         savedStats.setFullHPMP();
         GameData.Instance.townAccessories.Remove((Accessory)itemToSwap);
         accessoryUIPrefab.SetItem(itemToSwap);
+        populateItemLists();
+        selectingAnItem = false;
         showItemSelected();
         showCurrentlySelectedOption();
     }

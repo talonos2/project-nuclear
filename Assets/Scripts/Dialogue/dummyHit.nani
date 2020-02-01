@@ -1,0 +1,36 @@
+@goto .day11 if:GetDay()=11
+
+
+
+
+
+#pre
+
+@exit
+
+#day11
+
+;@fwturnpawn n:PawnJezerine d:w
+;@wait 0.2
+;@fwturnpawn n:PawnJezerine d:s
+;@wait 0.2
+;@fwturnpawn n:PawnJezerine d:e
+;@wait 0.2
+;@fwturnpawn n:PawnJezerine d:n
+;@fwspawnvfx x:-7 y:-15 z:0 Vfx:Firework
+
+
+
+
+@exit
+
+
+
+#post
+
+@exit
+
+
+
+
+@stop

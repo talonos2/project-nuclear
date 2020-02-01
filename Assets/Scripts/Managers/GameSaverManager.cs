@@ -25,8 +25,11 @@ public class GameSaverManager
         public int PowersGained = 0;
         internal int furthestFloorAchieved;
         internal List<float> bestRunTimes;
-
-        public List<String> townWeapons = new List<String>();
+    private bool iceBoss1;
+    private bool earthBoss1;
+    private bool fireBoss1;
+    private bool airBoss1;
+    public List<String> townWeapons = new List<String>();
         public List<String> townArmor = new List<String>();
         public List<String> townAccessories = new List<String>();
 
@@ -49,6 +52,11 @@ public class GameSaverManager
             PowersGained = GameData.Instance.PowersGained;
             furthestFloorAchieved = GameData.Instance.furthestFloorAchieved;
             bestRunTimes = GameData.Instance.bestRunTimes;
+            iceBoss1=GameData.Instance.iceBoss1;
+        earthBoss1 = GameData.Instance.earthBoss1;
+        fireBoss1 = GameData.Instance.fireBoss1;
+        airBoss1 = GameData.Instance.airBoss1;
+    
 
             map5_2Shortcut = GameData.Instance.map5_2Shortcut;
             map5_3Shortcut = GameData.Instance.map5_3Shortcut;
@@ -83,7 +91,12 @@ public class GameSaverManager
             GameData.Instance.furthestFloorAchieved = furthestFloorAchieved;
             GameData.Instance.bestRunTimes = bestRunTimes;
 
-            GameData.Instance.map5_2Shortcut = map5_2Shortcut;
+         GameData.Instance.iceBoss1= iceBoss1 ;
+         GameData.Instance.earthBoss1= earthBoss1 ;
+        GameData.Instance.fireBoss1= fireBoss1 ;
+         GameData.Instance.airBoss1= airBoss1 ;
+
+        GameData.Instance.map5_2Shortcut = map5_2Shortcut;
             GameData.Instance.map5_3Shortcut = map5_3Shortcut;
 
            GameObject equipmentData = GameObject.Find("EquipmentData");

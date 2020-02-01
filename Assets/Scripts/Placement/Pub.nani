@@ -54,7 +54,7 @@
 @fwspawnvfx x:4 y:-2 z:0 Vfx:PawnPaul
 @fwturnpawn n:PawnPaul d:e
 @fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMurtough
-@fwspawnvfx x:4 y:0 z:0 Vfx:PawnPhillip
+@fwspawnvfx x:0 y:0 z:0 Vfx:PawnPhillip
 @exit
 
 #day5
@@ -63,7 +63,7 @@
 @fwspawnvfx x:4 y:0 z:0 Vfx:PawnJinn
 @fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMurtough
 @fwspawnvfx x:-1 y:-1 z:0 Vfx:PawnPaul
-@fwturnpawn n:PawnPaul d:e
+@fwturnpawn n:PawnPaul d:s
 @fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
 @fwturnpawn n:PawnPhillip d:w
 @exit
@@ -81,9 +81,11 @@
 #day7
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
-@fwspawnvfx x:-2 y:-4 z:0 Vfx:Pawnpaul
+@fwspawnvfx x:-3 y:-3 z:0 Vfx:Pawnpaul
+@fwturnpawn n:PawnPaul d:e
 ;(fix me  put across left to right. look at conversation for clarity also)
-@fwspawnvfx x:-2 y:-2 z:0 Vfx:PawnMurtough
+@fwspawnvfx x:-1 y:-3 z:0 Vfx:PawnMurtough
+@fwturnpawn n:PawnMurtough d:w
 @fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
 @fwturnpawn n:PawnPhillip d:w
 @exit
@@ -92,16 +94,7 @@
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
 @fwspawnvfx x:1 y:-2 z:0 Vfx:PawnPaul
-@fwturnpawn n:PawnPaul d:n
-@fwspawnvfx x:1 y:-4 z:0 Vfx:PawnMurtough
-@fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
-@fwturnpawn n:PawnPhillip d:w
-@exit
-
-#day8
-
-@fwspawnvfx x:-1 y:2 z:0 Vfx:PawnMara
-@fwspawnvfx x:1 y:-2 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:s
 @fwspawnvfx x:1 y:-4 z:0 Vfx:PawnMurtough
 @fwturnpawn n:PawnMurtough d:n
 @fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
@@ -116,7 +109,7 @@
 @fwturnpawn n:PawnMurtough d:w
 @fwspawnvfx x:2 y:-3 z:0 Vfx:PawnPhillip
 @fwturnpawn n:PawnPhillip d:w
-@fwspawnvfx x:-4 y:2 z:0 Vfx:PawnJinn
+@fwspawnvfx x:- y:2 z:0 Vfx:PawnJinn
 @exit
 
 #day10
@@ -129,9 +122,10 @@
 #day11
 
 @fwspawnvfx x:-1 y:2 z:0 Vfx:PawnNelson
-@fwspawnvfx x:-4 y:0 z:0 Vfx:PawnMurtough
-@fwspawnvfx x:-4 y:-2 z:0 Vfx:PawnTristana
-@fwturnpawn n:PawnTristana d:n
+@fwspawnvfx x:-3 y:-1 z:0 Vfx:PawnMurtough
+@fwturnpawn n:PawnMurtough d:w
+@fwspawnvfx x:-5 y:-1 z:0 Vfx:PawnTristana
+@fwturnpawn n:PawnTristana d:e
 @exit
 
 #day12

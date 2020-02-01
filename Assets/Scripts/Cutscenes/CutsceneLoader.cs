@@ -1,4 +1,5 @@
 ﻿using Naninovel;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,30 @@ public class CutsceneLoader : MonoBehaviour
     public GameObject cutScenePlayer;
     public string[] cutScenes;
     public Vector2[] cameraLocation;
+    public Vector2[] introCameraLocation;
+    public static bool introCutscene;
+    private static int introSceneNumber;
 
     public static void LoadCutscene()
     {
         GameData.Instance.isCutscene = true;
+        if (introCutscene) {
+            switch (introSceneNumber)
+            {
+                case 0:
+                    SceneManager.LoadScene("TownMap_1");
+                    break;
+                case 1:
+                    SceneManager.LoadScene("TownInterior_Manor_1");
+                    break;
+                case 2:
+                    SceneManager.LoadScene("TownMap_1");
+                    break;
+            }
+            return;
+        }
+
+
         switch (GameData.Instance.RunNumber)
         {
             case 1:
@@ -108,15 +129,42 @@ public class CutsceneLoader : MonoBehaviour
                 SceneManager.LoadScene("TownMap_1");
                 break;
         }
-    } 
-    public void RunCutscene() {
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        GameData gameData = GameData.Instance;
-        Instantiate(cutScenePlayer, new Vector3(cameraLocation[gameData.RunNumber].x, cameraLocation[gameData.RunNumber].y, 0), Quaternion.identity);
+    }
 
-        RuntimeInitializer.InitializeAsync();
-        Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[gameData.RunNumber]);
+
+
+    public void RunCutscene() {
+
+
+
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+    GameData gameData = GameData.Instance;
+        if (introCutscene)
+        {
+            Instantiate(cutScenePlayer, new Vector3(cameraLocation[31+ introSceneNumber].x, cameraLocation[31 + introSceneNumber].y, 0), Quaternion.identity);
+            InitAndRunCutscene(31 + introSceneNumber);
+            introSceneNumber += 1;
+            if (introSceneNumber > 2)
+                introCutscene = false;
+        }
+        else {
+            Instantiate(cutScenePlayer, new Vector3(cameraLocation[gameData.RunNumber].x, cameraLocation[gameData.RunNumber].y, 0), Quaternion.identity);
+            InitAndRunCutscene(gameData.RunNumber);
+        }
+
+        
+       // RuntimeInitializer.InitializeAsync();
+       // Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[gameData.RunNumber]);
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
     }
+    public async void InitAndRunCutscene(int cutSceneNumber)
+    {
+        //await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[GameData.Instance.RunNumber]);
+        //await Engine.GetService<StateManager>().ResetStateAsync();
+        Naninovel.Engine.Reset();
+        await RuntimeInitializer.InitializeAsync();
+        await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[cutSceneNumber]);
+    }
+
 }

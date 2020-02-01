@@ -33,11 +33,13 @@
 
 		#day5
 		@char Tedd
-		Tedd: Please give us some time.  My father has been taking Todd's dea- disappearance a little hard.
+		Tedd: Please give us some time.  My father has been taking Todd's dea-[br]Todd's disappearance a little hard.
 		@exit
 
 		
 		#day6
+		;stay
+		@fwturnpawn n:PawnTedd d:e
 		@char Tristana
 		Tristana: So, you know mayorship isn't heritable right?
 		@hidechars time:0
@@ -61,6 +63,7 @@
 		#day9
 		@char Tedd
 		Tedd: Okay, my timing is still a little off...
+		@fwturnpawn n:PawnTedd d:n
 		@exit
 
 		
@@ -77,6 +80,8 @@
 
 		
 		#day12
+		;stay
+		@fwturnpawn n:PawnTedd d:s
 		@char Tedd
 		Tedd: Dad, come on. You need to get out of this room.
 		@exit

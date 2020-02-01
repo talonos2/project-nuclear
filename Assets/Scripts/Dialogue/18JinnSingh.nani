@@ -20,6 +20,7 @@
 		#day2
 		@char Jinn
 		Jinn: We had to send the children away. At least now I don't need to hide my drinking.
+		@fwturnpawn n:PawnJinn d:w
 		@exit
 
 
@@ -40,6 +41,7 @@
 		@char Jinn
 		Jinn: I'm wondering why none of them make sense.
 		@hidechars time:0
+		@fwturnpawn n:PawnJinn d:e
 		@exit
 		
 
@@ -56,6 +58,8 @@
 
 		
 		#day7
+		;stay
+		@fwturnpawn n:PawnJinn d:n
 		@char Jinn
 		Jinn: So we're already infected?  Why isn't anything happening to us?
 		@hidechars time:0
@@ -76,7 +80,7 @@
 		
 		#day9
 		@char Jinn
-		Jinn: Welp, I took inventory so we can sort tabs out later.
+		Jinn: I took inventory so we can sort tabs out later.
 		@exit
 
 		
@@ -115,6 +119,8 @@
 
 		
 		#day15
+		;stay
+		@fwturnpawn n:PawnJinn d:w
 		@char Tristana
 		Tristana: So you're a schoolteacher, what inspired you to take up a sword?
 		@hidechars time:0
@@ -130,6 +136,8 @@
 
 		
 		#day16
+		;stay
+		@fwturnpawn n:PawnJinn d:e
 		@char Trsitana
 		Tristana: Hey, can we talk?
 		@hidechars time:0

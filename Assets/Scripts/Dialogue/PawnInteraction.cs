@@ -14,6 +14,7 @@ public class PawnInteraction : EntityData
     private Renderer sRender;
 
     public String scriptName;
+    private bool waitFrameAfterDialogue;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +37,16 @@ public class PawnInteraction : EntityData
 
     public override void ProcessClick(CharacterStats stats)
     {
-        if (GameState.fullPause == true) return;
+
+        if (GameState.fullPause == true || GameData.Instance.isInDialogue) return;
+
+
+
+
         if (GameState.isInBattle == false)
         {
-            GameState.isInBattle = true;
+            GameData.Instance.isInDialogue = true;
+            //GameState.isInBattle = true;
             DirectionMoved playerFace = stats.GetComponentInParent<SpriteMovement>().facedDirection;
             if (playerFace == DirectionMoved.RIGHT)
             {
@@ -60,6 +67,7 @@ public class PawnInteraction : EntityData
 
             //movment.facedDirection
             RuntimeInitializer.InitializeAsync();
+           
             Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(scriptName);
 
         }

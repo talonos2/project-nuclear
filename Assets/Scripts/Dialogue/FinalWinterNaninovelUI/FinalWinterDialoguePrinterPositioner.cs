@@ -11,6 +11,11 @@ public class FinalWinterDialoguePrinterPositioner : MonoBehaviour
         gameObject.GetComponent<RectTransform>().localScale = new Vector3(.01f, .01f, .01f);
     }
 
+   //private void OnSceneLoaded() {
+     //   gameObject.GetComponent<RectTransform>().position = Camera.main.transform.position + new Vector3(0, 0, 1);
+       // gameObject.GetComponent<RectTransform>().localScale = new Vector3(.01f, .01f, .01f);
+    //}
+    
     // Update is called once per frame
     void Update()
     {

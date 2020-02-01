@@ -43,7 +43,7 @@
 
 		#day4
 		@char Elder
-		Elder: This town has always been so safe.
+		Elder: This town has always been so safe...
 		@exit
 		
 
@@ -68,6 +68,7 @@
 		#day8
 		@char Elder
 		Elder: This isn't as easy as he makes it look.
+		@fwturnpawn n:PawnElder d:n
 		@exit
 
 		
@@ -127,6 +128,8 @@
 
 		
 		#day18
+		;stay
+		@fwturnpawn n:PawnElder d:e
 		@char Elder
 		Elder: Why don't we head back sir?  I can help with whatever you need.
 		@exit
@@ -141,7 +144,7 @@
 		#day20
 		@char Elder
 		Elder: Have you seen anyone else come from outside?
-		Elder: I mean, it's not unusual...[br]But I'd feel better if we heard from the other towns.
+		Elder: I mean, it's not unusual...[br]But I would feel better if we heard from the other towns.
 		@exit
 
 		
