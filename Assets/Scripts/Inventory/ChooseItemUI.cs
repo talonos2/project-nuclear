@@ -16,8 +16,8 @@ public class ChooseItemUI : MonoBehaviour
     public GameObject sendItemHomeButton;
     public Canvas chooseItemUiCanvas;
     private int optionSelected = 0;
-    protected float delayReset = .14f;
-    protected float delayCounter = 0;
+    protected float delayReset = .2f;
+    protected float delayCounter = .3f;
     private CharacterStats playerStats;
     private InventoryItem itemTypeCheck;
     private bool pickingItem;
@@ -36,9 +36,23 @@ public class ChooseItemUI : MonoBehaviour
         if (GameState.fullPause || !pickingItem) { return; }
         
 
-        if (Input.GetButton("SelectNext") || Input.GetButton("SelectPrevious"))
+        if (Input.GetAxis("Vertical")>.05f )
         {
-            if (delayCounter <= 0)
+            hideButtonSelection();
+            optionSelected = 0;
+            showButtonSelection();
+        }
+
+        if (Input.GetAxis("Vertical") < -.05f)
+        {
+            hideButtonSelection();
+            optionSelected = 1;
+            showButtonSelection();
+        }
+
+        /*
+         * 
+         * if (delayCounter <= 0)
             {
                 delayCounter = delayReset;
                 hideButtonSelection();
@@ -53,9 +67,25 @@ public class ChooseItemUI : MonoBehaviour
             {
                 delayCounter -= Time.deltaTime;
             }
-        }        
+         * */
 
-            if (Input.GetButtonDown("Submit"))
+
+        /* if (Input.GetButtonDown("Vertical") )
+         {
+
+                 delayCounter = delayReset+.16f;
+                 hideButtonSelection();
+                 if (optionSelected == 1)
+                 {
+                     optionSelected = 0;
+                 }
+                 else { optionSelected = 1; }
+                 showButtonSelection();
+
+
+         }*/
+
+        if (Input.GetButtonDown("Submit"))
         {
              ChooseItem(); 
         }
