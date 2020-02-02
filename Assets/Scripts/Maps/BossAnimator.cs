@@ -23,6 +23,10 @@ public class BossAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.fullPause)
+        {
+            return;
+        }
         frameCounter += Time.deltaTime;
         if (frameCounter > 1 / framesPerSecond)
         {

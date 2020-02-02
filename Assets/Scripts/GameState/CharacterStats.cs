@@ -107,10 +107,16 @@ public class CharacterStats : Stats
         this.ManaCrystalsGained = SavedStats.ManaCrystalsGained;
         this.AttackCrystalsGained = SavedStats.AttackCrystalsGained;
         this.defenseCrystalsGained = SavedStats.defenseCrystalsGained;
-
+        
         this.weapon = SavedStats.weapon;
         this.armor = SavedStats.armor;
         this.accessory = SavedStats.accessory;
+
+        this.baseAttack = SavedStats.baseAttack;
+        this.baseDefense = SavedStats.baseDefense;
+        this.baseMaxHealth = SavedStats.baseMaxHealth;
+        this.baseMaxMana = SavedStats.baseMaxMana;
+
         setWeaponStats(weapon);
         setArmorStats(armor);
         setAccessoryStats(accessory);
@@ -136,6 +142,10 @@ public class CharacterStats : Stats
         SavedStats.ManaCrystalsGained=this.ManaCrystalsGained;
         SavedStats.AttackCrystalsGained= this.AttackCrystalsGained;
         SavedStats.defenseCrystalsGained= this.defenseCrystalsGained;
+        SavedStats.baseAttack = this.baseAttack;
+        SavedStats.baseDefense = this.baseDefense;
+        SavedStats.baseMaxHealth = this.baseMaxHealth;
+        SavedStats.baseMaxMana = this.baseMaxMana;
 
         SavedStats.weapon = this.weapon;
         SavedStats.armor = this.armor;
@@ -220,6 +230,11 @@ public class CharacterStats : Stats
         setAccessoryStats(accessory);
         setMaxStats();
         setFullHPMP();
+
+        if (GameData.Instance.iceBoss1) { powersGained = 1; }
+        if (GameData.Instance.earthBoss1) { powersGained = 2; }
+        if (GameData.Instance.fireBoss1) { powersGained = 3; }
+        if (GameData.Instance.airBoss1) { powersGained = 4; }
         
     }
 

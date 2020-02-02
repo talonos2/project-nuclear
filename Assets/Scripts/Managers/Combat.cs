@@ -266,7 +266,7 @@ public class Combat : MonoBehaviour
         {
             blade.StartClose();
             combatEnded = true;
-            playerStats.powersGained = Math.Max(monsterStats.powerGiven, playerStats.powersGained);
+            
         }
     }
 
@@ -311,6 +311,19 @@ public class Combat : MonoBehaviour
                 break;
         }
         playerStats.AddExp(monsterStats.ExpGiven);
+        if (monsterStats.iceBoss) {
+            GameData.Instance.iceBoss1 = true;
+            playerStats.powersGained = Math.Max(1, playerStats.powersGained); }
+        if (monsterStats.earthBoss) {
+            GameData.Instance.earthBoss1 = true;
+            playerStats.powersGained = Math.Max(2, playerStats.powersGained); }
+        if (monsterStats.fireBoss) {
+            GameData.Instance.fireBoss1 = true;
+            playerStats.powersGained = Math.Max(3, playerStats.powersGained); }
+        if (monsterStats.airBoss) {
+            GameData.Instance.airBoss1 = true;
+            playerStats.powersGained = Math.Max(4, playerStats.powersGained); }
+
         playerStats.PushCharacterData();
         Destroy(monsterToDelete);
     }

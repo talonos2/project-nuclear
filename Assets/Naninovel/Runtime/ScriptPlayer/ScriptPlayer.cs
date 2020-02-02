@@ -181,6 +181,7 @@ namespace Naninovel
             PlayedScript = null;
             DisableWaitingForInput();
             DisableAutoPlay();
+            Debug.Log("Reset script player.");
             DisableSkip();
         }
 
@@ -459,9 +460,15 @@ namespace Naninovel
         /// </summary>
         public bool IsSkipAllowed ()
         {
-            if (SkipMode == PlayerSkipMode.Everything) return true;
-            if (PlayedScript is null) return false;
-            return playedScriptRegister.IsIndexPlayed(PlayedScript.Name, PlayedIndex);
+            //Talonos bypassed this: We have no naninovel settings screen like in a VN, and we want the player to be able to skip stuff.
+            if (GameData.Instance.isInDialogue == false&&GameData.Instance.isCutscene == false)
+            {
+                return false;
+            }
+            return true;
+            //if (SkipMode == PlayerSkipMode.Everything) return true;
+            //if (PlayedScript is null) return false;
+            //return playedScriptRegister.IsIndexPlayed(PlayedScript.Name, PlayedIndex);
         }
 
         /// <summary>
@@ -469,6 +476,7 @@ namespace Naninovel
         /// </summary>
         public void EnableSkip ()
         {
+            Debug.Log("SkipMode should be active");
             if (!IsSkipAllowed()) return;
             SetSkipActive(true);
         }
@@ -643,6 +651,7 @@ namespace Naninovel
         private void SetSkipActive (bool isActive)
         {
             if (IsSkipActive == isActive) return;
+            Debug.Log("Skipmode is active.");
             IsSkipActive = isActive;
             Time.timeScale = isActive ? config.SkipTimeScale : 1f;
             OnSkip?.Invoke(isActive);
