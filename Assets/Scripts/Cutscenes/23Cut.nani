@@ -7,6 +7,8 @@
 @fwspawnvfx x:-6 y:-7 z:0 Vfx:PawnFluer
 @fwturnpawn n:PawnFluer d:w
 
+;single dummy
+@fwspawnvfx x:-5 y:-14 z:0 Vfx:PawnDouglass
 
 
 @char Fluer
@@ -58,7 +60,10 @@ Fluer: What am I going to do!?
 Patrick: just pretend they're all patients.
 @hidechars time:0
 
-@wait 1
+@fwturnpawn n:PawnFluer d:s
+@wait 0.5
+@fwturnpawn n:PawnFluer d:w
+@wait 0.5
 
 @fwmovepawn n:PawnFluer d:s
 @fwmovepawn n:PawnFluer d:s
@@ -75,6 +80,8 @@ Patrick: just pretend they're all patients.
 @fwmovepawn n:PawnFluer d:e
 @fwmovepawn n:PawnFluer d:e
 @fwmovepawn n:PawnFluer d:e
+
+@wait 2
 
 ;@fwdeletego n:PawnFluer
 

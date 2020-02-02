@@ -5,13 +5,12 @@
 ;$@place Tasha
 ;$@place Elder
 
-@fwspawnvfx x:-2 y:-14 z:0 Vfx:PawnDouglass
-@fwspawnvfx x:-4 y:-14 z:0 Vfx:PawnDouglass
-@fwspawnvfx x:-6 y:-14 z:0 Vfx:PawnDouglass
+@fwspawnvfx x:-5 y:-14 z:0 Vfx:PawnDouglass
 
-@fwspawnvfx x:-4 y:-15 z:0 Vfx:PawnElder
+
+@fwspawnvfx x:-5 y:-15 z:0 Vfx:PawnElder
 @fwturnpawn n:PawnElder d:n
-@fwspawnvfx x:-5 y:-16 z:0 Vfx:PawnTasha
+@fwspawnvfx x:-6 y:-16 z:0 Vfx:PawnTasha
 @fwturnpawn n:PawnTasha d:e
 
 
@@ -96,9 +95,9 @@ Tasha: I'll do more than try.
 @wait 0.2
 
 @fwturnpawn n:PawnElder d:e
-@fwmovepawn n:PawnTasha d:n
-@fwmovepawn n:PawnTasha d:n
 @fwmovepawn n:PawnTasha d:e
+@fwmovepawn n:PawnTasha d:n
+@fwmovepawn n:PawnTasha d:n
 @fwmovepawn n:PawnTasha d:e
 @fwmovepawn n:PawnTasha d:e
 @fwmovepawn n:PawnTasha d:e

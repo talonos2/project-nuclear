@@ -748,7 +748,7 @@
 @fwspawnvfx x:-1 y:23 z:0 Vfx:PawnSvenra
 @fwturnpawn n:PawnSvenra d:n
 
-@fwspawnvfx x:13 y:-20 z:0 Vfx:PawnPatrick
+@fwspawnvfx x:12 y:-20 z:0 Vfx:PawnPatrick
 @fwturnpawn n:PawnPatrick d:n
 
 @fwspawnvfx x:9 y:22 z:0 Vfx:PawnFluer
@@ -801,18 +801,24 @@
 @fwturnpawn n:PawnMetra d:n
 
 ;single dummy
-@fwspawnvfx x:-4 y:-14 z:0 Vfx:PawnDouglass
+@fwspawnvfx x:-5 y:-14 z:0 Vfx:PawnDouglass
 
-@fwspawnvfx x:-4 y:-15 z:0 Vfx:PawnPatrick
+@fwspawnvfx x:-5 y:-15 z:0 Vfx:PawnPatrick
 @fwturnpawn n:PawnPatrick d:n
 
 @exit
 
 #day24
 
+;single dummy
+@fwspawnvfx x:-5 y:-14 z:0 Vfx:PawnDouglass
+
 @exit
 
 #day25
+
+@fwspawnvfx x:4 y:6 z:0 Vfx:PawnMetra
+@fwturnpawn n:PawnMetra d:n
 
 @fwspawnvfx x:-7 y:-7 z:0 Vfx:PawnElder
 @fwturnpawn n:PawnElder d:s

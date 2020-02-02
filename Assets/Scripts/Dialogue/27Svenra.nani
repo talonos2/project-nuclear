@@ -160,12 +160,16 @@
 
 		
 		#day22
+		;stay
+		@fwturnpawn n:PawnSvenra d:w
 		@char Svenra
 		Svenra: -and I think there should be policies in place![br]How do we stop this from happening again?
 		@exit
 
 		
 		#day23
+		;stay
+		@fwturnpawn n:PawnSvenra d:e
 		@char Elder
 		Elder: So!  How long have those old places been around anyway?
 		@hidechars time:0
@@ -181,6 +185,9 @@
 		@char Svenra
 		Svenra: You're welcome.
 		Svenra: besides, all that scarecrow choppin' was too noisy.
+		@hidechars time:0
+		@char Tasha
+		Tasha: Don't get too used to it.
 		@exit
 
 		
@@ -195,6 +202,7 @@
 		#day26
 		@char Svenra
 		Svenra: What do you suppose will happen?[br]When there aren't any of us left?
+		@fwturnpawn n:PawnSvenra d:e
 		@exit
 
 		
@@ -202,6 +210,7 @@
 		@char Svenra
 		Svenra: Somebody ought to keep working on this.
 		Svenra: His handwriting is terrible...
+		@fwturnpawn n:PawnSvenra d:e
 		@exit
 
 		
