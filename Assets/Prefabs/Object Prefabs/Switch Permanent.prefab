@@ -105,6 +105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  groundItem: 0
+  belowGroundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0
 --- !u!1 &5462198937317247682
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +186,10 @@ MonoBehaviour:
   isSwitch: 1
   isNPC: 0
   TiedEntities: []
-  AnimationSpeed: 6
+  times: []
+  particlePath: 
+  mover: {fileID: 0}
+  AnimationSpeed: 12
   timeTillReset: 0
   prePressed: 0
   map5_2Shortcut: 0
