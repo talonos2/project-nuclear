@@ -18,6 +18,8 @@ public class CharacterMovement : SpriteMovement
     private float totalDashed = 0;
     private bool continueDashing = false;
     private Transform jumpPivot;
+    GameObject shield;
+    ParticleSystem smoke;
 
 
 
@@ -27,6 +29,8 @@ public class CharacterMovement : SpriteMovement
         base.Start();
         playerStats = this.GetComponent<CharacterStats>();
         jumpPivot = sRender.transform.parent;
+        shield = sRender.gameObject.transform.GetChild(0).gameObject;
+        smoke = sRender.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
 
     }
     // Update is called once per frame
@@ -61,9 +65,14 @@ public class CharacterMovement : SpriteMovement
                     gameData.hasted = false;
                     tempMovementSpeed = MoveSpeed;
                     tempFramesPerSecond = framesPerSecond;
+                    smoke.Stop();
                 }
             }
         }
+        else
+        {
+        }
+
         if (gameData.stealthed) {
 
             if (gameData.timerTrigger)
@@ -183,7 +192,6 @@ public class CharacterMovement : SpriteMovement
 
     private void SetShieldGraphic(float amount, bool isCharging)
     {
-        GameObject shield = sRender.gameObject.transform.GetChild(0).gameObject;
         Material m = shield.GetComponent<Renderer>().material;
         if (isCharging)
         {
@@ -444,6 +452,7 @@ public class CharacterMovement : SpriteMovement
         if (gameData.hasted)
         {
             gameData.hasted = false;
+            smoke.Stop();
             tempMovementSpeed = MoveSpeed;
             tempFramesPerSecond = framesPerSecond;
         }
@@ -455,11 +464,13 @@ public class CharacterMovement : SpriteMovement
                 tempMovementSpeed = MoveSpeed * hasteSpeed;
                 tempFramesPerSecond = framesPerSecond*hasteSpeed;
                 gameData.hasted = true;
+                smoke.Play();
                 gameData.stealthed = false;
             }
             else
             {
                 gameData.hasted = false;
+                smoke.Stop();
                 tempMovementSpeed = MoveSpeed;
                 tempFramesPerSecond = framesPerSecond;
             }
@@ -485,10 +496,12 @@ public class CharacterMovement : SpriteMovement
                 tempFramesPerSecond = framesPerSecond*stealthspeed;
                 gameData.stealthed = true;
                 gameData.hasted = false;
+                smoke.Stop();
             }
             else
             {
                 gameData.hasted = false;
+                smoke.Stop();
                 tempMovementSpeed = MoveSpeed;
                 tempFramesPerSecond = framesPerSecond;
             }
@@ -503,6 +516,7 @@ public class CharacterMovement : SpriteMovement
             playerStats.mana -= 5;
             gameData.dashing = true;
             gameData.hasted = false;
+            smoke.Stop();
             gameData.stealthed = false;
             waitTimer = .4f;
             totalDashed = 0;
@@ -533,7 +547,6 @@ public class CharacterMovement : SpriteMovement
     }
 
     public void ActivateKeyReceived() {
-        Debug.Log("Activating click");
         if (GameState.isInBattle || GameState.fullPause)
         {
             return;
