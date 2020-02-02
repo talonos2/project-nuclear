@@ -25,6 +25,7 @@ public class LoadSaveController : MonoBehaviour
 
 
         if (!LoadMetaData()) {
+
             SaveMetadataObject autoSave = new SaveMetadataObject();
             autoSave.SaveName = "AutoSave";
             autoSave.runNumberText = "";
@@ -42,7 +43,14 @@ public class LoadSaveController : MonoBehaviour
             Directory.CreateDirectory(appPath + "/Saves");
 
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Create(appPath + "/Saves/" + metaListObject.listOfSaves[saveSlotSelected].SaveName + ".binary");
+        FileStream saveFile;
+        if (File.Exists(appPath + "/Saves/" + metaListObject.listOfSaves[saveSlotSelected].SaveName + ".binary"))
+        {
+            saveFile = File.OpenWrite(appPath + "/Saves/" + metaListObject.listOfSaves[saveSlotSelected].SaveName + ".binary");
+        }
+        else {
+            saveFile = File.Create(appPath + "/Saves/" + metaListObject.listOfSaves[saveSlotSelected].SaveName + ".binary");
+        }
 
         GameSaverManager gameSaver = new GameSaverManager();
         gameSaver.SetupSave();
@@ -53,20 +61,27 @@ public class LoadSaveController : MonoBehaviour
 
     }
     public bool LoadGame() {
-        String appPath = Application.dataPath;
+        string appPath = Application.dataPath;
         if (!Directory.Exists(appPath + "/Saves")) { return false; }
         if (!File.Exists(appPath + "/Saves/" + metaListObject.listOfSaves[saveSlotSelected].SaveName + ".binary"))
         {
             return false;
         }
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Open(appPath + "/Saves/" + metaListObject.listOfSaves[saveSlotSelected].SaveName + ".binary", FileMode.Open);
+        FileStream saveFile;
+            saveFile = File.Open(appPath + "/Saves/" + metaListObject.listOfSaves[saveSlotSelected].SaveName + ".binary", FileMode.Open);
+            GameSaverManager gameSaver = (GameSaverManager)formatter.Deserialize(saveFile);
+        if (gameSaver.RunNumber == 0)
+        {
+            return false;
+        }
+            gameSaver.PushSaveToGameData();
 
-        GameSaverManager gameSaver = (GameSaverManager)formatter.Deserialize(saveFile);
-        gameSaver.PushSaveToGameData();
+            saveFile.Close();
+            return true;
 
-        saveFile.Close();
-        return true;
+
+        
     }
 
     
@@ -87,10 +102,11 @@ public class LoadSaveController : MonoBehaviour
     internal static void autoSave(int runNumber, int floorReached)
     {
         if (metaListObject.listOfSaves.Count == 0) {
+            Debug.Log("New AutoSave");
             SaveMetadataObject autoSave = new SaveMetadataObject();
             autoSave.SaveName = "AutoSave";
             autoSave.runNumberText = "";
-            autoSave.FurthestFloorReached = "No Saved Progress Yet";
+            autoSave.FurthestFloorReached = "Load New Game";
             metaListObject.listOfSaves.Add(autoSave);
             SaveMetaData();
         }
@@ -107,12 +123,14 @@ public class LoadSaveController : MonoBehaviour
 
     private static string getTextForDay(int runNumber)
     {
-        return "Day "+runNumber;
+        string answer = "Day " + runNumber;
+        return answer;
     }
 
     private static string getTextForFloor(int runNumber)
     {
-        return "Farthest Floor Delved /nFloor" + runNumber;
+        string answer = "Farthest Floor Delved \nFloor" + runNumber;
+        return answer;
     }
 
     public void addToMetalistData(SaveMetadataObject saveSlotObject) {
@@ -144,13 +162,13 @@ public class LoadSaveController : MonoBehaviour
 
     private static bool LoadMetaData()
     {
-        String appPath = Application.dataPath;
+        string appPath = Application.dataPath;
         if (!Directory.Exists(appPath + "/Saves")) { return false; }
-        if (!File.Exists(appPath + "Saves/MetaData.binary")) {
+        if (!File.Exists(appPath + "/Saves/MetaData.binary")) {
             return false;
         }
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Open(appPath+"Saves/MetaData.binary", FileMode.Open);
+        FileStream saveFile = File.Open(appPath+"/Saves/MetaData.binary", FileMode.Open);
         metaListObject.listOfSaves.Clear();
         MetadataList tempMetaListObject = (MetadataList)formatter.Deserialize(saveFile);
         metaListObject.listOfSaves = tempMetaListObject.listOfSaves;
@@ -160,7 +178,9 @@ public class LoadSaveController : MonoBehaviour
     }
 
     public void LoadGameAndStart() {
-        LoadGame();
+        if (!LoadGame()) {
+            Debug.Log("Failed to Load Game");
+        }
         this.GetComponentInParent<NewGameController>().StartNewGameActual();
         
     }

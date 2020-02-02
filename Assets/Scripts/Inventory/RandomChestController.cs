@@ -47,6 +47,7 @@ public class RandomChestController : EntityData
     public GameObject crystalPrefab;
     public GameObject manaFountainBreaking;
     public GameObject healthFountainBreaking;
+    public GameObject crystalBreaking;
 
     void Start()
     {
@@ -231,22 +232,30 @@ public class RandomChestController : EntityData
 
         if (attackCrystal) {
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
-            playerData.AttackCrystalsGained += amountGained;            
+            playerData.AttackCrystalsGained += amountGained;
+            Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Destroy(instanciatedObject);
         }
         else if (armorCrystal)
         {
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             playerData.defenseCrystalsGained += amountGained;
+            Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Destroy(instanciatedObject);
         }
         else if (healthCrystal)
         {
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             playerData.HealthCrystalsGained += amountGained;
+            Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Destroy(instanciatedObject);
         }
         else if (manaCrystal)
         {
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             playerData.ManaCrystalsGained += amountGained;
+            Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Destroy(instanciatedObject);
         }
         else if (itemChest)
         {
