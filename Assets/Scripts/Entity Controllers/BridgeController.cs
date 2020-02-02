@@ -27,11 +27,12 @@ public class BridgeController : DoodadData
     public void RunPrimAlgorythm() {
         if (primToCheck.result[primConnectionNumber])
         {
-            addPlatform();
+            removePlatform();
+            
         }
         else
         {
-            removePlatform();
+            addPlatform();
         }
     }
     public void removePlatform() {

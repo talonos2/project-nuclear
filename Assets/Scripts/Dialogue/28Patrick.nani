@@ -180,6 +180,7 @@
 		#day22
 		@char Patrick
 		Patrick: There's got to be something... anything...
+		@fwturnpawn n:PawnPatrick d:e
 		@exit
 
 
@@ -193,6 +194,7 @@
 		#day24
 		@char Patrick
 		Patrick: Hey, um.  Is there something I can do to help?
+		@fwturnpawn n:PawnPatrick d:n
 		@exit
 
 		
@@ -207,7 +209,7 @@
 		Tristana: Safety?
 		@hidechars time:0
 		@char Patrick
-		Patrick: Yeah, hardly any monsters in wilds around here.
+		Patrick: Yeah, hardly any monsters in the wilds around here.
 		@hidechars time:0
 		@char Tristana
 		Tristana: Why not?
@@ -218,18 +220,24 @@
 
 		
 		#day26
+		;stay
+		@fwturnpawn n:PawnPatrick d:e
 		@char Patrick
 		Patrick: Yeah, I pretty much just relax once I get past this area here... (looking at map with pins)
 		@exit
 
 		
 		#day27
+		;stay
+		@fwturnpawn n:PawnPatrick d:e
 		@char Patrick
 		Patrick: The safe area isn't the town...[br]The town is in the safe area...(looking at map with pins)
 		@exit
 
 		
 		#day28
+		;stay
+		@fwturnpawn n:PawnPatrick d:s
 		@char Patrick
 		Patrick: It definitely looks like the safe zone is centered on that shrine.(looking at map with pins)
 		@exit
