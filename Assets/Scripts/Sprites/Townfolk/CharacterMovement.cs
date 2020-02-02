@@ -62,10 +62,9 @@ public class CharacterMovement : SpriteMovement
                     tempFramesPerSecond = framesPerSecond * hasteSpeed;
                 }
                 else {
-                    gameData.hasted = false;
+                    TurnHasteOff();
                     tempMovementSpeed = MoveSpeed;
                     tempFramesPerSecond = framesPerSecond;
-                    smoke.Stop();
                 }
             }
         }
@@ -451,8 +450,7 @@ public class CharacterMovement : SpriteMovement
     {
         if (gameData.hasted)
         {
-            gameData.hasted = false;
-            smoke.Stop();
+            TurnHasteOff();
             tempMovementSpeed = MoveSpeed;
             tempFramesPerSecond = framesPerSecond;
         }
@@ -463,20 +461,32 @@ public class CharacterMovement : SpriteMovement
                 playerStats.mana -= 6;
                 tempMovementSpeed = MoveSpeed * hasteSpeed;
                 tempFramesPerSecond = framesPerSecond*hasteSpeed;
-                gameData.hasted = true;
-                smoke.Play();
+                TurnHasteOn();
                 gameData.stealthed = false;
             }
             else
             {
-                gameData.hasted = false;
-                smoke.Stop();
+                TurnHasteOff();
                 tempMovementSpeed = MoveSpeed;
                 tempFramesPerSecond = framesPerSecond;
             }
         }
 
        
+    }
+
+    private void TurnHasteOn()
+    {
+        gameData.hasted = true;
+        smoke.Play();
+        smoke.transform.parent.gameObject.GetComponent<ParticleSystem>().Play();
+    }
+
+    private void TurnHasteOff()
+    {
+        gameData.hasted = false;
+        smoke.Stop();
+        smoke.transform.parent.gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
     private void ActivateInvisibility()
@@ -495,13 +505,11 @@ public class CharacterMovement : SpriteMovement
                 tempMovementSpeed = MoveSpeed * stealthspeed;
                 tempFramesPerSecond = framesPerSecond*stealthspeed;
                 gameData.stealthed = true;
-                gameData.hasted = false;
-                smoke.Stop();
+                TurnHasteOff();
             }
             else
             {
-                gameData.hasted = false;
-                smoke.Stop();
+                TurnHasteOff();
                 tempMovementSpeed = MoveSpeed;
                 tempFramesPerSecond = framesPerSecond;
             }
@@ -515,8 +523,7 @@ public class CharacterMovement : SpriteMovement
             sRender.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             playerStats.mana -= 5;
             gameData.dashing = true;
-            gameData.hasted = false;
-            smoke.Stop();
+            TurnHasteOff();
             gameData.stealthed = false;
             waitTimer = .4f;
             totalDashed = 0;
