@@ -479,14 +479,14 @@ public class CharacterMovement : SpriteMovement
     {
         gameData.hasted = true;
         smoke.Play();
-        smoke.transform.parent.gameObject.GetComponent<ParticleSystem>().Play();
+        smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
     }
 
     private void TurnHasteOff()
     {
         gameData.hasted = false;
         smoke.Stop();
-        smoke.transform.parent.gameObject.GetComponent<ParticleSystem>().Stop();
+        smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
     private void ActivateInvisibility()
