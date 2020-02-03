@@ -56,12 +56,15 @@ public class GameData : Singleton<GameData>
       [HideInInspector]
     public bool nextLocationSet;
 
+    public bool Map3_2Shortcut;
     public bool map5_2Shortcut;
     public bool map5_3Shortcut;
+
     public bool iceBoss1;
     internal bool earthBoss1;
     internal bool fireBoss1;
     internal bool airBoss1;
+
 
     internal bool IsInTown()
     {

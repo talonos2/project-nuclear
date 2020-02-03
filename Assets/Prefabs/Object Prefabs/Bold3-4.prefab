@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2055021339071006907}
   - component: {fileID: 509098294}
   m_Layer: 0
-  m_Name: Bold1_1
+  m_Name: Bold3-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,6 +53,8 @@ MonoBehaviour:
   isBackgroundCharacter: 0
   isSpike: 0
   isPassable: 0
+  primBoulder: 0
+  primConnectionNumber: 0
 --- !u!1 &6177650699421030878
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,8 +83,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6177650699421030878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 0.25, z: -9}
-  m_LocalScale: {x: 1.5, y: 2, z: 1}
+  m_LocalPosition: {x: -0.05, y: 0.1, z: -9}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 2055021339071006907}
   m_RootOrder: 0
@@ -112,7 +114,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 63d49f71f00c73a4b9944eb9742afaac, type: 2}
+  - {fileID: 2100000, guid: fc03f65b37c5c7046a123aa6b588d169, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,3 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  groundItem: 0
+  belowGroundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0
