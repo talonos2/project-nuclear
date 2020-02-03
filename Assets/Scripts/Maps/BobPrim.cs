@@ -91,7 +91,8 @@ public class BobPrim : MonoBehaviour
         int[] consider = new int[connectionNum];
 
         int i;
-        int wallington = (connections.Length / 2);
+        // int wallington = (connections.Length / 2);
+        int wallington = connectionNum;
         int lead;
         int check;
         int[] considered= new int[5];

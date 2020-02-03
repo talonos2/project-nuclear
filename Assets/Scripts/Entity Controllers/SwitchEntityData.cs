@@ -33,7 +33,7 @@ public class SwitchEntityData : EntityData
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
         if (prePressed) {
-            this.ProcessClick(null);
+            ToggleTiedObjects();
         }
     }
 
@@ -51,13 +51,15 @@ public class SwitchEntityData : EntityData
     override public void ProcessClick(CharacterStats stats) {
 
         if (isAnimating) { return; }
-        if (stats == null)
-        {
-            timerSet = false;
-        }
-        else { timerSet = true;
+        if (timerSet == true) {
             tempResetTime = timeTillReset;
+            return; }
+        if (timeTillReset > 0) {
+
+            tempResetTime = timeTillReset;
+            timerSet = true;
         }
+
         ToggleTiedObjects();
         
     }
@@ -137,10 +139,11 @@ public class SwitchEntityData : EntityData
             return;
         }
 
-        if (timerSet && timeTillReset>0) {
+        if (timerSet) {
             tempResetTime -= Time.deltaTime;
             if (tempResetTime <= 0) {
-                ProcessClick(null);
+                ToggleTiedObjects();
+                timerSet = false;
             }
         }
 

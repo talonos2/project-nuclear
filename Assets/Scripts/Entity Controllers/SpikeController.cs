@@ -43,11 +43,11 @@ public class SpikeController : DoodadData
     {
         if (primToCheck.result[primConnectionNumber])
         {
-            //SetBoulder(true);
+            Open();
         }
         else
         {
-            Open();
+            
         }
     }
 
