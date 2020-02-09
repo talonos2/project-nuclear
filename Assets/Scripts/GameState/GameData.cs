@@ -61,9 +61,12 @@ public class GameData : Singleton<GameData>
     public bool map5_3Shortcut;
 
     public bool iceBoss1;
-    internal bool earthBoss1;
-    internal bool fireBoss1;
-    internal bool airBoss1;
+    public bool earthBoss1;
+    public bool fireBoss1;
+    public bool airBoss1;
+
+    internal bool hiroDeathMonster;
+    internal bool postRun1Cutscene;
 
 
     internal bool IsInTown()

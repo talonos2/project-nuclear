@@ -23,7 +23,10 @@ public class EndRunScreenController : MonoBehaviour
 
     public void EndRunAndLoadTown()
     {
-
+        if (GameData.Instance.RunNumber == 1) {
+            GameData.Instance.isCutscene = true;
+            CutsceneLoader.postRun1Cutscene = true;
+        }
         GameData.Instance.RunNumber += 1;
         GameData.Instance.FloorNumber = 0;
         GameData.Instance.autoSaveStats();

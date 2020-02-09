@@ -8,13 +8,24 @@ public class PassabilityGrid : MonoBehaviour
     public TextAsset passabilityMap;
     public int width = 3;
     public int height = 3;
+    public bool alternatePathabilitySetup;
+    public int altWidth = 0;
+    public int altHeight = 0;
+    //internal int width;
+    //internal int height;
     [HideInInspector]
     public PassabilityType[,] grid;
 
     // Start is called before the first frame update
     void Start()
     {
+        int width;
+        int height;
+        if (alternatePathabilitySetup) { width = altWidth; height = altHeight; }
+        else { width = this.width; height = this.height; }
+
         grid = new PassabilityType[width, height];
+
         string[] yRows = passabilityMap.text.Split(new char[] { '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
         System.Array.Reverse(yRows);
         if (yRows.Length < height)
@@ -66,11 +77,6 @@ public class PassabilityGrid : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnDrawGizmosSelected()
     {
@@ -78,6 +84,13 @@ public class PassabilityGrid : MonoBehaviour
         {
             return;
         }
+
+        int width;
+        int height;
+        if (alternatePathabilitySetup) { width = altWidth; height = altHeight; }
+        else { width = this.width; height = this.height; }
+
+
         float xOffset = width / 2;
         float yOffset = height / 2;
         for (int y = 0; y < height; y++)
@@ -110,11 +123,21 @@ public class PassabilityGrid : MonoBehaviour
 
     public Vector2 GridToTransform(Vector2 gridPosition)
     {
+        int width;
+        int height;
+        if (alternatePathabilitySetup) { width = altWidth; height = altHeight; }
+        else { width = this.width; height = this.height; }
+
         return new Vector2(gridPosition.x - width / 2, gridPosition.y - height / 2);
     }
 
     internal bool InRange(int locX, int locY)
     {
+        int width;
+        int height;
+        if (alternatePathabilitySetup) { width = altWidth; height = altHeight; }
+        else { width = this.width; height = this.height; }
+
         if (locX < 0 || locY < 0 || locX >= width || locY >= width)
         {
             return false;
