@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CharacterMovement : SpriteMovement
 {
-    private static float DASH_LENGTH = 27;
+    private static float DASH_LENGTH = 26;
 
     public CharacterStats playerStats;
     private Vector2Int jumpTarget;
@@ -336,8 +336,22 @@ public class CharacterMovement : SpriteMovement
         {
             return;
         }
+        if (playerStats.currentPower != (int)ElementalPower.EARTH && gameData.stealthed) {
+            gameData.stealthed = false;
+            tempMovementSpeed = MoveSpeed;
+            tempFramesPerSecond = framesPerSecond;
+        }
+        if (playerStats.currentPower != (int)ElementalPower.FIRE && gameData.hasted)
+        {
+            TurnHasteOff();
+            tempMovementSpeed = MoveSpeed;
+            tempFramesPerSecond = framesPerSecond;
+        }
+
+
         if (!jumping && !gameData.dashing)
         {
+
             switch (playerStats.currentPower)
             {
                 case (int)ElementalPower.ICE:

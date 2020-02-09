@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1648,6 +1648,9 @@ MonoBehaviour:
   passabilityMap: {fileID: 4900000, guid: cc38aed19696bbe4d99306dc1b5b6ba5, type: 3}
   width: 32
   height: 32
+  alternatePathabilitySetup: 0
+  altWidth: 0
+  altHeight: 0
 --- !u!4 &326564849
 Transform:
   m_ObjectHideFlags: 0
@@ -1869,6 +1872,11 @@ PrefabInstance:
       propertyPath: MoveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7006164022209719914, guid: 0d93c30ae88958f4694e544483ee8098,
+        type: 3}
+      propertyPath: SpotWaitTimer
+      value: 0.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d93c30ae88958f4694e544483ee8098, type: 3}
 --- !u!1001 &350879196
@@ -2052,6 +2060,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MoveSpeed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006164022209719914, guid: 0d93c30ae88958f4694e544483ee8098,
+        type: 3}
+      propertyPath: SpotWaitTimer
+      value: 0.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d93c30ae88958f4694e544483ee8098, type: 3}
@@ -4676,6 +4689,11 @@ PrefabInstance:
       propertyPath: MoveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7006164022209719914, guid: 0d93c30ae88958f4694e544483ee8098,
+        type: 3}
+      propertyPath: SpotWaitTimer
+      value: 0.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d93c30ae88958f4694e544483ee8098, type: 3}
 --- !u!1001 &1314092435
@@ -5685,6 +5703,11 @@ PrefabInstance:
       propertyPath: MoveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7006164022209719914, guid: 0d93c30ae88958f4694e544483ee8098,
+        type: 3}
+      propertyPath: SpotWaitTimer
+      value: 0.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d93c30ae88958f4694e544483ee8098, type: 3}
 --- !u!1001 &1585255906
@@ -5938,6 +5961,11 @@ PrefabInstance:
       propertyPath: MoveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7006164022209719914, guid: 0d93c30ae88958f4694e544483ee8098,
+        type: 3}
+      propertyPath: SpotWaitTimer
+      value: 0.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d93c30ae88958f4694e544483ee8098, type: 3}
 --- !u!1001 &1667879456
@@ -6037,6 +6065,11 @@ PrefabInstance:
       propertyPath: MoveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7006164022209719914, guid: 0d93c30ae88958f4694e544483ee8098,
+        type: 3}
+      propertyPath: SpotWaitTimer
+      value: 0.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d93c30ae88958f4694e544483ee8098, type: 3}
 --- !u!1001 &1729108441
@@ -6135,6 +6168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MoveSpeed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006164022209719914, guid: 0d93c30ae88958f4694e544483ee8098,
+        type: 3}
+      propertyPath: SpotWaitTimer
+      value: 0.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d93c30ae88958f4694e544483ee8098, type: 3}
@@ -7137,6 +7175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MoveSpeed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006164022209719914, guid: 0d93c30ae88958f4694e544483ee8098,
+        type: 3}
+      propertyPath: SpotWaitTimer
+      value: 0.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d93c30ae88958f4694e544483ee8098, type: 3}
