@@ -64,6 +64,7 @@ public class GameData : Singleton<GameData>
     public bool earthBoss1;
     public bool fireBoss1;
     public bool airBoss1;
+    public bool deathBoss;
 
     internal bool hiroDeathMonster;
     internal bool postRun1Cutscene;

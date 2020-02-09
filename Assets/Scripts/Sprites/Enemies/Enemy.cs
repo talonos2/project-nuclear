@@ -20,6 +20,7 @@ public class Enemy : Stats
     public bool earthBoss;
     public bool fireBoss;
     public bool airBoss;
+    public bool deathBoss;
 
     public void Start()
     {
@@ -27,6 +28,7 @@ public class Enemy : Stats
         if (earthBoss && GameData.Instance.earthBoss1) { Destroy(this.gameObject); }
         if (fireBoss && GameData.Instance.fireBoss1) { Destroy(this.gameObject); }
         if (airBoss && GameData.Instance.airBoss1) { Destroy(this.gameObject); }
+        if (deathBoss && GameData.Instance.deathBoss) { Destroy(this.gameObject); }
     }
 
 
