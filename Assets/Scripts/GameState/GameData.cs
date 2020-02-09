@@ -118,6 +118,7 @@ public class GameData : Singleton<GameData>
         minutes = (int)(timer / 60);
         if (minutes == 10) {
             //Needs to really call the 'kill player' animation and then load deathscene from that script. That script should 'pause' the timer. 
+            GameState.isInBattle = false;
             SceneManager.LoadScene("DeathScene");
             pauseTimer = true;
         }

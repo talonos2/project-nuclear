@@ -249,19 +249,23 @@ public class Combat : MonoBehaviour
         if (gameData.minutes==10)
         {
             combatEnded = true;
+            GameState.isInBattle = false;
             blade.StartClose();
             //GameState.endRunFlag = true;
             KillPlayerAndLoadNextScene();
-            GameState.isInBattle = false;
+
         }
+
         if (playerStats.HP <= 0)
         {
             combatEnded = true;
+            GameState.isInBattle = false;
             blade.StartClose();
             //GameState.endRunFlag = true;
             KillPlayerAndLoadNextScene();
-            GameState.isInBattle = false;
+
         }
+
         if (monsterStats.HP <= 0)
         {
             blade.StartClose();
@@ -273,6 +277,7 @@ public class Combat : MonoBehaviour
     private void KillPlayerAndLoadNextScene() {
         //
         GameState.isInBattle = false;
+        Debug.Log("gamestate " + GameState.isInBattle);
         Destroy(monsterSprite.gameObject);
         Destroy(playerSprite.gameObject);
         combatDarkening.material.SetFloat("_Alpha", 0);
