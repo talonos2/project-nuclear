@@ -23,15 +23,16 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public static void PlaySound (string clip)
+    public static void PlaySound(string clip)
     {
-        AudioClip clipToPlay=Resources.Load<AudioClip>("Sounds/" + clip);
-  
-        
-        audioSrc.PlayOneShot(clipToPlay);
+        //AudioClip clipToPlay = Resources.Load<AudioClip>("Sounds/" + clip);
+        //audioSrc.PlayOneShot(clipToPlay);
+
+        audioSrc.PlayOneShot(Resources.Load<AudioClip>("Sounds/" + clip));
+
 
         /*
         switch (clip)
@@ -48,11 +49,12 @@ public class SoundManager : MonoBehaviour
 
 
         }*/
+    }
 
+    public static void PlaySound(AudioClip clip)
+    {
+        audioSrc.PlayOneShot(clip);
 
 
     }
-
-
-
 }

@@ -212,6 +212,7 @@ public class Combat : MonoBehaviour
             else
             {
                 blade.SpawnErrorParticles();
+                SoundManager.PlaySound("badClick");
             }
         }
         else
@@ -337,6 +338,10 @@ public class Combat : MonoBehaviour
     {
         float incomingDamage = (int)playerStats.attack;
 
+        //if (goodHit) { SoundManager.PlaySound(monsterStats.attackStrong); }
+        //else { SoundManager.PlaySound(monsterStats.attackWeak); }
+
+
         incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent/100);
         incomingDamage -= monsterStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
@@ -411,7 +416,10 @@ public class Combat : MonoBehaviour
 
     private void DealDamageToPlayer()
     {
-        
+
+        //if (goodBlock) { SoundManager.PlaySound(monsterStats.defendWeak); }
+        //else { SoundManager.PlaySound(monsterStats.defendStrong); }
+
         float incomingDamage = monsterStats.attack;
         incomingDamage -= playerStats.defense;
         if (goodBlock) { incomingDamage *= .8f; }

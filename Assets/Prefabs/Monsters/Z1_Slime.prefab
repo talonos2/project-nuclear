@@ -121,6 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  groundItem: 0
+  belowGroundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0
 --- !u!1 &8256436232106188761
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,13 +187,16 @@ MonoBehaviour:
   framesPerSecond: 10
   facedDirection: 4
   PathRandomly: 0
+  PathAntiRandomly: 0
   PathViaSteps: 1
   Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
   SpotterMonster: 0
   SpottingDistance: 4
   LookDuration: 5
   ChaseRange: 5
+  SpotWaitTimer: 0.3
   LookPattern: 
+  bossMonster: 0
 --- !u!114 &8256436232106188756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +248,16 @@ MonoBehaviour:
   - {fileID: -7455342918688537225, guid: 39442b4647825ae4babd624b820af6df, type: 3}
   - {fileID: -3772043870533336583, guid: 39442b4647825ae4babd624b820af6df, type: 3}
   - {fileID: 5911367138723749726, guid: 39442b4647825ae4babd624b820af6df, type: 3}
+  attackAnimation: 0
+  attackStrong: {fileID: 8300000, guid: 9d6ab8c38f280a549ba0b2effe08bade, type: 3}
+  attackWeak: {fileID: 8300000, guid: e3e532e01584b3048a8d9ac5ce455222, type: 3}
+  defendStrong: {fileID: 8300000, guid: d13c444dd2b4c5e4ebc1047c045a2f07, type: 3}
+  defendWeak: {fileID: 8300000, guid: d188f9b5795a6674b9a2e6bcc16d5bea, type: 3}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
 --- !u!65 &8256436232106188758
 BoxCollider:
   m_ObjectHideFlags: 0

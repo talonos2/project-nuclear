@@ -16,6 +16,15 @@ public class Enemy : Stats
     public Sprite[] combatSprites;
     public AttackAnimation attackAnimation = AttackAnimation.HOP;
 
+    public AudioClip attackStrong;
+    public AudioClip attackWeak;
+    public AudioClip defendStrong;
+    public AudioClip defendWeak;
+
+
+
+
+
     public bool iceBoss;
     public bool earthBoss;
     public bool fireBoss;
