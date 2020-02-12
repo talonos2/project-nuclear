@@ -12,11 +12,12 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        potBreakSound = Resources.Load<AudioClip>("potBreak");
+        /*potBreakSound = Resources.Load<AudioClip>("potBreak");
         rockAttackStrongSound = Resources.Load<AudioClip>("rockAttackStrong");
-        rockAttackWeakSound = Resources.Load<AudioClip>("rockAttackWeak");
+        rockAttackWeakSound = Resources.Load<AudioClip>("rockAttackWeak");*/
 
         audioSrc = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -27,6 +28,12 @@ public class SoundManager : MonoBehaviour
 
     public static void PlaySound (string clip)
     {
+        AudioClip clipToPlay=Resources.Load<AudioClip>("Sounds/" + clip);
+  
+        
+        audioSrc.PlayOneShot(clipToPlay);
+
+        /*
         switch (clip)
         {
             case "potBreak":
@@ -40,7 +47,7 @@ public class SoundManager : MonoBehaviour
                 break;
 
 
-        }
+        }*/
 
 
 
