@@ -183,6 +183,8 @@ public class RandomChestController : EntityData
 
     private void RollRandomChest()
     {
+
+
         int itemRolled = UnityEngine.Random.Range(0, 100)+1;
         
         if (itemRolled <= itemChestChance)
@@ -262,6 +264,8 @@ public class RandomChestController : EntityData
         }
         else if (itemChest)
         {
+
+
             InventoryItem itemFound=itemListData.getRandomCommonItem(rarity);
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
             uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, itemFound);
@@ -270,6 +274,9 @@ public class RandomChestController : EntityData
             
             Instantiate(itemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
+
+            // stuff added by Ipecac, in case I screwed up
+            SoundManager.PlaySound("potBreak");
         }
         else if (rareItemChest)
         {
