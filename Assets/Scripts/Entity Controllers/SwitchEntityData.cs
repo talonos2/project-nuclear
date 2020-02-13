@@ -60,6 +60,8 @@ public class SwitchEntityData : EntityData
             timerSet = true;
         }
 
+        SoundManager.PlaySound("switchSound");
+
         ToggleTiedObjects();
         
     }

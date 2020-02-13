@@ -338,8 +338,8 @@ public class Combat : MonoBehaviour
     {
         float incomingDamage = (int)playerStats.attack;
 
-        //if (goodHit) { SoundManager.PlaySound(monsterStats.attackStrong); }
-        //else { SoundManager.PlaySound(monsterStats.attackWeak); }
+        if (goodHit) { SoundManager.PlaySound(monsterStats.goodHit); }
+        else { SoundManager.PlaySound(monsterStats.badHit); }
 
 
         incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent/100);
@@ -417,8 +417,8 @@ public class Combat : MonoBehaviour
     private void DealDamageToPlayer()
     {
 
-        //if (goodBlock) { SoundManager.PlaySound(monsterStats.defendWeak); }
-        //else { SoundManager.PlaySound(monsterStats.defendStrong); }
+        if (goodBlock) { SoundManager.PlaySound(monsterStats.goodBlock); }
+        else { SoundManager.PlaySound(monsterStats.badBlock); }
 
         float incomingDamage = monsterStats.attack;
         incomingDamage -= playerStats.defense;

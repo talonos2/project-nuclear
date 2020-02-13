@@ -67,6 +67,7 @@ MonoBehaviour:
   SpottingDistance: 5
   LookDuration: 10
   ChaseRange: 15
+  SpotWaitTimer: 0.3
   LookPattern: 04000000
   bossMonster: 0
 --- !u!114 &3128599578249191478
@@ -128,13 +129,21 @@ MonoBehaviour:
   weakness: 1
   crystalType: 1
   crystalDropAmount: 2
-  powerGiven: 0
   combatSprites:
   - {fileID: -4480272334087500341, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
   - {fileID: -3674070280908573562, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
   - {fileID: -1709970976819407592, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
   - {fileID: -3692116549114297304, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
   attackAnimation: 0
+  goodHit: {fileID: 8300000, guid: d5909d059011c8943853de838e951763, type: 3}
+  badHit: {fileID: 8300000, guid: dad4503224a03a14d83dd05306fd46f3, type: 3}
+  goodBlock: {fileID: 8300000, guid: 0bb1fc4c790aaae439baaa8d7c6ceba9, type: 3}
+  badBlock: {fileID: 8300000, guid: ce1d14ca740ff2940a7d0087d60550ae, type: 3}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
 --- !u!1 &3128599578980096542
 GameObject:
   m_ObjectHideFlags: 0

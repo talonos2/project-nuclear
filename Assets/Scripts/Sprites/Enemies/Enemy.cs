@@ -16,10 +16,10 @@ public class Enemy : Stats
     public Sprite[] combatSprites;
     public AttackAnimation attackAnimation = AttackAnimation.HOP;
 
-    public AudioClip attackStrong;
-    public AudioClip attackWeak;
-    public AudioClip defendStrong;
-    public AudioClip defendWeak;
+    public AudioClip goodHit;
+    public AudioClip badHit;
+    public AudioClip goodBlock;
+    public AudioClip badBlock;
 
 
 
