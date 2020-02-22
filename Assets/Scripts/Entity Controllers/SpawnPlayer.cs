@@ -25,7 +25,7 @@ public class SpawnPlayer : MonoBehaviour
         {
             if (GameData.Instance.FloorNumber == 0) {
                 int runNumber = GameData.Instance.RunNumber;
-                SetInTownPositions();
+                if (CutsceneLoader.runTownBackDialogue) SetInTownPositions();
 
                 if (runNumber==2) newPlayer = Instantiate(Players[1], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
                 if (runNumber>=3 && runNumber<=5) newPlayer = Instantiate(Players[4], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
@@ -43,7 +43,7 @@ public class SpawnPlayer : MonoBehaviour
                 characterMovement.SetRenderer();
                 characterMovement.facedDirection = facing;
                 characterMovement.SetLookDirection();
-                if (!CutsceneLoader.postRun1Cutscene) CutsceneLoader.SetNextDialogue("enterTown");
+                if (!CutsceneLoader.postRun1Cutscene && CutsceneLoader.runTownBackDialogue) CutsceneLoader.SetNextDialogue("enterTown");
                 return;
             }
             else {

@@ -13,6 +13,8 @@ public class ExitDialogue : Naninovel.Commands.Command
         Naninovel.Engine.Reset();
         GameData.Instance.isInDialogue = false;
 
+        if (CutsceneLoader.runTownBackDialogue == true && !CutsceneLoader.postRun1Cutscene) CutsceneLoader.runTownBackDialogue = false;
+
         if (CutsceneLoader.postRun1Cutscene && GameData.Instance.isCutscene)
         {
             GameData.Instance.isCutscene = false;

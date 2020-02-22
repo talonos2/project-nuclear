@@ -27,6 +27,7 @@ public class EndRunScreenController : MonoBehaviour
             GameData.Instance.isCutscene = true;
             CutsceneLoader.postRun1Cutscene = true;
         }
+        CutsceneLoader.runTownBackDialogue = true;
         GameData.Instance.RunNumber += 1;
         GameData.Instance.FloorNumber = 0;
         GameData.Instance.autoSaveStats();

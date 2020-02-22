@@ -14,6 +14,7 @@ public class CutsceneLoader : MonoBehaviour
     internal static bool introCutscene;
     private static int introSceneNumber;
     internal static bool postRun1Cutscene;
+    internal static bool runTownBackDialogue;
     internal static bool waitingForScriptPlyr;
     internal static string nextDialogue;
     internal static bool dialogueWaiting;
