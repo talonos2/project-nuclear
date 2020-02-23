@@ -25,6 +25,7 @@ public class MonsterMovement : SpriteMovement
     public int SpottingDistance = 5;//in squares
     public int LookDuration = 10; //in deciseconds
     public int ChaseRange = 15;
+    public float SpotWaitTimer = .3f;
     public DirectionMoved[] LookPattern;
 
     private bool CurrentlyChasingPlayer=false;
@@ -131,7 +132,7 @@ public class MonsterMovement : SpriteMovement
                 if (IsPlayerInView() && !CurrentlyChasingPlayer) {
                     CurrentlyChasingPlayer = true;
                     ChaseStepNumber = 0;
-                    waitTimer = .25f;
+                    waitTimer = SpotWaitTimer;
                 }
                 if (waitTimer >= 0)
                 {

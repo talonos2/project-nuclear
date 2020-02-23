@@ -11,10 +11,37 @@ public class CutsceneLoader : MonoBehaviour
     public string[] cutScenes;
     public Vector2[] cameraLocation;
     public Vector2[] introCameraLocation;
-    public static bool introCutscene;
+    internal static bool introCutscene;
     private static int introSceneNumber;
+    internal static bool postRun1Cutscene;
+    internal static bool runTownBackDialogue;
+    internal static bool waitingForScriptPlyr;
+    internal static string nextDialogue;
+    internal static bool dialogueWaiting;
 
-    public static void LoadCutscene()
+    void Update()
+    {
+        if (waitingForScriptPlyr) { return; }
+        if (dialogueWaiting) {
+            dialogueWaiting = false;
+            waitingForScriptPlyr = true;
+            GameData.Instance.isInDialogue = true;
+            Naninovel.Engine.Reset();
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            RuntimeInitializer.InitializeAsync();
+            Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(nextDialogue);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+        }
+
+
+    }
+
+    public static void SetNextDialogue(string aDialogue) {
+        nextDialogue = aDialogue;
+        dialogueWaiting = true;
+    }
+
+        public static void LoadCutscene()
     {
         GameData.Instance.isCutscene = true;
         if (introCutscene) {
@@ -30,6 +57,11 @@ public class CutsceneLoader : MonoBehaviour
                     SceneManager.LoadScene("TownMap_1");
                     break;
             }
+            return;
+        }
+
+        if (postRun1Cutscene) {
+            SceneManager.LoadScene("TownMap_1");
             return;
         }
 
@@ -135,10 +167,22 @@ public class CutsceneLoader : MonoBehaviour
 
     public void RunCutscene() {
 
-
-
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
     GameData gameData = GameData.Instance;
+
+        if (postRun1Cutscene)
+        {
+            if (GameData.Instance.hiroDeathMonster) {
+                Instantiate(cutScenePlayer, new Vector3(cameraLocation[34].x, cameraLocation[34].y, 0), Quaternion.identity);
+                InitAndRunCutscene(34);
+            }
+            else {
+                Instantiate(cutScenePlayer, new Vector3(cameraLocation[35].x, cameraLocation[35].y, 0), Quaternion.identity);
+                InitAndRunCutscene(35);
+            }
+            return;
+        }
+
         if (introCutscene)
         {
             Instantiate(cutScenePlayer, new Vector3(cameraLocation[31+ introSceneNumber].x, cameraLocation[31 + introSceneNumber].y, 0), Quaternion.identity);
@@ -152,12 +196,12 @@ public class CutsceneLoader : MonoBehaviour
             InitAndRunCutscene(gameData.RunNumber);
         }
 
-        
        // RuntimeInitializer.InitializeAsync();
        // Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[gameData.RunNumber]);
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
     }
+
     public async void InitAndRunCutscene(int cutSceneNumber)
     {
         //await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[GameData.Instance.RunNumber]);
@@ -168,3 +212,17 @@ public class CutsceneLoader : MonoBehaviour
     }
 
 }
+
+
+/*
+public static void RunStartOfTownDialog()
+{
+    Debug.Log("start of town dialog");
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+
+    GameData.Instance.isInDialogue = true;
+    Naninovel.Engine.Reset();
+    RuntimeInitializer.InitializeAsync();
+    Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync("enterTown");
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+}*/

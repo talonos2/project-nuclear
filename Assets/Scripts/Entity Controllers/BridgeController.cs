@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BridgeController : DoodadData
 {
-   // public bool tempBridge;
+    // public bool tempBridge;
+    public bool invisibleBridge;
     public bool primBridge;
     public bool primShortcutBridge;
     public int primConnectionNumber;
@@ -27,12 +28,13 @@ public class BridgeController : DoodadData
     public void RunPrimAlgorythm() {
         if (primToCheck.result[primConnectionNumber])
         {
-            removePlatform();
+            addPlatform();
+            
             
         }
         else
         {
-            addPlatform();
+            removePlatform();
         }
     }
     public void removePlatform() {
@@ -43,7 +45,7 @@ public class BridgeController : DoodadData
     }
     public void addPlatform() {
         this.isPlatformTerrain = true;
-       
+        if (invisibleBridge) return;
         this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
     }
     // Update is called once per frame

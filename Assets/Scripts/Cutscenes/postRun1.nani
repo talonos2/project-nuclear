@@ -16,18 +16,13 @@
 @fwspawnvfx x:9 y:21 z:0 Vfx:PawnElder
 @fwturnpawn n:PawnElder d:s
 
-Group standing outside near shrine- logos has scrying device.
-
-
-
+;Group standing outside near shrine- logos has scrying device.
 
 
 
 ;(1 = if monster kill) 
-;(0 = if time up)
 @char Sara
-Sara: They... they got him. if:death()=1
-Sara: He's gone... if:death()=0
+Sara: They... they got him.
 @hidechars time:0
 
 
@@ -61,7 +56,7 @@ McDermit: Don't talk like- hey!  He said not to mess with that!
 
 @char Jezerine
 Jezerine: His ring, it's in here. if:elements()=0
-Jezerine: His ring, it's in here.  It's... cold. if:elements()=1
+Jezerine: His ring, it's in here.  It's... cold. ;if:elements()=1
 Jezerine: And all his gear. At least the things he sent back.
 @hidechars time:0
 

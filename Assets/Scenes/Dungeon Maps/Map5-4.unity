@@ -2603,6 +2603,9 @@ MonoBehaviour:
   passabilityMap: {fileID: 4900000, guid: 643beac08d48f434a829d3264f9625ff, type: 3}
   width: 44
   height: 44
+  alternatePathabilitySetup: 0
+  altWidth: 0
+  altHeight: 0
 --- !u!4 &326564849
 Transform:
   m_ObjectHideFlags: 0
@@ -7728,6 +7731,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452877458327225012, guid: ec24f6f506711df47ae5f697c13f71e1,
+        type: 3}
+      propertyPath: deathBoss
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec24f6f506711df47ae5f697c13f71e1, type: 3}

@@ -49,6 +49,9 @@ public class RandomChestController : EntityData
     public GameObject manaFountainBreaking;
     public GameObject healthFountainBreaking;
     public GameObject crystalBreaking;
+    public GameObject crystalBreakingGreen;
+    public GameObject crystalBreakingRed;
+    public GameObject crystalBreakingYellow;
 
     void Start()
     {
@@ -181,6 +184,8 @@ public class RandomChestController : EntityData
 
     private void RollRandomChest()
     {
+
+
         int itemRolled = UnityEngine.Random.Range(0, 100)+1;
         
         if (itemRolled <= itemChestChance)
@@ -255,7 +260,7 @@ public class RandomChestController : EntityData
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             SpawnCrystalParticles(CrystalType.ATTACK, amountGained, playerData);
             playerData.AttackCrystalsGained += amountGained;
-            Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Instantiate(crystalBreakingRed, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
         else if (armorCrystal)
@@ -263,7 +268,7 @@ public class RandomChestController : EntityData
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             SpawnCrystalParticles(CrystalType.DEFENSE, amountGained, playerData);
             playerData.defenseCrystalsGained += amountGained;
-            Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Instantiate(crystalBreakingYellow, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
         else if (healthCrystal)
@@ -271,7 +276,7 @@ public class RandomChestController : EntityData
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             SpawnCrystalParticles(CrystalType.HEALTH, amountGained, playerData);
             playerData.HealthCrystalsGained += amountGained;
-            Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
+            Instantiate(crystalBreakingGreen, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
         else if (manaCrystal)
@@ -284,6 +289,8 @@ public class RandomChestController : EntityData
         }
         else if (itemChest)
         {
+
+
             InventoryItem itemFound=itemListData.getRandomCommonItem(rarity);
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
             uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, itemFound);
@@ -292,6 +299,9 @@ public class RandomChestController : EntityData
             
             Instantiate(itemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
+
+            // stuff added by Ipecac, in case I screwed up
+            SoundManager.PlaySound("potBreak");
         }
         else if (rareItemChest)
         {

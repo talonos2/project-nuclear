@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c43449399b97343bd07e28ead99251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passabilityMap: {fileID: 4900000, guid: 4b33679e259234949aac3bed22dc7b99, type: 3}
+  passabilityMap: {fileID: 4900000, guid: 9fc19e9ca7372c740a30ee5bdf5db55d, type: 3}
   width: 35
   height: 35
 --- !u!4 &326564849
@@ -4122,7 +4122,7 @@ PrefabInstance:
     - target: {fileID: 6622165687117483730, guid: 0e59e3f0ec37cee46a5881db99160d30,
         type: 3}
       propertyPath: SpotterMonster
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6622165687117483730, guid: 0e59e3f0ec37cee46a5881db99160d30,
         type: 3}
@@ -5731,43 +5731,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03874daf25e4bfc4eb1472c51a7e34ae, type: 3}
---- !u!1 &1750110884 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7607908802619325893, guid: 03874daf25e4bfc4eb1472c51a7e34ae,
-    type: 3}
-  m_PrefabInstance: {fileID: 1750110883}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1750110885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750110884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 304c9eb34effdf1419299cc792b6c2c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numNodes: 11
-  connectionStrings:
-  - 0 1
-  - 1 2
-  - 2 3
-  - 1 4
-  - 2 5
-  - 3 6
-  - 4 5
-  - 5 6
-  - 4 7
-  - 5 8
-  - 6 9
-  - 7 8
-  - 8 9
-  - 9 10
-  - 7 10
-  - 8 10
-  result: 0000000000000000000000000000
 --- !u!1001 &1759862059
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,6 +29,8 @@ public class GameSaverManager
     private bool earthBoss1;
     private bool fireBoss1;
     private bool airBoss1;
+    private bool deathBoss;
+    private bool Map3_2Shortcut;
     public List<String> townWeapons = new List<String>();
         public List<String> townArmor = new List<String>();
         public List<String> townAccessories = new List<String>();
@@ -56,8 +58,9 @@ public class GameSaverManager
         earthBoss1 = GameData.Instance.earthBoss1;
         fireBoss1 = GameData.Instance.fireBoss1;
         airBoss1 = GameData.Instance.airBoss1;
-    
+        deathBoss = GameData.Instance.deathBoss;
 
+        Map3_2Shortcut = GameData.Instance.Map3_2Shortcut;
             map5_2Shortcut = GameData.Instance.map5_2Shortcut;
             map5_3Shortcut = GameData.Instance.map5_3Shortcut;
 
@@ -95,7 +98,9 @@ public class GameSaverManager
          GameData.Instance.earthBoss1= earthBoss1 ;
         GameData.Instance.fireBoss1= fireBoss1 ;
          GameData.Instance.airBoss1= airBoss1 ;
+         GameData.Instance.deathBoss = deathBoss;
 
+        GameData.Instance.Map3_2Shortcut= Map3_2Shortcut;
         GameData.Instance.map5_2Shortcut = map5_2Shortcut;
             GameData.Instance.map5_3Shortcut = map5_3Shortcut;
 

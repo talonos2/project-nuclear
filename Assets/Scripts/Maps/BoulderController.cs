@@ -31,11 +31,12 @@ public class BoulderController : DoodadData
     {
         if (primToCheck.result[primConnectionNumber])
         {
-            SetBoulder(true);
+            SetBoulder(false);
         }
         else
         {
-            SetBoulder(false);
+            
+            SetBoulder(true);
         }
     }
 
