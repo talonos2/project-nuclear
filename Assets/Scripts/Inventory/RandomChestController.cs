@@ -6,6 +6,7 @@ using UnityEngine;
 public class RandomChestController : EntityData
 {
     // Start is called before the first frame update
+    public PowerupEffect powerUpEffect;
 
     private GameObject MapGrid;
     private Vector2 MapZeroLocation;
@@ -223,6 +224,26 @@ public class RandomChestController : EntityData
 
     }
 
+    private void SpawnCrystalParticles(CrystalType type, int crystalsGained, CharacterStats playerData)
+    {
+        int numberOfParticles = Mathf.RoundToInt(Mathf.Sqrt(crystalsGained));
+
+        List<float> delays = new List<float>();
+        for (int x = 0; x < numberOfParticles; x++)
+        {
+            float delay = UnityEngine.Random.Range(0, Mathf.Sqrt(numberOfParticles / 2));
+            delays.Add(delay);
+        }
+
+        delays.Sort();
+
+        foreach (float delay in delays)
+        {
+                PowerupEffect pe = GameObject.Instantiate<PowerupEffect>(powerUpEffect);
+                pe.Initialize(this.transform.position, playerData.transform, delay, type);
+        }
+    }
+
     public override void ProcessClick(CharacterStats playerData) {
 
         if (!active) { return; }
@@ -232,6 +253,7 @@ public class RandomChestController : EntityData
 
         if (attackCrystal) {
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
+            SpawnCrystalParticles(CrystalType.ATTACK, amountGained, playerData);
             playerData.AttackCrystalsGained += amountGained;
             Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
@@ -239,6 +261,7 @@ public class RandomChestController : EntityData
         else if (armorCrystal)
         {
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
+            SpawnCrystalParticles(CrystalType.DEFENSE, amountGained, playerData);
             playerData.defenseCrystalsGained += amountGained;
             Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
@@ -246,6 +269,7 @@ public class RandomChestController : EntityData
         else if (healthCrystal)
         {
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
+            SpawnCrystalParticles(CrystalType.HEALTH, amountGained, playerData);
             playerData.HealthCrystalsGained += amountGained;
             Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
@@ -253,6 +277,7 @@ public class RandomChestController : EntityData
         else if (manaCrystal)
         {
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
+            SpawnCrystalParticles(CrystalType.MANA, amountGained, playerData);
             playerData.ManaCrystalsGained += amountGained;
             Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
