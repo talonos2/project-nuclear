@@ -56,7 +56,6 @@ public class SpikeController : DoodadData
         if (timeUntilOpen != 0)
         {
             timeUntilOpen -= Time.deltaTime;
-            Debug.Log(timeUntilOpen);
             if (timeUntilOpen <=0)
             {
                 timeUntilOpen = 0;

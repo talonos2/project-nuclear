@@ -236,7 +236,7 @@ public class RandomChestController : EntityData
         List<float> delays = new List<float>();
         for (int x = 0; x < numberOfParticles; x++)
         {
-            float delay = UnityEngine.Random.Range(0, Mathf.Sqrt(numberOfParticles / 2));
+            float delay = UnityEngine.Random.Range(0, Mathf.Sqrt(x)/35);
             delays.Add(delay);
         }
 
@@ -244,8 +244,9 @@ public class RandomChestController : EntityData
 
         foreach (float delay in delays)
         {
-                PowerupEffect pe = GameObject.Instantiate<PowerupEffect>(powerUpEffect);
-                pe.Initialize(this.transform.position, playerData.transform, delay, type);
+                PowerupEffect pe = GameObject.Instantiate<PowerupEffect>(powerUpEffect, this.transform.position, Quaternion.identity);
+            Debug.Log(delay);
+            pe.Initialize(this.transform.GetChild(0).position, playerData.transform.GetChild(0).GetChild(0), delay, type);
         }
     }
 

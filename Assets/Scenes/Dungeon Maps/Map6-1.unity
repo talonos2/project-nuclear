@@ -874,6 +874,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131940576}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &141122610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 141122612}
+  - component: {fileID: 141122611}
+  m_Layer: 0
+  m_Name: This starts the boss music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &141122611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141122610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 429726101d8d5f147814fcc4ee606979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapMusic: 12
+  combatMusic: 13
+--- !u!4 &141122612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141122610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.3359375, y: 0.47460938, z: -10.234375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 55
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &149153245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,6 +1376,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -1355,16 +1410,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -1477,6 +1522,9 @@ MonoBehaviour:
   passabilityMap: {fileID: 4900000, guid: 7d4771a11c8d91a43bdb8c8b0a3a8df8, type: 3}
   width: 23
   height: 26
+  alternatePathabilitySetup: 0
+  altWidth: 0
+  altHeight: 0
 --- !u!4 &326564849
 Transform:
   m_ObjectHideFlags: 0
@@ -1878,6 +1926,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -1897,16 +1955,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -2062,6 +2110,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -2081,16 +2139,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -2278,6 +2326,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -2302,16 +2360,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -2388,6 +2436,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -2412,16 +2470,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -2942,11 +2990,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: isPlatformTerrain
@@ -2956,6 +2999,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tempBridge
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -3304,6 +3352,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -3323,16 +3381,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -3620,6 +3668,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -3644,16 +3702,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -4610,6 +4658,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -4634,16 +4692,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -4831,6 +4879,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -4850,16 +4908,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -5161,6 +5209,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -5185,16 +5243,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -5271,6 +5319,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -5290,16 +5348,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -5677,6 +5725,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -5701,16 +5759,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -5787,6 +5835,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -5811,16 +5869,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -6056,11 +6104,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: isPlatformTerrain
@@ -6070,6 +6113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tempBridge
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -6176,6 +6224,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -6195,16 +6253,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -6355,6 +6403,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -6374,16 +6432,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -6912,6 +6960,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -6931,16 +6989,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -7017,6 +7065,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -7036,16 +7094,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -7428,11 +7476,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: isPlatformTerrain
@@ -7442,6 +7485,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tempBridge
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -7740,11 +7788,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: isPlatformTerrain
@@ -7754,6 +7797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tempBridge
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -7830,6 +7878,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -7849,16 +7907,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -8675,6 +8723,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -8699,16 +8757,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -9356,6 +9404,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: isPlatformTerrain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: tempBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_Color.r
@@ -9375,16 +9433,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: isPlatformTerrain
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
-        type: 3}
-      propertyPath: tempBridge
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}

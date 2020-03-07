@@ -41,10 +41,10 @@ public class PowerupEffect : MonoBehaviour
             float percentThrough = (timeAlive - delay) / duration;
 
             //Warning, math ahead.
-            this.transform.localScale = new Vector3(Mathf.Sin(Mathf.PI * percentThrough), Mathf.Sin(Mathf.PI * percentThrough), Mathf.Sin(Mathf.PI * percentThrough));
+            this.transform.localScale = new Vector3(Mathf.Sin(Mathf.PI * percentThrough), Mathf.Sin(Mathf.PI * percentThrough), .0000000001f);
             this.transform.position = new Vector3(
                     startPosition.x + (endPosition.position.x - startPosition.x) * percentThrough,
-                    startPosition.y + (endPosition.position.y - startPosition.y) * percentThrough + 4 * height * (-1 * (percentThrough - .5f) * (percentThrough - .5f) + .25f),
+                    startPosition.y + (endPosition.position.y - startPosition.y) * percentThrough,
                     startPosition.z + (endPosition.position.z - startPosition.z) * percentThrough);
             if (!hasImpacted && percentThrough >= 1)
             {
@@ -75,13 +75,13 @@ public class PowerupEffect : MonoBehaviour
                 color = new Color(1, .3f, .3f);
                 break;
             case CrystalType.DEFENSE:
-                color = Color.cyan;
-                break;
-            case CrystalType.HEALTH:
                 color = Color.yellow;
                 break;
+            case CrystalType.HEALTH:
+                color = Color.green;
+                break;
             case CrystalType.MANA:
-                color = Color.magenta;
+                color = Color.cyan;
                 break;
         }
 
