@@ -518,6 +518,76 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2222650471833886927, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304926293322049491, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666457451938531268, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316555670260037799, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911473616661007951, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017496503418729385, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073607185392138139, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473058185384400489, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365156865018573295, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012403976812698919, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037927059120276833, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436280913667468123, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319010459784668290, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065055389680856611, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e87489115aeaf2b46b8bd49294861d58, type: 3}
 --- !u!1 &337538261
@@ -2270,7 +2340,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259325930}
   m_CullTransparentMesh: 0
---- !u!1 &1316726957
+--- !u!1 &1304214455
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2278,36 +2348,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1316726959}
-  - component: {fileID: 1316726958}
+  - component: {fileID: 1304214457}
+  - component: {fileID: 1304214456}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: This starts the main menu music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1316726958
+--- !u!114 &1304214456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1316726957}
+  m_GameObject: {fileID: 1304214455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd0c8a5770b53104584d1e90fa0c4b71, type: 3}
+  m_Script: {fileID: 11500000, guid: 429726101d8d5f147814fcc4ee606979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1316726959
+  mapMusic: 0
+  combatMusic: -1
+--- !u!4 &1304214457
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1316726957}
+  m_GameObject: {fileID: 1304214455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.537585, y: -5.7781124, z: -10.0525}
+  m_LocalPosition: {x: -9.3359375, y: 0.47460938, z: -10.234375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

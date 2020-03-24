@@ -33,9 +33,9 @@ public class ExitController : DoodadData
         }
 
         gameData.SetNextLocation(exitPosition, exitFacing);
-        
-        
-        SceneManager.LoadScene(mapToLoad);
 
+        FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+        fadeout.InitNext(mapToLoad);
+        GameObject.Destroy(this);
     }
 }

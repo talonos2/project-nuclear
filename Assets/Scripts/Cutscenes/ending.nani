@@ -1,2 +1,552 @@
+@goto .day2 if:GetDay()=2
+@goto .day3 if:GetDay()=3
+@goto .day4 if:GetDay()=4
+@goto .day5 if:GetDay()=5
+@goto .day6 if:GetDay()=6
+@goto .day7 if:GetDay()=7
+@goto .day8 if:GetDay()=8
+@goto .day9 if:GetDay()=9
+@goto .day10 if:GetDay()=10
+@goto .day11 if:GetDay()=11
+@goto .day12 if:GetDay()=12
+@goto .day13 if:GetDay()=13
+@goto .day14 if:GetDay()=14
+@goto .day15 if:GetDay()=15
+@goto .day16 if:GetDay()=16
+@goto .day17 if:GetDay()=17
+@goto .day18 if:GetDay()=18
+@goto .day19 if:GetDay()=19
+@goto .day20 if:GetDay()=20
+@goto .day21 if:GetDay()=21
+@goto .day22 if:GetDay()=22
+@goto .day23 if:GetDay()=23
+@goto .day24 if:GetDay()=24
+@goto .day25 if:GetDay()=25
+@goto .day26 if:GetDay()=26
+@goto .day27 if:GetDay()=27
+@goto .day28 if:GetDay()=28
+@goto .day29 if:GetDay()=29
+@goto .day30 if:GetDay()=30
+
+
+		#day2
+		@char Elder
+		Elder: I have seen some hard times, but none like this.
+		@exit
+
+
+		#day3
+		@char Elder
+		Elder: Just looking to clear my head.
+		@exit
+		
+
+		#day4
+		@char Elder
+		Elder: This town has always been so safe...
+		@exit
+		
+
+		#day5
+		@char Elder
+		Elder: Smart man, but he'd let himself starve if someone didn't take care of him.
+		@exit
+
+		
+		#day6
+		@char Elder
+		Elder: When I was young, my brother tricked me into wearing an outfit like this and chaising birds out of our field.
+		@exit
+
+		
+		#day7
+		@char Elder
+		Elder: It's good to see people taking action.
+		@exit
+		
+
+		#day8
+		@char Elder
+		Elder: This isn't as easy as he makes it look.
+		@fwturnpawn n:PawnElder d:n
+		@exit
+
+		
+		#day9
+		@char Elder
+		Elder: It's too quiet here.  This place used to be so noisy.
+		@exit
+
+		
+		#day10
+		@fwturnpawn n:PawnElder d:w
+		@char Elder
+		Elder: Why ask me for advice?  I would not have known what to do in days like these.
+		@exit
+
+		
+
+
+
+		#day11
+		@char Stranger
+		Stranger: huff... huff...  I made it?
+		@if !perfect
+			Stranger: And this loot![br]I mean sure, it's not exactly precious metals.
+			Stranger: But there's gotta be an antiques dealer who will-
+		@endif
+
+		Paul: He's out!
+		Logos: I was worried when we lost sight of you!
+		@if Worst
+		Tedd: Where's everyone else?
+		Stranger: I, uh, didn't see anybody.
+		Stranger: Guess the monsters ate them.
+		@endif
+
+		@if !Perfect
+		Tasha: Come along, we have much to celibrate.
+		Wilson: Do we?
+		Tasha: Honoring sacrafice is part of celibrating.
+			@if !todd
+			Wilson: Well, you lot go on without me.
+			@endif
+		@endif
+
+		Stranger: Yeah, that's... great and all.[br]But I should probably get going.
+		Svenra: Look lad. It's not like they didn't know ya' were pinching things.[br]Play your cards right and they won't care.
+		Stranger: I'm sure I don't know what you're talking about.
+
+		@wait 2
+
+		@char Reya
+		Reya: Well well well. Look at the conquering hero.
+		@hidechars time:0
+		Stranger: Hey, I ain't looking for trouble.
+
+		@if Worst
+			Reya: Maybe you should be.[br]You didn't let anything stand in your way after all.
+			Stranger: So?
+			Reya: You've got potential. Maybe we can help each other out.
+			Stranger: I don't want your help.
+			Reya: You sure? It won't be long before these folks start thinking.
+			Reya: They'll be thinking about all the other things you killed down there besides the big slimeball.
+			Stranger: So I'll go hide.[br]Done it before.
+			Reya: Nah, I know your type, you've always hid in plain sight. But now?[br]You're going to be famous.
+			Stranger: Fine, so what do I do now?
+			Reya: Come with me.
+			Reya: We'll split the gear, you can hold onto that ring, and I'll teach you all you need to know.
+			Reya: If it doesn't work out, we go our seperate ways.
+			Reya: If it does, maybe I'll take that ring from you after all.
+			Stranger: ...
+			Stranger: Sure, why not?
+			@wait 2
+			Meyster: Young man, the people are waiting!
+			Meyster: Now where did he go?
+
+		@elseif !Perfect
+			Reya: Didn't go looking for a lot of civilians either did ya?
+			Stranger: What of it?
+			Reya: You're not the hero they think you are.
+			Stranger: Wasn't trying to be.
+			Reya: Fine by me.[br]Now how about handing over that gear? And the ring of course.
+			Reya: It's hodgepodge, but I think I could make an ensamble of it.
+			Stranger: Yeah, fine. Enjoy it.
+			Reya: I'd say 'see you around,'[br]but I don't think I'll be coming back to a slum like this.
+			@wait 2
+			Tasha: You coming?
+			Stranger: Sure, why not?
+
+		@else
+			Reya: Well, you got it.
+			Reya: Now why don't you had over that gear? And the ring of course.
+			Reya: It's hodgepodge, but I think I could make an ensamble of it.
+			Stranger: No.
+			Reya: Scuse me?
+			Stranger: You're going to leave.[br]Now.
+			Reya: What? You think I'm just going to walk away from a payday like this?
+			Stranger: Yeah, I guess I do.
+			Reya: ...
+			Stranger: ...
+			Reya: Fine. Better watch your back, looter.
+			Stranger: I'm used to that.
+
+			@wait 2
+
+			Sara: So, I wanted to thank you. None of us would have made it if it weren't for you.
+			Stranger: You don't owe me anything.[br]Trust me.
+			@wait 1
+			Sara: Oh don't try that false modesty on me Mr...[br]Say, I don't think I know your name.
+			Stranger: It's Steve.
+			Sara: So Steve, shall we go to the celibration?
+			;Steve: Sure, why not?
+		@endif
+
+		;fadetoblack
+
+
+		@exit
+
+		
+		#day12
+
+		good: 
+		med: 
+		bad: 
+
+
+
+		@exit
+
+
+
+		#day13
+
+
+		good: turns his life around.
+		med: still drunk
+		bad: doesn't even come out.
+
+
+		@exit
+		
+
+		#day14
+
+
+		good: 
+		med: 
+		bad: 
+
+		@exit
+
+		
+		#day15
+
+
+		good: settles in town, brings son to woodsman
+		med: settles in town, implies hard rebuilding
+		bad: leaves, but regretful
+
+
+		@exit
+
+		
+		#day16
+
+		good: discovers it's magic turning people/animals into monsters
+		med: exhausted unable to study people who survived
+		bad: obsessed with making sure it can't happen again
+
+
+		Logos: So... that's what it looks like from that angle...
+		@if !Worst
+			Logos: I think I'll stick to scrying in the future.
+		@endif
+
+		JohnDoe: Hey! he made it!
+
+		@if Perfect
+			Logos: Indeed I have, and many besides.
+
+
+			Sara: I'm fine, really!
+			Sara: Just, thought I'd go see the doctor is all.
+			Svenra: Y'can barely stand. Let me get those shoes.
+			@wait 1
+			Logos: My dear, have you always had these spines?
+			Sara: ...
+			Sara: No.
+			Logos: That cave reeked of magic. Perhaps the prolonged exposure...
+			Sara: Can anything be done?
+			Logos: If it can I shall find it!
+			Logos: The rest of you, come with me.[br]Lets make sure this nightmare is truly over.
+			Fluer: Wait!
+			Fluer: This isn't something only you can do. I want to help.
+			Logos: Are you alright with this Sara?
+			Sara: Only if she doesn't bring Josephine.
+			Jinn: I'll come too.
+			Patrick: I'm no healer, but I can set up cots, carry things...
+			Meyster: Aye, just give me a task![br]Finally a place we can all pitch in!
+
+			@wait2
+
+			Nelson: Something wrong Jez?
+			Jezerine: Well, it's just...
+			Jezerine: I'm looking, and there no claws, no fangs...
+			Jezerine: I didn't get anything cool!
+
+
+
+		@elseif !Worst
+			Logos: Indeed, and I am not the only one.[br]If you could please lend a hand.
+			Wilson: Alright, you heard the man!
+			Metra: Hey, are you doing okay?
+			@if Sara
+				Sara: Oh, I'm alright.
+				Sara: I'm, uh, going to see if the doctor is still doing discount amputations...
+			@elseif Mara
+				Mara: Just feeling a bit woozy
+			@elseif Derringer
+				Derringer: My teeth hurt...
+			@elseif Melvardius
+				Melvardius: Just a bit of a rash, I'm sure.
+			@elseif Norma
+				Norma: Just hungry.[br]Really, weirdly, hungry.
+			@elseif McDermit
+				McDermit: It's just a bit bright out.[br]How long was I down there?
+			@elseif Douglass
+				Douglass: Well, I've been in these caves before.  Always a bit dizzy afterwards.[br]Never quite this bad though.
+			@elseif Devon
+				Devon: I'm fine... thanks. Just going to get as far from here as I can.
+			@elseif Pendleton
+				I'm fine, it's just that my hair has gone a bit funny.
+			@elseif Todd
+				Todd: No! Stay back! I'm fine...[br]Excellent, in fact.
+			@endif
+			Logos: Yes yes, that's... that's fine.
+			Logos: Now if you'll excuse me.[br]I need to get some rest.
+			Svenra: How bout you?[br]You okay?
+			Logos: Just... so very tired.
+			Patrick: We'll have a celibration ready for you when you're up to it.
+		@elseif Worst
+			Logos: Indeed.[br]Now, out of my way ruffian.
+			JohnDoe: Hey, good day to you too.
+
+			Fluer: You don't sound so good. Let me take a look at you.
+			Logos: There isn't any time.[br]I just came for my things.
+			Wilson: No time? But the threat is passed!
+			Logos: I would not make such assumptions.
+			Logos: Not with so much at stake.
+			Tasha: Hey, don't run yourself ragged now.
+			Logos: Irresponsible... still so much danger down below.
+			Logos: Now leave me to my work.
+
+			@wait 2
+
+			Paul: Did I hear right?[br]He came back?
+			Tasha: And is gone again.
+			Paul: And the others? How many...
+			Tasha: Just Logos.
+			Tasha: And I'm not sure we've really gotten him back either.
+		@endif
+
+
+
+		@exit
+
+		
+		#day17
+
+
+		good: finds son
+		med: son dead, but moving on
+		bad: phillip is dead
+
+
+		@exit
+
+		
+		#day18
+
+		good: 
+		med: 
+		bad: 
+
+
+		@exit
+
+		
+		#day19
+
+		good: 
+		med: 
+		bad: 
+
+		@exit
+
+		
+		#day20
+		@char Elder
+		Elder: Have you seen anyone else come from outside?
+		Elder: I mean, it's not unusual...[br]But I would feel better if we heard from the other towns.
+		@exit
+
+		
+		#day21
+		@char Elder
+		Elder: Not much to see right now.
+		@exit
+
+		
+		#day22
+
+		JohnDoe: Ha HA! That wasn't so bad.
+
+		@if Perfect
+
+
+
+		@elseif Worst
+
+		Fluer: Are you okay?  Where are the rest?
+		JohnDoe: Place is full of monsters. You think they have a bunch of nice jail cells to put everyone in?
+		JohnDoe: I got shanghaied into this. Just be glad I killed the monsters for you.
+		JohnDoe: I wasn't here to stick out my neck for nobody.
+		JohnDoe: What was the reward you were offering all the bold paragons from far off lands anyway?
+		Wilson: We don't have much to offer...
+		JohnDoe: Yeah, whatever.
+		JohnDoe: Tell you what. I'll take what I can carry out of this loot.[br]You lot can have fun with the rest.
+		Patrick: Well... thanks.
+		JohnDoe: Don't mention it.[br]To anyone.
+
+		@elseif !Worst
+
+
+		
+		JohnDoe: What I could?[br]I did what I had to.
+
+
+
+		Murtough: Hey, thanks.
+		JohnDoe: Oh great, here I was hoping you'd get lost on the way out.
+		Murtough: You didn't have to save me.
+		JohnDoe: I'm getting real tired of people telling me what I do and don't have to do.
+		Murtough: Look, its been a long time...
+		JohnDoe: Yeah, and it ain't over yet.
+		Murtough: Look, I'm sorry.[br]What do you even want?
+		JohnDoe: I don't know.
+		JohnDoe: Gonna be an interesting day when I figure it out.
+
+		@if Mara
+		Mara: Would you like a sweetroll?
+		JohnDoe: No thanks.
+		Mara: Oh come now, you have to try some of our signature sweetrolls.
+		JohnDoe: Get out of my way!
+		Mara: Sheesh, what's with him?
+		@endif
+
+
+		@endif
+
+
+
+		@exit
+
+		
+		#day23    ;finished
+
+		Tasha: You did it![br]Come on! Everyone wants to-
+		Fluer: Sure sure, in a bit.[br]I need to look at these samples I collected.
+		@if Sara
+			Tasha:Is that an arm?
+			Fluer:Some of the samples are larger than others.
+		@endif
+		Wilson: Come on, we're going to have a feast down at the tavern!
+		@if Mara
+		Mara: I do not remember agreeing to that...
+		@endif
+		Fluer: This goo that was all over down there, do you know what it is?
+		@if Melvardius
+		Melvardius: Evil?
+		@endif
+		Nelson: Filth?
+		@if Todd
+		Todd: Evil?
+			@if Melvardius
+			Melvardius: ...
+			@endif
+		@endif
+
+		@if Perfect
+		Patrick: Um, disease?
+		Fluer: Yes! I think so.
+		Fluer: Illness has been supressed in this town, and I think that place has something to do with it!
+		Fluer: But the illness sat in there, soaking up magic, until it couldn't be contained.
+		Fluer: Or something...[br]I have a lot of work ahead of me.
+		@elseif
+		Fluer: I have some ideas, but I'll need time to work on them.
+		@endif
+
+		Paul: But you have to come to the party.
+		Fluer: Only if I can work on my samples...[br]See how fast this is decomposing?
+		Paul: Yeah, um, we'll save you a plate.
+
+		Wilson: Well, that doesn't seem right.
+		Elder: Look at it this way. Everybody's happy.
+		
+		;fadetoblack
+		@if Devon
+		Devon: Who are you people?
+		@endif
+
+		@exit
+
+		
+		#day24
+		@char Elder
+		Elder: There aren't many of us left...
+		@fwturnpawn n:PawnElder d:n
+		@exit
+
+		
+		#day25
+		@char Elder
+		Elder: It even feels a bit colder now.
+		@exit
+
+		
+		#day26
+		@char Elder
+		Elder: I can't quite make heads or tails of this.
+		@fwturnpawn n:PawnElder d:s
+		@exit
+
+		
+		#day27
+		@char Elder
+		Elder: Time just keeps going...
+		@fwturnpawn n:PawnElder d:n
+		@exit
+
+		
+		#day28
+		@char Elder
+		Elder: I'll do my best when it's my turn.
+		@exit
+
+		
+		#day29
+
+		Perf: novelwriting
+		Med: 
+		Bad:
+
+
+
+
+		Tristana: I think I'm going to get into novel writing.
+		Tristana: Nobody's going to believe this anyway.
+
+
+		@exit
+
+
+		#day30
+
+		@if Worst
+		Elder: Well, that's done.
+		Elder: Guess I'll just...
+		@wait 4
+		Elder: Well, that's done...
+		@elseif Perfect
+
+		Elder: Is it over?
+
+
+
+
+
+
 
 @stop

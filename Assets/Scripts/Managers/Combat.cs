@@ -47,6 +47,8 @@ public class Combat : MonoBehaviour
 
     private void Init(Enemy monsterStats, CharacterStats playerStats, GameObject monsterToDelete)
     {
+        MusicManager.instance.TurnOnCombatMusic();
+
         AttackAnimationManager aam = AttackAnimationManager.Instance;
         aam.LoadCombatPawns(monsterStats, playerStats);
         this.monsterStats = monsterStats;
@@ -249,6 +251,7 @@ public class Combat : MonoBehaviour
         //TODO: If the time is up, combat ends immediately.
         if (gameData.minutes==10)
         {
+            MusicManager.instance.TurnOffCombatMusic();
             combatEnded = true;
             GameState.isInBattle = false;
             blade.StartClose();
@@ -259,6 +262,7 @@ public class Combat : MonoBehaviour
 
         if (playerStats.HP <= 0)
         {
+            MusicManager.instance.TurnOffCombatMusic();
             combatEnded = true;
             GameState.isInBattle = false;
             blade.StartClose();
@@ -269,6 +273,7 @@ public class Combat : MonoBehaviour
 
         if (monsterStats.HP <= 0)
         {
+            MusicManager.instance.TurnOffCombatMusic();
             blade.StartClose();
             combatEnded = true;
             
