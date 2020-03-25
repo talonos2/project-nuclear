@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -185,6 +185,9 @@ MonoBehaviour:
   passabilityMap: {fileID: 4900000, guid: bec137a1d6ccd954ab2b40e50eb4dbec, type: 3}
   width: 25
   height: 21
+  alternatePathabilitySetup: 0
+  altWidth: 0
+  altHeight: 0
 --- !u!4 &326564849
 Transform:
   m_ObjectHideFlags: 0
@@ -402,6 +405,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1224691957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1224691959}
+  - component: {fileID: 1224691958}
+  m_Layer: 0
+  m_Name: This starts the town music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1224691958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224691957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 429726101d8d5f147814fcc4ee606979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapMusic: 1
+  combatMusic: -1
+--- !u!4 &1224691959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224691957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.3359375, y: 0.47460938, z: -10.234375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1930745554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -582,7 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83360528e91a02f43816a8a669578d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowTexture: {fileID: 2800000, guid: 43550801e77127645b6f98b3babe5f43, type: 3}
+  shadowTexture: {fileID: 2800000, guid: 2eb2da4facd65a74b82087a5d360dd15, type: 3}
   glowTexture: {fileID: 2800000, guid: fd5843f93774f7542a537380b1f46877, type: 3}
   mapOffset: {x: 0, y: 0}
 --- !u!114 &2018926738
@@ -599,8 +647,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualGround: 1
   groundItem: 0
+  belowGroundItem: 0
   aboveItem: 0
   thePlayerjumping: 0
+  spikes: 0
 --- !u!1001 &2101059549
 PrefabInstance:
   m_ObjectHideFlags: 0

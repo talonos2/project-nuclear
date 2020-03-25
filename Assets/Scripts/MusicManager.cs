@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,8 +19,27 @@ public class MusicManager : MonoBehaviour
     private float[] fadeVolumes;
     private float[] fadeStartVolumes;
 
+    internal static float globalMusicVolume = .3f;
+    internal static float combatMusicVolume = 1;
+    internal static float combatMusicFadeTime = .45f;
+    internal int mapMusic = -1;
+    internal int combatMusic = -1;
+
     public const int MENU = 0;
     public const int TOWN = 1;
+    public const int ICE = 2;
+    public const int ICE_C = 3;
+    public const int EARTH = 4;
+    public const int EARTH_C = 5;
+    public const int FIRE = 6;
+    public const int FIRE_C = 7;
+    public const int AIR = 8;
+    public const int AIR_C = 9;
+    public const int POWERPLANT = 10;
+    public const int POWERPLANT_C = 11;
+    public const int FINAL = 12;
+    public const int FINAL_C = 12;
+
 
     // Use this for initialization
     void Start()
@@ -45,6 +65,16 @@ public class MusicManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
+    }
+
+    internal void SetMapMusic(int mapMusic)
+    {
+        this.mapMusic = mapMusic;
+    }
+
+    internal void SetCombatMusic(int combatMusic)
+    {
+        this.combatMusic = combatMusic;
     }
 
     // Update is called once per frame
@@ -82,14 +112,32 @@ public class MusicManager : MonoBehaviour
 
     public void FadeMusic(int num, float time, float volume)
     {
+        if (num == -1)
+        {
+            return;
+        }
         fadeLengths[num] = time;
         fadeVolumes[num] = volume;
         fadeStartTimes[num] = time;
         fadeStartVolumes[num] = music[num].volume;
     }
 
-    public void FadeOuMusic(int num, float time)
+    public void FadeOutMusic(int num, float time)
     {
+        if (num == -1)
+        {
+            return;
+        }
         FadeMusic(num, time, 0);
+    }
+
+    public void TurnOnCombatMusic()
+    {
+        FadeMusic(combatMusic, combatMusicFadeTime, combatMusicVolume);
+    }
+
+    public void TurnOffCombatMusic()
+    {
+        FadeMusic(combatMusic, combatMusicFadeTime, .01f);
     }
 }
