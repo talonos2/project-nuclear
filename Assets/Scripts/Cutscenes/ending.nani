@@ -29,6 +29,12 @@
 @goto .day30 if:GetDay()=30
 
 
+;		@if perfect
+;		@elseif !worst
+;		@elseif worst
+;		@endif
+
+
 		#day2
 		@char Elder
 		Elder: I have seen some hard times, but none like this.
@@ -41,15 +47,45 @@
 		@exit
 		
 
-		#day4
-		@char Elder
-		Elder: This town has always been so safe...
+		#day4    ;complete
+		
+
+		Todd: Ah hahahaha!
+		Todd: I have passed the test.
+		Todd: I am worthy!
+		Douglass: What happened?
+		Todd: You brought my destiny within reach.
+
+		Wilson: Todd! I was so worried. I thought we had lost you!
+		Todd: You have, old man.
+		Sara: Well... thank you for rescuing us all the same.
+		Todd: You haven't been rescued.
+		Todd: You, guard! I have a task for you.
+		McDermit: Todd, we appreciate the help, but-
+		@spawn ShakeCamera
+		McDermit: Aaaargh!
+		Todd: As I was saying, you will watch the entrance.[br]Make certain that none enter.
+		Todd: And you, maid!
+		Sara: um, yes?
+		Todd: You will bring me food, until I am beyond the need for such things.
+		Douglass: Okay, that's enough.
+		Douglass: I'll be taking that ring back.
+		@spawn ShakeCamera
+		Tasha: He's... you didn't even give a warning!
+		Todd: He serves as the warning for the rest of you.
+		Todd: Now go, I have work to do.
+
+
+
 		@exit
 		
 
 		#day5
-		@char Elder
-		Elder: Smart man, but he'd let himself starve if someone didn't take care of him.
+		Logos: Are you alright?
+		Norma: Yeah, I'm fine.
+		Jezerine: You handled all those monsters like it was nothing!
+		
+		
 		@exit
 
 		
@@ -73,8 +109,88 @@
 
 		
 		#day9
-		@char Elder
-		Elder: It's too quiet here.  This place used to be so noisy.
+		@if Perfect
+		Devon: Now just what was all this about anyway?
+		Tristana: You did it! You defeated the curse!
+		Tristana: Now, if I could just ask you a few questions. While the whole experience is fresh.
+		Devon: I think I'd like to get some questions answered first.
+		McDermit: There you are! You ran out of there before we could thank you!
+		Devon: Who are you?
+		Derringer: We're the ones you didn't cut down on your way through that place.
+		Devon: I wasn't about to just kill people! I thought you'd been shoved down there too.
+		Pendleton: Ah yes, sorry about that.
+		Devon: You! Just what did you-
+		Mara: This calls for a cellibration! Lets head back to the tavern.
+		Mara: Unless you louts let it fall apart while I was gone.
+		Wilson: Sounds wonderful, come along Mr... did we ever get your name?
+		Devon: WHAT IS THIS PLACE?!
+
+
+		@elseif !worst
+
+		Devon: That... what was that place?
+		Tristana: You did it! You defeated the curse!
+		Tristana: Now, if I could just ask you a few questions. While the-
+		Devon: What curse? I just got shoved into a cave full of monsters!
+		Tristana: How was it?
+		Devon: How was it?  It was terrible!  And now there's a curse?
+		
+		@if Douglass
+			Douglass: Not anymore!
+			Douglass: Destroying the monster at the bottom of these things usually puts a stop to that.
+			Devon: Didn't I see you down there?
+			Douglass: Yes, but I wasn't feeling like myself at the time.
+		@endif
+
+		Devon: What about the people down there?[br]Were they pushed in too?
+		Logos: No, the people you saw were victims of the curse. Overtaken by its fel magics.
+		Devon: But that means the ones that were...
+		Metra: You did what you could. We are greatful.
+
+		@if Melvardius
+			Melvardius: None can expect perfection.
+			Melvardius: You did what you could. Now rest, and we will explain what we can.
+			Devon: Fine.
+			Devon: Fine alright? I'll hear you out.
+			@if Mara
+				Mara: Lets talk over some food, hun.
+			@endif
+		@else
+			Devon: What have I done?
+			Devon: I can't... I can't.
+			Metra: Don't blame yourself for-
+			Devon: Just stay away! I never should have come here!
+		@endif
+
+		
+			
+
+		@else
+
+
+		
+		Tristana: Hey! You made it out!
+		Devon: You weren't expecting me to?
+		Meyster: Well, none who dared venture so far have managed to-
+		Devon: I didn't venture, I was shoved!
+		Pendleton: There was not time to explain.
+		Devon: Explain what?
+		Decon: You tried to kill me before I took two steps into your town!
+		Wilson: We didn't try to kill you. The cave's curse spread to you when you came near.
+		Devon: And you didn't think to put up a sign?
+		Wilson: Yes, we could have handled things better. Come with us and we'll celibrate and tell you everything.
+		Devon: Oh I don't think so. I'm getting out of this crazy place.
+		Jezerine: Hey! Wait!
+		Logos: We should probably just let him go.
+		Logos: He spared none that he found, beast or man.
+		Logos: I do not think sharing a meal with their friends and family would do him good.
+		Metra: At least it's over now.
+
+
+
+		@endif
+
+
 		@exit
 
 		
@@ -88,7 +204,7 @@
 
 
 
-		#day11
+		#day11    ;complete
 		@char Stranger
 		Stranger: huff... huff...  I made it?
 		@if !perfect
@@ -200,13 +316,109 @@
 
 
 
-		#day13
+		#day13 ; complete
 
 
 		good: turns his life around.
 		med: still drunk
 		bad: doesn't even come out.
 
+		@if Perfect
+
+		Paul: It's been too long.
+		Logos: We saw his victory.[br]He must be on his way.
+		Todd: Dad?
+		Wilson: Todd!
+		Todd: I'm sorry, I was wrong. I thought...
+		Wilson: It's okay, you're back. Everything else can wait.
+
+		Murtough: Now doesn't that just warms and old soldiers heart.
+		Patrick: Where have you been? We were getting scared that you...
+		Murtough: Had to make sure they all made it out.
+		Murtough: This time, everybody goes home.
+
+		Mara: I'll drink to that! Come on, my treat.
+		Murtough: Thats very kind of you, but I think I'll pass.
+		Mara: You will?
+		Murtough: Don't pressure me. I ain't doin' this because it's easy
+
+		@wait 1
+
+		JohnDoe: What's everybody so happy about anyway?
+		Murtough: Come on out of there and I'll tell you about it.
+		JohnDoe: This doesn't mean anything.
+		JohnDoe: You think I've forgiven you or something?
+		Murtough: Probably not, but then again, I'm not sure I have either.
+		Murtough: Lets talk about it.
+
+
+
+		@elseif !Worst
+
+		Murtough: Suppose that wasn't so bad.
+		Fluer: You made it!
+		Murtough: Sure I did.
+		Murtough: Not like you sent in any soldiers before.
+		Murtough: Just a bunch of the old, the hopeful, and the helpless.
+		Murtough: They're aways the first to go anyway.
+
+		@if Douglass
+			Douglass: Well, as a fellow warrior I thank you for carrying on where I could not.
+			Murtough: I'm not a warrior, just a soldier.
+			Murtough: And you're just some kid whos barely gotten his hands bloody.
+		@endif
+
+		@if Sara
+			Sara: I appreciate it all the same.
+			Murtough: Don't.
+			Murtough: Just be glad you didn't get in my way.
+		@endif
+
+		@if Tedd
+			Wilson: Is there anything we can do for you?
+			Murtough: Guess so.
+			Murtough: Know that cretin in the cell?[br]Get him out of town.
+			Murtough: I don't want to deal with him.
+		@endif
+
+		
+		Murtough: So, we going to celebrate or what?
+		Murtough: Feels like its been ages since I had a good drink.
+
+		Nelson: Yes, I suppose there is a cause for celibration.
+		Nelson: I shall make preparations.
+		Murtough: Good man.
+		Murtough: If you need me, I'll be in my usual spot.
+
+
+
+		@elseif Worst
+
+		Svenra: How long has it been now?
+		Paul: Just a day and a half. 
+		JohnDoe: Old fool probably got lost.
+		Svenra: I Don't think they let you out just so you could sit here instead.
+		JohnDoe: Yeah yeah, I'm gonna be on my way soon eough.
+		JohnDoe: But I'm gonna make sure I give him a piece of my mind first.
+		Paul: What are you going to do?
+		JohnDoe: You kidding? I hear he can actually fight back now.
+		JohnDoe: That means this pummeling's gonna actaully mean something.
+
+		@Wait 2
+		
+		Svenra: Well, some folks got tired of waiting.
+		Svenra: figured I'd bring you some of the food before it got too cold.
+		Paul: Thank you kindly.
+		JohnDoe: Yeah, whatever.
+		JohnDoe: So what are you even waiting for?
+		JohnDoe: Bet it ain't my scintillating conversation.
+		Paul: Somebody's got to play referee.
+		JohnDoe: Just don't get in my way.
+
+
+		
+
+		@endif
 
 		@exit
 		
@@ -232,11 +444,7 @@
 		@exit
 
 		
-		#day16
-
-		good: discovers it's magic turning people/animals into monsters
-		med: exhausted unable to study people who survived
-		bad: obsessed with making sure it can't happen again
+		#day16  ;finished
 
 
 		Logos: So... that's what it looks like from that angle...
@@ -274,7 +482,7 @@
 			Nelson: Something wrong Jez?
 			Jezerine: Well, it's just...
 			Jezerine: I'm looking, and there no claws, no fangs...
-			Jezerine: I didn't get anything cool!
+			Jezerine: I never get anything cool...
 
 
 
@@ -344,6 +552,10 @@
 		bad: phillip is dead
 
 
+
+
+
+
 		@exit
 
 		
@@ -379,11 +591,43 @@
 		@exit
 
 		
-		#day22
+		#day22 ;Complete, but needs name
 
 		JohnDoe: Ha HA! That wasn't so bad.
 
 		@if Perfect
+
+		JohnDoe: Alright ya louts, get on outa there.
+		McDermit: Thank you sir.  We couldn't have made it without you.
+		JohnDoe: I couldn't very well leave you all stuck in a stone structure against your will.
+		McDermit: ...
+		JohnDoe: Would be inhumane.
+		Melvardius: ...
+		JohnDoe: Being all carcerated in a dank hole in the ground for an indefinite-
+		Wilson: Yes yes, we get it.
+
+		Metra: Okay everybody, today is a day to be happy! I've made a big meal and we can all celibrate.
+		Paul: Have you been cooking something like this every day?
+		Metra: Of course not.
+		Metra: Just had a good feeling about today.
+		JohnDoe: Eh, fine. Nice to have somebody believe in me for once.
+		Meyster: You know young man. With your spirit and skill you could be a fine knight if you chose to be.
+		JohnDoe: Huh, too bad I didn't choose to then.
+
+		@wait 1
+
+		Reya: Hey, you handled things pretty well down there.  Ever thought about-
+		JohnDoe: Buzz off lady.
+
+		Mara: Alright! Lets hear it for...  well... don't think we ever got your name.
+		JohnDoe: Yeah. Why not keep a good thing going?
+		Norma: Well, no name no potatoes.
+		JohnDoe: Ugh. Fine.
+		JohnDoe: It's Steve.
+
+		@Wait 2
+
+		Stranger: Wait, what did you say?
 
 
 
@@ -400,13 +644,19 @@
 		Patrick: Well... thanks.
 		JohnDoe: Don't mention it.[br]To anyone.
 
-		@elseif !Worst
+		@else
 
 
-		
+		Wilson: Did you find anyone else in there?
+		JohnDoe: What?  Is that not everybody?
+		JohnDoe: Guess I haven't been formally introduced to most of ya.
+		Wilson: Well... you did what you could.
 		JohnDoe: What I could?[br]I did what I had to.
 
-
+		@if Todd
+			Todd: Oh dark lord, I have failed you!
+			JohnDoe: Get over it kid.
+		@endif
 
 		Murtough: Hey, thanks.
 		JohnDoe: Oh great, here I was hoping you'd get lost on the way out.
@@ -414,16 +664,22 @@
 		JohnDoe: I'm getting real tired of people telling me what I do and don't have to do.
 		Murtough: Look, its been a long time...
 		JohnDoe: Yeah, and it ain't over yet.
+		@if Melvardius
+			Melvardius: Surely you can find it in your heart to-
+			JohnDoe: Bin it, pointy hat.
+		@endif
 		Murtough: Look, I'm sorry.[br]What do you even want?
 		JohnDoe: I don't know.
 		JohnDoe: Gonna be an interesting day when I figure it out.
 
+
+
 		@if Mara
-		Mara: Would you like a sweetroll?
-		JohnDoe: No thanks.
-		Mara: Oh come now, you have to try some of our signature sweetrolls.
-		JohnDoe: Get out of my way!
-		Mara: Sheesh, what's with him?
+			Mara: Would you like a sweetroll?
+			JohnDoe: No thanks.
+			Mara: Oh come now, you have to try some of our signature sweetrolls.
+			JohnDoe: Get out of my way!
+			Mara: Sheesh, what's with him?
 		@endif
 
 
@@ -444,28 +700,28 @@
 		@endif
 		Wilson: Come on, we're going to have a feast down at the tavern!
 		@if Mara
-		Mara: I do not remember agreeing to that...
+			Mara: I do not remember agreeing to that...
 		@endif
 		Fluer: This goo that was all over down there, do you know what it is?
 		@if Melvardius
-		Melvardius: Evil?
+			Melvardius: Evil?
 		@endif
 		Nelson: Filth?
 		@if Todd
-		Todd: Evil?
-			@if Melvardius
-			Melvardius: ...
-			@endif
+			Todd: Evil?
+				@if Melvardius
+					Melvardius: ...
+				@endif
 		@endif
 
 		@if Perfect
-		Patrick: Um, disease?
-		Fluer: Yes! I think so.
-		Fluer: Illness has been supressed in this town, and I think that place has something to do with it!
-		Fluer: But the illness sat in there, soaking up magic, until it couldn't be contained.
-		Fluer: Or something...[br]I have a lot of work ahead of me.
+			Patrick: Um, disease?
+			Fluer: Yes! I think so.
+			Fluer: Illness has been supressed in this town, and I think that place has something to do with it!
+			Fluer: But the illness sat in there, soaking up magic, until it couldn't be contained.
+			Fluer: Or something...[br]I have a lot of work ahead of me.
 		@elseif
-		Fluer: I have some ideas, but I'll need time to work on them.
+			Fluer: I have some ideas, but I'll need time to work on them.
 		@endif
 
 		Paul: But you have to come to the party.
@@ -511,8 +767,13 @@
 
 		
 		#day28
-		@char Elder
-		Elder: I'll do my best when it's my turn.
+		Patrick
+
+		Best: 
+		Medi:
+		Wors:
+
+		
 		@exit
 
 		
@@ -523,6 +784,10 @@
 		Bad:
 
 
+		@if perfect
+		@elseif !worst
+		@elseif worst
+		@endif
 
 
 		Tristana: I think I'm going to get into novel writing.
@@ -534,14 +799,107 @@
 
 		#day30
 
-		@if Worst
+		@if perfect
+
+		Elder: Is it over?
+		Metra: I, I'm not sure...
+		JohnDoe: It's good enough for me. Monsters are dead.
+		Meyster: Lift your head. It is a grand day!
+		Meyster: You have vanquished evil!
+		Elder: Only just in time though.
+		Patrick: "Better late than never." Isn't that what you all kept telling me?
+		Jinn: Lets put the bad times behind us and move forward.
+
+		Mara: Sounds good to me. I'm so hungry I could eat...
+		Mara: Just about anything really.
+		Mara: How long was I down there anyway?
+
+		;fade to black
+
+		Douglass: I feel like something was left undone.
+		Douglass: Maybe if I head back I can find it.
+		Todd: Oh, you're here too?
+		Douglass: Why are you going back?
+		Todd: Oh, no reason. You? 
+		Douglass: Also no reason.
+		Todd: Good.
+
+		@wait 1
+
+		Todd: Hey, it's boarded up!
+		Melvardius: For now yes. Is there something you needed?
+		Todd: None of your business.
+		Douglass: Well, I just wanted to go back in.
+		Melvardius: I do not know what lies in that cave.
+		Melverdius: But I do know a thing or two about temptation.
+		Melvardius: I too feel a pull to return.
+		Melvardius: And that in and of itself is enough to frighten me.
+		Melvardius: We will need to carefully consider how we proceed.
+
+		@elseif !worst
+
+		Elder: We have won, but it has cost us.
+		Elder: 
+
+		;fadetoblack
+
+		@if Todd
+
+			Todd: You've all felt it haven't you?
+			Todd: The power of the dark lord.
+			@if Sara
+				Sara: It's not that.
+				Sara: I've just been feeling odd, and though the cave might...
+				Todd: Call it whatever you like.
+			@endif
+
+			@if Melvardius
+				Melvardius: Okay, that's enough. It's time to go home.
+				Todd: Quiet you! We no longer have need of your moralizing.
+				Todd: We are beyond such things![br]Our pact gives us strength!
+
+				@if Norma
+					Norma: I don't remember a pact.
+				@endif
+				@if Devon
+					Devon: I don't know anything about a pact. I just... guess I don't have anything in this town, so why not go back in?
+				@endif
+
+				Melvardius: I have sworn no such pact.
+
+				@if McDermit
+					McDermit: Pact?  Were the rest of you talking to someone down there?
+				@endif
+
+				Todd: Silence! I will show you the power I have been given!
+
+				@spawn ShakeCamera
+
+				Melvardius: That's enough of that.
+				Todd: How... did you?
+				Melvardius: The cave has certainly had an effect on us.
+				Melvardius: But perhaps we should not attribute it to either of our patrons.
+				Todd: No... I'm right. This will finally show that.
+				Melvardius: I have asked the others to seal the entrance. They work even now.
+				Todd: You can't do that!
+				Melvardius: Go home Todd. Your father worrys for you. He has for some time.
+			@elseif !melvardius
+				Todd: Worry not about petty things like "good" and "evil" for we will be beyond those.
+				@if Devon
+					Devon: I'm not from around here, is this some kind of...?
+					@if Mara
+						Mara: No, it isn't.
+					@endif
+				@endif
+				Todd: Follow, or don't, it's your choice.
+			@endif
+
+		@elseif worst
 		Elder: Well, that's done.
 		Elder: Guess I'll just...
 		@wait 4
 		Elder: Well, that's done...
-		@elseif Perfect
-
-		Elder: Is it over?
+		@endif
 
 
 
