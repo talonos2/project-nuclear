@@ -28,6 +28,10 @@ public class PowerupEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.isInBattle || GameState.fullPause)
+        {
+            return;
+        }
         timeAlive += Time.deltaTime;
         if (!hasStarted && timeAlive > delay)
         {

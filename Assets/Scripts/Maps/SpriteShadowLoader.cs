@@ -12,6 +12,7 @@ public class SpriteShadowLoader : MonoBehaviour
     private Renderer sRender;
     private GameObject ThePlayer;
     public bool actualGround;
+    public float additionalZOffset;
     public bool groundItem;
     public bool belowGroundItem;
     public bool aboveItem;
@@ -67,6 +68,6 @@ public class SpriteShadowLoader : MonoBehaviour
         if (spikes) {
             zPosition += .01f;
         }
-        return zPosition;
+        return zPosition+ additionalZOffset;
     }
 }

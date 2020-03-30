@@ -19,10 +19,11 @@ public class FadeIn : MonoBehaviour
         if (timeLeft > 0)
         {
             this.GetComponent<Renderer>().material.SetFloat("_Alpha", timeLeft/fadeTime);
-            Debug.Log("Amount through:" + (timeLeft/fadeTime));
         }
         else
         {
+            GameState.fullPause = false;
+            Debug.Log("Fade-in complete! If things are still frozen, it's somebody else's fault now. :P");
             GameObject.Destroy(this.gameObject);
         }
     }
