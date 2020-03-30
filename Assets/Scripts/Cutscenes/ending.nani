@@ -195,9 +195,67 @@
 
 		
 		#day10
-		@fwturnpawn n:PawnElder d:w
-		@char Elder
-		Elder: Why ask me for advice?  I would not have known what to do in days like these.
+
+		realizes ring won't work away from cave.
+		good: ready to hunt pillager
+		med: returns to life of squireship
+		bad: no longer wants to be a knight
+
+		@if Perfect
+
+		Meyster: Pendleton! You have returned!
+		Pendleton: 
+
+
+		Pendleton: Here is your ring back mister Hiro.
+		Douglass: Thanks kid. Looks like you did a pretty good job with it.
+		Meyster: Such nobility! Many have been tempted by power such as that.
+		Meyster: Or so the tales have told.
+		Pendleton: Don't give me too much credit.
+		Pendleton: It only works close to caverns like these doesn't it?
+
+		Douglass: Yep, how'd you know?
+		Pendleton: You seem to have done this before, but it didn't have any power when you got here.
+		Douglass: Usually it's not such a big deal. Something was different here.
+		Pendleton: You don't say.
+
+
+
+
+
+
+		@elseif Worst
+
+
+		Meyster: Pendleton! You're...
+		Pendleton: I'm done.
+		Meyster: Yes! The cavern has been cleared of evil and a new dawn-
+		Pendleton: No, I'm done.
+		Pendleton: Here, have the sword.
+		Meyster: Dear boy, what is the matter?
+		Pendleton: It was nice to dream of fighting evil.
+		Pendleton: Now I've done it.
+		Pendleton: And I'm done.
+		Pendleton: Might as well take the ring too.
+
+		Meyster: With douglass... gone... someone ought to carry his legacy.
+		Pendleton: The ring only works because of that cave, and it 
+
+
+
+
+
+
+
+
+
+		Pendleton: The powers are lifesaving down there, but they're just party tricks up here.
+		Pendleton: What am I supposed to do?[br]Win footraces?
+
+		@else
+
+		@endif
+
 		@exit
 
 		
@@ -404,7 +462,7 @@
 		JohnDoe: You kidding? I hear he can actually fight back now.
 		JohnDoe: That means this pummeling's gonna actaully mean something.
 
-		@Wait 2
+		@wait 2
 		
 		Svenra: Well, some folks got tired of waiting.
 		Svenra: figured I'd bring you some of the food before it got too cold.
@@ -579,9 +637,73 @@
 
 		
 		#day20
-		@char Elder
-		Elder: Have you seen anyone else come from outside?
-		Elder: I mean, it's not unusual...[br]But I would feel better if we heard from the other towns.
+
+		good: leaves, but friendly
+		med: leaves, uncertain about who she spared and didn't
+		bad: leaves, implied off to become supervillian.
+
+		@if Perfect
+
+		Reya: Glad that's finally over.
+		Tasha: You're back?
+		Reya: Don't look so disappointed.
+		Tasha: This is just how I look.
+		Derringer: I don't care who did it. So long as it got done.
+
+		Reya: Yeah, you're welcome.
+		Reya: Thanks to me things will start getting back to normal around here.
+		Reya: Which means it's time for me to leave.
+		Nelson: They will not be returning today.[br]Perhaps you could stay a short while?
+		Phillip: You don't have to of course...
+		Reya: ...
+		Reya: You know what? I think I will stick around.[br]Just to watch this guy flinch.
+
+		@wait 2
+
+		Douglass: You are a skilled fighter.[br]You could do quite well for yourself helping people.
+		Reya: Yeah, probably could, but I prefer a proactive approach.
+		Douglass: Now, if you wouldn't mind giving me back my ring of power.
+		Reya: I like you, you're funny.
+		Reya: You should consider becoming a performer or something.
+		Reya: Yaknow, because it's going to be really hard to keep your current job without this ring.
+
+
+		@elseif Worst
+
+		Reya: Well now, that wasn't so tough.
+		Elder: Did the others...?
+		Reya: Dead.
+		Reya: They got made into monsters.
+		Patrick: You killed them?
+		Reya: I could burn this whole town to the ground without losing any sleep.
+		Patrick: You wouldn't...
+		Reya: I'd have nothing to gain from it.[br]But keep telling me what to do and I might change my mind.
+		Reya: Nah, I think it would be nice if there were some folks left who could tell the story of how it all began.
+		Tristana: How what all began?
+		Reya: My legend.
+		Reya: I'm done getting paid with whatever I find in the pockets of peasants and peddlers.
+		Reya: From now on I go after kings, and get paid to do it.
+		Reya: Enjoy farming, or whatever it is you do.
+		Fluer: So you're just going to leave us with nothing?
+		Reya: Hey, I gave you your lives. Be thankful.
+		Fluer: ...
+		Reya: I said, be thankful!
+		Fluer: Thank you.
+		Reya: Good girl.
+		Reya: You won't see me again, but this won't be the last time my deeds change your life.
+
+		@else
+
+		Reya: Ugh, finally.
+		Elder: You've done it?[br]Broken the evil curse?
+		Reya: Probably, somebody should go check on that.
+
+
+
+
+
+		@endif
+
 		@exit
 
 		
@@ -625,7 +747,7 @@
 		JohnDoe: Ugh. Fine.
 		JohnDoe: It's Steve.
 
-		@Wait 2
+		@wait 2
 
 		Stranger: Wait, what did you say?
 
