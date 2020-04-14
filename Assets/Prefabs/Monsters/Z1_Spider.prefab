@@ -119,10 +119,10 @@ MonoBehaviour:
   attack: 15
   defense: 6
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.6, y: 0}
+  homePositionOnScreen: {x: 0.5, y: -0.4}
   strikingPointOffset: {x: 0, y: 0}
-  gettingStruckPointOffset: {x: 0, y: 0}
-  scale: {x: 1, y: 1}
+  gettingStruckPointOffset: {x: -0.1, y: 0}
+  scale: {x: -1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Spider
   ExpGiven: 70
@@ -130,10 +130,11 @@ MonoBehaviour:
   crystalType: 1
   crystalDropAmount: 2
   combatSprites:
-  - {fileID: -4480272334087500341, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
-  - {fileID: -3674070280908573562, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
-  - {fileID: -1709970976819407592, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
-  - {fileID: -3692116549114297304, guid: 7276ca3e47856684f8f7334cc00184a6, type: 3}
+  - {fileID: -4480272334087500341, guid: 032731d0e1c278a4bb94b44774cb8f3b, type: 3}
+  - {fileID: 4310844079638894855, guid: 032731d0e1c278a4bb94b44774cb8f3b, type: 3}
+  - {fileID: 6676365715323773283, guid: 032731d0e1c278a4bb94b44774cb8f3b, type: 3}
+  - {fileID: -3674070280908573562, guid: 032731d0e1c278a4bb94b44774cb8f3b, type: 3}
+  - {fileID: -1709970976819407592, guid: 032731d0e1c278a4bb94b44774cb8f3b, type: 3}
   attackAnimation: 0
   goodHit: {fileID: 8300000, guid: d5909d059011c8943853de838e951763, type: 3}
   badHit: {fileID: 8300000, guid: dad4503224a03a14d83dd05306fd46f3, type: 3}
@@ -266,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actualGround: 0
+  additionalZOffset: 0
   groundItem: 0
   belowGroundItem: 0
   aboveItem: 0
