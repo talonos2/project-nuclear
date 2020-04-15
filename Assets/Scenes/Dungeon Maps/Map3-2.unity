@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -923,6 +923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fade In Plane
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725515, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3664588965629725519, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
@@ -6686,6 +6691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actualGround: 1
+  additionalZOffset: 0
   groundItem: 0
   belowGroundItem: 0
   aboveItem: 0
@@ -7170,6 +7176,12 @@ PrefabInstance:
       propertyPath: isTallBlockableTerrain
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2787023962554749668, guid: 9cc4844286ad31d49b8bab8d769dff11,
+        type: 3}
+      propertyPath: openedDoor
+      value: 
+      objectReference: {fileID: 8536264205790224300, guid: a5e8d91bd9654eb4ab1a0faf395a7808,
+        type: 3}
     - target: {fileID: 4002899588206628854, guid: 9cc4844286ad31d49b8bab8d769dff11,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -7185,12 +7197,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.583
       objectReference: {fileID: 0}
-    - target: {fileID: 2787023962554749668, guid: 9cc4844286ad31d49b8bab8d769dff11,
-        type: 3}
-      propertyPath: openedDoor
-      value: 
-      objectReference: {fileID: 8536264205790224300, guid: a5e8d91bd9654eb4ab1a0faf395a7808,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc4844286ad31d49b8bab8d769dff11, type: 3}
 --- !u!1001 &8295020036699700065

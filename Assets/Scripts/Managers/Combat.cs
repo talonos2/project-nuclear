@@ -91,7 +91,7 @@ public class Combat : MonoBehaviour
         playerSprite.transform.localScale = pScale*1/6;
 
         Vector3 mScale = (Vector3)(monsterStats.scale * playerStats.forceOpponentAdditionalScale) + new Vector3(0, 0, 1);
-        monsterSprite.transform.localScale = pScale * 1 / 6;
+        monsterSprite.transform.localScale = mScale * 1 / 6;
     }
 
     public void Update()
