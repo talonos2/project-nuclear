@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +10,9 @@ public class ItemHolderUI : MonoBehaviour
 
     private InventoryItem itemStored;
     public GameObject itemSpriteHolder;
-    public Text itemText;
-    public Text itemStatText;
-    private String itemDetailsText;
+    public TextMeshProUGUI itemText;
+    public TextMeshProUGUI itemStatText;
+    private string itemDetailsText;
     private Sprite itemSprite;
 
     public void SetItem(InventoryItem itemToSet) {

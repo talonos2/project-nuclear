@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,20 +11,30 @@ public class SelectItemUIController : MonoBehaviour
     public ItemHolderUI weaponUIPrefab;
     public ItemHolderUI armorUIPrefab;
     public ItemHolderUI accessoryUIPrefab;
-    public GameObject continueButtonHolder;
-    public Text crystalHealthBonus;
-    public Text crystalManaBonus;
-    public Text crystalAttackBonus;
-    public Text crystalDefenseBonus;
+    public TextMeshProUGUI continueButtonText;
+    public TextMeshProUGUI crystalHealthBonus;
+    public TextMeshProUGUI crystalManaBonus;
+    public TextMeshProUGUI crystalAttackBonus;
+    public TextMeshProUGUI crystalDefenseBonus;
     //public GameObject playerStorage;
     public Image runCharacterBustHolder;
+    public Image characterClassStatIcon;
+    public TextMeshProUGUI characterName;
     public GameObject itemContainer;
     public GameObject itemUIPrefab;
-    public Text itemTypeSelectedText;
+    public TextMeshProUGUI itemTypeSelectedText;
+
+    public Sprite hpStatIcon;
+    public Sprite atkStatIcon;
+    public Sprite defStatIcon;
+    public Sprite mpStatIcon;
+
+    public TMP_FontAsset continueButtonDisabled;
+    public TMP_FontAsset continueButtonEnabled;
 
     public Image itemDetailsImage;
     public Text itemDetailsName;
-    public Text itemDetailsDescription;
+    public TextMeshProUGUI itemDetailsDescription;
 
     private int currentOptionSelected;
     private int currentItemSelected;
@@ -34,36 +45,52 @@ public class SelectItemUIController : MonoBehaviour
 
     private float delayCounter;
     private float delayReset = .15f;
-    // Start is called before the first frame update
+
+    CharacterStats newPlayer;
+
+    public CharacterStats[] Players;
+
     void Start()
     {
+        newPlayer = Instantiate<CharacterStats>(Players[GameData.Instance.RunNumber - 1], new Vector3(1000,1000,1000), Quaternion.identity);
         GameState.fullPause = true;
+
         savedStats = GameObject.Find("GameStateData").GetComponent<CharacterStats>();
+
         weaponUIPrefab.SetItem(savedStats.weapon);
         armorUIPrefab.SetItem(savedStats.armor);
         accessoryUIPrefab.SetItem(savedStats.accessory);
-        crystalAttackBonus.text = "+" + savedStats.AttackCrystalBuff;//crystal buffs not set here
+
+        crystalAttackBonus.text = "+" + savedStats.AttackCrystalBuff;  //crystal buffs not set here
         crystalDefenseBonus.text = "+" + savedStats.defenseCrystalBuff;
         crystalManaBonus.text = "+" + savedStats.ManaCrystalBuff;
         crystalHealthBonus.text = "+" + savedStats.HealthCrystalBuff;
+
         currentOptionSelected = 0;
         currentItemSelected = -1;
+
         currentlyDisplayedItems = new List<GameObject>();
         populateWeaponList();
-        showCurrentlySelectedOption();
+        ShowCurrentlySelectedOption();
+
         //GameObject playerObject = playerStorage.GetComponent<SpawnPlayer>().Players[GameData.Instance.RunNumber - 1];
         //search a prefab for the bust item in it's children?
 
-        //runCharacterBustHolder.sprite=GameObject.Find("Bust").GetComponent<SpriteRenderer>().sprite;
+        runCharacterBustHolder.sprite = newPlayer.bustSprite;
+        characterName.text = newPlayer.charName;
+        if      (savedStats.FighterClass) {characterClassStatIcon.sprite = atkStatIcon;}
+        else if (savedStats.MageClass)    {characterClassStatIcon.sprite = mpStatIcon;}
+        else if (savedStats.ScoutClass)   {characterClassStatIcon.sprite = hpStatIcon;}
+        else if (savedStats.SurvivorClass){characterClassStatIcon.sprite = defStatIcon;}
 
     }
 
-    private void showCurrentlySelectedOption()
+    private void ShowCurrentlySelectedOption()
     {
         weaponUIPrefab.gameObject.GetComponent<Image>().enabled = false;
         armorUIPrefab.gameObject.GetComponent<Image>().enabled = false;
         accessoryUIPrefab.gameObject.GetComponent<Image>().enabled = false;
-        continueButtonHolder.GetComponent<Image>().enabled = false;
+        continueButtonText.font = continueButtonDisabled;
         ItemHolderUI itemToShow = null;
 
         if (currentOptionSelected == 0) {
@@ -92,7 +119,7 @@ public class SelectItemUIController : MonoBehaviour
 
         if (currentOptionSelected == 3)
         {
-            continueButtonHolder.GetComponent<Image>().enabled = true;
+            continueButtonText.font = continueButtonEnabled;
         }
 
     }
@@ -269,7 +296,7 @@ public class SelectItemUIController : MonoBehaviour
                 {
                     currentOptionSelected = 1;
                     populateItemLists();
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                     return;
                 }
                 else if (!selectingAnItem)
@@ -284,7 +311,7 @@ public class SelectItemUIController : MonoBehaviour
                     selectingAnItem = false;
                     currentOptionSelected = 1;
                     populateItemLists();
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                     return;
                 }  
             }
@@ -296,7 +323,7 @@ public class SelectItemUIController : MonoBehaviour
 
                     currentOptionSelected = 2;
                     populateItemLists();
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                     return;
                 }
                 else if (!selectingAnItem)
@@ -311,7 +338,7 @@ public class SelectItemUIController : MonoBehaviour
                     currentOptionSelected = 2;
                     selectingAnItem = false;
                     populateItemLists();
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                     return;
                 }
             }
@@ -321,7 +348,7 @@ public class SelectItemUIController : MonoBehaviour
                 if (currentlyDisplayedItems.Count == 0)
                 {
                     currentOptionSelected = 3;
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                     return;
                 }
                 else if (!selectingAnItem)
@@ -335,7 +362,7 @@ public class SelectItemUIController : MonoBehaviour
                     SwapAccessory();
                     selectingAnItem = false;
                     currentOptionSelected = 3;
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                     return;
                 }
             }
@@ -363,7 +390,7 @@ public class SelectItemUIController : MonoBehaviour
                 currentOptionSelected += 1;
                 if (currentOptionSelected > 3)
                     currentOptionSelected = 3;
-                showCurrentlySelectedOption();
+                ShowCurrentlySelectedOption();
             }
             else if (!selectingAnItem){
                 currentItemSelected = 0;
@@ -382,7 +409,7 @@ public class SelectItemUIController : MonoBehaviour
                     currentOptionSelected += 1;
                     if (currentOptionSelected > 3)
                         currentOptionSelected = 3;
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                 }
                 else if (!selectingAnItem)
                 {
@@ -406,7 +433,7 @@ public class SelectItemUIController : MonoBehaviour
                 currentOptionSelected -= 1;
                 if (currentOptionSelected < 0)
                     currentOptionSelected = 0;
-                showCurrentlySelectedOption();
+                ShowCurrentlySelectedOption();
             }
             else if (selectingAnItem)
             {
@@ -427,7 +454,7 @@ public class SelectItemUIController : MonoBehaviour
                     currentOptionSelected -= 1;
                     if (currentOptionSelected < 0)
                         currentOptionSelected = 0;
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                 }
                 else if (selectingAnItem)
                 {
@@ -451,7 +478,7 @@ public class SelectItemUIController : MonoBehaviour
                 if (currentOptionSelected < 0)
                     currentOptionSelected = 0;
                 populateItemLists();
-                showCurrentlySelectedOption();
+                ShowCurrentlySelectedOption();
             }
             else if (selectingAnItem)
             {
@@ -473,7 +500,7 @@ public class SelectItemUIController : MonoBehaviour
                     if (currentOptionSelected < 0)
                         currentOptionSelected = 0;
                     populateItemLists();
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                 }
                 else if (selectingAnItem)
                 {
@@ -499,7 +526,7 @@ public class SelectItemUIController : MonoBehaviour
                 if (currentOptionSelected >3)
                     currentOptionSelected =3;
                 populateItemLists();
-                showCurrentlySelectedOption();
+                ShowCurrentlySelectedOption();
             }
             else if (selectingAnItem)
             {
@@ -521,7 +548,7 @@ public class SelectItemUIController : MonoBehaviour
                     if (currentOptionSelected > 3)
                         currentOptionSelected = 3;
                     populateItemLists();
-                    showCurrentlySelectedOption();
+                    ShowCurrentlySelectedOption();
                 }
                 else if (selectingAnItem)
                 {
@@ -564,7 +591,7 @@ public class SelectItemUIController : MonoBehaviour
         GameData.Instance.townArmor.Remove((Armor)itemToSwap);
         armorUIPrefab.SetItem(itemToSwap);
         showItemSelected();
-        showCurrentlySelectedOption();
+        ShowCurrentlySelectedOption();
     }
 
     public void LoadGameButtonClicked()
@@ -586,7 +613,7 @@ public class SelectItemUIController : MonoBehaviour
         populateItemLists();
         selectingAnItem = false;
         showItemSelected();
-        showCurrentlySelectedOption();
+        ShowCurrentlySelectedOption();
     }
 
     private void SwapWeapon()
@@ -597,7 +624,7 @@ public class SelectItemUIController : MonoBehaviour
         GameData.Instance.townWeapons.Remove((Weapon)itemToSwap);
         weaponUIPrefab.SetItem(itemToSwap);
         showItemSelected();
-        showCurrentlySelectedOption();
+        ShowCurrentlySelectedOption();
     }
 
     private void showItemSelected()
