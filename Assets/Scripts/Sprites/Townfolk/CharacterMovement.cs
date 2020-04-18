@@ -489,7 +489,7 @@ public class CharacterMovement : SpriteMovement
        
     }
 
-    private void TurnHasteOn()
+    public void TurnHasteOn()
     {
         gameData.hasted = true;
         smoke.Play();

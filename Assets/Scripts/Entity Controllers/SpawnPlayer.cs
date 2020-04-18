@@ -61,6 +61,11 @@ public class SpawnPlayer : MonoBehaviour
         characterMovement.facedDirection = facing;
         characterMovement.SetLookDirection();
 
+        if (gameData.hasted)
+        {
+            characterMovement.TurnHasteOn();
+        }
+
     }
 
     private void SetInTownPositions()

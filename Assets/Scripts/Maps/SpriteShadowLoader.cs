@@ -34,6 +34,8 @@ public class SpriteShadowLoader : MonoBehaviour
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
         //sRender.material.SetInt("_LightRad", ThePlayer.GetComponentInChildren<Renderer>().material.GetInt("_LightRad"));
         sRender.material.SetInt("_LightRad", 6);
+        if (GameData.Instance.FloorNumber==0)
+            sRender.material.SetInt("_LightRad", 0);
 
         transform.position=transform.position + new Vector3(groundObject.mapOffset.x, groundObject.mapOffset.y, 0);
         xPosition = transform.localPosition.x;
