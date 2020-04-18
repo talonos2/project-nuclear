@@ -12,8 +12,18 @@ public class ItemHolderUI : MonoBehaviour
     public GameObject itemSpriteHolder;
     public TextMeshProUGUI itemText;
     public TextMeshProUGUI itemStatText;
+    public Image flashingBackground;
     private string itemDetailsText;
     private Sprite itemSprite;
+
+    private float pulseTime;
+    public float pulseWidth = .5f;
+
+    public void Update()
+    {
+        pulseTime += Time.deltaTime;
+        flashingBackground.color = new Color(flashingBackground.color.r, flashingBackground.color.g, flashingBackground.color.b, Mathf.Sin(pulseTime/pulseWidth) * .2f + .65f);
+    }
 
     public void SetItem(InventoryItem itemToSet) {
         itemStored = itemToSet;
