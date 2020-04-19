@@ -21,7 +21,7 @@ public class SelectItemUIController : MonoBehaviour
     public Image characterClassStatIcon;
     public TextMeshProUGUI characterName;
     public GameObject itemContainer;
-    public GameObject itemUIPrefab;
+    public ItemHolderUI itemUIPrefab;
     public TextMeshProUGUI itemTypeSelectedText;
 
     public Sprite hpStatIcon;
@@ -39,7 +39,7 @@ public class SelectItemUIController : MonoBehaviour
     private int currentOptionSelected;
     private int currentItemSelected;
     private bool selectingAnItem;
-    private List<GameObject> currentlyDisplayedItems;
+    private List<ItemHolderUI> currentlyDisplayedItems;
 
     private CharacterStats savedStats;
 
@@ -69,7 +69,7 @@ public class SelectItemUIController : MonoBehaviour
         currentOptionSelected = 0;
         currentItemSelected = -1;
 
-        currentlyDisplayedItems = new List<GameObject>();
+        currentlyDisplayedItems = new List<ItemHolderUI>();
         populateWeaponList();
         ShowCurrentlySelectedOption();
 
@@ -87,14 +87,14 @@ public class SelectItemUIController : MonoBehaviour
 
     private void ShowCurrentlySelectedOption()
     {
-        weaponUIPrefab.gameObject.GetComponent<Image>().enabled = false;
-        armorUIPrefab.gameObject.GetComponent<Image>().enabled = false;
-        accessoryUIPrefab.gameObject.GetComponent<Image>().enabled = false;
+        weaponUIPrefab.flashingBackground.enabled = false;
+        armorUIPrefab.flashingBackground.enabled = false;
+        accessoryUIPrefab.flashingBackground.enabled = false;
         continueButtonText.font = continueButtonDisabled;
         ItemHolderUI itemToShow = null;
 
         if (currentOptionSelected == 0) {
-            weaponUIPrefab.gameObject.GetComponent<Image>().enabled = true;
+            weaponUIPrefab.flashingBackground.enabled = true;
             itemToShow = weaponUIPrefab.GetComponent<ItemHolderUI>();
             itemDetailsImage.sprite = itemToShow.GetItemSprite();
             itemDetailsName.text = itemToShow.itemText.text;
@@ -102,7 +102,7 @@ public class SelectItemUIController : MonoBehaviour
         }
         if (currentOptionSelected == 1)
         {
-            armorUIPrefab.gameObject.GetComponent<Image>().enabled = true;
+            armorUIPrefab.flashingBackground.enabled = true;
             itemToShow = armorUIPrefab.GetComponent<ItemHolderUI>();
             itemDetailsImage.sprite = itemToShow.GetItemSprite();
             itemDetailsName.text = itemToShow.itemText.text;
@@ -110,7 +110,7 @@ public class SelectItemUIController : MonoBehaviour
         }
         if (currentOptionSelected == 2)
         {
-            accessoryUIPrefab.gameObject.GetComponent<Image>().enabled = true;
+            accessoryUIPrefab.flashingBackground.enabled = true;
             itemToShow = accessoryUIPrefab.GetComponent<ItemHolderUI>();
             itemDetailsImage.sprite = itemToShow.GetItemSprite();
             itemDetailsName.text = itemToShow.itemText.text;
@@ -131,9 +131,9 @@ public class SelectItemUIController : MonoBehaviour
         removeCurrentList();
 
         foreach (Weapon wpnObject in GameData.Instance.townWeapons) {
-            GameObject listItem = Instantiate(itemUIPrefab) as GameObject;
+            ItemHolderUI listItem = Instantiate<ItemHolderUI>(itemUIPrefab);
             listItem.GetComponent<ItemHolderUI>().SetItem(wpnObject);
-            listItem.SetActive(true);
+            listItem.gameObject.SetActive(true);
             listItem.transform.SetParent(itemContainer.transform, false);
             currentlyDisplayedItems.Add(listItem);
         }
@@ -154,9 +154,9 @@ public class SelectItemUIController : MonoBehaviour
 
         foreach (Armor armrObject in GameData.Instance.townArmor)
         {
-            GameObject listItem = Instantiate(itemUIPrefab) as GameObject;
+            ItemHolderUI listItem = Instantiate<ItemHolderUI>(itemUIPrefab);
             listItem.GetComponent<ItemHolderUI>().SetItem(armrObject);
-            listItem.SetActive(true);
+            listItem.gameObject.SetActive(true);
             listItem.transform.SetParent(itemContainer.transform, false);
             currentlyDisplayedItems.Add(listItem);
         }
@@ -182,10 +182,10 @@ public class SelectItemUIController : MonoBehaviour
                 continue; 
             }
             emptySet = false;
-            GameObject listItem = Instantiate(itemUIPrefab) as GameObject;
+            ItemHolderUI listItem = Instantiate<ItemHolderUI>(itemUIPrefab);
             
             listItem.GetComponent<ItemHolderUI>().SetItem(accObject);
-            listItem.SetActive(true);
+            listItem.gameObject.SetActive(true);
             listItem.transform.SetParent(itemContainer.transform, false);
             currentlyDisplayedItems.Add(listItem);
         }
@@ -201,7 +201,7 @@ public class SelectItemUIController : MonoBehaviour
 
     public void SortItemListUI() {
         int i = 0;
-        foreach (GameObject o in currentlyDisplayedItems)
+        foreach (ItemHolderUI o in currentlyDisplayedItems)
         {
             o.transform.SetSiblingIndex(i);
             i++;
@@ -209,10 +209,10 @@ public class SelectItemUIController : MonoBehaviour
     }
 
 
-    public static int compareWeapons(GameObject x, GameObject y)
+    public static int compareWeapons(ItemHolderUI x, ItemHolderUI y)
     {
-        int attackX = x.GetComponent<ItemHolderUI>().GetItem().GetComponent<Weapon>().addAttack;
-        int attackY = y.GetComponent<ItemHolderUI>().GetItem().GetComponent<Weapon>().addAttack;
+        int attackX = x.GetItem().GetComponent<Weapon>().addAttack;
+        int attackY = y.GetItem().GetComponent<Weapon>().addAttack;
 
         if (attackX > attackY)
         {
@@ -224,9 +224,9 @@ public class SelectItemUIController : MonoBehaviour
         }
         else { return 0; }
     }
-    public static int compareArmor(GameObject x, GameObject y) {
-        int defX = x.GetComponent<ItemHolderUI>().GetItem().GetComponent<Armor>().addDefense;
-        int defY = y.GetComponent<ItemHolderUI>().GetItem().GetComponent<Armor>().addDefense;
+    public static int compareArmor(ItemHolderUI x, ItemHolderUI y) {
+        int defX = x.GetItem().GetComponent<Armor>().addDefense;
+        int defY = y.GetItem().GetComponent<Armor>().addDefense;
 
         if (defX > defY)
         {
@@ -239,20 +239,20 @@ public class SelectItemUIController : MonoBehaviour
         else { return 0; }
     }
 
-    public static int compareAccessories(GameObject x, GameObject y)
+    public static int compareAccessories(ItemHolderUI x, ItemHolderUI y)
     {
 
         int xFloor = 0;
         int yFloor = 0;
 
-        string[] Floors = x.GetComponent<ItemHolderUI>().GetItem().GetComponent<Accessory>().floorFoundOn.Split(' ');
+        string[] Floors = x.GetItem().GetComponent<Accessory>().floorFoundOn.Split(' ');
 
         foreach (string floor in Floors)
         {
             xFloor = Convert.ToInt32(floor);
         }
 
-        Floors = y.GetComponent<ItemHolderUI>().GetItem().GetComponent<Accessory>().floorFoundOn.Split(' ');
+        Floors = y.GetItem().GetComponent<Accessory>().floorFoundOn.Split(' ');
 
         foreach (string floor in Floors)
         {
@@ -273,7 +273,7 @@ public class SelectItemUIController : MonoBehaviour
 
 
     private void removeCurrentList() {
-        foreach (GameObject itemUI in currentlyDisplayedItems) {
+        foreach (ItemHolderUI itemUI in currentlyDisplayedItems) {
             GameObject.Destroy(itemUI);            
         }
         currentlyDisplayedItems.Clear();
@@ -629,7 +629,7 @@ public class SelectItemUIController : MonoBehaviour
 
     private void showItemSelected()
     {
-        foreach (GameObject itemUI in currentlyDisplayedItems)
+        foreach (ItemHolderUI itemUI in currentlyDisplayedItems)
         {
             itemUI.GetComponent<Image>().enabled = false;
         }

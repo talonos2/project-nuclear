@@ -203,21 +203,38 @@
 
 		@if Perfect
 
-		Meyster: Pendleton! You have returned!
-		Pendleton: 
+		Logos: A toast!
+		Logos: To Pendleton!
+		Meyster: Hear hear!
 
 
-		Pendleton: Here is your ring back mister Hiro.
-		Douglass: Thanks kid. Looks like you did a pretty good job with it.
-		Meyster: Such nobility! Many have been tempted by power such as that.
-		Meyster: Or so the tales have told.
-		Pendleton: Don't give me too much credit.
-		Pendleton: It only works close to caverns like these doesn't it?
+		Pendleton: It was a group effort.[br]I merely carried the torch passed to me by others.
+		Wilson: Sure the first step on any journey is the hardest.
+		Wilson: But that last step is pretty tricky too!
 
-		Douglass: Yep, how'd you know?
-		Pendleton: You seem to have done this before, but it didn't have any power when you got here.
-		Douglass: Usually it's not such a big deal. Something was different here.
-		Pendleton: You don't say.
+		Douglass: Aw don't go spoiling their fun kid.[br]You did good.
+		Sara: Would you like another spice cake?
+		Pendleton: Not right now, excuse me.
+
+		@wait 2
+
+		Meyster: Thought I might find you here.[br]What's wrong?
+		Pendleton: I do not want to be their hero.
+		Meyster: Why is that my boy?
+		Pendleton: Because I'm just going to let them down someday.
+		Meyster: Like I have?
+		Pendleton: ...
+		Meyster: When I saw you battling in that cave—[br]I wanted to go in after you.
+		Meyster: But, watching you fell foe after foe, I finally admitted that I am not the warrior I once was.
+		Meyster: My mistake was to try to hold on to glory and never let it go.
+		Meyster: As for you my boy, well, to push it away would be just as foolish.
+		Pendleton: So, what do I do now?
+		Meyster: Why, become a proper knight!
+		Pendleton: I do not think it is that simple.
+		Meyster: Of course not. You will need help.
+		Meyster: I may be an old fool, but I still know how to drive a wagon and tell a good tale.
+		Meyster: If there is one flaw I dare mention, it's that you do not know how to spin a proper story!
+
 
 
 
@@ -233,26 +250,57 @@
 		Pendleton: No, I'm done.
 		Pendleton: Here, have the sword.
 		Meyster: Dear boy, what is the matter?
-		Pendleton: It was nice to dream of fighting evil.
+		Pendleton: I've been planning to vanquish evil my whole life.
 		Pendleton: Now I've done it.
 		Pendleton: And I'm done.
-		Pendleton: Might as well take the ring too.
+		Pendleton: Here, might as well take the ring too.
+		Meyster: What happened to Douglass was... unfortunate... but someone ought to carry his legacy.
+		Meyster: And I cannot think of a better-
+		Pendleton: If anything, it's prefect for you.
+		Pendleton: You can run fast, do some party tricks, feel young again.[br]Feel like you matter again.
 
-		Meyster: With douglass... gone... someone ought to carry his legacy.
-		Pendleton: The ring only works because of that cave, and it 
+		Meyster: Pendleton...
 
+		Pendleton: I'm... I'm going to go.[br]Find a job where I don't have to kill anyone.
 
+		@wait 2
 
+		Pendleton: I should tell him I didn't mean all that...
+		Pendleton: Yes, that's what I'll do.
 
+		@wait 1
 
+		Pendleton: Eventually.
 
-
-
-
-		Pendleton: The powers are lifesaving down there, but they're just party tricks up here.
-		Pendleton: What am I supposed to do?[br]Win footraces?
 
 		@else
+
+		Meyster: Pendleton! You have returned!
+
+		@if Todd
+			Todd: I'm not Pendlton.
+			Meyster: Ah, sorry.
+			Meyster: Just, you know, from the side you look- ah! There you are!
+			Pendleton: Yes?
+		@else
+			Pendleton: 
+		@endif
+
+		Meyster: 
+
+
+
+		Pendleton: Here is your ring back mister Hiro.
+		Douglass: Thanks kid. Looks like you did a pretty good job with it.
+		Meyster: Such nobility! Many have been tempted by power such as that.
+		Meyster: Or so the tales have told.
+		Pendleton: Don't give me too much credit.
+		Pendleton: It only works close to caverns like these doesn't it?
+		Douglass: Yep, how'd you know?
+		Pendleton: You seem to have done this before, but it didn't have any power when you got here.
+		Douglass: Usually it's not such a big deal. Something was different here.
+		Pendleton: You don't say.
+
 
 		@endif
 
@@ -891,9 +939,40 @@
 		#day28
 		Patrick
 
-		Best: 
-		Medi:
-		Wors:
+		Best: leaves to bring people back
+		Medi: leaves to spread news
+		Wors: just leaves, you guys coming?
+
+
+		@if perfect
+
+
+		Patrick: Could use a hand here!
+
+		Tristana: You're back!
+		Elder: The scrying cut off after you—
+		Patrick : Yeah yeah, we'll talk about it over some drinks later.[br]Now give me a hand.
+
+		Patrick: Sorry it took a bit
+
+
+
+
+		@elseif !worst
+		@elseif worst
+
+		Patrick: It's done.
+		Tristana: We're safe?
+		Patrick: Nothing's alive down there anymore.[br]So safe enough I guess.
+		Elder: Nothing?
+		Patrick: Nothing.
+		Elder: What... what do we do now?
+		Patrick: I'm leaving. Got room in the wagon, you two coming?
+
+
+
+
+		@endif
 
 		
 		@exit
