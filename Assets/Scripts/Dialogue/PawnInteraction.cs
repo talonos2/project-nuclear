@@ -12,9 +12,17 @@ public class PawnInteraction : EntityData
     private GameObject mapGrid;
     private Vector2 mapZeroLocation;
     private Renderer sRender;
+    private EntityGrid mapEntityGrid;
+    protected float FLOATING_POINT_FIX = .00001f;
 
     public String scriptName;
     private bool waitFrameAfterDialogue;
+    private DirectionMoved clickedDirection;
+    public bool clickForwarding;
+    public bool punchBag;
+    private bool punching;
+    private float punchTimer;
+    public List<int> daysToPunchBag;
 
     // Start is called before the first frame update
     void Start()
@@ -31,19 +39,23 @@ public class PawnInteraction : EntityData
         mapZeroLocation = mapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
         pawnLocation.x = (int)Math.Round(this.transform.position.x) - (int)mapZeroLocation.x;
         pawnLocation.y = (int)Math.Round(this.transform.position.y) - (int)mapZeroLocation.y;
-        mapGrid.GetComponent<EntityGrid>().grid[pawnLocation.x, pawnLocation.y] = this.gameObject;
+        mapEntityGrid=mapGrid.GetComponent<EntityGrid>();
+        mapEntityGrid.grid[pawnLocation.x, pawnLocation.y] = this.gameObject;
 
     }
 
     public override void ProcessClick(CharacterStats stats)
     {
 
-        if (GameState.fullPause == true || GameData.Instance.isInDialogue) return;
+        if (GameState.fullPause == true || GameData.Instance.isInDialogue || GameState.isInBattle == true) return;
 
+        //bool punch
 
-
-
-        if (GameState.isInBattle == false)
+        if (clickForwarding)
+        {
+            PassClickOn( stats  );
+        }
+        else 
         {
             GameData.Instance.isInDialogue = true;
             //GameState.isInBattle = true;
@@ -71,11 +83,77 @@ public class PawnInteraction : EntityData
             Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(scriptName);
 
         }
+
     }
 
-    void Update()
+    private void PassClickOn(CharacterStats stats)
+    {        
+        GameObject entityToCheck = null;
+        DirectionMoved facedDirection= stats.GetComponentInParent<SpriteMovement>().facedDirection;
+        switch (facedDirection)
+        {
+            case DirectionMoved.UP:
+                entityToCheck = mapEntityGrid.grid[pawnLocation.x, pawnLocation.y + 1];
+                break;
+            case DirectionMoved.DOWN:
+                entityToCheck = mapEntityGrid.grid[pawnLocation.x, pawnLocation.y - 1];
+                break;
+            case DirectionMoved.LEFT:
+                entityToCheck = mapEntityGrid.grid[pawnLocation.x - 1, pawnLocation.y];
+                break;
+            case DirectionMoved.RIGHT:
+                entityToCheck = mapEntityGrid.grid[pawnLocation.x + 1, pawnLocation.y];
+                break;
+        }
+        if (entityToCheck != null)
+        {
+            entityToCheck.GetComponent<EntityData>().ProcessClick(stats);
+        }
+    }
+
+    private void clickDummy()
     {
+        GameObject entityToCheck = null;
+        entityToCheck = mapEntityGrid.grid[pawnLocation.x, pawnLocation.y + 1];
+      
+        if (entityToCheck != null)
+        {
+            entityToCheck.GetComponent<EntityData>().ProcessClick(null);
+        }
+    }
+
+    private bool isItTrainingDay()
+    {
+        if (!punchBag) return false;
+
+        foreach (int trainingDay in daysToPunchBag) {
+            if (trainingDay == GameData.Instance.RunNumber) { return true; }
+        }
+
+        return false;
+    }
+
+    void Update() {
+        if (GameState.fullPause == true  || GameState.isInBattle == true || GameData.Instance.isInDialogue || GameData.Instance.isCutscene) return;
+        if (isItTrainingDay()) {
+            punchTimer += Time.deltaTime;
+            if (punchTimer >= 1f && punchTimer < 2.2f && !punching)
+            {
+                punching = true;
+                clickDummy();
+                sRender.material.SetFloat("_Frame", FLOATING_POINT_FIX + 22);
+            }
+            if (punchTimer >= 1.7f)
+            {
+                punching = false;
+                punchTimer = 0;
+                sRender.material.SetFloat("_Frame", FLOATING_POINT_FIX + 21);
+            }
+
+        }
+       
 
     }
+
 
 }
