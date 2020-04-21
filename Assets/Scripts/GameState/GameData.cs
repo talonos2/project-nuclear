@@ -69,6 +69,9 @@ public class GameData : Singleton<GameData>
     internal bool hiroDeathMonster;
     internal bool postRun1Cutscene;
 
+    internal static Weapon bestWeaponFound;
+    internal static Armor bestArmorFound;
+    internal static Accessory bestAccessoryFound;
 
     internal bool IsInTown()
     {
