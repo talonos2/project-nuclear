@@ -13,12 +13,10 @@ public class NewCrystalLevelController : MonoBehaviour
     public TextMeshProUGUI crystalBonusText;
     // Start is called before the first frame update
 
-    private static int[] crystalTiers = { 50, 150, 350, 650, 1075, 1625, 2300, 3100, 4025, 5075, 6250, 7550, 8975, 10525, 12200, 14000, 15925, 17975, 20150, 22450, 31451 };
-    private static int[] crystalUpgrades = { 50, 100, 200, 300, 425, 550, 675, 800, 925, 1050, 1175, 1300, 1425, 1550, 1675, 1800, 1925, 2050, 2175, 2300, 9001 };
+    private static int[] crystalTiers = {0, 50, 150, 350, 650, 1075, 1625, 2300, 3100, 4025, 5075, 6250, 7550, 8975, 10525, 12200, 14000, 15925, 17975, 20150, 22450, 31451 };
 
     private CharacterStats savedStats;
     private int crystalBonusValue;
-    private int cTier;
     private int oldCrystals;
     private int newCrystals;
 
@@ -47,18 +45,22 @@ public class NewCrystalLevelController : MonoBehaviour
             case CrystalType.HEALTH:
                 oldCrystals = GameData.Instance.HealhCrystalTotal;
                 newCrystals = savedStats.HealthCrystalsGained;
+                Debug.Log(crystalType + ", Total " + oldCrystals + ", new " + newCrystals);
                 break;
             case CrystalType.MANA:
                 oldCrystals = GameData.Instance.ManaCrystalTotal;
                 newCrystals = savedStats.ManaCrystalsGained;
+                Debug.Log(crystalType + ", Total " + oldCrystals + ", new " + newCrystals);
                 break;
             case CrystalType.ATTACK:
                 oldCrystals = GameData.Instance.AttackCrystalTotal;
                 newCrystals = savedStats.AttackCrystalsGained;
+                Debug.Log(crystalType + ", Total " + oldCrystals + ", new " + newCrystals);
                 break;
             case CrystalType.DEFENSE:
                 oldCrystals = GameData.Instance.DefenseCrystalTotal;
                 newCrystals = savedStats.defenseCrystalsGained;
+                Debug.Log(crystalType+", Total " + oldCrystals + ", new " + newCrystals);
                 break;
 
         }
@@ -66,7 +68,8 @@ public class NewCrystalLevelController : MonoBehaviour
         Debug.Log("Total " + oldCrystals+", new "+ newCrystals);
         startNumberOfBars = GetNumberOfBars(oldCrystals);
         targetNumberOfBars = GetNumberOfBars(newCrystals);
-        float barIncrease = startNumberOfBars - targetNumberOfBars;
+        Debug.Log("Start " + startNumberOfBars + ", End " + targetNumberOfBars);
+        float barIncrease = targetNumberOfBars-startNumberOfBars;
 
         SetBarLevel(startNumberOfBars);
 
@@ -84,7 +87,8 @@ public class NewCrystalLevelController : MonoBehaviour
     private float GetNumberOfBars(int numCrystals)
     {
         int baseCrystalTier = GetCrystalTier(numCrystals);
-        return(numCrystals - crystalTiers[baseCrystalTier]) / (crystalTiers[baseCrystalTier]- crystalTiers[baseCrystalTier+1]);
+        Debug.Log("Num " + numCrystals + ", base " + baseCrystalTier+", lower tier: "+ crystalTiers[baseCrystalTier-1]+", upper tier: "+ crystalTiers[baseCrystalTier]);
+        return (float)(numCrystals - crystalTiers[baseCrystalTier-1]) / (float)(crystalTiers[baseCrystalTier]- crystalTiers[baseCrystalTier-1]);
     }
 
     // Update is called once per frame
@@ -131,11 +135,11 @@ public class NewCrystalLevelController : MonoBehaviour
         string bonusText = "+" + fullBars * crystalBonusValue;
         crystalBonusText.text = bonusText;
 
-        int crystalsInTier = crystalAmount - (crystalTiers[cTier] - crystalUpgrades[cTier]);
-        int crystalsNeededToLevel = crystalUpgrades[cTier];
-        string crystalTotalText = "" + crystalsInTier + "/" + crystalsNeededToLevel;
+        int crystalsSoFarInTier = crystalAmount - (crystalTiers[fullBars]);
+        int crystalsNeededToLevel = crystalTiers[fullBars+1]- crystalTiers[fullBars];
+        string crystalTotalText = "" + crystalsSoFarInTier + "/" + crystalsNeededToLevel;
         startingCrystals.text = crystalTotalText;
-        crystalPanel.transform.localScale = new Vector3((float)crystalsInTier / crystalsNeededToLevel, 1, 1);
+        crystalPanel.transform.localScale = new Vector3(remainderBars, 1, 1);
     }
 
     //Setup Crystal Buffs

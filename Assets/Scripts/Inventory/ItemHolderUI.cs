@@ -12,10 +12,27 @@ public class ItemHolderUI : MonoBehaviour
     public GameObject itemSpriteHolder;
     public TextMeshProUGUI itemText;
     public TextMeshProUGUI itemStatText;
+    public Image flashingBackground;
+    public InventoryItem empty;
     private string itemDetailsText;
     private Sprite itemSprite;
 
+    private float pulseTime;
+    public float pulseWidth = .5f;
+
+    public void Update()
+    {
+        pulseTime += Time.deltaTime;
+        flashingBackground.color = new Color(flashingBackground.color.r, flashingBackground.color.g, flashingBackground.color.b, Mathf.Sin(pulseTime/pulseWidth) * .2f + .65f);
+    }
+
     public void SetItem(InventoryItem itemToSet) {
+        Debug.Log("It is " + itemToSet);
+        if (null==itemToSet)
+        {
+            itemToSet = empty;
+        }
+        Debug.Log("It is now " + itemToSet);
         itemStored = itemToSet;
         itemDetailsText = itemToSet.equipmentDescription;
         itemSpriteHolder.GetComponent<Image>().sprite = itemToSet.itemIcon;
@@ -25,12 +42,16 @@ public class ItemHolderUI : MonoBehaviour
             Weapon tempwpn = (Weapon)itemToSet;
             itemStatText.text = "+" + tempwpn.addAttack + " ATK";
         }
-        if (itemToSet.Armor) {
+        else if (itemToSet.Armor) {
             Armor temparm = (Armor)itemToSet;
             itemStatText.text = "+" + temparm.addDefense + " DEF";
         }
-        if (itemToSet.Accessory) {
+        else if (itemToSet.Accessory) {
             itemStatText.text = "Misc Item";
+        }
+        else
+        {
+            itemStatText.text = "";
         }
 
     }

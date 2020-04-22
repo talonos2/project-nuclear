@@ -37,12 +37,12 @@ public class GameData : Singleton<GameData>
     public bool isInDialogue;
     public bool pauseTimer;
     internal int furthestFloorAchieved;
-    internal List <float> bestRunTimes;
+    public List <float> bestRunTimes;
     public List<Weapon> townWeapons = new List<Weapon>();
     public List<Armor> townArmor = new List<Armor>();
     public List<Accessory> townAccessories = new List<Accessory>();
 
-//    public bool Paused = false;
+    //    public bool Paused = false;
 
     //public bool Shortcut1 = false;
 
@@ -69,6 +69,9 @@ public class GameData : Singleton<GameData>
     internal bool hiroDeathMonster;
     internal bool postRun1Cutscene;
 
+    internal static Weapon bestWeaponFound;
+    internal static Armor bestArmorFound;
+    internal static Accessory bestAccessoryFound;
 
     internal bool IsInTown()
     {
