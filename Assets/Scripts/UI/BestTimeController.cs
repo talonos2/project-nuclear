@@ -50,7 +50,6 @@ public class BestTimeController : MonoBehaviour
                 float t = (timeSoFar - delay) / duration;
                 bestTimeSlider.transform.localPosition = new Vector3(Mathf.Lerp(startTimeOffset, endTimeOffset, t), y, 0);
                 float quickenedTimeTakenSoFar = (timeSoFar - delay) * (600 / duration);
-                Debug.Log(quickenedTimeTakenSoFar + ", " + GameData.Instance.timesThisRun[floorsDroppedOff]);
                 if (quickenedTimeTakenSoFar >= GameData.Instance.timesThisRun[floorsDroppedOff]&& GameData.Instance.timesThisRun[floorsDroppedOff]!=0)
                 {
                     float tForDropoff = GameData.Instance.timesThisRun[floorsDroppedOff] / 600f;
@@ -69,6 +68,7 @@ public class BestTimeController : MonoBehaviour
         FloorDropoffPrefab dropped = GameObject.Instantiate<FloorDropoffPrefab>(floorDropoffPrefab);
         dropped.GetComponent<RectTransform>().SetParent(this.GetComponent<RectTransform>());
         dropped.GetComponent<RectTransform>().localPosition = new Vector3(dropoffx, y, 0);
-        dropped.Initialize();
+        float timeTaken = (floorsDroppedOff == 0 ? GameData.Instance.timesThisRun[floorsDroppedOff] : GameData.Instance.timesThisRun[floorsDroppedOff] - GameData.Instance.timesThisRun[floorsDroppedOff - 1]);
+        dropped.Initialize(floorsDroppedOff+1, timeTaken, timeTaken==GameData.Instance.bestTimes[floorsDroppedOff]);
     }
 }
