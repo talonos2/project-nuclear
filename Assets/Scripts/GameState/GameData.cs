@@ -10,7 +10,7 @@ public class GameData : Singleton<GameData>
 
 {
 
-    private float timer;
+    public float timer;
     public int seconds;
     public int minutes;
     // Start is called before the first frame update
@@ -19,10 +19,10 @@ public class GameData : Singleton<GameData>
     public int AttackCrystalBonus;
     public int DefenseCrystalBonus;
 
-    public int HealhCrystalTotal=0;
-    public int ManaCrystalTotal=0;
-    public int AttackCrystalTotal=0;
-    public int DefenseCrystalTotal=0;
+    public int HealhCrystalTotal = 0;
+    public int ManaCrystalTotal = 0;
+    public int AttackCrystalTotal = 0;
+    public int DefenseCrystalTotal = 0;
 
     public int FloorNumber = 0;
 
@@ -37,10 +37,13 @@ public class GameData : Singleton<GameData>
     public bool isInDialogue;
     public bool pauseTimer;
     internal int furthestFloorAchieved;
-    public List <float> bestRunTimes;
+
     public List<Weapon> townWeapons = new List<Weapon>();
     public List<Armor> townArmor = new List<Armor>();
     public List<Accessory> townAccessories = new List<Accessory>();
+
+    public float[] bestTimes = new float[20];
+    public float[] timesThisRun = new float[20];
 
     //    public bool Paused = false;
 
@@ -49,11 +52,11 @@ public class GameData : Singleton<GameData>
     //public bool RunSetupFinished = false;
 
 
-      [HideInInspector]
+    [HideInInspector]
     public Vector2Int nextLocaiton;
-      [HideInInspector]
+    [HideInInspector]
     public SpriteMovement.DirectionMoved nextFacing = SpriteMovement.DirectionMoved.LEFT;
-      [HideInInspector]
+    [HideInInspector]
     public bool nextLocationSet;
 
     public bool Map3_2Shortcut;
@@ -66,6 +69,7 @@ public class GameData : Singleton<GameData>
     public bool airBoss1;
     public bool deathBoss;
 
+    internal float deathTime;
     internal bool hiroDeathMonster;
     internal bool postRun1Cutscene;
 
@@ -83,32 +87,39 @@ public class GameData : Singleton<GameData>
         LoadSaveController.autoSave(RunNumber, furthestFloorAchieved);
     }
 
-    public void SetNextLocation(Vector2Int location, SpriteMovement.DirectionMoved facing) {
+    public void SetNextLocation(Vector2Int location, SpriteMovement.DirectionMoved facing)
+    {
         nextLocaiton = location;
         nextFacing = facing;
         nextLocationSet = true;
     }
 
-    public void resetTimer() {
+    public void ResetTimer()
+    {
         timer = 0;
+        deathTime = 0;
+        for (int x = 0; x < 20; x++)
+        {
+            GameData.Instance.timesThisRun[x] = 0;
+        }
         pauseTimer = false;
     }
 
-    public bool addHealToTimer() {
+    public bool addHealToTimer()
+    {
         if (timer >= 570)
             return false;
-        else {
+        else
+        {
             timer += 30;
             return true;
         }
 
     }
 
-   
-
     void Update()
     {
-        if (GameState.fullPause || FloorNumber==0 || pauseTimer ) { return; }
+        if (GameState.fullPause || FloorNumber == 0 || pauseTimer) { return; }
 
         int tempSeconds = (int)(timer + Time.deltaTime);
         if (tempSeconds > (int)timer)
@@ -119,7 +130,8 @@ public class GameData : Singleton<GameData>
         timer += Time.deltaTime;
         seconds = (int)(timer % 60);
         minutes = (int)(timer / 60);
-        if (minutes == 10) {
+        if (minutes == 10)
+        {
             //Needs to really call the 'kill player' animation and then load deathscene from that script. That script should 'pause' the timer. 
             GameState.isInBattle = false;
             SceneManager.LoadScene("DeathScene");
@@ -129,13 +141,7 @@ public class GameData : Singleton<GameData>
 
     internal void killPlayer()
     {
+        deathTime = timer;
         timer = 600;
     }
-
-
-
-
 }
-/*
-
-    */

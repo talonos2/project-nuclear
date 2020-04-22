@@ -75,19 +75,16 @@ public class NewCrystalLevelController : MonoBehaviour
 
         if (oldCrystals==newCrystals)
         {
-            Debug.Log("Skipping " + crystalType);
             animationFinished = true;
             return;
         }
 
-        Debug.Log(baseTimePerBar + ", " + multipierTimePerBar + ", " + barIncrease + ", " + exponentTimePerBar);
         durationOfFill = baseTimePerBar * (Mathf.Pow(multipierTimePerBar* barIncrease, exponentTimePerBar));
     }
 
     private float GetNumberOfBars(int numCrystals)
     {
         int baseCrystalTier = GetCrystalTier(numCrystals);
-        Debug.Log("Num " + numCrystals + ", base " + baseCrystalTier+", lower tier: "+ crystalTiers[baseCrystalTier-1]+", upper tier: "+ crystalTiers[baseCrystalTier]);
         return (float)(numCrystals - crystalTiers[baseCrystalTier-1]) / (float)(crystalTiers[baseCrystalTier]- crystalTiers[baseCrystalTier-1]);
     }
 

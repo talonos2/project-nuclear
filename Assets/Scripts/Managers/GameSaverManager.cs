@@ -24,7 +24,7 @@ public class GameSaverManager
         public int RunNumber = 1;
         public int PowersGained = 0;
         internal int furthestFloorAchieved;
-        internal List<float> bestRunTimes;
+        internal float[] bestTimes;
     private bool iceBoss1;
     private bool earthBoss1;
     private bool fireBoss1;
@@ -53,7 +53,7 @@ public class GameSaverManager
             RunNumber = GameData.Instance.RunNumber;
             PowersGained = GameData.Instance.PowersGained;
             furthestFloorAchieved = GameData.Instance.furthestFloorAchieved;
-            bestRunTimes = GameData.Instance.bestRunTimes;
+            bestTimes = GameData.Instance.bestTimes;
             iceBoss1=GameData.Instance.iceBoss1;
         earthBoss1 = GameData.Instance.earthBoss1;
         fireBoss1 = GameData.Instance.fireBoss1;
@@ -92,7 +92,7 @@ public class GameSaverManager
             GameData.Instance.RunNumber = RunNumber;
             GameData.Instance.PowersGained = PowersGained;
             GameData.Instance.furthestFloorAchieved = furthestFloorAchieved;
-            GameData.Instance.bestRunTimes = bestRunTimes;
+            GameData.Instance.bestTimes = bestTimes;
 
          GameData.Instance.iceBoss1= iceBoss1 ;
          GameData.Instance.earthBoss1= earthBoss1 ;
