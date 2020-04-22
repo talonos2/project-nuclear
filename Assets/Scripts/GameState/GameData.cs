@@ -37,6 +37,7 @@ public class GameData : Singleton<GameData>
     public bool isInDialogue;
     public bool pauseTimer;
     internal int furthestFloorAchieved;
+
     public List<Weapon> townWeapons = new List<Weapon>();
     public List<Armor> townArmor = new List<Armor>();
     public List<Accessory> townAccessories = new List<Accessory>();
