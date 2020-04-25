@@ -256,7 +256,7 @@ public class Combat : MonoBehaviour
             GameState.isInBattle = false;
             blade.StartClose();
             //GameState.endRunFlag = true;
-            KillPlayerAndLoadNextScene();
+            KillPlayerAndLoadNextScene(true);
 
         }
 
@@ -267,7 +267,7 @@ public class Combat : MonoBehaviour
             GameState.isInBattle = false;
             blade.StartClose();
             //GameState.endRunFlag = true;
-            KillPlayerAndLoadNextScene();
+            KillPlayerAndLoadNextScene(false);
 
         }
 
@@ -281,7 +281,14 @@ public class Combat : MonoBehaviour
     }
 
     private void KillPlayerAndLoadNextScene(bool timeOut) {
-        //
+        if (!timeOut)
+        {
+            GameData.Instance.deathTime = GameData.Instance.timer;
+        }
+        else
+        {
+            GameData.Instance.killer = monsterStats.name;
+        }
         GameState.isInBattle = false;
         Destroy(monsterSprite.gameObject);
         Destroy(playerSprite.gameObject);
