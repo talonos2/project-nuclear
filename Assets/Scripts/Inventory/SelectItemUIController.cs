@@ -11,7 +11,7 @@ public class SelectItemUIController : MonoBehaviour
     public ItemHolderUI weaponUIPrefab;
     public ItemHolderUI armorUIPrefab;
     public ItemHolderUI accessoryUIPrefab;
-    public TextMeshProUGUI continueButtonText;
+    public Image continueButton;
     public TextMeshProUGUI crystalHealthBonus;
     public TextMeshProUGUI crystalManaBonus;
     public TextMeshProUGUI crystalAttackBonus;
@@ -28,9 +28,6 @@ public class SelectItemUIController : MonoBehaviour
     public Sprite atkStatIcon;
     public Sprite defStatIcon;
     public Sprite mpStatIcon;
-
-    public TMP_FontAsset continueButtonDisabled;
-    public TMP_FontAsset continueButtonEnabled;
 
     public Image itemDetailsImage;
     public Text itemDetailsName;
@@ -49,6 +46,11 @@ public class SelectItemUIController : MonoBehaviour
     CharacterStats newPlayer;
 
     public CharacterStats[] Players;
+
+    private bool isHoveringOverContinueButton;
+
+    public Sprite continueButtonOn;
+    public Sprite continueButtonOff;
 
     void Start()
     {
@@ -95,7 +97,7 @@ public class SelectItemUIController : MonoBehaviour
         weaponUIPrefab.flashingBackground.enabled = false;
         armorUIPrefab.flashingBackground.enabled = false;
         accessoryUIPrefab.flashingBackground.enabled = false;
-        continueButtonText.font = continueButtonDisabled;
+        UpdateContinueButton();
         ItemHolderUI itemToShow = null;
 
         if (currentEquipCategorySelected == 0)
@@ -122,12 +124,18 @@ public class SelectItemUIController : MonoBehaviour
             itemDetailsName.text = itemToShow.itemText.text;
             itemDetailsDescription.text = itemToShow.getItemDetails();
         }
+    }
 
-        if (currentEquipCategorySelected == 3)
+    private void UpdateContinueButton()
+    {
+        if (currentEquipCategorySelected == 3 || isHoveringOverContinueButton)
         {
-            continueButtonText.font = continueButtonEnabled;
+            continueButton.sprite = continueButtonOn;
         }
-
+        else
+        {
+            continueButton.sprite = continueButtonOff;
+        }
     }
 
     private void populateWeaponList()
@@ -608,5 +616,11 @@ public class SelectItemUIController : MonoBehaviour
             itemDetailsName.text = itemToShow.itemText.text;
             itemDetailsDescription.text = itemToShow.getItemDetails();
         }
+    }
+
+    public void ContinueButtonHovered(bool hovered)
+    {
+        isHoveringOverContinueButton = hovered;
+        UpdateContinueButton();
     }
 }
