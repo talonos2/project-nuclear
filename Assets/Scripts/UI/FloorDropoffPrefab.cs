@@ -75,18 +75,17 @@ public class FloorDropoffPrefab : MonoBehaviour
 
     internal void Initialize(int floorNum, float timeTaken, bool record)
     {
+        Debug.Log(timeTaken);
         this.record = record;
         this.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         this.GetComponent<RectTransform>().localScale = startScale;
 
         floorText.text = "Floor  " + floorNum;
 
-        float seconds = (int)(timeTaken % 60);
-        float minutes = (int)(timeTaken / 60);
-        int min = (seconds == 0 ? 10 : 9) - GameData.Instance.minutes;
-        int sec = (seconds == 0 ? 0 : 60 - GameData.Instance.seconds);
-        int subSeconds = (int)((timeTaken * 10) / 10);
-        timeText.text = min + ":" + ((sec < 10) ? "0" + sec : "" + sec+(min==0?"."+subSeconds:""));
+        int seconds = (int)(timeTaken % 60);
+        int minutes = (int)(timeTaken / 60);
+        int subSeconds = (int)((timeTaken % 1) * 10);
+        timeText.text = minutes + ":" + ((seconds < 10) ? "0" + seconds : "" + seconds + (minutes == 0?"."+subSeconds:""));
     }
 
     public void ShowStuff()

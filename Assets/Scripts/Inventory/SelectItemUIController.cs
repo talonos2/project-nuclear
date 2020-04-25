@@ -36,7 +36,7 @@ public class SelectItemUIController : MonoBehaviour
     public Text itemDetailsName;
     public TextMeshProUGUI itemDetailsDescription;
 
-    private int currentOptionSelected;
+    private int currentEquipCategorySelected;
     private int currentItemSelected;
     private bool selectingAnItem;
     private List<ItemHolderUI> currentlyDisplayedItems;
@@ -52,7 +52,12 @@ public class SelectItemUIController : MonoBehaviour
 
     void Start()
     {
-        newPlayer = Instantiate<CharacterStats>(Players[GameData.Instance.RunNumber - 1], new Vector3(1000,1000,1000), Quaternion.identity);
+        newPlayer = Instantiate<CharacterStats>(Players[GameData.Instance.RunNumber - 1], new Vector3(1000, 1000, 1000), Quaternion.identity);
+        newPlayer.GetComponent<CharacterMovement>().enabled = false;
+        newPlayer.transform.GetChild(0).GetChild(0).GetComponent<SpriteShadowLoader>().enabled = false;
+        newPlayer.GetComponent<EntityData>().enabled = false;
+        newPlayer.GetComponent<BoxCollider>().enabled = false;
+        GameObject.Destroy(newPlayer.transform.GetChild(1).gameObject);
         GameState.fullPause = true;
 
         savedStats = GameObject.Find("GameStateData").GetComponent<CharacterStats>();
@@ -66,7 +71,7 @@ public class SelectItemUIController : MonoBehaviour
         crystalManaBonus.text = "+" + savedStats.ManaCrystalBuff;
         crystalHealthBonus.text = "+" + savedStats.HealthCrystalBuff;
 
-        currentOptionSelected = 0;
+        currentEquipCategorySelected = 0;
         currentItemSelected = -1;
 
         currentlyDisplayedItems = new List<ItemHolderUI>();
@@ -78,10 +83,10 @@ public class SelectItemUIController : MonoBehaviour
 
         runCharacterBustHolder.sprite = newPlayer.bustSprite;
         characterName.text = newPlayer.charName;
-        if      (savedStats.FighterClass) {characterClassStatIcon.sprite = atkStatIcon;}
-        else if (savedStats.MageClass)    {characterClassStatIcon.sprite = mpStatIcon;}
-        else if (savedStats.ScoutClass)   {characterClassStatIcon.sprite = hpStatIcon;}
-        else if (savedStats.SurvivorClass){characterClassStatIcon.sprite = defStatIcon;}
+        if (savedStats.FighterClass) { characterClassStatIcon.sprite = atkStatIcon; }
+        else if (savedStats.MageClass) { characterClassStatIcon.sprite = mpStatIcon; }
+        else if (savedStats.ScoutClass) { characterClassStatIcon.sprite = hpStatIcon; }
+        else if (savedStats.SurvivorClass) { characterClassStatIcon.sprite = defStatIcon; }
 
     }
 
@@ -93,31 +98,32 @@ public class SelectItemUIController : MonoBehaviour
         continueButtonText.font = continueButtonDisabled;
         ItemHolderUI itemToShow = null;
 
-        if (currentOptionSelected == 0) {
+        if (currentEquipCategorySelected == 0)
+        {
             weaponUIPrefab.flashingBackground.enabled = true;
-            itemToShow = weaponUIPrefab.GetComponent<ItemHolderUI>();
+            itemToShow = weaponUIPrefab;
             itemDetailsImage.sprite = itemToShow.GetItemSprite();
             itemDetailsName.text = itemToShow.itemText.text;
             itemDetailsDescription.text = itemToShow.getItemDetails();
         }
-        if (currentOptionSelected == 1)
+        if (currentEquipCategorySelected == 1)
         {
             armorUIPrefab.flashingBackground.enabled = true;
-            itemToShow = armorUIPrefab.GetComponent<ItemHolderUI>();
+            itemToShow = armorUIPrefab;
             itemDetailsImage.sprite = itemToShow.GetItemSprite();
             itemDetailsName.text = itemToShow.itemText.text;
             itemDetailsDescription.text = itemToShow.getItemDetails();
         }
-        if (currentOptionSelected == 2)
+        if (currentEquipCategorySelected == 2)
         {
             accessoryUIPrefab.flashingBackground.enabled = true;
-            itemToShow = accessoryUIPrefab.GetComponent<ItemHolderUI>();
+            itemToShow = accessoryUIPrefab;
             itemDetailsImage.sprite = itemToShow.GetItemSprite();
             itemDetailsName.text = itemToShow.itemText.text;
             itemDetailsDescription.text = itemToShow.getItemDetails();
-        }        
+        }
 
-        if (currentOptionSelected == 3)
+        if (currentEquipCategorySelected == 3)
         {
             continueButtonText.font = continueButtonEnabled;
         }
@@ -130,7 +136,8 @@ public class SelectItemUIController : MonoBehaviour
 
         removeCurrentList();
 
-        foreach (Weapon wpnObject in GameData.Instance.townWeapons) {
+        foreach (Weapon wpnObject in GameData.Instance.townWeapons)
+        {
             ItemHolderUI listItem = Instantiate<ItemHolderUI>(itemUIPrefab);
             listItem.GetComponent<ItemHolderUI>().SetItem(wpnObject);
             listItem.gameObject.SetActive(true);
@@ -177,13 +184,14 @@ public class SelectItemUIController : MonoBehaviour
         bool emptySet = true;
         foreach (Accessory accObject in GameData.Instance.townAccessories)
         {
-             
-            if (accObject.name == "No Accessory Equipped") {
-                continue; 
+
+            if (accObject.name == "No Accessory Equipped")
+            {
+                continue;
             }
             emptySet = false;
             ItemHolderUI listItem = Instantiate<ItemHolderUI>(itemUIPrefab);
-            
+
             listItem.GetComponent<ItemHolderUI>().SetItem(accObject);
             listItem.gameObject.SetActive(true);
             listItem.transform.SetParent(itemContainer.transform, false);
@@ -199,7 +207,8 @@ public class SelectItemUIController : MonoBehaviour
 
     }
 
-    public void SortItemListUI() {
+    public void SortItemListUI()
+    {
         int i = 0;
         foreach (ItemHolderUI o in currentlyDisplayedItems)
         {
@@ -224,7 +233,8 @@ public class SelectItemUIController : MonoBehaviour
         }
         else { return 0; }
     }
-    public static int compareArmor(ItemHolderUI x, ItemHolderUI y) {
+    public static int compareArmor(ItemHolderUI x, ItemHolderUI y)
+    {
         int defX = x.GetItem().GetComponent<Armor>().addDefense;
         int defY = y.GetItem().GetComponent<Armor>().addDefense;
 
@@ -272,9 +282,11 @@ public class SelectItemUIController : MonoBehaviour
 
 
 
-    private void removeCurrentList() {
-        foreach (ItemHolderUI itemUI in currentlyDisplayedItems) {
-            GameObject.Destroy(itemUI);            
+    private void removeCurrentList()
+    {
+        foreach (ItemHolderUI itemUI in currentlyDisplayedItems)
+        {
+            GameObject.Destroy(itemUI.gameObject);
         }
         currentlyDisplayedItems.Clear();
     }
@@ -282,122 +294,73 @@ public class SelectItemUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
         /*
          *Controls The submit button selection 
          */
         if (Input.GetButtonDown("Submit"))
         {
-            //selecting weapons
-                delayCounter = delayReset + .15f;
-            if (currentOptionSelected == 0)
+            delayCounter = delayReset + .15f;
+            if (currentEquipCategorySelected == 3)
             {
-                if (currentlyDisplayedItems.Count == 0)
-                {
-                    currentOptionSelected = 1;
-                    populateItemLists();
-                    ShowCurrentlySelectedOption();
-                    return;
-                }
-                else if (!selectingAnItem)
-                {
-                    selectingAnItem = true;
-                    currentItemSelected = 0;
-                    showItemSelected();
-                    return;
-                }
-                else if (selectingAnItem) {
-                        SwapWeapon();
-                    selectingAnItem = false;
-                    currentOptionSelected = 1;
-                    populateItemLists();
-                    ShowCurrentlySelectedOption();
-                    return;
-                }  
-            }
-
-            if (currentOptionSelected == 1)
-            {
-                if (currentlyDisplayedItems.Count == 0)
-                {
-
-                    currentOptionSelected = 2;
-                    populateItemLists();
-                    ShowCurrentlySelectedOption();
-                    return;
-                }
-                else if (!selectingAnItem)
-                {
-                    selectingAnItem = true;
-                    currentItemSelected = 0;
-                    showItemSelected();
-                    return;
-                }
-                else if (selectingAnItem) {
-                    SwapArmor();
-                    currentOptionSelected = 2;
-                    selectingAnItem = false;
-                    populateItemLists();
-                    ShowCurrentlySelectedOption();
-                    return;
-                }
-            }
-
-            if (currentOptionSelected == 2)
-            {
-                if (currentlyDisplayedItems.Count == 0)
-                {
-                    currentOptionSelected = 3;
-                    ShowCurrentlySelectedOption();
-                    return;
-                }
-                else if (!selectingAnItem)
-                {
-                    selectingAnItem = true;
-                    currentItemSelected = 0;
-                    showItemSelected();
-                    return;
-                }
-                else if (selectingAnItem) {
-                    SwapAccessory();
-                    selectingAnItem = false;
-                    currentOptionSelected = 3;
-                    ShowCurrentlySelectedOption();
-                    return;
-                }
-            }
-
-
-            if (currentOptionSelected == 3) {
                 LoadGameButtonClicked();
+                return;
             }
 
-        }
-
-        /*
-         *End of Submit Checks.  
-         */
-
-
-
-/*If Selecting to the right*/
-
-         if (Input.GetButtonDown("SelectRight"))
-         {
-                delayCounter = delayReset + .3f;
-            if (currentlyDisplayedItems.Count == 0)
+            if (selectingAnItem)
             {
-                currentOptionSelected += 1;
-                if (currentOptionSelected > 3)
-                    currentOptionSelected = 3;
+                switch (currentEquipCategorySelected)
+                {
+                    case 0: //Selecting a Weapon
+                        SwapWeapon();
+                        break;
+                    case 1: //Going into Armor Selection
+                        SwapArmor();
+                        break;
+                    case 2: //Going into Accessory Selection
+                        SwapAccessory();
+                        break;
+                }
+                currentEquipCategorySelected++;
+                selectingAnItem = false;
+                populateItemLists();
                 ShowCurrentlySelectedOption();
             }
-            else if (!selectingAnItem){
+            else
+            {
+                if (currentlyDisplayedItems.Count == 0)
+                {
+                    currentEquipCategorySelected = (currentEquipCategorySelected + 1) % 4;
+                    populateItemLists();
+                    ShowCurrentlySelectedOption();
+                    return;
+                }
+
+                selectingAnItem = true;
+                currentItemSelected = 0;
+                showItemSelected();
+            }
+        }
+
+        /*If Selecting to the right*/
+
+        if (Input.GetButtonDown("SelectRight"))
+        {
+            delayCounter = delayReset + .3f;
+            if (currentlyDisplayedItems.Count == 0)
+            {
+                currentEquipCategorySelected += 1;
+                if (currentEquipCategorySelected > 3)
+                    currentEquipCategorySelected = 3;
+                ShowCurrentlySelectedOption();
+            }
+            else if (!selectingAnItem)
+            {
                 currentItemSelected = 0;
                 selectingAnItem = true;
-                showItemSelected();                
+                showItemSelected();
             }
-         }
+        }
 
         if (Input.GetButton("SelectRight"))
         {
@@ -406,9 +369,9 @@ public class SelectItemUIController : MonoBehaviour
                 delayCounter = delayReset;
                 if (currentlyDisplayedItems.Count == 0)
                 {
-                    currentOptionSelected += 1;
-                    if (currentOptionSelected > 3)
-                        currentOptionSelected = 3;
+                    currentEquipCategorySelected += 1;
+                    if (currentEquipCategorySelected > 3)
+                        currentEquipCategorySelected = 3;
                     ShowCurrentlySelectedOption();
                 }
                 else if (!selectingAnItem)
@@ -430,9 +393,9 @@ public class SelectItemUIController : MonoBehaviour
             delayCounter = delayReset + .3f;
             if (currentlyDisplayedItems.Count == 0 || !selectingAnItem)
             {
-                currentOptionSelected -= 1;
-                if (currentOptionSelected < 0)
-                    currentOptionSelected = 0;
+                currentEquipCategorySelected -= 1;
+                if (currentEquipCategorySelected < 0)
+                    currentEquipCategorySelected = 0;
                 ShowCurrentlySelectedOption();
             }
             else if (selectingAnItem)
@@ -451,9 +414,9 @@ public class SelectItemUIController : MonoBehaviour
                 delayCounter = delayReset;
                 if (currentlyDisplayedItems.Count == 0 || !selectingAnItem)
                 {
-                    currentOptionSelected -= 1;
-                    if (currentOptionSelected < 0)
-                        currentOptionSelected = 0;
+                    currentEquipCategorySelected -= 1;
+                    if (currentEquipCategorySelected < 0)
+                        currentEquipCategorySelected = 0;
                     ShowCurrentlySelectedOption();
                 }
                 else if (selectingAnItem)
@@ -474,15 +437,15 @@ public class SelectItemUIController : MonoBehaviour
             delayCounter = delayReset + .3f;
             if (!selectingAnItem)
             {
-                currentOptionSelected -= 1;
-                if (currentOptionSelected < 0)
-                    currentOptionSelected = 0;
+                currentEquipCategorySelected -= 1;
+                if (currentEquipCategorySelected < 0)
+                    currentEquipCategorySelected = 0;
                 populateItemLists();
                 ShowCurrentlySelectedOption();
             }
             else if (selectingAnItem)
             {
-                currentItemSelected -= 1 ;
+                currentItemSelected -= 1;
                 if (currentItemSelected < 0)
                     currentItemSelected = 0;
                 showItemSelected();
@@ -496,9 +459,9 @@ public class SelectItemUIController : MonoBehaviour
                 delayCounter = delayReset;
                 if (!selectingAnItem)
                 {
-                    currentOptionSelected -= 1;
-                    if (currentOptionSelected < 0)
-                        currentOptionSelected = 0;
+                    currentEquipCategorySelected -= 1;
+                    if (currentEquipCategorySelected < 0)
+                        currentEquipCategorySelected = 0;
                     populateItemLists();
                     ShowCurrentlySelectedOption();
                 }
@@ -516,15 +479,15 @@ public class SelectItemUIController : MonoBehaviour
             }
         }
 
-//SelectingDownOption
+        //SelectingDownOption
         if (Input.GetButtonDown("SelectDown"))
         {
             delayCounter = delayReset + .3f;
             if (!selectingAnItem)
             {
-                currentOptionSelected += 1;
-                if (currentOptionSelected >3)
-                    currentOptionSelected =3;
+                currentEquipCategorySelected += 1;
+                if (currentEquipCategorySelected > 3)
+                    currentEquipCategorySelected = 3;
                 populateItemLists();
                 ShowCurrentlySelectedOption();
             }
@@ -544,9 +507,9 @@ public class SelectItemUIController : MonoBehaviour
                 delayCounter = delayReset;
                 if (!selectingAnItem)
                 {
-                    currentOptionSelected += 1;
-                    if (currentOptionSelected > 3)
-                        currentOptionSelected = 3;
+                    currentEquipCategorySelected += 1;
+                    if (currentEquipCategorySelected > 3)
+                        currentEquipCategorySelected = 3;
                     populateItemLists();
                     ShowCurrentlySelectedOption();
                 }
@@ -570,14 +533,15 @@ public class SelectItemUIController : MonoBehaviour
 
     private void populateItemLists()
     {
-        if (currentOptionSelected == 0) {
+        if (currentEquipCategorySelected == 0)
+        {
             populateWeaponList();
         }
-        if (currentOptionSelected == 1)
+        if (currentEquipCategorySelected == 1)
         {
             populateArmorList();
         }
-        if (currentOptionSelected == 2)
+        if (currentEquipCategorySelected == 2)
         {
             populateAccessoryList();
         }
@@ -586,7 +550,7 @@ public class SelectItemUIController : MonoBehaviour
     private void SwapArmor()
     {
         GameData.Instance.townArmor.Add(savedStats.armor);
-        InventoryItem itemToSwap= currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
+        InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
         savedStats.setArmor((Armor)itemToSwap);
         GameData.Instance.townArmor.Remove((Armor)itemToSwap);
         armorUIPrefab.SetItem(itemToSwap);
@@ -602,9 +566,10 @@ public class SelectItemUIController : MonoBehaviour
 
     private void SwapAccessory()
     {
-        if (savedStats.accessory.name != "No Accessory Equipped") {
+        if (savedStats.accessory.name != "No Accessory Equipped")
+        {
             GameData.Instance.townAccessories.Add(savedStats.accessory);
-        }        
+        }
         InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
         savedStats.setAccessory((Accessory)itemToSwap);
         savedStats.setFullHPMP();
@@ -631,15 +596,17 @@ public class SelectItemUIController : MonoBehaviour
     {
         foreach (ItemHolderUI itemUI in currentlyDisplayedItems)
         {
-            itemUI.GetComponent<Image>().enabled = false;
+            itemUI.flashingBackground.enabled = false;
         }
+
         if (selectingAnItem)
         {
-            currentlyDisplayedItems[currentItemSelected].GetComponent<Image>().enabled = true;
-            ItemHolderUI itemToShow = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>();
-            itemDetailsImage.sprite= itemToShow.GetItemSprite();
-            itemDetailsName.text= itemToShow.itemText.text;
-            itemDetailsDescription.text= itemToShow.getItemDetails();
+            currentlyDisplayedItems[currentItemSelected].flashingBackground.enabled = true;
+            ItemHolderUI itemToShow = currentlyDisplayedItems[currentItemSelected];
+            Debug.Log("I should be showing an item:"+itemToShow);
+            itemDetailsImage.sprite = itemToShow.GetItemSprite();
+            itemDetailsName.text = itemToShow.itemText.text;
+            itemDetailsDescription.text = itemToShow.getItemDetails();
         }
     }
 }
