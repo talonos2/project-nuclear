@@ -280,10 +280,9 @@ public class Combat : MonoBehaviour
         }
     }
 
-    private void KillPlayerAndLoadNextScene() {
+    private void KillPlayerAndLoadNextScene(bool timeOut) {
         //
         GameState.isInBattle = false;
-        Debug.Log("gamestate " + GameState.isInBattle);
         Destroy(monsterSprite.gameObject);
         Destroy(playerSprite.gameObject);
         combatDarkening.material.SetFloat("_Alpha", 0);
@@ -292,8 +291,6 @@ public class Combat : MonoBehaviour
         //At this point play 'death' animation on player, which should end in a death of the player. 
         //For now doing the scene transition to the death scene right away
         SceneManager.LoadScene("DeathScene");
-
-
     }
 
     private void KillMonsterAndGetRewards()

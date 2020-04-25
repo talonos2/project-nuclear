@@ -222,7 +222,7 @@ public class CharacterMovement : SpriteMovement
 
     internal void MurderPlayer()
     {
-        GameData.Instance.killPlayer();
+        GameData.Instance.DebugKillPlayer();
     }
 
     internal void AttemptRest()

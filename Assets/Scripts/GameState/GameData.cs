@@ -45,6 +45,8 @@ public class GameData : Singleton<GameData>
     public float[] bestTimes = new float[20];
     public float[] timesThisRun = new float[20];
 
+    public string killer = "time";
+
     //    public bool Paused = false;
 
     //public bool Shortcut1 = false;
@@ -98,6 +100,7 @@ public class GameData : Singleton<GameData>
     {
         timer = 0;
         deathTime = 0;
+        killer = "time";
         for (int x = 0; x < 20; x++)
         {
             GameData.Instance.timesThisRun[x] = 0;
@@ -139,7 +142,7 @@ public class GameData : Singleton<GameData>
         }
     }
 
-    internal void killPlayer()
+    internal void DebugKillPlayer()
     {
         deathTime = timer;
         timer = 600;
