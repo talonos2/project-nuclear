@@ -256,7 +256,7 @@ public class Combat : MonoBehaviour
             GameState.isInBattle = false;
             blade.StartClose();
             //GameState.endRunFlag = true;
-            KillPlayerAndLoadNextScene();
+            KillPlayerAndLoadNextScene(true);
 
         }
 
@@ -267,7 +267,7 @@ public class Combat : MonoBehaviour
             GameState.isInBattle = false;
             blade.StartClose();
             //GameState.endRunFlag = true;
-            KillPlayerAndLoadNextScene();
+            KillPlayerAndLoadNextScene(false);
 
         }
 
@@ -280,10 +280,16 @@ public class Combat : MonoBehaviour
         }
     }
 
-    private void KillPlayerAndLoadNextScene() {
-        //
+    private void KillPlayerAndLoadNextScene(bool timeOut) {
+        if (!timeOut)
+        {
+            GameData.Instance.deathTime = GameData.Instance.timer;
+        }
+        else
+        {
+            GameData.Instance.killer = monsterStats.name;
+        }
         GameState.isInBattle = false;
-        Debug.Log("gamestate " + GameState.isInBattle);
         Destroy(monsterSprite.gameObject);
         Destroy(playerSprite.gameObject);
         combatDarkening.material.SetFloat("_Alpha", 0);
@@ -292,8 +298,6 @@ public class Combat : MonoBehaviour
         //At this point play 'death' animation on player, which should end in a death of the player. 
         //For now doing the scene transition to the death scene right away
         SceneManager.LoadScene("DeathScene");
-
-
     }
 
     private void KillMonsterAndGetRewards()
