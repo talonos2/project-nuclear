@@ -19,7 +19,6 @@ public class ChooseItemUI : MonoBehaviour
     protected float delayReset = .2f;
     protected float delayCounter = .3f;
     private CharacterStats playerStats;
-    private InventoryItem itemTypeCheck;
     private bool pickingItem;
     private CharacterStats playerData;
     private InventoryItem rolledItem;
@@ -107,7 +106,7 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (!pickingItem) { return; }
 
-        if (itemTypeCheck.Weapon)
+        if (rolledItem is Weapon)
         {
             if (optionSelected == 0)
             {
@@ -120,7 +119,7 @@ public class ChooseItemUI : MonoBehaviour
                 SendToTown((Weapon)rolledItem);
             }
         }
-        if (itemTypeCheck.Armor)
+        else if (rolledItem is Armor)
         {
             if (optionSelected == 0)
             {
@@ -132,7 +131,7 @@ public class ChooseItemUI : MonoBehaviour
                 SendToTown((Armor)rolledItem);
             }
         }
-        if (itemTypeCheck.Accessory)
+        else if (rolledItem is Accessory)
         {
             if (optionSelected == 0)
             {
@@ -151,10 +150,7 @@ public class ChooseItemUI : MonoBehaviour
         GameState.isInBattle = true;
         pickingItem = true;
         chooseItemUiCanvas.enabled = true;
-        itemTypeCheck = rolledItem.GetComponent<InventoryItem>();
         SetItemUI();
- 
-
     }
 
     private void SetItemUI()
@@ -166,7 +162,7 @@ public class ChooseItemUI : MonoBehaviour
         String foundItem = "";
         String oldItemText = "No Item Equipped";        
 
-        if (itemTypeCheck.Weapon) {
+        if (rolledItem is Weapon) {
             foundItemStat = rolledItem.GetComponent<Weapon>().addAttack;
             oldItemStat = playerData.weapon.GetComponent<Weapon>().addAttack;
             if (rolledItem.name == playerData.weapon.name||foundItemStat == oldItemStat) {
@@ -179,8 +175,7 @@ public class ChooseItemUI : MonoBehaviour
             oldItemText = playerData.weapon.gameObject.name + ", Attack: " + oldItemStat;
             
         }
-
-        if (itemTypeCheck.Armor)
+        else if (rolledItem is Armor)
         {
             foundItemStat = rolledItem.GetComponent<Armor>().addDefense;
             oldItemStat = playerData.armor.GetComponent<Armor>().addDefense;
@@ -197,8 +192,7 @@ public class ChooseItemUI : MonoBehaviour
                 else foundItem = rolledItem.gameObject.name + ", Defense: " + foundItemStat + "(<color=green>+" + totalStatChange + "</color>)";
             oldItemText = playerData.armor.gameObject.name + ", Defense: " + oldItemStat;
         }
-
-        if (itemTypeCheck.Accessory) {
+        else if (rolledItem is Accessory) {
             if (rolledItem.name == playerData.accessory.name)
             {
                 GameData.Instance.townAccessories.Add(playerData.accessory);
@@ -214,7 +208,6 @@ public class ChooseItemUI : MonoBehaviour
         newItemSprite.GetComponent<Image>().sprite = rolledItem.GetComponent<InventoryItem>().itemIcon;
         itemKeepText.text = "Equip " + rolledItem.gameObject.name;
         sendHomeText.text = "Send " + rolledItem.gameObject.name + " Home";
-
     }
 
     private void sendGabToTownMessage(InventoryItem itemSent)
@@ -239,7 +232,7 @@ public class ChooseItemUI : MonoBehaviour
             {
                 GameData.bestWeaponFound = i;
             }
-            GameData.Instance.townWeapons.Add(playerData.weapon);
+            GameData.Instance.townWeapons.Add(i);
             sendGabToTownMessage(i);
         }
         closeItemPickUI();
@@ -253,7 +246,7 @@ public class ChooseItemUI : MonoBehaviour
             {
                 GameData.bestArmorFound = i;
             }
-            GameData.Instance.townWeapons.Add(playerData.weapon);
+            GameData.Instance.townArmor.Add(i);
             sendGabToTownMessage(i);
         }
         closeItemPickUI();
@@ -267,7 +260,7 @@ public class ChooseItemUI : MonoBehaviour
             {
                 GameData.bestAccessoryFound = i;
             }
-            GameData.Instance.townWeapons.Add(playerData.weapon);
+            GameData.Instance.townAccessories.Add(i);
             sendGabToTownMessage(i);
         }
         closeItemPickUI();

@@ -10,6 +10,8 @@ public class BestTimeController : MonoBehaviour
     public TextMeshProUGUI[] bestTimesTexts;
     public Image[] bestTimesMarkers;
     public Image bestTimeSlider;
+    public Image skull;
+    public RectTransform containerToShakeOnSkullDrop;
 
 
     public float delay;
@@ -27,10 +29,15 @@ public class BestTimeController : MonoBehaviour
     private bool deathSequencePlaying;
 
     public float durationOfDeathEffect = .7f;
+
     public float intensityOfDeathShake = 100f;
+    public float intensityOfScreenShake = 20f;
 
     private Vector3 deathPosition;
-    private Vector3 targetSkillPosition;
+    private Vector3 targetSkullPosition;
+    public Vector3 skullDropPosition;
+
+    public float durationOfSkullDrop = .3f;
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +77,21 @@ public class BestTimeController : MonoBehaviour
         UnityEngine.Random r = new UnityEngine.Random();
         Vector3 offset = UnityEngine.Random.insideUnitCircle*t*intensityOfDeathShake;
         bestTimeSlider.transform.localPosition = deathPosition + offset;
+
+        t = Mathf.Max(durationOfSkullDrop - timeSoFar, 0) / durationOfSkullDrop;
+        {
+            skull.transform.localPosition = skullDropPosition * (t) + targetSkullPosition;
+            skull.color = new Color(1, .25f, .25f, 1 - t);
+        }
+
+        float timeSinceSkullStoppedDropping = timeSoFar - durationOfSkullDrop;
+        if (timeSinceSkullStoppedDropping > 0)
+        {
+            float timeScreenWillShake = durationOfDeathEffect - durationOfSkullDrop;
+            t = Mathf.Max(timeScreenWillShake - timeSinceSkullStoppedDropping, 0) / timeScreenWillShake;
+            offset = UnityEngine.Random.insideUnitCircle * t * intensityOfScreenShake;
+            containerToShakeOnSkullDrop.localPosition = offset;
+        }
     }
 
     private void PlaySlideAnimation()
@@ -93,7 +115,7 @@ public class BestTimeController : MonoBehaviour
                     deathSequencePlaying = true;
                     timeSoFar = 0;
                     deathPosition = bestTimeSlider.transform.localPosition;
-                    //targetSkullPosition = bestTimeSlider.transform.localPosition+new Vector2(0,-60);
+                    targetSkullPosition = deathPosition + new Vector3(0, -60,0);
                 }
             }
         }
