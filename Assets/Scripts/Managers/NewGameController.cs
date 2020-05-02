@@ -82,7 +82,7 @@ public class NewGameController : MonoBehaviour
     {
         //TODO: Skip continue and load game if there's no game to load or continue. (Repeat check here because of mouse.)
         currentMenuOptionSelected = menuOptionSelected;
-        selectionMarker.transform.position = new Vector3(-70, -110 - 20 * menuOptionSelected, 0);
+        selectionMarker.GetComponent<RectTransform>().localPosition = new Vector3(-70, -110 - 20 * menuOptionSelected, 0);
 
         for (int x = 0; x < menuOptions.Length; x++)
         {
