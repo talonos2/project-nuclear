@@ -21,7 +21,7 @@ public class MusicManager : MonoBehaviour
 
     internal static float globalMusicVolume = .3f;
     internal static float combatMusicVolume = 1;
-    internal static float combatMusicFadeTime = .45f;
+    internal static float combatMusicFadeTime = 2f;
 
     internal int mapMusic = -1;
     internal int combatMusic = -1;

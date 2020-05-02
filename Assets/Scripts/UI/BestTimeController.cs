@@ -38,6 +38,7 @@ public class BestTimeController : MonoBehaviour
     public Vector3 skullDropPosition;
 
     public float durationOfSkullDrop = .3f;
+    private float deathTime;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,7 @@ public class BestTimeController : MonoBehaviour
         }
         //End test code.
 
+        deathTime = (GameData.Instance.deathTime == 0 ? 2000 : GameData.Instance.deathTime);
         bestTimeSlider.transform.localPosition = new Vector3(startTimeOffset, y, 0);
     }
 
@@ -110,7 +112,7 @@ public class BestTimeController : MonoBehaviour
                     DropOffFloor(floorsDroppedOff, dropoffx);
                     floorsDroppedOff++;
                 }
-                if (quickenedTimeTakenSoFar >= GameData.Instance.deathTime)
+                if (quickenedTimeTakenSoFar >= deathTime|| quickenedTimeTakenSoFar >=600)
                 {
                     deathSequencePlaying = true;
                     timeSoFar = 0;

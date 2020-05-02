@@ -14,7 +14,6 @@ public class TurnActorCommand : Naninovel.Commands.Command
 
     public override Task ExecuteAsync()
     {
-        Debug.Log("Trying to move " + n);
         GameObject go = GameObject.Find(n);
         if (go == null)
         {
@@ -24,7 +23,7 @@ public class TurnActorCommand : Naninovel.Commands.Command
         PawnMover mover = go.GetComponent<PawnMover>();
         foreach (MonoBehaviour m in go.GetComponents<MonoBehaviour>())
         {
-            Debug.Log(m);
+            //Debug.Log(m);
         }
         if (mover == null)
         {

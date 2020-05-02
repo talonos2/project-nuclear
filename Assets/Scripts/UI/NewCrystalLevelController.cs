@@ -45,22 +45,18 @@ public class NewCrystalLevelController : MonoBehaviour
             case CrystalType.HEALTH:
                 oldCrystals = GameData.Instance.HealhCrystalTotal;
                 newCrystals = savedStats.HealthCrystalsGained;
-                Debug.Log(crystalType + ", Total " + oldCrystals + ", new " + newCrystals);
                 break;
             case CrystalType.MANA:
                 oldCrystals = GameData.Instance.ManaCrystalTotal;
                 newCrystals = savedStats.ManaCrystalsGained;
-                Debug.Log(crystalType + ", Total " + oldCrystals + ", new " + newCrystals);
                 break;
             case CrystalType.ATTACK:
                 oldCrystals = GameData.Instance.AttackCrystalTotal;
                 newCrystals = savedStats.AttackCrystalsGained;
-                Debug.Log(crystalType + ", Total " + oldCrystals + ", new " + newCrystals);
                 break;
             case CrystalType.DEFENSE:
                 oldCrystals = GameData.Instance.DefenseCrystalTotal;
                 newCrystals = savedStats.defenseCrystalsGained;
-                Debug.Log(crystalType+", Total " + oldCrystals + ", new " + newCrystals);
                 break;
 
         }
@@ -85,7 +81,7 @@ public class NewCrystalLevelController : MonoBehaviour
     private float GetNumberOfBars(int numCrystals)
     {
         int baseCrystalTier = GetCrystalTier(numCrystals);
-        return (float)(numCrystals - crystalTiers[baseCrystalTier-1]) / (float)(crystalTiers[baseCrystalTier]- crystalTiers[baseCrystalTier-1]);
+        return (float)(numCrystals - crystalTiers[baseCrystalTier-1]) / (float)(crystalTiers[baseCrystalTier]- crystalTiers[baseCrystalTier-1])+baseCrystalTier;
     }
 
     // Update is called once per frame
@@ -126,7 +122,6 @@ public class NewCrystalLevelController : MonoBehaviour
     {
         int fullBars = Mathf.FloorToInt(barAmount);
         float remainderBars = barAmount % 1.0f;
-        Debug.Log(barAmount);
         int crystalAmount = Mathf.RoundToInt(Mathf.Lerp(crystalTiers[fullBars], crystalTiers[fullBars + 1], remainderBars));
 
         string bonusText = "+" + fullBars * crystalBonusValue;
