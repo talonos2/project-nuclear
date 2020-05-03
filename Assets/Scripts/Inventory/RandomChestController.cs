@@ -245,7 +245,6 @@ public class RandomChestController : EntityData
         foreach (float delay in delays)
         {
                 PowerupEffect pe = GameObject.Instantiate<PowerupEffect>(powerUpEffect, this.transform.position, Quaternion.identity);
-            Debug.Log(delay);
             pe.Initialize(this.transform.GetChild(0).position, playerData.transform.GetChild(0).GetChild(0), delay, type);
         }
     }

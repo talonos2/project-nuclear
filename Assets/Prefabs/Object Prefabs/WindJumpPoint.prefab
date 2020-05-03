@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3133522415357185605}
   - component: {fileID: 5562146863240171282}
   - component: {fileID: 889577096233745039}
+  - component: {fileID: 2674637237489986261}
   m_Layer: 0
   m_Name: SpriteViewer
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1935951129131003519}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2209139354426487147}
   m_RootOrder: 0
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1745145bbe39149449d3e33ee02a69f8, type: 2}
+  - {fileID: 2100000, guid: 9c54c178602856e42a244ed6f42d8340, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,6 +106,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  additionalZOffset: 0
+  groundItem: 0
+  belowGroundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0
+--- !u!114 &2674637237489986261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935951129131003519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3b641eb0c8ed74cadd223ba5b76605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFrames: 6
+  framesPerSecond: 9
 --- !u!1 &2209139354426487151
 GameObject:
   m_ObjectHideFlags: 0

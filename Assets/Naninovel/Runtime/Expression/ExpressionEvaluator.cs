@@ -33,6 +33,8 @@ namespace Naninovel
             }
             [Doc("Get what day it is in Final Winter")]
             public static int GetDay() => GameData.Instance.RunNumber;
+            [Doc("The name of the monster that killed the most recent hero in Final Winter, with 'time' meaning 'Killed by Time Out'.")]
+            public static string GetKilledBy() => GameData.Instance.killer;
             [Doc("Return a random float number between min [inclusive] and max [inclusive].", "Random(0.1, 0.85)")]
             public static float Random (double min, double max) => UnityEngine.Random.Range((float)min, (float)max);
             [Doc("Return a random integer number between min [inclusive] and max [inclusive].", "Random(0, 100)")]

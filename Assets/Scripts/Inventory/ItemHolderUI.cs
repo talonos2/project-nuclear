@@ -27,12 +27,10 @@ public class ItemHolderUI : MonoBehaviour
     }
 
     public void SetItem(InventoryItem itemToSet) {
-        Debug.Log("It is " + itemToSet);
         if (null==itemToSet)
         {
             itemToSet = empty;
         }
-        Debug.Log("It is now " + itemToSet);
         itemStored = itemToSet;
         itemDetailsText = itemToSet.equipmentDescription;
         itemSpriteHolder.GetComponent<Image>().sprite = itemToSet.itemIcon;

@@ -13,7 +13,7 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
-    public List<AudioSource> music = new List<AudioSource>();
+    public MusicLoop[] music = new MusicLoop[0];
     private float[] fadeLengths;
     private float[] fadeStartTimes;
     private float[] fadeVolumes;
@@ -21,7 +21,8 @@ public class MusicManager : MonoBehaviour
 
     internal static float globalMusicVolume = .3f;
     internal static float combatMusicVolume = 1;
-    internal static float combatMusicFadeTime = .45f;
+    internal static float combatMusicFadeTime = 2f;
+
     internal int mapMusic = -1;
     internal int combatMusic = -1;
 
@@ -38,16 +39,16 @@ public class MusicManager : MonoBehaviour
     public const int POWERPLANT = 10;
     public const int POWERPLANT_C = 11;
     public const int FINAL = 12;
-    public const int FINAL_C = 12;
+    public const int FINAL_C = 13;
 
 
     // Use this for initialization
     void Start()
     {
-        fadeLengths = new float[music.Count];
-        fadeStartTimes = new float[music.Count];
-        fadeVolumes = new float[music.Count];
-        fadeStartVolumes = new float[music.Count];
+        fadeLengths = new float[music.Length];
+        fadeStartTimes = new float[music.Length];
+        fadeVolumes = new float[music.Length];
+        fadeStartVolumes = new float[music.Length];
     }
 
     /// <summary>
@@ -80,21 +81,21 @@ public class MusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int x = 0; x < music.Count; x++)
+        for (int x = 0; x < music.Length; x++)
         {
             if (fadeLengths[x] > 0)
             {
                 fadeLengths[x] -= Time.deltaTime;
-                music[x].volume = Mathf.Lerp(fadeStartVolumes[x], fadeVolumes[x], 1 - (fadeLengths[x] / fadeStartTimes[x]));
-                if (music[x].volume <= 0)
+                music[x].audioSource.volume = Mathf.Lerp(fadeStartVolumes[x], fadeVolumes[x], 1 - (fadeLengths[x] / fadeStartTimes[x]));
+                if (music[x].audioSource.volume <= 0)
                 {
-                    music[x].Stop();
+                    music[x].audioSource.Stop();
                 }
                 else
                 {
-                    if (!music[x].isPlaying)
+                    if (!music[x].audioSource.isPlaying)
                     {
-                        music[x].Play();
+                        music[x].StartIntro();
                     }
                 }
             }
@@ -103,9 +104,9 @@ public class MusicManager : MonoBehaviour
 
     public void StopAllMusic()
     {
-        for (int x = 0; x < music.Count; x++)
+        for (int x = 0; x < music.Length; x++)
         {
-            music[x].Stop();
+            music[x].audioSource.Stop();
             fadeLengths[x] = 0;
         }
     }
@@ -119,7 +120,7 @@ public class MusicManager : MonoBehaviour
         fadeLengths[num] = time;
         fadeVolumes[num] = volume;
         fadeStartTimes[num] = time;
-        fadeStartVolumes[num] = music[num].volume;
+        fadeStartVolumes[num] = music[num].audioSource.volume;
     }
 
     public void FadeOutMusic(int num, float time)
