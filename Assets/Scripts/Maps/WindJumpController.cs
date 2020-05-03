@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WindJumpController : DoodadData
 {
-    // Start is called before the first frame update
+    // Variables used in Character Movement script
     public Vector2Int jumpDestOffset;
     public float jumpSpeedMultiplier = 2;
 
