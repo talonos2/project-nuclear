@@ -26,8 +26,9 @@ public class AnimateBreaking : MonoBehaviour
         {
             timeSinceLastFrame = 0;
                 currentFrame += 1;
+            sRender.material.SetFloat("_Frame", currentFrame + offsetFix);
         }
-        sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
+        
 
     }
 

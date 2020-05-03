@@ -79,6 +79,8 @@ public class GameData : Singleton<GameData>
     internal static Armor bestArmorFound;
     internal static Accessory bestAccessoryFound;
 
+
+
     internal bool IsInTown()
     {
         return FloorNumber == 0;
@@ -147,4 +149,6 @@ public class GameData : Singleton<GameData>
         deathTime = timer;
         timer = 600;
     }
+
+
 }
