@@ -611,7 +611,6 @@ public class SelectItemUIController : MonoBehaviour
         {
             currentlyDisplayedItems[currentItemSelected].flashingBackground.enabled = true;
             ItemHolderUI itemToShow = currentlyDisplayedItems[currentItemSelected];
-            Debug.Log("I should be showing an item:"+itemToShow);
             itemDetailsImage.sprite = itemToShow.GetItemSprite();
             itemDetailsName.text = itemToShow.itemText.text;
             itemDetailsDescription.text = itemToShow.getItemDetails();

@@ -35,9 +35,7 @@ public class FadeOut : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft > 0)
         {
-            Debug.Log("Last Plane: " + this.GetComponent<Renderer>().material.GetFloat("_Alpha"));
             this.GetComponent<Renderer>().material.SetFloat("_Alpha", 1-timeLeft/fadeTime);
-            Debug.Log("Now: " + this.GetComponent<Renderer>().material.GetFloat("_Alpha"));
         }
         else
         {
