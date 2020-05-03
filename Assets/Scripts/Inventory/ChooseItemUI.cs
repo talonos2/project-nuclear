@@ -3,17 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ChooseItemUI : MonoBehaviour
 {
-    public Text foundItemText;
-    public Text currentItemText;
-    public Text itemKeepText;
-    public Text sendHomeText;
-    public GameObject foundItemSprite;
-    public GameObject newItemSprite;
-    public GameObject equipItemButton;
-    public GameObject sendItemHomeButton;
+    public TextMeshProUGUI foundItemText;
+    public TextMeshProUGUI currentItemText;
+    public Image oldItemSprite;
+    public Image newItemSprite;
+    public Image equipItemButton;
+    public Image sendItemHomeButton;
     public Canvas chooseItemUiCanvas;
     private int optionSelected = 0;
     protected float delayReset = .2f;
@@ -23,10 +22,16 @@ public class ChooseItemUI : MonoBehaviour
     private CharacterStats playerData;
     private InventoryItem rolledItem;
 
+    public Sprite equipOn;
+    public Sprite equipOff;
+    public Sprite sendOn;
+    public Sprite sendOff;
+    public Sprite[] itemIcons;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        SelectSendHome();
     }
 
     // Update is called once per frame
@@ -35,54 +40,17 @@ public class ChooseItemUI : MonoBehaviour
         if (GameState.fullPause || !pickingItem) { return; }
         
 
-        if (Input.GetAxis("Vertical")>.05f )
+        if (Input.GetAxis("Horizontal")>.05f )
         {
-            hideButtonSelection();
             optionSelected = 0;
-            showButtonSelection();
+            SelectEquip();
         }
 
-        if (Input.GetAxis("Vertical") < -.05f)
+        if (Input.GetAxis("Horizontal") < -.05f)
         {
-            hideButtonSelection();
             optionSelected = 1;
-            showButtonSelection();
+            SelectSendHome();
         }
-
-        /*
-         * 
-         * if (delayCounter <= 0)
-            {
-                delayCounter = delayReset;
-                hideButtonSelection();
-                if (optionSelected == 1)
-                {
-                    optionSelected = 0;
-                }
-                else { optionSelected = 1; }
-                showButtonSelection();
-            }
-            else
-            {
-                delayCounter -= Time.deltaTime;
-            }
-         * */
-
-
-        /* if (Input.GetButtonDown("Vertical") )
-         {
-
-                 delayCounter = delayReset+.16f;
-                 hideButtonSelection();
-                 if (optionSelected == 1)
-                 {
-                     optionSelected = 0;
-                 }
-                 else { optionSelected = 1; }
-                 showButtonSelection();
-
-
-         }*/
 
         if (Input.GetButtonDown("Submit"))
         {
@@ -90,16 +58,16 @@ public class ChooseItemUI : MonoBehaviour
         }
     }
 
-    private void showButtonSelection()
+    private void SelectEquip()
     {
-        if (optionSelected == 0) { equipItemButton.GetComponent<Image>().enabled = true; }
-        if (optionSelected == 1) { sendItemHomeButton.GetComponent<Image>().enabled = true; }
+        equipItemButton.sprite = equipOn;
+        sendItemHomeButton.sprite = sendOff;
     }
 
-    private void hideButtonSelection()
+    private void SelectSendHome()
     {
-        if (optionSelected == 0) { equipItemButton.GetComponent<Image>().enabled = false; }
-        if (optionSelected == 1) { sendItemHomeButton.GetComponent<Image>().enabled = false; }
+        equipItemButton.sprite = equipOff;
+        sendItemHomeButton.sprite = sendOn;
     }
 
     private void ChooseItem()
@@ -159,21 +127,24 @@ public class ChooseItemUI : MonoBehaviour
         int foundItemStat;
         int oldItemStat;
         int totalStatChange;
-        String foundItem = "";
+        String foundItemText = "";
         String oldItemText = "No Item Equipped";        
 
         if (rolledItem is Weapon) {
             foundItemStat = rolledItem.GetComponent<Weapon>().addAttack;
             oldItemStat = playerData.weapon.GetComponent<Weapon>().addAttack;
             if (rolledItem.name == playerData.weapon.name||foundItemStat == oldItemStat) {
+                GameData.Instance.townWeapons.Add((Weapon)rolledItem);
+                sendGabToTownMessage(rolledItem);
+                closeItemPickUI();
                 return;
             }
-
             totalStatChange = foundItemStat - oldItemStat;
-            if (totalStatChange<=0) foundItem = rolledItem.gameObject.name + ", Attack: " + foundItemStat + "(<color=red>" + totalStatChange + "</color>)";
-                else foundItem = rolledItem.gameObject.name + ", Attack: " + foundItemStat + "(<color=green>+" + totalStatChange + "</color>)";
-            oldItemText = playerData.weapon.gameObject.name + ", Attack: " + oldItemStat;
-            
+            foundItemText = rolledItem.gameObject.name + "   (<sprite="+0+"><color="+(totalStatChange<=0? "green":"red")+">+"+foundItemStat+"</color>)";
+            oldItemText = playerData.weapon.gameObject.name + "  " + oldItemStat;
+            newItemSprite.sprite = itemIcons[0];
+            //oldItemSprite.sprite = itemIcons[0];
+
         }
         else if (rolledItem is Armor)
         {
@@ -181,33 +152,37 @@ public class ChooseItemUI : MonoBehaviour
             oldItemStat = playerData.armor.GetComponent<Armor>().addDefense;
             if (rolledItem.name == playerData.armor.name || foundItemStat== oldItemStat)
             {
-                GameData.Instance.townArmor.Add(playerData.armor);
-                sendGabToTownMessage(playerData.armor);
+                GameData.Instance.townArmor.Add((Armor)rolledItem);
+                sendGabToTownMessage(rolledItem);
                 closeItemPickUI();
                 return;
             }
-         
+
             totalStatChange = foundItemStat - oldItemStat;
-            if (totalStatChange <= 0) foundItem = rolledItem.gameObject.name + ", Defense: " + foundItemStat + "(<color=red>" + totalStatChange + "</color>)";
-                else foundItem = rolledItem.gameObject.name + ", Defense: " + foundItemStat + "(<color=green>+" + totalStatChange + "</color>)";
+            foundItemText = rolledItem.gameObject.name + "   (<sprite=" + 1 + "><color=" + (totalStatChange <= 0 ? "green" : "red") + ">+" + foundItemStat + "</color>)";
             oldItemText = playerData.armor.gameObject.name + ", Defense: " + oldItemStat;
+            newItemSprite.sprite = itemIcons[1];
+            //oldItemSprite.sprite = itemIcons[1];
         }
-        else if (rolledItem is Accessory) {
+        else if (rolledItem is Accessory)
+        {
             if (rolledItem.name == playerData.accessory.name)
             {
-                GameData.Instance.townAccessories.Add(playerData.accessory);
-                sendGabToTownMessage(playerData.accessory);
+                GameData.Instance.townAccessories.Add((Accessory)rolledItem);
+                sendGabToTownMessage(rolledItem);
                 closeItemPickUI();
                 return;
             }
+            foundItemText = rolledItem.gameObject.name + " TODO: Brief Desc.";
+            oldItemText = playerData.armor.gameObject.name + " TODO: Brief Desc.";
+            newItemSprite.sprite = itemIcons[2];
+            //oldItemSprite.sprite = itemIcons[2];
         }
 
-        foundItemText.text = foundItem;
+        this.foundItemText.text = foundItemText;
         currentItemText.text = oldItemText;
-        foundItemSprite.GetComponent<Image>().sprite = rolledItem.GetComponent<InventoryItem>().itemIcon;
-        newItemSprite.GetComponent<Image>().sprite = rolledItem.GetComponent<InventoryItem>().itemIcon;
-        itemKeepText.text = "Equip " + rolledItem.gameObject.name;
-        sendHomeText.text = "Send " + rolledItem.gameObject.name + " Home";
+        //foundItemSprite.GetComponent<Image>().sprite = rolledItem.GetComponent<InventoryItem>().itemIcon;
+        //newItemSprite.GetComponent<Image>().sprite = rolledItem.GetComponent<InventoryItem>().itemIcon;
     }
 
     private void sendGabToTownMessage(InventoryItem itemSent)
