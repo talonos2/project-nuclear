@@ -84,27 +84,111 @@
 		Logos: Are you alright?
 		Norma: Yeah, I'm fine.
 		Jezerine: You handled all those monsters like it was nothing!
+		Norma: Sure? I mean, what was the big deal anyway?
+		Norma: Least I usually just had to deal with them one at a time.
+		Norma: It's not like it was a stampede or anything.
+		Norma: Oye! Hero boy!
+		Douglass: I'm guessing that's me?
+		Norma: Really appreaciate you coming by and all.
+		Norma: But maybe you should be looking into a new line of work.
+		Douglass: Excuse me?
+		Norma: I'm just sayin'[br]If any random cowgirl can bust monster heads better than you, mabye hero work ain't what you're cut out for.
+		Douglass: I... will consider it.
+		Douglass: May I have my stuff back?
+		Norma: Sure, just don't get yourself in trouble.
+		Norma: If anybody needs me I'll be out making sure the sheep don't drown themselve or something.
+
+
 		
 		
 		@exit
 
 		
 		#day6
-		@char Elder
-		Elder: When I was young, my brother tricked me into wearing an outfit like this and chaising birds out of our field.
+		
+
+		Tasha: Hey! Who's messing around over here?
+		Tasha: It's you?
+		Derringer: Oh, I'm afraid I didn't hear you.
+		Tasha: They're looking all over for you![br]You just... went back to work?
+		Derringer: I'm afraid I'm not one for crowds.
+		Derringer: Besides, I had a job to finish.[br]Don't like leaving things undone.
+		Tasha: Job? You mean the sword...[br]For the cave.
+		Derringer: I'm afraid there are a lot of things you can do with a good sword.
+
+		@wait 1
+
+		Jezerine: Hey you found him! We've been looking all over for[br]Hey is that my sword?!
+		Derringer: I'm afraid it will be just a few more minutes.
+		Tasha: What's so important about this sword anyway?
+		Jezerine: It's going to be a replica of the sword used by Malrak The Impudent.
+		Tasha: Who?
+		Jezerine: You know, from the Cerulian Blight Saga.
+		Derringer: I'm afraid the look of the scoring from wyvern blood took longer than I expected.
+		Jezerine: Hey, did it get chipped?
+		Derringer: I'm afraid Malrak slew the wyvern in book four. So it needs to show the damage from the battle with his half-brother in book three.
+		Jezerine: Oh yeah. But it's before the eight sunrise right?
+		Tasha: I'm just going to leave you two to... whatever this is.
+		Tasha: There's a feast, if you care.
+
+
+
 		@exit
 
 		
 		#day7
-		@char Elder
-		Elder: It's good to see people taking action.
+
+
+		Melvardius: In ages past the gods were many.[br]Splintered across the cosmos.
+		Melvardius: They were beings of great power and small understanding.
+		Melvardius: Each thought themselves too different from the others to ever trust them.
+		Melvardius: So they sought out beings of great wisdom, but little might, to mediate their conflict.
+		Melvardius: And in exchange for peace, they offered their power.
+		Melvardius: In time our ancestors, those small beings, began to see the god's similitude. But true progress came when humanity could no longer see their differences.
+		Melvardius: First they viewed the Soil, the Sea, and the Sky and saw what they all shared.
+		Melvardius: Those came together to form our world, and in time they worked so closely together that they became inseperable.
+		Melvardius: Their old names were forgotten, and now they are Tellus, with dominion over substance.
+		Melvardius: Others followed, in time we began to see that Lodestone and Lightning were joined in a dance of--
+		Tristana: Wait! Is... is this just going to be a normal sermon?
+		Melvardius: Ahem.
+		Melvardius: I wish to lay a foundation for us to--
+		Tristana: You just smote like a hundred monsters, and you're not even going to talk about it?
+		Melvardius: While sometimes nessissary, our goal should not be to destroy that which we do not understand.
+		Murtough: Ya were pretty good at it though.
+		Melvardius: Be that as it may.
+		Melvardius: The goal of our faith is to bring together all in unity.
+		Melvardius: We ought not hate something because it is different from us. We ought to seek to be one with it.
+		Melvardius: Just as Tempus and Gravitas saw that together they were...
+		Darius: Dad, do we have to stay for all this?
+		Paul: We do boy, we do.
+		
 		@exit
 		
 
 		#day8
-		@char Elder
-		Elder: This isn't as easy as he makes it look.
-		@fwturnpawn n:PawnElder d:n
+
+		Mara: I don't know about you lot, but I'm in the mood for another round!
+		Mara: Alright ya ruffians, who's up for trying one of my new ales?
+		Murtough: Always!
+		McDermit: I'm not sure. That last ice cider was a tad, crunchy.
+		Mara: You won't have to worry about that on this batch.
+		Mara: Finally got a still tough enough to run on lava.[br]Lets see what came out of it!
+		McDermit: Maybe next time.
+		Mara: If you're worried about your tender tummy I'll throw in a shot of green fountain gin for a chaser.
+
+		@Wait 1
+
+		Sarah: You know, I kinda liked that old deer head you had in here.
+		Mara: What? The one with the missing antler?
+		Sarah: Yeah, it gave it kind of a rustic charm. Like there was a story to it.
+		Sarah: These ones just... give me the heebie jeebies.
+		Mara: What do you mean? These trophies have stories to them.
+		McDermit: Kind of all the same story though right?
+		Jezerine: And it's an awesome story!
+		Elder: Sure, sure... they're just a bit... intense.
+		Mara: Don't worry, hun. I'm sure you'll get used to 'em.
+		
+
 		@exit
 
 		
@@ -411,10 +495,40 @@
 		
 		#day12
 
-		good: 
-		med: 
-		bad: 
+		Jezerine: Did you see that?!
+		Jezerine: I did it!  I totally just cleaned the floor with like a thousand monsters!
+		Jezerine: I am unstoppable!
+		Stranger: Yeah, um, thanks miss.
+		Jezerine: The name's Jezerine, or maybe I need some cool deed-name after all this.
+		Jezerine: Something mysterious, but with allusions to my tragic backstory.
+		Svenra: I thought she was tough to put up with before...
+		Nelson: Josephine! You made it!
+		Jezerine: Really? Now? You're coming at me with that now?
+		Nelson: I just—I'm so happy to see you made it!
+		Jezerine: I was just about to... Yeah okay, thanks bro.
 
+		@wait 1
+
+		Jezerine: But I've got to figure out where to go from here.
+		Jinn: Where?
+		Jezerine: Yeah, I've got to keep this adventure rolling!
+		Jezerine: This will make for such a great origin story.
+		Jezerine: I was worried my home town would have to be destroyed.[br]I mean, we did come close.
+		Wilson: Thank goodness for small favors I suppose.
+		Melvardius: We are all very thankful for what you have done.[br]And impressed.
+		Melvardius: I think we should all rest from our ordeal.
+		Derringer: I do still have to finish your blade.
+		Tedd: You can't go just yet!
+		Tedd: We need to write down your story for the town's historical records!
+		Jezerine: Oh come on guys, I wasn't going to just dash down the road right away.
+		Jezerine: I still have to get some supplies, a new outfit, a squire...
+		Pendleton: Not it.
+		Wilson: Certainly, we'll help how we can, but now, lets just celibrate!
+
+		@wait 2
+
+		Reya: Cute kid.
+		Reya: Reminds me of me at her age.
 
 
 		@exit
@@ -422,11 +536,6 @@
 
 
 		#day13 ; complete
-
-
-		good: turns his life around.
-		med: still drunk
-		bad: doesn't even come out.
 
 		@if Perfect
 
@@ -530,10 +639,30 @@
 
 		#day14
 
+		Tristana: Right, right, but what did YOU do to defeat the monsters?
+		Tedd: I keep telling you, it was an effort by the whole town. I can't take credit.
+		Tristana: Yes, you do keep telling me that...
+		Tristana: Ugh.[br]Give me a minute to go over my notes.
 
-		good: 
-		med: 
-		bad: 
+		@wait 1
+
+		Todd: Could you be more of a dweeb?
+		Tedd: I could do anything if I set my mind to it.
+		Todd: Okay, you're doing this on purpose now.
+		Tedd: A bit.
+		Tedd: I mean it though, you helped.[br]We couldn't have done it without you.
+		Todd: I wasn't trying to help. I was chasing dumb shadows.
+		Tedd: Look, things have been rough for all of us.[br]Even before this all happened.
+		Tedd: Can we just go back to the way we were before?
+		Todd: I didn't like things before.
+		Tedd: Fine, something new then?
+		Todd: If people can overlook the dumb stuff I've done.
+		Tedd: They try to make fun of you, I'll tell them to stop.
+		Tedd: And they'll have to listen to me, because I'm a hero now and all that.
+		Todd: I thought you weren't taking credit?
+		Tedd: For you? I might.
+
+
 
 		@exit
 
