@@ -14,6 +14,8 @@ public class BossSpawnAnimator : MonoBehaviour
     private bool spawnBoss;
     public GameObject bossSpawnedPrefab;
     private float offsetFix = .00001f;
+    public float yPositionSpawning=-10.5f;
+    public float xPositionSpawning = 0;
 
     void Start()
     {
@@ -26,7 +28,7 @@ public class BossSpawnAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ThePlayer.transform.position.y>-9.5f&& !spawnBoss) {
+        if (ThePlayer.transform.position.y>= yPositionSpawning && ThePlayer.transform.position.x== xPositionSpawning && !spawnBoss) {
             spawnBoss = true;
             sRender.enabled = true;
             sRender.material.SetFloat("_Frame", currentFrame+offsetFix);
@@ -41,11 +43,12 @@ public class BossSpawnAnimator : MonoBehaviour
             currentFrame += 1;
             if (currentFrame >= totalFrames)
             {
-                Instantiate(bossSpawnedPrefab, this.transform.position + new Vector3(0, -.75f, -10), Quaternion.identity);
-                Destroy(this.gameObject);
+                Instantiate(bossSpawnedPrefab, this.transform.parent.position, Quaternion.identity);
+                Destroy(this.transform.parent.gameObject);
             }
-            else {
-                sRender.material.SetFloat("_Frame", currentFrame+ offsetFix);
+            else
+            {
+                sRender.material.SetFloat("_Frame", currentFrame + offsetFix);
                 frameCounter = 0;
             }
 

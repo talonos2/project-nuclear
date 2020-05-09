@@ -76,6 +76,7 @@ public class SwitchEntityData : EntityData
                 float time = (times.Length > x ? times[x]:0);
                 SpikeController spikeControlled = tiedEntity.GetComponent<SpikeController>();
                 BridgeController bridgeControlled = tiedEntity.GetComponent<BridgeController>();
+                WindJumpController windJumpControlled = tiedEntity.GetComponent<WindJumpController>();
                 if (spikeControlled != null)
                 {
                     spikeControlled.OpenAfterTime(time);
@@ -84,6 +85,11 @@ public class SwitchEntityData : EntityData
                 {
                     if (bridgeControlled.isPlatformTerrain) { bridgeControlled.removePlatform(); }
                     else { bridgeControlled.addPlatform(); }
+                }
+                if (windJumpControlled != null)
+                {
+                    windJumpControlled.EnableWindJumper();
+
                 }
 
 
