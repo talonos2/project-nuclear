@@ -7,13 +7,13 @@ public class MusicLoop : MonoBehaviour
 {
     public AudioClip intro;
     public AudioClip loop;
+    public float overrideIntroOffset;
 
     internal AudioSource audioSource;
 
     public void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.loop = true;
     }
 
     public void StartIntro()
@@ -27,8 +27,14 @@ public class MusicLoop : MonoBehaviour
         {
             audioSource.clip = intro;
             audioSource.Play();
-            yield return new WaitForSeconds(audioSource.clip.length);
+            while (audioSource.time<(audioSource.clip.length-Time.deltaTime))
+            {
+                Debug.Log("Here yielding: " + audioSource.time + ", " + audioSource.isPlaying);
+                yield return null;
+            }
         }
+        audioSource.loop = true;
+        Debug.Log("Done waiting.");
         audioSource.clip = loop;
         audioSource.Play();
     }
