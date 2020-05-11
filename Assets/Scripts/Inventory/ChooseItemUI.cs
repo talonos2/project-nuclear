@@ -61,13 +61,17 @@ public class ChooseItemUI : MonoBehaviour
     private void SelectEquip()
     {
         equipItemButton.sprite = equipOn;
+        equipItemButton.rectTransform.localScale = Vector3.one*1.1f;
         sendItemHomeButton.sprite = sendOff;
+        sendItemHomeButton.rectTransform.localScale = Vector3.one;
     }
 
     private void SelectSendHome()
     {
         equipItemButton.sprite = equipOff;
+        equipItemButton.rectTransform.localScale = Vector3.one;
         sendItemHomeButton.sprite = sendOn;
+        sendItemHomeButton.rectTransform.localScale = Vector3.one * 1.1f;
     }
 
     private void ChooseItem()
@@ -140,7 +144,7 @@ public class ChooseItemUI : MonoBehaviour
                 return;
             }
             totalStatChange = foundItemStat - oldItemStat;
-            foundItemText = rolledItem.gameObject.name + "   (<sprite="+0+"><color="+(totalStatChange<=0? "green":"red")+">+"+foundItemStat+"</color>)";
+            foundItemText = rolledItem.gameObject.name + "   (<sprite="+0+"><color="+(totalStatChange<=0? "red" : "green") +">+"+foundItemStat+"</color>)";
             oldItemText = playerData.weapon.gameObject.name + "  " + oldItemStat;
             newItemSprite.sprite = itemIcons[0];
             //oldItemSprite.sprite = itemIcons[0];
@@ -159,7 +163,7 @@ public class ChooseItemUI : MonoBehaviour
             }
 
             totalStatChange = foundItemStat - oldItemStat;
-            foundItemText = rolledItem.gameObject.name + "   (<sprite=" + 1 + "><color=" + (totalStatChange <= 0 ? "green" : "red") + ">+" + foundItemStat + "</color>)";
+            foundItemText = rolledItem.gameObject.name + "   (<sprite=" + 1 + "><color=" + (totalStatChange <= 0 ? "red" : "green") + ">+" + foundItemStat + "</color>)";
             oldItemText = playerData.armor.gameObject.name + ", Defense: " + oldItemStat;
             newItemSprite.sprite = itemIcons[1];
             //oldItemSprite.sprite = itemIcons[1];
@@ -193,7 +197,7 @@ public class ChooseItemUI : MonoBehaviour
 
     private void closeItemPickUI()
     {
-
+        SelectSendHome();
         chooseItemUiCanvas.enabled = false;
         GameState.isInBattle = false;
         pickingItem = false;
