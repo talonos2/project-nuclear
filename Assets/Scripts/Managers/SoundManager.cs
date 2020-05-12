@@ -11,7 +11,7 @@ public class SoundManager : Singleton<SoundManager>
     // Start is called before the first frame update
     void Start()
     {
-        audioSrc = GetComponent<AudioSource>();
+        audioSrc = this.gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
