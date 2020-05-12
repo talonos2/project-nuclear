@@ -228,6 +228,7 @@ public class CharacterStats : Stats
         setWeaponStats(weapon);
         setArmorStats(armor);
         setAccessoryStats(accessory);
+        NewCrystalLevelController.SetCrystalBuffs();
         setMaxStats();
         setFullHPMP();
 
@@ -248,9 +249,9 @@ public class CharacterStats : Stats
     {
         MaxMana = baseMaxMana+ManaCrystalBuff+(int)accessoryMana;
         MaxHP = baseMaxHealth + HealthCrystalBuff+(int)accessoryHealth;
-        if (HP > MaxHP)
+        //if (HP > MaxHP)
             HP = MaxHP;
-        if (mana > MaxMana)
+        //if (mana > MaxMana)
             mana = MaxMana;
         attack = baseAttack + AttackCrystalBuff+weaponBonusAttack+accessoryAttack;
         defense = baseDefense + defenseCrystalBuff+armorBonusDefense+accessoryDefense;

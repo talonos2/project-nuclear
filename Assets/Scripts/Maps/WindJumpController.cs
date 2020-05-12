@@ -12,8 +12,9 @@ public class WindJumpController : DoodadData
     public void EnableWindJumper() {
         hiddenJumpter = false;
         isWindShifter = true;
-        foreach (GameObject childObj in this.transform){
-            childObj.GetComponent<MeshRenderer>().enabled = true;
+        foreach (MeshRenderer childObj in this.transform.gameObject.GetComponentsInChildren<MeshRenderer>())
+        {
+            childObj.enabled = true;
         }
 
     }

@@ -45,8 +45,8 @@ public class EndRunScreenController : MonoBehaviour
         CutsceneLoader.runTownBackDialogue = true;
         GameData.Instance.RunNumber += 1;
         GameData.Instance.FloorNumber = 0;
+        NewCrystalLevelController.AddCrystalsPostRun();
         GameData.Instance.autoSaveStats();
-        NewCrystalLevelController.SetCrystalBuffs();
         GameData.Instance.SetNextLocation(new Vector2Int(-4,-13), SpriteMovement.DirectionMoved.DOWN);
         SceneManager.LoadScene("TownMap_1");
     }
