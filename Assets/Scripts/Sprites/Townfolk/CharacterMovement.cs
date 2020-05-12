@@ -264,7 +264,7 @@ public class CharacterMovement : SpriteMovement
     internal void PowerUpCheat()
     {
         playerStats.AddExp(100000);
-        //playerStats.powersGained = 4;
+        playerStats.powersGained = 4;
     }
 
     private void CheckWindJumpStatus()
