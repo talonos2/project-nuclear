@@ -214,7 +214,7 @@ public class Combat : MonoBehaviour
             else
             {
                 blade.SpawnErrorParticles();
-                SoundManager.PlaySound("badClick");
+                SoundManager.Instance.PlaySound("badClick");
             }
         }
         else
@@ -347,8 +347,8 @@ public class Combat : MonoBehaviour
     {
         float incomingDamage = (int)playerStats.attack;
 
-        if (goodHit) { SoundManager.PlaySound(monsterStats.goodHit); }
-        else { SoundManager.PlaySound(monsterStats.badHit); }
+        if (goodHit) { SoundManager.Instance.PlaySound(monsterStats.goodHit); }
+        else { SoundManager.Instance.PlaySound(monsterStats.badHit); }
 
 
         incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent/100);
@@ -426,8 +426,8 @@ public class Combat : MonoBehaviour
     private void DealDamageToPlayer()
     {
 
-        if (goodBlock) { SoundManager.PlaySound(monsterStats.goodBlock); }
-        else { SoundManager.PlaySound(monsterStats.badBlock); }
+        if (goodBlock) { SoundManager.Instance.PlaySound(monsterStats.goodBlock); }
+        else { SoundManager.Instance.PlaySound(monsterStats.badBlock); }
 
         float incomingDamage = monsterStats.attack;
         incomingDamage -= playerStats.defense;
