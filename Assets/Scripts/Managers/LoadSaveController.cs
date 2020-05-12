@@ -16,6 +16,7 @@ public class LoadSaveController : MonoBehaviour
     internal static int saveSlotSelected = 0;
     internal static MetadataList metaListObject = new MetadataList();
     public Canvas aCanvasThis;
+    public NewGameController newGameButton;
 
     // Start is called before the first frame update
 
@@ -181,7 +182,7 @@ public class LoadSaveController : MonoBehaviour
         if (!LoadGame()) {
             Debug.Log("Failed to Load Game");
         }
-        this.GetComponentInParent<NewGameController>().StartNewGameActual();
+        newGameButton.StartNewGameActual();
         
     }
     public void canelLoad() {
