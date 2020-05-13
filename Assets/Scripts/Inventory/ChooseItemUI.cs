@@ -22,6 +22,7 @@ public class ChooseItemUI : MonoBehaviour
     private CharacterStats playerData;
     private InventoryItem rolledItem;
 
+    public int selectedButton = -1;
     public Sprite equipOn;
     public Sprite equipOff;
     public Sprite sendOn;
@@ -31,7 +32,7 @@ public class ChooseItemUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SelectSendHome();
+        SelectButton(1);
     }
 
     // Update is called once per frame
@@ -43,13 +44,13 @@ public class ChooseItemUI : MonoBehaviour
         if (Input.GetAxis("Horizontal")>.05f )
         {
             optionSelected = 0;
-            SelectEquip();
+            SelectButton(0);
         }
 
         if (Input.GetAxis("Horizontal") < -.05f)
         {
             optionSelected = 1;
-            SelectSendHome();
+            SelectButton(1);
         }
 
         if (Input.GetButtonDown("Submit"))
@@ -58,26 +59,41 @@ public class ChooseItemUI : MonoBehaviour
         }
     }
 
-    private void SelectEquip()
+    public void SelectButton(int buttonToSelect)
     {
-        equipItemButton.sprite = equipOn;
-        equipItemButton.rectTransform.localScale = Vector3.one*1.1f;
-        sendItemHomeButton.sprite = sendOff;
-        sendItemHomeButton.rectTransform.localScale = Vector3.one;
-    }
+        if (buttonToSelect != selectedButton && selectedButton != -1)
+        {
+            SoundManager.Instance.PlaySound("MenuMove");
+        }
 
-    private void SelectSendHome()
-    {
-        equipItemButton.sprite = equipOff;
-        equipItemButton.rectTransform.localScale = Vector3.one;
-        sendItemHomeButton.sprite = sendOn;
-        sendItemHomeButton.rectTransform.localScale = Vector3.one * 1.1f;
+        switch (buttonToSelect)
+        {
+            case 0:
+                equipItemButton.sprite = equipOn;
+                equipItemButton.rectTransform.localScale = Vector3.one * 1.1f;
+                sendItemHomeButton.sprite = sendOff;
+                sendItemHomeButton.rectTransform.localScale = Vector3.one;
+                return;
+            case 1:
+                equipItemButton.sprite = equipOff;
+                equipItemButton.rectTransform.localScale = Vector3.one;
+                sendItemHomeButton.sprite = sendOn;
+                sendItemHomeButton.rectTransform.localScale = Vector3.one * 1.1f;
+                return;
+        }
     }
 
     private void ChooseItem()
     {
         if (!pickingItem) { return; }
-
+        if (optionSelected == 0)
+        {
+            SoundManager.Instance.PlaySound("MenuNope");
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound("MenuOkay");
+        }
         if (rolledItem is Weapon)
         {
             if (optionSelected == 0)
@@ -197,7 +213,8 @@ public class ChooseItemUI : MonoBehaviour
 
     private void closeItemPickUI()
     {
-        SelectSendHome();
+        selectedButton = -1;
+        SelectButton(1);
         chooseItemUiCanvas.enabled = false;
         GameState.isInBattle = false;
         pickingItem = false;

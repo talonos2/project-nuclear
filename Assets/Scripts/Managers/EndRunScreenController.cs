@@ -38,6 +38,7 @@ public class EndRunScreenController : MonoBehaviour
 
     public void EndRunAndLoadTown()
     {
+        SoundManager.Instance.PlaySound("MenuOkay");
         if (GameData.Instance.RunNumber == 1) {
             GameData.Instance.isCutscene = true;
             CutsceneLoader.postRun1Cutscene = true;
@@ -55,6 +56,7 @@ public class EndRunScreenController : MonoBehaviour
     {
         if (on)
         {
+            SoundManager.Instance.PlaySound("MenuMove");
             carryOnButton.sprite = carryOnOn;
         }
         else

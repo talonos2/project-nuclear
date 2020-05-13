@@ -21,7 +21,7 @@ public class NewGameController : MonoBehaviour
     public Sprite[] onImages;
     public Sprite[] offImages;
 
-    private int currentMenuOptionSelected;
+    private int currentMenuOptionSelected = -1;
 
     void Start()
     {
@@ -43,6 +43,7 @@ public class NewGameController : MonoBehaviour
                     //TODO: This
                     break;
                 case 2:
+                    SoundManager.Instance.PlaySound("MenuOkay");
                     loadSaveController.activateLoad();
                     break;
                 case 3:
@@ -80,6 +81,10 @@ public class NewGameController : MonoBehaviour
 
     public void RefreshSelectedOption(int menuOptionSelected)
     {
+        if (menuOptionSelected != currentMenuOptionSelected && currentMenuOptionSelected != -1)
+        {
+            SoundManager.Instance.PlaySound("MenuMove");
+        }
         //TODO: Skip continue and load game if there's no game to load or continue. (Repeat check here because of mouse.)
         currentMenuOptionSelected = menuOptionSelected;
         selectionMarker.GetComponent<RectTransform>().localPosition = new Vector3(-70, -110 - 20 * menuOptionSelected, 0);
@@ -107,6 +112,7 @@ public class NewGameController : MonoBehaviour
 
     }
     public void StartNewGame (){
+        SoundManager.Instance.PlaySound("MenuOkay");
         Text runVariable=RunNumberTextField.GetComponent <Text> ();
         Dropdown runType = dropDown.GetComponent<Dropdown>();
 
