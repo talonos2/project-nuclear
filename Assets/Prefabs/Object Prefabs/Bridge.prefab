@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6d3404b5471cd1c40baeb822a3bc5520, type: 2}
+  - {fileID: 2100000, guid: e608e064f53a43042adebd8e56093cef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actualGround: 0
+  additionalZOffset: 0
   groundItem: 1
   belowGroundItem: 0
   aboveItem: 0
@@ -178,6 +179,7 @@ MonoBehaviour:
   isBackgroundCharacter: 0
   isSpike: 0
   isPassable: 0
+  invisibleBridge: 0
   primBridge: 0
   primShortcutBridge: 0
   primConnectionNumber: 0
