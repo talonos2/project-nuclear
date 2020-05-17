@@ -34,7 +34,6 @@ public class MusicLoop : MonoBehaviour
             }
         }
         audioSource.loop = true;
-        Debug.Log("Done waiting.");
         audioSource.clip = loop;
         audioSource.Play();
     }

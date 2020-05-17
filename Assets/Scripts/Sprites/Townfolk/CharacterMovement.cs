@@ -185,6 +185,11 @@ public class CharacterMovement : SpriteMovement
         }
 
         sRender.material.SetInt("_IsSmoke", (GameData.Instance.hasted?1:0));
+        if (GameData.Instance.hasted&& !smoke.isPlaying)
+        {
+            smoke.Play();
+            smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
+        }
         sRender.material.SetInt("_IsStealthed", (GameData.Instance.stealthed?1:0));
 
     }

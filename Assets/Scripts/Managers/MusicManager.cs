@@ -87,7 +87,6 @@ public class MusicManager : MonoBehaviour
             {
                 fadeLengths[x] -= Time.deltaTime;
                 music[x].audioSource.volume = Mathf.Lerp(fadeStartVolumes[x], fadeVolumes[x], 1 - (fadeLengths[x] / fadeStartTimes[x]))*music[x].additionalBalance;
-                Debug.Log(music[x].name+", "+music[x].audioSource.volume+", "+ music[x].additionalBalance);
                 if (music[x].audioSource.volume <= 0)
                 {
                     music[x].audioSource.Stop();

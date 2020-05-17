@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Combat : MonoBehaviour
 {
@@ -42,12 +43,18 @@ public class Combat : MonoBehaviour
     private GameObject combatFolder;
     private int phaseLastFrame;
     private GameData gameData;
+    private GameObject monsterHPBarHolder;
+    private Image monsterHPBar;
 
     GameObject hitsplatTemplate;
+
+    private static readonly float finalMonsterHPBarPosition = 18.483f;
+    private static readonly float startMonsterHPBarPosition = 24.5f;
 
     private void Init(Enemy monsterStats, CharacterStats playerStats, GameObject monsterToDelete)
     {
         MusicManager.instance.TurnOnCombatMusic();
+
 
         AttackAnimationManager aam = AttackAnimationManager.Instance;
         aam.LoadCombatPawns(monsterStats, playerStats);
@@ -69,7 +76,14 @@ public class Combat : MonoBehaviour
         eRenderer.sprite = monsterStats.combatSprites[0];
 
         combatFolder = Camera.main.transform.Find("UI").Find("Combat").gameObject;
+        combatFolder = Camera.main.transform.Find("UI").Find("Combat").gameObject;
         combatDarkening = Camera.main.transform.Find("UI").Find("DarkeningPlane").gameObject.GetComponent<Renderer>();
+        monsterHPBarHolder = Camera.main.transform.Find("UI").Find("Bars Canvas").Find("Enemy HP Bar Back").gameObject;
+        monsterHPBarHolder.GetComponent<Image>().color = Color.white;
+        monsterHPBarHolder.GetComponent<RectTransform>().localPosition = new Vector3(startMonsterHPBarPosition, monsterHPBarHolder.GetComponent<RectTransform>().localPosition.y, monsterHPBarHolder.GetComponent<RectTransform>().localPosition.z);
+        monsterHPBar = monsterHPBarHolder.transform.Find("Enemy HP Bar").GetComponent<Image>();
+        monsterHPBar.GetComponent<UIEHPScript>().BindToMonster(monsterStats);
+        monsterHPBar.color = Color.white;
 
         blade = Camera.main.transform.Find("UI").Find("Switchblade").Find("blade").gameObject.GetComponent<UISwitchbladeScript>();
         blade.StartOpen();
@@ -127,6 +141,9 @@ public class Combat : MonoBehaviour
     private void HandleExitRoutine()
     {
         float amountThrough = exitTimer / EXIT_TIME;
+
+        monsterHPBar.color = new Color(1, 1, 1, 1-amountThrough);
+        monsterHPBarHolder.GetComponent<Image>().color = new Color(1, 1, 1, 1-amountThrough);
 
         if (exitStartPos == new Vector3(-1000, -1000, -1000))
         {
@@ -459,6 +476,8 @@ public class Combat : MonoBehaviour
         Vector3 targetPos = monsterStats.homePositionOnScreen;
         Vector3 lerpedPos = Vector3.Lerp(startPos, targetPos, amountThrough);
         monsterSprite.transform.localPosition = lerpedPos;
+
+        monsterHPBarHolder.GetComponent<RectTransform>().localPosition = new Vector3(Mathf.Lerp(startMonsterHPBarPosition, finalMonsterHPBarPosition, amountThrough), monsterHPBarHolder.GetComponent<RectTransform>().localPosition.y, monsterHPBarHolder.GetComponent<RectTransform>().localPosition.z);
 
         startPos = playerStats.startPositionOnScreen;
         targetPos = playerStats.homePositionOnScreen;
