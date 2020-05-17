@@ -8,6 +8,7 @@ public class MusicLoop : MonoBehaviour
     public AudioClip intro;
     public AudioClip loop;
     public float overrideIntroOffset;
+    public float additionalBalance = 1.00f;
 
     internal AudioSource audioSource;
 
@@ -29,7 +30,6 @@ public class MusicLoop : MonoBehaviour
             audioSource.Play();
             while (audioSource.time<(audioSource.clip.length-Time.deltaTime))
             {
-                Debug.Log("Here yielding: " + audioSource.time + ", " + audioSource.isPlaying);
                 yield return null;
             }
         }

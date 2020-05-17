@@ -14,6 +14,7 @@ public class ExitController : DoodadData
     public bool townMap;
     public bool dungeonEntrance;
     public SpriteMovement.DirectionMoved exitFacing;
+    public AudioClip soundToPlayOnTransition;
 
 
     public void TransitionMap()
@@ -48,6 +49,10 @@ public class ExitController : DoodadData
 
         gameData.SetNextLocation(exitPosition, exitFacing);
 
+        if (soundToPlayOnTransition != null)
+        {
+            SoundManager.Instance.PlaySound(soundToPlayOnTransition);
+        }
         FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
         fadeout.InitNext(mapToLoad);
         GameObject.Destroy(this);

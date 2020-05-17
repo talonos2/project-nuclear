@@ -58,11 +58,17 @@ MonoBehaviour:
   isTeleporter: 0
   isExit: 1
   isBlockableTerrain: 0
+  isTallBlockableTerrain: 0
   isBackgroundCharacter: 0
+  isSpike: 0
+  isPassable: 0
   mapToLoad: Map1-1
-  nextMapLevel: 3
   exitPosition: {x: 0, y: 0}
+  townMap: 0
+  dungeonEntrance: 0
   exitFacing: 0
+  soundToPlayOnTransition: {fileID: 8300000, guid: 4b59daef23b6cda4095cc6552d564742,
+    type: 3}
 --- !u!65 &8295020037215701067
 BoxCollider:
   m_ObjectHideFlags: 0
