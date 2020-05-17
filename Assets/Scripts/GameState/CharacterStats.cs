@@ -66,7 +66,6 @@ public class CharacterStats : Stats
     public int currentPower = 0;
 
     private GameObject gameStateData;
-    private GameData gameData;
     private CharacterStats SavedStats;
     private GameObject equipmentData;
     private EquipmentData itemData;
@@ -76,17 +75,34 @@ public class CharacterStats : Stats
     {        
         gameStateData = GameObject.Find("GameStateData");
         equipmentData = GameObject.Find("EquipmentData");
-        gameData = gameStateData.GetComponent <GameData> ();
+        //gameData = gameStateData.GetComponent <GameData> ();
         itemData = equipmentData.GetComponent<EquipmentData>();
         SavedStats = gameStateData.GetComponent<CharacterStats>();
-        if (gameData.FloorNumber==0)
-        {            
+
+        /*if (gameData.FloorNumber == 0)
+        {
             SetupBaseStats();
             PushCharacterData();
         }
-        else {
-            SetupBaseStats();            
-            PullCharacterData(); }              
+        else
+        {*/
+        if (!GameData.Instance.statsSetup) {
+            GameData.Instance.statsSetup = true;
+            SetupBaseStats();
+        }
+
+        if (GameData.Instance.FloorNumber >= 1)
+        {
+            PullCharacterData();
+        }
+
+        
+    }
+
+    internal void setInitialStats()
+    {
+        SetupBaseStats();
+        PushCharacterData();
     }
 
     private void PullCharacterData()
@@ -100,14 +116,19 @@ public class CharacterStats : Stats
         this.defense = SavedStats.defense;
         this.experience = SavedStats.experience;
         this.expToLevel = SavedStats.expToLevel;
-        this.powersGained = gameData.PowersGained;
+        this.powersGained = GameData.Instance.PowersGained;
         this.currentPower = SavedStats.currentPower;
 
         this.HealthCrystalsGained = SavedStats.HealthCrystalsGained;
         this.ManaCrystalsGained = SavedStats.ManaCrystalsGained;
         this.AttackCrystalsGained = SavedStats.AttackCrystalsGained;
         this.defenseCrystalsGained = SavedStats.defenseCrystalsGained;
-        
+
+        this.HealthCrystalBuff = SavedStats.HealthCrystalBuff;
+        this.ManaCrystalBuff = SavedStats.ManaCrystalBuff;
+        this.defenseCrystalBuff = SavedStats.defenseCrystalBuff;
+        this.AttackCrystalBuff = SavedStats.AttackCrystalBuff;
+
         this.weapon = SavedStats.weapon;
         this.armor = SavedStats.armor;
         this.accessory = SavedStats.accessory;
@@ -116,6 +137,11 @@ public class CharacterStats : Stats
         this.baseDefense = SavedStats.baseDefense;
         this.baseMaxHealth = SavedStats.baseMaxHealth;
         this.baseMaxMana = SavedStats.baseMaxMana;
+
+        this.HealthPerLevel = SavedStats.HealthPerLevel;
+        this.ManaPerLevel = SavedStats.ManaPerLevel;
+        this.AttackPerLevel = SavedStats.AttackPerLevel;
+        this.DefensePerLevel = SavedStats.DefensePerLevel;
 
         setWeaponStats(weapon);
         setArmorStats(armor);
@@ -136,16 +162,27 @@ public class CharacterStats : Stats
         SavedStats.expToLevel = this.expToLevel;
         SavedStats.powersGained = this.powersGained;
         SavedStats.currentPower = this.currentPower;
-        gameData.PowersGained = this.powersGained;
+        GameData.Instance.PowersGained = this.powersGained;
 
         SavedStats.HealthCrystalsGained=this.HealthCrystalsGained;
         SavedStats.ManaCrystalsGained=this.ManaCrystalsGained;
         SavedStats.AttackCrystalsGained= this.AttackCrystalsGained;
         SavedStats.defenseCrystalsGained= this.defenseCrystalsGained;
+
+        SavedStats.HealthCrystalBuff = this.HealthCrystalBuff;
+        SavedStats.ManaCrystalBuff=this.ManaCrystalBuff ;
+         SavedStats.defenseCrystalBuff=this.defenseCrystalBuff ;
+         SavedStats.AttackCrystalBuff=this.AttackCrystalBuff ;
+
         SavedStats.baseAttack = this.baseAttack;
         SavedStats.baseDefense = this.baseDefense;
         SavedStats.baseMaxHealth = this.baseMaxHealth;
         SavedStats.baseMaxMana = this.baseMaxMana;
+
+        SavedStats.HealthPerLevel = this.HealthPerLevel ;
+        SavedStats.ManaPerLevel=this.ManaPerLevel;
+        SavedStats.AttackPerLevel     =   this.AttackPerLevel;
+        SavedStats.DefensePerLevel = this.DefensePerLevel;
 
         SavedStats.weapon = this.weapon;
         SavedStats.armor = this.armor;
@@ -157,77 +194,58 @@ public class CharacterStats : Stats
     private void SetupBaseStats()
     {
 
-        HealthCrystalBuff = GameData.Instance.HealhCrystalBonus;
-        ManaCrystalBuff = GameData.Instance.ManaCrystalBonus;
-        AttackCrystalBuff = GameData.Instance.AttackCrystalBonus;
-        defenseCrystalBuff = GameData.Instance.DefenseCrystalBonus;
+        gameStateData = GameObject.Find("GameStateData");
+        equipmentData = GameObject.Find("EquipmentData");
+        //gameData = gameStateData.GetComponent <GameData> ();
+        itemData = equipmentData.GetComponent<EquipmentData>();
+        SavedStats = gameStateData.GetComponent<CharacterStats>();
+
         Level = 1;
         SetExpToNextLevel();
-        
+
+        HealthPerLevel = 10;
+        ManaPerLevel = 10;
+        AttackPerLevel = 2f;
+        DefensePerLevel = 1;
+
+        baseMaxHealth = 150;
+        baseMaxMana = 100;
+        baseAttack = 10 ;
+        baseDefense = 0;
+
         if (MageClass) {
-            HealthPerLevel = 10;
             ManaPerLevel = 11;
-            AttackPerLevel = 2f;
-            DefensePerLevel = 1;
-
-            baseMaxHealth = 140+ HealthPerLevel*Level;
-            baseMaxMana = 95+ ManaPerLevel*Level;
-
-            baseAttack = 10+(int)AttackPerLevel*Level;
-            baseDefense = (int)DefensePerLevel*Level;
-
-}
+        }
         if (FighterClass) {
-            HealthPerLevel = 10;
-            ManaPerLevel = 10;
             AttackPerLevel = 2.2f;
-            DefensePerLevel = 1;
-
-            baseMaxHealth = 140 + HealthPerLevel * Level;
-            baseMaxMana = 90 + ManaPerLevel * Level;
-            baseAttack = 11 + (int)AttackPerLevel * Level;
-            baseDefense = (int)DefensePerLevel * Level;
-
-
         }
         if (SurvivorClass)
         {
-            HealthPerLevel = 10;
-            ManaPerLevel = 10;
-            AttackPerLevel = 2;
             DefensePerLevel = 1.1f;
-
-            baseMaxHealth = 140 + HealthPerLevel * Level;
-            baseMaxMana = 90 + ManaPerLevel * Level;
-            baseAttack = 10 + (int)AttackPerLevel * Level;
-            baseDefense = 1+(int)DefensePerLevel * Level;
-
         }
         if (ScoutClass) {
             HealthPerLevel = 11;
-            ManaPerLevel = 10;
-            AttackPerLevel = 2;
-            DefensePerLevel = 1;
-
-            baseMaxHealth = 154 + HealthPerLevel * Level;
-            baseMaxMana = 90 + ManaPerLevel * Level;
-            baseAttack = 10 + (int)AttackPerLevel * Level;
-            baseDefense = (int)DefensePerLevel * Level;
-
         }
 
-        if (gameData.RunNumber == 1) {
+
+        if (GameData.Instance.RunNumber == 1) {
             weapon = itemData.getRunOneWeapon();
            // attack += weapon.GetComponent<Weapon>().addAttack;
         }
         else {
             weapon = itemData.getRunTwoWeapon();
         }
+
         armor = itemData.getDefaultArmor();
         accessory = itemData.getEmptyAccessory();
         setWeaponStats(weapon);
         setArmorStats(armor);
         setAccessoryStats(accessory);
+        NewCrystalLevelController.SetCrystalBuffs();
+        HealthCrystalBuff = GameData.Instance.HealhCrystalBonus;
+        ManaCrystalBuff = GameData.Instance.ManaCrystalBonus;
+        AttackCrystalBuff = GameData.Instance.AttackCrystalBonus;
+        defenseCrystalBuff = GameData.Instance.DefenseCrystalBonus;
         setMaxStats();
         setFullHPMP();
 
@@ -242,6 +260,7 @@ public class CharacterStats : Stats
     {
         HP = MaxHP;
         mana = MaxMana;
+        
     }
 
     private void setMaxStats()

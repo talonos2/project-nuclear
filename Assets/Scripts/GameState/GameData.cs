@@ -79,7 +79,7 @@ public class GameData : Singleton<GameData>
     internal static Armor bestArmorFound;
     internal static Accessory bestAccessoryFound;
 
-
+    internal bool statsSetup=false;
 
     internal bool IsInTown()
     {
@@ -124,6 +124,12 @@ public class GameData : Singleton<GameData>
 
     void Update()
     {
+
+        if (bestTimes.Length != 20) {
+            GameState.fullPause = true;
+            Debug.Log("Broken bestTimes thing");
+        }
+
         if (GameState.fullPause || FloorNumber == 0 || pauseTimer) { return; }
 
         int tempSeconds = (int)(timer + Time.deltaTime);

@@ -38,6 +38,7 @@ public class EndRunScreenController : MonoBehaviour
 
     public void EndRunAndLoadTown()
     {
+        SoundManager.Instance.PlaySound("MenuOkay");
         if (GameData.Instance.RunNumber == 1) {
             GameData.Instance.isCutscene = true;
             CutsceneLoader.postRun1Cutscene = true;
@@ -45,8 +46,8 @@ public class EndRunScreenController : MonoBehaviour
         CutsceneLoader.runTownBackDialogue = true;
         GameData.Instance.RunNumber += 1;
         GameData.Instance.FloorNumber = 0;
+        NewCrystalLevelController.AddCrystalsPostRun();
         GameData.Instance.autoSaveStats();
-        NewCrystalLevelController.SetCrystalBuffs();
         GameData.Instance.SetNextLocation(new Vector2Int(-4,-13), SpriteMovement.DirectionMoved.DOWN);
         SceneManager.LoadScene("TownMap_1");
     }
@@ -55,6 +56,7 @@ public class EndRunScreenController : MonoBehaviour
     {
         if (on)
         {
+            SoundManager.Instance.PlaySound("MenuMove");
             carryOnButton.sprite = carryOnOn;
         }
         else

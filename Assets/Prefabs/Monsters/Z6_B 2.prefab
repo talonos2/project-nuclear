@@ -130,10 +130,17 @@ MonoBehaviour:
   crystalType: 5
   crystalDropAmount: 250
   combatSprites:
-  - {fileID: -4342108856110716953, guid: d2c292bd2369ddb4fbf5110e5f7a9906, type: 3}
-  - {fileID: 3143074863769290000, guid: d2c292bd2369ddb4fbf5110e5f7a9906, type: 3}
-  - {fileID: -1484161906994979111, guid: d2c292bd2369ddb4fbf5110e5f7a9906, type: 3}
-  - {fileID: -2004871348834255832, guid: d2c292bd2369ddb4fbf5110e5f7a9906, type: 3}
+  - {fileID: 5022146934275902205, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: -1664044190639463139, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: -8980623835426061417, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: -2790773071569642723, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: 2351758478013008267, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: 4262443333078587174, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: -1713980046867299491, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: 5606240727387392758, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: 1024887738644928492, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: 8790256904477445480, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
+  - {fileID: -2820789644524339004, guid: febe89fed1a739a4eb70cd3678c8b3cd, type: 3}
   attackAnimation: 0
   goodHit: {fileID: 0}
   badHit: {fileID: 0}
@@ -156,7 +163,6 @@ GameObject:
   - component: {fileID: 6622165687581963398}
   - component: {fileID: 6622165687581963397}
   - component: {fileID: 6622165687581963396}
-  - component: {fileID: 6622165687581963515}
   - component: {fileID: 3812631535142580969}
   m_Layer: 0
   m_Name: Sprite Info
@@ -204,7 +210,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bd991634859f5ec4fabb7cda1121434b, type: 2}
+  - {fileID: 2100000, guid: 97b544339bbef5c4cbd4fedcec2a081f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,21 +244,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &6622165687581963515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6622165687581963513}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e361028c7b85646a169a20665eb84e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hero: {fileID: 0}
-  mapr: {fileID: 0}
-  frame: 400
 --- !u!114 &3812631535142580969
 MonoBehaviour:
   m_ObjectHideFlags: 0

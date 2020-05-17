@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
-
 
     public static AudioClip potBreakSound, rockAttackStrongSound, rockAttackWeakSound;
     static AudioSource audioSrc;
@@ -12,12 +11,6 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*potBreakSound = Resources.Load<AudioClip>("potBreak");
-        rockAttackStrongSound = Resources.Load<AudioClip>("rockAttackStrong");
-        rockAttackWeakSound = Resources.Load<AudioClip>("rockAttackWeak");*/
-
-        audioSrc = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame
@@ -26,35 +19,21 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public static void PlaySound(string clip)
+    public void PlaySound(string clip)
     {
-        //AudioClip clipToPlay = Resources.Load<AudioClip>("Sounds/" + clip);
-        //audioSrc.PlayOneShot(clipToPlay);
-
-        audioSrc.PlayOneShot(Resources.Load<AudioClip>("Sounds/" + clip));
-
-
-        /*
-        switch (clip)
+        if (!audioSrc)
         {
-            case "potBreak":
-                audioSrc.PlayOneShot(potBreakSound);
-                break;
-            case "rockAttackStrong":
-                audioSrc.PlayOneShot(rockAttackStrongSound);
-                break;
-            case "rockAttackWeak":
-                audioSrc.PlayOneShot(rockAttackWeakSound);
-                break;
-
-
-        }*/
+            audioSrc = this.gameObject.AddComponent<AudioSource>();
+        }
+        audioSrc.PlayOneShot(Resources.Load<AudioClip>("Sounds/" + clip));
     }
 
-    public static void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip)
     {
+        if (!audioSrc)
+        {
+            audioSrc = this.gameObject.AddComponent<AudioSource>();
+        }
         audioSrc.PlayOneShot(clip);
-
-
     }
 }
