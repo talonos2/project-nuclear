@@ -54,24 +54,22 @@ public class SelectItemUIController : MonoBehaviour
 
     void Start()
     {
-        newPlayer = Instantiate<CharacterStats>(Players[GameData.Instance.RunNumber - 1], new Vector3(1000, 1000, 1000), Quaternion.identity);
+        newPlayer = Instantiate(Players[GameData.Instance.RunNumber - 1], new Vector3(1000, 1000, 1000), Quaternion.identity);
         newPlayer.GetComponent<CharacterMovement>().enabled = false;
         newPlayer.transform.GetChild(0).GetChild(0).GetComponent<SpriteShadowLoader>().enabled = false;
         newPlayer.GetComponent<EntityData>().enabled = false;
         newPlayer.GetComponent<BoxCollider>().enabled = false;
+
         GameObject.Destroy(newPlayer.transform.GetChild(1).gameObject);
         GameState.fullPause = true;
-
+        newPlayer.setInitialStats();
         savedStats = GameObject.Find("GameStateData").GetComponent<CharacterStats>();
 
         weaponUIPrefab.SetItem(savedStats.weapon);
         armorUIPrefab.SetItem(savedStats.armor);
         accessoryUIPrefab.SetItem(savedStats.accessory);
 
-        crystalAttackBonus.text = "+" + savedStats.AttackCrystalBuff;  //crystal buffs not set here
-        crystalDefenseBonus.text = "+" + savedStats.defenseCrystalBuff;
-        crystalManaBonus.text = "+" + savedStats.ManaCrystalBuff;
-        crystalHealthBonus.text = "+" + savedStats.HealthCrystalBuff;
+        updateTotalBonuses();
 
         currentEquipCategorySelected = 0;
         currentItemSelected = -1;
@@ -564,6 +562,7 @@ public class SelectItemUIController : MonoBehaviour
         armorUIPrefab.SetItem(itemToSwap);
         showItemSelected();
         ShowCurrentlySelectedOption();
+        updateTotalBonuses();
     }
 
     public void LoadGameButtonClicked()
@@ -587,6 +586,7 @@ public class SelectItemUIController : MonoBehaviour
         selectingAnItem = false;
         showItemSelected();
         ShowCurrentlySelectedOption();
+        updateTotalBonuses();
     }
 
     private void SwapWeapon()
@@ -598,6 +598,15 @@ public class SelectItemUIController : MonoBehaviour
         weaponUIPrefab.SetItem(itemToSwap);
         showItemSelected();
         ShowCurrentlySelectedOption();
+        updateTotalBonuses();
+    }
+
+    private void updateTotalBonuses()
+    {
+        crystalAttackBonus.text = "+" + savedStats.attack;  //setting full values now
+        crystalDefenseBonus.text = "+" + savedStats.defense;
+        crystalManaBonus.text = "+" + savedStats.MaxMana;
+        crystalHealthBonus.text = "+" + savedStats.MaxHP;
     }
 
     private void showItemSelected()

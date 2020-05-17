@@ -79,7 +79,7 @@ public class GameData : Singleton<GameData>
     internal static Armor bestArmorFound;
     internal static Accessory bestAccessoryFound;
 
-
+    internal bool statsSetup=false;
 
     internal bool IsInTown()
     {
