@@ -669,10 +669,35 @@
 		
 		#day15
 
+		Elder: Is he still in there?
+		Murtough: Yeah, he said to start without him.
+		Jinn: What's he doing in there?
+		Norma: He's been looking for any more loot that might be hiding down there.
+		Norma: Last I saw him he was practically digging up floor tiles.
+		Paul: It's odd though.
+		Paul: You'd think the supply chest would be overflowing by now.
+		Svenra: Now that he can take his time he don't have to share.
 
-		good: settles in town, brings son to woodsman
-		med: settles in town, implies hard rebuilding
-		bad: leaves, but regretful
+		@wait 1
+
+		Phillip: Hey, everyone getting on okay out here?
+		Norma: We're fine.
+		Norma: You missed a good party.
+		Svenra: So, you find enough treasure down there?
+		Phillip: Oh there's plenty down there. More than enough to get the town going again if we use it smartly.\
+		Phillip: But I wasn't coming out till I found something... priceless.
+
+		@wait 0.5
+		
+		Darius: Dad?
+		Paul: Son!
+
+
+
+
+;		good: settles in town, brings son to woodsman
+;		med: settles in town, implies hard rebuilding
+;		bad: leaves, but regretful
 
 
 		@exit
@@ -781,9 +806,43 @@
 		#day17
 
 
-		good: finds son
-		med: son dead, but moving on
-		bad: phillip is dead
+		Paul: There you are!
+		Paul: So tell me, did my boy behave himself in school today?
+		Jinn: He was a little monster, as always.
+		Paul: But a good little monster right?
+		Darius: Papa, I didn't get slime on anybody today!
+		Paul: Attaboy!
+		Jinn: Though it may be time to trim his claws again.
+		Darius: Aww, do I hafta?
+		Paul: Yes, but just until you finish your classes with Tasha.
+		Tedd: Hey Darius! Good job on the spelling bee today.
+		Paul: Oh? how'd you do kiddo?
+		Darius: I didn't beat the older kids, but I lasted a long time!
+		Paul: Good job![br]Come on, lets go home.
+
+		@wait 2
+
+		Darius: Dad, am I ever going to look like the other kids?
+		Paul: I don't know Son.[br]Miss Fluer said that bones usually... don't shrink.
+		Paul: But you never know. Mr Logos is finding neat stuff in that cave all the time.
+		Darius: When I grow up, will I live in a dungeon and guard treasure?
+		Paul: What? Who told you that?
+		Darius: Nobody.[br]But that's what monsters do isn't it?
+		Paul: Look Son, we may joke, but you're not a monster.
+		Paul: Being human isn't about how many fingers you have, it's about what's in your heart.
+		Paul: And as long as you're alive, that's all that matters.
+		Darius: But... if I wanted to guard treasure?
+		Paul: Hey, knock yourself out kid.
+
+
+
+
+
+
+
+		;good: finds son
+		;med: son dead, but moving on
+		;bad: phillip is dead
 
 
 
@@ -795,9 +854,48 @@
 		
 		#day18
 
-		good: 
-		med: 
-		bad: 
+
+		Tristana: So, what happened next?
+		Jinn: Oh, the town had a party, the evacuees started coming back, things kinda just went back to normal.
+		Tristana: What about the institute they're setting up?
+		Jinn: Yeah, a lot of sages are pretty excited about it. I'm just a schoolteacher.
+		Tristana: And...?
+		Jinn: And the resident advisor on Pre-Consalidrium artifacts.
+		Tristana: That's pretty good right?
+		Jinn: It's kind of an honorary position. They just want me to stay in town in case they come up with any questions.
+		Tristana: Like what?
+		Jinn: So far, just a lot of questions about things I wasn't paying attention to while running for my life.
+		Tristana: Well, I'm sure they'll come up with something eventaully.
+
+		@wait 1
+
+		Tristana: So, how are you?
+		Jinn: Your readers "demand to know"?
+		Tristana: No, just me.
+		Jinn: I feel, better.
+		Tristana: So, a harrowing underground experience might be just what you needed?
+		Jinn: Hardly.
+		Jinn: It's more like a research stipend is just what I needed.
+		Jinn: For years I was only making enough to buy food and keep a roof over my head.
+		Tristana: But you're still doing the same things you used to.
+		Jinn: I never hated the things I did.[br]I just didn't like having to do them.
+		Tristana: But you are still doing them.
+		Jinn: Yes, but I don't have to.
+		Jinn: I can do them because I want to.[br]Not because my survival depends on it.
+		Jinn: I could stop now, and not... die.
+		Tristana: That's a bit of an extreeme way to say it, isn't it?
+		Jinn: Maybe you think so now, but give it a decade or two.
+		Tristana: So... what next?
+		Jinn: I live my life without time breathing down my neck.
+		Jinn: That's good enough for me.
+		
+
+
+
+
+		;good: 
+		;med: 
+		;bad: 
 
 
 		@exit
@@ -805,18 +903,44 @@
 		
 		#day19
 
-		good: 
-		med: 
-		bad: 
+		Meyster: Ah, sunlight! It has been too long.
+		Meyster: Is that everyone?
+		Pendleton: I believe there are a few more.
+		Meyster: Then we return! One does not celibrate until the deed is done.
+		Pendleton: If you are up to it sire.[br]I'm sure there are others who can take it from here.
+		Meyster: I appreciate the concern.[br]One must know their own limits.
+		Meyster: But I wish to see my last adventure through to the end.
+		Pendleton: Sire?
+		Meyster: Aye lad, I think it may be time for me to retire.
+		Pendleton: ...
+		Meyster: You might say that I've finally slain a dragon.
+		Pendleton: I... see.
+
+		Meyster: I know that I have not always been the best knight, or mentor.
+		Meyster: One can only hope that you learned the right lessons.
+
+		Pendleton: I know things have not always been the best between us.
+		Pendleton: You try to hard to hold onto the past, and your grip... squishes it.
+		Meyster: Squishes?
+		Pendleton: I... yes, squishes.
+		Pendleton: You make it seem smaller, disfigured, and shaped too much by your hands.
+		Pendleton: You have been a great knight. And I know you can still be great, but perhaps not weilding a sword.
+		Meyster: Aye, that is probably true.
+		Pendleton: Through thick and thin, sire, I have appreciated my time with you.
+		Meyster: And I with you. Thank you for humoring this old man.
+		Pendleton: It's a good thing I did. Where would we be if I hadn't?
+
+
+
 
 		@exit
 
 		
 		#day20
 
-		good: leaves, but friendly
-		med: leaves, uncertain about who she spared and didn't
-		bad: leaves, implied off to become supervillian.
+		;good: leaves, but friendly
+		;med: leaves, uncertain about who she spared and didn't
+		;bad: leaves, implied off to become supervillian.
 
 		@if Perfect
 
@@ -967,8 +1091,7 @@
 			JohnDoe: Bin it, pointy hat.
 		@endif
 		Murtough: Look, I'm sorry.[br]What do you even want?
-		JohnDoe: I don't know.
-		JohnDoe: Gonna be an interesting day when I figure it out.
+		JohnDoe: When I figure it out.[br]You'll be the first to know.
 
 
 
@@ -1038,34 +1161,122 @@
 
 		
 		#day24
-		@char Elder
-		Elder: There aren't many of us left...
-		@fwturnpawn n:PawnElder d:n
+
+
+		Tasha: Nobody ever won a battle by themselves.
+		Tasha: Even a lone warrior wields a blade forged by another.
+		Tasha: Some days victory seems so far in the distance that you may never reach it.
+		Tasha: And sometimes, you won't.
+		Tasha: If you think something is truly worth having, you can even fight for someone else to have it.
+		Tasha: But you fight anyway. So that somewhere down the line, who knows how far, that victory will be gained.
+		Recruit: That's great and all...[br]I just came here to learn how to fight.
+		Recruit: I want to save the day, like you did.
+		Tasha: You think that's what I did?
+		Tasha: Douglass, me, and all the other warriors, we're just buying time.
+		Tasha: Pre-Consalidruim cathedrals keep cropping up. Someone has to find out why.
+		Tasha: We just kept them from blowing up before that.
+		Tasha: We're all just stepping stones.[br]There's nobility in that.
+		Recruit: Speaking of nobility... what's with the scarecrows? Couldn't we find a more suitable training dummy?
+		Tasha: Scarecrows are traditional.
+
 		@exit
 
 		
 		#day25
-		@char Elder
-		Elder: It even feels a bit colder now.
+
+		Fluer: I can't believe you defeated the curse!
+		Fluer: No offense, I mean...
+		Metra: Oh it's okay. I don't always save the day. Usually it's someone else.
+		Fluer: Usually?
+		Metra: There are thirty of us after all. Usually I don't even get a chance to try.
+		Fluer: I don't understand. We all saw you go in.
+		Metra: Well yes, that's this world. There are a whole bunch of others out there!
+		Metra: I'm glad I get to be experiencing this one though. It has been very exciting.
+		Fluer: I'm afraid to ask... Experiencing this one?
+		Fluer: Let me take a look at you, I think you might have hit your head.  I'll go get my treppaning kit.
+
+		Metra: No, stay. We can talk about something right? How are folks recovering?
+		Fluer: Why do you seem so nervous?
+		Metra: Because...
+		Metra: Because the interseting part is almost over.
+		Metra: And I don't know if anything comes after this.
+
+
+
 		@exit
 
 		
 		#day26
-		@char Elder
-		Elder: I can't quite make heads or tails of this.
-		@fwturnpawn n:PawnElder d:s
+		
+		Wilson: Moving on to the next item on our agenda, how are we to allocate the funds from the war chest?
+		Phillip: I have a few suggestions.
+		Wilson: Yes, we know, but lets give some of the others a chance speak up.
+		Derringer: I'm afraid there are some repairs to be made, and a few things have gone missing.
+		Wilson: Nelson, I'll be putting you in charge of collecting and recording damages.
+		Wilson: We will begin to access those by the end of the week.
+		Fluer: I was hoping we could order some new medicines to help counteract the curse's effects.
+		Fluer: It would be useful to order a few herbs from...
+
+		@wait 1
+
+		Norma: Do we really have to do this? Can't we just relax?
+		Tedd: Why should we?
+		Tedd: Look at him.[br]I haven't seen him this happy in years.
+		Norma: Paper pushing makes him happy?
+		Tedd: Helping makes him happy.
+
+
+
 		@exit
 
 		
 		#day27
-		@char Elder
-		Elder: Time just keeps going...
-		@fwturnpawn n:PawnElder d:n
+
+
+		Svenra: What do you want?
+		Melvardius: I wanted to speak to you of the old magics.
+		Svenra: I gave back the ring.
+		Melvardius: Yes, that is what emboldened me to inqure of the rest of them.
+		Svenra: I don't know what you're talking about.
+		Svenra: I got nothing for you.
+
+		Melvardius: I do not want anything from you.
+
+		Svenra: Oh sure, you don't want any of my heirlooms.
+
+		Melvardius: I do not.
+		Melvardius: The things they left behind by those before us truly are wonderous.
+		Melvardius: For they were made that we may only wonder at them.
+		Melvardius: I have seen amazing machines break themselves on purpose. Just because someone tried to see their workings.
+
+		Svenra: So, don't mess with them then.[br]You can start by not messing with me.
+
+		Melvardius: Do you know why those who came before us fell?
+
+		Svenra: No, and you don't either.
+
+		Melvardius: I do not.
+		Melvardius: There is a theory.[br]One that I feel holds some merit.
+		Melvardius: Even among themselves, only the elite understood their magics.[br]And they jelously guarded those secrets.
+		Melvardius: In time, fewer and fewer knew how anything worked, and eventually none of them did.
+		Melvardius: Unable to create more tools, and unwilling to live without them, they were doomed to slip into darkness.
+
+		Svenra: So? What does this have to do with me?
+
+		Melvardius: I only ask that the... heirlooms not pass on to others.
+		Melvardius: We choose to forsake their tools, so that we may someday build our own.
+		Melvardius: And, if fortune smiles, not repeat their mistakes.
+
+		Svenra: I'll think about it. 
+		Melvardius: That I all I ask.
+
+
+
 		@exit
 
 		
 		#day28
-		Patrick
+		Patrick: 
 
 		Best: leaves to bring people back
 		Medi: leaves to spread news
@@ -1086,12 +1297,24 @@
 		Tristana: Where are they?
 		Patrick: Here and there. We need a plan.
 		Elder: What is the plan?
-		Patrick: 
+		Patrick: Last time I made a plan it didn't work out so well.
+		Tristana: Seriously? You saved the day, divot replaced.
+		Tristana: This is a transportation issue, that's your job.
+		Patrick: Okay, okay.
 
-		Fluer: We could get some gurneys.
+		@wait 1
 
-
-
+		Patrick: The doctor. She has to have some gurneys around, right?
+		Elder: I'll go look.
+		Patrick: It's pretty crazy down there, we'll need to build some bridges.
+		Patrick: We have time, but not forever.
+		Patrick: Gather up some lumber, we're going to need bridges.
+		Tristana: On it.
+		Patrick: I'm going back in. I can get a few.[br]We'll have to prioitize people who can help.
+		Patrick: But...
+		Tristana: Hey, we're going to get them all out. You can do it.
+		Patrick: Yes, I can do it.
+		Patrick: Get some lumber. I'll be back soon.
 
 
 		@elseif !worst
@@ -1099,7 +1322,7 @@
 
 		Patrick: It's done.
 		Tristana: We're safe?
-		Patrick: Nothing's alive down there anymore.[br]So safe enough I guess.
+		Patrick: Nothing's alive down there anymore.[br]So, safe enough, I guess.
 		Elder: Nothing?
 		Patrick: Nothing.
 		Elder: What... what do we do now?
@@ -1116,15 +1339,33 @@
 		
 		#day29
 
-		Perf: novelwriting
-		Med: 
-		Bad:
+;		Perf: novelwriting
+;		Med: 
+;		Bad:
 
 
 		@if perfect
 
-		Tristana: I think I'm going to get into novel writing.
-		Tristana: Nobody's going to believe this anyway.
+		Jinn: I don't know about this one. The writer wins?[br]Seems a little self-indulgent.
+		Tristana: If people want to see the knight save the day I have plenty of other novels they can read.
+		Tristana: Too many really.
+		Jinn: Starting to feel like you're in a rut?
+		Tristana: I didn't expect the Cursed Cave genre to take off like it did.
+		Tristana: But, I'll stop writing them when they stop selling.
+		Jinn: Doesn't hurt that everyone else with firsthand experience is a meathead adventurer.
+		Tristana: It certainly does not.
+
+		Tristana: Any idea where I should take the next book?
+		Jinn: The schoolchildren really like the one about the squire.
+		Tristana: That was a fun one, but what about you?
+		Jinn: I... like the one about the pillager.
+		Tristana: Oh? I wouldn't have expected that. Have you read the one about the schoolteacher?
+		Jinn: I've read all of them, but that character was a little too... relateable. 
+		Jinn: Well, I've read almost all of them.
+		Jinn: I haven't been able to get my hands on the one about the cultist.
+		Tristana: Yeah, I hear that one's pretty hard to find these days. It's out there though.
+
+
 		
 		@elseif !worst
 		@elseif worst
