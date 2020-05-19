@@ -1,3 +1,9 @@
+
+	Douglass: can we say anything?
+
+
+
+@goto .day1 if:GetDay()=1
 @goto .day2 if:GetDay()=2
 @goto .day3 if:GetDay()=3
 @goto .day4 if:GetDay()=4
@@ -29,21 +35,24 @@
 @goto .day30 if:GetDay()=30
 
 
-;		@if perfect
-;		@elseif !worst
-;		@elseif worst
-;		@endif
+
+
+
+		#day1
+		@char Douglass
+		Douglass: If I had a chance, we did something wrong.
+		@exit
 
 
 		#day2
-		@char Elder
-		Elder: I have seen some hard times, but none like this.
+		@char Sara
+		Sara: If I had a chance, we did something wrong.
 		@exit
 
 
 		#day3
-		@char Elder
-		Elder: Just looking to clear my head.
+		@char McDermit
+		McDermit: If I had a chance, we did something wrong.
 		@exit
 		
 
@@ -62,7 +71,7 @@
 		Todd: You haven't been rescued.
 		Todd: You, guard! I have a task for you.
 		McDermit: Todd, we appreciate the help, but-
-		@spawn ShakeCamera
+		;@spawn ShakeCamera
 		McDermit: Aaaargh!
 		Todd: As I was saying, you will watch the entrance.[br]Make certain that none enter.
 		Todd: And you, maid!
@@ -70,7 +79,7 @@
 		Todd: You will bring me food, until I am beyond the need for such things.
 		Douglass: Okay, that's enough.
 		Douglass: I'll be taking that ring back.
-		@spawn ShakeCamera
+		;@spawn ShakeCamera
 		Tasha: He's... you didn't even give a warning!
 		Todd: He serves as the warning for the rest of you.
 		Todd: Now go, I have work to do.
@@ -96,7 +105,7 @@
 		Douglass: I... will consider it.
 		Douglass: May I have my stuff back?
 		Norma: Sure, just don't get yourself in trouble.
-		Norma: If anybody needs me I'll be out making sure the sheep don't drown themselve or something.
+		Norma: If anybody needs me I'll be out making sure the sheep don't drown themselves or something.
 
 
 		
@@ -684,7 +693,7 @@
 		Norma: We're fine.
 		Norma: You missed a good party.
 		Svenra: So, you find enough treasure down there?
-		Phillip: Oh there's plenty down there. More than enough to get the town going again if we use it smartly.\
+		Phillip: Oh there's plenty down there. More than enough to get the town going again if we use it smartly.
 		Phillip: But I wasn't coming out till I found something... priceless.
 
 		@wait 0.5
@@ -736,7 +745,7 @@
 			Patrick: I'm no healer, but I can set up cots, carry things...
 			Meyster: Aye, just give me a task![br]Finally a place we can all pitch in!
 
-			@wait2
+			@wait 2
 
 			Nelson: Something wrong Jez?
 			Jezerine: Well, it's just...
@@ -1141,7 +1150,7 @@
 			Fluer: Illness has been supressed in this town, and I think that place has something to do with it!
 			Fluer: But the illness sat in there, soaking up magic, until it couldn't be contained.
 			Fluer: Or something...[br]I have a lot of work ahead of me.
-		@elseif
+		@elseif !Perfect
 			Fluer: I have some ideas, but I'll need time to work on them.
 		@endif
 
@@ -1454,7 +1463,7 @@
 
 				Todd: Silence! I will show you the power I have been given!
 
-				@spawn ShakeCamera
+				;@spawn ShakeCamera
 
 				Melvardius: That's enough of that.
 				Todd: How... did you?

@@ -12,6 +12,7 @@ public class CutsceneLoader : MonoBehaviour
     public Vector2[] cameraLocation;
     public Vector2[] introCameraLocation;
     internal static bool introCutscene;
+    internal static bool endCutscene;
     private static int introSceneNumber;
     internal static bool postRun1Cutscene;
     internal static bool runTownBackDialogue;
@@ -41,8 +42,20 @@ public class CutsceneLoader : MonoBehaviour
         dialogueWaiting = true;
     }
 
-        public static void LoadCutscene()
-    {
+    public static void LoadEnding(){
+
+        Debug.Log("ending starts");
+
+        GameData.Instance.isCutscene = true;
+        SceneManager.LoadScene("WinScreen");
+        //Console.Write("ending ends");
+        return;
+
+
+    }
+
+
+        public static void LoadCutscene(){
         GameData.Instance.isCutscene = true;
         if (introCutscene) {
             switch (introSceneNumber)
@@ -59,6 +72,9 @@ public class CutsceneLoader : MonoBehaviour
             }
             return;
         }
+
+
+
 
         if (postRun1Cutscene) {
             SceneManager.LoadScene("TownMap_1");
@@ -208,7 +224,14 @@ public class CutsceneLoader : MonoBehaviour
         //await Engine.GetService<StateManager>().ResetStateAsync();
         Naninovel.Engine.Reset();
         await RuntimeInitializer.InitializeAsync();
-        await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[cutSceneNumber]);
+
+        if (endCutscene)
+        {
+            //Debug.Log("says it's run " + gameData.Instance.RunNumber);
+            await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[0]);
+        }
+        else
+            await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[cutSceneNumber]);
     }
 
 }
