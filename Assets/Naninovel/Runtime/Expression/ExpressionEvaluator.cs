@@ -52,6 +52,40 @@ namespace Naninovel
                 }
                 return player.PlayedCommandsCount / (float)player.TotalCommandsCount;
             }
+
+            [Doc("Return 1 if the playthrough was perfect")]
+            public static int GetPerfect() => GameData.Instance.Perfect;
+            [Doc("Return 1 if the playthrough was the worst")]
+            public static int GetWorst() => GameData.Instance.Worst;
+            [Doc("Return 1 if Douglass is alive")]
+            public static int GetDouglass() => GameData.Instance.Douglass;
+            [Doc("Return 1 if Sara is alive")]
+            public static int GetSara() => GameData.Instance.Sara;
+            [Doc("Return 1 if McDermit is alive")]
+            public static int GetMcDermit() => GameData.Instance.McDermit;
+            [Doc("Return 1 if Todd is alive")]
+            public static int GetTodd() => GameData.Instance.Todd;
+            [Doc("Return 1 if Norma is alive")]
+            public static int GetNorma() => GameData.Instance.Norma;
+            [Doc("Return 1 if Derringer is alive")]
+            public static int GetDerringer() => GameData.Instance.Derringer;
+            [Doc("Return 1 if Melvardius is alive")]
+            public static int GetMelvardius() => GameData.Instance.Melvardius;
+            [Doc("Return 1 if Mara is alive")]
+            public static int GetMara() => GameData.Instance.Mara;
+            [Doc("Return 1 if Devon is alive")]
+            public static int GetDevon() => GameData.Instance.Devon;
+            [Doc("Return 1 if Pendleton is alive")]
+            public static int GetPendleton() => GameData.Instance.Pendleton;
+
+
+
+
+
+
+
+
+
         }
 
         private static readonly List<MethodInfo> functions = new List<MethodInfo>();

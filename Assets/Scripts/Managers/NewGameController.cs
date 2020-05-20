@@ -164,7 +164,6 @@ public class NewGameController : MonoBehaviour
 
             if (runVariable.text == "" || Convert.ToInt32(runVariable.text) == 0)
             {
-                Debug.Log("considered blank");
                 GameData.Instance.RunNumber = 1;
                 CutsceneLoader.introCutscene = true;
             }
@@ -173,7 +172,6 @@ public class NewGameController : MonoBehaviour
                 
                 //load cutscene runvar-1
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
-                Debug.Log("reads number " + GameData.Instance.RunNumber);
             }
             CutsceneLoader.LoadEnding();
 
