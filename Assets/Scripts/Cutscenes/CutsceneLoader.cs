@@ -190,11 +190,11 @@ public class CutsceneLoader : MonoBehaviour
         {
             if (GameData.Instance.hiroDeathMonster) {
                 Instantiate(cutScenePlayer, new Vector3(cameraLocation[34].x, cameraLocation[34].y, 0), Quaternion.identity);
-                InitAndRunCutscene(34);
+                InitAndRunCutscene(cutScenes[34]);
             }
             else {
                 Instantiate(cutScenePlayer, new Vector3(cameraLocation[35].x, cameraLocation[35].y, 0), Quaternion.identity);
-                InitAndRunCutscene(35);
+                InitAndRunCutscene(cutScenes[35]);
             }
             return;
         }
@@ -202,14 +202,14 @@ public class CutsceneLoader : MonoBehaviour
         if (introCutscene)
         {
             Instantiate(cutScenePlayer, new Vector3(cameraLocation[31+ introSceneNumber].x, cameraLocation[31 + introSceneNumber].y, 0), Quaternion.identity);
-            InitAndRunCutscene(31 + introSceneNumber);
+            InitAndRunCutscene(cutScenes[31 + introSceneNumber]);
             introSceneNumber += 1;
             if (introSceneNumber > 2)
                 introCutscene = false;
         }
         else {
             Instantiate(cutScenePlayer, new Vector3(cameraLocation[gameData.RunNumber].x, cameraLocation[gameData.RunNumber].y, 0), Quaternion.identity);
-            InitAndRunCutscene(gameData.RunNumber);
+            InitAndRunCutscene(cutScenes[gameData.RunNumber]);
         }
 
        // RuntimeInitializer.InitializeAsync();
@@ -218,20 +218,13 @@ public class CutsceneLoader : MonoBehaviour
 
     }
 
-    public async void InitAndRunCutscene(int cutSceneNumber)
+    public async void InitAndRunCutscene(string cutSceneName)
     {
         //await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[GameData.Instance.RunNumber]);
         //await Engine.GetService<StateManager>().ResetStateAsync();
         Naninovel.Engine.Reset();
         await RuntimeInitializer.InitializeAsync();
-
-        if (endCutscene)
-        {
-            //Debug.Log("says it's run " + gameData.Instance.RunNumber);
-            await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[0]);
-        }
-        else
-            await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[cutSceneNumber]);
+        await Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutSceneName);
     }
 
 }
