@@ -64,6 +64,8 @@ MonoBehaviour:
     - Todd
     - Tristana
     - Wilson
+    - Recruit
+    - Darius
     metas:
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
@@ -538,6 +540,38 @@ MonoBehaviour:
       PixelsPerUnit: 200
       BakedLookDirection: 1
       DisplayName: 
+      UseCharacterColor: 0
+      NameColor: {r: 1, g: 1, b: 1, a: 1}
+      MessageColor: {r: 1, g: 1, b: 1, a: 1}
+      HighlightWhenSpeaking: 0
+      SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
+      NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      MessageSound: 
+    - Implementation: Naninovel.SpriteCharacter
+      LoaderConfiguration:
+        PathPrefix: Characters
+        ProviderTypes: 0000000001000000
+      guid: 516b244a-f674-4241-802c-c1af9f6aff3a
+      Pivot: {x: 0.5, y: 0}
+      PixelsPerUnit: 200
+      BakedLookDirection: 1
+      DisplayName: Recruit
+      UseCharacterColor: 0
+      NameColor: {r: 1, g: 1, b: 1, a: 1}
+      MessageColor: {r: 1, g: 1, b: 1, a: 1}
+      HighlightWhenSpeaking: 0
+      SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
+      NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      MessageSound: 
+    - Implementation: Naninovel.SpriteCharacter
+      LoaderConfiguration:
+        PathPrefix: Characters
+        ProviderTypes: 0000000001000000
+      guid: 39d1a1f7-bb45-4d6a-923f-44816c726627
+      Pivot: {x: 0.5, y: 0}
+      PixelsPerUnit: 200
+      BakedLookDirection: 1
+      DisplayName: Darius
       UseCharacterColor: 0
       NameColor: {r: 1, g: 1, b: 1, a: 1}
       MessageColor: {r: 1, g: 1, b: 1, a: 1}

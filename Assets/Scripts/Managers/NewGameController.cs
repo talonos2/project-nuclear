@@ -159,8 +159,25 @@ public class NewGameController : MonoBehaviour
             SceneManager.LoadScene("Map1-1");
 
         }
+        if (runType.value == 3){
+            CutsceneLoader.endCutscene = true;
 
-            
+            if (runVariable.text == "" || Convert.ToInt32(runVariable.text) == 0)
+            {
+                GameData.Instance.RunNumber = 1;
+                CutsceneLoader.introCutscene = true;
+            }
+            else
+            {
+                
+                //load cutscene runvar-1
+                GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
+            }
+            CutsceneLoader.LoadEnding();
+
+        }
+
+
     }
 
 
