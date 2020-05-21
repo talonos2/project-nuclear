@@ -166,6 +166,8 @@ public class Combat : MonoBehaviour
 
     bool playerDidDamageRecently;
     bool monsterDidDamageRecently;
+    bool playerDidSoundRecently;
+    bool monsterDidSoundRecently;
     float previousTimeSinceLastMonsterAttack = -1000;
     float previousTimeSinceLastPlayerAttack = -1000;
     private UISwitchbladeScript blade;
@@ -182,7 +184,7 @@ public class Combat : MonoBehaviour
         }
 
         //float playerAttackTime = playerStats.animation.GetAnimationLength();
-        float playerAttackTime = AttackAnimation.HOP.GetAnimationLength();
+        float playerAttackTime = AttackAnimation.PLAYER_HOP.GetAnimationLength();
         //float enemyAttackTime = playerStats.animation.GetAnimationLength();
         float enemyAttackTime = monsterStats.attackAnimation.GetAnimationLength();
         float totalTime = playerAttackTime + enemyAttackTime;
@@ -190,7 +192,7 @@ public class Combat : MonoBehaviour
         float timeSinceLastPlayerAttack = combatTimer % totalTime;
         float timeSinceLastMonsterAttack = (combatTimer > enemyAttackTime ? (combatTimer - enemyAttackTime) % totalTime : 0);
 
-        float playerDamagePoint = AttackAnimation.HOP.GetDamagePoint();
+        float playerDamagePoint = AttackAnimation.PLAYER_HOP.GetDamagePoint();
         float enemyDamagePoint = playerAttackTime + monsterStats.attackAnimation.GetDamagePoint();
         float rightSideTime = enemyDamagePoint - playerDamagePoint;
         float leftSideTime = totalTime - rightSideTime;
@@ -206,8 +208,6 @@ public class Combat : MonoBehaviour
         {
             blade.HandleLeftSideSway(((totalTime+  amountThrough - enemyDamagePoint)%totalTime) / leftSideTime);
         }
-
-        //Debug.Log("Player:" + playerStats.homePositionOnScreen);
 
         int playerFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
         int enemyFrame = monsterStats.attackAnimation.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
@@ -231,7 +231,7 @@ public class Combat : MonoBehaviour
             else
             {
                 blade.SpawnErrorParticles();
-                SoundManager.Instance.PlaySound("badClick");
+                SoundManager.Instance.PlaySound("badClick", 1f);
             }
         }
         else
@@ -244,12 +244,14 @@ public class Combat : MonoBehaviour
         if (timeSinceLastPlayerAttack < previousTimeSinceLastPlayerAttack)
         {
             playerDidDamageRecently = false;
+            playerDidSoundRecently = false;
         }
         if (timeSinceLastMonsterAttack < previousTimeSinceLastMonsterAttack)
         {
             monsterDidDamageRecently = false;
+            monsterDidSoundRecently = false;
         }
-        if (!playerDidDamageRecently && timeSinceLastPlayerAttack > AttackAnimation.HOP.GetDamagePoint() + (SWAY_TOLERANCE/2.0f))
+        if (!playerDidDamageRecently && timeSinceLastPlayerAttack > AttackAnimation.PLAYER_HOP.GetDamagePoint() + (SWAY_TOLERANCE/2.0f))
         {
             this.DealDamageToEnemy();
             playerDidDamageRecently = true;
@@ -258,6 +260,16 @@ public class Combat : MonoBehaviour
         {
             this.DealDamageToPlayer();
             monsterDidDamageRecently = true;
+        }
+        if (!playerDidSoundRecently && timeSinceLastPlayerAttack > AttackAnimation.PLAYER_HOP.GetAttackSoundPoint())
+        {
+            AttackAnimation.PLAYER_HOP.PlaySound();
+            playerDidSoundRecently = true;
+        }
+        if (!monsterDidSoundRecently && timeSinceLastMonsterAttack > monsterStats.attackAnimation.GetAttackSoundPoint())
+        {
+            monsterStats.attackAnimation.PlaySound();
+            monsterDidSoundRecently = true;
         }
         previousTimeSinceLastMonsterAttack = timeSinceLastMonsterAttack;
         previousTimeSinceLastPlayerAttack = timeSinceLastPlayerAttack;
@@ -364,9 +376,7 @@ public class Combat : MonoBehaviour
     {
         float incomingDamage = (int)playerStats.attack;
 
-        if (goodHit) { SoundManager.Instance.PlaySound(monsterStats.goodHit); }
-        else { SoundManager.Instance.PlaySound(monsterStats.badHit); }
-
+        if (goodHit) { SoundManager.Instance.PlaySound("Combat/GoodHit", .5f); }
 
         incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent/100);
         incomingDamage -= monsterStats.defense;
@@ -443,8 +453,7 @@ public class Combat : MonoBehaviour
     private void DealDamageToPlayer()
     {
 
-        if (goodBlock) { SoundManager.Instance.PlaySound(monsterStats.goodBlock); }
-        else { SoundManager.Instance.PlaySound(monsterStats.badBlock); }
+        if (goodBlock) { SoundManager.Instance.PlaySound("Combat/GoodBlock", 1f); }
 
         float incomingDamage = monsterStats.attack;
         incomingDamage -= playerStats.defense;

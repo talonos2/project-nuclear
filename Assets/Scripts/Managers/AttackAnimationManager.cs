@@ -22,6 +22,7 @@ public class AttackAnimationManager : Singleton<AttackAnimationManager>
     public float returnHopHeight = .05f;
     public float knockBackXOffset = .15f;
     public float springBackXOffset = .1f;
+    public float hopSwingSoundPoint = .2f;
 
     public float defaultAttackFrameTime = .1f;
     public float timeWarp = 1;
@@ -34,6 +35,7 @@ public class AttackAnimationManager : Singleton<AttackAnimationManager>
     public float returnRecoilReturnDuration = .25f;
     public float blastWarmupDuration = .2f;
     public Vector4 blastFrameTime= new Vector4(.25f,.075f,.075f,.2f);
+    public float blastSoundPoint = .2f;
 
     // Start is called before the first frame update
     void Start()
