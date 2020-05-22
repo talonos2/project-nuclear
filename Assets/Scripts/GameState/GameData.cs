@@ -38,6 +38,22 @@ public class GameData : Singleton<GameData>
     public bool pauseTimer;
     internal int furthestFloorAchieved;
 
+    public int Perfect = 1;
+    public int Worst = 0;
+    public int Douglass = 1;
+    public int Sara = 1;
+    public int McDermit = 1;
+    public int Todd = 1;
+    public int Norma = 1;
+    public int Derringer = 1;
+    public int Melvardius = 1;
+    public int Mara = 1;
+    public int Devon = 1;
+    public int Pendleton = 1;
+
+
+
+
     public List<Weapon> townWeapons = new List<Weapon>();
     public List<Armor> townArmor = new List<Armor>();
     public List<Accessory> townAccessories = new List<Accessory>();

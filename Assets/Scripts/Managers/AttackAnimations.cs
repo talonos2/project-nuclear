@@ -14,9 +14,11 @@ public static class Extensions
         switch (anim)
         {
             case AttackAnimation.HOP:
-                return HandleHopAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
+                return HandleHopAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats, false);
             case AttackAnimation.BLAST:
                 return HandleBlastAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
+            case AttackAnimation.PLAYER_HOP:
+                return HandleHopAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats, true);
         }
         Debug.LogWarning("Unknown Attack Animation!" + anim);
         return -1;
@@ -101,6 +103,8 @@ public static class Extensions
                 return 1;
             case AttackAnimation.BLAST:
                 return 1;
+            case AttackAnimation.PLAYER_HOP:
+                return 1;
         }
         Debug.LogWarning("Unknown Attack Animation!" + anim);
         return 1000;
@@ -114,12 +118,48 @@ public static class Extensions
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
             case AttackAnimation.BLAST:
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
+            case AttackAnimation.PLAYER_HOP:
+                return AttackAnimationManager.Instance.enemyKnockBackStart;
         }
         Debug.LogWarning("Unknown Attack Animation!" + anim);
         return 1000;
     }
 
-    private static int HandleHopAnimation(float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
+    public static float GetAttackSoundPoint(this AttackAnimation anim)
+    {
+        switch (anim)
+        {
+            case AttackAnimation.HOP:
+                return AttackAnimationManager.Instance.hopSwingSoundPoint;
+            case AttackAnimation.BLAST:
+                return AttackAnimationManager.Instance.blastSoundPoint;
+            case AttackAnimation.PLAYER_HOP:
+                return AttackAnimationManager.Instance.hopSwingSoundPoint;
+        }
+        Debug.LogWarning("Unknown Attack Animation!" + anim);
+        return 1000;
+    }
+
+    public static void PlaySound(this AttackAnimation anim)
+    {
+        Debug.Log("Trying to play attack dound:");
+        switch (anim)
+        {
+            case AttackAnimation.HOP:
+                SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
+                return;
+            case AttackAnimation.BLAST:
+                SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
+                return;
+            case AttackAnimation.PLAYER_HOP:
+                SoundManager.Instance.PlaySound("Combat/PlayerAttackSwing", 1f);
+                return;
+        }
+        Debug.LogWarning("Unknown Attack Animation!" + anim);
+        return;
+    }
+
+    private static int HandleHopAnimation(float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats, bool isPlayer)
     {
         AttackAnimationManager aam = AttackAnimationManager.Instance;
         int flip = (userStats.homePositionOnScreen.x < targetStats.homePositionOnScreen.x ? 1 : -1);
@@ -184,4 +224,4 @@ public static class Extensions
     }
 }
 
-public enum AttackAnimation { HOP, BLAST };
+public enum AttackAnimation { HOP, BLAST, PLAYER_HOP };

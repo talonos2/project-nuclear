@@ -44,7 +44,6 @@ public class CutsceneLoader : MonoBehaviour
 
     public static void LoadEnding(){
 
-        Debug.Log("ending starts");
 
         GameData.Instance.isCutscene = true;
         SceneManager.LoadScene("WinScreen");

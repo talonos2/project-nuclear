@@ -19,13 +19,13 @@ public class SoundManager : Singleton<SoundManager>
 
     }
 
-    public void PlaySound(string clip)
+    public void PlaySound(string clip, float vol)
     {
         if (!audioSrc)
         {
             audioSrc = this.gameObject.AddComponent<AudioSource>();
         }
-        audioSrc.PlayOneShot(Resources.Load<AudioClip>("Sounds/" + clip));
+        audioSrc.PlayOneShot(Resources.Load<AudioClip>("Sounds/" + clip), vol);
     }
 
     public void PlaySound(AudioClip clip)

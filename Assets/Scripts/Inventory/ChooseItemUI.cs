@@ -63,7 +63,7 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (buttonToSelect != selectedButton && selectedButton != -1)
         {
-            SoundManager.Instance.PlaySound("MenuMove");
+            SoundManager.Instance.PlaySound("MenuMove", 1f);
         }
 
         switch (buttonToSelect)
@@ -88,11 +88,11 @@ public class ChooseItemUI : MonoBehaviour
         if (!pickingItem) { return; }
         if (optionSelected == 0)
         {
-            SoundManager.Instance.PlaySound("MenuNope");
+            SoundManager.Instance.PlaySound("MenuNope", 1f);
         }
         else
         {
-            SoundManager.Instance.PlaySound("MenuOkay");
+            SoundManager.Instance.PlaySound("MenuOkay", 1f);
         }
         if (rolledItem is Weapon)
         {
