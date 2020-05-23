@@ -189,6 +189,23 @@ public class SpriteMovement : MonoBehaviour
         return MoveableLocation;
     }
 
+    protected bool IsMoveLocationFlyingMonsterChaseable(int LocX, int LocY)
+    {
+        bool MoveableLocation = false;
+
+        if (!MapGrid.GetComponent<PassabilityGrid>().InRange(LocX, LocY)) { return false; }
+
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
+            || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.AIR || IsPlatformUp(LocX, LocY) )
+        {
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
+                MoveableLocation = true;
+        }
+
+
+        return MoveableLocation;
+    }
+
     private bool IsPlatformUp(int LocX, int LocY)
     {
         bool MoveableLocation = false;

@@ -67,6 +67,7 @@ MonoBehaviour:
   SpottingDistance: 6
   LookDuration: 20
   ChaseRange: 15
+  SpotWaitTimer: 0.3
   LookPattern: 
   bossMonster: 0
 --- !u!114 &6622165687117483729
@@ -118,11 +119,11 @@ MonoBehaviour:
   attack: 115
   defense: 30
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.6, y: 0.1}
-  strikingPointOffset: {x: 0, y: 0}
-  gettingStruckPointOffset: {x: 0, y: 0}
-  scale: {x: 1, y: 1}
-  forceOpponentAdditionalScale: {x: 1, y: 1}
+  homePositionOnScreen: {x: 0.2, y: -1.2}
+  strikingPointOffset: {x: 0, y: -0.7}
+  gettingStruckPointOffset: {x: 0.3, y: 0.8}
+  scale: {x: 1.2, y: 1.2}
+  forceOpponentAdditionalScale: {x: 0.5, y: 0.5}
   enemyName: Drone Carrier Boss
   ExpGiven: 8500
   weakness: 4
@@ -134,10 +135,15 @@ MonoBehaviour:
   - {fileID: 8768124016038485262, guid: 27d8fd1374c77604fa02e502c8784ce4, type: 3}
   - {fileID: 8615095496159618750, guid: 27d8fd1374c77604fa02e502c8784ce4, type: 3}
   attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
   iceBoss: 0
   earthBoss: 0
   fireBoss: 0
   airBoss: 1
+  deathBoss: 0
 --- !u!1 &6622165687581963513
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actualGround: 0
+  additionalZOffset: 0
   groundItem: 0
   belowGroundItem: 0
   aboveItem: 0
