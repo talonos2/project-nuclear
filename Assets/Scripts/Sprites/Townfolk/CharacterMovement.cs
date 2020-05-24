@@ -20,6 +20,8 @@ public class CharacterMovement : SpriteMovement
     private Transform jumpPivot;
     GameObject shield;
     ParticleSystem smoke;
+    int previousFrame = 0;
+    int previousStepSound = 0;
 
 
 
@@ -36,7 +38,19 @@ public class CharacterMovement : SpriteMovement
     // Update is called once per frame
     void Update()
     {
-
+        //Footstep Sound
+        int currentFrame = Mathf.RoundToInt(sRender.material.GetFloat("_Frame"));
+        if (previousFrame != currentFrame && (currentFrame % 7 == 1 || currentFrame % 7 == 4))
+        {
+            int stepSound = UnityEngine.Random.Range(0, 2)+1; //Step sounds are no 0-indexed.
+            if (previousStepSound==1||(previousStepSound==2&&stepSound==2))
+            {
+                stepSound++;
+            }
+            SoundManager.Instance.PlaySound("Footsteps/Stone"+stepSound, .2f);
+            previousStepSound = stepSound;
+        }
+        previousFrame = currentFrame;
 
         if (GameState.isInBattle || GameState.fullPause)
         {

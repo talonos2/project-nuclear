@@ -30,22 +30,28 @@ public class ExitController : DoodadData
 
         GameData gameData= GameData.Instance;
 
-        //Keep track of your run time.
-        gameData.timesThisRun[gameData.FloorNumber - 1] = gameData.timer;
-        float timeTakenThisFloor = gameData.timer;
-        if (gameData.FloorNumber > 1)
+        if (gameData.FloorNumber != 0)
         {
-            timeTakenThisFloor -= gameData.timesThisRun[gameData.FloorNumber - 2];
-        }
-        if (gameData.bestTimes[gameData.FloorNumber - 1]==0|| gameData.bestTimes[gameData.FloorNumber - 1 ]>timeTakenThisFloor)
-        {
-            gameData.bestTimes[gameData.FloorNumber - 1] = timeTakenThisFloor;
+            //Keep track of your run time.
+            gameData.timesThisRun[gameData.FloorNumber - 1] = gameData.timer;
+            float timeTakenThisFloor = gameData.timer;
+            if (gameData.FloorNumber > 1)
+            {
+                timeTakenThisFloor -= gameData.timesThisRun[gameData.FloorNumber - 2];
+            }
+            if (gameData.bestTimes[gameData.FloorNumber - 1] == 0 || gameData.bestTimes[gameData.FloorNumber - 1] > timeTakenThisFloor)
+            {
+                gameData.bestTimes[gameData.FloorNumber - 1] = timeTakenThisFloor;
+            }
+
+            gameData.FloorNumber += 1;
+            if (townMap)
+            {
+                gameData.FloorNumber = 0;
+            }
         }
 
-        gameData.FloorNumber +=1;
-        if (townMap) {
-            gameData.FloorNumber = 0;
-        }
+
 
         gameData.SetNextLocation(exitPosition, exitFacing);
 

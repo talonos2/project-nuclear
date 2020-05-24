@@ -301,7 +301,7 @@ public class RandomChestController : EntityData
             Destroy(instanciatedObject);
 
             // stuff added by Ipecac, in case I screwed up
-            SoundManager.Instance.PlaySound("potBreak");
+            SoundManager.Instance.PlaySound("potBreak", 1f);
         }
         else if (rareItemChest)
         {
