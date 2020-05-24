@@ -106,7 +106,6 @@ public static class Extensions
     private static void AdjustForScale(GameObject targetSprite)
     {
         float yOffset = (1 - (6*targetSprite.transform.localScale.y)) *3 ;
-        Debug.Log("Offset: " + yOffset+", "+targetSprite);
         targetSprite.transform.Translate(0, yOffset, 0);
     }
 
@@ -228,7 +227,6 @@ public static class Extensions
 
     public static void PlaySound(this AttackAnimation anim)
     {
-        Debug.Log("Trying to play attack dound:");
         switch (anim)
         {
             case AttackAnimation.HOP:
