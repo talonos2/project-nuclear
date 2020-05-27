@@ -321,6 +321,7 @@ public class RandomChestController : EntityData
             if (playerData.HP > playerData.MaxHP) playerData.HP = playerData.MaxHP;
             Instantiate(healthFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
+            SoundManager.Instance.PlaySound("Pool", 1f);
         }
         else if (manaFountain)
         {
@@ -329,6 +330,7 @@ public class RandomChestController : EntityData
             if (playerData.mana > playerData.MaxMana) playerData.mana = playerData.MaxMana;
             Instantiate(manaFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
+            SoundManager.Instance.PlaySound("Pool", 1f);
         }
 
         playerData.PushCharacterData();

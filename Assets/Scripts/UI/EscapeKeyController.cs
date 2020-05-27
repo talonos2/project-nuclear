@@ -22,11 +22,13 @@ public class EscapeKeyController : MonoBehaviour
         if (Input.GetButtonDown("Cancel"))
         {
             if (currentlyEscaped) {
+                SoundManager.Instance.PlaySound("MenuNope", 1f);
                 GameState.fullPause = false;
                 currentlyEscaped = false;
                 canvas.SetActive(false);
             }
             else if (!currentlyEscaped) {
+                SoundManager.Instance.PlaySound("MenuOpen", 1f);
                 GameState.fullPause = true;
                 currentlyEscaped = true;
                 canvas.SetActive(true);
@@ -43,8 +45,8 @@ public class EscapeKeyController : MonoBehaviour
             }
             if (Input.GetButtonDown("SelectNext"))
             {
-
-                    delayCounter = delayReset+.3f;
+                SoundManager.Instance.PlaySound("MenuMove", 1f);
+                delayCounter = delayReset+.3f;
                     hideButtonSelection();
                     buttonSelected += 1;
                     if (buttonSelected >= selected.Length) { buttonSelected = 0; }
@@ -54,8 +56,8 @@ public class EscapeKeyController : MonoBehaviour
             }
             if (Input.GetButtonDown("SelectPrevious"))
             {
-
-                    delayCounter = delayReset+.3f;
+                SoundManager.Instance.PlaySound("MenuMove", 1f);
+                delayCounter = delayReset+.3f;
                     hideButtonSelection();
                     buttonSelected -= 1;
                     if (buttonSelected < 0) { buttonSelected = selected.Length-1; }
