@@ -98,6 +98,7 @@ public class CharacterMovement : SpriteMovement
                 }
                 else
                 {
+                    SoundManager.Instance.PlaySound("StealthOff", 1f);
                     gameData.stealthed = false;
                     tempMovementSpeed = MoveSpeed;
                     tempFramesPerSecond = framesPerSecond;
@@ -356,6 +357,7 @@ public class CharacterMovement : SpriteMovement
             return;
         }
         if (playerStats.currentPower != (int)ElementalPower.EARTH && gameData.stealthed) {
+            SoundManager.Instance.PlaySound("StealthOff", .5f);
             gameData.stealthed = false;
             tempMovementSpeed = MoveSpeed;
             tempFramesPerSecond = framesPerSecond;
@@ -495,7 +497,11 @@ public class CharacterMovement : SpriteMovement
                 tempMovementSpeed = MoveSpeed * hasteSpeed;
                 tempFramesPerSecond = framesPerSecond*hasteSpeed;
                 TurnHasteOn();
-                gameData.stealthed = false;
+                if (gameData.stealthed)
+                {
+                    SoundManager.Instance.PlaySound("StealthOff", 1f);
+                    gameData.stealthed = false;
+                }
             }
             else
             {
@@ -526,6 +532,7 @@ public class CharacterMovement : SpriteMovement
     {
         if (gameData.stealthed)
         {
+            SoundManager.Instance.PlaySound("StealthOff", 1f);
             gameData.stealthed = false;
             tempMovementSpeed = MoveSpeed;
             tempFramesPerSecond = framesPerSecond;
@@ -537,6 +544,7 @@ public class CharacterMovement : SpriteMovement
                 playerStats.mana -= 2;
                 tempMovementSpeed = MoveSpeed * stealthspeed;
                 tempFramesPerSecond = framesPerSecond*stealthspeed;
+                SoundManager.Instance.PlaySound("StealthOn", 1f);
                 gameData.stealthed = true;
                 TurnHasteOff();
             }
@@ -557,7 +565,11 @@ public class CharacterMovement : SpriteMovement
             playerStats.mana -= 5;
             gameData.dashing = true;
             TurnHasteOff();
-            gameData.stealthed = false;
+            if (gameData.stealthed)
+            {
+                SoundManager.Instance.PlaySound("StealthOff", 1f);
+                gameData.stealthed = false;
+            }
             waitTimer = .4f;
             totalDashed = 0;
         }

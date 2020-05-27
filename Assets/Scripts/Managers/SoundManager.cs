@@ -11,6 +11,7 @@ public class SoundManager : Singleton<SoundManager>
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -35,5 +36,11 @@ public class SoundManager : Singleton<SoundManager>
             audioSrc = this.gameObject.AddComponent<AudioSource>();
         }
         audioSrc.PlayOneShot(clip);
+    }
+
+    public void PlayPersistentSound(string clip)
+    {
+        audioSrc.clip = Resources.Load<AudioClip>("Sounds/" + clip);
+        audioSrc.Play();
     }
 }

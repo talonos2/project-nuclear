@@ -13,6 +13,7 @@ public class Combat : MonoBehaviour
     //Starts a fight, creating a new game object with an instance of this monobehavior.
     internal static void InitiateFight(GameObject Player, GameObject monster)
     {
+        SoundManager.Instance.PlaySound("CombatIn", 1f);
         Enemy monsterStats = monster.GetComponent<Enemy>();
         CharacterStats playerStats = Player.GetComponent<CharacterStats>();
 
@@ -326,6 +327,8 @@ public class Combat : MonoBehaviour
         Destroy(this);
         //At this point play 'death' animation on player, which should end in a death of the player. 
         //For now doing the scene transition to the death scene right away
+        SoundManager.Instance.PlayPersistentSound("TakenByCurse");
+        MusicManager.instance.FadeOutMusic(-2, 3);
         SceneManager.LoadScene("DeathScene");
     }
 
@@ -377,6 +380,7 @@ public class Combat : MonoBehaviour
         float incomingDamage = (int)playerStats.attack;
 
         if (goodHit) { SoundManager.Instance.PlaySound("Combat/GoodHit", .5f); }
+        else { SoundManager.Instance.PlaySound("Combat/BadHit", .5f); }
 
         incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent/100);
         incomingDamage -= monsterStats.defense;
@@ -454,6 +458,7 @@ public class Combat : MonoBehaviour
     {
 
         if (goodBlock) { SoundManager.Instance.PlaySound("Combat/GoodBlock", 1f); }
+        else { SoundManager.Instance.PlaySound("Combat/BadBlock", .5f); }
 
         float incomingDamage = monsterStats.attack;
         incomingDamage -= playerStats.defense;

@@ -49,6 +49,11 @@ public class MusicManager : MonoBehaviour
         fadeStartTimes = new float[music.Length];
         fadeVolumes = new float[music.Length];
         fadeStartVolumes = new float[music.Length];
+        for (int x = 0; x < music.Length; x++)
+        {
+            music[x].audioSource.volume = 0;
+            fadeLengths[x] = 0;
+        }
     }
 
     /// <summary>
@@ -108,6 +113,7 @@ public class MusicManager : MonoBehaviour
         {
             music[x].audioSource.Stop();
             fadeLengths[x] = 0;
+            music[x].audioSource.volume = 0;
         }
     }
 
@@ -127,6 +133,14 @@ public class MusicManager : MonoBehaviour
     {
         if (num == -1)
         {
+            return;
+        }
+        if (num == -2)
+        {
+            for (int x = 0; x < music.Length; x++)
+            {
+                FadeMusic(x, time, 0);
+            }
             return;
         }
         FadeMusic(num, time, 0);

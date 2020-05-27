@@ -108,7 +108,6 @@ public class NewCrystalLevelController : MonoBehaviour
             timeSoFar = durationOfFill;
         }
 
-        Debug.Log(durationOfFill + ", " + timeSoFar);
         float amountThrough = timeSoFar/durationOfFill;
 
         amountThrough = Mathf.Pow(amountThrough, barAnimationCurveStrength);
@@ -120,10 +119,8 @@ public class NewCrystalLevelController : MonoBehaviour
 
     private void SetBarLevel(float barAmount)
     {
-        Debug.Log("barAmount " + barAmount);
         int fullBars = Mathf.FloorToInt(barAmount);
         float remainderBars = barAmount % 1.0f;
-        Debug.Log("bars " + fullBars);
         int crystalAmount = Mathf.RoundToInt(Mathf.Lerp(crystalTiers[fullBars], crystalTiers[fullBars + 1], remainderBars));
 
         string bonusText = "+" + fullBars * crystalBonusValue;
