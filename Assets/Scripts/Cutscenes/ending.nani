@@ -31,7 +31,8 @@
 @goto .day30 if:GetDay()=30
 
 
-
+		Error: couldn't find day
+		@exit
 
 
 		#day1
@@ -52,7 +53,8 @@
 		@exit
 		
 
-		#day4    ;complete
+		#day4
+		;complete
 		
 
 		Todd: Ah hahahaha!
@@ -66,7 +68,7 @@
 		Sara: Well... thank you for rescuing us all the same.
 		Todd: You haven't been rescued.
 		Todd: You, guard! I have a task for you.
-		McDermit: Todd, we appreciate the help, but-
+		McDermit: Todd, we appreciate the help, but—
 		;@spawn ShakeCamera
 		McDermit: Aaaargh!
 		Todd: As I was saying, you will watch the entrance.[br]Make certain that none enter.
@@ -75,6 +77,7 @@
 		Todd: You will bring me food, until I am beyond the need for such things.
 		Douglass: Okay, that's enough.
 		Douglass: I'll be taking that ring back.
+		fighting sounds and camera shake
 		;@spawn ShakeCamera
 		Tasha: He's... you didn't even give a warning!
 		Todd: He serves as the warning for the rest of you.
@@ -99,7 +102,8 @@
 		Norma: Really appreaciate you coming by and all.
 		Norma: But maybe you should be looking into a new line of work.
 		Douglass: Excuse me?
-		Norma: I'm just sayin'[br]If any random cowgirl can bust monster heads better than you, mabye hero work ain't what you're cut out for.
+		Norma: I'm just sayin'
+		Norma: If any random cowgirl can bust monster heads better than you, mabye hero work ain't what you're cut out for.
 		Douglass: I... will consider it.
 		Douglass: May I have my stuff back?
 		Norma: Sure, just don't get yourself in trouble.
@@ -125,7 +129,7 @@
 
 		@wait 1
 
-		Jezerine: Hey you found him! We've been looking all over for[br]Hey is that my sword?!
+		Jezerine: Hey you found him! We've been looking all over for—[br]Hey is that my sword?!
 		Derringer: I'm afraid it will be just a few more minutes.
 		Tasha: What's so important about this sword anyway?
 		Jezerine: It's going to be a replica of the sword used by Malrak The Impudent.
@@ -134,7 +138,7 @@
 		Derringer: I'm afraid the look of the scoring from wyvern blood took longer than I expected.
 		Jezerine: Hey, did it get chipped?
 		Derringer: I'm afraid Malrak slew the wyvern in book four. So it needs to show the damage from the battle with his half-brother in book three.
-		Jezerine: Oh yeah. But it's before the eight sunrise right?
+		Jezerine: Oh yeah. But it's before the eighth sunrise right?
 		Tasha: I'm just going to leave you two to... whatever this is.
 		Tasha: There's a feast, if you care.
 
@@ -155,10 +159,10 @@
 		Melvardius: First they viewed the Soil, the Sea, and the Sky and saw what they all shared.
 		Melvardius: Those came together to form our world, and in time they worked so closely together that they became inseperable.
 		Melvardius: Their old names were forgotten, and now they are Tellus, with dominion over substance.
-		Melvardius: Others followed, in time we began to see that Lodestone and Lightning were joined in a dance of--
+		Melvardius: Others followed, in time we began to see that Lodestone and Lightning were joined in a dance of—
 		Tristana: Wait! Is... is this just going to be a normal sermon?
 		Melvardius: Ahem.
-		Melvardius: I wish to lay a foundation for us to--
+		Melvardius: I wish to lay a foundation for us to—
 		Tristana: You just smote like a hundred monsters, and you're not even going to talk about it?
 		Melvardius: While sometimes nessissary, our goal should not be to destroy that which we do not understand.
 		Murtough: Ya were pretty good at it though.
@@ -185,10 +189,10 @@
 
 		@Wait 1
 
-		Sarah: You know, I kinda liked that old deer head you had in here.
+		Sara: You know, I kinda liked that old deer head you had in here.
 		Mara: What? The one with the missing antler?
-		Sarah: Yeah, it gave it kind of a rustic charm. Like there was a story to it.
-		Sarah: These ones just... give me the heebie jeebies.
+		Sara: Yeah, it gave it kind of a rustic charm. Like there was a story to it.
+		Sara: These ones just... give me the heebie jeebies.
 		Mara: What do you mean? These trophies have stories to them.
 		McDermit: Kind of all the same story though right?
 		Jezerine: And it's an awesome story!
@@ -210,7 +214,7 @@
 		Derringer: We're the ones you didn't cut down on your way through that place.
 		Devon: I wasn't about to just kill people! I thought you'd been shoved down there too.
 		Pendleton: Ah yes, sorry about that.
-		Devon: You! Just what did you-
+		Devon: You! Just what did you—
 		Mara: This calls for a cellibration! Lets head back to the tavern.
 		Mara: Unless you louts let it fall apart while I was gone.
 		Wilson: Sounds wonderful, come along Mr... did we ever get your name?
@@ -287,10 +291,10 @@
 		
 		#day10
 
-		realizes ring won't work away from cave.
-		good: ready to hunt pillager
-		med: returns to life of squireship
-		bad: no longer wants to be a knight
+		;realizes ring won't work away from cave.
+		;good: ready to hunt pillager
+		;med: returns to life of squireship
+		;bad: no longer wants to be a knight
 
 		@if GetPerfect()
 
@@ -400,8 +404,9 @@
 
 
 
-		#day11    ;complete
-		@char Stranger
+		#day11
+	    ;complete
+		;@char Stranger
 		Stranger: huff... huff...  I made it?
 		@if !Getperfect()
 			Stranger: And this loot![br]I mean sure, it's not exactly precious metals.
@@ -431,7 +436,7 @@
 
 		@wait 2
 
-		@char Reya
+		;@char Reya
 		Reya: Well well well. Look at the conquering hero.
 		@hidechars time:0
 		Stranger: Hey, I ain't looking for trouble.
@@ -503,7 +508,7 @@
 		#day12
 
 		Jezerine: Did you see that?!
-		Jezerine: I did it!  I totally just cleaned the floor with like a thousand monsters!
+		Jezerine: I did it!  I totally just cleaned the floor with, like, a thousand monsters!
 		Jezerine: I am unstoppable!
 		Stranger: Yeah, um, thanks miss.
 		Jezerine: The name's Jezerine, or maybe I need some cool deed-name after all this.
@@ -542,7 +547,8 @@
 
 
 
-		#day13 ; complete
+		#day13
+		; complete
 
 		@if GetPerfect()
 
@@ -683,7 +689,7 @@
 		Norma: Last I saw him he was practically digging up floor tiles.
 		Paul: It's odd though.
 		Paul: You'd think the supply chest would be overflowing by now.
-		Svenra: Now that he can take his time he don't have to share.
+		Svenra: Now that he can take his time he doesn't have to share.
 
 		@wait 1
 
@@ -710,7 +716,8 @@
 		@exit
 
 		
-		#day16  ;finished
+		#day16
+		;finished
 
 
 		Logos: So... that's what it looks like from that angle...
@@ -1020,7 +1027,8 @@
 		@exit
 
 		
-		#day22 ;Complete, but needs name
+		#day22
+		;Complete, but needs name
 
 		JohnDoe: Ha HA! That wasn't so bad.
 
@@ -1118,13 +1126,14 @@
 		@exit
 
 		
-		#day23    ;finished
+		#day23
+		;finished
 
-		Tasha: You did it![br]Come on! Everyone wants to-
+		Tasha: You did it![br]Come on! Everyone wants to—
 		Fluer: Sure sure, in a bit.[br]I need to look at these samples I collected.
 		@if GetSara()
-			Tasha:Is that an arm?
-			Fluer:Some of the samples are larger than others.
+			Sara: Is that an arm?
+			Fluer: Some of the samples are larger than others.
 		@endif
 		Wilson: Come on, we're going to have a feast down at the tavern!
 		@if GetMara()
@@ -1275,7 +1284,7 @@
 		Melvardius: And, if fortune smiles, not repeat their mistakes.
 
 		Svenra: I'll think about it. 
-		Melvardius: That I all I ask.
+		Melvardius: That is all I ask.
 
 
 
@@ -1283,11 +1292,10 @@
 
 		
 		#day28
-		Patrick: 
 
-		Best: leaves to bring people back
-		Medi: leaves to spread news
-		Wors: just leaves, you guys coming?
+		;Best: leaves to bring people back
+		;Medi: leaves to spread news
+		;Wors: just leaves, you guys coming?
 
 
 		@if GetPerfect()
@@ -1297,7 +1305,7 @@
 
 		Tristana: You're back!
 		Elder: The scrying cut off after you—
-		Patrick : Sure, fine. We'll talk about it over some drinks later.[br]Now give me a hand.
+		Patrick: Sure, fine. We'll talk about it over some drinks later.[br]Now give me a hand.
 
 		Elder: What's going on?
 		Patrick: There's a lot of people down here, they need help.
@@ -1314,10 +1322,10 @@
 		Patrick: The doctor. She has to have some gurneys around, right?
 		Elder: I'll go look.
 		Patrick: It's pretty crazy down there, we'll need to build some bridges.
+		Patrick: Gather up some lumber.
 		Patrick: We have time, but not forever.
-		Patrick: Gather up some lumber, we're going to need bridges.
 		Tristana: On it.
-		Patrick: I'm going back in. I can get a few.[br]We'll have to prioitize people who can help.
+		Patrick: I'm going back in. I can get a few.[br]We'll have to prioitize finding the people who can help.
 		Patrick: But...
 		Tristana: Hey, we're going to get them all out. You can do it.
 		Patrick: Yes, I can do it.
@@ -1428,6 +1436,8 @@
 
 		Elder: We have won, but it has cost us.
 		Elder: 
+
+		@endif
 
 		;fadetoblack
 
