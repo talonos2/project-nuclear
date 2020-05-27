@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6622165687117483740}
   - component: {fileID: 6622165687117483731}
-  - component: {fileID: 6622165687117483730}
   - component: {fileID: 6622165687117483729}
   - component: {fileID: 6622165687117483735}
-  - component: {fileID: 623595040194031740}
+  - component: {fileID: 2745315936398207709}
+  - component: {fileID: 7393252768946130052}
   m_Layer: 0
   m_Name: Z5_G
   m_TagString: Untagged
@@ -44,32 +44,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6622165687117483734}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &6622165687117483730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6622165687117483734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72bbabb577345f240886179cc01bde1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 8
-  framesPerSecond: 12
-  facedDirection: 4
-  PathRandomly: 0
-  PathAntiRandomly: 0
-  PathViaSteps: 0
-  Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
-  SpotterMonster: 1
-  SpottingDistance: 4
-  LookDuration: 20
-  ChaseRange: 15
-  SpotWaitTimer: 0.3
-  LookPattern: 0000000000000000
-  bossMonster: 0
 --- !u!114 &6622165687117483729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +76,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &623595040194031740
+--- !u!114 &2745315936398207709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622165687117483734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9ec9adaa23cbf4a9d7c8ea6a3592a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 4
+  framesPerSecond: 10
+  facedDirection: 4
+  PathRandomly: 0
+  PathAntiRandomly: 0
+  PathViaSteps: 0
+  Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
+  SpotterMonster: 0
+  SpottingDistance: 5
+  LookDuration: 8
+  ChaseRange: 15
+  SpotWaitTimer: 0.75
+  LookPattern: 01000000020000000300000004000000
+  bossMonster: 0
+--- !u!114 &7393252768946130052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,8 +119,8 @@ MonoBehaviour:
   attack: 142
   defense: 29
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.4, y: -0.5}
-  strikingPointOffset: {x: 0, y: 0}
+  homePositionOnScreen: {x: 0.6, y: -0.6}
+  strikingPointOffset: {x: 0, y: -0.4}
   gettingStruckPointOffset: {x: -0.1, y: 0.1}
   scale: {x: 1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
@@ -130,13 +130,13 @@ MonoBehaviour:
   crystalType: 4
   crystalDropAmount: 30
   combatSprites:
-  - {fileID: -7805195696593236403, guid: 427683ed76bc37147a38056f405f6493, type: 3}
+  - {fileID: -187899744174889096, guid: 427683ed76bc37147a38056f405f6493, type: 3}
+  - {fileID: 5173397702878724187, guid: 427683ed76bc37147a38056f405f6493, type: 3}
   - {fileID: 2674493282667221881, guid: 427683ed76bc37147a38056f405f6493, type: 3}
   - {fileID: -1110057286771098144, guid: 427683ed76bc37147a38056f405f6493, type: 3}
   - {fileID: -5129985102647768433, guid: 427683ed76bc37147a38056f405f6493, type: 3}
   - {fileID: -7295021305777872934, guid: 427683ed76bc37147a38056f405f6493, type: 3}
-  - {fileID: 5173397702878724187, guid: 427683ed76bc37147a38056f405f6493, type: 3}
-  attackAnimation: 4
+  attackAnimation: 0
   goodHit: {fileID: 0}
   badHit: {fileID: 0}
   goodBlock: {fileID: 0}
