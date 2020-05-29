@@ -67,7 +67,9 @@ MonoBehaviour:
   SpottingDistance: 6
   LookDuration: 20
   ChaseRange: 15
+  SpotWaitTimer: 0.3
   LookPattern: 
+  bossMonster: 0
 --- !u!114 &6622165687117483729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,11 +119,11 @@ MonoBehaviour:
   attack: 54
   defense: 20
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.3, y: -0.7}
-  strikingPointOffset: {x: 0.2, y: 0.1}
-  gettingStruckPointOffset: {x: 0, y: 0}
-  scale: {x: 1, y: 1}
-  forceOpponentAdditionalScale: {x: 1, y: 1}
+  homePositionOnScreen: {x: 0.3, y: -0.8}
+  strikingPointOffset: {x: 0.4, y: -0.1}
+  gettingStruckPointOffset: {x: 0.2, y: 0.32}
+  scale: {x: 1.2, y: 1.2}
+  forceOpponentAdditionalScale: {x: 0.8, y: 0.8}
   enemyName: Forge Automation
   ExpGiven: 705
   weakness: 3
@@ -132,6 +134,17 @@ MonoBehaviour:
   - {fileID: -2252740663695302044, guid: de9093a52f930874a923c9d8d9c4afe4, type: 3}
   - {fileID: -3746092260001322513, guid: de9093a52f930874a923c9d8d9c4afe4, type: 3}
   - {fileID: 1307785645973913504, guid: de9093a52f930874a923c9d8d9c4afe4, type: 3}
+  - {fileID: 1307785645973913504, guid: de9093a52f930874a923c9d8d9c4afe4, type: 3}
+  attackAnimation: 7
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
 --- !u!1 &6622165687581963513
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,3 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  additionalZOffset: 0
+  groundItem: 0
+  belowGroundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0

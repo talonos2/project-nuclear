@@ -24,6 +24,10 @@ public static class Extensions
                 return HandleHopAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats, true, true, true);
             case AttackAnimation.STATIONARY_THRUST:
                 return HandleStationaryThrustAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
+            case AttackAnimation.ORBITAL_LASER:
+                return HandleOrbitalLaserAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
+            case AttackAnimation.DUMP:
+                return HandleDumpAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
         }
         Debug.LogWarning("Unknown Attack Animation!" + anim);
         return -1;
@@ -114,29 +118,7 @@ public static class Extensions
         AttackAnimationManager aam = AttackAnimationManager.Instance;
         int flip = (userStats.homePositionOnScreen.x < targetStats.homePositionOnScreen.x ? 1 : -1);
 
-        //Target get knocked back.
-        if (timeSinceStart > aam.enemyKnockBackStart && timeSinceStart < aam.enemyKnockBackStart + aam.enemyKnockBackDuration)
-        {
-            float amountThrough = (timeSinceStart - aam.enemyKnockBackStart) / aam.enemyKnockBackDuration;
-            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen, targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0) * flip, amountThrough);
-            AdjustForScale(targetSprite);
-        }
-
-        //Target rubber-band back forward
-        if (timeSinceStart > aam.enemySpringbackStart && timeSinceStart < aam.enemySpringbackStart + aam.enemySpringbackDuration)
-        {
-            float amountThrough = (timeSinceStart - aam.enemySpringbackStart) / aam.enemySpringbackDuration;
-            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0) * flip, targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, amountThrough);
-            AdjustForScale(targetSprite);
-        }
-
-        //Target move back to home position.
-        if (timeSinceStart > aam.enemyMoveBackStart && timeSinceStart < aam.enemyMoveBackStart + aam.enemyMoveBackDuration)
-        {
-            float amountThrough = (timeSinceStart - aam.enemyMoveBackStart) / aam.enemyMoveBackDuration;
-            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, targetStats.homePositionOnScreen, amountThrough);
-            AdjustForScale(targetSprite);
-        }
+        HandleKnockbackFromStationarySource(timeSinceStart, targetSprite, targetStats, aam, flip);
 
         //Which frame are we in?
         if (timeSinceStart > aam.initialThrustImpactTime - aam.thrustWarmupDuration && timeSinceStart < aam.initialThrustImpactTime)
@@ -162,6 +144,94 @@ public static class Extensions
         return 0;
     }
 
+    private static int HandleDumpAnimation(float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
+    {
+        AttackAnimationManager aam = AttackAnimationManager.Instance;
+        int flip = (userStats.homePositionOnScreen.x < targetStats.homePositionOnScreen.x ? 1 : -1);
+
+        HandleKnockbackFromStationarySource(timeSinceStart, targetSprite, targetStats, aam, flip);
+
+        //User run up to target.
+        if (timeSinceStart > aam.dumpStartRunUpTime && timeSinceStart < aam.dumpEndRunUpTime)
+        {
+            float amountThrough = (timeSinceStart-aam.dumpStartRunUpTime) / (aam.dumpEndRunUpTime - aam.dumpStartRunUpTime);
+            Debug.Log(amountThrough);
+            amountThrough = 1-Mathf.Pow(1-amountThrough,1.6f);
+            Vector3 startPosit = userStats.homePositionOnScreen;
+            Vector3 endPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
+            Vector3 lerpedPosit = Vector3.Lerp(startPosit, endPosit, amountThrough);
+            userSprite.transform.localPosition = lerpedPosit;
+        }
+
+        //User move back to home position.
+        if (timeSinceStart > aam.returnFromDumpStart && timeSinceStart < aam.returnFromDumpEnd)
+        {
+            float amountThrough = (timeSinceStart - aam.returnFromDumpStart) / (aam.returnFromDumpEnd - aam.returnFromDumpStart);
+            Vector3 endPosit = userStats.homePositionOnScreen;
+            Vector3 startPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
+            Debug.Log("Here, " + amountThrough);
+            userSprite.transform.localPosition = Vector3.Lerp(startPosit, endPosit, amountThrough);
+        }
+
+        //Which frame are we in?
+        if (timeSinceStart > aam.dumpEndFrameTime)
+            return 0;
+        if (timeSinceStart > aam.dumpFrameTime.w)
+            return 4;
+        if (timeSinceStart > aam.dumpFrameTime.z)
+            return 3;
+        if (timeSinceStart > aam.dumpFrameTime.y)
+            return 2;
+        if (timeSinceStart > aam.dumpFrameTime.x)
+            return 1;
+        return 0;
+    }
+
+    private static int HandleOrbitalLaserAnimation(float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
+    {
+        AttackAnimationManager aam = AttackAnimationManager.Instance;
+        int flip = (userStats.homePositionOnScreen.x < targetStats.homePositionOnScreen.x ? 1 : -1);
+
+        HandleKnockbackFromStationarySource(timeSinceStart, targetSprite, targetStats, aam, flip);
+
+        //Which frame are we in?
+        for (int x = 6; x >= 0; x--)
+        {
+            if (timeSinceStart > aam.orbitalLaserFrameTimes[x])
+            {
+                return x+1;
+            }
+        }
+        return 0;
+    }
+
+    private static void HandleKnockbackFromStationarySource(float timeSinceStart, GameObject targetSprite, Stats targetStats, AttackAnimationManager aam, int flip)
+    {
+        //Target get knocked back.
+        if (timeSinceStart > aam.enemyKnockBackStart && timeSinceStart < aam.enemyKnockBackStart + aam.enemyKnockBackDuration)
+        {
+            float amountThrough = (timeSinceStart - aam.enemyKnockBackStart) / aam.enemyKnockBackDuration;
+            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen, targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0) * flip, amountThrough);
+            AdjustForScale(targetSprite);
+        }
+
+        //Target rubber-band back forward
+        if (timeSinceStart > aam.enemySpringbackStart && timeSinceStart < aam.enemySpringbackStart + aam.enemySpringbackDuration)
+        {
+            float amountThrough = (timeSinceStart - aam.enemySpringbackStart) / aam.enemySpringbackDuration;
+            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0) * flip, targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, amountThrough);
+            AdjustForScale(targetSprite);
+        }
+
+        //Target move back to home position.
+        if (timeSinceStart > aam.enemyMoveBackStart && timeSinceStart < aam.enemyMoveBackStart + aam.enemyMoveBackDuration)
+        {
+            float amountThrough = (timeSinceStart - aam.enemyMoveBackStart) / aam.enemyMoveBackDuration;
+            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, targetStats.homePositionOnScreen, amountThrough);
+            AdjustForScale(targetSprite);
+        }
+    }
+
     public static float GetAnimationLength(this AttackAnimation anim)
     {
         switch (anim)
@@ -177,6 +247,10 @@ public static class Extensions
             case AttackAnimation.FIVE_FRAME_HOP_WITH_ANTICIPATE:
                 return 1;
             case AttackAnimation.STATIONARY_THRUST:
+                return 1;
+            case AttackAnimation.ORBITAL_LASER:
+                return 1;
+            case AttackAnimation.DUMP:
                 return 1;
         }
         Debug.LogWarning("Unknown Attack Animation!" + anim);
@@ -199,6 +273,10 @@ public static class Extensions
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
             case AttackAnimation.STATIONARY_THRUST:
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
+            case AttackAnimation.ORBITAL_LASER:
+                return AttackAnimationManager.Instance.enemyKnockBackStart;
+            case AttackAnimation.DUMP:
+                return AttackAnimationManager.Instance.enemyKnockBackStart;
         }
         Debug.LogWarning("Unknown Attack Animation!" + anim);
         return 1000;
@@ -220,6 +298,10 @@ public static class Extensions
                 return AttackAnimationManager.Instance.hopSwingSoundPoint;
             case AttackAnimation.STATIONARY_THRUST:
                 return AttackAnimationManager.Instance.thrustSoundPoint;
+            case AttackAnimation.ORBITAL_LASER:
+                return AttackAnimationManager.Instance.orbitalLaserSoundPoint;
+            case AttackAnimation.DUMP:
+                return AttackAnimationManager.Instance.dumpSoundPoint;
         }
         Debug.LogWarning("Unknown Attack Animation!" + anim);
         return 1000;
@@ -245,6 +327,12 @@ public static class Extensions
                 SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
                 return;
             case AttackAnimation.STATIONARY_THRUST:
+                SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
+                return;
+            case AttackAnimation.ORBITAL_LASER:
+                SoundManager.Instance.PlaySound("Combat/Laser", .7f);
+                return;
+            case AttackAnimation.DUMP:
                 SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
                 return;
         }
@@ -329,4 +417,4 @@ public static class Extensions
     }
 }
 
-public enum AttackAnimation { HOP, BLAST, PLAYER_HOP, FIVE_FRAME_HOP, FIVE_FRAME_HOP_WITH_ANTICIPATE, STATIONARY_THRUST };
+public enum AttackAnimation { HOP, BLAST, PLAYER_HOP, FIVE_FRAME_HOP, FIVE_FRAME_HOP_WITH_ANTICIPATE, STATIONARY_THRUST, ORBITAL_LASER, DUMP };

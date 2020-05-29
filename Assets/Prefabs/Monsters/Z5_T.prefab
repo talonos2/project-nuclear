@@ -67,6 +67,7 @@ MonoBehaviour:
   SpottingDistance: 4
   LookDuration: 30
   ChaseRange: 25
+  SpotWaitTimer: 0.3
   LookPattern: 0000000000000000
   bossMonster: 0
 --- !u!114 &6622165687117483729
@@ -118,11 +119,11 @@ MonoBehaviour:
   attack: 110
   defense: 28
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.1, y: -1}
-  strikingPointOffset: {x: 0, y: 0}
+  homePositionOnScreen: {x: 0.1, y: -1.2}
+  strikingPointOffset: {x: -0.15, y: -0.2}
   gettingStruckPointOffset: {x: 0.25, y: 0.5}
   scale: {x: 1, y: 1}
-  forceOpponentAdditionalScale: {x: 1, y: 1}
+  forceOpponentAdditionalScale: {x: 0.9, y: 0.9}
   enemyName: DeathKnight
   ExpGiven: 2145
   weakness: 2
@@ -133,6 +134,16 @@ MonoBehaviour:
   - {fileID: -4056249532648974388, guid: 8ce7b923742a44e419b01b8030381676, type: 3}
   - {fileID: 4211729051556190390, guid: 8ce7b923742a44e419b01b8030381676, type: 3}
   - {fileID: -8179426440804271241, guid: 8ce7b923742a44e419b01b8030381676, type: 3}
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
 --- !u!1 &6622165687581963513
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,3 +265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  additionalZOffset: 0
+  groundItem: 0
+  belowGroundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0

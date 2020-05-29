@@ -36,10 +36,19 @@ public class AttackAnimationManager : Singleton<AttackAnimationManager>
     public float blastWarmupDuration = .2f;
     public Vector4 blastFrameTime= new Vector4(.25f,.075f,.075f,.2f);
     public float blastSoundPoint = .2f;
+    internal float orbitalLaserSoundPoint = .05f;
     public float initialThrustImpactTime = .4f;
     public float thrustWarmupDuration = .06f;
     public Vector4 thrustFrameTime = new Vector4(.06f, .06f, .06f, .3f);
     public float thrustSoundPoint = .2f;
+    public float[] orbitalLaserFrameTimes = new float[] { .1f, .167f, .25f, .3f, .35f, .433f, .5f};
+    public float dumpStartRunUpTime = .01f;
+    public float dumpEndRunUpTime = .2f;
+    public float returnFromDumpStart = .6f;
+    public float returnFromDumpEnd = 1.2f;
+    internal float dumpSoundPoint = .2f;
+    public Vector4 dumpFrameTime = new Vector4(.3f, .367f, .45f, .533f);
+    internal float dumpEndFrameTime=.7f;
 
     // Start is called before the first frame update
     void Start()
