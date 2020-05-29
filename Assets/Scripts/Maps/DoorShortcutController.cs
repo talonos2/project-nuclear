@@ -14,6 +14,14 @@ public class DoorShortcutController : MonoBehaviour
         }
     }
 
+    public void OpenDoors() {
+        if (GameData.Instance.Map3_2Shortcut)
+        {
+            Instantiate(openedDoor, this.transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

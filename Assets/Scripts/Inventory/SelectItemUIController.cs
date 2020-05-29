@@ -568,6 +568,7 @@ public class SelectItemUIController : MonoBehaviour
     public void LoadGameButtonClicked()
     {
         GameState.fullPause = false;
+
         StartDungeonRun.StartRun();
     }
 
@@ -579,6 +580,7 @@ public class SelectItemUIController : MonoBehaviour
         }
         InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
         savedStats.setAccessory((Accessory)itemToSwap);
+        savedStats.setMaxStats();
         savedStats.setFullHPMP();
         GameData.Instance.townAccessories.Remove((Accessory)itemToSwap);
         accessoryUIPrefab.SetItem(itemToSwap);

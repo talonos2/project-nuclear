@@ -93,6 +93,7 @@ public class CharacterStats : Stats
 
         if (GameData.Instance.FloorNumber >= 1)
         {
+            
             PullCharacterData();
         }
 
@@ -246,24 +247,27 @@ public class CharacterStats : Stats
         ManaCrystalBuff = GameData.Instance.ManaCrystalBonus;
         AttackCrystalBuff = GameData.Instance.AttackCrystalBonus;
         defenseCrystalBuff = GameData.Instance.DefenseCrystalBonus;
-        setMaxStats();
-        setFullHPMP();
+
 
         if (GameData.Instance.iceBoss1) { powersGained = 1; }
         if (GameData.Instance.earthBoss1) { powersGained = 2; }
         if (GameData.Instance.fireBoss1) { powersGained = 3; }
         if (GameData.Instance.airBoss1) { powersGained = 4; }
-        
+
+        setMaxStats();
+        setFullHPMP();
+
     }
 
     internal void setFullHPMP()
     {
         HP = MaxHP;
         mana = MaxMana;
+        //PushCharacterData();
         
     }
 
-    private void setMaxStats()
+    internal void setMaxStats()
     {
         MaxMana = baseMaxMana+ManaCrystalBuff+(int)accessoryMana;
         MaxHP = baseMaxHealth + HealthCrystalBuff+(int)accessoryHealth;
@@ -329,8 +333,8 @@ public class CharacterStats : Stats
         HP += (int)(HPpercent * accessoryHealth);
 
         float manaPercent = (float)(mana) / MaxMana;
-        HP -= (int)(manaPercent * oldaccMana);
-        HP += (int)(manaPercent * accessoryMana);
+        mana -= (int)(manaPercent * oldaccMana);
+        mana += (int)(manaPercent * accessoryMana);
 
         setMaxStats();
 
