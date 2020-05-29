@@ -13,6 +13,7 @@ public class StartDungeonRun : MonoBehaviour
         GameData.Instance.SetNextLocation(new Vector2Int ( -13, -10 ), SpriteMovement.DirectionMoved.RIGHT);
         GameData.Instance.ResetTimer();
 
+
         SceneManager.LoadScene("Map1-1");
     }
 
