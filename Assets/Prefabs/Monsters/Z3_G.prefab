@@ -60,13 +60,16 @@ MonoBehaviour:
   framesPerSecond: 6
   facedDirection: 4
   PathRandomly: 1
+  PathAntiRandomly: 0
   PathViaSteps: 0
   Pathing: 010000000100000001000000020000000200000002000000030000000300000003000000040000000400000004000000
   SpotterMonster: 0
   SpottingDistance: 6
   LookDuration: 20
   ChaseRange: 15
+  SpotWaitTimer: 0.3
   LookPattern: 
+  bossMonster: 0
 --- !u!114 &6622165687117483729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +134,17 @@ MonoBehaviour:
   - {fileID: 1667138647414316704, guid: 73467817856ec04498b808022d30a34f, type: 3}
   - {fileID: 493052076464116731, guid: 73467817856ec04498b808022d30a34f, type: 3}
   - {fileID: 1543536564769315303, guid: 73467817856ec04498b808022d30a34f, type: 3}
+  - {fileID: 1543536564769315303, guid: 73467817856ec04498b808022d30a34f, type: 3}
+  attackAnimation: 8
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
 --- !u!1 &6622165687581963513
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,3 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4b949781a984c4ca5820f968a33e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualGround: 0
+  additionalZOffset: 0
+  groundItem: 0
+  belowGroundItem: 0
+  aboveItem: 0
+  thePlayerjumping: 0
+  spikes: 0
