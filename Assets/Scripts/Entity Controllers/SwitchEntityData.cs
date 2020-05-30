@@ -33,7 +33,7 @@ public class SwitchEntityData : EntityData
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
         if (prePressed) {
-            ToggleTiedObjects();
+               ToggleTiedObjects();
         }
     }
 
@@ -66,7 +66,7 @@ public class SwitchEntityData : EntityData
         
     }
 
-    private void ToggleTiedObjects()
+    public virtual void ToggleTiedObjects()
     {
         if (activeSwitch)
         {

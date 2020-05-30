@@ -96,6 +96,7 @@ public class GameData : Singleton<GameData>
     internal static Accessory bestAccessoryFound;
 
     internal bool statsSetup=false;
+    internal bool map2_2_toMap3_2Shortcut;
 
     internal bool IsInTown()
     {
