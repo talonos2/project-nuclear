@@ -2,26 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PermanentSwitchEntityData : SwitchEntityData
+public class PermSwitch5_3 : SwitchEntityData
 {
-    protected GameData gameData;
-
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
-        gameData = GameData.Instance;
-        if (gameData.Map3_2Shortcut) {
+        if (GameData.Instance.map5_3Shortcut) {
             ToggleTiedObjects();
         }
-
     }
 
-    public override void ToggleTiedObjects()
-    {
+     public override void ToggleTiedObjects() {
+        
         if (activeSwitch)
         {
-            gameData.map5_2Shortcut = true;
+            GameData.Instance.map5_3Shortcut = true;
             foreach (GameObject tiedEntity in TiedEntities)
             {
                 SpikeController spikeControlled = tiedEntity.GetComponent<SpikeController>();
@@ -33,13 +29,15 @@ public class PermanentSwitchEntityData : SwitchEntityData
                 }
                 if (bridgeControlled != null)
                 {
-                    bridgeControlled.RunPrimAlgorythm();
+                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.removePlatform(); }
+                        else { bridgeControlled.addPlatform(); }
+                    
                 }
             }
             activeSwitch = false;
             SwitchAnimation();
-        }       
-    }
+        }
 
+    }
 
 }
