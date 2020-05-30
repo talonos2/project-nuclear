@@ -157,7 +157,6 @@ public static class Extensions
         if (timeSinceStart > aam.dumpStartRunUpTime && timeSinceStart < aam.dumpEndRunUpTime)
         {
             float amountThrough = (timeSinceStart-aam.dumpStartRunUpTime) / (aam.dumpEndRunUpTime - aam.dumpStartRunUpTime);
-            Debug.Log(amountThrough);
             amountThrough = 1-Mathf.Pow(1-amountThrough,1.6f);
             Vector3 startPosit = userStats.homePositionOnScreen;
             Vector3 endPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
@@ -171,7 +170,6 @@ public static class Extensions
             float amountThrough = (timeSinceStart - aam.returnFromDumpStart) / (aam.returnFromDumpEnd - aam.returnFromDumpStart);
             Vector3 endPosit = userStats.homePositionOnScreen;
             Vector3 startPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
-            Debug.Log("Here, " + amountThrough);
             userSprite.transform.localPosition = Vector3.Lerp(startPosit, endPosit, amountThrough);
         }
 

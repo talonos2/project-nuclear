@@ -54,8 +54,10 @@ public class AttackAnimationManager : Singleton<AttackAnimationManager>
     public float thrustRecoilEndTime = .5f;
     public float returnFromThrustStart = .6f;
     public float returnFromThrustEnd = 1.2f;
-    public float thrustWindupDistance = .2f;
-    public float thrustOvershootDistance = .1f;
+    public float thrustWindupDistance = .3f;
+    public float thrustOvershootDistance = .2f;
+    public Vector3 playerHitsplatOffset = new Vector3(-1.5f, 3, 0);
+    public Vector3 monsterHitsplatOffset = new Vector3(-1, 4, 0);
 
     // Start is called before the first frame update
     void Start()

@@ -428,7 +428,7 @@ public class Combat : MonoBehaviour
 
         //need elemental hit-splat if elemental damage is > 0
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
-        hitsplat.transform.position = monsterSprite.transform.position;
+        hitsplat.transform.position = monsterSprite.transform.position+(Vector3)monsterStats.gettingStruckPointOffset+AttackAnimationManager.Instance.monsterHitsplatOffset;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
         //Debug.Log("Monster HP:" + monsterStats.HP);
         CheckCombatOver();
@@ -471,9 +471,8 @@ public class Combat : MonoBehaviour
         }
         playerStats.HP -= Mathf.RoundToInt(incomingDamage);
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
-        hitsplat.transform.position = monsterSprite.transform.position;
+        hitsplat.transform.position = playerSprite.transform.position+(Vector3)playerStats.gettingStruckPointOffset+AttackAnimationManager.Instance.playerHitsplatOffset;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
-        //Debug.Log("Player HP:" + playerStats.HP);
         CheckCombatOver();
     }
 
