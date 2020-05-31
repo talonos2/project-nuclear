@@ -163,6 +163,9 @@ public class SpriteMovement : MonoBehaviour
     {
 
         bool MoveableLocation = false;
+        if (LocX < 0 || LocY < 0) {
+            return MoveableLocation;
+        }
 
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
             || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
