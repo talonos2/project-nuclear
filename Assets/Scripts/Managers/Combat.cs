@@ -9,6 +9,7 @@ public class Combat : MonoBehaviour
 {
     private static readonly float ENTER_TIME = .3f;
     private static readonly float EXIT_TIME = .3f;
+    private bool oneLastEnterFrame = true;
 
     //Starts a fight, creating a new game object with an instance of this monobehavior.
     internal static void InitiateFight(GameObject Player, GameObject monster)
@@ -114,6 +115,12 @@ public class Combat : MonoBehaviour
         if (enterTimer < ENTER_TIME)
         {
             HandleEntranceRoutine();
+            oneLastEnterFrame = true;
+        }
+        else if (oneLastEnterFrame)
+        {
+            HandleEntranceRoutine();
+            oneLastEnterFrame = false;
         }
         else if (!combatEnded)
         {
