@@ -10,6 +10,20 @@ public class NewGameController : MonoBehaviour
 
     public GameObject RunNumberTextField;
     public GameObject dropDown;
+
+    public GameObject PerfeToggle;
+    public GameObject WorstToggle;
+    public GameObject DouglassToggle;
+    public GameObject SaraToggle;
+    public GameObject McDermitToggle;
+    public GameObject ToddToggle;
+    public GameObject NormaToggle;
+    public GameObject DerringerToggle;
+    public GameObject MelvardiusToggle;
+    public GameObject MaraToggle;
+    public GameObject DevonToggle;
+    public GameObject PendletonToggle;
+
     public Vector2Int Map1EntrancePoint;
     public Vector2Int TownSpawnPosition;
     public SpriteMovement.DirectionMoved TownSpwanFacing;
@@ -115,6 +129,7 @@ public class NewGameController : MonoBehaviour
         SoundManager.Instance.PlaySound("MenuOkay", 1f);
         Text runVariable=RunNumberTextField.GetComponent <Text> ();
         Dropdown runType = dropDown.GetComponent<Dropdown>();
+        
 
         if (runType.value == 0)
         {
@@ -172,6 +187,28 @@ public class NewGameController : MonoBehaviour
                 
                 //load cutscene runvar-1
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
+                if (PerfeToggle.GetComponent<Toggle>().isOn == true)
+                {
+                    GameData.Instance.Perfect = 1;
+                    GameData.Instance.Worst = 0;
+                }
+                if (WorstToggle.GetComponent<Toggle>().isOn == true)
+                {
+                    GameData.Instance.Perfect = 0;
+                    GameData.Instance.Worst = 1;
+                }
+
+                GameData.Instance.Douglass = Convert.ToInt32(DouglassToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.Sara = Convert.ToInt32(SaraToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.McDermit = Convert.ToInt32(McDermitToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.Todd = Convert.ToInt32(ToddToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.Norma = Convert.ToInt32(NormaToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.Derringer = Convert.ToInt32(DerringerToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.Melvardius = Convert.ToInt32(MelvardiusToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.Mara = Convert.ToInt32(MaraToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.Devon = Convert.ToInt32(DevonToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.Pendleton = Convert.ToInt32(PendletonToggle.GetComponent<Toggle>().isOn);
+
             }
             CutsceneLoader.LoadEnding();
 
