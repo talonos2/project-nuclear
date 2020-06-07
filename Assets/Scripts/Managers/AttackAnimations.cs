@@ -233,12 +233,14 @@ public static class Extensions
             amountThrough = (1 - amountThrough);
         }
 
-
-        Vector3 startPosit = userStats.homePositionOnScreen;
-        Vector3 endPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
-        //We can't use lerp, because lerp is clamped, and we don't want that.
-        Vector3 lerpedPosit = startPosit + (amountThrough * (endPosit - startPosit));
-        userSprite.transform.localPosition = lerpedPosit;
+        if (timeSinceStart > aam.thrustStartTime && timeSinceStart < aam.returnFromThrustEnd)
+        {
+            Vector3 startPosit = userStats.homePositionOnScreen;
+            Vector3 endPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
+            //We can't use lerp, because lerp is clamped, and we don't want that.
+            Vector3 lerpedPosit = startPosit + (amountThrough * (endPosit - startPosit));
+            userSprite.transform.localPosition = lerpedPosit;
+        }
 
 
         //Which frame are we in?
@@ -420,10 +422,10 @@ public static class Extensions
     private static int HandleHopAnimation(float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats, bool isPlayer = false, bool fiveFrame = false, bool anticipate = false)
     {
         AttackAnimationManager aam = AttackAnimationManager.Instance;
-        int flip = (userStats.homePositionOnScreen.x < targetStats.homePositionOnScreen.x ? 1 : -1);
+        int flip = (!isPlayer ? 1 : -1);
 
         //User Jump forward.
-        if (timeSinceStart < aam.initialHopDuration)
+        if (timeSinceStart > 0 && timeSinceStart  < aam.initialHopDuration)
         {
             float amountThrough = timeSinceStart /aam.initialHopDuration;
             float currentJumpHeight = -Mathf.Pow(-((amountThrough * 2 * Mathf.Pow(aam.initialHopHeight, .5f)) - Mathf.Pow(aam.initialHopHeight, .5f)),2)+aam.initialHopHeight;

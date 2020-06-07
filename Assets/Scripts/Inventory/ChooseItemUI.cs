@@ -194,7 +194,7 @@ public class ChooseItemUI : MonoBehaviour
                 return;
             }
             foundItemText = rolledItem.gameObject.name + " TODO: Brief Desc.";
-            oldItemText = playerData.armor.gameObject.name + " TODO: Brief Desc.";
+            oldItemText = playerData.accessory.gameObject.name + " TODO: Brief Desc.";
             newItemSprite.sprite = itemIcons[2];
             //oldItemSprite.sprite = itemIcons[2];
         }
