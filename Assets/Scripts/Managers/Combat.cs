@@ -393,24 +393,26 @@ public class Combat : MonoBehaviour
         incomingDamage -= monsterStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
 
+        bool hitWeak = false;
+
         float elementalDamage = incomingDamage * playerStats.currentPower * .25f;
         if (playerStats.currentPower == (int)ElementalPower.ICE) { elementalDamage *= 1 + playerStats.accessoryIceBonus/100;
-            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage *= 2; }
+            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 2) { playerStats.mana -= 2; }
                 else { elementalDamage = 0; }
         }
         if (playerStats.currentPower == (int)ElementalPower.EARTH) { elementalDamage *= 1 + playerStats.accessoryEarthBonus/100;
-            if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage *= 2; }
+            if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 4) { playerStats.mana -= 4; }
                 else { elementalDamage = 0; }
         }
         if (playerStats.currentPower == (int)ElementalPower.FIRE) { elementalDamage *= 1 + playerStats.accessoryFireBonus/100;
-            if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage *= 2; }
+            if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 6) { playerStats.mana -= 6; }
                 else { elementalDamage = 0; }
         }
         if (playerStats.currentPower == (int)ElementalPower.AIR) { elementalDamage *= 1 + playerStats.accessoryAirBonus/100;
-            if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage *= 2; }
+            if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 8) { playerStats.mana -= 8; }
                 else { elementalDamage = 0; }
         }
@@ -437,6 +439,14 @@ public class Combat : MonoBehaviour
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position+(Vector3)monsterStats.gettingStruckPointOffset+AttackAnimationManager.Instance.monsterHitsplatOffset;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
+
+        if (elementalDamage > 0)
+        {
+            GameObject eleHitsplat = GameObject.Instantiate(hitsplatTemplate);
+            eleHitsplat.transform.position = monsterSprite.transform.position + (Vector3)monsterStats.gettingStruckPointOffset + AttackAnimationManager.Instance.monsterHitsplatOffset - new Vector3(0, .8f, 0);
+            eleHitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(elementalDamage), ((ElementalPower)playerStats.currentPower).EleColor());
+            eleHitsplat.GetComponent<Hitsplat>().SetEleEffective(hitWeak);
+        }
         //Debug.Log("Monster HP:" + monsterStats.HP);
         CheckCombatOver();
     }
