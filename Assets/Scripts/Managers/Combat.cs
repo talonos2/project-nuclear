@@ -51,6 +51,7 @@ public class Combat : MonoBehaviour
     GameObject hitsplatTemplate;
 
     GameObject[] eleVFXes = new GameObject[4];
+    GameObject[] eleSwitchVFXes = new GameObject[4];
 
     private static readonly float finalMonsterHPBarPosition = 18.483f;
     private static readonly float startMonsterHPBarPosition = 24.5f;
@@ -105,6 +106,11 @@ public class Combat : MonoBehaviour
         eleVFXes[1] = Resources.Load<GameObject>("EarthSlashFX");
         eleVFXes[2] = Resources.Load<GameObject>("FireSlashFX");
         eleVFXes[3] = Resources.Load<GameObject>("AirSlashFX");
+
+        eleSwitchVFXes[0] = Resources.Load<GameObject>("IceSwitchFX");
+        eleSwitchVFXes[1] = Resources.Load<GameObject>("EarthSwitchFX");
+        eleSwitchVFXes[2] = Resources.Load<GameObject>("FireSwitchFX");
+        eleSwitchVFXes[3] = Resources.Load<GameObject>("AirSwitchFX");
     }
 
     private void SetMonsterAndPlayerScale()
@@ -479,6 +485,36 @@ public class Combat : MonoBehaviour
         }
         //Debug.Log("Monster HP:" + monsterStats.HP);
         CheckCombatOver();
+    }
+
+    public void DisplayElementSwitchVFX(int currentPower)
+    {
+        GameObject eleVFX = null;
+        switch ((ElementalPower)currentPower)
+        {
+            case ElementalPower.ICE:
+                eleVFX = GameObject.Instantiate(eleSwitchVFXes[0]);
+                eleVFX.transform.position = playerSprite.transform.position - new Vector3(1 * monsterStats.forceOpponentAdditionalScale.x, -4.5f * monsterStats.forceOpponentAdditionalScale.y, .2f);
+                eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                return;
+            case ElementalPower.EARTH:
+                eleVFX = GameObject.Instantiate(eleSwitchVFXes[1]);
+                eleVFX.transform.position = playerSprite.transform.position - new Vector3(1 * monsterStats.forceOpponentAdditionalScale.x, -4.5f * monsterStats.forceOpponentAdditionalScale.y, .2f); ;
+                eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                return;
+            case ElementalPower.FIRE:
+                eleVFX = GameObject.Instantiate(eleSwitchVFXes[2]);
+                eleVFX.transform.position = playerSprite.transform.position - new Vector3(1 * monsterStats.forceOpponentAdditionalScale.x, -4.5f * monsterStats.forceOpponentAdditionalScale.y, .2f); ;
+                eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                return;
+            case ElementalPower.AIR:
+                eleVFX = GameObject.Instantiate(eleSwitchVFXes[3]);
+                eleVFX.transform.position = playerSprite.transform.position - new Vector3(1 * monsterStats.forceOpponentAdditionalScale.x, -4.5f * monsterStats.forceOpponentAdditionalScale.y, .2f); ;
+                eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                return;
+            default:
+                return;
+        }
     }
 
     private float RollCrit()
