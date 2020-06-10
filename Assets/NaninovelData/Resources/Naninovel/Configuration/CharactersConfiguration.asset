@@ -66,6 +66,7 @@ MonoBehaviour:
     - Wilson
     - Recruit
     - Darius
+    - Steve
     metas:
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
@@ -572,6 +573,22 @@ MonoBehaviour:
       PixelsPerUnit: 200
       BakedLookDirection: 1
       DisplayName: Darius
+      UseCharacterColor: 0
+      NameColor: {r: 1, g: 1, b: 1, a: 1}
+      MessageColor: {r: 1, g: 1, b: 1, a: 1}
+      HighlightWhenSpeaking: 0
+      SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
+      NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      MessageSound: 
+    - Implementation: Naninovel.SpriteCharacter
+      LoaderConfiguration:
+        PathPrefix: Characters
+        ProviderTypes: 0000000001000000
+      guid: 45dc643b-8d43-4efc-8ed7-451d9a01dcbd
+      Pivot: {x: 0.8, y: -0.3}
+      PixelsPerUnit: 200
+      BakedLookDirection: 1
+      DisplayName: Steve
       UseCharacterColor: 0
       NameColor: {r: 1, g: 1, b: 1, a: 1}
       MessageColor: {r: 1, g: 1, b: 1, a: 1}

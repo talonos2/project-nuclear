@@ -56,30 +56,42 @@
 		#day4
 		;complete
 		
-
+		@char Todd
 		Todd: Ah hahahaha!
 		Todd: I have passed the test.
 		Todd: I am worthy!
+		@char Douglass
 		Douglass: What happened?
+		@char Todd
 		Todd: You brought my destiny within reach.
-
+		@char Wilson
 		Wilson: Todd! I was so worried. I thought we had lost you!
+		@char Todd
 		Todd: You have, old man.
+		@char Sara
 		Sara: Well... thank you for rescuing us all the same.
-		Todd: You haven't been rescued.
+		@char Todd
+		Todd: This wasn't a rescue.
 		Todd: You, guard! I have a task for you.
+		@char McDermit
 		McDermit: Todd, we appreciate the help, but—
 		;@spawn ShakeCamera
-		McDermit: Aaaargh!
+		McDermit: -camera shake- Aaaargh!
+		@char Todd
 		Todd: As I was saying, you will watch the entrance.[br]Make certain that none enter.
 		Todd: And you, maid!
+		@char Sara
 		Sara: um, yes?
+		@char Todd
 		Todd: You will bring me food, until I am beyond the need for such things.
+		@char Douglass
 		Douglass: Okay, that's enough.
 		Douglass: I'll be taking that ring back.
-		fighting sounds and camera shake
+		Camera Shake
 		;@spawn ShakeCamera
+		@char Tasha
 		Tasha: He's... you didn't even give a warning!
+		@char Todd
 		Todd: He serves as the warning for the rest of you.
 		Todd: Now go, I have work to do.
 
@@ -91,21 +103,31 @@
 		#day5
 
 		@if GetPerfect()
+		@char Logos
 		Logos: Are you alright?
+		@char Norma
 		Norma: Yeah, I'm fine.
+		@char Jezerine
 		Jezerine: You handled all those monsters like it was nothing!
+		@char Norma
 		Norma: Sure? I mean, what was the big deal anyway?
 		Norma: Least I usually just had to deal with them one at a time.
 		Norma: It's not like it was a stampede or anything.
 		Norma: Oye! Hero boy!
+		@char Douglass
 		Douglass: I'm guessing that's me?
+		@char Norma
 		Norma: Really appreaciate you coming by and all.
 		Norma: But maybe you should be looking into a new line of work.
+		@char Douglass
 		Douglass: Excuse me?
+		@char Norma
 		Norma: I'm just sayin'
 		Norma: If any random cowgirl can bust monster heads better than you, mabye hero work ain't what you're cut out for.
+		@char Douglass
 		Douglass: I... will consider it.
 		Douglass: May I have my stuff back?
+		@char Norma
 		Norma: Sure, just don't get yourself in trouble.
 		Norma: If anybody needs me I'll be out making sure the sheep don't drown themselves or something.
 		@endif
@@ -117,28 +139,44 @@
 		
 		#day6
 		
-
+		@char Tasha
 		Tasha: Hey! Who's messing around over here?
 		Tasha: It's you?
+		@char Derringer
 		Derringer: Oh, I'm afraid I didn't hear you.
+		@char Tasha
 		Tasha: They're looking all over for you![br]You just... went back to work?
+		@char Derringer
 		Derringer: I'm afraid I'm not one for crowds.
 		Derringer: Besides, I had a job to finish.[br]Don't like leaving things undone.
+		@char Tasha
 		Tasha: Job? You mean the sword...[br]For the cave.
+		@char Derringer
 		Derringer: I'm afraid there are a lot of things you can do with a good sword.
 
 		@wait 1
 
+		@char Jezerine
 		Jezerine: Hey you found him! We've been looking all over for—[br]Hey is that my sword?!
+		@char Derringer
 		Derringer: I'm afraid it will be just a few more minutes.
+		@char Tasha
 		Tasha: What's so important about this sword anyway?
+		@char Jezerine
 		Jezerine: It's going to be a replica of the sword used by Malrak The Impudent.
+		@char Tasha
 		Tasha: Who?
+		@char Jezerine
 		Jezerine: You know, from the Cerulian Blight Saga.
+		@char Derringer
 		Derringer: I'm afraid the look of the scoring from wyvern blood took longer than I expected.
+		@char Jezerine
 		Jezerine: Hey, did it get chipped?
+		@char Derringer
 		Derringer: I'm afraid Malrak slew the wyvern in book four. So it needs to show the damage from the battle with his half-brother in book three.
+		@char Jezerine
 		Jezerine: Oh yeah. But it's before the eighth sunrise right?
+		@char Tasha
 		Tasha: I'm just going to leave you two to... whatever this is.
 		Tasha: There's a feast, if you care.
 
@@ -149,7 +187,7 @@
 		
 		#day7
 
-
+		@char Melvardius
 		Melvardius: In ages past the gods were many.[br]Splintered across the cosmos.
 		Melvardius: They were beings of great power and small understanding.
 		Melvardius: Each thought themselves too different from the others to ever trust them.
@@ -160,17 +198,25 @@
 		Melvardius: Those came together to form our world, and in time they worked so closely together that they became inseperable.
 		Melvardius: Their old names were forgotten, and now they are Tellus, with dominion over substance.
 		Melvardius: Others followed, in time we began to see that Lodestone and Lightning were joined in a dance of—
+		@char Tristana
 		Tristana: Wait! Is... is this just going to be a normal sermon?
+		@char Melvardius
 		Melvardius: Ahem.
 		Melvardius: I wish to lay a foundation for us to—
+		@char Tristana
 		Tristana: You just smote like a hundred monsters, and you're not even going to talk about it?
+		@char Melvardius
 		Melvardius: While sometimes nessissary, our goal should not be to destroy that which we do not understand.
+		@char Murtough
 		Murtough: Ya were pretty good at it though.
+		@char Melvardius
 		Melvardius: Be that as it may.
 		Melvardius: The goal of our faith is to bring together all in unity.
 		Melvardius: We ought not hate something because it is different from us. We ought to seek to be one with it.
 		Melvardius: Just as Tempus and Gravitas saw that together they were...
+		@char Darius
 		Darius: Dad, do we have to stay for all this?
+		@char Paul
 		Paul: We do boy, we do.
 		
 		@exit
@@ -178,25 +224,39 @@
 
 		#day8
 
+		@char Mara
 		Mara: I don't know about you lot, but I'm in the mood for another round!
 		Mara: Alright ya ruffians, who's up for trying one of my new ales?
+		@char Murtough
 		Murtough: Always!
+		@char McDermit
 		McDermit: I'm not sure. That last ice cider was a tad, crunchy.
+		@char Mara
 		Mara: You won't have to worry about that on this batch.
 		Mara: Finally got a still tough enough to run on lava.[br]Lets see what came out of it!
+		@char McDermit
 		McDermit: Maybe next time.
+		@char Mara
 		Mara: If you're worried about your tender tummy I'll throw in a shot of green fountain gin for a chaser.
 
 		@Wait 1
 
+		@char Sara
 		Sara: You know, I kinda liked that old deer head you had in here.
+		@char Mara
 		Mara: What? The one with the missing antler?
+		@char Sara
 		Sara: Yeah, it gave it kind of a rustic charm. Like there was a story to it.
 		Sara: These ones just... give me the heebie jeebies.
+		@char Mara
 		Mara: What do you mean? These trophies have stories to them.
+		@char McDermit
 		McDermit: Kind of all the same story though right?
+		@char Jezerine
 		Jezerine: And it's an awesome story!
+		@char Elder
 		Elder: Sure, sure... they're just a bit... intense.
+		@char Mara
 		Mara: Don't worry, hun. I'm sure you'll get used to 'em.
 		
 
@@ -205,55 +265,85 @@
 		
 		#day9
 		@if GetPerfect()
+		@char Devon
 		Devon: Now just what was all this about anyway?
+		@char Tristana
 		Tristana: You did it! You defeated the curse!
 		Tristana: Now, if I could just ask you a few questions. While the whole experience is fresh.
+		@char Devon
 		Devon: I think I'd like to get some questions answered first.
+		@char McDermit
 		McDermit: There you are! You ran out of there before we could thank you!
+		@char Devon
 		Devon: Who are you?
+		@char Derringer
 		Derringer: We're the ones you didn't cut down on your way through that place.
+		@char Devon
 		Devon: I wasn't about to just kill people! I thought you'd been shoved down there too.
+		@char Pendleton
 		Pendleton: Ah yes, sorry about that.
+		@char Devon
 		Devon: You! Just what did you—
+		@char Mara
 		Mara: This calls for a cellibration! Lets head back to the tavern.
 		Mara: Unless you louts let it fall apart while I was gone.
+		@char Wilson
 		Wilson: Sounds wonderful, come along Mr... did we ever get your name?
+		@char Devon
 		Devon: WHAT IS THIS PLACE?!
 
 
 		@elseif !GetWorst()
 
+		@char Devon
 		Devon: That... what was that place?
+		@char Tristana
 		Tristana: You did it! You defeated the curse!
-		Tristana: Now, if I could just ask you a few questions. While the-
+		Tristana: Now, if I could just ask you a few questions. While the—
+		@char Devon
 		Devon: What curse? I just got shoved into a cave full of monsters!
+		@char Tristana
 		Tristana: How was it?
+		@char Devon
 		Devon: How was it?  It was terrible!  And now there's a curse?
 		
 		@if GetDouglass()
+			@char Douglass
 			Douglass: Not anymore!
 			Douglass: Destroying the monster at the bottom of these things usually puts a stop to that.
+			@char Devon
 			Devon: Didn't I see you down there?
+			@char Douglass
 			Douglass: Yes, but I wasn't feeling like myself at the time.
 		@endif
 
+		@char Devon
 		Devon: What about the people down there?[br]Were they pushed in too?
+		@char Logos
 		Logos: No, the people you saw were victims of the curse. Overtaken by its fel magics.
+		@char Devon
 		Devon: But that means the ones that were...
+		@char Metra
 		Metra: You did what you could. We are greatful.
 
 		@if GetMelvardius()
+			@char Melvardius
 			Melvardius: None can expect perfection.
 			Melvardius: You did what you could. Now rest, and we will explain what we can.
+			@char Devon
 			Devon: Fine.
 			Devon: Fine alright? I'll hear you out.
 			@if GetMara()
+				@char Mara
 				Mara: Lets talk over some food, hun.
 			@endif
 		@else
+			@char Devon
 			Devon: What have I done?
 			Devon: I can't... I can't.
-			Metra: Don't blame yourself for-
+			@char Metra
+			Metra: Don't blame yourself for—
+			@char Devon
 			Devon: Just stay away! I never should have come here!
 		@endif
 
@@ -263,22 +353,34 @@
 		@else
 
 
-		
+		@char Tristana
 		Tristana: Hey! You made it out!
+		@char Devon
 		Devon: You weren't expecting me to?
-		Meyster: Well, none who dared venture so far have managed to-
+		@char Meyster
+		Meyster: Well, none who dared venture so far have managed to—
+		@char Devon
 		Devon: I didn't venture, I was shoved!
+		@char Pendleton
 		Pendleton: There was not time to explain.
+		@char Devon
 		Devon: Explain what?
-		Decon: You tried to kill me before I took two steps into your town!
+		Devon: You tried to kill me before I took two steps into your town!
+		@char Wilson
 		Wilson: We didn't try to kill you. The cave's curse spread to you when you came near.
+		@char Devon
 		Devon: And you didn't think to put up a sign?
+		@char Wilson
 		Wilson: Yes, we could have handled things better. Come with us and we'll celibrate and tell you everything.
+		@char Devon
 		Devon: Oh I don't think so. I'm getting out of this crazy place.
+		@char Jezerine
 		Jezerine: Hey! Wait!
+		@char Logos
 		Logos: We should probably just let him go.
 		Logos: He spared none that he found, beast or man.
 		Logos: I do not think sharing a meal with their friends and family would do him good.
+		@char Metra
 		Metra: At least it's over now.
 
 
@@ -298,34 +400,51 @@
 
 		@if GetPerfect()
 
+		@char Logos
 		Logos: A toast!
 		Logos: To Pendleton!
+		@char Meyster
 		Meyster: Hear hear!
 
-
+		@char Pendleton
 		Pendleton: It was a group effort.[br]I merely carried the torch passed to me by others.
+		@char Wilson
 		Wilson: Sure the first step on any journey is the hardest.
 		Wilson: But that last step is pretty tricky too!
 
+		@char Douglass
 		Douglass: Aw don't go spoiling their fun kid.[br]You did good.
+		@char Sara
 		Sara: Would you like another spice cake?
+		@char Pendleton
 		Pendleton: Not right now, excuse me.
 
 		@wait 2
 
+		@char Meyster
 		Meyster: Thought I might find you here.[br]What's wrong?
+		@char Pendleton
 		Pendleton: I do not want to be their hero.
+		@char Meyster
 		Meyster: Why is that my boy?
+		@char Pendleton
 		Pendleton: Because I'm just going to let them down someday.
+		@char Meyster
 		Meyster: Like I have?
+		@char Pendleton
 		Pendleton: ...
+		@char Meyster
 		Meyster: When I saw you battling in that cave—[br]I wanted to go in after you.
 		Meyster: But, watching you fell foe after foe, I finally admitted that I am not the warrior I once was.
 		Meyster: My mistake was to try to hold on to glory and never let it go.
 		Meyster: As for you my boy, well, to push it away would be just as foolish.
+		@char Pendleton
 		Pendleton: So, what do I do now?
+		@char Meyster
 		Meyster: Why, become a proper knight!
+		@char Pendleton
 		Pendleton: I do not think it is that simple.
+		@char Meyster
 		Meyster: Of course not. You will need help.
 		Meyster: I may be an old fool, but I still know how to drive a wagon and tell a good tale.
 		Meyster: If there is one flaw I dare mention, it's that you do not know how to spin a proper story!
@@ -338,32 +457,43 @@
 
 		@elseif GetWorst()
 
-
+		@char Meyster
 		Meyster: Pendleton! You're...
+		@char Pendleton
 		Pendleton: I'm done.
-		Meyster: Yes! The cavern has been cleared of evil and a new dawn-
+		@char Meyster
+		Meyster: Yes! The cavern has been cleared of evil and a new dawn—
+		@char Pendleton
 		Pendleton: No, I'm done.
 		Pendleton: Here, have the sword.
+		@char Meyster
 		Meyster: Dear boy, what is the matter?
+		@char Pendleton
 		Pendleton: I've been planning to vanquish evil my whole life.
 		Pendleton: Now I've done it.
 		Pendleton: And I'm done.
 		Pendleton: Here, might as well take the ring too.
+		@char Meyster
 		Meyster: What happened to Douglass was... unfortunate... but someone ought to carry his legacy.
-		Meyster: And I cannot think of a better-
+		Meyster: And I cannot think of a better—
+		@char Pendleton
 		Pendleton: If anything, it's prefect for you.
 		Pendleton: You can run fast, do some party tricks, feel young again.[br]Feel like you matter again.
 
+		@char Meyster
 		Meyster: Pendleton...
 
+		@char Pendleton
 		Pendleton: I'm... I'm going to go.[br]Find a job where I don't have to kill anyone.
 
 		@wait 2
 
+		@char Pendleton
 		Pendleton: I should tell him I didn't mean all that...
 
 		@wait 1
 
+		@char Pendleton
 		Pendleton: Eventually.
 
 
@@ -372,27 +502,39 @@
 		Meyster: Pendleton! You have returned!
 
 		@if GetTodd()
+			@char Todd
 			Todd: I'm not Pendlton.
+			@char Meyster
 			Meyster: Ah, sorry.
-			Meyster: Just, you know, from the side you look- ah! There you are!
+			Meyster: Just, you know, from the side you look—Ah! There you are!
+			@char Pendleton
 			Pendleton: Yes?
 		@else
+			@char Pendleton
 			Pendleton: Yes?
 		@endif
 
+		@char Meyster
 		Meyster: talky stuff-----------
 
 
-
+		@char Pendleton
 		Pendleton: Here is your ring back mister Hiro.
+		@char Douglass
 		Douglass: Thanks kid. Looks like you did a pretty good job with it.
+		@char Meyster
 		Meyster: Such nobility! Many have been tempted by power such as that.
 		Meyster: Or so the tales have told.
+		@char Pendleton
 		Pendleton: Don't give me too much credit.
 		Pendleton: It only works close to caverns like these doesn't it?
+		@char Douglass
 		Douglass: Yep, how'd you know?
+		@char Pendleton
 		Pendleton: You seem to have done this before, but it didn't have any power when you got here.
+		@char Douglass
 		Douglass: Usually it's not such a big deal. Something was different here.
+		@char Pendleton
 		Pendleton: You don't say.
 
 
@@ -406,97 +548,143 @@
 
 		#day11
 	    ;complete
-		;@char Stranger
+		@char Stranger
 		Stranger: huff... huff...  I made it?
 		@if !Getperfect()
 			Stranger: And this loot![br]I mean sure, it's not exactly precious metals.
-			Stranger: But there's gotta be an antiques dealer who will-
+			Stranger: But there's gotta be an antiques dealer who will—
 		@endif
 
+		@char Paul
 		Paul: He's out!
+		@char Logos
 		Logos: I was worried when we lost sight of you!
 		@if GetWorst()
 		Tedd: Where's everyone else?
+		@char Stranger
 		Stranger: I, uh, didn't see anybody.
 		Stranger: Guess the monsters ate them.
 		@endif
 
 		@if !GetPerfect()
+		@char Tasha
 		Tasha: Come along, we have much to celibrate.
+		@char Wilson
 		Wilson: Do we?
+		@char Tasha
 		Tasha: Honoring sacrafice is part of celibrating.
 			@if !GetTodd()
+			@char Wilson
 			Wilson: Well, you lot go on without me.
 			@endif
 		@endif
-
+		@char Stranger
 		Stranger: Yeah, that's... great and all.[br]But I should probably get going.
+		@char Svenra
 		Svenra: Look lad. It's not like they didn't know ya' were pinching things.[br]Play your cards right and they won't care.
+		@char Stranger
 		Stranger: I'm sure I don't know what you're talking about.
 
 		@wait 2
 
-		;@char Reya
+		@char Reya
 		Reya: Well well well. Look at the conquering hero.
 		@hidechars time:0
+		@char Stranger
 		Stranger: Hey, I ain't looking for trouble.
 
 		@if GetWorst()
+			@char Reya
 			Reya: Maybe you should be.[br]You didn't let anything stand in your way after all.
+			@char Stranger
 			Stranger: So?
+			@char Reya
 			Reya: You've got potential. Maybe we can help each other out.
+			@char Stranger
 			Stranger: I don't want your help.
+			@char Reya
 			Reya: You sure? It won't be long before these folks start thinking.
 			Reya: They'll be thinking about all the other things you killed down there besides the big slimeball.
+			@char Stranger
 			Stranger: So I'll go hide.[br]Done it before.
+			@char Reya
 			Reya: Nah, I know your type, you've always hid in plain sight. But now?[br]You're going to be famous.
+			@char Stranger
 			Stranger: Fine, so what do I do now?
+			@char Reya
 			Reya: Come with me.
 			Reya: We'll split the gear, you can hold onto that ring, and I'll teach you all you need to know.
 			Reya: If it doesn't work out, we go our seperate ways.
 			Reya: If it does, maybe I'll take that ring from you after all.
+			@char Stranger
 			Stranger: ...
 			Stranger: Sure, why not?
 			@wait 2
+			@char Meyster
 			Meyster: Young man, the people are waiting!
 			Meyster: Now where did he go?
 
 		@elseif !GetPerfect()
+			@char Reya
 			Reya: Didn't go looking for a lot of civilians either did ya?
+			@char Stranger
 			Stranger: What of it?
+			@char Reya
 			Reya: You're not the hero they think you are.
+			@char Stranger
 			Stranger: Wasn't trying to be.
+			@char Reya
 			Reya: Fine by me.[br]Now how about handing over that gear? And the ring of course.
 			Reya: It's hodgepodge, but I think I could make an ensamble of it.
+			@char Stranger
 			Stranger: Yeah, fine. Enjoy it.
+			@char Reya
 			Reya: I'd say 'see you around,'[br]but I don't think I'll be coming back to a slum like this.
 			@wait 2
+			@char Tasha
 			Tasha: You coming?
+			@char Stranger
 			Stranger: Sure, why not?
 
 		@else
+			@char Reya
 			Reya: Well, you got it.
 			Reya: Now why don't you had over that gear? And the ring of course.
 			Reya: It's hodgepodge, but I think I could make an ensamble of it.
+			@char Stranger
 			Stranger: No.
+			@char Reya
 			Reya: Scuse me?
+			@char Stranger
 			Stranger: You're going to leave.[br]Now.
+			@char Reya
 			Reya: What? You think I'm just going to walk away from a payday like this?
+			@char Stranger
 			Stranger: Yeah, I guess I do.
+			@char Reya
 			Reya: ...
+			@char Stranger
 			Stranger: ...
+			@char Reya
 			Reya: Fine. Better watch your back, looter.
+			@char Stranger
 			Stranger: I'm used to that.
 
 			@wait 2
 
+			@char Sara
 			Sara: So, I wanted to thank you. None of us would have made it if it weren't for you.
+			@char Stranger
 			Stranger: You don't owe me anything.[br]Trust me.
 			@wait 1
+			@char Sara
 			Sara: Oh don't try that false modesty on me Mr...[br]Say, I don't think I know your name.
+			@char Stranger
 			Stranger: It's Steve.
+			@char Sara
 			Sara: So Steve, shall we go to the celibration?
-			;Steve: Sure, why not?
+			@char Steve
+			Steve: Sure, why not?
 		@endif
 
 		;fadetoblack
@@ -507,38 +695,57 @@
 		
 		#day12
 
+		@char Jezerine
 		Jezerine: Did you see that?!
 		Jezerine: I did it!  I totally just cleaned the floor with, like, a thousand monsters!
 		Jezerine: I am unstoppable!
+		@char Stranger
 		Stranger: Yeah, um, thanks miss.
+		@char Jezerine
 		Jezerine: The name's Jezerine, or maybe I need some cool deed-name after all this.
 		Jezerine: Something mysterious, but with allusions to my tragic backstory.
+		@char Svenra
 		Svenra: I thought she was tough to put up with before...
+		@char Nelson
 		Nelson: Josephine! You made it!
+		@char Jezerine
 		Jezerine: Really? Now? You're coming at me with that now?
+		@char Nelson
 		Nelson: I just—I'm so happy to see you made it!
+		@char Jezerine
 		Jezerine: I was just about to... Yeah okay, thanks bro.
 
 		@wait 1
 
+		@char Jezerine
 		Jezerine: But I've got to figure out where to go from here.
+		@char Jinn
 		Jinn: Where?
+		@char Jezerine
 		Jezerine: Yeah, I've got to keep this adventure rolling!
 		Jezerine: This will make for such a great origin story.
 		Jezerine: I was worried my home town would have to be destroyed.[br]I mean, we did come close.
+		@char Wilson
 		Wilson: Thank goodness for small favors I suppose.
+		@char Melvardius
 		Melvardius: We are all very thankful for what you have done.[br]And impressed.
 		Melvardius: I think we should all rest from our ordeal.
+		@char Derringer
 		Derringer: I do still have to finish your blade.
+		@char Tedd
 		Tedd: You can't go just yet!
 		Tedd: We need to write down your story for the town's historical records!
+		@char Jezerine
 		Jezerine: Oh come on guys, I wasn't going to just dash down the road right away.
 		Jezerine: I still have to get some supplies, a new outfit, a squire...
+		@char Pendleton
 		Pendleton: Not it.
+		@char Wilson
 		Wilson: Certainly, we'll help how we can, but now, lets just celibrate!
 
 		@wait 2
 
+		@char Reya
 		Reya: Cute kid.
 		Reya: Reminds me of me at her age.
 
@@ -552,29 +759,45 @@
 
 		@if GetPerfect()
 
+		@char Paul
 		Paul: It's been too long.
 		Logos: We saw his victory.[br]He must be on his way.
+		@char Todd
 		Todd: Dad?
+		@char Wilson
 		Wilson: Todd!
+		@char Todd
 		Todd: I'm sorry, I was wrong. I thought...
+		@char Wilson
 		Wilson: It's okay, you're back. Everything else can wait.
 
+		@char Murtough
 		Murtough: Now doesn't that just warms and old soldiers heart.
+		@char Patrick
 		Patrick: Where have you been? We were getting scared that you...
+		@char Murtough
 		Murtough: Had to make sure they all made it out.
 		Murtough: This time, everybody goes home.
 
+		@char Mara
 		Mara: I'll drink to that! Come on, my treat.
+		@char Murtough
 		Murtough: Thats very kind of you, but I think I'll pass.
+		@char Mara
 		Mara: You will?
+		@char Murtough
 		Murtough: Don't pressure me. I ain't doin' this because it's easy
 
 		@wait 1
 
+		@char JohnDoe
 		JohnDoe: What's everybody so happy about anyway?
+		@char Murtough
 		Murtough: Come on out of there and I'll tell you about it.
+		@char JohnDoe
 		JohnDoe: This doesn't mean anything.
 		JohnDoe: You think I've forgiven you or something?
+		@char Murtough
 		Murtough: Probably not, but then again, I'm not sure I have either.
 		Murtough: Lets talk about it.
 
@@ -582,38 +805,48 @@
 
 		@elseif !GetWorst()
 
+		@char Murtough
 		Murtough: Suppose that wasn't so bad.
+		@char Fluer
 		Fluer: You made it!
+		@char Murtough
 		Murtough: Sure I did.
 		Murtough: Not like you sent in any soldiers before.
 		Murtough: Just a bunch of the old, the hopeful, and the helpless.
 		Murtough: They're aways the first to go anyway.
 
 		@if GetDouglass()
+			@char Douglass
 			Douglass: Well, as a fellow warrior I thank you for carrying on where I could not.
+			@char Murtough
 			Murtough: I'm not a warrior, just a soldier.
 			Murtough: And you're just some kid whos barely gotten his hands bloody.
 		@endif
 
 		@if GetSara()
+			@char Sara
 			Sara: I appreciate it all the same.
+			@char Murtough
 			Murtough: Don't.
 			Murtough: Just be glad you didn't get in my way.
 		@endif
 
 		@if GetTedd()
 			Wilson: Is there anything we can do for you?
+			@char Murtough
 			Murtough: Guess so.
 			Murtough: Know that cretin in the cell?[br]Get him out of town.
 			Murtough: I don't want to deal with him.
 		@endif
 
-		
+		@char Murtough
 		Murtough: So, we going to celebrate or what?
 		Murtough: Feels like its been ages since I had a good drink.
 
+		@char Nelson
 		Nelson: Yes, I suppose there is a cause for celibration.
 		Nelson: I shall make preparations.
+		@char Murtough
 		Murtough: Good man.
 		Murtough: If you need me, I'll be in my usual spot.
 
@@ -621,25 +854,37 @@
 
 		@elseif GetWorst()
 
+		@char Svenra
 		Svenra: How long has it been now?
+		@char Paul
 		Paul: Just a day and a half. 
+		@char JohnDoe
 		JohnDoe: Old fool probably got lost.
+		@char Svenra
 		Svenra: I Don't think they let you out just so you could sit here instead.
+		@char JohnDoe
 		JohnDoe: Yeah yeah, I'm gonna be on my way soon eough.
 		JohnDoe: But I'm gonna make sure I give him a piece of my mind first.
+		@char Paul
 		Paul: What are you going to do?
+		@char JohnDoe
 		JohnDoe: You kidding? I hear he can actually fight back now.
 		JohnDoe: That means this pummeling's gonna actaully mean something.
 
 		@wait 2
 		
+		@char Svenra
 		Svenra: Well, some folks got tired of waiting.
 		Svenra: figured I'd bring you some of the food before it got too cold.
+		@char Paul
 		Paul: Thank you kindly.
+		@char JohnDoe
 		JohnDoe: Yeah, whatever.
 		JohnDoe: So what are you even waiting for?
 		JohnDoe: Bet it ain't my scintillating conversation.
+		@char Paul
 		Paul: Somebody's got to play referee.
+		@char JohnDoe
 		JohnDoe: Just don't get in my way.
 
 
@@ -652,27 +897,41 @@
 
 		#day14
 
+		@char Tristana
 		Tristana: Right, right, but what did YOU do to defeat the monsters?
+		@char Tedd
 		Tedd: I keep telling you, it was an effort by the whole town. I can't take credit.
+		@char Tristana
 		Tristana: Yes, you do keep telling me that...
 		Tristana: Ugh.[br]Give me a minute to go over my notes.
 
 		@wait 1
-
+		@char Todd
 		Todd: Could you be more of a dweeb?
+		@char Tedd
 		Tedd: I could do anything if I set my mind to it.
+		@char Todd
 		Todd: Okay, you're doing this on purpose now.
+		@char Tedd
 		Tedd: A bit.
 		Tedd: I mean it though, you helped.[br]We couldn't have done it without you.
+		@char Todd
 		Todd: I wasn't trying to help. I was chasing dumb shadows.
+		@char Tedd
 		Tedd: Look, things have been rough for all of us.[br]Even before this all happened.
 		Tedd: Can we just go back to the way we were before?
+		@char Todd
 		Todd: I didn't like things before.
+		@char Tedd
 		Tedd: Fine, something new then?
+		@char Todd
 		Todd: If people can overlook the dumb stuff I've done.
+		@char Tedd
 		Tedd: They try to make fun of you, I'll tell them to stop.
 		Tedd: And they'll have to listen to me, because I'm a hero now and all that.
+		@char Todd
 		Todd: I thought you weren't taking credit?
+		@char Tedd
 		Tedd: For you? I might.
 
 
@@ -682,27 +941,38 @@
 		
 		#day15
 
+		@char Elder
 		Elder: Is he still in there?
+		@char Murtough
 		Murtough: Yeah, he said to start without him.
+		@char Jinn
 		Jinn: What's he doing in there?
+		@char Norma
 		Norma: He's been looking for any more loot that might be hiding down there.
 		Norma: Last I saw him he was practically digging up floor tiles.
+		@char Paul
 		Paul: It's odd though.
 		Paul: You'd think the supply chest would be overflowing by now.
+		@char Svenra
 		Svenra: Now that he can take his time he doesn't have to share.
 
 		@wait 1
 
+		@char Phillip
 		Phillip: Hey, everyone getting on okay out here?
+		@char Norma
 		Norma: We're fine.
 		Norma: You missed a good party.
+		@char Svenra
 		Svenra: So, you find enough treasure down there?
 		Phillip: Oh there's plenty down there. More than enough to get the town going again if we use it smartly.
 		Phillip: But I wasn't coming out till I found something... priceless.
 
 		@wait 0.5
 		
+		@char Darius
 		Darius: Dad?
+		@char Paul
 		Paul: Son!
 
 
@@ -719,40 +989,55 @@
 		#day16
 		;finished
 
-
+		@char Logos
 		Logos: So... that's what it looks like from that angle...
 		@if !GetWorst()
 			Logos: I think I'll stick to scrying in the future.
 		@endif
 
+		@char JohnDoe
 		JohnDoe: Hey! he made it!
 
 		@if GetPerfect()
+			@char Logos
 			Logos: Indeed I have, and many besides.
 
-
+			@char Sara
 			Sara: I'm fine, really!
 			Sara: Just, thought I'd go see the doctor is all.
+			@char Svenra
 			Svenra: Y'can barely stand. Let me get those shoes.
 			@wait 1
+			@char Logos
 			Logos: My dear, have you always had these spines?
+			@char Sara
 			Sara: ...
 			Sara: No.
+			@char Logos
 			Logos: That cave reeked of magic. Perhaps the prolonged exposure...
+			@char Sara
 			Sara: Can anything be done?
+			@char Logos
 			Logos: If it can I shall find it!
 			Logos: The rest of you, come with me.[br]Lets make sure this nightmare is truly over.
+			@char Fluer
 			Fluer: Wait!
 			Fluer: This isn't something only you can do. I want to help.
+			@char Logos
 			Logos: Are you alright with this Sara?
+			@char Sara
 			Sara: Only if she doesn't bring Josephine.
+			@char Jinn
 			Jinn: I'll come too.
+			@char Patrick
 			Patrick: I'm no healer, but I can set up cots, carry things...
 			Meyster: Aye, just give me a task![br]Finally a place we can all pitch in!
 
 			@wait 2
 
-			Nelson: Something wrong Jez?
+			@char Nelson
+			Nelson: Something wrong Jezerine?
+			@char Jezerine
 			Jezerine: Well, it's just...
 			Jezerine: I'm looking, and there no claws, no fangs...
 			Jezerine: I never get anything cool...
@@ -760,54 +1045,80 @@
 
 
 		@elseif !GetWorst()
+			@char Logos
 			Logos: Indeed, and I am not the only one.[br]If you could please lend a hand.
+			@char Wilson
 			Wilson: Alright, you heard the man!
+			@char Metra
 			Metra: Hey, are you doing okay?
 			@if Sara
+				@char Sara
 				Sara: Oh, I'm alright.
 				Sara: I'm, uh, going to see if the doctor is still doing discount amputations...
 			@elseif GetMara()
+				@char Mara
 				Mara: Just feeling a bit woozy
 			@elseif GetDerringer()
+				@char Derringer
 				Derringer: My teeth hurt...
 			@elseif GetMelvardius()
+				@char Melvardius
 				Melvardius: Just a bit of a rash, I'm sure.
 			@elseif GetNorma()
 				Norma: Just hungry.[br]Really, weirdly, hungry.
 			@elseif GetMcDermit()
 				McDermit: It's just a bit bright out.[br]How long was I down there?
 			@elseif GetDouglass()
+				@char Douglass
 				Douglass: Well, I've been in these caves before.  Always a bit dizzy afterwards.[br]Never quite this bad though.
 			@elseif GetDevon()
+				@char Devon
 				Devon: I'm fine... thanks. Just going to get as far from here as I can.
 			@elseif GetPendleton()
-				I'm fine, it's just that my hair has gone a bit funny.
+				@char Pendleton
+				Pendleton: I'm fine, it's just that my hair has gone a bit funny.
 			@elseif GetTodd()
+				@char Todd
 				Todd: No! Stay back! I'm fine...[br]Excellent, in fact.
 			@endif
+			@char Logos
 			Logos: Yes yes, that's... that's fine.
 			Logos: Now if you'll excuse me.[br]I need to get some rest.
+			@char Svenra
 			Svenra: How bout you?[br]You okay?
+			@char Logos
 			Logos: Just... so very tired.
+			@char Patrick
 			Patrick: We'll have a celibration ready for you when you're up to it.
 		@elseif GetWorst()
+			@char Logos
 			Logos: Indeed.[br]Now, out of my way ruffian.
+			@char JohnDoe
 			JohnDoe: Hey, good day to you too.
 
+			@char Fluer
 			Fluer: You don't sound so good. Let me take a look at you.
+			@char Logos
 			Logos: There isn't any time.[br]I just came for my things.
+			@char Wilson
 			Wilson: No time? But the threat is passed!
+			@char Logos
 			Logos: I would not make such assumptions.
 			Logos: Not with so much at stake.
 			Tasha: Hey, don't run yourself ragged now.
+			@char Logos
 			Logos: Irresponsible... still so much danger down below.
 			Logos: Now leave me to my work.
 
 			@wait 2
 
+			@char Paul
 			Paul: Did I hear right?[br]He came back?
+			@char Tasha
 			Tasha: And is gone again.
+			@char Paul
 			Paul: And the others? How many...
+			@char Tasha
 			Tasha: Just Logos.
 			Tasha: And I'm not sure we've really gotten him back either.
 		@endif
@@ -819,33 +1130,52 @@
 		
 		#day17
 
-
+		@char Paul
 		Paul: There you are!
 		Paul: So tell me, did my boy behave himself in school today?
+		@char Jinn
 		Jinn: He was a little monster, as always.
+		@char Paul
 		Paul: But a good little monster right?
+		@char Darius
 		Darius: Papa, I didn't get slime on anybody today!
+		@char Paul
 		Paul: Attaboy!
+		@char Jinn
 		Jinn: Though it may be time to trim his claws again.
+		@char Darius
 		Darius: Aww, do I hafta?
+		@char Paul
 		Paul: Yes, but just until you finish your classes with Tasha.
+		@char Tedd
 		Tedd: Hey Darius! Good job on the spelling bee today.
+		@char Paul
 		Paul: Oh? how'd you do kiddo?
+		@char Darius
 		Darius: I didn't beat the older kids, but I lasted a long time!
+		@char Paul
 		Paul: Good job![br]Come on, lets go home.
 
 		@wait 2
 
+		@char Darius
 		Darius: Dad, am I ever going to look like the other kids?
+		@char Paul
 		Paul: I don't know Son.[br]Miss Fluer said that bones usually... don't shrink.
 		Paul: But you never know. Mr Logos is finding neat stuff in that cave all the time.
+		@char Darius
 		Darius: When I grow up, will I live in a dungeon and guard treasure?
+		@char Paul
 		Paul: What? Who told you that?
+		@char Darius
 		Darius: Nobody.[br]But that's what monsters do isn't it?
+		@char Paul
 		Paul: Look Son, we may joke, but you're not a monster.
 		Paul: Being human isn't about how many fingers you have, it's about what's in your heart.
 		Paul: And as long as you're alive, that's all that matters.
+		@char Darius
 		Darius: But... if I wanted to guard treasure?
+		@char Paul
 		Paul: Hey, knock yourself out kid.
 
 
@@ -868,38 +1198,62 @@
 		
 		#day18
 
-
+		@char Tristana
 		Tristana: So, what happened next?
+		@char Jinn
 		Jinn: Oh, the town had a party, the evacuees started coming back, things kinda just went back to normal.
+		@char Tristana
 		Tristana: What about the institute they're setting up?
+		@char Jinn
 		Jinn: Yeah, a lot of sages are pretty excited about it. I'm just a schoolteacher.
+		@char Tristana
 		Tristana: And...?
+		@char Jinn
 		Jinn: And the resident advisor on Pre-Consalidrium artifacts.
+		@char Tristana
 		Tristana: That's pretty good right?
+		@char Jinn
 		Jinn: It's kind of an honorary position. They just want me to stay in town in case they come up with any questions.
+		@char Tristana
 		Tristana: Like what?
+		@char Jinn
 		Jinn: So far, just a lot of questions about things I wasn't paying attention to while running for my life.
+		@char Tristana
 		Tristana: Well, I'm sure they'll come up with something eventaully.
 
 		@wait 1
 
+		@char Tristana
 		Tristana: So, how are you?
+		@char Jinn
 		Jinn: Your readers "demand to know"?
+		@char Tristana
 		Tristana: No, just me.
+		@char Jinn
 		Jinn: I feel, better.
+		@char Tristana
 		Tristana: So, a harrowing underground experience might be just what you needed?
+		@char Jinn
 		Jinn: Hardly.
 		Jinn: It's more like a research stipend is just what I needed.
 		Jinn: For years I was only making enough to buy food and keep a roof over my head.
+		@char Tristana
 		Tristana: But you're still doing the same things you used to.
+		@char Jinn
 		Jinn: I never hated the things I did.[br]I just didn't like having to do them.
+		@char Tristana
 		Tristana: But you are still doing them.
+		@char Jinn
 		Jinn: Yes, but I don't have to.
 		Jinn: I can do them because I want to.[br]Not because my survival depends on it.
 		Jinn: I could stop now, and not... die.
+		@char Tristana
 		Tristana: That's a bit of an extreeme way to say it, isn't it?
+		@char Jinn
 		Jinn: Maybe you think so now, but give it a decade or two.
+		@char Tristana
 		Tristana: So... what next?
+		@char Jinn
 		Jinn: I live my life without time breathing down my neck.
 		Jinn: That's good enough for me.
 		
@@ -910,31 +1264,49 @@
 		
 		#day19
 
+		@char Meyster
 		Meyster: Ah, sunlight! It has been too long.
 		Meyster: Is that everyone?
+		@char Pendleton
 		Pendleton: I believe there are a few more.
+		@char Meyster
 		Meyster: Then we return! One does not celibrate until the deed is done.
+		@char Pendleton
 		Pendleton: If you are up to it sire.[br]I'm sure there are others who can take it from here.
+		@char Meyster
 		Meyster: I appreciate the concern.[br]One must know their own limits.
 		Meyster: But I wish to see my last adventure through to the end.
+		@char Pendleton
 		Pendleton: Sire?
+		@char Meyster
 		Meyster: Aye lad, I think it may be time for me to retire.
+		@char Pendleton
 		Pendleton: ...
+		@char Meyster
 		Meyster: You might say that I've finally slain a dragon.
+		@char Pendleton
 		Pendleton: I... see.
 
+		@char Meyster
 		Meyster: I know that I have not always been the best knight, or mentor.
 		Meyster: One can only hope that you learned the right lessons.
 
+		@char Pendleton
 		Pendleton: I know things have not always been the best between us.
 		Pendleton: You try to hard to hold onto the past, and your grip... squishes it.
+		@char Meyster
 		Meyster: Squishes?
+		@char Pendleton
 		Pendleton: I... yes, squishes.
 		Pendleton: You make it seem smaller, disfigured, and shaped too much by your hands.
 		Pendleton: You have been a great knight. And I know you can still be great, but perhaps not weilding a sword.
+		@char Meyster
 		Meyster: Aye, that is probably true.
+		@char Pendleton
 		Pendleton: Through thick and thin, sire, I have appreciated my time with you.
+		@char Meyster
 		Meyster: And I with you. Thank you for humoring this old man.
+		@char Pendleton
 		Pendleton: It's a good thing I did. Where would we be if I hadn't?
 
 
@@ -951,25 +1323,38 @@
 
 		@if GetPerfect()
 
+		@char Reya
 		Reya: Glad that's finally over.
+		@char Tasha
 		Tasha: You're back?
+		@char Reya
 		Reya: Don't look so disappointed.
+		@char Tasha
 		Tasha: This is just how I look.
+		@char Derringer
 		Derringer: I don't care who did it. So long as it got done.
 
+		@char Reya
 		Reya: Yeah, you're welcome.
 		Reya: Thanks to me things will start getting back to normal around here.
 		Reya: Which means it's time for me to leave.
+		@char Nelson
 		Nelson: The rest of the village will not be returning today.[br]Perhaps you could stay for a short celibration?
+		@char Phillip
 		Phillip: You don't have to of course...
+		@char Reya
 		Reya: ...
 		Reya: You know what? I think I will stick around.[br]Just to watch this guy flinch.
 
 		@wait 2
 
+		@char Douglass
 		Douglass: You are a skilled fighter.[br]You could do quite well for yourself helping people.
+		@char Reya
 		Reya: Yeah, probably could, but I prefer a proactive approach.
+		@char Douglass
 		Douglass: Now, if you wouldn't mind giving me back my ring of power.
+		@char Reya
 		Reya: I like you, you're funny.
 		Reya: You should consider becoming a performer or something.
 		Reya: Yaknow, because it's going to be really hard to keep your current job without this ring.
@@ -977,32 +1362,49 @@
 
 		@elseif GetWorst()
 
+		@char Reya
 		Reya: Well now, that wasn't so tough.
+		@char Elder
 		Elder: Did the others...?
+		@char Reya
 		Reya: Dead.
 		Reya: They got made into monsters.
+		@char Patrick
 		Patrick: You killed them?
+		@char Reya
 		Reya: I could burn this whole town to the ground without losing any sleep.
+		@char Patrick
 		Patrick: You wouldn't...
+		@char Reya
 		Reya: I'd have nothing to gain from it.[br]But keep telling me what to do and I might change my mind.
 		Reya: Nah, I think it would be nice if there were some folks left who could tell the story of how it all began.
+		@char Tristana
 		Tristana: How what all began?
+		@char Reya
 		Reya: My legend.
 		Reya: I'm done getting paid with whatever I find in the pockets of peasants and peddlers.
 		Reya: From now on I go after kings, and get paid to do it.
 		Reya: Enjoy farming, or whatever it is you do.
+		@char Fluer
 		Fluer: So you're just going to leave us with nothing?
+		@char Reya
 		Reya: Hey, I gave you your lives. Be thankful.
+		@char Fluer
 		Fluer: ...
+		@char Reya
 		Reya: I said, be thankful!
+		@char Fluer
 		Fluer: Thank you.
+		@char Reya
 		Reya: Good girl.
 		Reya: You won't see me again, but this won't be the last time my deeds change your life.
 
 		@else
 
+		@char Reya
 		Reya: Ugh, finally.
 		Elder: You've done it?[br]Broken the evil curse?
+		@char Reya
 		Reya: Probably, somebody should go check on that.
 
 
@@ -1015,48 +1417,116 @@
 
 		
 		#day21
+
+		@char Wilson
+		Wilson: I'd heard you might be down here.
+		@char Nelson
+		Nelson: Ah! Good to see you, sir.
+		Nelson: You have excellent timing. I have almost completely thawed this section.
+
+
+		Nelson: I suppose I have been neglecting my duties.
+		@char Wilson
+		Wilson: Nothing to worry about there. 
+		Wilson: The rest of the staff has started to return, and they know how to take care of the manor.
+		Wilson: I would say that you have earened a vacation.
+		Wilson: I just thought you might spend it somewhere a little more pleasant.
+
+
+		@char Nelson
+		Nelson: It must have been a beautiful place once.
+		Nelson: There were places where the old architecture shone though.
+		Nelson: Not yet touched by decay and corruption.
+
+		Nelson: It was once a place where people lived, but now it is haunted by their ghosts.
+		Nelson: I think this will take more than a dustpan.
+
+
+
+
+		How did you get rid of all the ice?
+		Nelson: --fire attack noises--
+		Oh.
+		Nelson: The powers may not work outside of the cave, but they still have their uses within.
+
+		So, what is it?
+		Nelson: I do not know. It is lovely though, is it not?
+
+		Nelson: It makes me wonder, was this art? Or did it once serve a function?
 		@char Elder
-		Elder: Not much to see right now.
+		Elder: This isn't cleaning anymore, it's anthropology.
+
+
+
+
+
+
+
+
+		Nelson: 
+
+
 		@exit
 
 		
 		#day22
 		;Complete, but needs name
 
+		@char JohnDoe
 		JohnDoe: Ha HA! That wasn't so bad.
 
 		@if GetPerfect()
 
+		@char JohnDoe
 		JohnDoe: Alright ya louts, get on outa there.
+		@char McDermit
 		McDermit: Thank you sir.  We couldn't have made it without you.
+		@char JohnDoe
 		JohnDoe: I couldn't very well leave you all stuck in a stone structure against your will.
+		@char McDermit
 		McDermit: ...
+		@char JohnDoe
 		JohnDoe: Would be inhumane.
+		@char Melvardius
 		Melvardius: ...
-		JohnDoe: Being all carcerated in a dank hole in the ground for an indefinite-
+		@char JohnDoe
+		JohnDoe: Being all carcerated in a dank hole in the ground for an indefinite—
+		@char Wilson
 		Wilson: Yes yes, we get it.
 
+		@char Metra
 		Metra: Okay everybody, today is a day to be happy! I've made a big meal and we can all celibrate.
+		@char Paul
 		Paul: Have you been cooking something like this every day?
+		@char Metra
 		Metra: Of course not.
 		Metra: Just had a good feeling about today.
+		@char JohnDoe
 		JohnDoe: Eh, fine. Nice to have somebody believe in me for once.
+		@char Meyster
 		Meyster: You know young man. With your spirit and skill you could be a fine knight if you chose to be.
+		@char JohnDoe
 		JohnDoe: Huh, too bad I didn't choose to then.
 
 		@wait 1
 
-		Reya: Hey, you handled things pretty well down there.  Ever thought about-
+		Reya: Hey, you handled things pretty well down there.  Ever thought about—
+		@char JohnDoe
 		JohnDoe: Buzz off lady.
 
+		@char Mara
 		Mara: Alright! Lets hear it for...  well... don't think we ever got your name.
+		@char JohnDoe
 		JohnDoe: Yeah. Why not keep a good thing going?
+		@char Norma
 		Norma: Well, no name no potatoes.
+		@char JohnDoe
 		JohnDoe: Ugh. Fine.
 		JohnDoe: It's Steve.
 
 		@wait 2
 
+		@char Stranger
 		Stranger: Wait, what did you say?
 
 
@@ -1064,50 +1534,75 @@
 		@elseif GetWorst()
 
 		Fluer: Are you okay?  Where are the rest?
+		@char JohnDoe
 		JohnDoe: Place is full of monsters. You think they have a bunch of nice jail cells to put everyone in?
 		JohnDoe: I got shanghaied into this. Just be glad I killed the monsters for you.
 		JohnDoe: I wasn't here to stick out my neck for nobody.
 		JohnDoe: What was the reward you were offering all the bold paragons from far off lands anyway?
+		@char Wilson
 		Wilson: We don't have much to offer...
+		@char JohnDoe
 		JohnDoe: Yeah, whatever.
 		JohnDoe: Tell you what. I'll take what I can carry out of this loot.[br]You lot can have fun with the rest.
+		@char Patrick
 		Patrick: Well... thanks.
+		@char JohnDoe
 		JohnDoe: Don't mention it.[br]To anyone.
 
 		@else
 
-
+		@char Wilson
 		Wilson: Did you find anyone else in there?
+		@char JohnDoe
 		JohnDoe: What?  Is that not everybody?
 		JohnDoe: Guess I haven't been formally introduced to most of ya.
+		@char Wilson
 		Wilson: Well... you did what you could.
+		@char JohnDoe
 		JohnDoe: What I could?[br]I did what I had to.
 
 		@if GetTodd()
+			@char Todd
 			Todd: Oh dark lord, I have failed you!
+			@char JohnDoe
 			JohnDoe: Get over it kid.
 		@endif
 
+		@char Murtough
 		Murtough: Hey, thanks.
+		@char JohnDoe
 		JohnDoe: Oh great, here I was hoping you'd get lost on the way out.
+		@char Murtough
 		Murtough: You didn't have to save me.
+		@char JohnDoe
 		JohnDoe: I'm getting real tired of people telling me what I do and don't have to do.
+		@char Murtough
 		Murtough: Look, its been a long time...
+		@char JohnDoe
 		JohnDoe: Yeah, and it ain't over yet.
 		@if GetMelvardius()
-			Melvardius: Surely you can find it in your heart to-
+			@char Melvardius
+			Melvardius: Surely you can find it in your heart to—
+			@char JohnDoe
 			JohnDoe: Bin it, pointy hat.
 		@endif
+		@char Murtough
 		Murtough: Look, I'm sorry.[br]What do you even want?
+		@char JohnDoe
 		JohnDoe: When I figure it out.[br]You'll be the first to know.
 
 
 
 		@if GetMara()
+			@char Mara
 			Mara: Would you like a sweetroll?
+			@char JohnDoe
 			JohnDoe: No thanks.
+			@char Mara
 			Mara: Oh come now, you have to try some of our signature sweetrolls.
+			@char JohnDoe
 			JohnDoe: Get out of my way!
+			@char Mara
 			Mara: Sheesh, what's with him?
 		@endif
 
@@ -1122,46 +1617,64 @@
 		#day23
 
 		Tasha: You did it![br]Come on! Everyone wants to—
+		@char Fluer
 		Fluer: Sure sure, in a bit.[br]I need to look at these samples I collected.
 		@if GetSara()
+			@char Sara
 			Sara: Is that an arm?
+			@char Fluer
 			Fluer: Some of the samples are larger than others.
 		@endif
+		@char Wilson
 		Wilson: Come on, we're going to have a feast down at the tavern!
 		@if GetMara()
+			@char Mara
 			Mara: I do not remember agreeing to that...
 		@endif
+		@char Fluer
 		Fluer: This goo that was all over down there, do you know what it is?
 		@if GetMelvardius()
+			@char Melvardius
 			Melvardius: Evil?
 		@endif
 		Nelson: Filth?
 		@if GetTodd()
+			@char Todd
 			Todd: Evil?
 				@if GetMelvardius()
+					@char Melvardius
 					Melvardius: ...
 				@endif
 		@endif
 
 		@if GetPerfect()
+			@char Patrick
 			Patrick: Um, disease?
+			@char Fluer
 			Fluer: Yes! I think so.
 			Fluer: Illness has been supressed in this town, and I think that place has something to do with it!
 			Fluer: But the illness sat in there, soaking up magic, until it couldn't be contained.
 			Fluer: Or something...[br]I have a lot of work ahead of me.
 		@elseif !GetPerfect()
+			@char Fluer
 			Fluer: I have some ideas, but I'll need time to work on them.
 		@endif
 
+		@char Paul
 		Paul: But you have to come to the party.
+		@char Fluer
 		Fluer: Only if I can work on my samples...[br]See how fast this is decomposing?
+		@char Paul
 		Paul: Yeah, um, we'll save you a plate.
 
+		@char Wilson
 		Wilson: Well, that doesn't seem right.
+		@char Elder
 		Elder: Look at it this way. Everybody's happy.
 		
 		;fadetoblack
 		@if GetDevon()
+		@char Devon
 		Devon: Who are you people?
 		@endif
 
@@ -1170,21 +1683,25 @@
 		
 		#day24
 
-
+		@char Tasha
 		Tasha: Nobody ever won a battle by themselves.
 		Tasha: Even a lone warrior wields a blade forged by another.
 		Tasha: Some days victory seems so far in the distance that you may never reach it.
 		Tasha: And sometimes, you won't.
 		Tasha: If you think something is truly worth having, you can even fight for someone else to have it.
 		Tasha: But you fight anyway. So that somewhere down the line, who knows how far, that victory will be gained.
+		@char Recruit
 		Recruit: That's great and all...[br]I just came here to learn how to fight.
 		Recruit: I want to save the day, like you did.
+		@char Tasha
 		Tasha: You think that's what I did?
 		Tasha: Douglass, me, and all the other warriors, we're just buying time.
 		Tasha: Pre-Consalidruim cathedrals keep cropping up. Someone has to find out why.
 		Tasha: We just kept them from blowing up before that.
 		Tasha: We're all just stepping stones.[br]There's nobility in that.
+		@char Recruit
 		Recruit: Speaking of nobility... what's with the scarecrows? Couldn't we find a more suitable training dummy?
+		@char Tasha
 		Tasha: Scarecrows are traditional.
 
 		@exit
@@ -1192,19 +1709,29 @@
 		
 		#day25
 
+		@char Fluer
 		Fluer: I can't believe you defeated the curse!
 		Fluer: No offense, I mean...
+		@char Metra
 		Metra: Oh it's okay. I don't always save the day. Usually it's someone else.
+		@char Fluer
 		Fluer: Usually?
+		@char Metra
 		Metra: There are thirty of us after all. Usually I don't even get a chance to try.
+		@char Fluer
 		Fluer: I don't understand. We all saw you go in.
+		@char Metra
 		Metra: Well yes, that's this world. There are a whole bunch of others out there!
 		Metra: I'm glad I get to be experiencing this one though. It has been very exciting.
+		@char Fluer
 		Fluer: I'm afraid to ask... Experiencing this one?
 		Fluer: Let me take a look at you, I think you might have hit your head.  I'll go get my treppaning kit.
 
+		@char Metra
 		Metra: No, stay. We can talk about something right? How are folks recovering?
+		@char Fluer
 		Fluer: Why do you seem so nervous?
+		@char Metra
 		Metra: Because...
 		Metra: Because the interseting part is almost over.
 		Metra: And I don't know if anything comes after this.
@@ -1216,21 +1743,31 @@
 		
 		#day26
 		
+		@char Wilson
 		Wilson: Moving on to the next item on our agenda, how are we to allocate the funds from the war chest?
+		@char Phillip
 		Phillip: I have a few suggestions.
+		@char Wilson
 		Wilson: Yes, we know, but lets give some of the others a chance speak up.
+		@char Derringer
 		Derringer: I'm afraid there are some repairs to be made, and a few things have gone missing.
+		@char Wilson
 		Wilson: Nelson, I'll be putting you in charge of collecting and recording damages.
 		Wilson: We will begin to access those by the end of the week.
+		@char Fluer
 		Fluer: I was hoping we could order some new medicines to help counteract the curse's effects.
 		Fluer: It would be useful to order a few herbs from...
 
 		@wait 1
 
+		@char Norma
 		Norma: Do we really have to do this? Can't we just relax?
+		@char Tedd
 		Tedd: Why should we?
 		Tedd: Look at him.[br]I haven't seen him this happy in years.
+		@char Norma
 		Norma: Paper pushing makes him happy?
+		@char Tedd
 		Tedd: Helping makes him happy.
 
 
@@ -1240,42 +1777,57 @@
 		
 		#day27
 
-
+		@char Svenra
 		Svenra: What do you want?
+		@char Melvardius
 		Melvardius: I wanted to speak to you of the old magics.
+		@char Svenra
 		Svenra: I gave back the ring.
+		@char Melvardius
 		Melvardius: Yes, that is what emboldened me to inqure of the rest of them.
+		@char Svenra
 		Svenra: I don't know what you're talking about.
 		Svenra: I got nothing for you.
 
+		@char Melvardius
 		Melvardius: I do not want anything from you.
 
+		@char Svenra
 		Svenra: Oh sure, you don't want any of my heirlooms.
 
+		@char Melvardius
 		Melvardius: I do not.
 		Melvardius: The things they left behind by those before us truly are wonderous.
 		Melvardius: For they were made that we may only wonder at them.
 		Melvardius: I have seen amazing machines break themselves on purpose. Just because someone tried to see their workings.
 
+		@char Svenra
 		Svenra: So, don't mess with them then.[br]You can start by not messing with me.
 
+		@char Melvardius
 		Melvardius: Do you know why those who came before us fell?
 
+		@char Svenra
 		Svenra: No, and you don't either.
 
+		@char Melvardius
 		Melvardius: I do not.
 		Melvardius: There is a theory.[br]One that I feel holds some merit.
 		Melvardius: Even among themselves, only the elite understood their magics.[br]And they jelously guarded those secrets.
 		Melvardius: In time, fewer and fewer knew how anything worked, and eventually none of them did.
 		Melvardius: Unable to create more tools, and unwilling to live without them, they were doomed to slip into darkness.
 
+		@char Svenra
 		Svenra: So? What does this have to do with me?
 
+		@char Melvardius
 		Melvardius: I only ask that the... heirlooms not pass on to others.
 		Melvardius: We choose to forsake their tools, so that we may someday build our own.
 		Melvardius: And, if fortune smiles, not repeat their mistakes.
 
+		@char Svenra
 		Svenra: I'll think about it. 
+		@char Melvardius
 		Melvardius: That is all I ask.
 
 
@@ -1292,34 +1844,52 @@
 
 		@if GetPerfect()
 
-
+		@char Patrick
 		Patrick: Could use a hand here!
 
+		@char Tristana
 		Tristana: You're back!
+		@char Elder
 		Elder: The scrying cut off after you—
+		@char Patrick
 		Patrick: Sure, fine. We'll talk about it over some drinks later.[br]Now give me a hand.
 
+		@char Elder
 		Elder: What's going on?
+		@char Patrick
 		Patrick: There's a lot of people down here, they need help.
+		@char Tristana
 		Tristana: Where are they?
+		@char Patrick
 		Patrick: Here and there. We need a plan.
+		@char Elder
 		Elder: What is the plan?
+		@char Patrick
 		Patrick: Last time I made a plan it didn't work out so well.
+		@char Tristana
 		Tristana: Seriously? You saved the day, divot replaced.
 		Tristana: This is a transportation issue, that's your job.
+		@char Patrick
 		Patrick: Okay, okay.
 
 		@wait 1
 
+		@char Patrick
 		Patrick: The doctor. She has to have some gurneys around, right?
+		@char Elder
 		Elder: I'll go look.
+		@char Patrick
 		Patrick: It's pretty crazy down there, we'll need to build some bridges.
 		Patrick: Gather up some lumber.
 		Patrick: We have time, but not forever.
+		@char Tristana
 		Tristana: On it.
+		@char Patrick
 		Patrick: I'm going back in. I can get a few.[br]We'll have to prioitize finding the people who can help.
 		Patrick: But...
+		@char Tristana
 		Tristana: Hey, we're going to get them all out. You can do it.
+		@char Patrick
 		Patrick: Yes, I can do it.
 		Patrick: Get some lumber. I'll be back soon.
 
@@ -1327,12 +1897,18 @@
 		@elseif !GetWorst()
 		@elseif GetWorst()
 
+		@char Patrick
 		Patrick: It's done.
 		Tristana: We're safe?
+		@char Patrick
 		Patrick: Nothing's alive down there anymore.[br]So, safe enough, I guess.
+		@char Elder
 		Elder: Nothing?
+		@char Patrick
 		Patrick: Nothing.
+		@char Elder
 		Elder: What... what do we do now?
+		@char Patrick
 		Patrick: I'm leaving. Got room in the wagon, you two coming?
 
 
@@ -1353,23 +1929,35 @@
 
 		@if GetPerfect()
 
+		@char Jinn
 		Jinn: I don't know about this one. The writer wins?[br]Seems a little self-indulgent.
+		@char Tristana
 		Tristana: If people want to see the knight save the day I have plenty of other novels they can read.
 		Tristana: Too many really.
+		@char Jinn
 		Jinn: Starting to feel like you're in a rut?
+		@char Tristana
 		Tristana: I didn't expect the Cursed Cave genre to take off like it did.
 		Tristana: But, I'll stop writing them when they stop selling.
+		@char Jinn
 		Jinn: Doesn't hurt that everyone else with firsthand experience is a meathead adventurer.
+		@char Tristana
 		Tristana: It certainly does not.
 
 		Tristana: Any idea where I should take the next book?
+		@char Jinn
 		Jinn: The schoolchildren really like the one about the squire.
+		@char Tristana
 		Tristana: That was a fun one, but what about you?
+		@char Jinn
 		Jinn: I... like the one about the pillager.
+		@char Tristana
 		Tristana: Oh? I wouldn't have expected that. Have you read the one about the schoolteacher?
+		@char Jinn
 		Jinn: I've read all of them, but that character was a little too... relateable. 
 		Jinn: Well, I've read almost all of them.
 		Jinn: I haven't been able to get my hands on the one about the cultist.
+		@char Tristana
 		Tristana: Yeah, I hear that one's pretty hard to find these days. It's out there though.
 
 
@@ -1389,35 +1977,53 @@
 
 		@if GetPerfect()
 
+		@char Elder
 		Elder: Is it over?
+		@char Metra
 		Metra: I, I'm not sure...
 		JohnDoe: It's good enough for me. Monsters are dead.
+		@char Meyster
 		Meyster: Lift your head. It is a grand day!
 		Meyster: You have vanquished evil!
+		@char Elder
 		Elder: Only just in time though.
+		@char Patrick
 		Patrick: "Better late than never." Isn't that what you all kept telling me?
+		@char Jinn
 		Jinn: Lets put the bad times behind us and move forward.
 
+		@char Mara
 		Mara: Sounds good to me. I'm so hungry I could eat...
 		Mara: Just about anything really.
 		Mara: How long was I down there anyway?
 
 		;fade to black
 
+		@char Douglass
 		Douglass: I feel like something was left undone.
 		Douglass: Maybe if I head back I can find it.
+		@char Todd
 		Todd: Oh, you're here too?
+		@char Douglass
 		Douglass: Why are you going back?
+		@char Todd
 		Todd: Oh, no reason. You? 
+		@char Douglass
 		Douglass: Also no reason.
+		@char Todd
 		Todd: Good.
 
 		@wait 1
 
+		@char Todd
 		Todd: Hey, it's boarded up!
+		@char Melvardius
 		Melvardius: For now yes. Is there something you needed?
+		@char Todd
 		Todd: None of your business.
+		@char Douglass
 		Douglass: Well, I just wanted to go back in.
+		@char Melvardius
 		Melvardius: I do not know what lies in that cave.
 		Melverdius: But I do know a thing or two about temptation.
 		Melvardius: I too feel a pull to return.
@@ -1426,6 +2032,7 @@
 
 		@elseif !GetWorst()
 
+		@char Elder
 		Elder: We have won, but it has cost us.
 		Elder: 
 
@@ -1434,57 +2041,77 @@
 		;fadetoblack
 
 		@if GetTodd()
-
+			@char Todd
 			Todd: You've all felt it haven't you?
 			Todd: The power of the dark lord.
 			@if GetSara()
+				@char Sara
 				Sara: It's not that.
 				Sara: I've just been feeling odd, and though the cave might...
+				@char Todd
 				Todd: Call it whatever you like.
 			@endif
 
 			@if GetMelvardius()
+				@char Melvardius
 				Melvardius: Okay, that's enough. It's time to go home.
+				@char Todd
 				Todd: Quiet you! We no longer have need of your moralizing.
 				Todd: We are beyond such things![br]Our pact gives us strength!
 
 				@if GetNorma()
+					@char Norma
 					Norma: I don't remember a pact.
 				@endif
 				@if GetDevon()
+					@char Devon
 					Devon: I don't know anything about a pact. I just... guess I don't have anything in this town, so why not go back in?
 				@endif
 
+				@char Melvardius
 				Melvardius: I have sworn no such pact.
 
 				@if GetMcDermit()
+					@char McDermit
 					McDermit: Pact?  Were the rest of you talking to someone down there?
 				@endif
-
+				@char Todd
 				Todd: Silence! I will show you the power I have been given!
 
 				;@spawn ShakeCamera
 
+				@char Melvardius
 				Melvardius: That's enough of that.
+				@char Todd
 				Todd: How... did you?
+				@char Melvardius
 				Melvardius: The cave has certainly had an effect on us.
 				Melvardius: But perhaps we should not attribute it to either of our patrons.
+				@char Todd
 				Todd: No... I'm right. This will finally show that.
+				@char Melvardius
 				Melvardius: I have asked the others to seal the entrance. They work even now.
+				@char Todd
 				Todd: You can't do that!
+				@char Melvardius
 				Melvardius: Go home Todd. Your father worrys for you. He has for some time.
 			@elseif !GetMelvardius()
+				@char Todd
 				Todd: Worry not about petty things like "good" and "evil" for we will be beyond those.
 				@if GetDevon()
+					@char Devon
 					Devon: I'm not from around here, is this some kind of...?
 					@if GetMara()
+						@char Mara
 						Mara: No, it isn't.
 					@endif
 				@endif
+				@char Todd
 				Todd: Follow, or don't, it's your choice.
 			@endif
 
 		@elseif GetWorst()
+		@char Elder
 		Elder: Well, that's done.
 		Elder: Guess I'll just...
 		@wait 4
