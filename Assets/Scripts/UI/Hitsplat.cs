@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -62,5 +63,19 @@ public class Hitsplat : MonoBehaviour
         this.startPosition = this.transform.position;
 
         Update();
+    }
+
+    public void SetEleEffective(bool effective)
+    {
+        if (effective)
+        {
+            TextMeshPro text = this.GetComponent<TextMeshPro>();
+            this.transform.localScale = this.transform.localScale * 1f;
+            text.text = "<-"+text.text+"->";
+        }
+        else
+        {
+            this.transform.localScale = this.transform.localScale * .8f;
+        }
     }
 }

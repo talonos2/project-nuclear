@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 // Define an extension method in a non-nested static class.
-public static class Extensions
+public static class AttackAnimationExtensions
 {
     public static int HandleAnimation(this AttackAnimation anim, float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
     {

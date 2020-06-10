@@ -50,6 +50,9 @@ public class Combat : MonoBehaviour
 
     GameObject hitsplatTemplate;
 
+    GameObject[] eleVFXes = new GameObject[4];
+    GameObject[] eleSwitchVFXes = new GameObject[4];
+
     private static readonly float finalMonsterHPBarPosition = 18.483f;
     private static readonly float startMonsterHPBarPosition = 24.5f;
 
@@ -99,6 +102,15 @@ public class Combat : MonoBehaviour
         SetMonsterAndPlayerScale();
 
         hitsplatTemplate = Resources.Load<GameObject>("Hitsplat");
+        eleVFXes[0] = Resources.Load<GameObject>("IceSlashFX");
+        eleVFXes[1] = Resources.Load<GameObject>("EarthSlashFX");
+        eleVFXes[2] = Resources.Load<GameObject>("FireSlashFX");
+        eleVFXes[3] = Resources.Load<GameObject>("AirSlashFX");
+
+        eleSwitchVFXes[0] = Resources.Load<GameObject>("IceSwitchFX");
+        eleSwitchVFXes[1] = Resources.Load<GameObject>("EarthSwitchFX");
+        eleSwitchVFXes[2] = Resources.Load<GameObject>("FireSwitchFX");
+        eleSwitchVFXes[3] = Resources.Load<GameObject>("AirSwitchFX");
     }
 
     private void SetMonsterAndPlayerScale()
@@ -393,24 +405,26 @@ public class Combat : MonoBehaviour
         incomingDamage -= monsterStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
 
+        bool hitWeak = false;
+
         float elementalDamage = incomingDamage * playerStats.currentPower * .25f;
         if (playerStats.currentPower == (int)ElementalPower.ICE) { elementalDamage *= 1 + playerStats.accessoryIceBonus/100;
-            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage *= 2; }
+            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 2) { playerStats.mana -= 2; }
                 else { elementalDamage = 0; }
         }
         if (playerStats.currentPower == (int)ElementalPower.EARTH) { elementalDamage *= 1 + playerStats.accessoryEarthBonus/100;
-            if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage *= 2; }
+            if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 4) { playerStats.mana -= 4; }
                 else { elementalDamage = 0; }
         }
         if (playerStats.currentPower == (int)ElementalPower.FIRE) { elementalDamage *= 1 + playerStats.accessoryFireBonus/100;
-            if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage *= 2; }
+            if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 6) { playerStats.mana -= 6; }
                 else { elementalDamage = 0; }
         }
         if (playerStats.currentPower == (int)ElementalPower.AIR) { elementalDamage *= 1 + playerStats.accessoryAirBonus/100;
-            if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage *= 2; }
+            if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 8) { playerStats.mana -= 8; }
                 else { elementalDamage = 0; }
         }
@@ -437,8 +451,70 @@ public class Combat : MonoBehaviour
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position+(Vector3)monsterStats.gettingStruckPointOffset+AttackAnimationManager.Instance.monsterHitsplatOffset;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
+
+        if (elementalDamage > 0)
+        {
+            GameObject eleHitsplat = GameObject.Instantiate(hitsplatTemplate);
+            eleHitsplat.transform.position = monsterSprite.transform.position + (Vector3)monsterStats.gettingStruckPointOffset + AttackAnimationManager.Instance.monsterHitsplatOffset - new Vector3(0, .8f, 0);
+            eleHitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(elementalDamage), ((ElementalPower)playerStats.currentPower).EleColor());
+            eleHitsplat.GetComponent<Hitsplat>().SetEleEffective(hitWeak);
+            GameObject eleVFX;
+            switch ((ElementalPower)playerStats.currentPower)
+            {
+                case ElementalPower.ICE:
+                    eleVFX = GameObject.Instantiate(eleVFXes[0]);
+                    eleVFX.transform.position = playerSprite.transform.position - (Vector3)playerStats.strikingPointOffset - new Vector3(-2 * monsterStats.forceOpponentAdditionalScale.x, -5.5f*monsterStats.forceOpponentAdditionalScale.y, -.2f);
+                    eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                    break;
+                case ElementalPower.EARTH:
+                    eleVFX = GameObject.Instantiate(eleVFXes[1]);
+                    eleVFX.transform.position = playerSprite.transform.position - (Vector3)playerStats.strikingPointOffset - new Vector3(-2 * monsterStats.forceOpponentAdditionalScale.x, -5.5f * monsterStats.forceOpponentAdditionalScale.y, -.2f);
+                    eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                    break;
+                case ElementalPower.FIRE:
+                    eleVFX = GameObject.Instantiate(eleVFXes[2]);
+                    eleVFX.transform.position = playerSprite.transform.position - (Vector3)playerStats.strikingPointOffset - new Vector3(-2 * monsterStats.forceOpponentAdditionalScale.x, -5.5f * monsterStats.forceOpponentAdditionalScale.y, -.2f);
+                    eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                    break;
+                case ElementalPower.AIR:
+                    eleVFX = GameObject.Instantiate(eleVFXes[3]);
+                    eleVFX.transform.position = playerSprite.transform.position - (Vector3)playerStats.strikingPointOffset - new Vector3(-2 * monsterStats.forceOpponentAdditionalScale.x, -5.5f * monsterStats.forceOpponentAdditionalScale.y, -.2f);
+                    eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                    break;
+            }
+        }
         //Debug.Log("Monster HP:" + monsterStats.HP);
         CheckCombatOver();
+    }
+
+    public void DisplayElementSwitchVFX(int currentPower)
+    {
+        GameObject eleVFX = null;
+        switch ((ElementalPower)currentPower)
+        {
+            case ElementalPower.ICE:
+                eleVFX = GameObject.Instantiate(eleSwitchVFXes[0]);
+                eleVFX.transform.position = playerSprite.transform.position - new Vector3(1 * monsterStats.forceOpponentAdditionalScale.x, -4.5f * monsterStats.forceOpponentAdditionalScale.y, .2f);
+                eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                return;
+            case ElementalPower.EARTH:
+                eleVFX = GameObject.Instantiate(eleSwitchVFXes[1]);
+                eleVFX.transform.position = playerSprite.transform.position - new Vector3(1 * monsterStats.forceOpponentAdditionalScale.x, -4.5f * monsterStats.forceOpponentAdditionalScale.y, .2f); ;
+                eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                return;
+            case ElementalPower.FIRE:
+                eleVFX = GameObject.Instantiate(eleSwitchVFXes[2]);
+                eleVFX.transform.position = playerSprite.transform.position - new Vector3(1 * monsterStats.forceOpponentAdditionalScale.x, -4.5f * monsterStats.forceOpponentAdditionalScale.y, .2f); ;
+                eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                return;
+            case ElementalPower.AIR:
+                eleVFX = GameObject.Instantiate(eleSwitchVFXes[3]);
+                eleVFX.transform.position = playerSprite.transform.position - new Vector3(1 * monsterStats.forceOpponentAdditionalScale.x, -4.5f * monsterStats.forceOpponentAdditionalScale.y, .2f); ;
+                eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                return;
+            default:
+                return;
+        }
     }
 
     private float RollCrit()

@@ -582,7 +582,10 @@ public class CharacterMovement : SpriteMovement
         if (playerStats.currentPower < 0) {
             playerStats.currentPower = playerStats.powersGained;
         }
-
+        if (GameState.isInBattle)
+        {
+            GameObject.FindObjectOfType<Combat>().DisplayElementSwitchVFX(playerStats.currentPower);
+        }
     }
 
 
@@ -595,7 +598,10 @@ public class CharacterMovement : SpriteMovement
         {
             playerStats.currentPower = 0;
         }
-
+        if (GameState.isInBattle)
+        {
+            GameObject.FindObjectOfType<Combat>().DisplayElementSwitchVFX(playerStats.currentPower);
+        }
     }
 
     public void ActivateKeyReceived() {
