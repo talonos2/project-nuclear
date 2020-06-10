@@ -50,6 +50,8 @@ public class Combat : MonoBehaviour
 
     GameObject hitsplatTemplate;
 
+    GameObject[] eleVFXes = new GameObject[4];
+
     private static readonly float finalMonsterHPBarPosition = 18.483f;
     private static readonly float startMonsterHPBarPosition = 24.5f;
 
@@ -99,6 +101,10 @@ public class Combat : MonoBehaviour
         SetMonsterAndPlayerScale();
 
         hitsplatTemplate = Resources.Load<GameObject>("Hitsplat");
+        eleVFXes[0] = Resources.Load<GameObject>("IceSlashFX");
+        eleVFXes[1] = Resources.Load<GameObject>("EarthSlashFX");
+        eleVFXes[2] = Resources.Load<GameObject>("FireSlashFX");
+        eleVFXes[3] = Resources.Load<GameObject>("AirSlashFX");
     }
 
     private void SetMonsterAndPlayerScale()
@@ -446,6 +452,30 @@ public class Combat : MonoBehaviour
             eleHitsplat.transform.position = monsterSprite.transform.position + (Vector3)monsterStats.gettingStruckPointOffset + AttackAnimationManager.Instance.monsterHitsplatOffset - new Vector3(0, .8f, 0);
             eleHitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(elementalDamage), ((ElementalPower)playerStats.currentPower).EleColor());
             eleHitsplat.GetComponent<Hitsplat>().SetEleEffective(hitWeak);
+            GameObject eleVFX;
+            switch ((ElementalPower)playerStats.currentPower)
+            {
+                case ElementalPower.ICE:
+                    eleVFX = GameObject.Instantiate(eleVFXes[0]);
+                    eleVFX.transform.position = playerSprite.transform.position - (Vector3)playerStats.strikingPointOffset - new Vector3(-2 * monsterStats.forceOpponentAdditionalScale.x, -5.5f*monsterStats.forceOpponentAdditionalScale.y, -.2f);
+                    eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                    break;
+                case ElementalPower.EARTH:
+                    eleVFX = GameObject.Instantiate(eleVFXes[1]);
+                    eleVFX.transform.position = playerSprite.transform.position - (Vector3)playerStats.strikingPointOffset - new Vector3(-2 * monsterStats.forceOpponentAdditionalScale.x, -5.5f * monsterStats.forceOpponentAdditionalScale.y, -.2f);
+                    eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                    break;
+                case ElementalPower.FIRE:
+                    eleVFX = GameObject.Instantiate(eleVFXes[2]);
+                    eleVFX.transform.position = playerSprite.transform.position - (Vector3)playerStats.strikingPointOffset - new Vector3(-2 * monsterStats.forceOpponentAdditionalScale.x, -5.5f * monsterStats.forceOpponentAdditionalScale.y, -.2f);
+                    eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                    break;
+                case ElementalPower.AIR:
+                    eleVFX = GameObject.Instantiate(eleVFXes[3]);
+                    eleVFX.transform.position = playerSprite.transform.position - (Vector3)playerStats.strikingPointOffset - new Vector3(-2 * monsterStats.forceOpponentAdditionalScale.x, -5.5f * monsterStats.forceOpponentAdditionalScale.y, -.2f);
+                    eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
+                    break;
+            }
         }
         //Debug.Log("Monster HP:" + monsterStats.HP);
         CheckCombatOver();
