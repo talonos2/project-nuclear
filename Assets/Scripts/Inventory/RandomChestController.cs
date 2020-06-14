@@ -300,7 +300,6 @@ public class RandomChestController : EntityData
             Instantiate(itemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
 
-            // stuff added by Ipecac, in case I screwed up
             SoundManager.Instance.PlaySound("potBreak", 1f);
         }
         else if (rareItemChest)
@@ -312,6 +311,8 @@ public class RandomChestController : EntityData
 
             Instantiate(rareItemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
+
+            SoundManager.Instance.PlaySound("potBreakGold", 1f);
 
         }
         else if (healingFountain)

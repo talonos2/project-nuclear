@@ -70,6 +70,7 @@ public class CharacterStats : Stats
     private GameObject equipmentData;
     private EquipmentData itemData;
     private float regenerationCounter;
+    private LevelUpper levelUpper;
 
     void Start()
     {        
@@ -171,18 +172,18 @@ public class CharacterStats : Stats
         SavedStats.defenseCrystalsGained= this.defenseCrystalsGained;
 
         SavedStats.HealthCrystalBuff = this.HealthCrystalBuff;
-        SavedStats.ManaCrystalBuff=this.ManaCrystalBuff ;
-         SavedStats.defenseCrystalBuff=this.defenseCrystalBuff ;
-         SavedStats.AttackCrystalBuff=this.AttackCrystalBuff ;
+        SavedStats.ManaCrystalBuff=this.ManaCrystalBuff;
+        SavedStats.defenseCrystalBuff=this.defenseCrystalBuff;
+        SavedStats.AttackCrystalBuff=this.AttackCrystalBuff;
 
         SavedStats.baseAttack = this.baseAttack;
         SavedStats.baseDefense = this.baseDefense;
         SavedStats.baseMaxHealth = this.baseMaxHealth;
         SavedStats.baseMaxMana = this.baseMaxMana;
 
-        SavedStats.HealthPerLevel = this.HealthPerLevel ;
-        SavedStats.ManaPerLevel=this.ManaPerLevel;
-        SavedStats.AttackPerLevel     =   this.AttackPerLevel;
+        SavedStats.HealthPerLevel = this.HealthPerLevel;
+        SavedStats.ManaPerLevel = this.ManaPerLevel;
+        SavedStats.AttackPerLevel = this.AttackPerLevel;
         SavedStats.DefensePerLevel = this.DefensePerLevel;
 
         SavedStats.weapon = this.weapon;
@@ -283,10 +284,16 @@ public class CharacterStats : Stats
     {
         expGiven = (int)((float)expGiven * (float)(1+accessoryExpBonus/100));
         experience += expGiven;
-        while (experience >= expToLevel) {
+        while (experience >= expToLevel)
+        {
             experience -= expToLevel;
             Level += 1;
+            if (!levelUpper)
+            {
+                levelUpper = GetComponentInChildren<LevelUpper>();
+            }
             LevelUp();
+            levelUpper.AddLevel();
             SetExpToNextLevel();
         }
     }

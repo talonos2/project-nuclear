@@ -13,7 +13,6 @@ public class AnimateVFX : MonoBehaviour
     void Start()
     {
         image = this.GetComponent<SpriteRenderer>();
-        Debug.Log("I am here! " + name);
     }
 
     // Update is called once per frame
