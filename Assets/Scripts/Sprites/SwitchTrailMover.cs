@@ -27,17 +27,19 @@ public class SwitchTrailMover : MonoBehaviour
         }
 
         //Debug.Log(intT);
+        if (t >= path.Length)
+        {
+            ParticleSystem.EmissionModule e = GetComponent<ParticleSystem>().emission;
+            e.enabled = false;
+            GameObject.Destroy(this);
+            return;
+        }
         targetPos += path[intT].GetDirectionVector() * remainder;
 
         this.transform.position = startPos + targetPos;
 
         t += speed * Time.deltaTime;
-        if (t>path.Length)
-        {
-            ParticleSystem.EmissionModule e = GetComponent<ParticleSystem>().emission;
-            e.enabled = false;
-            GameObject.Destroy(this);
-        }
+       
     }
 
     internal void InitStart()

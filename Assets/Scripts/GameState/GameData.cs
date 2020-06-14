@@ -85,7 +85,8 @@ public class GameData : Singleton<GameData>
     public bool earthBoss1;
     public bool fireBoss1;
     public bool airBoss1;
-    public bool deathBoss;
+    public bool deathBoss1;
+
 
     internal float deathTime;
     internal bool hiroDeathMonster;
@@ -97,6 +98,7 @@ public class GameData : Singleton<GameData>
 
     internal bool statsSetup=false;
     internal bool map2_2_toMap3_2Shortcut;
+    internal bool victory;
 
     internal bool IsInTown()
     {
