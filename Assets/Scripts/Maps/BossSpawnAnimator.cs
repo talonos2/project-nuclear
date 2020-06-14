@@ -16,6 +16,8 @@ public class BossSpawnAnimator : MonoBehaviour
     private float offsetFix = .00001f;
     public float yPositionSpawning=-10.5f;
     public float xPositionSpawning = 0;
+    private static readonly float BOSS_SPAWN_SOUND_START_TIME = .5f;
+    private bool playedSpawnSound = false;
 
     void Start()
     {
@@ -38,9 +40,18 @@ public class BossSpawnAnimator : MonoBehaviour
             return;
         }
         frameCounter += Time.deltaTime;
+        /*Debug.Log("frameCounter "+ frameCounter);
+        if (frameCounter >= BOSS_SPAWN_SOUND_START_TIME&&!playedSpawnSound)
+        {
+            Debug.Log("Here, after spawning sound?");
+            SoundManager.Instance.PlaySound("SlimeBossSpawn", 1);
+            playedSpawnSound = true;
+        }*/
         if (frameCounter > 1 / framesPerSecond)
         {
             currentFrame += 1;
+            if (currentFrame == 3)
+            { SoundManager.Instance.PlaySound("SlimeBossSpawn", 1); }
             if (currentFrame >= totalFrames)
             {
                 Instantiate(bossSpawnedPrefab, this.transform.parent.position, Quaternion.identity);
