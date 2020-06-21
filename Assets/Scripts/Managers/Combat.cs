@@ -443,14 +443,14 @@ public class Combat : MonoBehaviour
         monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
 
         if (playerStats.accessoryHPVamp > 0) {//same. should have an animation...
-            playerStats.HP = (int)((float) playerStats.MaxHP * (1 + 1.1f*playerStats.accessoryHPVamp / 100));
-                //Note: the 1.1 multiplier to to offset the rounding issue cutting off to much healing over time
-                //aka fix it by making it gausian close to the actual value given in the item
+            playerStats.HP = (int)((float) playerStats.MaxHP * (1 + playerStats.accessoryHPVamp / 100));
+            //Note: The vamp items have a multiplier higher then what is shown This is to gausian give them the
+            //the correct amount of life steal when dealing with remainders. The change is stat +.2
             if (playerStats.HP > playerStats.MaxHP)
                 { playerStats.HP = playerStats.MaxHP; }
             }
         if (playerStats.accessoryMPVamp > 0) {
-            playerStats.mana = (int)((float)playerStats.MaxMana * (1 + 1.1f*playerStats.accessoryMPVamp / 100));
+            playerStats.mana = (int)((float)playerStats.MaxMana * (1 + playerStats.accessoryMPVamp / 100));
             if (playerStats.mana > playerStats.MaxMana)
             { playerStats.mana = playerStats.MaxMana; }
         }
