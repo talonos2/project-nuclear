@@ -7,11 +7,25 @@ public class SoundManager : Singleton<SoundManager>
 
     public static AudioClip potBreakSound, rockAttackStrongSound, rockAttackWeakSound;
     static AudioSource audioSrc;
+    AudioSource environmentalSound;
+    internal string currentlyPlayingEnvTrack = "";
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this);
+        if (!environmentalSound)
+        {
+            CreateEnvironmentalSound();
+        }
+    }
+
+    private void CreateEnvironmentalSound()
+    {
+        GameObject tempGO = new GameObject();
+        tempGO.name = "EnvironmentalSound";
+        tempGO.transform.parent = this.transform;
+        environmentalSound = tempGO.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,5 +56,32 @@ public class SoundManager : Singleton<SoundManager>
     {
         audioSrc.clip = Resources.Load<AudioClip>("Sounds/" + clip);
         audioSrc.Play();
+    }
+
+    public void ChangeEnvironmentTrack(string clip)
+    {
+        if (!environmentalSound)
+        {
+            CreateEnvironmentalSound();
+        }
+
+        environmentalSound.clip = Resources.Load<AudioClip>("Sounds/Environment/" + clip);
+        environmentalSound.loop = true;
+        currentlyPlayingEnvTrack = clip;
+        environmentalSound.Play();
+    }
+
+    public void ChangeEnvironmentTrack()
+    {
+        currentlyPlayingEnvTrack = "";
+        if (environmentalSound)
+        {
+            environmentalSound.Stop();
+        }
+    }
+
+    public void ChangeEnvironmentVolume(float vol)
+    {
+        environmentalSound.volume = vol / 10.0f;
     }
 }

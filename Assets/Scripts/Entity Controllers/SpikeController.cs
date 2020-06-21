@@ -47,7 +47,7 @@ public class SpikeController : DoodadData
         }
         else
         {
-            
+
         }
     }
 
@@ -56,7 +56,7 @@ public class SpikeController : DoodadData
         if (timeUntilOpen != 0)
         {
             timeUntilOpen -= Time.deltaTime;
-            if (timeUntilOpen <=0)
+            if (timeUntilOpen <= 0)
             {
                 timeUntilOpen = 0;
                 Open();
@@ -64,10 +64,13 @@ public class SpikeController : DoodadData
         }
     }
 
-    private void Open()
+    private void Open(bool sound = true)
     {
         this.isPassable = true;
-        this.LowerSpikeAnimation();
+        if (sound)
+        {
+            this.LowerSpikeAnimation();
+        }
     }
 
 
@@ -96,6 +99,7 @@ public class SpikeController : DoodadData
     public void LowerSpikeAnimation() {
         isAnimating = true;
         animateRise = false;
+        SoundManager.Instance.PlaySound("DroppingSpikes", 1);
     }
 
     public void RaiseSpikeAnimation()

@@ -21,7 +21,6 @@ public class LevelUpper : MonoBehaviour
         timeSinceLastLevel += Time.deltaTime;
         if (timeSinceLastLevel > TIME_BETWEEN_LEVELS && unsungLevels > 0)
         {
-            Debug.Log("EMitting Levelup: " + timeSinceLastLevel + ", " + unsungLevels);
             unsungLevels--;
             timeSinceLastLevel = 0;
             SoundManager.Instance.PlaySound("LevelUp",1);
@@ -32,5 +31,10 @@ public class LevelUpper : MonoBehaviour
     internal void AddLevel()
     {
         unsungLevels++;
+    }
+
+    internal void ShutUp()
+    {
+        unsungLevels = 1;
     }
 }

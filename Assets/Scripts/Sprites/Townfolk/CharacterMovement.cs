@@ -47,9 +47,26 @@ public class CharacterMovement : SpriteMovement
             {
                 stepSound++;
             }
-            SoundManager.Instance.PlaySound("Footsteps/Stone"+stepSound, .2f);
+            string materialNameStart = "Stone";
+            if (groundMaterialGrid)
+            {
+                materialNameStart = groundMaterialGrid.grid[characterLocation.x, characterLocation.y].GetName();
+            }
+            if (environmentalSoundMagnitudeGrid)
+            {
+                SoundManager.Instance.ChangeEnvironmentVolume(environmentalSoundMagnitudeGrid.grid[characterLocation.x, characterLocation.y]);
+            }
+            else
+            {
+                SoundManager.Instance.ChangeEnvironmentVolume(0);
+            }
+            SoundManager.Instance.PlaySound("Footsteps/"+materialNameStart+stepSound, .2f);
             previousStepSound = stepSound;
         }
+
+
+
+
         previousFrame = currentFrame;
 
         if (GameState.isInBattle || GameState.fullPause)
@@ -119,12 +136,12 @@ public class CharacterMovement : SpriteMovement
         }
     
 
-        if (!currentlyMoving && (jumping|| jumpQued))
+        if (!currentlyMoving && (jumping|| jumpQueued))
         {
-            if (jumpQued &&!jumping)
+            if (jumpQueued &&!jumping)
             {
                 jumping = ActivateJump();
-                jumpQued = false;
+                jumpQueued = false;
             }
 
             if (jumping)
@@ -143,7 +160,6 @@ public class CharacterMovement : SpriteMovement
             }
         }
 
-        //if ()
         if (!currentlyMoving && gameData.dashing || continueDashing)
         {
             if (waitTimer >= 0)
@@ -250,7 +266,7 @@ public class CharacterMovement : SpriteMovement
         if (GameState.isInBattle) return;
         if (playerStats.mana < playerStats.MaxMana || playerStats.HP < playerStats.MaxHP) {
             if (gameData.addHealToTimer()) {
-                //Play a resting doodad
+                SoundManager.Instance.PlaySound("Healing", 1);
                 playerStats.mana += (int)(playerStats.MaxMana * .12f);
                 playerStats.HP += (int)(playerStats.MaxHP * .12f);
                 if (playerStats.mana > playerStats.MaxMana) playerStats.mana = playerStats.MaxMana;
@@ -284,6 +300,7 @@ public class CharacterMovement : SpriteMovement
     internal void PowerUpCheat()
     {
         playerStats.AddExp(100000);
+        playerStats.ShutUpLevelUpper();
         playerStats.powersGained = 4;
     }
 
@@ -294,6 +311,7 @@ public class CharacterMovement : SpriteMovement
         {
             if (windJumpLocation.GetComponent<DoodadData>().isWindShifter)
             {
+                SoundManager.Instance.PlaySound("AirGust",1);
                 jumpTarget = windJumpLocation.GetComponent<WindJumpController>().jumpDestOffset;
                 
                 SetNextLocationActual(characterLocation.x+jumpTarget.x, characterLocation.y +jumpTarget.y);
@@ -318,7 +336,7 @@ public class CharacterMovement : SpriteMovement
             SetLookDirection();
         }
 
-        if (!currentlyMoving && !jumping && !gameData.dashing && !jumpQued&&!windJump )
+        if (!currentlyMoving && !jumping && !gameData.dashing && !jumpQueued&&!windJump )
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
@@ -385,8 +403,7 @@ public class CharacterMovement : SpriteMovement
                     ActivateHaste();
                     break;
                 case (int)ElementalPower.AIR:
-                    jumpQued = true;
-                    //ActivateJump();
+                    jumpQueued = true;
                     break;
                 default:
                     return;
@@ -450,7 +467,10 @@ public class CharacterMovement : SpriteMovement
                 break;
 
         }
-        if (jumpingTemp == true) { playerStats.mana -= 10; }
+        if (jumpingTemp == true) {
+            playerStats.mana -= 10;
+            SoundManager.Instance.PlaySound("Jump",1);
+        }
         return jumpingTemp;
     }
 
@@ -518,12 +538,14 @@ public class CharacterMovement : SpriteMovement
     {
         gameData.hasted = true;
         smoke.Play();
+        SoundManager.Instance.PlaySound("HasteOn", 1f);
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
     }
 
     private void TurnHasteOff()
     {
         gameData.hasted = false;
+        SoundManager.Instance.PlaySound("HasteOff", 1f);
         smoke.Stop();
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
     }
@@ -561,6 +583,7 @@ public class CharacterMovement : SpriteMovement
     {
         if (playerStats.mana >= 5)
         {
+            SoundManager.Instance.PlaySound("ShieldDash",1);
             sRender.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             playerStats.mana -= 5;
             gameData.dashing = true;

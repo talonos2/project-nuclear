@@ -19,7 +19,7 @@ public class BridgeController : DoodadData
             RunPrimAlgorythm();
         }
         if (this.isPlatformTerrain == false) {
-            removePlatform();
+            RemovePlatform();
         }
 
 
@@ -28,22 +28,20 @@ public class BridgeController : DoodadData
     public void RunPrimAlgorythm() {
         if (primToCheck.result[primConnectionNumber])
         {
-            addPlatform();
-            
-            
+            AddPlatform();            
         }
         else
         {
-            removePlatform();
+            RemovePlatform();
         }
     }
-    public void removePlatform() {
+    public void RemovePlatform() {
         this.isPlatformTerrain = false;
         
         
         this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
     }
-    public void addPlatform() {
+    public void AddPlatform() {
         this.isPlatformTerrain = true;
         if (invisibleBridge) return;
         this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;

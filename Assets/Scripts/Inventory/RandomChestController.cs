@@ -231,6 +231,7 @@ public class RandomChestController : EntityData
 
     private void SpawnCrystalParticles(CrystalType type, int crystalsGained, CharacterStats playerData)
     {
+        SoundManager.Instance.PlaySound("CrystalShatter", 1);
         int numberOfParticles = Mathf.RoundToInt(Mathf.Sqrt(crystalsGained));
 
         List<float> delays = new List<float>();

@@ -68,6 +68,7 @@ public class SwitchEntityData : EntityData
 
     public virtual void ToggleTiedObjects()
     {
+        bool movedABridge = false;
         if (activeSwitch)
         {
             for (int x = 0; x < TiedEntities.Length; x++)
@@ -83,8 +84,9 @@ public class SwitchEntityData : EntityData
                 }
                 if (bridgeControlled != null)
                 {
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.removePlatform(); }
-                    else { bridgeControlled.addPlatform(); }
+                    movedABridge = true;
+                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.RemovePlatform(); }
+                    else { bridgeControlled.AddPlatform(); }
                 }
                 if (windJumpControlled != null)
                 {
@@ -114,8 +116,9 @@ public class SwitchEntityData : EntityData
                 }
                 if (bridgeControlled != null)
                 {
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.removePlatform(); }
-                    else { bridgeControlled.addPlatform(); }
+                    movedABridge = true;
+                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.RemovePlatform(); }
+                    else { bridgeControlled.AddPlatform(); }
                 }
 
 
@@ -123,6 +126,10 @@ public class SwitchEntityData : EntityData
             activeSwitch = true;
             SwitchReverseAnimation();
 
+        }
+        if (movedABridge)
+        {
+            SoundManager.Instance.PlaySound("Environment/Bridge", 1);
         }
     }
 
