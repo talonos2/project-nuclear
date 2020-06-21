@@ -58,7 +58,7 @@ public class GameSaverManager
         earthBoss1 = GameData.Instance.earthBoss1;
         fireBoss1 = GameData.Instance.fireBoss1;
         airBoss1 = GameData.Instance.airBoss1;
-        deathBoss = GameData.Instance.deathBoss;
+        deathBoss = GameData.Instance.deathBoss1;
 
         Map3_2Shortcut = GameData.Instance.Map3_2Shortcut;
             map5_2Shortcut = GameData.Instance.map5_2Shortcut;
@@ -98,7 +98,7 @@ public class GameSaverManager
          GameData.Instance.earthBoss1= earthBoss1 ;
         GameData.Instance.fireBoss1= fireBoss1 ;
          GameData.Instance.airBoss1= airBoss1 ;
-         GameData.Instance.deathBoss = deathBoss;
+         GameData.Instance.deathBoss1 = deathBoss;
 
         GameData.Instance.Map3_2Shortcut= Map3_2Shortcut;
         GameData.Instance.map5_2Shortcut = map5_2Shortcut;

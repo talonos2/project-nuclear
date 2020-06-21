@@ -11,7 +11,7 @@ public class PermanentSwitchEntityData : SwitchEntityData
     {
         base.Start();
         gameData = GameData.Instance;
-        if (gameData.Map3_2Shortcut) {
+        if (gameData.map5_2Shortcut) {
             ToggleTiedObjects();
         }
 
