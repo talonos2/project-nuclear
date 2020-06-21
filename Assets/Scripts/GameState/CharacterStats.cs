@@ -303,6 +303,11 @@ public class CharacterStats : Stats
         setMaxStats();
     }
 
+    internal void ShutUpLevelUpper()
+    {
+        levelUpper.ShutUp();
+    }
+
     private void setArmorStats(Armor armorChanged) {
         armorBonusDefense = armorChanged.GetComponent<Armor>().addDefense;
         setMaxStats();

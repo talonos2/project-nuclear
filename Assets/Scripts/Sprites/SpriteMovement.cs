@@ -22,6 +22,8 @@ public class SpriteMovement : MonoBehaviour
     protected GameObject MapGrid;
     protected Vector2 mapZeroLocation;
     protected EntityGrid mapEntityGrid;
+    protected GroundMaterialGrid groundMaterialGrid;
+    protected EnvironmentalSoundMagnitudeGrid environmentalSoundMagnitudeGrid;
     protected bool currentlyMoving = false;
     protected GameObject ThePlayer;
 
@@ -31,7 +33,7 @@ public class SpriteMovement : MonoBehaviour
     protected float movedSoFarX = 0;
     protected float movedSoFarY = 0;
     protected float jumpSpeed = 1.25f;
-    protected bool jumpQued = false;
+    protected bool jumpQueued = false;
     protected bool dashQued = false;
     protected float queDistance = .75f;
     protected float tempFramesPerSecond = 0;
@@ -362,9 +364,22 @@ public class SpriteMovement : MonoBehaviour
         MapGrid = GetMapGrid();
         mapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
         mapEntityGrid = MapGrid.GetComponent<EntityGrid>();
+        groundMaterialGrid = MapGrid.GetComponent<GroundMaterialGrid>();
+        environmentalSoundMagnitudeGrid = MapGrid.GetComponent<EnvironmentalSoundMagnitudeGrid>();
+        if (environmentalSoundMagnitudeGrid)
+        {
+            if (SoundManager.Instance.currentlyPlayingEnvTrack != environmentalSoundMagnitudeGrid.envSound)
+            {
+                SoundManager.Instance.ChangeEnvironmentTrack(environmentalSoundMagnitudeGrid.envSound);
+            }
+        }
+        else
+        {
+            SoundManager.Instance.ChangeEnvironmentTrack();
+        }
         //GameObject exitLocationObj = GameObject.Find("Exit");
         //exitLocation.x= exitLocationObj.transform.
-            //omponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y]; 
+        //omponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y]; 
     }
 
     public GameObject GetMapGrid() {
@@ -479,10 +494,11 @@ public class SpriteMovement : MonoBehaviour
         animationStep = 0;
     }
 
-    public bool JumpToTarget(float jumpMoveSpeed,Vector2Int jumpDistance) {
-
-        float DistanceToMoveX = Time.deltaTime * jumpMoveSpeed * jumpDistance.x; ;
+    public bool JumpToTarget(float jumpMoveSpeed,Vector2Int jumpDistance)
+    {
+        float DistanceToMoveX = Time.deltaTime * jumpMoveSpeed * jumpDistance.x;
         float DistanceToMoveY = Time.deltaTime * jumpMoveSpeed * jumpDistance.y;
+
         movedSoFarX += DistanceToMoveX;
         movedSoFarY += DistanceToMoveY;
 

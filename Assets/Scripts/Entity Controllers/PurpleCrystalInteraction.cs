@@ -45,7 +45,7 @@ public class PurpleCrystalInteraction : EntityData
 
         if (GameState.fullPause == true || GameData.Instance.isInDialogue) return;
 
-        spawnNewMonster();
+        SpawnNewMonster();
 
         Instantiate(purpleCrystalBreaking, this.transform.position , Quaternion.identity);
         Destroy(this.gameObject);
@@ -54,7 +54,7 @@ public class PurpleCrystalInteraction : EntityData
 
     }
 
-    public void spawnNewMonster() {
+    public void SpawnNewMonster() {
         if (entityGrid.grid[pawnLocation.x, pawnLocation.y + 1] == null)
         {
             GameObject spanwedMonster= Instantiate(monsterToSpawn, this.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
@@ -75,6 +75,7 @@ public class PurpleCrystalInteraction : EntityData
             monsterMovement.SetSpawningCrystal(this.gameObject);
             monsterMovement.MoveSpeed = monsterSpeed;
         }
+        SoundManager.Instance.PlaySound("SpawnWraith", 1);
 
 
     }
@@ -95,7 +96,7 @@ public class PurpleCrystalInteraction : EntityData
         if (spawning) {
             monsterSpawnDelay -= Time.deltaTime;
             if (monsterSpawnDelay <= 0) {
-                spawnNewMonster();
+                SpawnNewMonster();
                 spawning = false;
             }
                 

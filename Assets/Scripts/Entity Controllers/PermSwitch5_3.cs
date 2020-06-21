@@ -17,6 +17,7 @@ public class PermSwitch5_3 : SwitchEntityData
         
         if (activeSwitch)
         {
+            SoundManager.Instance.PlaySound("Bridge", 1);
             GameData.Instance.map5_3Shortcut = true;
             foreach (GameObject tiedEntity in TiedEntities)
             {
@@ -29,8 +30,8 @@ public class PermSwitch5_3 : SwitchEntityData
                 }
                 if (bridgeControlled != null)
                 {
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.removePlatform(); }
-                        else { bridgeControlled.addPlatform(); }
+                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.RemovePlatform(); }
+                        else { bridgeControlled.AddPlatform(); }
                     
                 }
             }

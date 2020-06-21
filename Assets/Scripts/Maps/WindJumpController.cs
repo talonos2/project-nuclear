@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//FYI: The wind jump is controlled in CharacterMovement. This "Controller" just stores some data. :P
 public class WindJumpController : DoodadData
 {
     // Variables used in Character Movement script
