@@ -267,8 +267,8 @@ public class CharacterMovement : SpriteMovement
         if (playerStats.mana < playerStats.MaxMana || playerStats.HP < playerStats.MaxHP) {
             if (gameData.addHealToTimer()) {
                 SoundManager.Instance.PlaySound("Healing", 1);
-                playerStats.mana += (int)(playerStats.MaxMana * .12f);
-                playerStats.HP += (int)(playerStats.MaxHP * .12f);
+                playerStats.mana += (int)(playerStats.MaxMana * .125f);
+                playerStats.HP += (int)(playerStats.MaxHP * .125f);
                 if (playerStats.mana > playerStats.MaxMana) playerStats.mana = playerStats.MaxMana;
                 if (playerStats.HP > playerStats.MaxHP) playerStats.HP = playerStats.MaxHP;
             }

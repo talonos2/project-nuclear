@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 132
   HP: 132
-  attack: 74
+  attack: 75
   defense: 8
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -63,6 +63,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &827846531077113007
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 205
   HP: 205
-  attack: 100
+  attack: 105
   defense: 10
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -126,6 +137,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &1561709137489326470
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 2750
   HP: 2750
-  attack: 145
+  attack: 160
   defense: 35
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -185,6 +207,17 @@ MonoBehaviour:
   crystalType: 5
   crystalDropAmount: 210
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &1984966368155950946
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +277,17 @@ MonoBehaviour:
   crystalType: 1
   crystalDropAmount: 5
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &2336016274750735320
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 640
   HP: 640
-  attack: 142
+  attack: 156
   defense: 29
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -303,6 +347,17 @@ MonoBehaviour:
   crystalType: 4
   crystalDropAmount: 30
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &2605010660601057676
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +417,17 @@ MonoBehaviour:
   crystalType: 5
   crystalDropAmount: 15
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &2755349454602390168
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 185
   HP: 185
-  attack: 60
+  attack: 61
   defense: 16
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -421,6 +487,17 @@ MonoBehaviour:
   crystalType: 1
   crystalDropAmount: 12
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &2760781383947197025
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 1250
   HP: 1250
-  attack: 155
+  attack: 165
   defense: 39
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -480,6 +557,17 @@ MonoBehaviour:
   crystalType: 5
   crystalDropAmount: 50
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &2890289784685799572
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 1250
   HP: 1250
-  attack: 77
+  attack: 79
   defense: 25
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -539,6 +627,17 @@ MonoBehaviour:
   crystalType: 5
   crystalDropAmount: 65
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &3285584308365703404
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 1950
   HP: 1950
-  attack: 115
+  attack: 120
   defense: 30
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -598,6 +697,17 @@ MonoBehaviour:
   crystalType: 5
   crystalDropAmount: 110
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &4029425963261980473
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +767,17 @@ MonoBehaviour:
   crystalType: 1
   crystalDropAmount: 2
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &4386044017345740628
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 600
   HP: 600
-  attack: 110
+  attack: 121
   defense: 28
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -716,6 +837,17 @@ MonoBehaviour:
   crystalType: 2
   crystalDropAmount: 30
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &4699885649082519313
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 305
   HP: 305
-  attack: 86
+  attack: 90
   defense: 20
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -779,6 +911,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &4713860520958778024
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 290
   HP: 290
-  attack: 140
+  attack: 154
   defense: 12
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -838,6 +981,17 @@ MonoBehaviour:
   crystalType: 3
   crystalDropAmount: 30
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &4848392439506292885
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,7 +1037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 405
   HP: 405
-  attack: 79
+  attack: 83
   defense: 24
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -897,6 +1051,17 @@ MonoBehaviour:
   crystalType: 2
   crystalDropAmount: 20
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &4853902709626568051
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,6 +1122,17 @@ MonoBehaviour:
   crystalDropAmount: 2
   combatSprites:
   - {fileID: -5516807709991325739, guid: 39442b4647825ae4babd624b820af6df, type: 3}
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &5496230649167645518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,6 +1265,17 @@ MonoBehaviour:
   crystalType: 3
   crystalDropAmount: 2
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &5648562717899212257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1335,17 @@ MonoBehaviour:
   crystalType: 4
   crystalDropAmount: 2
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &6346479501008770178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1405,17 @@ MonoBehaviour:
   crystalType: 5
   crystalDropAmount: 35
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &7274372838845481732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,7 +1461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 2500
   HP: 2500
-  attack: 165
+  attack: 170
   defense: 42
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -1266,6 +1475,17 @@ MonoBehaviour:
   crystalType: 3
   crystalDropAmount: 1
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &7333873151289894206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1545,17 @@ MonoBehaviour:
   crystalType: 4
   crystalDropAmount: 5
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &7378701172255309393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,7 +1601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 470
   HP: 470
-  attack: 123
+  attack: 135
   defense: 24
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -1384,6 +1615,17 @@ MonoBehaviour:
   crystalType: 1
   crystalDropAmount: 30
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &7891320591109204527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,6 +1685,17 @@ MonoBehaviour:
   crystalType: 3
   crystalDropAmount: 5
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &7982560400985809361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 245
   HP: 245
-  attack: 54
+  attack: 55
   defense: 20
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -1506,6 +1759,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &8126632054429326452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,7 +1815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 435
   HP: 435
-  attack: 104
+  attack: 110
   defense: 24
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -1569,6 +1833,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &8451098583420310700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,6 +1903,17 @@ MonoBehaviour:
   crystalType: 2
   crystalDropAmount: 5
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
 --- !u!1 &8627591396735245944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,7 +1959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 275
   HP: 275
-  attack: 68
+  attack: 69
   defense: 20
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.6, y: 0.1}
@@ -1687,3 +1973,14 @@ MonoBehaviour:
   crystalType: 4
   crystalDropAmount: 12
   combatSprites: []
+  attackAnimation: 0
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  iceBoss: 0
+  earthBoss: 0
+  fireBoss: 0
+  airBoss: 0
+  deathBoss: 0
+  finalBoss: 0
