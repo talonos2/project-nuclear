@@ -190,7 +190,7 @@ public class NewCrystalLevelController : MonoBehaviour
             }
             i++;
         }
-        GameData.Instance.DefenseCrystalBonus = 2 * (i-1);
+        GameData.Instance.DefenseCrystalBonus = (int)(1.5f * (i-1));
     }
 
     private static void SetAttackBuff()
@@ -204,7 +204,7 @@ public class NewCrystalLevelController : MonoBehaviour
             }
             i++;
         }
-        GameData.Instance.AttackCrystalBonus = 4 * (i - 1);
+        GameData.Instance.AttackCrystalBonus = 3 * (i - 1);
 
     }
 

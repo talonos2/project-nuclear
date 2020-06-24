@@ -6,7 +6,7 @@ public class ObjectAnimator : MonoBehaviour
 {
     protected Renderer sRender;
     public int maxFrames;
-    public int framesPerSecond = 6;
+    public float framesPerSecond = 6;
     protected float timeSinceLastFrame = 0;
     protected float offsetFix = .00001f;
     protected int currentFrame = 0;

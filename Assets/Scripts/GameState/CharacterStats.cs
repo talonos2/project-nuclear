@@ -71,6 +71,8 @@ public class CharacterStats : Stats
     private EquipmentData itemData;
     private float regenerationCounter;
     private LevelUpper levelUpper;
+    private float remainingHP = 0;
+    private float remainingMP = 0;
 
     void Start()
     {        
@@ -207,23 +209,23 @@ public class CharacterStats : Stats
 
         HealthPerLevel = 10;
         ManaPerLevel = 10;
-        AttackPerLevel = 2f;
-        DefensePerLevel = 1;
+        AttackPerLevel = 1.75f;
+        DefensePerLevel = .875f;
 
         baseMaxHealth = 150;
         baseMaxMana = 100;
         baseAttack = 10 ;
-        baseDefense = 0;
+        baseDefense = 0.125f;
 
         if (MageClass) {
             ManaPerLevel = 11;
         }
         if (FighterClass) {
-            AttackPerLevel = 2.2f;
+            AttackPerLevel = AttackPerLevel*1.1f;
         }
         if (SurvivorClass)
         {
-            DefensePerLevel = 1.1f;
+            DefensePerLevel = DefensePerLevel * 1.1f;
         }
         if (ScoutClass) {
             HealthPerLevel = 11;
@@ -435,8 +437,13 @@ public class CharacterStats : Stats
         }
         regenerationCounter += Time.deltaTime;
         if (regenerationCounter >= 3) {
-            HP += (int)(MaxHP * .01f);
-            mana += (int)(MaxMana * .01f);
+            float tempHP = (MaxHP * .01f+remainingHP);
+            float tempMana = (MaxMana * .01f+remainingMP);
+            remainingHP = tempHP % 1;
+            remainingMP = tempMana % 1;
+            HP += (int)tempHP;
+            mana += (int)tempMana;
+
             if (HP > MaxHP)
                 HP = MaxHP;
             if (mana > MaxMana)

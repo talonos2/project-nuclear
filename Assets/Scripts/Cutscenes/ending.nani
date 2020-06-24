@@ -55,7 +55,7 @@
 
 		#day4
 		;complete
-		
+		Soon, at the entrance...
 		@char Todd
 		Todd: Ah hahahaha!
 		Todd: I have passed the test.
@@ -101,7 +101,7 @@
 		
 
 		#day5
-
+		Soon, at the entrance...
 		@if GetPerfect()
 		@char Logos
 		Logos: Are you alright?
@@ -138,7 +138,11 @@
 
 		
 		#day6
-		
+
+
+		@elseif GetPerfect()
+
+		Hours later, at the blacksmith's shop...
 		@char Tasha
 		Tasha: Hey! Who's messing around over here?
 		Tasha: It's you?
@@ -181,12 +185,21 @@
 		Tasha: There's a feast, if you care.
 
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
+
+
+
+		@endif
+
 
 		@exit
 
 		
 		#day7
 
+		@elseif GetPerfect()
+		Days later, at the church...
 		@char Melvardius
 		Melvardius: In ages past the gods were many.[br]Splintered across the cosmos.
 		Melvardius: They were beings of great power and small understanding.
@@ -224,6 +237,8 @@
 
 		#day8
 
+		@elseif GetPerfect()
+		Days later, at the pub...
 		@char Mara
 		Mara: I don't know about you lot, but I'm in the mood for another round!
 		Mara: Alright ya ruffians, who's up for trying one of my new ales?
@@ -258,12 +273,21 @@
 		Elder: Sure, sure... they're just a bit... intense.
 		@char Mara
 		Mara: Don't worry, hun. I'm sure you'll get used to 'em.
+
+
+		@elseif !GetWorst()
+		@elseif GetWorst()
+
+
+
+		@endif
 		
 
 		@exit
 
 		
 		#day9
+		Soon, at the entrance...
 		@if GetPerfect()
 		@char Devon
 		Devon: Now just what was all this about anyway?
@@ -392,7 +416,7 @@
 
 		
 		#day10
-
+		That night, at the pub...
 		;realizes ring won't work away from cave.
 		;good: ready to hunt pillager
 		;med: returns to life of squireship
@@ -547,7 +571,7 @@
 
 
 		#day11
-	    ;complete
+	    Soon, at the entrance...
 		@char Stranger
 		Stranger: huff... huff...  I made it?
 		@if !Getperfect()
@@ -694,7 +718,8 @@
 
 		
 		#day12
-
+		@if GetPerfect()
+		Soon, at the entrance...
 		@char Jezerine
 		Jezerine: Did you see that?!
 		Jezerine: I did it!  I totally just cleaned the floor with, like, a thousand monsters!
@@ -711,7 +736,7 @@
 		@char Jezerine
 		Jezerine: Really? Now? You're coming at me with that now?
 		@char Nelson
-		Nelson: I just—I'm so happy to see you made it!
+		Nelson: I just, I'm so happy to see you made it!
 		@char Jezerine
 		Jezerine: I was just about to... Yeah okay, thanks bro.
 
@@ -750,13 +775,55 @@
 		Reya: Reminds me of me at her age.
 
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
+
+		@char Jezerine
+		Jezerine: It is done.
+		The monsters are dead?
+		Jezerine: All but one.
+
+		...
+
+
+		Jezerine: Old friends cannot stand the sight of me, not after the things I've done.
+		Jezerine: Not after what I've become.
+		Jezerine: I have left a wound which can never be healed.
+		@char Nelson
+		Nelson: Hello? Did someone come by to visit?
+		@char Jezerine
+		Jezerine: What? No.
+		@char Nelson
+		Nelson: Oh, I thought I heard you talking to someone.
+		Nelson: The memorial service will be starting soon. 
+		Nelson: We'll be happy to see you there, but it's up to you.
+		Nelson: You've been through a lot. We're here for you when you're ready.
+		@char Jezerine
+		Jezerine: ...[br]Thanks.
+		door sound
+		@Wait 2
+
+		Jezerine: Now I must roam the world alone.
+		Jezerine: Taking what I need at the edge of a blade.
+		Jezerine: My past, a grim stain on my soul that will never come clean.
+
+		Jezerine: I can never return.
+
+		Jezerine: I would only hurt them.[br]It's better this way.
+
+
+
+		@endif
+
+
+
 		@exit
 
 
 
 		#day13
 		; complete
-
+		Later than expected, at the entrance...
 		@if GetPerfect()
 
 		@char Paul
@@ -820,7 +887,7 @@
 			Douglass: Well, as a fellow warrior I thank you for carrying on where I could not.
 			@char Murtough
 			Murtough: I'm not a warrior, just a soldier.
-			Murtough: And you're just some kid whos barely gotten his hands bloody.
+			Murtough: And you're just some kid who's barely gotten his hands bloody.
 		@endif
 
 		@if GetSara()
@@ -887,6 +954,10 @@
 		@char JohnDoe
 		JohnDoe: Just don't get in my way.
 
+		@wait 2
+
+		JohnDoe: He better not have let someone else kill him.
+
 
 		
 
@@ -897,6 +968,8 @@
 
 		#day14
 
+		@if GetPerfect()
+		That night, at the town hall...
 		@char Tristana
 		Tristana: Right, right, but what did YOU do to defeat the monsters?
 		@char Tedd
@@ -934,13 +1007,54 @@
 		@char Tedd
 		Tedd: For you? I might.
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
 
+		@char Tristana
+
+
+		Tristana: You're not giving me much I can use here...
+
+		@char Tedd
+		Tedd: I did what I had to.
+		Tedd: What so many before me have done.
+		@char Tristana
+		Tristana: Yes... you slew the monsters in the cavern. Lets talk about that, what was going through your mind as you bravely—
+		@char Tedd
+		Tedd: That those things, they used to be people.
+		Tedd: They all had jobs to do, people who loved them.
+		@char Tristana
+		Tristana: But, they were dead before you got there. So it wasn't—
+		Tedd: Not all of them.
+		@char Tristana
+		Tristana: Um, a few days ago I remember you talking about restoring the town. Do you have any plans to—
+		@char Tedd
+		Tedd: It will be built like every civilized society.
+		Tedd: On the top of a mass grave.
+		Tedd: Our crimes paved over and forgotten.
+		@char Tristana
+		Tristana: Well... do you still want to be mayor?
+		@char Tedd
+		Tedd: The juggernaut hardly needs a hand to steer it.
+		@char Tristana
+		Tristana: Okay then. I think I have... something.
+		Tristana: I'll let you know if it goes to print.
+		@char Tedd
+		Tedd: Do you need me to sit for a picture?
+		@char Tristana
+		Tristana: No, I don't think that will be nessissary.
+
+
+		@endif
 
 		@exit
 
 		
 		#day15
 
+		@if GetPerfect()
+
+		Hours later, at the entrance...
 		@char Elder
 		Elder: Is he still in there?
 		@char Murtough
@@ -975,19 +1089,62 @@
 		@char Paul
 		Paul: Son!
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
+
+		Hours later, at the entrance...
+		@char Phillip
+		Phillip: Yeah, just load it in the back there.
+		Patrick: I'm not sure there's room.
+		Phillip: Well then tie it on top. I don't want to have to make a second trip.
+		@char Tasha
+		Tasha: So, you're really just abandoning us?
+		@char Phillip
+		Phillip: What? Did I give you a reason to doubt me?
+		@char Tasha
+		Tasha: A bit.[br]I had hoped...
+		@char Phillip
+		Phillip: Yeah, well that's where hope gets you.
+		Phillip: You can't just sit around wishing for things will work out.
+		Phillip: You have to seize whatever you can without hesitation.
+		
+		@char Paul
+		Paul: So you're just leaving?
+		@char Phillip
+		Phillip: I only planned to stay till there was loot. Which worked out better than I had imaigned.
+		Phillip: Thanks for the motivation. Probably wouldn't have made it through without your help.
+		@char Paul
+		Paul: Sure, sure.
+		Paul: Just one thing. Did you see him?[br]My son. Was he in there? 
+		@char Phillip
+		Phillip: I saw...
+		Phillip: I saw something that might have been your son once.
+		Phillip: It was on my way back out. When I wasn't in such a rush.
+		@char Paul
+		Paul: Was he... was he...
+		@char Phillip
+		Phillip: No.[br]He wasn't.
+		Phillip: Because I'd seen him on the way down too.
+		@char Paul
+		Paul: ...
+
+		@Wait 1
+
+		@char Phillip
+		Phillip: Driver, get us out of here. I'm already past when I wanted to be gone.
+
+
+		@endif
 
 
 
-;		good: settles in town, brings son to woodsman
-;		med: settles in town, implies hard rebuilding
-;		bad: leaves, but regretful
 
 
 		@exit
 
 		
 		#day16
-		;finished
+		Soon, at the entrance...
 
 		@char Logos
 		Logos: So... that's what it looks like from that angle...
@@ -1055,29 +1212,38 @@
 				@char Sara
 				Sara: Oh, I'm alright.
 				Sara: I'm, uh, going to see if the doctor is still doing discount amputations...
-			@elseif GetMara()
+			@endif
+			@if GetMara()
 				@char Mara
 				Mara: Just feeling a bit woozy
-			@elseif GetDerringer()
+			@endif
+			@eif GetDerringer()
 				@char Derringer
 				Derringer: My teeth hurt...
-			@elseif GetMelvardius()
+			@endif
+			@if GetMelvardius()
 				@char Melvardius
 				Melvardius: Just a bit of a rash, I'm sure.
-			@elseif GetNorma()
+			@endif
+			@if GetNorma()
 				Norma: Just hungry.[br]Really, weirdly, hungry.
-			@elseif GetMcDermit()
+			@endif
+			@if GetMcDermit()
 				McDermit: It's just a bit bright out.[br]How long was I down there?
-			@elseif GetDouglass()
+			@endif
+			@if GetDouglass()
 				@char Douglass
 				Douglass: Well, I've been in these caves before.  Always a bit dizzy afterwards.[br]Never quite this bad though.
-			@elseif GetDevon()
+			@endif
+			@if GetDevon()
 				@char Devon
 				Devon: I'm fine... thanks. Just going to get as far from here as I can.
-			@elseif GetPendleton()
+			@endif
+			@if GetPendleton()
 				@char Pendleton
 				Pendleton: I'm fine, it's just that my hair has gone a bit funny.
-			@elseif GetTodd()
+			@endif
+			@if GetTodd()
 				@char Todd
 				Todd: No! Stay back! I'm fine...[br]Excellent, in fact.
 			@endif
@@ -1130,6 +1296,9 @@
 		
 		#day17
 
+		@if GetPerfect()
+
+		Much later, after school...
 		@char Paul
 		Paul: There you are!
 		Paul: So tell me, did my boy behave himself in school today?
@@ -1179,25 +1348,48 @@
 		Paul: Hey, knock yourself out kid.
 
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
 
+		Much later, after school...
 
+		Bartholomew: Come on Hans, they said we shouldn't be here.
+		Hans: We're not going in. You just have to get near it.
+		Gretta: Come on, it's the only way we can proove he's lying.
+		Hans: I'm not lying! I heard it!
+		Gretta: Yeah right.
+		Hans: I was standing right here, next to the entrance, and I heard it.
+		Bartholomew: I don't hear anything.
+		Hans: Just wait a bit. It's not like it happens all the time.
+		Gretta: Oh yeah? Does this "chopping" only happen at a certain time?[br]Or if you say Paul's name three times?
+		Hans: Just be quiet! We could be missing it because you won't shut up!
+		Gretta: I won't shut up? You're the one blabbering so you can make excuses later.
+		Bartholomew: Guys?[br]I think I hear it.
+		Gretta: No you don't.
+		Hans: Would you just listen?
 
+		@wait 2
 
+		Bartholomew: There it was again!
+		Gretta: That's nothing, it's just like the sounds a creepy old house makes.
+		Hans: No, it's Paul, he's still down there.
+		Bartholomew: Do you think he'll ever come out?
+		Gretta: It's just a ghost story. He'd have died a long time ago. There's probably not anything to eat in there.
+		Hans: Lots of things died down there.[br]Didn't keep them from moving around.
+		Bartholomew: Someone's coming!
+		Hans: Quick, before they see us!
+		Gretta: You two are such children...
 
-		;good: finds son
-		;med: son dead, but moving on
-		;bad: phillip is dead
-
-
-
-
-
+		@endif
 
 		@exit
 
 		
 		#day18
 
+		@if GetPerfect()
+
+		Two weeks later, Jinn's home...
 		@char Tristana
 		Tristana: So, what happened next?
 		@char Jinn
@@ -1257,6 +1449,31 @@
 		Jinn: I live my life without time breathing down my neck.
 		Jinn: That's good enough for me.
 		
+		@elseif !GetWorst()
+		@elseif GetWorst()
+
+		Two weeks later, Jinn's home...
+		@char Tristana
+		Tristana: Hello? Are you there?
+		Tristana: Look, I know you told me to stop coming by.
+		Tristana: But, are you okay?
+		Tristana: I know, I know.
+		Tristana: It's just, I can't think of anything else to ask.
+		Tristana: They say you haven't been out in days.
+		Tristana: I'm sorry I wasn't there for you.[br]I was... I was sad. So many people died.
+		Tristana: It wasn't your fault! Everyone else is safe because of you.
+		Tristana: Not just us. People are starting to come back.
+		Tristana: They want to meet you.
+		Tristana: You saved us Jinn.
+
+		@Wait 2
+
+		Tristana: Can... can you just say something?
+		Tristana: Anything! Please!
+		-Door opening sound-
+		Tristana: Jinn! No!
+
+		@endif
 
 
 		@exit
@@ -1264,6 +1481,10 @@
 		
 		#day19
 
+
+		@if GetPerfect()
+
+		Soon, at the entrance...
 		@char Meyster
 		Meyster: Ah, sunlight! It has been too long.
 		Meyster: Is that everyone?
@@ -1309,14 +1530,47 @@
 		@char Pendleton
 		Pendleton: It's a good thing I did. Where would we be if I hadn't?
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
 
+		Soon, at the entrance...
+
+		@char Meyster
+		Meyster: It is done! I have conquered the monsters!
+		@char Wilson
+		Wilson: Wonderful! And what of the survivors?
+		@char Meyster
+		Meyster: That's just it my boy, there were none.
+		Meyster: Worse, in a cruel mockery, some of the monsters wore the bodies of their victims.
+		Meyster: Some even sounded like them.
+		Meyster: Tried to fool me. Said they weren't monsters.
+		Meyster: No doubt they would have infiltrated our good society.[br]If I hadn't put an end to them.
+		Meyster: We must be vigilent. Some of their corruption may have already spread.
+		@char Wilson
+		Wilson: You... you are done. You can rest now.
+		@char Meyster
+		Meyster: Now? When the victory is so close?
+		Meyster: If even one escapes it would be a tradgedy!
+		@char Wilson
+		Wilson: There are no monsters here. You have won.
+		@char Meyster
+		Meyster: Why would you try to pull me from the proper path?
+		Meyster: Unless...[br]Oh, my poor boy.
+		Meyster: Mayor Wilson...
+		Meyster: It breaks my heart that I could not save you.[br]But you will be avenged.
+		@char Wilson
+		Wilson: Sir! What are you— -combat sounds-
+
+
+
+		@endif
 
 
 		@exit
 
 		
 		#day20
-
+		Soon, at the entrance...
 		;good: leaves, but friendly
 		;med: leaves, uncertain about who she spared and didn't
 		;bad: leaves, implied off to become supervillian.
@@ -1418,43 +1672,71 @@
 		
 		#day21
 
+		@if GetPerfect()
+
+		One week later- in the cave...
+
 		@char Wilson
 		Wilson: I'd heard you might be down here.
 		@char Nelson
-		Nelson: Ah! Good to see you, sir.
+		Nelson: Ah! Good to see you sir.
 		Nelson: You have excellent timing. I have almost completely thawed this section.
-
-
-		Nelson: I suppose I have been neglecting my duties.
+		@char Wilson
+		Wilson: How did you get rid of all the ice?
+		@char Nelson
+		Nelson: --fire attack noises--
+		@char Wilson
+		Wilson: Oh.
+		@char Nelson
+		Nelson: These powers may not work outside of the cave, but they still have their uses within.
+		Nelson: It is thrilling work, though I suppose I have been neglecting my duties.
 		@char Wilson
 		Wilson: Nothing to worry about there. 
-		Wilson: The rest of the staff has started to return, and they know how to take care of the manor.
-		Wilson: I would say that you have earened a vacation.
-		Wilson: I just thought you might spend it somewhere a little more pleasant.
-
-
+		Wilson: The rest of the staff has started to return, and they know how to take care of things.
+		Wilson: I would say that you have earened a vacation.[br]I just thought you might spend it somewhere a little more pleasant.
 		@char Nelson
-		Nelson: It must have been a beautiful place once.
+		Nelson: When I first charged through these runes I saw horror[br]And yet...
 		Nelson: There were places where the old architecture shone though.
-		Nelson: Not yet touched by decay and corruption.
-
-		Nelson: It was once a place where people lived, but now it is haunted by their ghosts.
-		Nelson: I think this will take more than a dustpan.
-
-
-
-
-		How did you get rid of all the ice?
-		Nelson: --fire attack noises--
-		Oh.
-		Nelson: The powers may not work outside of the cave, but they still have their uses within.
-
-		So, what is it?
+		Nelson: Intact despite the decay and corruption.
+		Nelson: This must have been a beautiful place once.
+		@char Wilson
+		Wilson: So, what am I looking at here?
+		@char Nelson
 		Nelson: I do not know. It is lovely though, is it not?
+		Nelson: It makes one wonder, was this art? Or did it once serve a function?
+		@char Wilson
+		Wilson: This isn't cleaning anymore, it's anthropology.
 
-		Nelson: It makes me wonder, was this art? Or did it once serve a function?
-		@char Elder
-		Elder: This isn't cleaning anymore, it's anthropology.
+		@elseif !GetWorst()
+		@elseif GetWorst()
+
+		One week later- in town...
+
+		@char Wilson
+		Wilson: I'd heard you might be here.
+		@char Nelson
+		Nelson: Ah! Good to see you sir.
+		@char Wilson
+		Wilson: The family is here to sort through the estate.
+		Wilson: I've been asking them to wait.
+		@char Nelson
+		Nelson: Thank you for that, sir.
+		@char Wilson
+		Wilson: But I can't ask them to wait forever.
+		Wilson: They deserve the closure.[br]So do you.
+		@char Nelson
+		Nelson: I just... When they come back, I want it to look the way that they left it.
+		@char Wilson
+		Wilson: Nelson, they aren't coming ba—
+		@char Nelson
+		Nelson: Every dead thing in there got back up again!
+		Nelson: Why shouldn't they!?
+		Nelson: And when... and when they return, their things will be ready.
+		@char Wilson
+		Wilson: It doesn't work that way. Not this time.
+		@char Nelson
+		Nelson: Just be patient sir. Everything is going to be fine.
+		Nelson: I will make sure of it.
 
 
 
@@ -1463,7 +1745,9 @@
 
 
 
-		Nelson: 
+
+
+		@endif
 
 
 		@exit
@@ -1471,7 +1755,7 @@
 		
 		#day22
 		;Complete, but needs name
-
+		Soon, at the entrance...
 		@char JohnDoe
 		JohnDoe: Ha HA! That wasn't so bad.
 
@@ -1615,7 +1899,9 @@
 
 		
 		#day23
+		Soon, at the entrance...
 
+		@if !GetWorst()
 		Tasha: You did it![br]Come on! Everyone wants to—
 		@char Fluer
 		Fluer: Sure sure, in a bit.[br]I need to look at these samples I collected.
@@ -1677,11 +1963,48 @@
 		@char Devon
 		Devon: Who are you people?
 		@endif
+		@elseif GetWorst()
+
+		@char Fluer
+		Fluer: I'm back.
+		@char Tasha
+		Tasha: You did it? You defeated the curse?
+		@char Fluer
+		Fluer: I cleansed the infection.
+		@char Wilson
+		Wilson: And the others?
+		@char Fluer
+		Fluer: I cleansed[br]the infection.
+		Fluer: You see this arm? The protrusions on the joints?
+		Fluer: This is what happens to those who were exposed.
+		@char Elder
+		Elder: Who... who was...
+		@char Fluer
+		Fluer: This sample came from patient 17.
+		Fluer: I need you to keep your distance.
+		Fluer: It will take time to study the potential for secondary infection.
+		@char Tasha
+		Tasha: Okay darling, lets all calm down. Come on out of there and lets all get something to eat.
+		@char Fluer
+		Fluer: I can't come out. This entire cavern needs to be under quarentine until I understand what's going on here.
+		Fluer: I will need my tools. Just leave them at the entrance and I will retrieve them.
+		@char Metra
+		Metra: Is anyone else in there?
+		@char Fluer
+		Fluer: No.[br]They were dead before I came in.
+		Fluer: Now, bring my scalpels and Josephine. I have several necrosections to perform.
+
+
+		@endif
+
 
 		@exit
 
 		
 		#day24
+		Months later, some training ground...
+
+		@if GetPerfect()
 
 		@char Tasha
 		Tasha: Nobody ever won a battle by themselves.
@@ -1704,11 +2027,33 @@
 		@char Tasha
 		Tasha: Scarecrows are traditional.
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
+
+		@char Tasha
+		Tasha: Some of you may tell yourself "I am not a soldier."
+		Tasha: That is a lie.
+		Tasha: Anyone can be a soldier, with the proper motivation.
+		Tasha: Our king wants an army, and I'm going to give it to him.
+		Tasha: Years ago, I saw men and women who had never held a sword take up arms.
+		Tasha: They fought, and killed, and died.
+		Tasha: Why? Because their lives depended on it.
+		Tasha: That was the secret to their greatness.
+		Tasha: As of this moment. You are committed to victory, and your lives will depend on it.
+		Tasha: There is no turning back.
+		Tasha: You will conquer or you will die.
+		Tasha: And I, am here to make sure of that.
+
+		@endif
+
+
 		@exit
 
 		
 		#day25
+		Soon, at the entrance...
 
+		@if GetPerfect()
 		@char Fluer
 		Fluer: I can't believe you defeated the curse!
 		Fluer: No offense, I mean...
@@ -1736,13 +2081,52 @@
 		Metra: Because the interseting part is almost over.
 		Metra: And I don't know if anything comes after this.
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
 
+		@char Metra
+		Metra: It didn't have to be this way.
+		Metra: It shouldn't have been this way.
+		@char Wilson
+		Wilson: I know, but you did what you had to.
+		@char Metra
+		Metra: Did I have to?
+		Metra: I don't think this could happen by accident.
+		@char Svenra
+		Svenra: What d'ya mean lass?
+		@char Metra
+		Metra: Sure, it may take a lot of us to defeat the enemy, but this many? Maybe if care was taken... but it wasn't.
+		@char Patrick
+		Patrick: Hey, we all did what we could.
+		@char Metra
+		Metra: No, the mayor was right, we didn't do what we could. We did what we had to.
+		Metra: Someone wanted it to end this way.
+		@char Elder
+		Elder: Nobody wanted this. But I doubt any of us would have survived if it weren't for you.
+		@char Metra
+		Metra: I saved us, but by now any one of us could.
+		Metra: I think... I think each of you will get your turn after all.
+		@char Elder
+		Elder: It's okay, it's over.
+		@char Metra
+		Metra: No... I'm going to try again.[br]And I'm going to fail.
+		Metra: Then one of you will get a turn.
+		@char Wilson
+		Wilson: No, Metra, it's over. You're safe.
+		@char Metra
+		Metra: No... I'm not.
+		Metra: Someone wants to see how bad things can get.
+
+
+		@endif
 
 		@exit
 
 		
 		#day26
-		
+		Days later, at the town hall...
+
+		@if GetPerfect()
 		@char Wilson
 		Wilson: Moving on to the next item on our agenda, how are we to allocate the funds from the war chest?
 		@char Phillip
@@ -1771,11 +2155,46 @@
 		Tedd: Helping makes him happy.
 
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
+
+		@char Wilson
+		Wilson:...and that concludes the minutes of our pervious meeting.
+		Wilson: Does anyone have something to add?
+
+		@wait 1
+
+		Wilson: Very well. Moving forward.
+		Wilson: At the conclusion of our previous meeting a comitte was organized to consider the future course of our fair town.
+		Wilson: The merits of reconstruction were to be weighed against the idea of shuttering the community.
+
+		@wait 1
+
+		Wilson: Calm down everyone. This is still in the committe stage.
+		Wilson: Nothing has to be decided right away.
+		Wilson: The argument for shuttering the town is that we currently lack the population to consider ourselves a village, lackluster leadership, and the proximity of a dangerous cave.
+		Wilson: The benefits of restoring the town are a return of economic activity, increased numbers to defend against external threats, and companionship.
+		Wilson: The cons of shuttering are that we would need to start over somewhere else as refugess.
+		Wilson: The cons of re-opening our town is that we will be called to account for our crimes by our former friends and neighbors.
+		Wilson: We will not undertake a preliminary vote to guage local support.
+		Wilson: For reconstruction?[br]Against?
+
+		@wait 2
+
+		Wilson: The vote has been counted.
+		Wilson: With one vote for shuttering the town, and zero against.
+		Wilson: Thank you, we will take this into consideration as we continue our deliberation.
+
+		@endif
+
+
 
 		@exit
 
 		
 		#day27
+		Days later, outside Svenra's cottage...
+		@if GetPerfect()
 
 		@char Svenra
 		Svenra: What do you want?
@@ -1830,6 +2249,53 @@
 		@char Melvardius
 		Melvardius: That is all I ask.
 
+		@elseif !GetWorst()
+		@elseif GetWorst()
+
+
+		@char elder
+		Elder: What is going on in there?
+		@char Patrick
+		Tristana: I decided to stop asking that days ago.
+		@char Tristana
+		Patrick: Should we try to stop her?
+		@char Patrick
+		Tristana: Bold of you to assume that we could.
+
+		@char Svenra
+		Svenra: Is there really nowhere else you lot could have this talk?
+
+		@char Elder
+		Elder: Ah! Svenra you're looking...[br]Well.
+		@char Svenra
+		Svenra: So good of ya' to notice.
+		Svenra: Are you lot done packing yet?
+		@char Patrick
+		Patrick: Packing?
+		@char Svenra
+		Svenra: Aye.
+		Svenra: You don't have to go, but I doubt you'll much like your new neighbors.
+
+		@char Tristana
+		Tristana: Is that...?
+		@char Svenra
+		Svenra: Seems we've been squatting on someone else's land.
+		Svenra: They're coming to reclaim it.
+
+		@char Patrick
+		Patrick: Yes, um, I'll get my things together.
+		@char Tristana
+		Tristana: You don't really think you're bringing them back do you?
+		@char Svenra
+		Svenra: As they were? Nah.
+		Svenra: I think I like them better this way.
+		Svenra: They're my kind of people. Tireless, obediant.
+		Svenra: And most of all, quiet.
+
+
+
+
+		@endif
 
 
 		@exit
@@ -1843,7 +2309,7 @@
 
 
 		@if GetPerfect()
-
+		Soon, at the entrance...
 		@char Patrick
 		Patrick: Could use a hand here!
 
@@ -1921,7 +2387,7 @@
 
 		
 		#day29
-
+		Years later, wherever...
 ;		Perf: novelwriting
 ;		Med: 
 ;		Bad:
@@ -1958,12 +2424,36 @@
 		Jinn: Well, I've read almost all of them.
 		Jinn: I haven't been able to get my hands on the one about the cultist.
 		@char Tristana
-		Tristana: Yeah, I hear that one's pretty hard to find these days. It's out there though.
+		Tristana: Oh yeah, I hear that one's pretty hard to find these days.[br]It's out there though.
 
 
 		
 		@elseif !GetWorst()
+
+
+
+
 		@elseif GetWorst()
+
+
+		Publisher: Another Cursed Cave novel? I keep telling you, this series hasn't been selling for years.
+		Tristana: I know.
+		Publisher: This is, what, twenty so far?[br]That seems like a good place to stop doesn't it?
+		Tristana: No, I'm not done yet.
+		Publisher: The last five haven't even recouped the cost of distribution.
+		Tristana: Well, I'll pay for this one too then.
+		Publisher: I've seen how you live. I'm starting to feel guilty for taking your money.
+		Tristana: Just take it. You don't know anything about "guilty."
+		Publisher: Okay, it's just... why?
+		Publisher: You're good, that was obvious from the start.
+		Publisher: But your audience has gotten tired of just getting the same story with a new lead and a few tweaks.
+		Tristana: Because, I'm not done yet.
+		Publisher: When will you be done?
+		Tristana: A good character. They live on in our memories.[br]Their story goes on in the hearts of those who read about them.
+		Tristana: I'll be done when all of them get to survive.[br]At least, some small part of them.
+
+
+
 		@endif
 
 
@@ -1974,6 +2464,8 @@
 
 
 		#day30
+		
+		Soon, at the entrance...
 
 		@if GetPerfect()
 

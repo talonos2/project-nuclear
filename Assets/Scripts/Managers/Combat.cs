@@ -414,22 +414,22 @@ public class Combat : MonoBehaviour
         bool hitWeak = false;
 
         float elementalDamage = incomingDamage * playerStats.currentPower * .25f;
-        if (playerStats.currentPower == (int)ElementalPower.ICE) { elementalDamage *= 1 + playerStats.accessoryIceBonus/100;
+        if (playerStats.currentPower == (int)ElementalPower.ICE) { elementalDamage = incomingDamage * (.25f+playerStats.accessoryIceBonus/100);
             if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 2) { playerStats.mana -= 2; }
                 else { elementalDamage = 0; }
         }
-        if (playerStats.currentPower == (int)ElementalPower.EARTH) { elementalDamage *= 1 + playerStats.accessoryEarthBonus/100;
+        if (playerStats.currentPower == (int)ElementalPower.EARTH) { elementalDamage = incomingDamage *(.5f+ playerStats.accessoryEarthBonus/100);
             if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 4) { playerStats.mana -= 4; }
                 else { elementalDamage = 0; }
         }
-        if (playerStats.currentPower == (int)ElementalPower.FIRE) { elementalDamage *= 1 + playerStats.accessoryFireBonus/100;
+        if (playerStats.currentPower == (int)ElementalPower.FIRE) { elementalDamage = incomingDamage * (.75f+playerStats.accessoryFireBonus/100);
             if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 6) { playerStats.mana -= 6; }
                 else { elementalDamage = 0; }
         }
-        if (playerStats.currentPower == (int)ElementalPower.AIR) { elementalDamage *= 1 + playerStats.accessoryAirBonus/100;
+        if (playerStats.currentPower == (int)ElementalPower.AIR) { elementalDamage = incomingDamage * (1.0f+playerStats.accessoryAirBonus/100);
             if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage *= 2; hitWeak = true; }
             if (playerStats.mana >= 8) { playerStats.mana -= 8; }
                 else { elementalDamage = 0; }
@@ -443,12 +443,14 @@ public class Combat : MonoBehaviour
         monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
 
         if (playerStats.accessoryHPVamp > 0) {//same. should have an animation...
-            playerStats.HP = (int)((float) playerStats.HP * (1 + playerStats.accessoryHPVamp / 100));
+            playerStats.HP = (int)((float) playerStats.MaxHP * (1 + playerStats.accessoryHPVamp / 100));
+            //Note: The vamp items have a multiplier higher then what is shown This is to gausian give them the
+            //the correct amount of life steal when dealing with remainders. The change is stat +.2
             if (playerStats.HP > playerStats.MaxHP)
                 { playerStats.HP = playerStats.MaxHP; }
             }
         if (playerStats.accessoryMPVamp > 0) {
-            playerStats.mana = (int)((float)playerStats.mana * (1 + playerStats.accessoryMPVamp / 100));
+            playerStats.mana = (int)((float)playerStats.MaxMana * (1 + playerStats.accessoryMPVamp / 100));
             if (playerStats.mana > playerStats.MaxMana)
             { playerStats.mana = playerStats.MaxMana; }
         }
