@@ -641,6 +641,7 @@ GameObject:
   - component: {fileID: 326564850}
   - component: {fileID: 326564852}
   - component: {fileID: 326564853}
+  - component: {fileID: 326564854}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -762,6 +763,24 @@ MonoBehaviour:
   altWidth: 0
   altHeight: 0
   envSound: Water
+--- !u!114 &326564854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326564847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35107a825f8d2674a97beb6bd30b5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passabilityMap: {fileID: 4900000, guid: 836b0e73edd90bd4098b6ff64a11c976, type: 3}
+  width: 35
+  height: 35
+  alternatePathabilitySetup: 0
+  altWidth: 0
+  altHeight: 0
 --- !u!1001 &447969528
 PrefabInstance:
   m_ObjectHideFlags: 0
