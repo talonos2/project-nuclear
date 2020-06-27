@@ -116,6 +116,10 @@ public class SpriteMovement : MonoBehaviour
         UpdateNewEntityGridLocation();
         RemoveOldEntityGridLocation();
         characterLocation = characterNextLocation;
+        if (this is CharacterMovement)
+        {
+            UpdateEnvironmentSound();
+        }
     }
     protected void SetNextLocation(DirectionMoved nextStep) {
 
@@ -143,8 +147,10 @@ public class SpriteMovement : MonoBehaviour
             characterNextLocation.y = characterLocation.y;
 
         }
-
-
+        if (this is CharacterMovement)
+        {
+            UpdateEnvironmentSound();
+        }
     }
 
     protected bool IsMoveLocationPassable(int LocX, int LocY) {
@@ -360,22 +366,38 @@ public class SpriteMovement : MonoBehaviour
         MapGrid.GetComponent<EntityGrid>().grid[characterNextLocation.x, characterNextLocation.y] = this.gameObject;
     }
 
+    private void UpdateEnvironmentSound()
+    {
+        if (environmentalSoundMagnitudeGrid)
+        {
+            SoundManager.Instance.ChangeEnvironmentVolume(environmentalSoundMagnitudeGrid.grid[characterLocation.x, characterLocation.y]);
+        }
+        else
+        {
+            SoundManager.Instance.ChangeEnvironmentVolume(0);
+        }
+    }
+
     public void InitializeNewMap() {
         MapGrid = GetMapGrid();
         mapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
         mapEntityGrid = MapGrid.GetComponent<EntityGrid>();
         groundMaterialGrid = MapGrid.GetComponent<GroundMaterialGrid>();
         environmentalSoundMagnitudeGrid = MapGrid.GetComponent<EnvironmentalSoundMagnitudeGrid>();
-        if (environmentalSoundMagnitudeGrid)
+        if (this is CharacterMovement)
         {
-            if (SoundManager.Instance.currentlyPlayingEnvTrack != environmentalSoundMagnitudeGrid.envSound)
+            if (environmentalSoundMagnitudeGrid)
             {
-                SoundManager.Instance.ChangeEnvironmentTrack(environmentalSoundMagnitudeGrid.envSound);
+                if (SoundManager.Instance.currentlyPlayingEnvTrack != environmentalSoundMagnitudeGrid.envSound)
+                {
+                    SoundManager.Instance.ChangeEnvironmentTrack(environmentalSoundMagnitudeGrid.envSound);
+                }
+                UpdateEnvironmentSound();
             }
-        }
-        else
-        {
-            SoundManager.Instance.ChangeEnvironmentTrack();
+            else
+            {
+                SoundManager.Instance.ChangeEnvironmentTrack();
+            }
         }
         //GameObject exitLocationObj = GameObject.Find("Exit");
         //exitLocation.x= exitLocationObj.transform.

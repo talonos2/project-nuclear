@@ -52,14 +52,6 @@ public class CharacterMovement : SpriteMovement
             {
                 materialNameStart = groundMaterialGrid.grid[characterLocation.x, characterLocation.y].GetName();
             }
-            if (environmentalSoundMagnitudeGrid)
-            {
-                SoundManager.Instance.ChangeEnvironmentVolume(environmentalSoundMagnitudeGrid.grid[characterLocation.x, characterLocation.y]);
-            }
-            else
-            {
-                SoundManager.Instance.ChangeEnvironmentVolume(0);
-            }
             SoundManager.Instance.PlaySound("Footsteps/"+materialNameStart+stepSound, .2f);
             previousStepSound = stepSound;
         }
