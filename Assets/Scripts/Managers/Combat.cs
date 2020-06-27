@@ -435,7 +435,7 @@ public class Combat : MonoBehaviour
                 else { elementalDamage = 0; }
         }
 
-        if (goodHit) { incomingDamage *= 1.25f; }
+        if (goodHit) { incomingDamage = (incomingDamage+ monsterStats.defense)*1.25f- monsterStats.defense; }
         goodHit = false;
 
         incomingDamage *= 1 + RollCrit(); //should probably have an animation too
@@ -547,8 +547,9 @@ public class Combat : MonoBehaviour
         else { SoundManager.Instance.PlaySound("Combat/BadBlock", .5f); }
 
         float incomingDamage = monsterStats.attack;
-        incomingDamage -= playerStats.defense;
         if (goodBlock) { incomingDamage *= .8f; }
+        incomingDamage -= playerStats.defense;
+        
         goodBlock = false;
         incomingDamage = Math.Max(incomingDamage, 0);
         if (RollDodge()) {
