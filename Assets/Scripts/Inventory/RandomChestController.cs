@@ -22,8 +22,8 @@ public class RandomChestController : EntityData
     public int crystalChance = 20;
     public int healingChance = 15;
     public int manaChance = 15;
-    public int healingFactor = 13;
-    public int manaFactor = 13;
+    public int healingFactor = 12;
+    public int manaFactor = 12;
 
     public bool active = true;
     public bool attackCrystal;
@@ -318,7 +318,7 @@ public class RandomChestController : EntityData
         }
         else if (healingFountain)
         {
-            amountGained = 29 + rarity * healingFactor;
+            amountGained = 25 + rarity * healingFactor;
             playerData.HP += amountGained;
             if (playerData.HP > playerData.MaxHP) playerData.HP = playerData.MaxHP;
             Instantiate(healthFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
@@ -327,7 +327,7 @@ public class RandomChestController : EntityData
         }
         else if (manaFountain)
         {
-            amountGained = 29 + rarity * manaFactor;
+            amountGained = 25 + rarity * manaFactor;
             playerData.mana += amountGained;
             if (playerData.mana > playerData.MaxMana) playerData.mana = playerData.MaxMana;
             Instantiate(manaFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
