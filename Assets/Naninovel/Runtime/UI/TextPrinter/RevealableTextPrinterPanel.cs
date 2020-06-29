@@ -18,6 +18,7 @@ namespace Naninovel.UI
     /// </remarks>
     public class RevealableTextPrinterPanel : UITextPrinterPanel
     {
+        private static readonly int MESSAGE_SOUND_SKIPS = 8;
         [System.Serializable]
         private class CharsToSfx
         {
@@ -95,6 +96,7 @@ namespace Naninovel.UI
             if (revealDelay <= 0) { RevealableText.RevealAll(); yield break; }
 
             var timeSinceLastReveal = 0f;
+            var charsRevealed = 0;
             while (!RevealableText.IsFullyRevealed)
             {
                 var charsToReveal = Mathf.FloorToInt(timeSinceLastReveal / revealDelay);
@@ -102,10 +104,22 @@ namespace Naninovel.UI
                 {
                     timeSinceLastReveal = timeSinceLastReveal % revealDelay;
                     for (int i = 0; i < charsToReveal; i++)
+                    {
                         RevealableText.RevealNextChar(revealDelay);
+                        charsRevealed++;
+                    }
+
 
                     var lastRevealedChar = RevealableText.GetLastRevealedChar();
-                    PlayRevealSfxForChar(lastRevealedChar);
+                    //Talonos hacked here:
+                    if ("?.!:".Contains("" + lastRevealedChar) || charsRevealed % MESSAGE_SOUND_SKIPS==0)
+                    {
+                        PlayRevealSfxForChar(lastRevealedChar);
+                    }
+                    else
+                    {
+                        Debug.Log("Skipped: "+charsRevealed);
+                    }
                     if (charsCommands != null && charsCommands.Count > 0)
                         yield return ExecuteCommandForCharRoutine(lastRevealedChar);
                 }
@@ -232,7 +246,14 @@ namespace Naninovel.UI
                     if (index < 0) continue;
 
                     if (!string.IsNullOrEmpty(charSfx.SfxName))
-                        audioManager.PlaySfxFast(charSfx.SfxName);
+                    {
+                        float pitch = 1f;
+                        if (AuthorMeta != null && !(AuthorMeta.MessagePitch==0))
+                        {
+                            pitch = AuthorMeta.MessagePitch;
+                        }
+                        audioManager.PlaySfxFast(charSfx.SfxName, 1f, true, pitch);
+                    }
                     return;
                 }
             }
