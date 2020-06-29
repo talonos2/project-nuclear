@@ -1,23 +1,119 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class SoundManager : Singleton<SoundManager>
 {
+    [Serializable]
+    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+    {
+        [SerializeField]
+        private List<TKey> keys = new List<TKey>();
+
+        [SerializeField]
+        private List<TValue> values = new List<TValue>();
+
+        // save the dictionary to lists
+        public void OnBeforeSerialize()
+        {
+            keys.Clear();
+            values.Clear();
+            foreach (KeyValuePair<TKey, TValue> pair in this)
+            {
+                keys.Add(pair.Key);
+                values.Add(pair.Value);
+            }
+        }
+
+        // load dictionary from lists
+        public void OnAfterDeserialize()
+        {
+            this.Clear();
+
+            if (keys.Count != values.Count)
+                throw new System.Exception(string.Format("there are {0} keys and {1} values after deserialization. Make sure that both key and value types are serializable."));
+
+            for (int i = 0; i < keys.Count; i++)
+                this.Add(keys[i], values[i]);
+        }
+    }
+
+    [Serializable] public class DictionaryOfStringAndFloat : SerializableDictionary<string, float> { }
 
     public static AudioClip potBreakSound, rockAttackStrongSound, rockAttackWeakSound;
     static AudioSource audioSrc;
     AudioSource environmentalSound;
     internal string currentlyPlayingEnvTrack = "";
+    public DictionaryOfStringAndFloat soundVolumeMap = new DictionaryOfStringAndFloat();
+    private bool loadedJson = false;
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this);
-        if (!environmentalSound)
+    }
+
+    private void LoadSoundJSON()
+    {
+        String appPath = Application.dataPath;
+        if (!Directory.Exists(appPath + "/Sound"))
         {
-            CreateEnvironmentalSound();
+            Directory.CreateDirectory(appPath + "/Sound");
         }
+
+        Debug.Log("Here, checking.");
+        if (File.Exists(appPath + "/Sound/soundVolumeMap.json"))
+        {
+            Debug.Log("Found, Loading.");
+            StreamReader reader = new StreamReader(appPath+"/Sound/soundVolumeMap.json");
+            String json = reader.ReadToEnd();
+            Debug.Log("Loaded: " + json);
+            soundVolumeMap = JsonUtility.FromJson<DictionaryOfStringAndFloat>(json);
+            foreach (string s in soundVolumeMap.Keys)
+            {
+                Debug.Log("Loaded: "+s + ", " + soundVolumeMap[s]);
+            }
+            reader.Close();
+        }
+        else
+        {
+            Debug.Log("Not found, creating.");
+            File.Create(appPath + "/Sound/soundVolumeMap.json");
+        }
+    }
+
+    private float SafeGetVolume(string s)
+    {
+        if (!loadedJson)
+        {
+            LoadSoundJSON();
+            loadedJson = true;
+        }
+        if (!soundVolumeMap.ContainsKey(s))
+        {
+            Debug.Log("Does not contain " + s);
+            soundVolumeMap.Add(s, 1f);
+            SaveSoundMap();
+        }
+        return soundVolumeMap[s];
+    }
+
+    private void SaveSoundMap()
+    {
+        String appPath = Application.dataPath;
+        StreamWriter writer = new StreamWriter(appPath + "/Sound/soundVolumeMap.json", false);
+        foreach (string s in soundVolumeMap.Keys)
+        {
+            Debug.Log(s+", "+soundVolumeMap[s]);
+        }
+        String toPrint = JsonUtility.ToJson(soundVolumeMap, true);
+        Debug.Log(toPrint);
+        writer.Write(toPrint);
+        writer.Flush();
+        writer.Close();
     }
 
     private void CreateEnvironmentalSound()
@@ -25,6 +121,7 @@ public class SoundManager : Singleton<SoundManager>
         GameObject tempGO = new GameObject();
         tempGO.name = "EnvironmentalSound";
         tempGO.transform.parent = this.transform;
+        environmentalSound = tempGO.AddComponent<AudioSource>();
         environmentalSound = tempGO.AddComponent<AudioSource>();
     }
 
@@ -36,30 +133,28 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlaySound(string clip, float vol)
     {
+        float realVol = vol * SafeGetVolume(clip);
         if (!audioSrc)
         {
             audioSrc = this.gameObject.AddComponent<AudioSource>();
         }
-        audioSrc.PlayOneShot(Resources.Load<AudioClip>("Sounds/" + clip), vol);
+        audioSrc.PlayOneShot(Resources.Load<AudioClip>("Sounds/" + clip), realVol);
     }
 
-    public void PlaySound(AudioClip clip)
+    public void PlayPersistentSound(string clip, float vol)
     {
-        if (!audioSrc)
-        {
-            audioSrc = this.gameObject.AddComponent<AudioSource>();
-        }
-        audioSrc.PlayOneShot(clip);
-    }
-
-    public void PlayPersistentSound(string clip)
-    {
+        float realVol = vol * SafeGetVolume(clip);
         audioSrc.clip = Resources.Load<AudioClip>("Sounds/" + clip);
+        audioSrc.volume = realVol;
         audioSrc.Play();
     }
 
     public void ChangeEnvironmentTrack(string clip)
     {
+        if (!environmentalSound)
+        {
+            CreateEnvironmentalSound();
+        }
         if (!environmentalSound)
         {
             CreateEnvironmentalSound();
@@ -73,6 +168,14 @@ public class SoundManager : Singleton<SoundManager>
 
     public void ChangeEnvironmentTrack()
     {
+        if (!environmentalSound)
+        {
+            CreateEnvironmentalSound();
+        }
+        if (!environmentalSound)
+        {
+            CreateEnvironmentalSound();
+        }
         currentlyPlayingEnvTrack = "";
         if (environmentalSound)
         {
@@ -82,7 +185,18 @@ public class SoundManager : Singleton<SoundManager>
 
     public void ChangeEnvironmentVolume(float vol)
     {
-        Debug.Log("Changing volume: " + vol);
-        environmentalSound.volume = vol / 9.0f;
+        if (!environmentalSound)
+        {
+            CreateEnvironmentalSound();
+        }
+        if (environmentalSound.clip)
+        {
+            float realVol = vol * SafeGetVolume(environmentalSound.clip.name);
+            environmentalSound.volume = realVol / 9.0f;
+        }
+        else
+        {
+            environmentalSound.volume = 0;
+        }
     }
 }

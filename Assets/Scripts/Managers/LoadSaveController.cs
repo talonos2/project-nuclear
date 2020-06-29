@@ -49,7 +49,8 @@ public class LoadSaveController : MonoBehaviour
         {
             saveFile = File.OpenWrite(appPath + "/Saves/" + metaListObject.listOfSaves[saveSlotSelected].SaveName + ".binary");
         }
-        else {
+        else
+        {
             saveFile = File.Create(appPath + "/Saves/" + metaListObject.listOfSaves[saveSlotSelected].SaveName + ".binary");
         }
 
@@ -185,7 +186,7 @@ public class LoadSaveController : MonoBehaviour
         newGameButton.StartNewGameActual();
         
     }
-    public void canelLoad() {
+    public void CancelLoad() {
         aCanvasThis.enabled = false;
     }
     public void activateLoad() {

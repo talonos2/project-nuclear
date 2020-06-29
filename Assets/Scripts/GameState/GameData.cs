@@ -164,7 +164,7 @@ public class GameData : Singleton<GameData>
         {
             //Needs to really call the 'kill player' animation and then load deathscene from that script. That script should 'pause' the timer. 
             GameState.isInBattle = false;
-            SoundManager.Instance.PlayPersistentSound("TakenByCurse");
+            SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
             MusicManager.instance.FadeOutMusic(-2, 3);
             SceneManager.LoadScene("DeathScene");
             pauseTimer = true;

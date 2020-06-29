@@ -52,7 +52,7 @@ public class CharacterMovement : SpriteMovement
             {
                 materialNameStart = groundMaterialGrid.grid[characterLocation.x, characterLocation.y].GetName();
             }
-            SoundManager.Instance.PlaySound("Footsteps/"+materialNameStart+stepSound, .2f);
+            SoundManager.Instance.PlaySound("Footsteps/"+materialNameStart+stepSound, 1f);
             previousStepSound = stepSound;
         }
 
@@ -367,7 +367,7 @@ public class CharacterMovement : SpriteMovement
             return;
         }
         if (playerStats.currentPower != (int)ElementalPower.EARTH && gameData.stealthed) {
-            SoundManager.Instance.PlaySound("StealthOff", .5f);
+            SoundManager.Instance.PlaySound("StealthOff", 1f);
             gameData.stealthed = false;
             tempMovementSpeed = MoveSpeed;
             tempFramesPerSecond = framesPerSecond;

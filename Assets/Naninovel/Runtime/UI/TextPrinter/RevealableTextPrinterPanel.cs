@@ -118,7 +118,6 @@ namespace Naninovel.UI
                     }
                     else
                     {
-                        Debug.Log("Skipped: "+charsRevealed);
                     }
                     if (charsCommands != null && charsCommands.Count > 0)
                         yield return ExecuteCommandForCharRoutine(lastRevealedChar);

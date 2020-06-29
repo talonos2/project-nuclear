@@ -346,7 +346,7 @@ public class Combat : MonoBehaviour
         Destroy(this);
         //At this point play 'death' animation on player, which should end in a death of the player. 
         //For now doing the scene transition to the death scene right away
-        SoundManager.Instance.PlayPersistentSound("TakenByCurse");
+        SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
         MusicManager.instance.FadeOutMusic(-2, 3);
         SceneManager.LoadScene("DeathScene");
     }
@@ -404,8 +404,8 @@ public class Combat : MonoBehaviour
     {
         float incomingDamage = (int)playerStats.attack;
 
-        if (goodHit) { SoundManager.Instance.PlaySound("Combat/GoodHit", .5f); }
-        else { SoundManager.Instance.PlaySound("Combat/BadHit", .5f); }
+        if (goodHit) { SoundManager.Instance.PlaySound("Combat/GoodHit", 1f); }
+        else { SoundManager.Instance.PlaySound("Combat/BadHit", 1f); }
 
         incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent/100);
         incomingDamage -= monsterStats.defense;
@@ -544,7 +544,7 @@ public class Combat : MonoBehaviour
     {
 
         if (goodBlock) { SoundManager.Instance.PlaySound("Combat/GoodBlock", 1f); }
-        else { SoundManager.Instance.PlaySound("Combat/BadBlock", .5f); }
+        else { SoundManager.Instance.PlaySound("Combat/BadBlock", 1f); }
 
         float incomingDamage = monsterStats.attack;
         if (goodBlock) { incomingDamage *= .8f; }
