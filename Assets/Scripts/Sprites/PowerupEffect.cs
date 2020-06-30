@@ -23,7 +23,7 @@ public class PowerupEffect : MonoBehaviour
     {
         var main = particles.main;  //I don't know why this step is necessary, but it is. :/
         main.startLifetime = duration;
-        collectionSound.clip = Resources.Load<AudioClip>("Sounds/GetEnergy" + (Random.Range(0, 3) + 1));
+        collectionSound.clip = Resources.Load<AudioClip>("Sounds/GetEnergy");
         //collectionSound.pitch = Random.Range(.9f,1.2f);
     }
 

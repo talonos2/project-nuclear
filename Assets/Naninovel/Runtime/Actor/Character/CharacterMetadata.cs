@@ -31,6 +31,8 @@ namespace Naninovel
         public Color NotSpeakingTint = Color.gray;
         [Tooltip("Path to the sound (SFX) to play when printing (revealing) messages and the character is author. The sound will be played on each character reveal, so make sure it's very short and sharp (without any pause/silence at the beginning of the audio clip).")]
         public string MessageSound = default;
+        [Tooltip("Pitch adjustment of the metasound.")]
+        public float MessagePitch = 1f;
 
         public CharacterMetadata ()
         {

@@ -32,6 +32,7 @@ MonoBehaviour:
     SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
     NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     MessageSound: 
+    MessagePitch: 1
   Metadata:
     ids:
     - Derringer
@@ -84,6 +85,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -100,6 +102,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -116,6 +119,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -131,7 +135,8 @@ MonoBehaviour:
       HighlightWhenSpeaking: 0
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      MessageSound: SpeechSoundLow
+      MessageSound: 
+      MessagePitch: 0.95
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -148,6 +153,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -164,6 +170,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -180,6 +187,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -196,6 +204,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -212,6 +221,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -228,6 +238,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -244,6 +255,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 0.9
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -260,6 +272,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -276,6 +289,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -292,6 +306,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -308,6 +323,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -324,6 +340,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -340,6 +357,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -356,6 +374,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -372,6 +391,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -388,6 +408,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -404,6 +425,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -420,6 +442,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -436,6 +459,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -452,6 +476,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -468,6 +493,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -484,6 +510,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -500,6 +527,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -516,6 +544,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -532,6 +561,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundHigh
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -548,6 +578,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -564,6 +595,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -580,6 +612,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
     - Implementation: Naninovel.SpriteCharacter
       LoaderConfiguration:
         PathPrefix: Characters
@@ -596,6 +629,7 @@ MonoBehaviour:
       SpeakingTint: {r: 1, g: 1, b: 1, a: 1}
       NotSpeakingTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       MessageSound: SpeechSoundLow
+      MessagePitch: 1
   AvatarLoader:
     PathPrefix: CharacterAvatars
     ProviderTypes: 0000000001000000

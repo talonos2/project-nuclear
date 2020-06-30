@@ -391,7 +391,7 @@ public static class AttackAnimationExtensions
                 SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
                 return;
             case AttackAnimation.BLAST:
-                SoundManager.Instance.PlaySound("Combat/Laser", .7f);
+                SoundManager.Instance.PlaySound("Combat/Laser", 1f);
                 return;
             case AttackAnimation.PLAYER_HOP:
                 SoundManager.Instance.PlaySound("Combat/PlayerAttackSwing", 1f);
