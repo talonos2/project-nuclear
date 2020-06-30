@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.11
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
         type: 3}
@@ -569,6 +569,114 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8adc24ffbd31bed41bebadc99c4e6875, type: 3}
+--- !u!1001 &26832353
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5462198937317247682, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_Name
+      value: permSwitch4_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 91
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7214654124223000325, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -7214654124223000325, guid: 8adc24ffbd31bed41bebadc99c4e6875, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 8adc24ffbd31bed41bebadc99c4e6875, type: 3}
+--- !u!1 &26832354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5462198937317247682, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+    type: 3}
+  m_PrefabInstance: {fileID: 26832353}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &26832355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26832354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421e41ab76667f146bde62eaf7953c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMainCharacter: 0
+  isAMonster: 0
+  isLargeMonster: 0
+  isInteractableObject: 0
+  isItem: 0
+  isSwitch: 1
+  isNPC: 0
+  TiedEntities: []
+  times: []
+  particlePath: 
+  mover: {fileID: 0}
+  AnimationSpeed: 6
+  totalFrames: 5
+  timeTillReset: 0
+  prePressed: 0
 --- !u!1001 &29130076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6528,6 +6636,114 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216316364}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1225982519
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5462198937317247682, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_Name
+      value: permSwitch4_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7214654124223000325, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -7214654124223000325, guid: 8adc24ffbd31bed41bebadc99c4e6875, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 8adc24ffbd31bed41bebadc99c4e6875, type: 3}
+--- !u!1 &1225982520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5462198937317247682, guid: 8adc24ffbd31bed41bebadc99c4e6875,
+    type: 3}
+  m_PrefabInstance: {fileID: 1225982519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1225982521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225982520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44d466c68060ea4393e41174a33b0ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMainCharacter: 0
+  isAMonster: 0
+  isLargeMonster: 0
+  isInteractableObject: 0
+  isItem: 0
+  isSwitch: 1
+  isNPC: 0
+  TiedEntities: []
+  times: []
+  particlePath: 
+  mover: {fileID: 0}
+  AnimationSpeed: 6
+  totalFrames: 5
+  timeTillReset: 0
+  prePressed: 0
 --- !u!1001 &1334655520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7909,6 +8125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725513, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
@@ -10132,6 +10353,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 9
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160242698562488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10157,6 +10379,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 8
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160242813513145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10182,6 +10405,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 15
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160242830097787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10207,6 +10431,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 0
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160242860115977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10232,6 +10457,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 12
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160242966167433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10257,6 +10483,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 8
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160242996688207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10282,6 +10509,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 7
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243172833206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10307,6 +10535,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 11
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243268806538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10332,6 +10561,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 2
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243333679482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10357,6 +10587,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 15
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243338955794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10382,6 +10613,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 12
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243628613286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10407,6 +10639,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 3
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243635151912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10432,6 +10665,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 4
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243712715797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10457,6 +10691,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 3
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243766509866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10482,6 +10717,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 2
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243792765992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10507,6 +10743,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 10
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243862726099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10532,6 +10769,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 7
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160243869338195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10557,6 +10795,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 5
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244056060686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10582,6 +10821,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 13
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244084855180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10607,6 +10847,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 0
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244231227454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10632,6 +10873,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 13
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244232997299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10657,6 +10899,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 6
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244280930514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10682,6 +10925,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 10
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244431284708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10707,6 +10951,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 4
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244432199916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10732,6 +10977,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 11
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244440417754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10757,6 +11003,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 6
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244465542107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10782,6 +11029,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 14
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244496150016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10807,6 +11055,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 9
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244534471462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10832,6 +11081,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 1
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244650130300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10857,6 +11107,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 5
+  primToCheck: {fileID: 0}
 --- !u!114 &1306160244664436912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10882,6 +11133,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 1
+  primToCheck: {fileID: 0}
 --- !u!1 &1459355885026636696
 GameObject:
   m_ObjectHideFlags: 0
@@ -11931,6 +12183,7 @@ MonoBehaviour:
   primBridge: 0
   primShortcutBridge: 1
   primConnectionNumber: 14
+  primToCheck: {fileID: 0}
 --- !u!114 &5544051119057014377
 MonoBehaviour:
   m_ObjectHideFlags: 0

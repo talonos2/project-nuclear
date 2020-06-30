@@ -23,7 +23,7 @@ public class Map3_2Cutscene : MonoBehaviour
     {
         delayTillOpen -= Time.deltaTime;
         if (delayTillOpen <= 0 && !doorsOpen) {
-            GameData.Instance.Map3_2Shortcut = true;
+            GameData.Instance.map3_2Shortcut = true;
             doorsOpen = true;
             Door1.GetComponent<DoorShortcutController>().OpenDoors();
             Door2.GetComponent<DoorShortcutController>().OpenDoors();

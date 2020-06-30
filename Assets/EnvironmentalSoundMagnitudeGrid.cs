@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,8 +29,7 @@ public class EnvironmentalSoundMagnitudeGrid : MonoBehaviour
                                              new Color (1, .25f, .5f),
                                              new Color (0, .5f, 1)};
 
-    // Start is called before the first frame update
-    void Start()
+    internal void configureSoundGrid()
     {
         int width;
         int height;
@@ -69,6 +69,13 @@ public class EnvironmentalSoundMagnitudeGrid : MonoBehaviour
             rowNum++;
             if (rowNum >= height) break;
         }
+
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        configureSoundGrid();
     }
 
 

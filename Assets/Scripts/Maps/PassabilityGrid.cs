@@ -19,6 +19,13 @@ public class PassabilityGrid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        configurePathabilityGrid();
+
+        
+    }
+
+    public void configurePathabilityGrid()
+    {
         int width;
         int height;
         if (alternatePathabilitySetup) { width = altWidth; height = altHeight; }
@@ -34,7 +41,7 @@ public class PassabilityGrid : MonoBehaviour
         }
         if (yRows.Length > height)
         {
-            Debug.LogWarning(passabilityMap.name + " has too many rows. All rows past #"+height+" will be ignored.");
+            Debug.LogWarning(passabilityMap.name + " has too many rows. All rows past #" + height + " will be ignored.");
         }
         int rowNum = 0;
         foreach (string rowString in yRows)
@@ -65,7 +72,7 @@ public class PassabilityGrid : MonoBehaviour
                         grid[charNum, rowNum] = PassabilityType.WALL;
                         break;
                     default:
-                        Debug.LogWarning("Got unexpected type " + c + " at "+ charNum + " in row "+ rowNum +": Ignoring and replacing with errored ground!");
+                        Debug.LogWarning("Got unexpected type " + c + " at " + charNum + " in row " + rowNum + ": Ignoring and replacing with errored ground!");
                         grid[charNum, rowNum] = PassabilityType.ERROR;
                         break;
                 }
@@ -76,7 +83,6 @@ public class PassabilityGrid : MonoBehaviour
             if (rowNum >= height) break;
         }
     }
-
 
     void OnDrawGizmosSelected()
     {

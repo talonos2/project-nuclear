@@ -27,9 +27,13 @@ public class Enemy : Stats
 
     public bool iceBoss;
     public bool earthBoss;
+    public bool earthBoss2;
     public bool fireBoss;
+    public bool fireBoss2;
     public bool airBoss;
+    public bool airBoss2;
     public bool deathBoss;
+    public bool deathBoss2;
     public bool finalBoss;
 
     public void Start()
@@ -39,6 +43,9 @@ public class Enemy : Stats
         if (fireBoss && GameData.Instance.fireBoss1) { Destroy(this.gameObject); }
         if (airBoss && GameData.Instance.airBoss1) { Destroy(this.gameObject); }
         if (deathBoss && GameData.Instance.deathBoss1) { Destroy(this.gameObject); }
+        if (earthBoss2 && GameData.Instance.earthBoss2 || earthBoss2 && !GameData.Instance.earthBoss1) { Destroy(this.gameObject); }
+        if (fireBoss2 && GameData.Instance.fireBoss2 || fireBoss2 && !GameData.Instance.fireBoss1) { Destroy(this.gameObject); }
+        if (airBoss2 && GameData.Instance.airBoss2 || airBoss2 && !GameData.Instance.airBoss1) { Destroy(this.gameObject); }
     }
 
 

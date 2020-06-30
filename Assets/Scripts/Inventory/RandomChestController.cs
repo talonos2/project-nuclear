@@ -39,7 +39,7 @@ public class RandomChestController : EntityData
     private int currentFrame = 0;
     private float offsetFix = .00001f;
 
-    private Renderer sRender;
+    //private Renderer sRender;
     public GameObject fountainPrefab;
     public GameObject itemPrefab;
     public GameObject itemBreaking;

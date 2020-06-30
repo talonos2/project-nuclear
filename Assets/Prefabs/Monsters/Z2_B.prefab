@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6622165687117483740}
   - component: {fileID: 6622165687117483731}
   - component: {fileID: 6622165687117483730}
-  - component: {fileID: 6622165687117483729}
   - component: {fileID: 6622165687117483735}
   - component: {fileID: 5372312010732874347}
+  - component: {fileID: 683121988490635706}
   m_Layer: 0
   m_Name: Z2_B
   m_TagString: Untagged
@@ -56,6 +56,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bbabb577345f240886179cc01bde1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMainCharacter: 0
+  isAMonster: 1
+  isLargeMonster: 1
+  isInteractableObject: 0
+  isItem: 0
+  isSwitch: 0
+  isNPC: 0
   MoveSpeed: 5
   framesPerSecond: 8
   facedDirection: 4
@@ -69,26 +76,7 @@ MonoBehaviour:
   ChaseRange: 15
   SpotWaitTimer: 0.3
   LookPattern: 
-  bossMonster: 0
---- !u!114 &6622165687117483729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6622165687117483734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b61252a66b3eb34b8c0519976aac2ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMainCharacter: 0
-  isAMonster: 1
-  isLargeMonster: 0
-  isInteractableObject: 0
-  isItem: 0
-  isSwitch: 0
-  isNPC: 0
+  bossMonster: 1
 --- !u!65 &6622165687117483735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -143,9 +131,29 @@ MonoBehaviour:
   badBlock: {fileID: 0}
   iceBoss: 0
   earthBoss: 1
+  earthBoss2: 0
   fireBoss: 0
+  fireBoss2: 0
   airBoss: 0
+  airBoss2: 0
   deathBoss: 0
+  deathBoss2: 0
+  finalBoss: 0
+--- !u!114 &683121988490635706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622165687117483734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d53f9fa64990149a2004edec47788e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalFrames: 7
+  framesPerSecond: 1.5
+  fireBoss: 0
 --- !u!1 &6622165687581963513
 GameObject:
   m_ObjectHideFlags: 0

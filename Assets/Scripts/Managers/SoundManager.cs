@@ -82,7 +82,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public void ChangeEnvironmentVolume(float vol)
     {
-        Debug.Log("Changing volume: " + vol);
+       // Debug.Log("Changing volume: " + vol);
         environmentalSound.volume = vol / 9.0f;
     }
 }

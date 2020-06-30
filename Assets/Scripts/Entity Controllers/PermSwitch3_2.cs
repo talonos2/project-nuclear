@@ -9,7 +9,7 @@ public class PermSwitch3_2 : SwitchEntityData
     new void Start()
     {
         base.Start();
-        if (GameData.Instance.Map3_2Shortcut)
+        if (GameData.Instance.map3_2Shortcut)
         {
             ToggleTiedObjects();
         }
@@ -22,10 +22,10 @@ public class PermSwitch3_2 : SwitchEntityData
         {
   
             SwitchAnimation();
-            if (GameData.Instance.Map3_2Shortcut == false) {
-                //GameData.Instance.Map3_2Shortcut = true; Set to True by the cutsceneplayerscript on scMap3-2
-                //SceneManager.LoadScene("ScMap3-2", LoadSceneMode.Single);
-                SceneManager.LoadScene("ScMap3-2", LoadSceneMode.Additive);
+            if (GameData.Instance.map3_2Shortcut == false) {
+                GameData.Instance.map3_2Shortcut = true; //Set to True by the cutsceneplayerscript on scMap3-2
+
+                //SceneManager.LoadScene("ScMap3-2", LoadSceneMode.Additive);
             }
             activeSwitch = false;
 

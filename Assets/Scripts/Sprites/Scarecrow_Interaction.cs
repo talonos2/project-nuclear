@@ -7,9 +7,9 @@ public class Scarecrow_Interaction : EntityData
 {
 
         private Vector2Int pawnLocation;
-        private GameObject mapGrid;
-        private Vector2 mapZeroLocation;
-        private Renderer sRender;
+        //private GameObject mapGrid;
+        //private Vector2 mapZeroLocation;
+        //private Renderer sRender;
         private bool waitFrameAfterDialogue;
     private bool HittingScarecrow = false;
     private float timeSinceLastAnimation;

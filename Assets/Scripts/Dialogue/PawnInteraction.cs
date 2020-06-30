@@ -9,10 +9,10 @@ public class PawnInteraction : EntityData
 {
 
     private Vector2Int pawnLocation;
-    private GameObject mapGrid;
-    private Vector2 mapZeroLocation;
-    private Renderer sRender;
-    private EntityGrid mapEntityGrid;
+    //private GameObject mapGrid;
+   // private Vector2 mapZeroLocation;
+    //private Renderer sRender;
+    //private EntityGrid mapEntityGrid;
     protected float FLOATING_POINT_FIX = .00001f;
 
     public String scriptName;

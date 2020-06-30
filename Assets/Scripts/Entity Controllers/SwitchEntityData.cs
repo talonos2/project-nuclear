@@ -7,7 +7,7 @@ public class SwitchEntityData : EntityData
 {
     private Vector2Int SwitchLocation;
     private GameObject MapGrid;
-    private Vector2 mapZeroLocation;
+    //private Vector2 mapZeroLocation;
     public GameObject[] TiedEntities;
     public float[] times;
     public SpriteMovement.DirectionMoved[] particlePath;
@@ -17,7 +17,7 @@ public class SwitchEntityData : EntityData
     private float timeSinceLastFrame = 0;
     private int frameNumber = 0;
     public int totalFrames = 5;
-    private Renderer sRender;
+    //private Renderer sRender;
     private bool forwardAnimation;
     private int animationCounter=0;
     protected bool activeSwitch = true;

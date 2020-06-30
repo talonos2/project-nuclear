@@ -9,30 +9,30 @@ public class BridgeController : DoodadData
     public bool primBridge;
     public bool primShortcutBridge;
     public int primConnectionNumber;
-    private BobPrim primToCheck;
+    public BobPrim primToCheck;
 
     new void Start()
     {
         base.Start();
         primToCheck = GameObject.Find("Grid").GetComponent<BobPrim>();
         if (primBridge) {
-            RunPrimAlgorythm();
+            RunPrimAlgorythm(primToCheck);
         }
         if (this.isPlatformTerrain == false) {
-            RemovePlatform();
+            HidePlatform();
         }
 
 
     }
 
-    public void RunPrimAlgorythm() {
-        if (primToCheck.result[primConnectionNumber])
+    public void RunPrimAlgorythm(BobPrim checkedPrim) {
+        if (checkedPrim.result[primConnectionNumber])
         {
             AddPlatform();            
         }
         else
         {
-            RemovePlatform();
+            HidePlatform();
         }
     }
     public void RemovePlatform() {
@@ -40,15 +40,19 @@ public class BridgeController : DoodadData
         
         
         this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+        MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = null;
+
+    }
+
+    public void HidePlatform() {
+        this.isPlatformTerrain = false;
+        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
     }
     public void AddPlatform() {
         this.isPlatformTerrain = true;
         if (invisibleBridge) return;
         this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+        MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = this.gameObject;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

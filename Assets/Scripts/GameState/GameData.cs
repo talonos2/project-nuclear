@@ -77,8 +77,16 @@ public class GameData : Singleton<GameData>
     [HideInInspector]
     public bool nextLocationSet;
 
-    public bool Map3_2Shortcut;
-    public bool map5_2Shortcut;
+    public bool map1_3toMap2_3Shortcut;
+    public bool map1_3Shortcut;
+    public bool map2_2Shortcut;
+    public bool map2_4Shortcut;
+    public bool map3_2Shortcut;
+    public bool map3_3Shortcut;
+    public bool map3_4Shortcut;
+    public bool map4_3Shortcut;
+    public bool map4_4Shortcut;
+    public bool map5_2Shortcut=true;
     public bool map5_3Shortcut;
 
     public bool iceBoss1;
@@ -86,6 +94,9 @@ public class GameData : Singleton<GameData>
     public bool fireBoss1;
     public bool airBoss1;
     public bool deathBoss1;
+    public bool earthBoss2;
+    public bool fireBoss2;
+    public bool airBoss2;
 
 
     internal float deathTime;
@@ -97,8 +108,9 @@ public class GameData : Singleton<GameData>
     internal static Accessory bestAccessoryFound;
 
     internal bool statsSetup=false;
-    internal bool map2_2_toMap3_2Shortcut;
+
     internal bool victory;
+
 
     internal bool IsInTown()
     {

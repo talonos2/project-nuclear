@@ -389,6 +389,18 @@ public class Combat : MonoBehaviour
         if (monsterStats.airBoss) {
             GameData.Instance.airBoss1 = true;
             playerStats.powersGained = Math.Max(4, playerStats.powersGained); }
+        if (monsterStats.earthBoss2)
+        {
+            GameData.Instance.earthBoss2 = true;
+        }
+        if (monsterStats.fireBoss2)
+        {
+            GameData.Instance.fireBoss2 = true;
+        }
+        if (monsterStats.airBoss2)
+        {
+            GameData.Instance.airBoss2 = true;
+        }
         if (monsterStats.deathBoss) {
             GameData.Instance.deathBoss1 = true;
         }

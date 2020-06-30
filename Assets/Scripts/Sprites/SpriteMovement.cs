@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
-public class SpriteMovement : MonoBehaviour
+public class SpriteMovement : EntityData
 {
     //Constants:
     protected const float JUMP_HEIGHT = 1f;
@@ -20,8 +20,8 @@ public class SpriteMovement : MonoBehaviour
     public float framesPerSecond = 30;
 
     protected GameObject MapGrid;
-    protected Vector2 mapZeroLocation;
-    protected EntityGrid mapEntityGrid;
+    //protected Vector2 mapZeroLocation;
+    //protected EntityGrid mapEntityGrid;
     protected GroundMaterialGrid groundMaterialGrid;
     protected EnvironmentalSoundMagnitudeGrid environmentalSoundMagnitudeGrid;
     protected bool currentlyMoving = false;
@@ -45,7 +45,7 @@ public class SpriteMovement : MonoBehaviour
     protected Vector2Int characterNextLocation;
     [HideInInspector]
     public DirectionMoved facedDirection = DirectionMoved.LEFT;
-    protected Renderer sRender;
+    //protected Renderer sRender;
     protected Vector2Int homeLocation;
     protected Vector2Int exitLocation = new Vector2Int(0, 0);
     protected float waitTimer = 0;

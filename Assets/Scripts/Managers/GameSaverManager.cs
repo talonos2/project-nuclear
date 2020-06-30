@@ -29,14 +29,26 @@ public class GameSaverManager
     private bool earthBoss1;
     private bool fireBoss1;
     private bool airBoss1;
+    private bool earthBoss2;
+    private bool fireBoss2;
+    private bool airBoss2;
     private bool deathBoss;
-    private bool Map3_2Shortcut;
+    
     public List<String> townWeapons = new List<String>();
         public List<String> townArmor = new List<String>();
         public List<String> townAccessories = new List<String>();
 
-        public bool map5_2Shortcut;
+    public bool map1_3Shortcut;
+    public bool map2_2Shortcut;
+    public bool map2_4Shortcut;
+    public bool map3_2Shortcut;
+    public bool map3_3Shortcut;
+    public bool map3_4Shortcut;
+    public bool map4_3Shortcut;
+    public bool map4_4Shortcut;
+    public bool map5_2Shortcut;
         public bool map5_3Shortcut;
+    public bool map1_3toMap2_3Shortcut;
 
 
         public void SetupSave()
@@ -58,11 +70,22 @@ public class GameSaverManager
         earthBoss1 = GameData.Instance.earthBoss1;
         fireBoss1 = GameData.Instance.fireBoss1;
         airBoss1 = GameData.Instance.airBoss1;
+        earthBoss2 = GameData.Instance.earthBoss2;
+        fireBoss2 = GameData.Instance.fireBoss2;
+        airBoss2 = GameData.Instance.airBoss2;
         deathBoss = GameData.Instance.deathBoss1;
 
-        Map3_2Shortcut = GameData.Instance.Map3_2Shortcut;
-            map5_2Shortcut = GameData.Instance.map5_2Shortcut;
-            map5_3Shortcut = GameData.Instance.map5_3Shortcut;
+        map1_3toMap2_3Shortcut = GameData.Instance.map1_3toMap2_3Shortcut;
+        map1_3Shortcut = GameData.Instance.map1_3Shortcut;
+        map2_2Shortcut = GameData.Instance.map2_2Shortcut;
+        map2_4Shortcut = GameData.Instance.map2_4Shortcut;
+        map3_2Shortcut = GameData.Instance.map3_2Shortcut;
+        map3_3Shortcut = GameData.Instance.map3_3Shortcut;
+        map3_4Shortcut = GameData.Instance.map3_4Shortcut;
+        map4_3Shortcut = GameData.Instance.map4_3Shortcut;
+        map4_4Shortcut = GameData.Instance.map4_4Shortcut;
+        map5_2Shortcut = GameData.Instance.map5_2Shortcut;
+        map5_3Shortcut = GameData.Instance.map5_3Shortcut;
 
         foreach (Weapon wpnItem in GameData.Instance.townWeapons) {
             townWeapons.Add(wpnItem.name);
@@ -98,11 +121,22 @@ public class GameSaverManager
          GameData.Instance.earthBoss1= earthBoss1 ;
         GameData.Instance.fireBoss1= fireBoss1 ;
          GameData.Instance.airBoss1= airBoss1 ;
-         GameData.Instance.deathBoss1 = deathBoss;
+        GameData.Instance.earthBoss2 = earthBoss2;
+        GameData.Instance.fireBoss2 = fireBoss2;
+        GameData.Instance.airBoss2 = airBoss2;
+        GameData.Instance.deathBoss1 = deathBoss;
 
-        GameData.Instance.Map3_2Shortcut= Map3_2Shortcut;
+        GameData.Instance.map1_3Shortcut = map1_3Shortcut;
+        GameData.Instance.map2_2Shortcut = map2_2Shortcut;
+        GameData.Instance.map2_4Shortcut = map2_4Shortcut;
+        GameData.Instance.map3_2Shortcut= map3_2Shortcut;
+        GameData.Instance.map3_3Shortcut=map3_3Shortcut;
+        GameData.Instance.map3_4Shortcut = map3_4Shortcut;
+        GameData.Instance.map4_3Shortcut = map4_3Shortcut;
+        GameData.Instance.map4_4Shortcut = map4_4Shortcut;
         GameData.Instance.map5_2Shortcut = map5_2Shortcut;
             GameData.Instance.map5_3Shortcut = map5_3Shortcut;
+        GameData.Instance.map1_3toMap2_3Shortcut = map1_3toMap2_3Shortcut;
 
            GameObject equipmentData = GameObject.Find("EquipmentData");
 

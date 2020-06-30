@@ -5,11 +5,13 @@ using UnityEngine;
 public class PermanentSwitchEntityData : SwitchEntityData
 {
     protected GameData gameData;
+    private BobPrim primToCheck;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
+        primToCheck = GameObject.Find("Grid").GetComponent<BobPrim>();
         gameData = GameData.Instance;
         if (gameData.map5_2Shortcut) {
             ToggleTiedObjects();
@@ -33,7 +35,7 @@ public class PermanentSwitchEntityData : SwitchEntityData
                 }
                 if (bridgeControlled != null)
                 {
-                    bridgeControlled.RunPrimAlgorythm();
+                    bridgeControlled.RunPrimAlgorythm(primToCheck);
                 }
             }
             activeSwitch = false;

@@ -6,10 +6,10 @@ using UnityEngine;
 public class PurpleCrystalInteraction : EntityData
 {
     private Vector2Int pawnLocation;
-    private GameObject mapGrid;
+  //  private GameObject mapGrid;
     private EntityGrid entityGrid;
-    private Vector2 mapZeroLocation;
-    private Renderer sRender;
+   // private Vector2 mapZeroLocation;
+ //   private Renderer sRender;
     public GameObject purpleCrystalBreaking;
     public GameObject monsterToSpawn;
     public float monsterSpawnDelayBase=10;

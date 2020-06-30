@@ -8,14 +8,14 @@ public class DoorShortcutController : MonoBehaviour
     public GameObject openedDoor;
     void Start()
     {
-        if (GameData.Instance.Map3_2Shortcut) {
+        if (GameData.Instance.map3_2Shortcut) {
             Instantiate(openedDoor, this.transform.position + new Vector3(0, 0, 0), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
 
     public void OpenDoors() {
-        if (GameData.Instance.Map3_2Shortcut)
+        if (GameData.Instance.map3_2Shortcut)
         {
             Instantiate(openedDoor, this.transform.position + new Vector3(0, 0, 0), Quaternion.identity);
             Destroy(this.gameObject);

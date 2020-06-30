@@ -44,7 +44,7 @@ public static class AttackAnimationExtensions
         if (timeSinceStart > aam.initialBlastImpactTime && timeSinceStart < aam.blastRecoilFinishTime)
         {
             float amountThrough = (timeSinceStart-aam.initialBlastImpactTime) / (aam.blastRecoilFinishTime - aam.initialBlastImpactTime);
-            Debug.Log(amountThrough);
+            //Debug.Log(amountThrough);
             amountThrough = Mathf.Pow(amountThrough, aam.blastRecoilFriction);
             Vector3 startPosit = userStats.homePositionOnScreen;
             Vector3 endPosit = userStats.homePositionOnScreen + aam.blastRecoilAmount;

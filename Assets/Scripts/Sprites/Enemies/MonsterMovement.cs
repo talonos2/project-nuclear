@@ -118,7 +118,10 @@ public class MonsterMovement : SpriteMovement
                     waitTimer = .25f;
                     SetLookDirection();
                 }
+                if (!IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y))
+                {
                     CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                }
             }
 
 

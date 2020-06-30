@@ -63,4 +63,8 @@ public class ExitController : DoodadData
         fadeout.InitNext(mapToLoad);
         GameObject.Destroy(this);
     }
+
+    public void removeExit() {
+        MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = null;
+    }
 }
