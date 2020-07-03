@@ -85,7 +85,7 @@ public class SwitchEntityData : EntityData
                 if (bridgeControlled != null)
                 {
                     movedABridge = true;
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.RemovePlatform(); }
+                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.HidePlatform(); }
                     else { bridgeControlled.AddPlatform(); }
                 }
                 if (windJumpControlled != null)
@@ -117,7 +117,7 @@ public class SwitchEntityData : EntityData
                 if (bridgeControlled != null)
                 {
                     movedABridge = true;
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.RemovePlatform(); }
+                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.HidePlatform(); }
                     else { bridgeControlled.AddPlatform(); }
                 }
 

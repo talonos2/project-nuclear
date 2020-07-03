@@ -605,10 +605,10 @@ public class SelectItemUIController : MonoBehaviour
 
     private void updateTotalBonuses()
     {
-        crystalAttackBonus.text = "+" + savedStats.attack;  //setting full values now
-        crystalDefenseBonus.text = "+" + savedStats.defense;
-        crystalManaBonus.text = "+" + savedStats.MaxMana;
-        crystalHealthBonus.text = "+" + savedStats.MaxHP;
+        crystalAttackBonus.text = "+" + (int)savedStats.attack;  //setting full values now
+        crystalDefenseBonus.text = "+" + (int)savedStats.defense;
+        crystalManaBonus.text = "+" + (int)savedStats.MaxMana;
+        crystalHealthBonus.text = "+" + (int)savedStats.MaxHP;
     }
 
     private void showItemSelected()

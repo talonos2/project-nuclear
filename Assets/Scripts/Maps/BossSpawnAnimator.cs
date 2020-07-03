@@ -34,7 +34,7 @@ public class BossSpawnAnimator : MonoBehaviour
             spawnBoss = true;
             sRender.enabled = true;
             sRender.material.SetFloat("_Frame", currentFrame+offsetFix);
-            Debug.Log("Did I transform?");
+            //Debug.Log("Did I transform?");
         }
         if (!spawnBoss) {
             return;
