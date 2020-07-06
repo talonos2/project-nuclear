@@ -161,7 +161,7 @@ public class GameData : Singleton<GameData>
             Debug.Log("Broken bestTimes thing");
         }
 
-        if (GameState.fullPause || FloorNumber == 0 || pauseTimer) { return; }
+        if (GameState.fullPause || FloorNumber == 0 || pauseTimer || isInDialogue) { return; }
 
         int tempSeconds = (int)(timer + Time.deltaTime);
         if (tempSeconds > (int)timer)

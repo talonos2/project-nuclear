@@ -379,7 +379,9 @@ public class Combat : MonoBehaviour
         playerStats.AddExp(monsterStats.ExpGiven);
         if (monsterStats.iceBoss) {
             GameData.Instance.iceBoss1 = true;
-            playerStats.powersGained = Math.Max(1, playerStats.powersGained); }
+            playerStats.powersGained = Math.Max(1, playerStats.powersGained);
+            monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+        }
         if (monsterStats.earthBoss) {
             GameData.Instance.earthBoss1 = true;
             playerStats.powersGained = Math.Max(2, playerStats.powersGained); }
