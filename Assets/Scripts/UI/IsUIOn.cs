@@ -23,7 +23,7 @@ public class IsUIOn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameData.Instance.isInDialogue) {
+        if (GameData.Instance.isInDialogue && !GameData.Instance.IsInTown()) {
             GameState.fullPause = true;
             turnOffUi();
         }
