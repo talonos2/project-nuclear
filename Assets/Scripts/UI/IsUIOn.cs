@@ -24,12 +24,12 @@ public class IsUIOn : MonoBehaviour
     void Update()
     {
         if (GameData.Instance.isInDialogue && !GameData.Instance.IsInTown()) {
-            GameState.fullPause = true;
+            //GameState.fullPause = true;
             turnOffUi();
         }
 
         if (!GameData.Instance.IsInTown() && !GameData.Instance.isInDialogue) {
-            GameState.fullPause = false;
+            //GameState.fullPause = false;
             turnOnUi();
         }
 

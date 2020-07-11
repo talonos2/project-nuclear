@@ -86,7 +86,7 @@ public class GameData : Singleton<GameData>
     public bool map3_4Shortcut;
     public bool map4_3Shortcut;
     public bool map4_4Shortcut;
-    public bool map5_2Shortcut=true;
+    public bool map5_2Shortcut;
     public bool map5_3Shortcut;
 
     public bool iceBoss1;
