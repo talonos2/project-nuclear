@@ -61,7 +61,7 @@ public class CharacterMovement : SpriteMovement
 
         previousFrame = currentFrame;
 
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle || GameState.fullPause || GameData.Instance.isInDialogue)
         {
             return;
         }
