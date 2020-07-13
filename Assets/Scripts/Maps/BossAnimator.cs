@@ -41,4 +41,12 @@ public class BossAnimator : MonoBehaviour
             frameCounter = 0;
         }
     }
+    private void OnDestroy()
+    {
+
+        GameObject bossController=GameObject.Find("BossSpawnController");
+        if (bossController != null) {
+            bossController.GetComponent<bossSpawnController>().spawnNextBoss();
+        }
+    }
 }

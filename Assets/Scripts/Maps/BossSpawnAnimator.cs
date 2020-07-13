@@ -11,7 +11,7 @@ public class BossSpawnAnimator : MonoBehaviour
     private int currentFrame = 0;
     protected Renderer sRender;
     protected GameObject ThePlayer;
-    private bool spawnBoss;
+    internal bool spawnBoss;
     public GameObject bossSpawnedPrefab;
     private float offsetFix = .00001f;
     public float yPositionSpawning=-10.5f;
@@ -39,6 +39,8 @@ public class BossSpawnAnimator : MonoBehaviour
         if (!spawnBoss) {
             return;
         }
+        sRender.enabled = true;
+        sRender.material.SetFloat("_Frame", currentFrame + offsetFix);
         frameCounter += Time.deltaTime;
         /*Debug.Log("frameCounter "+ frameCounter);
         if (frameCounter >= BOSS_SPAWN_SOUND_START_TIME&&!playedSpawnSound)

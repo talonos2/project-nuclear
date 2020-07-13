@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class activateBomb : EntityData
 {
+    public GameObject finalMap;
     public Texture newMap;
-    //public Texture newShadowmap;
+    public Texture newShadowmap;
     public TextAsset newPathabilityMap;
     public PassabilityGrid currentPassabilityGrid;
     public GameObject currentGround;
@@ -17,6 +18,9 @@ public class activateBomb : EntityData
     public GameObject monster1;
     public GameObject monster2;
     public GameObject monster3;
+    protected Renderer sMapRender;
+    protected Renderer sCrystalRender;
+    internal GroundShadow groundShadow;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,9 @@ public class activateBomb : EntityData
         entityLocation.y = (int)Math.Round(this.transform.position.y) - (int)mapZeroLocation.y;
         mapEntityGrid = mapGrid.GetComponent<EntityGrid>();
         mapEntityGrid.grid[entityLocation.x, entityLocation.y] = this.gameObject;
+        sMapRender = finalMap.GetComponent<Renderer>();
+        sMapRender.material = new Material(sMapRender.material);
+        groundShadow = finalMap.GetComponent<GroundShadow>();
         if (GameData.Instance.map2_4Shortcut) {
             detonateBomb();
         }
@@ -37,6 +44,8 @@ public class activateBomb : EntityData
         currentPassabilityGrid.passabilityMap = newPathabilityMap;
         currentPassabilityGrid.configurePathabilityGrid();
 
+        sMapRender.material.SetTexture("_Shadows", newShadowmap);
+        groundShadow.shadowTexture = newShadowmap;
 
         removeEntity();
         Destroy(mushrooms1);

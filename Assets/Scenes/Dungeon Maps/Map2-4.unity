@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -194,36 +194,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
---- !u!1 &39191313
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 39191314}
-  m_Layer: 0
-  m_Name: Shortcut Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &39191314
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39191313}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 10, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 326564849}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &51194676
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +886,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2018926735}
-  - {fileID: 39191314}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1063,6 +1032,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e3869a8ee3aa624da07cc9de5c17beb, type: 3}
+--- !u!1 &400958061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6622165687117483734, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
+    type: 3}
+  m_PrefabInstance: {fileID: 400958060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &400958062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400958061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0316abee376a5f4f9f8839927c8889a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gainedPowerScript: getEarth
 --- !u!1001 &423495341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2416,7 +2404,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1057651154}
-  - component: {fileID: 1057651155}
   m_Layer: 0
   m_Name: bombs
   m_TagString: Untagged
@@ -2439,36 +2426,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1057651155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057651153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18e0c6bc4d98a7046acc3fb0eba23ef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMainCharacter: 0
-  isAMonster: 0
-  isLargeMonster: 0
-  isInteractableObject: 0
-  isItem: 0
-  isSwitch: 0
-  isNPC: 0
-  newMap: {fileID: 2800000, guid: 2447e3d50feb1674387d2fb439ccff70, type: 3}
-  newPathabilityMap: {fileID: 4900000, guid: b8d27f29d3e4aac449f088d47dde1adf, type: 3}
-  currentPassabilityGrid: {fileID: 326564848}
-  currentGround: {fileID: 2018926731}
-  mushrooms1: {fileID: 187600928}
-  mushrooms2: {fileID: 129802489}
-  rocks: {fileID: 615872793}
-  bomb: {fileID: 0}
-  monster1: {fileID: 0}
-  monster2: {fileID: 0}
-  monster3: {fileID: 0}
 --- !u!1 &1123807449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,7 +3392,9 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 0
+  finalMap: {fileID: 2018926731}
   newMap: {fileID: 2800000, guid: 2447e3d50feb1674387d2fb439ccff70, type: 3}
+  newShadowmap: {fileID: 2800000, guid: f3d79a276516aee4fbcd0aec4f61e9bd, type: 3}
   newPathabilityMap: {fileID: 4900000, guid: b8d27f29d3e4aac449f088d47dde1adf, type: 3}
   currentPassabilityGrid: {fileID: 326564848}
   currentGround: {fileID: 2018926731}
@@ -3764,7 +3723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83360528e91a02f43816a8a669578d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowTexture: {fileID: 2800000, guid: 4ce5ca1c254d0574bbf3dc25395b34cc, type: 3}
+  shadowTexture: {fileID: 2800000, guid: bdc2bc1bef979014eb3d09d9c7bc332d, type: 3}
   glowTexture: {fileID: 2800000, guid: fd5843f93774f7542a537380b1f46877, type: 3}
   mapOffset: {x: 0.5, y: 0}
 --- !u!114 &2018926738
