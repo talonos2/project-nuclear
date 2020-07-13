@@ -384,13 +384,19 @@ public class Combat : MonoBehaviour
         }
         if (monsterStats.earthBoss) {
             GameData.Instance.earthBoss1 = true;
-            playerStats.powersGained = Math.Max(2, playerStats.powersGained); }
+            playerStats.powersGained = Math.Max(2, playerStats.powersGained);
+            monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+        }
         if (monsterStats.fireBoss) {
             GameData.Instance.fireBoss1 = true;
-            playerStats.powersGained = Math.Max(3, playerStats.powersGained); }
+            playerStats.powersGained = Math.Max(3, playerStats.powersGained);
+            monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+        }
         if (monsterStats.airBoss) {
             GameData.Instance.airBoss1 = true;
-            playerStats.powersGained = Math.Max(4, playerStats.powersGained); }
+            playerStats.powersGained = Math.Max(4, playerStats.powersGained);
+            monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+        }
         if (monsterStats.earthBoss2)
         {
             GameData.Instance.earthBoss2 = true;

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -202,10 +202,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8751859261986153538, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4463955121920554214, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 150.09961
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922549751740137241, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4139699247705823676, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
@@ -222,6 +232,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 77.40039
       objectReference: {fileID: 0}
+    - target: {fileID: 2741285865236930916, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4139699246663093168, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -231,21 +246,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 610.3008
-      objectReference: {fileID: 0}
-    - target: {fileID: 8751859261986153538, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4922549751740137241, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2741285865236930916, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ac0871009d1c4cbb3ce4b6c5255a3, type: 3}
@@ -4736,6 +4736,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810268571552130468, guid: ce0268ca7fc10ba41b1ee7ba9b3f4768,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810268571552130468, guid: ce0268ca7fc10ba41b1ee7ba9b3f4768,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6653361632456467034, guid: ce0268ca7fc10ba41b1ee7ba9b3f4768,
         type: 3}

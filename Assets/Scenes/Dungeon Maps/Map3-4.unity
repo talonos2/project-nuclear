@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1511,6 +1511,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b801ff705af1e42a8419ead9c9c254, type: 3}
+--- !u!1 &612264783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6622165687117483734, guid: 35b801ff705af1e42a8419ead9c9c254,
+    type: 3}
+  m_PrefabInstance: {fileID: 612264782}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &612264784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612264783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0316abee376a5f4f9f8839927c8889a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gainedPowerScript: getFire
 --- !u!1001 &620821760
 PrefabInstance:
   m_ObjectHideFlags: 0
