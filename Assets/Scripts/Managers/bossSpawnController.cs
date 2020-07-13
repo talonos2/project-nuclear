@@ -43,7 +43,7 @@ public class bossSpawnController : MonoBehaviour
 
     internal void spawnNextBoss()
     {
-        
+
         switch (bossCount) {
             case 0:
                 cutsceneTimer = cutsceneDelay;
