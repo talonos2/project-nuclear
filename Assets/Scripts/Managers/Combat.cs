@@ -431,34 +431,45 @@ public class Combat : MonoBehaviour
         incomingDamage -= monsterStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
 
-        bool hitWeak = false;
+        bool hitWeakness = false;
+        bool elementalCrit = false;
 
         float elementalDamage = incomingDamage * playerStats.currentPower * .25f;
-        if (playerStats.currentPower == (int)ElementalPower.ICE) { elementalDamage = incomingDamage * (.25f+playerStats.accessoryIceBonus/100);
-            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage *= 2; hitWeak = true; }
+        if (playerStats.currentPower == (int)ElementalPower.ICE)
+        {
+            if (playerStats.accessoryIceBonus != 0) { elementalCrit = true; }
+            elementalDamage = incomingDamage * (.25f+playerStats.accessoryIceBonus/100);
+            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage *= 2; hitWeakness = true; }
             if (playerStats.mana >= 2) { playerStats.mana -= 2; }
                 else { elementalDamage = 0; }
         }
-        if (playerStats.currentPower == (int)ElementalPower.EARTH) { elementalDamage = incomingDamage *(.5f+ playerStats.accessoryEarthBonus/100);
-            if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage *= 2; hitWeak = true; }
+        if (playerStats.currentPower == (int)ElementalPower.EARTH) {
+            if (playerStats.accessoryEarthBonus != 0) { elementalCrit = true; }
+            elementalDamage = incomingDamage *(.5f+ playerStats.accessoryEarthBonus/100);
+            if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage *= 2; hitWeakness = true; }
             if (playerStats.mana >= 4) { playerStats.mana -= 4; }
                 else { elementalDamage = 0; }
         }
-        if (playerStats.currentPower == (int)ElementalPower.FIRE) { elementalDamage = incomingDamage * (.75f+playerStats.accessoryFireBonus/100);
-            if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage *= 2; hitWeak = true; }
+        if (playerStats.currentPower == (int)ElementalPower.FIRE) {
+            if (playerStats.accessoryFireBonus != 0) { elementalCrit = true; }
+            elementalDamage = incomingDamage * (.75f+playerStats.accessoryFireBonus/100);
+            if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage *= 2; hitWeakness = true; }
             if (playerStats.mana >= 6) { playerStats.mana -= 6; }
                 else { elementalDamage = 0; }
         }
-        if (playerStats.currentPower == (int)ElementalPower.AIR) { elementalDamage = incomingDamage * (1.0f+playerStats.accessoryAirBonus/100);
-            if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage *= 2; hitWeak = true; }
+        if (playerStats.currentPower == (int)ElementalPower.AIR) {
+            if (playerStats.accessoryAirBonus != 0) { elementalCrit = true; }
+            elementalDamage = incomingDamage * (1.0f+playerStats.accessoryAirBonus/100);
+            if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage *= 2; hitWeakness = true; }
             if (playerStats.mana >= 8) { playerStats.mana -= 8; }
                 else { elementalDamage = 0; }
         }
 
         if (goodHit) { incomingDamage = (incomingDamage+ monsterStats.defense)*1.25f- monsterStats.defense; }
-        goodHit = false;
 
-        incomingDamage *= 1 + RollCrit(); //should probably have an animation too
+        float crit = RollCrit(); //should probably have an animation too
+
+        incomingDamage *= (1 + crit);
 
         monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
 
@@ -475,38 +486,22 @@ public class Combat : MonoBehaviour
             { playerStats.mana = playerStats.MaxMana; }
         }
 
-        //need elemental hit-splat if elemental damage is > 0
-        GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
-        hitsplat.transform.position = monsterSprite.transform.position+(Vector3)monsterStats.gettingStruckPointOffset+AttackAnimationManager.Instance.monsterHitsplatOffset;
-        hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
-
         if (elementalDamage > 0)
         {
-            GameObject eleHitsplat = GameObject.Instantiate(hitsplatTemplate);
-            eleHitsplat.transform.position = monsterSprite.transform.position + (Vector3)monsterStats.gettingStruckPointOffset + AttackAnimationManager.Instance.monsterHitsplatOffset - new Vector3(0, .8f, 0);
-            eleHitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(elementalDamage), ((ElementalPower)playerStats.currentPower).EleColor());
-            eleHitsplat.GetComponent<Hitsplat>().SetEleEffective(hitWeak);
-            GameObject eleVFX = GameObject.Instantiate(eleVFXes[playerStats.currentPower-1]);
             SoundManager.Instance.PlaySound("Combat/EleVFXSound" + playerStats.currentPower, 1);
-            /*switch ((ElementalPower)playerStats.currentPower)
-            {
-                case ElementalPower.ICE:
-                    eleVFX = GameObject.Instantiate(eleVFXes[0]);
-                    break;
-                case ElementalPower.EARTH:
-                    eleVFX = GameObject.Instantiate(eleVFXes[1]);
-                    break;
-                case ElementalPower.FIRE:
-                    eleVFX = GameObject.Instantiate(eleVFXes[2]);
-                    break;
-                case ElementalPower.AIR:
-                    eleVFX = GameObject.Instantiate(eleVFXes[3]);
-                    break;
-            }*/
+
+            GameObject eleVFX = GameObject.Instantiate(eleVFXes[playerStats.currentPower - 1]);
             eleVFX.transform.position = playerSprite.transform.position - (Vector3)playerStats.strikingPointOffset - new Vector3(-2 * monsterStats.forceOpponentAdditionalScale.x, -5.5f * monsterStats.forceOpponentAdditionalScale.y, -.2f);
             eleVFX.transform.localScale *= monsterStats.forceOpponentAdditionalScale;
         }
-        //Debug.Log("Monster HP:" + monsterStats.HP);
+
+        //Make hitsplat
+        GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
+        hitsplat.transform.position = monsterSprite.transform.position + (Vector3)monsterStats.gettingStruckPointOffset + AttackAnimationManager.Instance.monsterHitsplatOffset;
+        hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Mathf.RoundToInt(elementalDamage), goodHit, hitWeakness, crit != 0, elementalCrit, (ElementalPower)playerStats.currentPower);
+
+        //Cleanup:
+        goodHit = false;
         CheckCombatOver();
     }
 
@@ -579,7 +574,7 @@ public class Combat : MonoBehaviour
         playerStats.HP -= Mathf.RoundToInt(incomingDamage);
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = playerSprite.transform.position+(Vector3)playerStats.gettingStruckPointOffset+AttackAnimationManager.Instance.playerHitsplatOffset;
-        hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Color.white);
+        hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), 0, !goodBlock, false, false, false, ElementalPower.NULL);
         CheckCombatOver();
     }
 
