@@ -24,4 +24,22 @@ public static class EleExtensions
         }
         return Color.black;
     }
+
+    public static string EleName(this ElementalPower ele)
+    {
+        switch (ele)
+        {
+            case ElementalPower.NULL:
+                return "None";
+            case ElementalPower.ICE:
+                return "ICE";
+            case ElementalPower.EARTH:
+                return "EARTH";
+            case ElementalPower.FIRE:
+                return "FIRE";
+            case ElementalPower.AIR:
+                return "AIR";
+        }
+        return "Bad Type!";
+    }
 }

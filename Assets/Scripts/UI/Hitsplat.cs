@@ -6,20 +6,31 @@ using UnityEngine;
 
 public class Hitsplat : MonoBehaviour
 {
-    float baseHeight = 2;
-    float baseYVelo = .2f;
+    public float baseHeight = 2;
+    public float baseYVelo = .2f;
     Vector3 startPosition;
-    float gravity = .03f;
-    float bounciness = .5f;
-    int maxBounces = 4;
-    int numberOfFramesAppearing = 25;
+    public float gravity = .03f;
+    public float bounciness = .5f;
+    public int maxBounces = 4;
+    public int numberOfFramesAppearing = 25;
 
-    float height;
-    float yVelo;
-    int bounces;
+    private float height;
+    private float yVelo;
+    private int bounces;
 
-    bool isBouncing = true;
-    int framesAppeared = 0;
+    private bool isBouncing = true;
+    private int framesAppeared = 0;
+
+    protected int physicalDamage = 0;
+    protected int elementalDamage = 0;
+    protected bool crit = false;
+    protected bool elementalCrit = false;
+    protected bool goodTiming = false;
+    protected bool effective = false;
+    protected ElementalPower type;
+
+    public TextMeshPro text1;
+    public TextMeshPro text2;
 
     // Start is called before the first frame update
     void Start()
@@ -50,32 +61,27 @@ public class Hitsplat : MonoBehaviour
         }
     }
 
-    public void Init(int damage, Color color)
+    public virtual void Init(int physicalDamage, int elementalDamage, bool goodTiming, bool effective, bool crit, bool elementalCrit, ElementalPower elementalType)
     {
-        TextMeshPro text = this.GetComponent<TextMeshPro>();
-        text.text = ""+damage;
-        text.color = color;
         yVelo = baseYVelo;
-
         height = baseHeight;
         bounces = maxBounces;
-
         this.startPosition = this.transform.position;
 
+        this.physicalDamage = physicalDamage;
+        this.elementalCrit = elementalCrit;
+        this.elementalDamage = elementalDamage;
+        this.effective = effective;
+        this.crit = crit;
+        this.type = elementalType;
+        this.goodTiming = goodTiming;
+
+        CreateGraphics();
         Update();
     }
 
-    public void SetEleEffective(bool effective)
+    protected virtual void CreateGraphics()
     {
-        if (effective)
-        {
-            TextMeshPro text = this.GetComponent<TextMeshPro>();
-            this.transform.localScale = this.transform.localScale * 1f;
-            text.text = "<-"+text.text+"->";
-        }
-        else
-        {
-            this.transform.localScale = this.transform.localScale * .8f;
-        }
+        text1.SetText("This is an interface,\nnot a real hitsplat!");
     }
 }
