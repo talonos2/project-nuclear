@@ -126,6 +126,8 @@ public class Combat : MonoBehaviour
 
     public void Update()
     {
+        if (GameState.fullPause) return;
+
         if (enterTimer < ENTER_TIME)
         {
             HandleEntranceRoutine();

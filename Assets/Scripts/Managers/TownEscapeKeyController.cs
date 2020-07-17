@@ -15,7 +15,9 @@ public class TownEscapeKeyController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (GameData.Instance.isCutscene ) return;
+
+            if (Input.GetButtonDown("Cancel"))
         {
             if (currentlyEscaped)
             {

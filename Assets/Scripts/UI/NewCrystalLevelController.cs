@@ -65,10 +65,10 @@ public class NewCrystalLevelController : MonoBehaviour
 
         }
 
-        Debug.Log("Total " + oldCrystals+", new "+ newCrystals);
+        //Debug.Log("Total " + oldCrystals+", new "+ newCrystals);
         startNumberOfBars = GetNumberOfBars(oldCrystals);
         targetNumberOfBars = GetNumberOfBars(oldCrystals+newCrystals);
-        Debug.Log("Start " + startNumberOfBars + ", End " + targetNumberOfBars);
+        //Debug.Log("Start " + startNumberOfBars + ", End " + targetNumberOfBars);
         float barIncrease = targetNumberOfBars-startNumberOfBars;
 
         SetBarLevel(startNumberOfBars);
@@ -139,7 +139,7 @@ public class NewCrystalLevelController : MonoBehaviour
 
     private void SetBarText(int fullBars)
     {
-        string bonusText = "+" + (int)(fullBars * crystalBonusValue);
+        string bonusText = "+" + (int)((fullBars-1) * crystalBonusValue);
         crystalBonusText.text = bonusText;
     }
 
