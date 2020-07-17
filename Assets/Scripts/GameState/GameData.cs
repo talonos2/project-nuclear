@@ -174,7 +174,8 @@ public class GameData : Singleton<GameData>
         minutes = (int)(timer / 60);
         if (minutes == 10)
         {
-            //Needs to really call the 'kill player' animation and then load deathscene from that script. That script should 'pause' the timer. 
+            //Needs to really call the 'kill player' animation and then load deathscene from that script. That script should 'pause' the timer.
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().deactivatePowers();
             GameState.isInBattle = false;
             SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
             MusicManager.instance.FadeOutMusic(-2, 3);

@@ -17,6 +17,7 @@ public class Combat : MonoBehaviour
         SoundManager.Instance.PlaySound("CombatIn", 1f);
         Enemy monsterStats = monster.GetComponent<Enemy>();
         CharacterStats playerStats = Player.GetComponent<CharacterStats>();
+        elementSelected = playerStats.currentPower;
 
         GameObject go = new GameObject();
         Combat toInit = go.AddComponent<Combat>();
@@ -47,6 +48,7 @@ public class Combat : MonoBehaviour
     private GameData gameData;
     private GameObject monsterHPBarHolder;
     private Image monsterHPBar;
+    private static int elementSelected;
 
     GameObject hitsplatTemplate;
 
@@ -338,7 +340,11 @@ public class Combat : MonoBehaviour
         {
             GameData.Instance.killer = monsterStats.name;
         }
+        playerStats.currentPower = elementSelected;
+        playerStats.deactivatePowers();
+        //
         GameState.isInBattle = false;
+        GameState.fullPause = true;
         Destroy(monsterSprite.gameObject);
         Destroy(playerSprite.gameObject);
         combatDarkening.material.SetFloat("_Alpha", 0);
@@ -415,7 +421,7 @@ public class Combat : MonoBehaviour
         if (monsterStats.finalBoss) {
             GameData.Instance.victory = true;
         }
-
+        playerStats.currentPower = elementSelected;
         playerStats.PushCharacterData();
         Destroy(monsterToDelete);
     }

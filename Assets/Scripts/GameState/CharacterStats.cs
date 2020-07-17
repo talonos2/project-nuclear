@@ -30,6 +30,19 @@ public class CharacterStats : Stats
 
     public Sprite[] combatSprites;
     public Sprite bustSprite;
+    private CharacterMovement savedCharacterMovement;
+
+    internal void setCharacterStats(CharacterMovement characterMovement)
+    {
+        savedCharacterMovement = characterMovement;
+    }
+
+    internal void deactivatePowers() {
+        if (savedCharacterMovement == null) { Debug.Log("ERROR, No SAVED CHARACTER MOVEMENT"); }
+        savedCharacterMovement.TurnHasteOff();
+        if (GameData.Instance.stealthed)
+            savedCharacterMovement.ActivateInvisibility();
+    }
 
     public bool MageClass;
     public bool FighterClass;
@@ -102,6 +115,8 @@ public class CharacterStats : Stats
 
         
     }
+
+
 
     internal void setInitialStats()
     {
@@ -432,7 +447,7 @@ public class CharacterStats : Stats
     // Update is called once per frame
     void Update()
     {
-        if (GameState.fullPause || GameData.Instance.pauseTimer) {
+        if (GameState.fullPause || GameData.Instance.pauseTimer || GameData.Instance.isInDialogue) {
             return;
         }
         regenerationCounter += Time.deltaTime;

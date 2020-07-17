@@ -30,6 +30,7 @@ public class CharacterMovement : SpriteMovement
     {
         base.Start();
         playerStats = this.GetComponent<CharacterStats>();
+        playerStats.setCharacterStats(this);
         jumpPivot = sRender.transform.parent;
         shield = sRender.gameObject.transform.GetChild(0).gameObject;
         smoke = sRender.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
@@ -534,7 +535,7 @@ public class CharacterMovement : SpriteMovement
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
     }
 
-    private void TurnHasteOff()
+    internal void TurnHasteOff()
     {
         GameData.Instance.hasted = false;
         SoundManager.Instance.PlaySound("HasteOff", 1f);
@@ -542,7 +543,7 @@ public class CharacterMovement : SpriteMovement
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
-    private void ActivateInvisibility()
+    internal void ActivateInvisibility()
     {
         if (GameData.Instance.stealthed)
         {
