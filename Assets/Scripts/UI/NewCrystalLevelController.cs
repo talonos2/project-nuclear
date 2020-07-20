@@ -45,22 +45,22 @@ public class NewCrystalLevelController : MonoBehaviour
             case CrystalType.HEALTH:
                 oldCrystals = GameData.Instance.HealhCrystalTotal;
                 newCrystals = savedStats.HealthCrystalsGained;
-                crystalBonusValue = 15;
+                crystalBonusValue = 20;
                 break;
             case CrystalType.MANA:
                 oldCrystals = GameData.Instance.ManaCrystalTotal;
                 newCrystals = savedStats.ManaCrystalsGained;
-                crystalBonusValue = 15;
+                crystalBonusValue = 20;
                 break;
             case CrystalType.ATTACK:
                 oldCrystals = GameData.Instance.AttackCrystalTotal;
                 newCrystals = savedStats.AttackCrystalsGained;
-                crystalBonusValue = 3;
+                crystalBonusValue = 4;
                 break;
             case CrystalType.DEFENSE:
                 oldCrystals = GameData.Instance.DefenseCrystalTotal;
                 newCrystals = savedStats.defenseCrystalsGained;
-                crystalBonusValue = 1.5f;
+                crystalBonusValue = 2f;
                 break;
 
         }
@@ -200,7 +200,7 @@ public class NewCrystalLevelController : MonoBehaviour
             }
             i++;
         }
-        GameData.Instance.DefenseCrystalBonus = (int)(1.5f * (i-1));
+        GameData.Instance.DefenseCrystalBonus = (int)(2f * (i-1));
     }
 
     private static void SetAttackBuff()
@@ -214,7 +214,7 @@ public class NewCrystalLevelController : MonoBehaviour
             }
             i++;
         }
-        GameData.Instance.AttackCrystalBonus = 3 * (i - 1);
+        GameData.Instance.AttackCrystalBonus = 4 * (i - 1);
 
     }
 
@@ -229,7 +229,7 @@ public class NewCrystalLevelController : MonoBehaviour
             }
             i++;
         }
-        GameData.Instance.ManaCrystalBonus = 15 * (i - 1);
+        GameData.Instance.ManaCrystalBonus = 20 * (i - 1);
     }
 
     private static void SetHealthBuff()
@@ -243,7 +243,7 @@ public class NewCrystalLevelController : MonoBehaviour
             }
             i++;
         }
-        GameData.Instance.HealhCrystalBonus = 15 * (i - 1);//Crystal tiers now starting at 0 rather then 50. 
+        GameData.Instance.HealhCrystalBonus = 20 * (i - 1);//Crystal tiers now starting at 0 rather then 50. 
     }
 
 }

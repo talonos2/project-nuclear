@@ -156,7 +156,6 @@ public class Combat : MonoBehaviour
             blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
             Destroy(this);
         }
-
         return;
     }
 
@@ -473,7 +472,7 @@ public class Combat : MonoBehaviour
                 else { elementalDamage = 0; }
         }
 
-        if (goodHit) { incomingDamage = (incomingDamage+ monsterStats.defense)*1.25f- monsterStats.defense; }
+        if (goodHit) { incomingDamage = (incomingDamage+ monsterStats.defense)*1.20f- monsterStats.defense; }
 
         float crit = RollCrit(); //should probably have an animation too
 
@@ -570,7 +569,7 @@ public class Combat : MonoBehaviour
         else { SoundManager.Instance.PlaySound("Combat/BadBlock", 1f); }
 
         float incomingDamage = monsterStats.attack;
-        if (goodBlock) { incomingDamage *= .8f; }
+        if (goodBlock) { incomingDamage *= .833f; }
         incomingDamage -= playerStats.defense;
         
         goodBlock = false;

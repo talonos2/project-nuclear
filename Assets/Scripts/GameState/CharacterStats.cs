@@ -224,13 +224,13 @@ public class CharacterStats : Stats
 
         HealthPerLevel = 10;
         ManaPerLevel = 10;
-        AttackPerLevel = 1.75f;
-        DefensePerLevel = .875f;
+        AttackPerLevel = 2f;
+        DefensePerLevel = 1f;
 
         baseMaxHealth = 150;
         baseMaxMana = 100;
         baseAttack = 10 ;
-        baseDefense = 0.125f;
+        baseDefense = 0;
 
         if (MageClass) {
             ManaPerLevel = 11;
