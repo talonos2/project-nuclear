@@ -341,7 +341,7 @@ public class Combat : MonoBehaviour
         {
             GameData.Instance.killer = monsterStats.name;
         }
-        playerStats.currentPower = elementSelected;
+        //playerStats.currentPower = elementSelected;
         playerStats.deactivatePowers();
         //
         GameState.isInBattle = false;
@@ -422,7 +422,7 @@ public class Combat : MonoBehaviour
         if (monsterStats.finalBoss) {
             GameData.Instance.victory = true;
         }
-        playerStats.currentPower = elementSelected;
+        //playerStats.currentPower = elementSelected;
         playerStats.PushCharacterData();
         Destroy(monsterToDelete);
     }

@@ -34,6 +34,7 @@ public class activateBomb : EntityData
         sMapRender.material = new Material(sMapRender.material);
         groundShadow = finalMap.GetComponent<GroundShadow>();
         if (GameData.Instance.map2_4Shortcut) {
+            Debug.Log("Did I try to detonate the bomb");
             detonateBomb();
         }
     }
@@ -64,6 +65,7 @@ public class activateBomb : EntityData
             stats.HP -= 150;
             if (stats.HP < 1) { stats.HP = 1; }
             stats.mana -= 24;
+            GameData.Instance.map2_4Shortcut = true;
             detonateBomb();
         }
     }

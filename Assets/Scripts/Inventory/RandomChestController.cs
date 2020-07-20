@@ -34,6 +34,7 @@ public class RandomChestController : EntityData
     public bool rareItemChest;
     public bool healingFountain;
     public bool manaFountain;
+    public bool presetItem;
     public float framesPerSecond;
     private float timeSinceLastFrame=0;
     private int currentFrame = 0;
@@ -185,6 +186,7 @@ public class RandomChestController : EntityData
     private void RollRandomChest()
     {
 
+        if (presetItem) return;
 
         int itemRolled = UnityEngine.Random.Range(0, 100)+1;
         
