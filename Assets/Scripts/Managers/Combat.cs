@@ -330,6 +330,8 @@ public class Combat : MonoBehaviour
             combatEnded = true;
             
         }
+
+        if (GameState.isInBattle == false) { MusicManager.instance.TurnOffCombatMusic(); }
     }
 
     private void KillPlayerAndLoadNextScene(bool timeOut) {
@@ -427,6 +429,11 @@ public class Combat : MonoBehaviour
         Destroy(monsterToDelete);
     }
 
+    private void OnDestroy()
+    {
+        GameState.isInBattle = false;
+        MusicManager.instance.TurnOffCombatMusic();
+    }
     private void DealDamageToEnemy()
     {
         float incomingDamage = (int)playerStats.attack;

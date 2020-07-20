@@ -60,6 +60,7 @@ public class SpawnPlayer : MonoBehaviour
         characterMovement.SetRenderer();
         characterMovement.facedDirection = facing;
         characterMovement.SetLookDirection();
+        GameState.isInBattle = false;
 
         if (gameData.hasted)
         {
