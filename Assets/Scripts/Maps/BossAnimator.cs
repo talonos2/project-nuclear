@@ -43,7 +43,7 @@ public class BossAnimator : MonoBehaviour
     }
     private void OnDestroy()
     {
-
+        if (GameData.Instance == null) return;
         GameObject bossController=GameObject.Find("BossSpawnController");
         if (bossController != null) {
             bossController.GetComponent<bossSpawnController>().spawnNextBoss();

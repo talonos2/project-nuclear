@@ -17,6 +17,7 @@ public class Combat : MonoBehaviour
         SoundManager.Instance.PlaySound("CombatIn", 1f);
         Enemy monsterStats = monster.GetComponent<Enemy>();
         CharacterStats playerStats = Player.GetComponent<CharacterStats>();
+        elementSelected = playerStats.currentPower;
 
         GameObject go = new GameObject();
         Combat toInit = go.AddComponent<Combat>();
@@ -47,6 +48,7 @@ public class Combat : MonoBehaviour
     private GameData gameData;
     private GameObject monsterHPBarHolder;
     private Image monsterHPBar;
+    private static int elementSelected;
 
     GameObject hitsplatTemplate;
 
@@ -124,6 +126,8 @@ public class Combat : MonoBehaviour
 
     public void Update()
     {
+        if (GameState.fullPause) return;
+
         if (enterTimer < ENTER_TIME)
         {
             HandleEntranceRoutine();
@@ -152,7 +156,6 @@ public class Combat : MonoBehaviour
             blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
             Destroy(this);
         }
-
         return;
     }
 
@@ -309,6 +312,8 @@ public class Combat : MonoBehaviour
             blade.StartClose();
             combatEnded = true;
         }
+
+        if (GameState.isInBattle == false) { MusicManager.instance.TurnOffCombatMusic(); }
     }
 
     private void PlayerLoss()
@@ -330,7 +335,11 @@ public class Combat : MonoBehaviour
         {
             GameData.Instance.killer = monsterStats.name;
         }
+        //playerStats.currentPower = elementSelected;
+        playerStats.deactivatePowers();
+        //
         GameState.isInBattle = false;
+        GameState.fullPause = true;
         Destroy(monsterSprite.gameObject);
         Destroy(playerSprite.gameObject);
         combatDarkening.material.SetFloat("_Alpha", 0);
@@ -407,11 +416,16 @@ public class Combat : MonoBehaviour
         if (monsterStats.finalBoss) {
             GameData.Instance.victory = true;
         }
-
+        //playerStats.currentPower = elementSelected;
         playerStats.PushCharacterData();
         Destroy(monsterToDelete);
     }
 
+    private void OnDestroy()
+    {
+        GameState.isInBattle = false;
+        MusicManager.instance.TurnOffCombatMusic();
+    }
     private void DealDamageToEnemy()
     {
         float incomingDamage = (int)playerStats.attack;
@@ -457,7 +471,7 @@ public class Combat : MonoBehaviour
                 else { elementalDamage = 0; }
         }
 
-        if (goodHit) { incomingDamage = (incomingDamage+ monsterStats.defense)*1.25f- monsterStats.defense; }
+        if (goodHit) { incomingDamage = (incomingDamage+ monsterStats.defense)*1.20f- monsterStats.defense; }
 
         float crit = RollCrit(); //should probably have an animation too
 
@@ -555,7 +569,7 @@ public class Combat : MonoBehaviour
         else { SoundManager.Instance.PlaySound("Combat/BadBlock", 1f); }
 
         float incomingDamage = monsterStats.attack;
-        if (goodBlock) { incomingDamage *= .8f; }
+        if (goodBlock) { incomingDamage *= .833f; }
         incomingDamage -= playerStats.defense;
         
         goodBlock = false;

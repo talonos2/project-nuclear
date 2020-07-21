@@ -60,6 +60,7 @@ public class SpawnPlayer : MonoBehaviour
         characterMovement.SetRenderer();
         characterMovement.facedDirection = facing;
         characterMovement.SetLookDirection();
+        GameState.isInBattle = false;
 
         if (gameData.hasted)
         {
@@ -143,8 +144,8 @@ public class SpawnPlayer : MonoBehaviour
                 gameData.nextFacing = SpriteMovement.DirectionMoved.RIGHT;
                 break;
             case 16:
-                gameData.nextLocaiton.x = 14;
-                gameData.nextLocaiton.y = 22;
+                gameData.nextLocaiton.x = 10;
+                gameData.nextLocaiton.y = 20;
                 gameData.nextFacing = SpriteMovement.DirectionMoved.DOWN;
                 break;
             case 17:

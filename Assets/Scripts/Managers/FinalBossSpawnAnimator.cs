@@ -2,41 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossSpawnAnimator : MonoBehaviour
+public class FinalBossSpawnAnimator : BossSpawnAnimator
 {
     // Start is called before the first frame update
-    public int totalFrames;
-    public float framesPerSecond;
-    protected float frameCounter = 0;
-    protected int currentFrame = 0;
-    protected Renderer sRender;
-    protected GameObject ThePlayer;
-    internal bool spawnBoss;
-    public GameObject bossSpawnedPrefab;
-    protected float offsetFix = .00001f;
-    public float yPositionSpawning=-10.5f;
-    public float xPositionSpawning = 0;
-    protected static readonly float BOSS_SPAWN_SOUND_START_TIME = .5f;
-    protected bool playedSpawnSound = false;
-
-    public void Start()
+     new void Start()
     {
-        this.sRender = this.GetComponentInChildren<Renderer>();
-        this.sRender.material = new Material(this.sRender.material);
-        ThePlayer = GameObject.FindGameObjectWithTag("Player");
-
+        base.Start();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ThePlayer.transform.position.y>= yPositionSpawning && ThePlayer.transform.position.x== xPositionSpawning && !spawnBoss) {
-            spawnBoss = true;
-            sRender.enabled = true;
-            sRender.material.SetFloat("_Frame", currentFrame+offsetFix);
-            //Debug.Log("Did I transform?");
-        }
-        if (!spawnBoss) {
+
+        if (!spawnBoss)
+        {
             return;
         }
         sRender.enabled = true;

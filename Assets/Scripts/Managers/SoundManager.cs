@@ -28,23 +28,23 @@ public class SoundManager : Singleton<SoundManager>
             Directory.CreateDirectory(appPath + "/Sound");
         }
 
-        Debug.Log("Here, checking.");
+       // Debug.Log("Here, checking.");
         if (File.Exists(appPath + "/Sound/soundVolumeMap.json"))
         {
-            Debug.Log("Found, Loading.");
+            //Debug.Log("Found, Loading.");
             StreamReader reader = new StreamReader(appPath+"/Sound/soundVolumeMap.json");
             String json = reader.ReadToEnd();
-            Debug.Log("Loaded: " + json);
+            //Debug.Log("Loaded: " + json);
             soundVolumeMap = JsonUtility.FromJson<DictionaryOfStringAndFloat>(json);
-            foreach (string s in soundVolumeMap.Keys)
-            {
-                Debug.Log("Loaded: "+s + ", " + soundVolumeMap[s]);
-            }
+           // foreach (string s in soundVolumeMap.Keys)
+           //{
+           //     Debug.Log("Loaded: "+s + ", " + soundVolumeMap[s]);
+           // }
             reader.Close();
         }
         else
         {
-            Debug.Log("Not found, creating.");
+            //Debug.Log("Not found, creating.");
             File.Create(appPath + "/Sound/soundVolumeMap.json");
         }
     }
@@ -69,12 +69,12 @@ public class SoundManager : Singleton<SoundManager>
     {
         String appPath = Application.dataPath;
         StreamWriter writer = new StreamWriter(appPath + "/Sound/soundVolumeMap.json", false);
-        foreach (string s in soundVolumeMap.Keys)
-        {
-            Debug.Log(s+", "+soundVolumeMap[s]);
-        }
+        //foreach (string s in soundVolumeMap.Keys)
+        //{
+        //    Debug.Log(s+", "+soundVolumeMap[s]);
+        //}
         String toPrint = JsonUtility.ToJson(soundVolumeMap, true);
-        Debug.Log(toPrint);
+        //Debug.Log(toPrint);
         writer.Write(toPrint);
         writer.Flush();
         writer.Close();
