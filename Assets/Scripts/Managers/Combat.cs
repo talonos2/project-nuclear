@@ -298,26 +298,9 @@ public class Combat : MonoBehaviour
     private void CheckCombatOver()
     {
         //TODO: If the time is up, combat ends immediately.
-        if (gameData.minutes==10)
+        if (gameData.minutes==10 || playerStats.HP <= 0)
         {
-            MusicManager.instance.TurnOffCombatMusic();
-            combatEnded = true;
-            GameState.isInBattle = false;
-            blade.StartClose();
-            //GameState.endRunFlag = true;
-            KillPlayerAndLoadNextScene(true);
-
-        }
-
-        if (playerStats.HP <= 0)
-        {
-            MusicManager.instance.TurnOffCombatMusic();
-            combatEnded = true;
-            GameState.isInBattle = false;
-            blade.StartClose();
-            //GameState.endRunFlag = true;
-            KillPlayerAndLoadNextScene(false);
-
+            PlayerLoss();
         }
 
         if (monsterStats.HP <= 0)
@@ -325,8 +308,17 @@ public class Combat : MonoBehaviour
             MusicManager.instance.TurnOffCombatMusic();
             blade.StartClose();
             combatEnded = true;
-            
         }
+    }
+
+    private void PlayerLoss()
+    {
+        MusicManager.instance.TurnOffCombatMusic();
+        combatEnded = true;
+        GameState.isInBattle = false;
+        blade.StartClose();
+        //GameState.endRunFlag = true;
+        KillPlayerAndLoadNextScene(true);
     }
 
     private void KillPlayerAndLoadNextScene(bool timeOut) {
@@ -498,6 +490,7 @@ public class Combat : MonoBehaviour
         //Make hitsplat
         GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position + (Vector3)monsterStats.gettingStruckPointOffset + AttackAnimationManager.Instance.monsterHitsplatOffset;
+        hitsplat.transform.localPosition += (Vector3)monsterStats.hitsplatOffset;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Mathf.RoundToInt(elementalDamage), goodHit, hitWeakness, crit != 0, elementalCrit, (ElementalPower)playerStats.currentPower);
 
         //Cleanup:

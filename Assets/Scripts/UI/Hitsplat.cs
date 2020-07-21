@@ -8,15 +8,17 @@ public class Hitsplat : MonoBehaviour
 {
     public float baseHeight = 2;
     public float baseYVelo = .2f;
-    Vector3 startPosition;
     public float gravity = .03f;
     public float bounciness = .5f;
     public int maxBounces = 4;
     public int numberOfFramesAppearing = 25;
 
-    private float height;
-    private float yVelo;
-    private int bounces;
+    private float[] height;
+    private float[] yVelo;
+    private Vector3[] startPosition;
+    public Transform[] thingsToBounce;
+    private int[] bounces;
+    private float[] appearDelays;
 
     private bool isBouncing = true;
     private int framesAppeared = 0;
@@ -31,6 +33,7 @@ public class Hitsplat : MonoBehaviour
 
     public TextMeshPro text1;
     public TextMeshPro text2;
+    public float timeBetweenAppearances = .1f;
 
     // Start is called before the first frame update
     void Start()
@@ -40,18 +43,29 @@ public class Hitsplat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isBouncing)
+        for (int x = 0; x < thingsToBounce.Length; x++)
         {
-            transform.position = new Vector3(startPosition.x, height + startPosition.y, -99);
-            height += yVelo;
-            yVelo -= gravity;
-            if (height <= baseHeight)
+            if (isBouncing)
             {
-                yVelo *= -bounciness;
-                bounces -= 1;
-                if (bounces <= 0)
+                if (appearDelays[x] > 0)
                 {
-                    isBouncing = false;
+                    appearDelays[x] -= Time.deltaTime;
+                    continue;
+                }
+                thingsToBounce[x].gameObject.SetActive(true);
+
+                thingsToBounce[x].position = new Vector3(startPosition[x].x, height[x] + startPosition[x].y, -99);
+                height[x] += yVelo[x];
+                yVelo[x] -= gravity;
+                if (height[x] <= baseHeight)
+                {
+                    height[x] = baseHeight+float.Epsilon;
+                    yVelo[x] *= (float)(-bounciness);
+                    bounces[x] -= 1;
+                    if (bounces[x] <= 0)
+                    {
+                        isBouncing = false;
+                    }
                 }
             }
         }
@@ -63,10 +77,19 @@ public class Hitsplat : MonoBehaviour
 
     public virtual void Init(int physicalDamage, int elementalDamage, bool goodTiming, bool effective, bool crit, bool elementalCrit, ElementalPower elementalType)
     {
-        yVelo = baseYVelo;
-        height = baseHeight;
-        bounces = maxBounces;
-        this.startPosition = this.transform.position;
+        yVelo = new float[thingsToBounce.Length];
+        height = new float[thingsToBounce.Length];
+        bounces = new int[thingsToBounce.Length];
+        this.startPosition = new Vector3[thingsToBounce.Length];
+        appearDelays = new float[thingsToBounce.Length];
+        for (int x = 0; x < thingsToBounce.Length; x++)
+        {
+            yVelo[x] = baseYVelo;
+            height[x] = baseHeight;
+            bounces[x] = maxBounces;
+            this.startPosition[x] = thingsToBounce[x].position;
+            appearDelays[x] = x * timeBetweenAppearances;
+        }
 
         this.physicalDamage = physicalDamage;
         this.elementalCrit = elementalCrit;
