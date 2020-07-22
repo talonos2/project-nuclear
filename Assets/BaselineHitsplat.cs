@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BaselineHitsplat : Hitsplat
@@ -9,6 +10,11 @@ public class BaselineHitsplat : Hitsplat
     void Start()
     {
     }
+
+    public TMP_FontAsset[] eleMaterials;
+    public Sprite[] eleSlashes;
+    public SpriteRenderer slashSprite;
+    public SpriteRenderer critSprite;
 
     protected override void CreateGraphics()
     {
@@ -31,15 +37,50 @@ public class BaselineHitsplat : Hitsplat
                 {
                     text1.SetText("" + physicalDamage+ " + <#"+ ColorUtility.ToHtmlStringRGB(type.EleColor())+"> "+elementalDamage + " "+type.EleName());
                     text2.SetText(effective ? "Effective!" : "");
+                    text2.color = type.EleColor();
                 }
                 else
                 {
                     text1.SetText("" + physicalDamage);
+                    text2.SetText("");
+                }
+                break;
+            case HitsplatType.ELE_ICONS:
+                if (elementalDamage > 0)
+                {
+                    text1.SetText("" + physicalDamage + " + <#" + ColorUtility.ToHtmlStringRGB(type.EleColor()) + "> " + elementalDamage + " " + type.TempEleIconString());
+                    text2.SetText(effective ? "Effective!" : "");
+                    text2.color = type.EleColor();
+                }
+                else
+                {
+                    text1.SetText("" + physicalDamage);
+                    text2.SetText("");
+                }
+                break;
+            case HitsplatType.DERRICK_STYLE:
+                if (elementalDamage > 0)
+                {
+                    slashSprite.enabled = true;
+                    text1.SetText("" + physicalDamage);
+                    text2.font = eleMaterials[(int)type];
+                    text2.SetText("" + elementalDamage);
+                    slashSprite.sprite = eleSlashes[(int)type];
+                    if (effective||crit)
+                    {
+                        critSprite.enabled = true;
+                    }
+                }
+                else
+                {
+                    text1.SetText("" + physicalDamage);
+                    text2.SetText("");
+                    slashSprite.enabled = false;
                 }
                 break;
 
         }
     }
 
-    public enum HitsplatType { OLD, SIDE_BY_SIDE }
+    public enum HitsplatType { OLD, SIDE_BY_SIDE, ELE_ICONS, DERRICK_STYLE }
 }

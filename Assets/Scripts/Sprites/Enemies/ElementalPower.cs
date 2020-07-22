@@ -18,7 +18,7 @@ public static class EleExtensions
             case ElementalPower.EARTH:
                 return Color.green;
             case ElementalPower.FIRE:
-                return Color.red;
+                return new Color(1, .4f, .4f);
             case ElementalPower.AIR:
                 return Color.yellow;
         }
@@ -39,6 +39,26 @@ public static class EleExtensions
                 return "FIRE";
             case ElementalPower.AIR:
                 return "AIR";
+        }
+        return "Bad Type!";
+    }
+
+    //<sprite index =[index] >
+
+    public static string TempEleIconString(this ElementalPower ele)
+    {
+        switch (ele)
+        {
+            case ElementalPower.NULL:
+                return "<sprite index=3>";
+            case ElementalPower.ICE:
+                return "<sprite index=1>";
+            case ElementalPower.EARTH:
+                return "<sprite index=4>";
+            case ElementalPower.FIRE:
+                return "<sprite index=0>";
+            case ElementalPower.AIR:
+                return "<sprite index=2>";
         }
         return "Bad Type!";
     }
