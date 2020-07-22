@@ -20,6 +20,7 @@ public class Map1_3Shortcut : MonoBehaviour
     }
     private void OnDestroy()
     {
+        if (GameData.Instance == null) return;
         if (GameData.Instance.earthBoss2 && !GameData.Instance.map1_3Shortcut) {
             GameData.Instance.map1_3Shortcut = true;
             //Play cutscene

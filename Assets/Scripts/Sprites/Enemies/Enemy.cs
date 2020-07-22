@@ -20,6 +20,7 @@ public class Enemy : Stats
     public AudioClip badHit;
     public AudioClip goodBlock;
     public AudioClip badBlock;
+    public PowerupEffect powerupEffect;
 
 
 
