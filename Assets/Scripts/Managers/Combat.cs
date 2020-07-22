@@ -578,8 +578,12 @@ public class Combat : MonoBehaviour
         else { SoundManager.Instance.PlaySound("Combat/BadBlock", 1f); }
 
         float incomingDamage = monsterStats.attack;
-        if (goodBlock) { incomingDamage *= .833f; }
-        incomingDamage -= playerStats.defense;
+        if (goodBlock) {
+            //incomingDamage *= .9f;
+            incomingDamage -= playerStats.defense*1.2f+1;
+
+        }
+         else incomingDamage -= playerStats.defense;
         
         goodBlock = false;
         incomingDamage = Math.Max(incomingDamage, 0);

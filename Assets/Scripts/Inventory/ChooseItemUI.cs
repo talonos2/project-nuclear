@@ -34,6 +34,7 @@ public class ChooseItemUI : MonoBehaviour
     void Start()
     {
         SelectButton(1);
+        //optionSelected = 1;
     }
 
     // Update is called once per frame
@@ -51,7 +52,7 @@ public class ChooseItemUI : MonoBehaviour
         if (Input.GetAxis("Horizontal")>.05f )
         {
             if (delayBeforePressing < 0) {
-                optionSelected = 0;
+                //optionSelected = 0;
                 SelectButton(0);
             }
 
@@ -59,7 +60,7 @@ public class ChooseItemUI : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") < -.05f)
         {
-            optionSelected = 1;
+            //optionSelected = 1;
             SelectButton(1);
         }
 
@@ -68,6 +69,7 @@ public class ChooseItemUI : MonoBehaviour
 
     public void SelectButton(int buttonToSelect)
     {
+        optionSelected = buttonToSelect;
         if (buttonToSelect != selectedButton && selectedButton != -1)
         {
             SoundManager.Instance.PlaySound("MenuMove", 1f);
@@ -92,6 +94,7 @@ public class ChooseItemUI : MonoBehaviour
 
     private void ChooseItem()
     {
+        //Debug.Log("What did I pick "+optionSelected);
         if (!pickingItem) { return; }
         if (optionSelected == 0)
         {
@@ -101,6 +104,7 @@ public class ChooseItemUI : MonoBehaviour
         {
             SoundManager.Instance.PlaySound("MenuOkay", 1f);
         }
+
         if (rolledItem is Weapon)
         {
             if (optionSelected == 0)

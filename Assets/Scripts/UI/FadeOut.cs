@@ -14,7 +14,7 @@ public class FadeOut : MonoBehaviour
     {
         GameState.fullPause = true;
         this.GetComponent<Renderer>().material.SetFloat("_Alpha", 0);
-        Debug.Log("Is everything frozen? It's probably because you did a fade-out without a fade-in afterwards.");
+       // Debug.Log("Is everything frozen? It's probably because you did a fade-out without a fade-in afterwards.");
         timeLeft = fadeTime;
     }
 
