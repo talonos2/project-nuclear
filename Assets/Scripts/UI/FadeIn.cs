@@ -23,7 +23,7 @@ public class FadeIn : MonoBehaviour
         else
         {
             GameState.fullPause = false;
-            Debug.Log("Fade-in complete! If things are still frozen, it's somebody else's fault now. :P");
+            //Debug.Log("Fade-in complete! If things are still frozen, it's somebody else's fault now. :P");
             GameObject.Destroy(this.gameObject);
         }
     }

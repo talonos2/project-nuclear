@@ -6,20 +6,34 @@ using UnityEngine;
 
 public class Hitsplat : MonoBehaviour
 {
-    float baseHeight = 2;
-    float baseYVelo = .2f;
-    Vector3 startPosition;
-    float gravity = .03f;
-    float bounciness = .5f;
-    int maxBounces = 4;
-    int numberOfFramesAppearing = 25;
+    public float baseHeight = 2;
+    public float baseYVelo = .2f;
+    public float gravity = .03f;
+    public float bounciness = .5f;
+    public int maxBounces = 4;
+    public int numberOfFramesAppearing = 25;
 
-    float height;
-    float yVelo;
-    int bounces;
+    private float[] height;
+    private float[] yVelo;
+    private Vector3[] startPosition;
+    public Transform[] thingsToBounce;
+    private int[] bounces;
+    private float[] appearDelays;
 
-    bool isBouncing = true;
-    int framesAppeared = 0;
+    private bool isBouncing = true;
+    private int framesAppeared = 0;
+
+    protected int physicalDamage = 0;
+    protected int elementalDamage = 0;
+    protected bool crit = false;
+    protected bool elementalCrit = false;
+    protected bool goodTiming = false;
+    protected bool effective = false;
+    protected ElementalPower type;
+
+    public TextMeshPro text1;
+    public TextMeshPro text2;
+    public float timeBetweenAppearances = .1f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,18 +43,29 @@ public class Hitsplat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isBouncing)
+        for (int x = 0; x < thingsToBounce.Length; x++)
         {
-            transform.position = new Vector3(startPosition.x, height + startPosition.y, -99);
-            height += yVelo;
-            yVelo -= gravity;
-            if (height <= baseHeight)
+            if (isBouncing)
             {
-                yVelo *= -bounciness;
-                bounces -= 1;
-                if (bounces <= 0)
+                if (appearDelays[x] > 0)
                 {
-                    isBouncing = false;
+                    appearDelays[x] -= Time.deltaTime;
+                    continue;
+                }
+                thingsToBounce[x].gameObject.SetActive(true);
+
+                thingsToBounce[x].position = new Vector3(startPosition[x].x, height[x] + startPosition[x].y, -99);
+                height[x] += yVelo[x];
+                yVelo[x] -= gravity;
+                if (height[x] <= baseHeight)
+                {
+                    height[x] = baseHeight+float.Epsilon;
+                    yVelo[x] *= (float)(-bounciness);
+                    bounces[x] -= 1;
+                    if (bounces[x] <= 0)
+                    {
+                        isBouncing = false;
+                    }
                 }
             }
         }
@@ -50,32 +75,36 @@ public class Hitsplat : MonoBehaviour
         }
     }
 
-    public void Init(int damage, Color color)
+    public virtual void Init(int physicalDamage, int elementalDamage, bool goodTiming, bool effective, bool crit, bool elementalCrit, ElementalPower elementalType)
     {
-        TextMeshPro text = this.GetComponent<TextMeshPro>();
-        text.text = ""+damage;
-        text.color = color;
-        yVelo = baseYVelo;
+        yVelo = new float[thingsToBounce.Length];
+        height = new float[thingsToBounce.Length];
+        bounces = new int[thingsToBounce.Length];
+        this.startPosition = new Vector3[thingsToBounce.Length];
+        appearDelays = new float[thingsToBounce.Length];
+        for (int x = 0; x < thingsToBounce.Length; x++)
+        {
+            yVelo[x] = baseYVelo;
+            height[x] = baseHeight;
+            bounces[x] = maxBounces;
+            this.startPosition[x] = thingsToBounce[x].position;
+            appearDelays[x] = x * timeBetweenAppearances;
+        }
 
-        height = baseHeight;
-        bounces = maxBounces;
+        this.physicalDamage = physicalDamage;
+        this.elementalCrit = elementalCrit;
+        this.elementalDamage = elementalDamage;
+        this.effective = effective;
+        this.crit = crit;
+        this.type = elementalType;
+        this.goodTiming = goodTiming;
 
-        this.startPosition = this.transform.position;
-
+        CreateGraphics();
         Update();
     }
 
-    public void SetEleEffective(bool effective)
+    protected virtual void CreateGraphics()
     {
-        if (effective)
-        {
-            TextMeshPro text = this.GetComponent<TextMeshPro>();
-            this.transform.localScale = this.transform.localScale * 1f;
-            text.text = "<-"+text.text+"->";
-        }
-        else
-        {
-            this.transform.localScale = this.transform.localScale * .8f;
-        }
+        text1.SetText("This is an interface,\nnot a real hitsplat!");
     }
 }

@@ -10,8 +10,9 @@ public class Enemy : Stats
     public ElementalPower weakness = ElementalPower.NULL;
     public CrystalType crystalType = CrystalType.NULL;
     public int crystalDropAmount;
+    public Vector2 hitsplatOffset = new Vector2(0, 0);
 
-    
+
 
     public Sprite[] combatSprites;
     public AttackAnimation attackAnimation = AttackAnimation.HOP;
@@ -20,6 +21,7 @@ public class Enemy : Stats
     public AudioClip badHit;
     public AudioClip goodBlock;
     public AudioClip badBlock;
+    public PowerupEffect powerupEffect;
 
 
 

@@ -213,9 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 155
-  HP: 155
-  attack: 49
+  MaxHP: 168
+  HP: 168
+  attack: 48
   defense: 14
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.2, y: -0.6}
@@ -228,6 +228,7 @@ MonoBehaviour:
   weakness: 2
   crystalType: 4
   crystalDropAmount: 5
+  hitsplatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: 4503806036590345434, guid: 96f7bd3a5bd2ef24f82df1ec1dc950b8, type: 3}
   - {fileID: -3422763108060636168, guid: 96f7bd3a5bd2ef24f82df1ec1dc950b8, type: 3}
@@ -239,9 +240,15 @@ MonoBehaviour:
   badHit: {fileID: 0}
   goodBlock: {fileID: 0}
   badBlock: {fileID: 0}
+  powerupEffect: {fileID: 8894956876987107773, guid: 9634af92fc9994940ab26a1014c11372,
+    type: 3}
   iceBoss: 0
   earthBoss: 0
+  earthBoss2: 0
   fireBoss: 0
+  fireBoss2: 0
   airBoss: 0
+  airBoss2: 0
   deathBoss: 0
+  deathBoss2: 0
   finalBoss: 0

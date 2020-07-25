@@ -555,7 +555,28 @@ public class SelectItemUIController : MonoBehaviour
 
     private void SwapArmor()
     {
-        GameData.Instance.townArmor.Add(savedStats.armor);
+
+        if (savedStats.armor.name != "Warm Jacket")
+        {
+
+            GameData.Instance.townArmor.Add(savedStats.armor);
+        }
+        else
+        {
+            bool addAnyway = true;
+            foreach (Armor item in GameData.Instance.townArmor)
+            {
+                if (item.name == "Warm Jacket")
+                {
+                    addAnyway = false;
+
+                }
+            }
+            if (addAnyway) GameData.Instance.townArmor.Add(savedStats.armor);
+        }
+
+
+
         InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
         savedStats.setArmor((Armor)itemToSwap);
         GameData.Instance.townArmor.Remove((Armor)itemToSwap);
@@ -578,6 +599,20 @@ public class SelectItemUIController : MonoBehaviour
         {
             GameData.Instance.townAccessories.Add(savedStats.accessory);
         }
+        else {
+            bool addAnyway = true;
+            foreach (Accessory acces in GameData.Instance.townAccessories){
+                if (acces.name== "No Accessory Equipped")
+                {
+                    addAnyway = false;
+
+                }
+            }
+            if (addAnyway) GameData.Instance.townAccessories.Add(savedStats.accessory);
+        }
+        
+
+
         InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
         savedStats.setAccessory((Accessory)itemToSwap);
         savedStats.setMaxStats();
@@ -593,7 +628,25 @@ public class SelectItemUIController : MonoBehaviour
 
     private void SwapWeapon()
     {
-        GameData.Instance.townWeapons.Add(savedStats.weapon);
+        if (savedStats.weapon.name != "Knife")
+        {
+            GameData.Instance.townWeapons.Add(savedStats.weapon);
+        }
+        else
+        {
+            bool addAnyway = true;
+            foreach (Weapon item in GameData.Instance.townWeapons)
+            {
+                if (item.name == "Knife")
+                {
+                    addAnyway = false;
+
+                }
+            }
+            if (addAnyway) GameData.Instance.townWeapons.Add(savedStats.weapon);
+        }
+
+
         InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
         savedStats.setWeapon((Weapon)itemToSwap);
         GameData.Instance.townWeapons.Remove((Weapon)itemToSwap);
@@ -605,10 +658,10 @@ public class SelectItemUIController : MonoBehaviour
 
     private void updateTotalBonuses()
     {
-        crystalAttackBonus.text = "+" + savedStats.attack;  //setting full values now
-        crystalDefenseBonus.text = "+" + savedStats.defense;
-        crystalManaBonus.text = "+" + savedStats.MaxMana;
-        crystalHealthBonus.text = "+" + savedStats.MaxHP;
+        crystalAttackBonus.text = "+" + (int)savedStats.attack;  //setting full values now
+        crystalDefenseBonus.text = "+" + (int)savedStats.defense;
+        crystalManaBonus.text = "+" + (int)savedStats.MaxMana;
+        crystalHealthBonus.text = "+" + (int)savedStats.MaxHP;
     }
 
     private void showItemSelected()

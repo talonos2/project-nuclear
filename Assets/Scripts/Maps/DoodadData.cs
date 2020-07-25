@@ -20,9 +20,10 @@ public class DoodadData : MonoBehaviour
     protected Vector2Int DoodadLocation;
     protected GameObject MapGrid;
     protected Vector2 MapZeroLocation;
+    private bool setup;
 
     public void Start() {
-        InitializeDoodadNewMap();
+        if (!setup) InitializeDoodadNewMap();
     }
 
     protected void InitializeDoodadNewMap()
@@ -32,6 +33,18 @@ public class DoodadData : MonoBehaviour
         DoodadLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
         DoodadLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
         MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = this.gameObject;
+        setup = true;
+    }
+    public void removeDoodadFromMap() {
+        if (!setup) {
+            MapGrid = GameObject.Find("Grid"); ;
+            MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
+            DoodadLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
+            DoodadLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
+            setup = true;
+        }
+        
+        MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = null;
     }
 
     public Vector2Int getLocation()

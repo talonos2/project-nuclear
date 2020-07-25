@@ -75,7 +75,7 @@ public class FloorDropoffPrefab : MonoBehaviour
 
     internal void Initialize(int floorNum, float timeTaken, bool record)
     {
-        Debug.Log(timeTaken);
+        //Debug.Log(timeTaken);
         this.record = record;
         this.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         this.GetComponent<RectTransform>().localScale = startScale;

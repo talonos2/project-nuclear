@@ -7,19 +7,19 @@ public class BossSpawnAnimator : MonoBehaviour
     // Start is called before the first frame update
     public int totalFrames;
     public float framesPerSecond;
-    private float frameCounter = 0;
-    private int currentFrame = 0;
+    protected float frameCounter = 0;
+    protected int currentFrame = 0;
     protected Renderer sRender;
     protected GameObject ThePlayer;
-    private bool spawnBoss;
+    internal bool spawnBoss;
     public GameObject bossSpawnedPrefab;
-    private float offsetFix = .00001f;
+    protected float offsetFix = .00001f;
     public float yPositionSpawning=-10.5f;
     public float xPositionSpawning = 0;
-    private static readonly float BOSS_SPAWN_SOUND_START_TIME = .5f;
-    private bool playedSpawnSound = false;
+    protected static readonly float BOSS_SPAWN_SOUND_START_TIME = .5f;
+    protected bool playedSpawnSound = false;
 
-    void Start()
+    public void Start()
     {
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
@@ -34,11 +34,13 @@ public class BossSpawnAnimator : MonoBehaviour
             spawnBoss = true;
             sRender.enabled = true;
             sRender.material.SetFloat("_Frame", currentFrame+offsetFix);
-            Debug.Log("Did I transform?");
+            //Debug.Log("Did I transform?");
         }
         if (!spawnBoss) {
             return;
         }
+        sRender.enabled = true;
+        sRender.material.SetFloat("_Frame", currentFrame + offsetFix);
         frameCounter += Time.deltaTime;
         /*Debug.Log("frameCounter "+ frameCounter);
         if (frameCounter >= BOSS_SPAWN_SOUND_START_TIME&&!playedSpawnSound)

@@ -30,6 +30,7 @@ public class CharacterMovement : SpriteMovement
     {
         base.Start();
         playerStats = this.GetComponent<CharacterStats>();
+        playerStats.setCharacterMoveScript(this);
         jumpPivot = sRender.transform.parent;
         shield = sRender.gameObject.transform.GetChild(0).gameObject;
         smoke = sRender.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
@@ -61,13 +62,13 @@ public class CharacterMovement : SpriteMovement
 
         previousFrame = currentFrame;
 
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle || GameState.fullPause || GameData.Instance.isInDialogue)
         {
             return;
         }
         if (!currentlyMoving && waitTimer >= 0)
         {
-            if (gameData.dashing)
+            if (GameData.Instance.dashing)
             {
                 SetShieldGraphic(waitTimer, true);
             }
@@ -76,8 +77,8 @@ public class CharacterMovement : SpriteMovement
         }
 
 
-        if (gameData.hasted) {
-            if (gameData.timerTrigger) {
+        if (GameData.Instance.hasted) {
+            if (GameData.Instance.timerTrigger) {
                 if (playerStats.mana >= 12)
                 {
                     playerStats.mana -= 12;
@@ -95,9 +96,9 @@ public class CharacterMovement : SpriteMovement
         {
         }
 
-        if (gameData.stealthed) {
+        if (GameData.Instance.stealthed) {
 
-            if (gameData.timerTrigger)
+            if (GameData.Instance.timerTrigger)
             {
                 if (playerStats.mana >= 4)
                 {
@@ -108,7 +109,7 @@ public class CharacterMovement : SpriteMovement
                 else
                 {
                     SoundManager.Instance.PlaySound("StealthOff", 1f);
-                    gameData.stealthed = false;
+                    GameData.Instance.stealthed = false;
                     tempMovementSpeed = MoveSpeed;
                     tempFramesPerSecond = framesPerSecond;
                 }
@@ -152,7 +153,7 @@ public class CharacterMovement : SpriteMovement
             }
         }
 
-        if (!currentlyMoving && gameData.dashing || continueDashing)
+        if (!currentlyMoving && GameData.Instance.dashing || continueDashing)
         {
             if (waitTimer >= 0)
             {
@@ -169,7 +170,7 @@ public class CharacterMovement : SpriteMovement
                 if (totalDashed >= DASH_LENGTH)
                 {
                     TiePositionToGrid();
-                    gameData.dashing = false;
+                    GameData.Instance.dashing = false;
                     sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                     CheckWindJumpStatus();
                     CheckExitStatus();
@@ -257,7 +258,7 @@ public class CharacterMovement : SpriteMovement
     {
         if (GameState.isInBattle) return;
         if (playerStats.mana < playerStats.MaxMana || playerStats.HP < playerStats.MaxHP) {
-            if (gameData.addHealToTimer()) {
+            if (GameData.Instance.addHealToTimer()) {
                 SoundManager.Instance.PlaySound("Healing", 1);
                 playerStats.mana += (int)(playerStats.MaxMana * .125f);
                 playerStats.HP += (int)(playerStats.MaxHP * .125f);
@@ -328,7 +329,7 @@ public class CharacterMovement : SpriteMovement
             SetLookDirection();
         }
 
-        if (!currentlyMoving && !jumping && !gameData.dashing && !jumpQueued&&!windJump )
+        if (!currentlyMoving && !jumping && !GameData.Instance.dashing && !jumpQueued&&!windJump )
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
@@ -353,7 +354,7 @@ public class CharacterMovement : SpriteMovement
 
             //Check if a monster is in the next location, and initiate combat if so
             GameObject EnemyToFight = isThereAMonster();
-            if (EnemyToFight != null && !gameData.dashing)
+            if (EnemyToFight != null && !GameData.Instance.dashing)
             {
                 Combat.InitiateFight(this.gameObject, EnemyToFight);
             }
@@ -366,13 +367,13 @@ public class CharacterMovement : SpriteMovement
         {
             return;
         }
-        if (playerStats.currentPower != (int)ElementalPower.EARTH && gameData.stealthed) {
+        if (playerStats.currentPower != (int)ElementalPower.EARTH && GameData.Instance.stealthed) {
             SoundManager.Instance.PlaySound("StealthOff", 1f);
-            gameData.stealthed = false;
+            GameData.Instance.stealthed = false;
             tempMovementSpeed = MoveSpeed;
             tempFramesPerSecond = framesPerSecond;
         }
-        if (playerStats.currentPower != (int)ElementalPower.FIRE && gameData.hasted)
+        if (playerStats.currentPower != (int)ElementalPower.FIRE && GameData.Instance.hasted)
         {
             TurnHasteOff();
             tempMovementSpeed = MoveSpeed;
@@ -380,7 +381,7 @@ public class CharacterMovement : SpriteMovement
         }
 
 
-        if (!jumping && !gameData.dashing)
+        if (!jumping && !GameData.Instance.dashing)
         {
 
             switch (playerStats.currentPower)
@@ -495,7 +496,7 @@ public class CharacterMovement : SpriteMovement
 
     private void ActivateHaste()
     {
-        if (gameData.hasted)
+        if (GameData.Instance.hasted)
         {
             TurnHasteOff();
             tempMovementSpeed = MoveSpeed;
@@ -509,10 +510,10 @@ public class CharacterMovement : SpriteMovement
                 tempMovementSpeed = MoveSpeed * hasteSpeed;
                 tempFramesPerSecond = framesPerSecond*hasteSpeed;
                 TurnHasteOn();
-                if (gameData.stealthed)
+                if (GameData.Instance.stealthed)
                 {
                     SoundManager.Instance.PlaySound("StealthOff", 1f);
-                    gameData.stealthed = false;
+                    GameData.Instance.stealthed = false;
                 }
             }
             else
@@ -528,26 +529,26 @@ public class CharacterMovement : SpriteMovement
 
     public void TurnHasteOn()
     {
-        gameData.hasted = true;
+        GameData.Instance.hasted = true;
         smoke.Play();
         SoundManager.Instance.PlaySound("HasteOn", 1f);
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
     }
 
-    private void TurnHasteOff()
+    internal void TurnHasteOff()
     {
-        gameData.hasted = false;
+        GameData.Instance.hasted = false;
         SoundManager.Instance.PlaySound("HasteOff", 1f);
         smoke.Stop();
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
-    private void ActivateInvisibility()
+    internal void ActivateInvisibility()
     {
-        if (gameData.stealthed)
+        if (GameData.Instance.stealthed)
         {
             SoundManager.Instance.PlaySound("StealthOff", 1f);
-            gameData.stealthed = false;
+            GameData.Instance.stealthed = false;
             tempMovementSpeed = MoveSpeed;
             tempFramesPerSecond = framesPerSecond;
         }
@@ -559,7 +560,7 @@ public class CharacterMovement : SpriteMovement
                 tempMovementSpeed = MoveSpeed * stealthspeed;
                 tempFramesPerSecond = framesPerSecond*stealthspeed;
                 SoundManager.Instance.PlaySound("StealthOn", 1f);
-                gameData.stealthed = true;
+                GameData.Instance.stealthed = true;
                 TurnHasteOff();
             }
             else
@@ -578,12 +579,12 @@ public class CharacterMovement : SpriteMovement
             SoundManager.Instance.PlaySound("ShieldDash",1);
             sRender.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             playerStats.mana -= 5;
-            gameData.dashing = true;
+            GameData.Instance.dashing = true;
             TurnHasteOff();
-            if (gameData.stealthed)
+            if (GameData.Instance.stealthed)
             {
                 SoundManager.Instance.PlaySound("StealthOff", 1f);
-                gameData.stealthed = false;
+                GameData.Instance.stealthed = false;
             }
             waitTimer = .4f;
             totalDashed = 0;
@@ -625,7 +626,7 @@ public class CharacterMovement : SpriteMovement
             return;
         }
         GameObject entityToCheck = null;
-        if (!currentlyMoving && !jumping &&!gameData.dashing) {
+        if (!currentlyMoving && !jumping &&!GameData.Instance.dashing) {
             switch (facedDirection) {
                 case DirectionMoved.UP:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y+1];

@@ -16,7 +16,7 @@ public class NewCrystalLevelController : MonoBehaviour
     private static int[] crystalTiers = {0, 50, 150, 350, 650, 1075, 1625, 2300, 3100, 4025, 5075, 6250, 7550, 8975, 10525, 12200, 14000, 15925, 17975, 20150, 22450, 31451 };
 
     private CharacterStats savedStats;
-    private int crystalBonusValue;
+    private float crystalBonusValue;
     private int oldCrystals;
     private int newCrystals;
 
@@ -45,26 +45,30 @@ public class NewCrystalLevelController : MonoBehaviour
             case CrystalType.HEALTH:
                 oldCrystals = GameData.Instance.HealhCrystalTotal;
                 newCrystals = savedStats.HealthCrystalsGained;
+                crystalBonusValue = 20;
                 break;
             case CrystalType.MANA:
                 oldCrystals = GameData.Instance.ManaCrystalTotal;
                 newCrystals = savedStats.ManaCrystalsGained;
+                crystalBonusValue = 20;
                 break;
             case CrystalType.ATTACK:
                 oldCrystals = GameData.Instance.AttackCrystalTotal;
                 newCrystals = savedStats.AttackCrystalsGained;
+                crystalBonusValue = 4;
                 break;
             case CrystalType.DEFENSE:
                 oldCrystals = GameData.Instance.DefenseCrystalTotal;
                 newCrystals = savedStats.defenseCrystalsGained;
+                crystalBonusValue = 2f;
                 break;
 
         }
 
-        Debug.Log("Total " + oldCrystals+", new "+ newCrystals);
+        //Debug.Log("Total " + oldCrystals+", new "+ newCrystals);
         startNumberOfBars = GetNumberOfBars(oldCrystals);
-        targetNumberOfBars = GetNumberOfBars(newCrystals);
-        Debug.Log("Start " + startNumberOfBars + ", End " + targetNumberOfBars);
+        targetNumberOfBars = GetNumberOfBars(oldCrystals+newCrystals);
+        //Debug.Log("Start " + startNumberOfBars + ", End " + targetNumberOfBars);
         float barIncrease = targetNumberOfBars-startNumberOfBars;
 
         SetBarLevel(startNumberOfBars);
@@ -123,14 +127,20 @@ public class NewCrystalLevelController : MonoBehaviour
         float remainderBars = barAmount % 1.0f;
         int crystalAmount = Mathf.RoundToInt(Mathf.Lerp(crystalTiers[fullBars], crystalTiers[fullBars + 1], remainderBars));
 
-        string bonusText = "+" + fullBars * crystalBonusValue;
-        crystalBonusText.text = bonusText;
+        SetBarText(fullBars);
+
 
         int crystalsSoFarInTier = crystalAmount - (crystalTiers[fullBars]);
         int crystalsNeededToLevel = crystalTiers[fullBars+1]- crystalTiers[fullBars];
         string crystalTotalText = "" + crystalsSoFarInTier + "/" + crystalsNeededToLevel;
         startingCrystals.text = crystalTotalText;
         crystalPanel.transform.localScale = new Vector3(remainderBars, 1, 1);
+    }
+
+    private void SetBarText(int fullBars)
+    {
+        string bonusText = "+" + (int)((fullBars-1) * crystalBonusValue);
+        crystalBonusText.text = bonusText;
     }
 
     //Setup Crystal Buffs
@@ -190,7 +200,7 @@ public class NewCrystalLevelController : MonoBehaviour
             }
             i++;
         }
-        GameData.Instance.DefenseCrystalBonus = (int)(1.5f * (i-1));
+        GameData.Instance.DefenseCrystalBonus = (int)(2f * (i-1));
     }
 
     private static void SetAttackBuff()
@@ -204,7 +214,7 @@ public class NewCrystalLevelController : MonoBehaviour
             }
             i++;
         }
-        GameData.Instance.AttackCrystalBonus = 3 * (i - 1);
+        GameData.Instance.AttackCrystalBonus = 4 * (i - 1);
 
     }
 

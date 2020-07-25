@@ -7,47 +7,11 @@ using UnityEngine;
 
 public class SoundManager : Singleton<SoundManager>
 {
-    [Serializable]
-    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
-    {
-        [SerializeField]
-        private List<TKey> keys = new List<TKey>();
-
-        [SerializeField]
-        private List<TValue> values = new List<TValue>();
-
-        // save the dictionary to lists
-        public void OnBeforeSerialize()
-        {
-            keys.Clear();
-            values.Clear();
-            foreach (KeyValuePair<TKey, TValue> pair in this)
-            {
-                keys.Add(pair.Key);
-                values.Add(pair.Value);
-            }
-        }
-
-        // load dictionary from lists
-        public void OnAfterDeserialize()
-        {
-            this.Clear();
-
-            if (keys.Count != values.Count)
-                throw new System.Exception(string.Format("there are {0} keys and {1} values after deserialization. Make sure that both key and value types are serializable."));
-
-            for (int i = 0; i < keys.Count; i++)
-                this.Add(keys[i], values[i]);
-        }
-    }
-
-    [Serializable] public class DictionaryOfStringAndFloat : SerializableDictionary<string, float> { }
-
     public static AudioClip potBreakSound, rockAttackStrongSound, rockAttackWeakSound;
     static AudioSource audioSrc;
     AudioSource environmentalSound;
     internal string currentlyPlayingEnvTrack = "";
-    public DictionaryOfStringAndFloat soundVolumeMap = new DictionaryOfStringAndFloat();
+    private DictionaryOfStringAndFloat soundVolumeMap = new DictionaryOfStringAndFloat();
     private bool loadedJson = false;
 
     // Start is called before the first frame update
@@ -64,23 +28,23 @@ public class SoundManager : Singleton<SoundManager>
             Directory.CreateDirectory(appPath + "/Sound");
         }
 
-        Debug.Log("Here, checking.");
+       // Debug.Log("Here, checking.");
         if (File.Exists(appPath + "/Sound/soundVolumeMap.json"))
         {
-            Debug.Log("Found, Loading.");
+            //Debug.Log("Found, Loading.");
             StreamReader reader = new StreamReader(appPath+"/Sound/soundVolumeMap.json");
             String json = reader.ReadToEnd();
-            Debug.Log("Loaded: " + json);
+            //Debug.Log("Loaded: " + json);
             soundVolumeMap = JsonUtility.FromJson<DictionaryOfStringAndFloat>(json);
-            foreach (string s in soundVolumeMap.Keys)
-            {
-                Debug.Log("Loaded: "+s + ", " + soundVolumeMap[s]);
-            }
+           // foreach (string s in soundVolumeMap.Keys)
+           //{
+           //     Debug.Log("Loaded: "+s + ", " + soundVolumeMap[s]);
+           // }
             reader.Close();
         }
         else
         {
-            Debug.Log("Not found, creating.");
+            //Debug.Log("Not found, creating.");
             File.Create(appPath + "/Sound/soundVolumeMap.json");
         }
     }
@@ -105,12 +69,12 @@ public class SoundManager : Singleton<SoundManager>
     {
         String appPath = Application.dataPath;
         StreamWriter writer = new StreamWriter(appPath + "/Sound/soundVolumeMap.json", false);
-        foreach (string s in soundVolumeMap.Keys)
-        {
-            Debug.Log(s+", "+soundVolumeMap[s]);
-        }
+        //foreach (string s in soundVolumeMap.Keys)
+        //{
+        //    Debug.Log(s+", "+soundVolumeMap[s]);
+        //}
         String toPrint = JsonUtility.ToJson(soundVolumeMap, true);
-        Debug.Log(toPrint);
+        //Debug.Log(toPrint);
         writer.Write(toPrint);
         writer.Flush();
         writer.Close();
@@ -155,15 +119,15 @@ public class SoundManager : Singleton<SoundManager>
         {
             CreateEnvironmentalSound();
         }
-        if (!environmentalSound)
-        {
-            CreateEnvironmentalSound();
-        }
-
-        environmentalSound.clip = Resources.Load<AudioClip>("Sounds/Environment/" + clip);
+        environmentalSound.clip = GetAudio("Sounds/Environment/" + clip);
         environmentalSound.loop = true;
         currentlyPlayingEnvTrack = clip;
         environmentalSound.Play();
+    }
+
+    private AudioClip GetAudio(string v)
+    {
+            return Resources.Load<AudioClip>(v);
     }
 
     public void ChangeEnvironmentTrack()
@@ -199,4 +163,40 @@ public class SoundManager : Singleton<SoundManager>
             environmentalSound.volume = 0;
         }
     }
+
+    [Serializable]
+    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+    {
+        [SerializeField]
+        private List<TKey> keys = new List<TKey>();
+
+        [SerializeField]
+        private List<TValue> values = new List<TValue>();
+
+        // save the dictionary to lists
+        public void OnBeforeSerialize()
+        {
+            keys.Clear();
+            values.Clear();
+            foreach (KeyValuePair<TKey, TValue> pair in this)
+            {
+                keys.Add(pair.Key);
+                values.Add(pair.Value);
+            }
+        }
+
+        // load dictionary from lists
+        public void OnAfterDeserialize()
+        {
+            this.Clear();
+
+            if (keys.Count != values.Count)
+                throw new System.Exception(string.Format("there are {0} keys and {1} values after deserialization. Make sure that both key and value types are serializable."));
+
+            for (int i = 0; i < keys.Count; i++)
+                this.Add(keys[i], values[i]);
+        }
+    }
+
+    [Serializable] public class DictionaryOfStringAndFloat : SerializableDictionary<string, float> { }
 }

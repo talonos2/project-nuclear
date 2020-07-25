@@ -86,7 +86,7 @@ public class GameData : Singleton<GameData>
     public bool map3_4Shortcut;
     public bool map4_3Shortcut;
     public bool map4_4Shortcut;
-    public bool map5_2Shortcut=true;
+    public bool map5_2Shortcut;
     public bool map5_3Shortcut;
 
     public bool iceBoss1;
@@ -161,7 +161,7 @@ public class GameData : Singleton<GameData>
             Debug.Log("Broken bestTimes thing");
         }
 
-        if (GameState.fullPause || FloorNumber == 0 || pauseTimer) { return; }
+        if (GameState.fullPause || FloorNumber == 0 || pauseTimer || isInDialogue) { return; }
 
         int tempSeconds = (int)(timer + Time.deltaTime);
         if (tempSeconds > (int)timer)
@@ -174,7 +174,8 @@ public class GameData : Singleton<GameData>
         minutes = (int)(timer / 60);
         if (minutes == 10)
         {
-            //Needs to really call the 'kill player' animation and then load deathscene from that script. That script should 'pause' the timer. 
+            //Needs to really call the 'kill player' animation and then load deathscene from that script. That script should 'pause' the timer.
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().deactivatePowers();
             GameState.isInBattle = false;
             SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
             MusicManager.instance.FadeOutMusic(-2, 3);

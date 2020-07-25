@@ -4976,6 +4976,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54be445103fbe743b714ba08a1c0e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMainCharacter: 0
+  isAMonster: 0
+  isLargeMonster: 0
+  isInteractableObject: 0
+  isItem: 0
+  isSwitch: 0
+  isNPC: 0
   MoveSpeed: 6
   framesPerSecond: 8
   facedDirection: 4
@@ -5193,12 +5200,22 @@ PrefabInstance:
     - target: {fileID: 2893497967410854414, guid: 24f8a22df5c342f4d98b201a4a034aee,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.345
       objectReference: {fileID: 0}
     - target: {fileID: 2893497967410854414, guid: 24f8a22df5c342f4d98b201a4a034aee,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.345
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893497967410854414, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.975
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893497967410854414, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.3
       objectReference: {fileID: 0}
     - target: {fileID: 6061950223787697102, guid: 24f8a22df5c342f4d98b201a4a034aee,
         type: 3}

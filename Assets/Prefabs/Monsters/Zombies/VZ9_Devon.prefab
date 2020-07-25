@@ -56,6 +56,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bbabb577345f240886179cc01bde1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMainCharacter: 0
+  isAMonster: 0
+  isLargeMonster: 0
+  isInteractableObject: 0
+  isItem: 0
+  isSwitch: 0
+  isNPC: 0
   MoveSpeed: 8
   framesPerSecond: 14
   facedDirection: 4
@@ -119,10 +126,10 @@ MonoBehaviour:
   attack: 15
   defense: 6
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.5, y: 0.36}
+  homePositionOnScreen: {x: 0.5, y: 0.2}
   strikingPointOffset: {x: 0, y: 0.6}
-  gettingStruckPointOffset: {x: -0.1, y: -0.8}
-  scale: {x: -6, y: 6}
+  gettingStruckPointOffset: {x: 0, y: -0.8}
+  scale: {x: -1.28, y: 1.28}
   forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Devon
   ExpGiven: 70
@@ -130,21 +137,28 @@ MonoBehaviour:
   crystalType: 5
   crystalDropAmount: 10
   combatSprites:
-  - {fileID: -7432455001469656116, guid: fa030c68bb7c9934db5cc3426c20315f, type: 3}
-  - {fileID: -4378609378536689549, guid: fa030c68bb7c9934db5cc3426c20315f, type: 3}
-  - {fileID: -235005333090480845, guid: fa030c68bb7c9934db5cc3426c20315f, type: 3}
-  - {fileID: -780640307914890170, guid: fa030c68bb7c9934db5cc3426c20315f, type: 3}
-  - {fileID: -780640307914890170, guid: fa030c68bb7c9934db5cc3426c20315f, type: 3}
-  attackAnimation: 8
+  - {fileID: -5817998509134764357, guid: 14dca9c925536a545951a94a70651320, type: 3}
+  - {fileID: 2643728883798948249, guid: 14dca9c925536a545951a94a70651320, type: 3}
+  - {fileID: 1611595851379681123, guid: 14dca9c925536a545951a94a70651320, type: 3}
+  - {fileID: 5655514085452977871, guid: 14dca9c925536a545951a94a70651320, type: 3}
+  - {fileID: 3445377128530010259, guid: 14dca9c925536a545951a94a70651320, type: 3}
+  attackAnimation: 3
   goodHit: {fileID: 8300000, guid: 5ca7f235d73607d42ad8560c0c032602, type: 3}
   badHit: {fileID: 8300000, guid: 5ca7f235d73607d42ad8560c0c032602, type: 3}
   goodBlock: {fileID: 8300000, guid: 43db8b45f31053a4ca340e2db1192b13, type: 3}
   badBlock: {fileID: 8300000, guid: 43db8b45f31053a4ca340e2db1192b13, type: 3}
+  powerupEffect: {fileID: 8894956876987107773, guid: 9634af92fc9994940ab26a1014c11372,
+    type: 3}
   iceBoss: 0
   earthBoss: 0
+  earthBoss2: 0
   fireBoss: 0
+  fireBoss2: 0
   airBoss: 0
+  airBoss2: 0
   deathBoss: 0
+  deathBoss2: 0
+  finalBoss: 0
 --- !u!1 &3128599578980096542
 GameObject:
   m_ObjectHideFlags: 0

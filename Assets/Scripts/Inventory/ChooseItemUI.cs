@@ -21,6 +21,7 @@ public class ChooseItemUI : MonoBehaviour
     private bool pickingItem;
     private CharacterStats playerData;
     private InventoryItem rolledItem;
+    private float delayBeforePressing = .3f;
 
     public int selectedButton = -1;
     public Sprite equipOn;
@@ -33,34 +34,42 @@ public class ChooseItemUI : MonoBehaviour
     void Start()
     {
         SelectButton(1);
+        //optionSelected = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (GameState.fullPause || !pickingItem) { return; }
-        
+        delayBeforePressing -= Time.deltaTime;
+
+        if (Input.GetButtonDown("Submit"))
+        {
+            delayBeforePressing = .3f;
+            ChooseItem();
+        }
 
         if (Input.GetAxis("Horizontal")>.05f )
         {
-            optionSelected = 0;
-            SelectButton(0);
+            if (delayBeforePressing < 0) {
+                //optionSelected = 0;
+                SelectButton(0);
+            }
+
         }
 
         if (Input.GetAxis("Horizontal") < -.05f)
         {
-            optionSelected = 1;
+            //optionSelected = 1;
             SelectButton(1);
         }
 
-        if (Input.GetButtonDown("Submit"))
-        {
-             ChooseItem(); 
-        }
+
     }
 
     public void SelectButton(int buttonToSelect)
     {
+        optionSelected = buttonToSelect;
         if (buttonToSelect != selectedButton && selectedButton != -1)
         {
             SoundManager.Instance.PlaySound("MenuMove", 1f);
@@ -85,6 +94,7 @@ public class ChooseItemUI : MonoBehaviour
 
     private void ChooseItem()
     {
+        //Debug.Log("What did I pick "+optionSelected);
         if (!pickingItem) { return; }
         if (optionSelected == 0)
         {
@@ -94,40 +104,47 @@ public class ChooseItemUI : MonoBehaviour
         {
             SoundManager.Instance.PlaySound("MenuOkay", 1f);
         }
+
         if (rolledItem is Weapon)
         {
             if (optionSelected == 0)
             {
-                SendToTown(playerData.weapon);
+
+                if (playerData.weapon.name != "Knife")
+                    SendToTown(playerData.weapon);
                 playerData.setWeapon((Weapon)rolledItem);
 
             }
             else
             {
-                SendToTown((Weapon)rolledItem);
+                
+                    SendToTown((Weapon)rolledItem);
             }
         }
         else if (rolledItem is Armor)
         {
             if (optionSelected == 0)
             {
-                SendToTown(playerData.armor);
+                if (playerData.armor.name != "Warm Jacket")
+                    SendToTown(playerData.armor);
                 playerData.setArmor((Armor)rolledItem);
             }
             else
             {
-                SendToTown((Armor)rolledItem);
+                    SendToTown((Armor)rolledItem);
             }
         }
         else if (rolledItem is Accessory)
         {
             if (optionSelected == 0)
             {
-                SendToTown(playerData.accessory);
+                if (playerData.accessory.name != "No Accessory Equipped")
+                    SendToTown(playerData.accessory);
                 playerData.setAccessory((Accessory)rolledItem);
             }
             else {
-                SendToTown((Accessory)rolledItem);
+
+                    SendToTown((Accessory)rolledItem);
             }
         }
     }
@@ -138,6 +155,7 @@ public class ChooseItemUI : MonoBehaviour
         GameState.isInBattle = true;
         pickingItem = true;
         chooseItemUiCanvas.enabled = true;
+        SelectButton(1);
         SetItemUI();
     }
 

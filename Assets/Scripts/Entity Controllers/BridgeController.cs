@@ -19,20 +19,23 @@ public class BridgeController : DoodadData
             RunPrimAlgorythm(primToCheck);
         }
         if (this.isPlatformTerrain == false) {
-            HidePlatform();
+            //HidePlatform();
+            RemovePlatform();
         }
 
 
     }
 
     public void RunPrimAlgorythm(BobPrim checkedPrim) {
+        if (primToCheck==null) GameObject.Find("Grid").GetComponent<BobPrim>();
         if (checkedPrim.result[primConnectionNumber])
         {
             AddPlatform();            
         }
         else
         {
-            HidePlatform();
+            //HidePlatform();
+            RemovePlatform();
         }
     }
     public void RemovePlatform() {
@@ -50,9 +53,10 @@ public class BridgeController : DoodadData
     }
     public void AddPlatform() {
         this.isPlatformTerrain = true;
-        if (invisibleBridge) return;
-        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
         MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = this.gameObject;
+        if (!invisibleBridge) 
+            this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+        
     }
    
 }
