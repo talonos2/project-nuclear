@@ -32,7 +32,7 @@ public class CharacterStats : Stats
     public Sprite bustSprite;
     private CharacterMovement savedCharacterMovement;
 
-    internal void setCharacterStats(CharacterMovement characterMovement)
+    internal void setCharacterMoveScript(CharacterMovement characterMovement)
     {
         savedCharacterMovement = characterMovement;
     }
@@ -246,6 +246,10 @@ public class CharacterStats : Stats
             HealthPerLevel = 11;
         }
 
+        baseMaxHealth += HealthPerLevel;
+        baseMaxMana += ManaPerLevel;
+        baseAttack += AttackPerLevel;
+        baseDefense += DefensePerLevel;
 
         if (GameData.Instance.RunNumber == 1) {
             weapon = itemData.getRunOneWeapon();

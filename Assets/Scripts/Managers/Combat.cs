@@ -9,6 +9,7 @@ public class Combat : MonoBehaviour
 {
     private static readonly float ENTER_TIME = .3f;
     private static readonly float EXIT_TIME = .3f;
+    
     private bool oneLastEnterFrame = true;
 
     //Starts a fight, creating a new game object with an instance of this monobehavior.
@@ -362,18 +363,26 @@ public class Combat : MonoBehaviour
                 playerStats.defenseCrystalsGained += monsterStats.crystalDropAmount;
                 playerStats.HealthCrystalsGained += monsterStats.crystalDropAmount;
                 playerStats.ManaCrystalsGained += monsterStats.crystalDropAmount;
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject,monsterStats.powerupEffect);
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.DEFENSE, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.MANA, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.HEALTH, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 break;
             case CrystalType.ATTACK:
                 playerStats.AttackCrystalsGained += monsterStats.crystalDropAmount;
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats,  monsterStats.gameObject, monsterStats.powerupEffect);
                 break;
             case CrystalType.DEFENSE:
                 playerStats.defenseCrystalsGained += monsterStats.crystalDropAmount;
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.DEFENSE, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 break;
             case CrystalType.HEALTH:
                 playerStats.HealthCrystalsGained += monsterStats.crystalDropAmount;
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.HEALTH, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 break;
             case CrystalType.MANA:
                 playerStats.ManaCrystalsGained += monsterStats.crystalDropAmount;
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.MANA, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 break;
             default:
                 break;
@@ -570,8 +579,12 @@ public class Combat : MonoBehaviour
         else { SoundManager.Instance.PlaySound("Combat/BadBlock", 1f); }
 
         float incomingDamage = monsterStats.attack;
-        if (goodBlock) { incomingDamage *= .833f; }
-        incomingDamage -= playerStats.defense;
+        if (goodBlock) {
+            //incomingDamage *= .9f;
+            incomingDamage -= playerStats.defense*1.2f+1;
+
+        }
+         else incomingDamage -= playerStats.defense;
         
         goodBlock = false;
         incomingDamage = Math.Max(incomingDamage, 0);

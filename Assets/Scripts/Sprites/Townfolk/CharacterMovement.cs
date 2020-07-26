@@ -30,7 +30,7 @@ public class CharacterMovement : SpriteMovement
     {
         base.Start();
         playerStats = this.GetComponent<CharacterStats>();
-        playerStats.setCharacterStats(this);
+        playerStats.setCharacterMoveScript(this);
         jumpPivot = sRender.transform.parent;
         shield = sRender.gameObject.transform.GetChild(0).gameObject;
         smoke = sRender.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();

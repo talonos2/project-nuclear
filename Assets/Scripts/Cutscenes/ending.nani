@@ -539,8 +539,50 @@
 		@endif
 
 		@char Meyster
-		Meyster: talky stuff-----------
+		Meyster: You did it! You completed your first nobel quest!
+		@char Pendleton
+		Pendleton: Yes, I suppose I did.
+		@char Meyster
+		Meyster: It is a bittersweet occasion.
+		Meyster: I revel in your trumph.
+		Meyster: But I did not think I would be losing my squire so soon.
+		@char Pendleton
+		Pendleton: Losing?
+		@char Meyster
+		Meyster: You are not a student anymore.
+		@char Pendleton
+		Pendleton: I still have much to learn.
+		@char Meyster
+		Meyster: Ah but now you will learn by doing!
+		Meyster: There is no better school than the open road.
+		@char Pendleton
+		Pendleton: I... I am not ready.
+		@char Meyster
+		Meyster: Pardon? I saw you vanquish evil myself!
+		@char pendleton
+		Pendleton: That shouldn't count, I had magic at the time.
+		@if GetHiro()
+			Pendleton: Speaking of, I ought to be returning this ring to Hiro.
+		else
+			@char Meyster
+			Meyster: I am sure Hiro would be honored if you carried on his legacy.
+			@char Pendleton
+			Pendleton: No, I'm sure the honoroably thing to do would be to return it to his next of kin.
+		@endif
 
+		@char Meyster
+		Meyster: Then, what will you do?
+		@char Pendleton
+		Pendleton: I will continue training, at least a little while longer.
+		@char Meyster
+		Meyster: Very well, if that is what you want.
+
+		@endif
+
+		@exit
+
+
+		IIIIIIIIIIIIIIIIIIIIIIIIIIIIII cut dialogue I may find another place for.
 
 		@char Pendleton
 		Pendleton: Here is your ring back mister Hiro.
@@ -557,14 +599,12 @@
 		@char Pendleton
 		Pendleton: You seem to have done this before, but it didn't have any power when you got here.
 		@char Douglass
-		Douglass: Usually it's not such a big deal. Something was different here.
+		Douglass: You got it.[br]Usually it's not such a big deal. Something was different here.
 		@char Pendleton
 		Pendleton: You don't say.
 
 
-		@endif
 
-		@exit
 
 		
 
@@ -1217,7 +1257,7 @@
 				@char Mara
 				Mara: Just feeling a bit woozy
 			@endif
-			@elseif GetDerringer()
+			@if GetDerringer()
 				@char Derringer
 				Derringer: My teeth hurt...
 			@endif
@@ -2473,6 +2513,7 @@
 		Elder: Is it over?
 		@char Metra
 		Metra: I, I'm not sure...
+		@char JohnDoe
 		JohnDoe: It's good enough for me. Monsters are dead.
 		@char Meyster
 		Meyster: Lift your head. It is a grand day!
@@ -2517,7 +2558,7 @@
 		Douglass: Well, I just wanted to go back in.
 		@char Melvardius
 		Melvardius: I do not know what lies in that cave.
-		Melverdius: But I do know a thing or two about temptation.
+		Melvardius: But I do know a thing or two about temptation.
 		Melvardius: I too feel a pull to return.
 		Melvardius: And that in and of itself is enough to frighten me.
 		Melvardius: We will need to carefully consider how we proceed.
@@ -2526,9 +2567,8 @@
 
 		@char Elder
 		Elder: We have won, but it has cost us.
-		Elder: 
 
-		@endif
+		
 
 		;fadetoblack
 
@@ -2601,6 +2641,8 @@
 				@char Todd
 				Todd: Follow, or don't, it's your choice.
 			@endif
+		@endif
+		
 
 		@elseif GetWorst()
 		@char Elder

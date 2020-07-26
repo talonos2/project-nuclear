@@ -181,7 +181,7 @@ namespace Naninovel
             PlayedScript = null;
             DisableWaitingForInput();
             DisableAutoPlay();
-            Debug.Log("Reset script player.");
+           // Debug.Log("Reset script player.");
             DisableSkip();
         }
 

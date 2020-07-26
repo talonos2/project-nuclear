@@ -187,16 +187,9 @@ public class NewGameController : MonoBehaviour
                 
                 //load cutscene runvar-1
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
-                if (PerfeToggle.GetComponent<Toggle>().isOn == true)
-                {
-                    GameData.Instance.Perfect = 1;
-                    GameData.Instance.Worst = 0;
-                }
-                if (WorstToggle.GetComponent<Toggle>().isOn == true)
-                {
-                    GameData.Instance.Perfect = 0;
-                    GameData.Instance.Worst = 1;
-                }
+
+                GameData.Instance.Perfect = Convert.ToInt32(PerfeToggle.GetComponent<Toggle>().isOn);
+                GameData.Instance.Worst = Convert.ToInt32(WorstToggle.GetComponent<Toggle>().isOn);
 
                 GameData.Instance.Douglass = Convert.ToInt32(DouglassToggle.GetComponent<Toggle>().isOn);
                 GameData.Instance.Sara = Convert.ToInt32(SaraToggle.GetComponent<Toggle>().isOn);
