@@ -1217,7 +1217,7 @@
 				@char Mara
 				Mara: Just feeling a bit woozy
 			@endif
-			@elseif GetDerringer()
+			@if GetDerringer()
 				@char Derringer
 				Derringer: My teeth hurt...
 			@endif
@@ -2473,6 +2473,7 @@
 		Elder: Is it over?
 		@char Metra
 		Metra: I, I'm not sure...
+		@char JohnDoe
 		JohnDoe: It's good enough for me. Monsters are dead.
 		@char Meyster
 		Meyster: Lift your head. It is a grand day!
@@ -2517,7 +2518,7 @@
 		Douglass: Well, I just wanted to go back in.
 		@char Melvardius
 		Melvardius: I do not know what lies in that cave.
-		Melverdius: But I do know a thing or two about temptation.
+		Melvardius: But I do know a thing or two about temptation.
 		Melvardius: I too feel a pull to return.
 		Melvardius: And that in and of itself is enough to frighten me.
 		Melvardius: We will need to carefully consider how we proceed.
@@ -2526,9 +2527,8 @@
 
 		@char Elder
 		Elder: We have won, but it has cost us.
-		Elder: 
 
-		@endif
+		
 
 		;fadetoblack
 
@@ -2601,6 +2601,8 @@
 				@char Todd
 				Todd: Follow, or don't, it's your choice.
 			@endif
+		@endif
+		
 
 		@elseif GetWorst()
 		@char Elder
