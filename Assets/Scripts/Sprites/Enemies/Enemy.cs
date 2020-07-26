@@ -11,6 +11,7 @@ public class Enemy : Stats
     public CrystalType crystalType = CrystalType.NULL;
     public int crystalDropAmount;
     public Vector2 hitsplatOffset = new Vector2(0, 0);
+    public Vector2 combatOffset;
 
 
 
