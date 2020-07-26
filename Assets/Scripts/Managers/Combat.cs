@@ -236,6 +236,7 @@ public class Combat : MonoBehaviour
         int enemyFrame = monsterStats.attackAnimation.HandleAnimation(timeSinceLastMonsterAttack, monsterSprite, playerSprite, playerStats, monsterStats);
         playerSprite.GetComponent<SpriteRenderer>().sprite = playerStats.combatSprites[playerFrame];
         playerSprite.transform.localPosition = new Vector3(playerSprite.transform.localPosition.x, playerSprite.transform.localPosition.y, -.05f);
+        Debug.Log(enemyFrame);
         monsterSprite.GetComponent<SpriteRenderer>().sprite = monsterStats.combatSprites[enemyFrame];
 
         if (Input.GetButtonDown("Attack/Defend") && buttonPressedTime > .5f)
