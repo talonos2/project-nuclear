@@ -107,16 +107,18 @@ MonoBehaviour:
   attack: 155
   defense: 39
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.5, y: -1.5}
+  homePositionOnScreen: {x: -0.03, y: -1.11}
   strikingPointOffset: {x: 0.3, y: -0.8}
-  gettingStruckPointOffset: {x: -0.2, y: 1}
+  gettingStruckPointOffset: {x: 0.01, y: 0.42}
   scale: {x: 1, y: 1}
-  forceOpponentAdditionalScale: {x: 1, y: 1}
+  forceOpponentAdditionalScale: {x: 0.9, y: 0.9}
   enemyName: ???
   ExpGiven: 5000
   weakness: 0
   crystalType: 5
   crystalDropAmount: 50
+  hitsplatOffset: {x: 3.48, y: 2.69}
+  combatOffset: {x: 1.2, y: 0}
   combatSprites:
   - {fileID: 5455440215019970200, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
   - {fileID: 2896696592278850435, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
@@ -124,7 +126,7 @@ MonoBehaviour:
   - {fileID: -6527734923106440700, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
   - {fileID: -1212847848265019255, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
   - {fileID: 6523655307472929746, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
-  attackAnimation: 0
+  attackAnimation: 5
   goodHit: {fileID: 0}
   badHit: {fileID: 0}
   goodBlock: {fileID: 0}

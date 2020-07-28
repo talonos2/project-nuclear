@@ -59,6 +59,8 @@ public class AttackAnimationManager : Singleton<AttackAnimationManager>
     public Vector3 playerHitsplatOffset = new Vector3(-1.5f, 3, 0);
     public Vector3 monsterHitsplatOffset = new Vector3(-1, 4, 0);
 
+    public float[] finalBossFrameTimes = new float[] { .05f, .1f, .15f,.2f,.25f,.3f,.35f,.4f,.45f,.5f,.55f };
+
     // Start is called before the first frame update
     void Start()
     {
