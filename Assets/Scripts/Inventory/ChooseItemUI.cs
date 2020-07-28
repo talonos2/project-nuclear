@@ -142,8 +142,8 @@ public class ChooseItemUI : MonoBehaviour
         {
             if (optionSelected == 0)
             {
-                if (playerData.accessory.name != "No Accessory Equipped")
-                    SendToTown(playerData.accessory);
+                
+                SendToTown(playerData.accessory);
                 playerData.setAccessory((Accessory)rolledItem);
             }
             else {
@@ -275,12 +275,17 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (i)
         {
-            if (!GameData.bestAccessoryFound || (GameData.bestAccessoryFound < i))
+            if (playerData.accessory.name != "No Accessory Equipped")
             {
-                GameData.bestAccessoryFound = i;
+                if (!GameData.bestAccessoryFound || (GameData.bestAccessoryFound < i))
+                {
+                    GameData.bestAccessoryFound = i;
+                }
+
+                GameData.Instance.townAccessories.Add(i);
+                sendGabToTownMessage("<sprite=2> " + i.gameObject.name + " sent to town.");
             }
-            GameData.Instance.townAccessories.Add(i);
-            sendGabToTownMessage("<sprite=2> " + i.gameObject.name + " sent to town.");
+
         }
         closeItemPickUI();
     }
