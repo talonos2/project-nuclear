@@ -51,5 +51,8 @@ public class Enemy : Stats
         if (airBoss2 && GameData.Instance.airBoss2 || airBoss2 && !GameData.Instance.airBoss1) { Destroy(this.gameObject); }
     }
 
+    public virtual void doUponDeath() {
+        //Will do nothing unless a child script changes this. Called by Combat. 
+    }
 
 }
