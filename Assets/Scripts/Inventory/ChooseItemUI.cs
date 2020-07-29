@@ -30,9 +30,13 @@ public class ChooseItemUI : MonoBehaviour
     public Sprite sendOff;
     public Sprite[] itemIcons;
 
+    private GabTextController gabTextController;
+
     // Start is called before the first frame update
     void Start()
     {
+        gabTextController = this.gameObject.GetComponent<GabTextController>();
+
         SelectButton(1);
         //optionSelected = 1;
     }
@@ -45,8 +49,8 @@ public class ChooseItemUI : MonoBehaviour
 
         if (Input.GetButtonDown("Submit"))
         {
-            delayBeforePressing = .3f;
             ChooseItem();
+            delayBeforePressing = .3f; //So that the next item also has a delay
         }
 
         if (Input.GetAxis("Horizontal")>.05f )
@@ -110,7 +114,7 @@ public class ChooseItemUI : MonoBehaviour
             if (optionSelected == 0)
             {
 
-                if (playerData.weapon.name != "Knife")
+                
                     SendToTown(playerData.weapon);
                 playerData.setWeapon((Weapon)rolledItem);
 
@@ -125,8 +129,8 @@ public class ChooseItemUI : MonoBehaviour
         {
             if (optionSelected == 0)
             {
-                if (playerData.armor.name != "Warm Jacket")
-                    SendToTown(playerData.armor);
+                
+                SendToTown(playerData.armor);
                 playerData.setArmor((Armor)rolledItem);
             }
             else
@@ -138,8 +142,8 @@ public class ChooseItemUI : MonoBehaviour
         {
             if (optionSelected == 0)
             {
-                if (playerData.accessory.name != "No Accessory Equipped")
-                    SendToTown(playerData.accessory);
+                
+                SendToTown(playerData.accessory);
                 playerData.setAccessory((Accessory)rolledItem);
             }
             else {
@@ -172,9 +176,8 @@ public class ChooseItemUI : MonoBehaviour
             foundItemStat = rolledItem.GetComponent<Weapon>().addAttack;
             oldItemStat = playerData.weapon.GetComponent<Weapon>().addAttack;
             if (rolledItem.name == playerData.weapon.name||foundItemStat == oldItemStat) {
-                GameData.Instance.townWeapons.Add((Weapon)rolledItem);
-                sendGabToTownMessage(rolledItem);
-                closeItemPickUI();
+                SendToTown((Weapon)rolledItem);
+                //closeItemPickUI();
                 return;
             }
             totalStatChange = foundItemStat - oldItemStat;
@@ -190,9 +193,8 @@ public class ChooseItemUI : MonoBehaviour
             oldItemStat = playerData.armor.GetComponent<Armor>().addDefense;
             if (rolledItem.name == playerData.armor.name || foundItemStat== oldItemStat)
             {
-                GameData.Instance.townArmor.Add((Armor)rolledItem);
-                sendGabToTownMessage(rolledItem);
-                closeItemPickUI();
+                SendToTown((Armor)rolledItem);
+                //closeItemPickUI();
                 return;
             }
 
@@ -206,9 +208,8 @@ public class ChooseItemUI : MonoBehaviour
         {
             if (rolledItem.name == playerData.accessory.name)
             {
-                GameData.Instance.townAccessories.Add((Accessory)rolledItem);
-                sendGabToTownMessage(rolledItem);
-                closeItemPickUI();
+                SendToTown((Accessory)rolledItem);
+                //closeItemPickUI();
                 return;
             }
             foundItemText = rolledItem.gameObject.name + " TODO: Brief Desc.";
@@ -223,9 +224,9 @@ public class ChooseItemUI : MonoBehaviour
         //newItemSprite.GetComponent<Image>().sprite = rolledItem.GetComponent<InventoryItem>().itemIcon;
     }
 
-    private void sendGabToTownMessage(InventoryItem itemSent)
+    private void sendGabToTownMessage(string itemSentString)
     {
-        //throw new NotImplementedException();
+        gabTextController.AddGabToPlay(itemSentString);
     }
 
 
@@ -246,8 +247,11 @@ public class ChooseItemUI : MonoBehaviour
             {
                 GameData.bestWeaponFound = i;
             }
-            GameData.Instance.townWeapons.Add(i);
-            sendGabToTownMessage(i);
+
+
+            if (playerData.weapon.name != "Knife")
+                GameData.Instance.townWeapons.Add(i);
+            sendGabToTownMessage("<sprite=0> " + i.gameObject.name + " sent to town.");
         }
         closeItemPickUI();
     }
@@ -260,8 +264,9 @@ public class ChooseItemUI : MonoBehaviour
             {
                 GameData.bestArmorFound = i;
             }
-            GameData.Instance.townArmor.Add(i);
-            sendGabToTownMessage(i);
+            if (playerData.armor.name != "Warm Jacket")
+                GameData.Instance.townArmor.Add(i);
+            sendGabToTownMessage("<sprite=1> " + i.gameObject.name + " sent to town.");
         }
         closeItemPickUI();
     }
@@ -270,12 +275,17 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (i)
         {
-            if (!GameData.bestAccessoryFound || (GameData.bestAccessoryFound < i))
+            if (playerData.accessory.name != "No Accessory Equipped")
             {
-                GameData.bestAccessoryFound = i;
+                if (!GameData.bestAccessoryFound || (GameData.bestAccessoryFound < i))
+                {
+                    GameData.bestAccessoryFound = i;
+                }
+
+                GameData.Instance.townAccessories.Add(i);
+                sendGabToTownMessage("<sprite=2> " + i.gameObject.name + " sent to town.");
             }
-            GameData.Instance.townAccessories.Add(i);
-            sendGabToTownMessage(i);
+
         }
         closeItemPickUI();
     }

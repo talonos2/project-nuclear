@@ -11,6 +11,7 @@ public class Enemy : Stats
     public CrystalType crystalType = CrystalType.NULL;
     public int crystalDropAmount;
     public Vector2 hitsplatOffset = new Vector2(0, 0);
+    public Vector2 combatOffset;
 
 
 
@@ -50,5 +51,8 @@ public class Enemy : Stats
         if (airBoss2 && GameData.Instance.airBoss2 || airBoss2 && !GameData.Instance.airBoss1) { Destroy(this.gameObject); }
     }
 
+    public virtual void doUponDeath() {
+        //Will do nothing unless a child script changes this. Called by Combat. 
+    }
 
 }

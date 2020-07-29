@@ -11,13 +11,14 @@ public class BossSpawnAnimator : MonoBehaviour
     protected int currentFrame = 0;
     protected Renderer sRender;
     protected GameObject ThePlayer;
-    internal bool spawnBoss;
+    public bool spawnBoss;
     public GameObject bossSpawnedPrefab;
     protected float offsetFix = .00001f;
     public float yPositionSpawning=-10.5f;
     public float xPositionSpawning = 0;
     protected static readonly float BOSS_SPAWN_SOUND_START_TIME = .5f;
     protected bool playedSpawnSound = false;
+    public SpriteRenderer shadowAdded;
 
     public void Start()
     {
@@ -30,9 +31,11 @@ public class BossSpawnAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.fullPause) return;
         if (ThePlayer.transform.position.y>= yPositionSpawning && ThePlayer.transform.position.x== xPositionSpawning && !spawnBoss) {
             spawnBoss = true;
             sRender.enabled = true;
+            shadowAdded.enabled = true;
             sRender.material.SetFloat("_Frame", currentFrame+offsetFix);
             //Debug.Log("Did I transform?");
         }

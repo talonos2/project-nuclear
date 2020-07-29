@@ -127,6 +127,7 @@ public class Combat : MonoBehaviour
 
     public void Update()
     {
+        playerSprite.transform.parent.localPosition = new Vector3(monsterStats.combatOffset.x, monsterStats.combatOffset.y,2);
         if (GameState.fullPause) return;
 
         if (enterTimer < ENTER_TIME)
@@ -427,6 +428,7 @@ public class Combat : MonoBehaviour
         }
         //playerStats.currentPower = elementSelected;
         playerStats.PushCharacterData();
+        monsterStats.doUponDeath();
         Destroy(monsterToDelete);
     }
 

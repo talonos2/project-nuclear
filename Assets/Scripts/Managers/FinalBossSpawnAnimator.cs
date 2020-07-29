@@ -13,13 +13,14 @@ public class FinalBossSpawnAnimator : BossSpawnAnimator
     // Update is called once per frame
     void Update()
     {
-
+        if (GameState.fullPause) return;
         if (!spawnBoss)
         {
             return;
         }
         sRender.enabled = true;
         sRender.material.SetFloat("_Frame", currentFrame + offsetFix);
+        shadowAdded.enabled = true;
         frameCounter += Time.deltaTime;
         /*Debug.Log("frameCounter "+ frameCounter);
         if (frameCounter >= BOSS_SPAWN_SOUND_START_TIME&&!playedSpawnSound)

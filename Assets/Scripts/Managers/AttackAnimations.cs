@@ -24,6 +24,8 @@ public static class AttackAnimationExtensions
                 return HandleHopAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats, true, true, true);
             case AttackAnimation.STATIONARY_THRUST:
                 return HandleStationaryThrustAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
+            case AttackAnimation.FINAL_BOSS:
+                return HandleFinalBossAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
             case AttackAnimation.ORBITAL_LASER:
                 return HandleOrbitalLaserAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
             case AttackAnimation.DUMP:
@@ -142,6 +144,25 @@ public static class AttackAnimationExtensions
         if (timeSinceStart > aam.initialThrustImpactTime && timeSinceStart < (aam.initialThrustImpactTime + aam.thrustFrameTime.x + aam.thrustFrameTime.y + aam.thrustFrameTime.z + aam.thrustFrameTime.w))
         {
             return 5;
+        }
+        return 0;
+    }
+
+    private static int HandleFinalBossAnimation(float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
+    {
+        AttackAnimationManager aam = AttackAnimationManager.Instance;
+        int flip = (userStats.homePositionOnScreen.x < targetStats.homePositionOnScreen.x ? 1 : -1);
+
+        HandleKnockbackFromStationarySource(timeSinceStart, targetSprite, targetStats, aam, flip);
+
+        //Which frame are we in?
+        for (int x = 10; x >= 0; x--)
+        {
+            Debug.Log(x + ", " + aam.finalBossFrameTimes.Length);
+            if (timeSinceStart >= aam.finalBossFrameTimes[x])
+            {
+                return x;
+            }
         }
         return 0;
     }
@@ -318,6 +339,8 @@ public static class AttackAnimationExtensions
                 return 1;
             case AttackAnimation.STATIONARY_THRUST:
                 return 1;
+            case AttackAnimation.FINAL_BOSS:
+                return 1;
             case AttackAnimation.ORBITAL_LASER:
                 return 1;
             case AttackAnimation.DUMP:
@@ -345,6 +368,8 @@ public static class AttackAnimationExtensions
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
             case AttackAnimation.STATIONARY_THRUST:
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
+            case AttackAnimation.FINAL_BOSS:
+                return AttackAnimationManager.Instance.enemyKnockBackStart;
             case AttackAnimation.ORBITAL_LASER:
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
             case AttackAnimation.DUMP:
@@ -371,6 +396,8 @@ public static class AttackAnimationExtensions
             case AttackAnimation.FIVE_FRAME_HOP_WITH_ANTICIPATE:
                 return AttackAnimationManager.Instance.hopSwingSoundPoint;
             case AttackAnimation.STATIONARY_THRUST:
+                return AttackAnimationManager.Instance.thrustSoundPoint;
+            case AttackAnimation.FINAL_BOSS:
                 return AttackAnimationManager.Instance.thrustSoundPoint;
             case AttackAnimation.ORBITAL_LASER:
                 return AttackAnimationManager.Instance.orbitalLaserSoundPoint;
@@ -403,6 +430,9 @@ public static class AttackAnimationExtensions
                 SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
                 return;
             case AttackAnimation.STATIONARY_THRUST:
+                SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
+                return;
+            case AttackAnimation.FINAL_BOSS:
                 SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
                 return;
             case AttackAnimation.ORBITAL_LASER:
@@ -496,4 +526,4 @@ public static class AttackAnimationExtensions
     }
 }
 
-public enum AttackAnimation { HOP, BLAST, PLAYER_HOP, FIVE_FRAME_HOP, FIVE_FRAME_HOP_WITH_ANTICIPATE, STATIONARY_THRUST, ORBITAL_LASER, DUMP, THRUST };
+public enum AttackAnimation { HOP, BLAST, PLAYER_HOP, FIVE_FRAME_HOP, FIVE_FRAME_HOP_WITH_ANTICIPATE, STATIONARY_THRUST, ORBITAL_LASER, DUMP, THRUST, FINAL_BOSS };
