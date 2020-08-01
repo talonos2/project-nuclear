@@ -18,9 +18,5 @@ public class UIPortraitLoader : MonoBehaviour
         text.text = stats.charName;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
