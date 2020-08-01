@@ -119,7 +119,10 @@ public class GameData : Singleton<GameData>
 
     internal void autoSaveStats()
     {
-        LoadSaveController.autoSave(RunNumber, furthestFloorAchieved);
+        LoadSaveController autoSaveControl = new LoadSaveController();
+        autoSaveControl.autoSave();
+        
+        //.autoSave();
     }
 
     public void SetNextLocation(Vector2Int location, SpriteMovement.DirectionMoved facing)

@@ -21,14 +21,14 @@ public class GameSaverManager
 
         public int FloorNumber = 0;
 
-        public int RunNumber = 1;
+        public int RunNumber = 0;
         public int PowersGained = 0;
         internal int furthestFloorAchieved;
-        internal float[] bestTimes;
-    private bool iceBoss1;
-    private bool earthBoss1;
-    private bool fireBoss1;
-    private bool airBoss1;
+        internal float[] bestTimes=new float [20];
+    public bool iceBoss1;
+    public bool earthBoss1;
+    public bool fireBoss1;
+    public bool airBoss1;
     private bool earthBoss2;
     private bool fireBoss2;
     private bool airBoss2;
@@ -101,7 +101,12 @@ public class GameSaverManager
 
     }
 
-        public void PushSaveToGameData()
+    internal void SetupBlankSave()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void PushSaveToGameData()
         {
             GameData.Instance.HealhCrystalBonus = HealhCrystalBonus;
             GameData.Instance.ManaCrystalBonus = ManaCrystalBonus;

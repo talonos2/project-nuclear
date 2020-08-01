@@ -13,6 +13,8 @@ public class EscapeKeyController : MonoBehaviour
     protected float delayCounter = 0;
     public GameObject canvas;
     public GameObject[] selected;
+    public LoadSaveController loadSaveController;
+    public bool inOtherMenu;
 
 
 
@@ -116,7 +118,9 @@ public class EscapeKeyController : MonoBehaviour
         hideButtonSelection();
         buttonSelected = 0;
         showButtonSelection();
-        //Load 'load game' ui screen
+        canvas.SetActive(false);
+        loadSaveController.activateLoad(this);
+
     }
     public void optionButtonClicked()
     {
@@ -132,7 +136,6 @@ public class EscapeKeyController : MonoBehaviour
         showButtonSelection();
         GameState.fullPause = false;
         SceneManager.LoadScene("TitleScreen");
-        //load scene
     }
     public void ExitGameButtonClicked()
     {
@@ -143,7 +146,9 @@ public class EscapeKeyController : MonoBehaviour
         Application.Quit();
     }
 
-
-
-
+    internal void ReActivate()
+    {
+        inOtherMenu = false;
+        canvas.SetActive(true);
+    }
 }

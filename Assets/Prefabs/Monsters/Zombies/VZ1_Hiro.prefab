@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3128599578249191477}
   - component: {fileID: 3128599578249191478}
   - component: {fileID: 3128599578249191472}
-  - component: {fileID: 3128599578249191479}
+  - component: {fileID: 7764904854399129233}
   m_Layer: 0
   m_Name: VZ1_Hiro
   m_TagString: Untagged
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3128599578249191479
+--- !u!114 &7764904854399129233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,24 +118,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 3128599578249191473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 47c37f09f74514d45869512a20e272af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 500
-  HP: 500
-  attack: 15
-  defense: 6
+  MaxHP: 1280
+  HP: 1280
+  attack: 142
+  defense: 29
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.5, y: 0.2}
   strikingPointOffset: {x: 0, y: 0.6}
   gettingStruckPointOffset: {x: 0, y: -0.8}
   scale: {x: -1.28, y: 1.28}
   forceOpponentAdditionalScale: {x: 1, y: 1}
-  enemyName: Hiro
-  ExpGiven: 70
+  enemyName: Douglass
+  ExpGiven: 2900
   weakness: 0
   crystalType: 5
-  crystalDropAmount: 10
+  crystalDropAmount: 35
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: -5817998509134764357, guid: 14dca9c925536a545951a94a70651320, type: 3}
   - {fileID: 2643728883798948249, guid: 14dca9c925536a545951a94a70651320, type: 3}
@@ -143,10 +145,10 @@ MonoBehaviour:
   - {fileID: 5655514085452977871, guid: 14dca9c925536a545951a94a70651320, type: 3}
   - {fileID: 3445377128530010259, guid: 14dca9c925536a545951a94a70651320, type: 3}
   attackAnimation: 3
-  goodHit: {fileID: 8300000, guid: 5ca7f235d73607d42ad8560c0c032602, type: 3}
-  badHit: {fileID: 8300000, guid: 5ca7f235d73607d42ad8560c0c032602, type: 3}
-  goodBlock: {fileID: 8300000, guid: 43db8b45f31053a4ca340e2db1192b13, type: 3}
-  badBlock: {fileID: 8300000, guid: 43db8b45f31053a4ca340e2db1192b13, type: 3}
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
   powerupEffect: {fileID: 8894956876987107773, guid: 9634af92fc9994940ab26a1014c11372,
     type: 3}
   iceBoss: 0
@@ -190,7 +192,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.75, z: -10}
   m_LocalScale: {x: 1, y: 2, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7133948231454091467}
   m_Father: {fileID: 3128599578249191483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -287,3 +290,82 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+--- !u!1 &5195855315015756532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7133948231454091467}
+  - component: {fileID: 1641455391997052829}
+  m_Layer: 0
+  m_Name: Shadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7133948231454091467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195855315015756532}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.01, y: -0.458, z: 0.01}
+  m_LocalScale: {x: 0.55, y: 0.22, z: 0}
+  m_Children: []
+  m_Father: {fileID: 3128599578980096541}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1641455391997052829
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195855315015756532}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 3d9ed9b2428909a49ae605057991bbb6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.2, y: 1.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0

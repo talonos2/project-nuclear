@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,10 +13,12 @@ public class TownEscapeKeyController : MonoBehaviour
     protected float delayCounter = 0;
     public GameObject canvas;
     public GameObject[] selected;
+    public LoadSaveController loadSaveController;
+    public bool inOtherMenu;
 
     void Update()
     {
-        if (GameData.Instance.isCutscene ) return;
+        if (GameData.Instance.isCutscene || inOtherMenu) return;
 
             if (Input.GetButtonDown("Cancel"))
         {
@@ -39,10 +42,11 @@ public class TownEscapeKeyController : MonoBehaviour
             if (Input.GetButtonDown("Submit"))
             {
                 if (buttonSelected == 0) { StartRunButtonClicked(); }
-                if (buttonSelected == 1) { LoadGameButtonClicked(); }
-                if (buttonSelected == 2) { optionButtonClicked(); }
-                if (buttonSelected == 3) { MenuButtonClicked(); }
-                if (buttonSelected == 4) { ExitGameButtonClicked(); }
+                if (buttonSelected == 1) { SaveGameButtonClicked(); }
+                if (buttonSelected == 2) { LoadGameButtonClicked(); }
+                if (buttonSelected == 3) { optionButtonClicked(); }
+                if (buttonSelected == 4) { MenuButtonClicked(); }
+                if (buttonSelected == 5) { ExitGameButtonClicked(); }
             }
             if (Input.GetButtonDown("SelectNext"))
             {
@@ -99,6 +103,8 @@ public class TownEscapeKeyController : MonoBehaviour
         }
     }
 
+
+
     void OnEnable()
     {
         hideButtonSelection();
@@ -127,24 +133,36 @@ public class TownEscapeKeyController : MonoBehaviour
         //StartDungeonRun.StartRun();
         //Load 'load game' ui screen
     }
-    public void LoadGameButtonClicked()
+
+    private void SaveGameButtonClicked()
     {
         hideButtonSelection();
         buttonSelected = 1;
         showButtonSelection();
+        inOtherMenu = true;
+        loadSaveController.activateLoad(this, true);
+    }
+    public void LoadGameButtonClicked()
+    {
+        hideButtonSelection();
+        buttonSelected = 2;
+        showButtonSelection();
+        inOtherMenu = true;
+        canvas.SetActive(false);
+        loadSaveController.activateLoad(this, false);
         //Load 'load game' ui screen
     }
     public void optionButtonClicked()
     {
         hideButtonSelection();
-        buttonSelected = 2;
+        buttonSelected = 3;
         showButtonSelection();
         //Load 'options' ui screen
     }
     public void MenuButtonClicked()
     {
         hideButtonSelection();
-        buttonSelected = 3;
+        buttonSelected = 4;
         showButtonSelection();
         GameState.fullPause = false;
         SceneManager.LoadScene("TitleScreen");
@@ -153,9 +171,15 @@ public class TownEscapeKeyController : MonoBehaviour
     public void ExitGameButtonClicked()
     {
         hideButtonSelection();
-        buttonSelected = 4;
+        buttonSelected = 5;
         showButtonSelection();
         GameState.fullPause = false;
         Application.Quit();
+    }
+
+    internal void ReActivate()
+    {
+        inOtherMenu = false;
+        canvas.SetActive(true);
     }
 }

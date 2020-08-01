@@ -428,6 +428,7 @@ public class Combat : MonoBehaviour
         }
         //playerStats.currentPower = elementSelected;
         playerStats.PushCharacterData();
+        monsterStats.doUponDeath();
         Destroy(monsterToDelete);
     }
 

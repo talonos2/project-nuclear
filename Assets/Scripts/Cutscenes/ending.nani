@@ -816,6 +816,14 @@
 
 
 		@elseif !GetWorst()
+
+
+
+
+
+
+
+
 		@elseif GetWorst()
 
 		@char Jezerine
@@ -1048,6 +1056,50 @@
 		Tedd: For you? I might.
 
 		@elseif !GetWorst()
+
+		@char Tristana
+		Tristana: So, what was going through your head as you fought the monsters?
+		@char Tedd
+		Tedd: Why me?
+		@char Tristana
+		Tristana: Why did you suffer?
+		@char Tedd
+		Tedd: Why did I succeeded?
+		Tedd: Why not anyone else?
+		@char Tristana
+		Tristana: I'm not sure I understand.
+		@char Tedd
+		@if GetDouglass()
+			Tedd: I'm not a hero like Douglass.
+		@else
+			Tedd: Douglass was a hero. Look where that got him.
+		@endif
+
+		Tedd: Everybody had their part to play.
+		Tedd: Some paid a higher price than others.
+
+		no devon?
+		@If !GetDevon()
+			Tedd: Even people we don't even know.
+			Tedd: Some hunter who never should have been involved.
+		@endif
+
+		Tedd: I was just the one to cross the finish line.
+		Tedd: If anything, I lost the least.
+		@if !GetTodd
+			Tedd: Just a brother...
+		@endif
+
+		@char Tristana
+		Tristana: So... you were thinking about how it was a team effort?
+		@char Tedd
+		Tedd: Sure. Lets go with that.
+
+
+
+
+
+
 		@elseif GetWorst()
 
 		@char Tristana

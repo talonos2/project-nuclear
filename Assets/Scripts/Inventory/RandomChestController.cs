@@ -263,6 +263,8 @@ public class RandomChestController : EntityData
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             SpawnCrystalParticles(CrystalType.ATTACK, amountGained, playerData);
             playerData.AttackCrystalsGained += amountGained;
+            GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
+            uiController.GetComponent<GabTextController>().AddGabToPlay(amountGained + " Attack Crystals absorbed into the magic ring.");
             Instantiate(crystalBreakingRed, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
@@ -271,6 +273,8 @@ public class RandomChestController : EntityData
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             SpawnCrystalParticles(CrystalType.DEFENSE, amountGained, playerData);
             playerData.defenseCrystalsGained += amountGained;
+            GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
+            uiController.GetComponent<GabTextController>().AddGabToPlay(amountGained + " Armor Crystals absorbed into the magic ring.");
             Instantiate(crystalBreakingYellow, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
@@ -279,6 +283,8 @@ public class RandomChestController : EntityData
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             SpawnCrystalParticles(CrystalType.HEALTH, amountGained, playerData);
             playerData.HealthCrystalsGained += amountGained;
+            GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
+            uiController.GetComponent<GabTextController>().AddGabToPlay(amountGained + " Health Crystals absorbed into the magic ring.");
             Instantiate(crystalBreakingGreen, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
@@ -287,6 +293,8 @@ public class RandomChestController : EntityData
             amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
             SpawnCrystalParticles(CrystalType.MANA, amountGained, playerData);
             playerData.ManaCrystalsGained += amountGained;
+            GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
+            uiController.GetComponent<GabTextController>().AddGabToPlay(amountGained+ " Mana Crystals absorbed into the magic ring.");
             Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }

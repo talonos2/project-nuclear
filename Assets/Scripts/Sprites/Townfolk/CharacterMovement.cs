@@ -530,6 +530,7 @@ public class CharacterMovement : SpriteMovement
     public void TurnHasteOn()
     {
         GameData.Instance.hasted = true;
+        if (smoke==null) smoke = sRender.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
         smoke.Play();
         SoundManager.Instance.PlaySound("HasteOn", 1f);
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();

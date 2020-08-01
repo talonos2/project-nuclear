@@ -109,6 +109,8 @@ public class NewCrystalLevelController : MonoBehaviour
 
     private void AnimateCrystalBarsFilling()
     {
+        if (durationOfFill == 0)
+            return;
         timeSoFar += Time.deltaTime;
         if (timeSoFar >= durationOfFill)
         {
@@ -135,6 +137,7 @@ public class NewCrystalLevelController : MonoBehaviour
     {
         int fullBars = Mathf.FloorToInt(barAmount);
         float remainderBars = barAmount % 1.0f;
+
         int crystalAmount = Mathf.RoundToInt(Mathf.Lerp(crystalTiers[fullBars], crystalTiers[fullBars + 1], remainderBars));
 
         SetBarText(fullBars);
