@@ -106,6 +106,7 @@ public class SpikeController : DoodadData
     {
         isAnimating = true;
         animateRise = true;
+        SoundManager.Instance.PlaySound("RaisingSpikes", 1);
     }
 
 }

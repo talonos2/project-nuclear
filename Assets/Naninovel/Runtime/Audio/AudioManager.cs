@@ -236,9 +236,9 @@ namespace Naninovel
         /// </summary>
         public void PlaySfxFast (string path, float volume = 1f, bool restartIfPlaying = true, float pitch = 1f)
         {
-         //   Debug.Log("Name - " + path + ", p = " + pitch);
+            Debug.Log(path);
             if (!audioLoader.IsLoaded(path)) return;
-            var clip = audioLoader.GetLoadedOrNull(path);
+            Resource<AudioClip> clip = audioLoader.GetLoadedOrNull(path);
             if (!restartIfPlaying && audioController.IsClipPlaying(clip)) return;
             audioController.PlayClip(clip, null, volume, false, sfxGroup, null, pitch);
         }

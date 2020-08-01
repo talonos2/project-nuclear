@@ -115,6 +115,7 @@ public class BestTimeController : MonoBehaviour
                 if (quickenedTimeTakenSoFar >= deathTime|| quickenedTimeTakenSoFar >=600)
                 {
                     deathSequencePlaying = true;
+                    SoundManager.Instance.PlaySound("EndScreenDie", 1f);
                     timeSoFar = 0;
                     deathPosition = bestTimeSlider.transform.localPosition;
                     targetSkullPosition = deathPosition + new Vector3(0, -60,0);
@@ -125,7 +126,7 @@ public class BestTimeController : MonoBehaviour
 
     private void DropOffFloor(int floorsDroppedOff, float dropoffx)
     {
-        Debug.Log("Floor dropped off!");
+        SoundManager.Instance.PlaySound("EndScreenLevel", 1f);
         FloorDropoffPrefab dropped = GameObject.Instantiate<FloorDropoffPrefab>(floorDropoffPrefab);
         dropped.GetComponent<RectTransform>().SetParent(this.GetComponent<RectTransform>());
         dropped.GetComponent<RectTransform>().localPosition = new Vector3(dropoffx, y, 0);

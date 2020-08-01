@@ -55,9 +55,9 @@ public class SwitchEntityData : EntityData
             tempResetTime = timeTillReset;
             return; }
         if (timeTillReset > 0) {
-
             tempResetTime = timeTillReset;
             timerSet = true;
+            SoundManager.Instance.PlaySound("Environment/TimeStart", 1f);
         }
 
         SoundManager.Instance.PlaySound("switchSound", 1f);
@@ -159,6 +159,7 @@ public class SwitchEntityData : EntityData
             if (tempResetTime <= 0) {
                 ToggleTiedObjects();
                 timerSet = false;
+                SoundManager.Instance.PlaySound("Environment/TimeStop", 1);
             }
         }
 
