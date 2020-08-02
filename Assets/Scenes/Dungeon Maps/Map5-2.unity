@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10918,7 +10918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowTexture: {fileID: 2800000, guid: 1b7c58d66b0831a4e93ffb9e6d53cc49, type: 3}
-  glowTexture: {fileID: 2800000, guid: d178ac6491d6b1d4891442f2e3b5d706, type: 3}
+  glowTexture: {fileID: 2800000, guid: 5e2939739bc91824d894d1148b73c588, type: 3}
   mapOffset: {x: 0, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
@@ -11193,6 +11193,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898377835807072795, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
