@@ -1135,8 +1135,6 @@ MonoBehaviour:
   DevonToggle: {fileID: 1581293435}
   PendletonToggle: {fileID: 696893966}
   Map1EntrancePoint: {x: -13, y: -10}
-  TownSpawnPosition: {x: -4, y: -13}
-  TownSpwanFacing: 3
   Map1Facing: 2
   loadSaveController: {fileID: 1874121114}
   selectionMarker: {fileID: 558497542}
@@ -1555,32 +1553,7 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4593287885343367607, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2222650471833886927, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2222650471833886927, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0ac64fb9f7f527042b7bf1287b56cc2d, type: 3}
-    - target: {fileID: 7304926293322049491, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7666457451938531268, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1316555670260037799, guid: e87489115aeaf2b46b8bd49294861d58,
+    - target: {fileID: 2012403976812698919, guid: e87489115aeaf2b46b8bd49294861d58,
         type: 3}
       propertyPath: m_Volume
       value: 0
@@ -1605,17 +1578,12 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1365156865018573295, guid: e87489115aeaf2b46b8bd49294861d58,
+    - target: {fileID: 5065055389680856611, guid: e87489115aeaf2b46b8bd49294861d58,
         type: 3}
       propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2012403976812698919, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3037927059120276833, guid: e87489115aeaf2b46b8bd49294861d58,
+    - target: {fileID: 7666457451938531268, guid: e87489115aeaf2b46b8bd49294861d58,
         type: 3}
       propertyPath: m_Volume
       value: 0
@@ -1625,15 +1593,45 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7304926293322049491, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365156865018573295, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222650471833886927, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222650471833886927, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ac64fb9f7f527042b7bf1287b56cc2d, type: 3}
+    - target: {fileID: 3037927059120276833, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8319010459784668290, guid: e87489115aeaf2b46b8bd49294861d58,
         type: 3}
       propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5065055389680856611, guid: e87489115aeaf2b46b8bd49294861d58,
+    - target: {fileID: 1316555670260037799, guid: e87489115aeaf2b46b8bd49294861d58,
         type: 3}
       propertyPath: m_Volume
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593287885343367607, guid: e87489115aeaf2b46b8bd49294861d58,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e87489115aeaf2b46b8bd49294861d58, type: 3}
@@ -2026,8 +2024,6 @@ MonoBehaviour:
   DevonToggle: {fileID: 0}
   PendletonToggle: {fileID: 0}
   Map1EntrancePoint: {x: -13, y: -10}
-  TownSpawnPosition: {x: -4, y: -13}
-  TownSpwanFacing: 3
   Map1Facing: 2
   loadSaveController: {fileID: 0}
   selectionMarker: {fileID: 0}
@@ -3213,6 +3209,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5235844856794030252, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: newGameButton
+      value: 
+      objectReference: {fileID: 242232565}
+    - target: {fileID: 5235844856794030252, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: newGameController
+      value: 
+      objectReference: {fileID: 359083700}
     - target: {fileID: 324273467017365010, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3318,6 +3324,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 324273467017365005, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2265749230437062205, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3328,37 +3339,7 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.39990234
       objectReference: {fileID: 0}
-    - target: {fileID: 3079729517314205546, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9038410601871546000, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1411413723025550775, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4919582733500243021, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6999925609471032018, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3960700792923474728, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 445574734528523222, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3368,25 +3349,45 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 671304943477326270, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6810413959855730756, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5235844856794030252, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: newGameButton
-      value: 
-      objectReference: {fileID: 242232565}
-    - target: {fileID: 324273467017365005, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+    - target: {fileID: 6999925609471032018, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038410601871546000, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445574734528523222, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 671304943477326270, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411413723025550775, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3079729517314205546, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960700792923474728, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea1df5dda9f7d2046b73f662a04e08c5, type: 3}
