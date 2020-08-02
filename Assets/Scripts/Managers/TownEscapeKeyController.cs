@@ -129,7 +129,7 @@ public class TownEscapeKeyController : MonoBehaviour
         buttonSelected = 0;
         showButtonSelection();
         GameState.fullPause = false;
-        CutsceneLoader.LoadCutscene();        
+        CutsceneLoader.LoadCutsceneAndFade(this.GetComponent<Canvas>(), .5f);        
         //StartDungeonRun.StartRun();
         //Load 'load game' ui screen
     }

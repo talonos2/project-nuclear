@@ -38,6 +38,14 @@ public class CutsceneLoader : MonoBehaviour
 
     }
 
+    internal static void LoadCutsceneAndWorldSpaceFade(float fadeDuration)
+    {
+        GameData.Instance.isCutscene = true;
+        String sceneToTransitionTo = GetMapInWhichNextCutsceneTakesPlace();
+        FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+        fadeout.InitNext(sceneToTransitionTo, fadeDuration);
+    }
+
     public static void SetNextDialogue(string aDialogue)
     {
         nextDialogue = aDialogue;
