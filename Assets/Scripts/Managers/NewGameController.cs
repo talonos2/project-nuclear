@@ -130,8 +130,6 @@ public class NewGameController : MonoBehaviour
             fadeout.attachToGUI(transform.parent.GetComponent<Canvas>());
             fadeout.InitNext("TownMap_1", 1);
         }
-
-
     }
     public void StartNewGame (){
         SoundManager.Instance.PlaySound("MenuOkay", 1f);
