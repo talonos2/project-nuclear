@@ -115,7 +115,7 @@ public class NewGameController : MonoBehaviour
         menuOptions[menuOptionSelected].sprite = onImages[menuOptionSelected];
     }
 
-    public static void StartNewGameActual() {
+    public void StartNewGameActual() {
         if (GameData.Instance.RunNumber == 0) GameData.Instance.RunNumber = 1;
 
         if (GameData.Instance.RunNumber==1) {
@@ -127,7 +127,7 @@ public class NewGameController : MonoBehaviour
             GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
             GameData.Instance.FloorNumber = 0;
             FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
-            SceneManager.LoadScene("TownMap_1");
+            fadeout.attachToGUI(transform.parent.GetComponent<Canvas>());
             fadeout.InitNext("TownMap_1", 1);
         }
 
@@ -146,14 +146,16 @@ public class NewGameController : MonoBehaviour
                 GameData.Instance.RunNumber = 1;
                 CutsceneLoader.introCutscene = true;
                 GameData.Instance.FloorNumber = 0;
-                CutsceneLoader.LoadCutscene();
+                CutsceneLoader.LoadCutsceneAndFade(this.transform.parent.GetComponent<Canvas>(),2);
             }
             else
             {
                 GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
                 GameData.Instance.FloorNumber = 0;
-                SceneManager.LoadScene("TownMap_1");
+                FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+                fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
+                fadeout.InitNext("TownMap_1", 2);
             }
         }
         if (runType.value == 1) {
@@ -179,7 +181,9 @@ public class NewGameController : MonoBehaviour
             }
             GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
             GameData.Instance.FloorNumber = 1;
-            SceneManager.LoadScene("Map1-1");
+            FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+            fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
+            fadeout.InitNext("Map1_1", 2);
 
         }
         if (runType.value == 3){

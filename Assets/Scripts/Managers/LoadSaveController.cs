@@ -39,6 +39,7 @@ public class LoadSaveController : MonoBehaviour
     private bool townSave;
     private bool townLoad;
     private bool dungeonLoad;
+    public NewGameController newGameController;
 
     // Start is called before the first frame update
 
@@ -293,8 +294,7 @@ public class LoadSaveController : MonoBehaviour
         gameSaver.PushSaveToGameData();
 
         aCanvasThis.enabled = false;
-        //newGameButton.StartNewGameActual();
-        NewGameController.StartNewGameActual();
+        newGameController.StartNewGameActual();
         
 
     }
