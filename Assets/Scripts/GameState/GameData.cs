@@ -86,8 +86,10 @@ public class GameData : Singleton<GameData>
     public bool map3_4Shortcut;
     public bool map4_3Shortcut;
     public bool map4_4Shortcut;
+    public bool map5_1Shortcut;
     public bool map5_2Shortcut;
     public bool map5_3Shortcut;
+    public bool map5_4Shortcut;
 
     public bool iceBoss1;
     public bool earthBoss1;
@@ -110,7 +112,7 @@ public class GameData : Singleton<GameData>
     internal bool statsSetup=false;
 
     internal bool victory;
-
+    
 
     internal bool IsInTown()
     {

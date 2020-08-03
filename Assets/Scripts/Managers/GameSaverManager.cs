@@ -7,8 +7,6 @@ using UnityEngine;
 public class GameSaverManager
 {
     
-
-
         public int HealhCrystalBonus;
         public int ManaCrystalBonus;
         public int AttackCrystalBonus;
@@ -46,8 +44,10 @@ public class GameSaverManager
     public bool map3_4Shortcut;
     public bool map4_3Shortcut;
     public bool map4_4Shortcut;
+    public bool map5_1Shortcut;
     public bool map5_2Shortcut;
-        public bool map5_3Shortcut;
+    public bool map5_3Shortcut;
+    public bool map5_4Shortcut;
     public bool map1_3toMap2_3Shortcut;
 
 
@@ -84,8 +84,10 @@ public class GameSaverManager
         map3_4Shortcut = GameData.Instance.map3_4Shortcut;
         map4_3Shortcut = GameData.Instance.map4_3Shortcut;
         map4_4Shortcut = GameData.Instance.map4_4Shortcut;
+        map5_1Shortcut = GameData.Instance.map5_1Shortcut;
         map5_2Shortcut = GameData.Instance.map5_2Shortcut;
         map5_3Shortcut = GameData.Instance.map5_3Shortcut;
+        map5_4Shortcut = GameData.Instance.map5_4Shortcut;
 
         foreach (Weapon wpnItem in GameData.Instance.townWeapons) {
             townWeapons.Add(wpnItem.name);
@@ -139,8 +141,10 @@ public class GameSaverManager
         GameData.Instance.map3_4Shortcut = map3_4Shortcut;
         GameData.Instance.map4_3Shortcut = map4_3Shortcut;
         GameData.Instance.map4_4Shortcut = map4_4Shortcut;
+        GameData.Instance.map5_1Shortcut = map5_1Shortcut;
         GameData.Instance.map5_2Shortcut = map5_2Shortcut;
             GameData.Instance.map5_3Shortcut = map5_3Shortcut;
+        GameData.Instance.map5_4Shortcut = map5_4Shortcut;
         GameData.Instance.map1_3toMap2_3Shortcut = map1_3toMap2_3Shortcut;
 
            GameObject equipmentData = GameObject.Find("EquipmentData");

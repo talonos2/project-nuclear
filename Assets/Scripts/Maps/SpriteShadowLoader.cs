@@ -20,6 +20,7 @@ public class SpriteShadowLoader : MonoBehaviour
     public bool spikes;
     private float xPosition;
     private float yPostioin;
+    public int lightRadius=6;
     
     void Start()
     {
@@ -49,7 +50,7 @@ public class SpriteShadowLoader : MonoBehaviour
     {
 
         sRender.material.SetVector("_HeroXY", ThePlayer.transform.position);//shouldn't it be the sprite position rather than the player position?
-
+        sRender.material.SetInt("_LightRad", lightRadius);
         this.transform.localPosition = new Vector3(xPosition,yPostioin,CalculateZCoor());
         if (groundObject.resetShadow) {
             sRender.material.SetTexture("_Shadows", groundObject.shadowTexture);
