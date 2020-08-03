@@ -31,6 +31,7 @@ public class GameSaverManager
     private bool fireBoss2;
     private bool airBoss2;
     private bool deathBoss;
+    private bool deathBoss2; 
     
     public List<String> townWeapons = new List<String>();
         public List<String> townArmor = new List<String>();
@@ -42,6 +43,7 @@ public class GameSaverManager
     public bool map3_2Shortcut;
     public bool map3_3Shortcut;
     public bool map3_4Shortcut;
+    public bool map4_1Shortcut;
     public bool map4_3Shortcut;
     public bool map4_4Shortcut;
     public bool map5_1Shortcut;
@@ -74,6 +76,7 @@ public class GameSaverManager
         fireBoss2 = GameData.Instance.fireBoss2;
         airBoss2 = GameData.Instance.airBoss2;
         deathBoss = GameData.Instance.deathBoss1;
+        deathBoss2 = GameData.Instance.deathBoss2;
 
         map1_3toMap2_3Shortcut = GameData.Instance.map1_3toMap2_3Shortcut;
         map1_3Shortcut = GameData.Instance.map1_3Shortcut;
@@ -82,6 +85,7 @@ public class GameSaverManager
         map3_2Shortcut = GameData.Instance.map3_2Shortcut;
         map3_3Shortcut = GameData.Instance.map3_3Shortcut;
         map3_4Shortcut = GameData.Instance.map3_4Shortcut;
+        map4_1Shortcut = GameData.Instance.map4_1Shortcut;
         map4_3Shortcut = GameData.Instance.map4_3Shortcut;
         map4_4Shortcut = GameData.Instance.map4_4Shortcut;
         map5_1Shortcut = GameData.Instance.map5_1Shortcut;
@@ -132,6 +136,7 @@ public class GameSaverManager
         GameData.Instance.fireBoss2 = fireBoss2;
         GameData.Instance.airBoss2 = airBoss2;
         GameData.Instance.deathBoss1 = deathBoss;
+        GameData.Instance.deathBoss2 = deathBoss2;
 
         GameData.Instance.map1_3Shortcut = map1_3Shortcut;
         GameData.Instance.map2_2Shortcut = map2_2Shortcut;
@@ -139,6 +144,7 @@ public class GameSaverManager
         GameData.Instance.map3_2Shortcut= map3_2Shortcut;
         GameData.Instance.map3_3Shortcut=map3_3Shortcut;
         GameData.Instance.map3_4Shortcut = map3_4Shortcut;
+        GameData.Instance.map4_1Shortcut = map4_1Shortcut;
         GameData.Instance.map4_3Shortcut = map4_3Shortcut;
         GameData.Instance.map4_4Shortcut = map4_4Shortcut;
         GameData.Instance.map5_1Shortcut = map5_1Shortcut;

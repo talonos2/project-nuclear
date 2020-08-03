@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -356,6 +356,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &12523145
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -468,6 +469,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &17841521
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -580,6 +582,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &24874060
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -692,6 +695,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &40713293
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -893,6 +897,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &48073995
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1084,6 +1089,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &67057919
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1382,6 +1388,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &105304831
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1494,6 +1501,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &116177626
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1606,6 +1614,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &150425572
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1718,6 +1727,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &156677692
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1830,6 +1840,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &186800257
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2021,6 +2032,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &201591269
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2133,6 +2145,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &203460599
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2413,6 +2426,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &222430973
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2525,6 +2539,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &234012383
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2637,6 +2652,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &238505254
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2749,6 +2765,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &259320026
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3032,6 +3049,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &327743812
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3144,6 +3162,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &346562995
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3256,6 +3275,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &361069476
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3949,6 +3969,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &515077921
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4061,6 +4082,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &520616934
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4306,7 +4328,7 @@ PrefabInstance:
     - target: {fileID: 3664588965629725515, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3664588965629725519, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
@@ -4463,6 +4485,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &593780938
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4608,6 +4631,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &640685291
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4799,6 +4823,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &650089998
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5148,6 +5173,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &701212826
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5849,6 +5875,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &853816975
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6040,6 +6067,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &869257215
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6485,6 +6513,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &980342592
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6834,6 +6863,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1041778066
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6946,6 +6976,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1044251503
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7058,6 +7089,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1069896382
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7170,6 +7202,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1075816495
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7430,6 +7463,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1099393517
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7811,6 +7845,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1124044266
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7923,6 +7958,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1130024205
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8035,6 +8071,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1136818498
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8147,6 +8184,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1147018166
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9045,27 +9083,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec24f6f506711df47ae5f697c13f71e1, type: 3}
---- !u!1 &1205621504 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6622165687117483734, guid: ec24f6f506711df47ae5f697c13f71e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1205621503}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1205621505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205621504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82d53f9fa64990149a2004edec47788e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalFrames: 6
-  framesPerSecond: 3.5
-  fireBoss: 0
 --- !u!1001 &1213876501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9435,6 +9452,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1250943819
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9616,6 +9634,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1264745693
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10219,6 +10238,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1351550374
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10764,6 +10784,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1420869297
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10955,6 +10976,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1458319538
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11200,6 +11222,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1667371748701343844, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -472.0996
+      objectReference: {fileID: 0}
+    - target: {fileID: 9150367493400232215, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 456.36914
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ac0871009d1c4cbb3ce4b6c5255a3, type: 3}
 --- !u!1 &1480260022
@@ -11255,6 +11287,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1480260025
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11367,6 +11400,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1484203366
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11716,6 +11750,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1563186483
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12090,6 +12125,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1618870365
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12317,6 +12353,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1631082985
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12577,6 +12614,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1650975463
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12689,6 +12727,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1659903079
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12801,6 +12840,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1672620074
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12913,6 +12953,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1685489502
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13139,6 +13180,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1748044964
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13284,6 +13326,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1766685158
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13643,6 +13686,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1816840960
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13824,6 +13868,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1834199838
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13936,6 +13981,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1843701442
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14328,6 +14374,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1879009041
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14723,6 +14770,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1908911001
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15541,6 +15589,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1971713189
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15732,6 +15781,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1985306391
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15954,6 +16004,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!1 &2025846642
 GameObject:
   m_ObjectHideFlags: 0
@@ -16038,6 +16089,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &2036051194
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16150,6 +16202,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &2058045256
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16262,6 +16315,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &2063437660
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16478,6 +16532,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &2074688094
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16694,6 +16749,7 @@ MonoBehaviour:
   aboveItem: 1
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &2082279550
 MeshCollider:
   m_ObjectHideFlags: 0
