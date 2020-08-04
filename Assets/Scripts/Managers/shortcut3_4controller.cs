@@ -8,9 +8,16 @@ public class shortcut3_4controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!GameData.Instance.map3_4Shortcut) {
-            bridgeToControl.RemovePlatform();
+        if (GameData.Instance.map3_4Shortcut) {
+            bridgeToControl.AddPlatform();
         }   
+    }
+
+    public void SetShortcut() {
+        if (GameData.Instance.map3_4Shortcut)
+        {
+            bridgeToControl.AddPlatform();
+        }
     }
 
 

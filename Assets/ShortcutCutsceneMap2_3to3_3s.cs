@@ -4,16 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ShortcutCutsceneMap1_3to2_3 : ShortcutPlayer
+public class ShortcutCutsceneMap2_3to3_3s : ShortcutPlayer
 {
-
-    //private bool startShortcutCutscene; //Turn private once shortcut-testing is done
     public GameObject snowballToSpawn;
     public GameObject instantiatedSnowball;
-
-
-
-    public override void initialiseShortcutCutscene() {
+    public override void initialiseShortcutCutscene()
+    {
         phases.Add(true);//Phase 0
         phases.Add(false);//Phase 1
         phases.Add(false);//Phase 2
@@ -31,95 +27,103 @@ public class ShortcutCutsceneMap1_3to2_3 : ShortcutPlayer
     }
 
 
-
     // Update is called once per frame
     void Update()
     {
-        if (playDebug) {
+        if (playDebug)
+        {
 
             initialiseShortcutCutscene();
             phaseNumber = 0;
             playDebug = false;
         }
 
-        if (!GameData.Instance.isCutscene || playingScene==false) return;
+        if (!GameData.Instance.isCutscene || playingScene == false) return;
 
-        if (waiting) {
+        if (waiting)
+        {
             waitTime -= Time.deltaTime;
             if (waitTime < 0)
             {
                 waiting = false;
                 phases[phaseNumber] = false;
                 phaseNumber++;
-                if (phases.Count!=phaseNumber) phases[phaseNumber] = true;
+                if (phases.Count != phaseNumber) phases[phaseNumber] = true;
             }
             else { return; }
         }
 
-        if (phases[0]) {
+        //Begin of actual cutscene phases
+        if (phases[0])
+        {
             fadeInController.enableShortcutFadeOut(.5f);
             waiting = true;
             waitTime = .45f;//Note this is slightly less then the fade out time so that 
                             //there isn't 1 frame of the wrong map on the screen
         }
-        if (phases[1]) {
-            setupCutsceneLocation(new Vector3 (49.336f,2,0));
-            SceneManager.LoadScene("Sc_Map2-3", LoadSceneMode.Additive);
+        if (phases[1])
+        {
+            setupCutsceneLocation(new Vector3(47f, 6, 0));
+            SceneManager.LoadScene("Sc_Map3-3(s)", LoadSceneMode.Additive);
 
             fadeInController.enableShortcutFadeIn(.5f);
             waiting = true;
             waitTime = .5f;
         }
-        if (phases[2]) {
-            instantiatedSnowball = Instantiate(snowballToSpawn, new Vector3(57.336f, 5, 0), Quaternion.identity);
-            
-            boulderMover movingBoulder= instantiatedSnowball.GetComponent<boulderMover>();
+        if (phases[2])
+        {
+            instantiatedSnowball = Instantiate(snowballToSpawn, new Vector3(47f, 10, 0), Quaternion.identity);
+
+            boulderMover movingBoulder = instantiatedSnowball.GetComponent<boulderMover>();
+            instantiatedSnowball.GetComponentInChildren<SpriteShadowLoader>().setOnCutsceneMap();
+            instantiatedSnowball.GetComponentInChildren<SpriteShadowLoader>().isOnCutsceneMap=true;
             movingBoulder.isOnCutsceneMap = true;
             movingBoulder.facedDirection = SpriteMovement.DirectionMoved.DOWN;
             movingBoulder.moving = true;
             //Drop ball
             //need splash sound effect here
             waiting = true;
-            waitTime = 2.5f;
+            waitTime = 2.25f;
         }
-        if (phases[3]) {
-            fadeInController.enableShortcutFadeOut(.5f);
+        if (phases[3])
+        {
+            fadeInController.enableShortcutFadeOut(.25f);
             waiting = true;
-            waitTime = .45f;
+            waitTime = .2f;
         }
-        if (phases[4]) {
+        if (phases[4])
+        {
             Destroy(instantiatedSnowball);
-            GameData.Instance.map1_3toMap2_3Shortcut = true;
+            GameData.Instance.map3_3Shortcut = true;
             setupNewAfterSnowballMap();
             fadeInController.enableShortcutFadeIn(.5f);
             waiting = true;
-            waitTime = 3.75f; //waiting for fade in And seeing the new map
+            waitTime = 3f; //waiting for fade in And seeing the new map
         }
-        if (phases[5]) {
+        if (phases[5])
+        {
+            GameData.Instance.map1_3toMap2_3Shortcut = false;
+
             fadeInController.enableShortcutFadeOut(.5f);
             waiting = true;
             waitTime = .45f;
         }
-        if (phases[6]) {
+        if (phases[6])
+        {
             setupBackInDungeon();
             fadeInController.enableShortcutFadeIn(.5f);
             waiting = true;
             waitTime = .45f;
         }
-        if (phases[7]) {
+        if (phases[7])
+        {
             GameData.Instance.isCutscene = false;
             playingScene = false;
         }
-
     }
-
-
-
 
     private void setupNewAfterSnowballMap()
     {
-        GameObject.Find("Shortcut Controller2_3").GetComponent<map2_3ShortcutController>().setupShortcutForCutscene();
+        GameObject.Find("ShortcutController3_3").GetComponent<Map3_3ShortcutController>().setupShortcutForCutscene();
     }
-
-
 }

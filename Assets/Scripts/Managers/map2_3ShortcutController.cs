@@ -25,7 +25,6 @@ public class map2_3ShortcutController : MonoBehaviour
 
     public void setupShortcutForCutscene() {
         grid = GameObject.Find("Grid2").GetComponent<PassabilityGrid>();
-        Debug.Log("Am I setting up the shortcut");
         if (GameData.Instance.map1_3toMap2_3Shortcut)
         {
             boulder1.SetActive(true);

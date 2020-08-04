@@ -41,6 +41,7 @@ public class SwitchEntityData : EntityData
     private void InitializeSpriteLocation()
     {
         MapGrid = GameObject.Find("Grid");
+        if (isOnCutsceneMap) MapGrid = GameObject.Find("Grid2");
         mapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
         SwitchLocation.x = (int)Math.Round(this.transform.position.x) - (int)mapZeroLocation.x;
         SwitchLocation.y = (int)Math.Round(this.transform.position.y) - (int)mapZeroLocation.y;

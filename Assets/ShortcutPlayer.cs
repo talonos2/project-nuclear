@@ -14,9 +14,12 @@ public class ShortcutPlayer : MonoBehaviour
     protected bool waiting;
     protected float waitTime = 0;
     public List<bool> phases = new List<bool>();
-    public bool playingScene;
+    internal bool playingScene;
     public bool playDebug;
 
+    public virtual void initialiseShortcutCutscene() {
+
+    }
     protected void setupPlayerObject()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");

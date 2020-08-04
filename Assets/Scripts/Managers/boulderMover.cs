@@ -11,7 +11,7 @@ public class boulderMover : SpriteMovement
     public bool map2_3Shortcut;
     public bool map3_1Shortcut;
     private bool activateShortcut;
-    public ShortcutCutsceneMap1_3to2_3 shortcutPlayer;
+    public ShortcutPlayer shortcutPlayer;
 
 
 
@@ -105,17 +105,15 @@ public class boulderMover : SpriteMovement
     {
         
         if (map1_3Shortcut) {
-            //GameData.Instance.map1_3toMap2_3Shortcut = true;
+            //GameData.Instance.map1_3toMap2_3Shortcut = true is handled by the initialiseShortcutBelow
             shortcutPlayer.initialiseShortcutCutscene();
-            //fadeInController.enableShortcutFadeOut(.125f);
         }
-        if (map2_3Shortcut) {
-            gameData.map1_3toMap2_3Shortcut = false;
-            gameData.map3_3Shortcut = true;
-            //there needs to be a cutscene here
+        if (map2_3Shortcut) { 
+            shortcutPlayer.initialiseShortcutCutscene();
+
         }
         if (map3_1Shortcut){
-            gameData.map3_4Shortcut = true;
+            shortcutPlayer.initialiseShortcutCutscene();
             //there needs to be a cutscene here
         }
         
