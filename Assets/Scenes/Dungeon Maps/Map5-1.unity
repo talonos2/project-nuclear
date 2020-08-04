@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1340,6 +1340,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &438425955
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3615,6 +3617,7 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 1
   isNPC: 0
+  isOnCutsceneMap: 0
   TiedEntities:
   - {fileID: 827003146}
   - {fileID: 2140528362}
@@ -3623,8 +3626,8 @@ MonoBehaviour:
   times: []
   particlePath: 0300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000400000004000000040000000400000003000000030000000400000004000000040000000400000004000000
   mover: {fileID: 6289515204168306948, guid: 55960ed5bbb1c65418f1956af5148833, type: 3}
-  AnimationSpeed: 6
-  totalFrames: 5
+  AnimationSpeed: 9
+  totalFrames: 9
   timeTillReset: 0
   prePressed: 0
 --- !u!1 &1123807449
@@ -5948,6 +5951,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &1874160517
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6279,6 +6284,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!1001 &2039230395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6407,6 +6414,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &2048794267
 MeshCollider:
   m_ObjectHideFlags: 0

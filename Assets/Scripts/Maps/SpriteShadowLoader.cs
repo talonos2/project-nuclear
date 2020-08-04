@@ -33,6 +33,7 @@ public class SpriteShadowLoader : MonoBehaviour
         sRender.material.SetTexture("_Shadows", shadowTexture);
         sRender.material.SetTexture("_Glow", glowTexture);
         PassabilityGrid passGrid = GameObject.Find("Grid").GetComponent<PassabilityGrid>();
+        if(isOnCutsceneMap) passGrid = GameObject.Find("Grid2").GetComponent<PassabilityGrid>();
         Vector4 tempVector = new Vector4(passGrid.width, passGrid.height, 0, 0);
         sRender.material.SetVector("_MapXY", tempVector);
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
