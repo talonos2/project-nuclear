@@ -16,6 +16,7 @@ public class DoodadData : MonoBehaviour
     public bool isBackgroundCharacter = false;
     public bool isSpike = false;
     public bool isPassable = false;
+    public bool isOnCutsceneMap;
 
     protected Vector2Int DoodadLocation;
     protected GameObject MapGrid;
@@ -28,7 +29,8 @@ public class DoodadData : MonoBehaviour
 
     protected void InitializeDoodadNewMap()
     {
-        MapGrid = GameObject.Find("Grid"); ;
+        MapGrid = GameObject.Find("Grid"); 
+        if (isOnCutsceneMap) MapGrid = GameObject.Find("Grid2");
         MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
         DoodadLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
         DoodadLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;

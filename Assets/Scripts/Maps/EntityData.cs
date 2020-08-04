@@ -20,6 +20,7 @@ public class EntityData : MonoBehaviour
     protected Renderer sRender;
     protected EntityGrid mapEntityGrid;
     protected Vector2 mapZeroLocation;
+    public bool isOnCutsceneMap;
 
     public virtual void ProcessClick(CharacterStats stats)
     {

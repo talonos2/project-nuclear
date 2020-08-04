@@ -375,6 +375,7 @@ public class RandomChestController : EntityData
     private void InitializeNewMap()
     {
         MapGrid = GameObject.Find("Grid"); 
+        if (isOnCutsceneMap) MapGrid = GameObject.Find("Grid2");
         MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
     }
 

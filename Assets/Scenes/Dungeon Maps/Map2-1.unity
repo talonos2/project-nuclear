@@ -433,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 3664588965629725513, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
@@ -490,6 +490,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &140491208
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1474,6 +1475,7 @@ MonoBehaviour:
   aboveItem: 1
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &661255769
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1928,6 +1930,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &803438076
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2110,6 +2113,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898377835807072795, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -4051,6 +4059,7 @@ MonoBehaviour:
   aboveItem: 1
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1538365673
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4194,6 +4203,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1553102655
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4831,6 +4841,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!64 &1893272814
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5226,6 +5237,7 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!114 &2133836408302716272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5245,6 +5257,7 @@ MonoBehaviour:
   aboveItem: 1
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
 --- !u!1001 &2236789191173379026
 PrefabInstance:
   m_ObjectHideFlags: 0

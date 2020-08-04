@@ -16,9 +16,4 @@ public class Map4_1Shortcut : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

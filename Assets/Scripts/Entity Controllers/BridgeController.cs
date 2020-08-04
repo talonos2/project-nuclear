@@ -27,7 +27,11 @@ public class BridgeController : DoodadData
     }
 
     public void RunPrimAlgorythm(BobPrim checkedPrim) {
-        if (primToCheck==null) GameObject.Find("Grid").GetComponent<BobPrim>();
+        if (primToCheck == null) {
+            primToCheck=GameObject.Find("Grid").GetComponent<BobPrim>();
+            if (isOnCutsceneMap) primToCheck=GameObject.Find("Grid2").GetComponent<BobPrim>();
+            checkedPrim = primToCheck;
+        }
         if (checkedPrim.result[primConnectionNumber])
         {
             AddPlatform();            

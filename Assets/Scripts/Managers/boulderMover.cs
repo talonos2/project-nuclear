@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class boulderMover : SpriteMovement
 {
-    private bool moving;
+    internal bool moving;
     public Vector2Int shortcutLocation;
     public bool map1_3Shortcut;
     public bool map2_3Shortcut;
     public bool map3_1Shortcut;
     private bool activateShortcut;
+    public ShortcutCutsceneMap1_3to2_3 shortcutPlayer;
+
 
 
     private new void Start()
@@ -103,8 +105,9 @@ public class boulderMover : SpriteMovement
     {
         
         if (map1_3Shortcut) {
-            gameData.map1_3toMap2_3Shortcut = true;
-            //there needs to be a cutscene here
+            //GameData.Instance.map1_3toMap2_3Shortcut = true;
+            shortcutPlayer.initialiseShortcutCutscene();
+            //fadeInController.enableShortcutFadeOut(.125f);
         }
         if (map2_3Shortcut) {
             gameData.map1_3toMap2_3Shortcut = false;
