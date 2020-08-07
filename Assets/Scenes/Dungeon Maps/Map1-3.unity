@@ -3486,12 +3486,17 @@ PrefabInstance:
     - target: {fileID: 3128599578249191477, guid: b99393de9cd18df448b7c49097bef3d7,
         type: 3}
       propertyPath: MoveSpeed
-      value: 4.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191477, guid: b99393de9cd18df448b7c49097bef3d7,
         type: 3}
       propertyPath: SpotWaitTimer
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: b99393de9cd18df448b7c49097bef3d7,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b99393de9cd18df448b7c49097bef3d7, type: 3}
@@ -3885,8 +3890,10 @@ MonoBehaviour:
     type: 3}
   fadeInController: {fileID: 1777447647}
   phases: 
+  playDebug: 0
   snowballToSpawn: {fileID: 8724220277169575818, guid: 4620990732a356847abcab269516387e,
     type: 3}
+  instantiatedSnowball: {fileID: 0}
 --- !u!4 &1262577389
 Transform:
   m_ObjectHideFlags: 0
@@ -5137,6 +5144,7 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!1001 &2118416879
 PrefabInstance:
   m_ObjectHideFlags: 0
