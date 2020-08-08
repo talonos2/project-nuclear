@@ -45,6 +45,10 @@ public class GabTextController : MonoBehaviour
 
         if (playingGab)
         {
+            if (Input.GetButtonDown("Submit")&&gabDelayCounter>FADE_TIME)
+            {
+                gabDelayCounter = FADE_TIME;
+            }
             gabTextCanvas.enabled = true;
             gabDelayCounter -= Time.deltaTime;
 
