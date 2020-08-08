@@ -149,6 +149,7 @@ public class CharacterMovement : SpriteMovement
                     TiePositionToGrid();
                     CheckExitStatus();
                     CheckWindJumpStatus();
+                    CheckGabStatus();
                 }
             }
         }
@@ -174,6 +175,7 @@ public class CharacterMovement : SpriteMovement
                     sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                     CheckWindJumpStatus();
                     CheckExitStatus();
+                    CheckGabStatus();
                     tempFramesPerSecond = framesPerSecond;
                     tempMovementSpeed = MoveSpeed;
                 }
@@ -205,6 +207,7 @@ public class CharacterMovement : SpriteMovement
                 //  SetCurrentLocation();
                 CheckWindJumpStatus();
                 CheckExitStatus();
+                CheckGabStatus();
             }
         }
 
@@ -658,6 +661,21 @@ public class CharacterMovement : SpriteMovement
             if (exitLocation.GetComponent<DoodadData>().isExit) {
                 playerStats.PushCharacterData();
                 exitLocation.GetComponent<ExitController>().TransitionMap(); 
+            }
+        }
+
+    }
+
+    private void CheckGabStatus()
+    {
+        GameObject gabLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
+        //Debug.Log("Is there gab?"+gabLocation);
+        if (gabLocation != null)
+        {
+            //Debug.Log("Gab here: " + gabLocation);
+            if (gabLocation.GetComponent<GabTriggerer>()!= null)
+            {
+                gabLocation.GetComponent<GabTriggerer>().TriggerGab();
             }
         }
 
