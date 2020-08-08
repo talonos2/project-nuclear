@@ -32,7 +32,14 @@ public class PowerupEffect : MonoBehaviour
     {
         if (GameState.isInBattle || GameState.fullPause)
         {
+            var main = particles.main;  //I don't know why this step is necessary, but it is. :/
+            main.simulationSpeed = .0000001f;
             return;
+        }
+        else
+        {
+            var main = particles.main;  //I don't know why this step is necessary, but it is. :/
+            main.simulationSpeed = 1;
         }
         timeAlive += Time.deltaTime;
         if (!hasStarted && timeAlive > delay)
