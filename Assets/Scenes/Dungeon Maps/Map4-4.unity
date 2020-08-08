@@ -1373,7 +1373,7 @@ PrefabInstance:
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
@@ -1480,6 +1480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5033d6e1dcd7c9f4f806d81c482fd9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortcutHolder: 0
+  bridge1: {fileID: 0}
+  bridge2: {fileID: 0}
+  bridge3: {fileID: 0}
 --- !u!1001 &371898018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1530,7 +1534,7 @@ PrefabInstance:
     - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
         type: 3}
       propertyPath: m_RootOrder
-      value: 49
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5462198937317247694, guid: 8adc24ffbd31bed41bebadc99c4e6875,
         type: 3}
@@ -1585,10 +1589,11 @@ MonoBehaviour:
   times: []
   particlePath: 
   mover: {fileID: 0}
-  AnimationSpeed: 6
-  totalFrames: 5
+  AnimationSpeed: 9
+  totalFrames: 9
   timeTillReset: 0
   prePressed: 0
+  shortcutCutscene: {fileID: 1459508839}
 --- !u!1 &446970551
 GameObject:
   m_ObjectHideFlags: 0
@@ -2794,6 +2799,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
+--- !u!114 &703766433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+    type: 3}
+  m_PrefabInstance: {fileID: 703766432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11acdb4e652eb043a34a17d32f06ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &709627866 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6622165687117483734, guid: ec24f6f506711df47ae5f697c13f71e1,
@@ -5338,7 +5355,7 @@ PrefabInstance:
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 50
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
@@ -5445,6 +5462,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5033d6e1dcd7c9f4f806d81c482fd9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortcutHolder: 0
+  bridge1: {fileID: 0}
+  bridge2: {fileID: 0}
+  bridge3: {fileID: 0}
 --- !u!1001 &1315292665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5495,7 +5516,7 @@ PrefabInstance:
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 51
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
@@ -5602,6 +5623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5033d6e1dcd7c9f4f806d81c482fd9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortcutHolder: 0
+  bridge1: {fileID: 0}
+  bridge2: {fileID: 0}
+  bridge3: {fileID: 0}
 --- !u!1 &1316023515
 GameObject:
   m_ObjectHideFlags: 0
@@ -6489,6 +6514,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34cdf8c39acb0cf458fe258921c3b527, type: 3}
+--- !u!1 &1459508838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1459508840}
+  - component: {fileID: 1459508839}
+  m_Layer: 0
+  m_Name: ShortcutCutsceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1459508839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459508838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05057696e909c204b935493c608e4852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutscenePlayerPrefab: {fileID: 8620583717511749611, guid: 78c85dcd800364e4a80cb95771539232,
+    type: 3}
+  fadeInController: {fileID: 703766433}
+  phases: 
+  playDebug: 0
+--- !u!4 &1459508840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459508838}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.009, y: -13.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 49
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1482526766
 GameObject:
   m_ObjectHideFlags: 0
@@ -7565,7 +7638,7 @@ PrefabInstance:
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 53
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
@@ -7662,6 +7735,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5033d6e1dcd7c9f4f806d81c482fd9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortcutHolder: 0
+  bridge1: {fileID: 0}
+  bridge2: {fileID: 0}
+  bridge3: {fileID: 0}
 --- !u!1 &1656847968
 GameObject:
   m_ObjectHideFlags: 0
@@ -8198,7 +8275,7 @@ PrefabInstance:
     - target: {fileID: 2236789191275909213, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 54
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 2236789191275909213, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}

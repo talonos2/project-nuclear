@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PermSwitch3_2 : SwitchEntityData
 {
+    public ShortcutCutsceneMap2_2stoMap3_2 shortcutCutscene;
     // Start is called before the first frame update
     new void Start()
     {
@@ -22,11 +23,13 @@ public class PermSwitch3_2 : SwitchEntityData
         {
   
             SwitchAnimation();
-            if (GameData.Instance.map3_2Shortcut == false) {
-                GameData.Instance.map3_2Shortcut = true; //Set to True by the cutsceneplayerscript on scMap3-2
 
-                //SceneManager.LoadScene("ScMap3-2", LoadSceneMode.Additive);
-            }
+            shortcutCutscene.initialiseShortcutCutscene();
+            //if (GameData.Instance.map3_2Shortcut == false) {
+            //    GameData.Instance.map3_2Shortcut = true; //Set to True by the cutsceneplayerscript on scMap3-2
+
+            //SceneManager.LoadScene("ScMap3-2", LoadSceneMode.Additive);
+            //}
             activeSwitch = false;
 
         }

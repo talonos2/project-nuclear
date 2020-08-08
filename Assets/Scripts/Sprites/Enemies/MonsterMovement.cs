@@ -269,7 +269,7 @@ public class MonsterMovement : SpriteMovement
 
     protected bool IsPlayerInView()
     {
-        if (gameData.stealthed) {
+        if (GameData.Instance.stealthed) {
             return false;
         }
         bool PlayerFound = false;
