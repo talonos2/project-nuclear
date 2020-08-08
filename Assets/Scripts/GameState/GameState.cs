@@ -9,6 +9,6 @@ public class GameState : MonoBehaviour
 
 
 
-    internal static bool endRunFlag;
+    //internal static bool endRunFlag;
 
 }

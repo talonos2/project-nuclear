@@ -36,7 +36,7 @@ public class ObjectAnimator : MonoBehaviour
 
     void Update()
     {
-        if (GameState.isInBattle || GameState.fullPause)
+        if ((GameState.isInBattle || GameState.fullPause) && !GameData.Instance.isCutscene)
         {
             return;
         }

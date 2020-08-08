@@ -20,16 +20,20 @@ public class SpriteShadowLoader : MonoBehaviour
     public bool spikes;
     private float xPosition;
     private float yPostioin;
+    public int lightRadius=6;
+    public bool isOnCutsceneMap;
     
     void Start()
     {
         groundObject = GameObject.Find("Ground").GetComponent<GroundShadow>();
+        if (isOnCutsceneMap) groundObject = GameObject.Find("Ground2").GetComponent<GroundShadow>();
         shadowTexture = groundObject.shadowTexture;
         glowTexture = groundObject.glowTexture;
         this.sRender = this.GetComponentInChildren<Renderer>();
         sRender.material.SetTexture("_Shadows", shadowTexture);
         sRender.material.SetTexture("_Glow", glowTexture);
         PassabilityGrid passGrid = GameObject.Find("Grid").GetComponent<PassabilityGrid>();
+        if(isOnCutsceneMap) passGrid = GameObject.Find("Grid2").GetComponent<PassabilityGrid>();
         Vector4 tempVector = new Vector4(passGrid.width, passGrid.height, 0, 0);
         sRender.material.SetVector("_MapXY", tempVector);
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
@@ -44,12 +48,34 @@ public class SpriteShadowLoader : MonoBehaviour
 
     }
 
+    public void setOnCutsceneMap() {
+        groundObject = GameObject.Find("Ground2").GetComponent<GroundShadow>();
+        shadowTexture = groundObject.shadowTexture;
+        glowTexture = groundObject.glowTexture;
+        this.sRender = this.GetComponentInChildren<Renderer>();
+        sRender.material.SetTexture("_Shadows", shadowTexture);
+        sRender.material.SetTexture("_Glow", glowTexture);
+        PassabilityGrid passGrid = GameObject.Find("Grid2").GetComponent<PassabilityGrid>();
+        Vector4 tempVector = new Vector4(passGrid.width, passGrid.height, 0, 0);
+        sRender.material.SetVector("_MapXY", tempVector);
+        ThePlayer = GameObject.FindGameObjectWithTag("Player");
+        //sRender.material.SetInt("_LightRad", ThePlayer.GetComponentInChildren<Renderer>().material.GetInt("_LightRad"));
+        sRender.material.SetInt("_LightRad", 6);
+        if (GameData.Instance.FloorNumber == 0)
+            sRender.material.SetInt("_LightRad", 0);
+
+        transform.position = transform.position + new Vector3(groundObject.mapOffset.x, groundObject.mapOffset.y, 0);
+        xPosition = transform.localPosition.x;
+        yPostioin = transform.localPosition.y;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
 
         sRender.material.SetVector("_HeroXY", ThePlayer.transform.position);//shouldn't it be the sprite position rather than the player position?
-
+        sRender.material.SetInt("_LightRad", lightRadius);
         this.transform.localPosition = new Vector3(xPosition,yPostioin,CalculateZCoor());
         if (groundObject.resetShadow) {
             sRender.material.SetTexture("_Shadows", groundObject.shadowTexture);

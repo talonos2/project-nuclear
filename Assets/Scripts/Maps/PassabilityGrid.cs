@@ -134,7 +134,7 @@ public class PassabilityGrid : MonoBehaviour
         if (alternatePathabilitySetup) { width = altWidth; height = altHeight; }
         else { width = this.width; height = this.height; }
 
-        return new Vector2(gridPosition.x - width / 2, gridPosition.y - height / 2);
+        return new Vector2(gridPosition.x - width / 2+this.transform.position.x, gridPosition.y - height / 2);
     }
 
     internal bool InRange(int locX, int locY)

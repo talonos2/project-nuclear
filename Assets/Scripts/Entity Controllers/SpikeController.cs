@@ -33,6 +33,7 @@ public class SpikeController : DoodadData
         this.sRender.material = new Material(this.sRender.material);
 
         primToCheck = GameObject.Find("Grid").GetComponent<BobPrim>();
+        if (isOnCutsceneMap) primToCheck = GameObject.Find("Grid2").GetComponent<BobPrim>();
         if (primBoulder)
         {
             RunPrimAlgorythm();
@@ -43,7 +44,7 @@ public class SpikeController : DoodadData
     {
         if (primToCheck.result[primConnectionNumber])
         {
-            Open();
+            Open(false) ;
         }
         else
         {

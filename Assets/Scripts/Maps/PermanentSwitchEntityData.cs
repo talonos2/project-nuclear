@@ -39,6 +39,10 @@ public class PermanentSwitchEntityData : SwitchEntityData
                 }
             }
             activeSwitch = false;
+            SwitchTrailMover trail = GameObject.Instantiate<SwitchTrailMover>(mover);
+            trail.gameObject.transform.position = new Vector3(Mathf.RoundToInt(sRender.transform.position.x * 2f) / 2f, Mathf.RoundToInt(sRender.transform.position.y * 2f) / 2f, -.001f); ;
+            trail.InitStart();
+            trail.path = particlePath;
             SwitchAnimation();
         }       
     }

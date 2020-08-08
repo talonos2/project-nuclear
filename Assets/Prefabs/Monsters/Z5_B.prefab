@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6622165687117483730}
   - component: {fileID: 6622165687117483735}
   - component: {fileID: 1452877458327225012}
+  - component: {fileID: 1440624806938236697}
   m_Layer: 0
   m_Name: Z5_B
   m_TagString: Untagged
@@ -221,6 +222,21 @@ MonoBehaviour:
   deathBoss: 1
   deathBoss2: 0
   finalBoss: 0
+--- !u!114 &1440624806938236697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622165687117483734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d53f9fa64990149a2004edec47788e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalFrames: 6
+  framesPerSecond: 3.5
+  fireBoss: 0
 --- !u!1 &6622165687581963513
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,3 +366,4 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
