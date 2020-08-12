@@ -81,7 +81,7 @@ public class shortcutCutsceneMap4_4to2_2s : ShortcutPlayer
         }
         if (phases[4])
         {
-            //SceneManager.UnloadSceneAsync("SC_Map3-2");
+            SceneManager.UnloadSceneAsync("SC_Map2-2(s)");
             setupBackInDungeon();
             fadeInController.enableShortcutFadeIn(.5f);
             waiting = true;

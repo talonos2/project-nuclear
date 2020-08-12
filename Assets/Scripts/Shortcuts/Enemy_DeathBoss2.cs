@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enemy_DeathBoss2 : Enemy
 {
-    public virtual void doUponDeath()
+    public ShortcutCutscene4_1 shortcutToRun;
+    public override void doUponDeath()
     {
-        GameData.Instance.map4_1Shortcut = true;
+        shortcutToRun.initialiseShortcutCutscene();
         //Will do nothing unless a child script changes this. Called by Combat. 
     }
 

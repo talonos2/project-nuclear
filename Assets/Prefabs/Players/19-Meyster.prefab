@@ -4989,6 +4989,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 1
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &4476537573523834579
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5032,6 +5034,7 @@ GameObject:
   - component: {fileID: 4476537574905212313}
   - component: {fileID: 4476537574905212312}
   - component: {fileID: 4476537574905212311}
+  - component: {fileID: 10515199417290798}
   m_Layer: 0
   m_Name: 19-Meyster
   m_TagString: Player
@@ -5075,6 +5078,7 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 0
+  isOnCutsceneMap: 0
   MoveSpeed: 6
   framesPerSecond: 8
   facedDirection: 4
@@ -5110,6 +5114,7 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 1
+  isOnCutsceneMap: 0
 --- !u!114 &4476537574905212312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5186,6 +5191,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &10515199417290798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4476537574905212310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6c73306a0b08d4f9502389d10f4800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthHealer: {fileID: 6779871452013414145, guid: d85027ac9da2f1241801844e7602ffa3,
+    type: 3}
+  manaHealer: {fileID: 6779871452013414145, guid: 013da2f242fe84840a89c7fb57d3c44b,
+    type: 3}
+  bothHealer: {fileID: 6779871452013414145, guid: 0a1743d8d5354c0489b8af040a7ad299,
+    type: 3}
 --- !u!1 &6976928496264687635
 GameObject:
   m_ObjectHideFlags: 0

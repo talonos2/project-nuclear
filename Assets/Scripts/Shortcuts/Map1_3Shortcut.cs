@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Map1_3Shortcut : MonoBehaviour
 {
+    public Map1_3Shortcut monster1;
+    public Map1_3Shortcut monster2;
+    public Map1_3Shortcut monster3;
+    public Map1_3Shortcut monster4;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +26,22 @@ public class Map1_3Shortcut : MonoBehaviour
 
     }
 
+    public void setupShortcutAlert() {
+        monster1.gameObject.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
+        monster1.GetComponent<MonsterMovement>().setNewMovespeed(monster1.GetComponent<MonsterMovement>().MoveSpeed * 2);
+        monster2.gameObject.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
+        monster2.GetComponent<MonsterMovement>().setNewMovespeed(monster2.GetComponent<MonsterMovement>().MoveSpeed * 2);
+        monster3.gameObject.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
+        monster3.GetComponent<MonsterMovement>().setNewMovespeed(monster3.GetComponent<MonsterMovement>().MoveSpeed * 2);
+        monster4.gameObject.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
+        monster4.GetComponent<MonsterMovement>().setNewMovespeed(monster4.GetComponent<MonsterMovement>().MoveSpeed * 2);
+    }
+    public void setupShortcut() {
+        Destroy(monster1.gameObject);
+        Destroy(monster2.gameObject);
+        Destroy(monster3.gameObject);
+        Destroy(monster4.gameObject);
+    }
 
    
 }

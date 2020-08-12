@@ -2870,6 +2870,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 1
   finalBoss: 0
+  finalBossForm1: 0
+  shortcutToRun: {fileID: 1459508841}
 --- !u!1001 &711538896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6524,6 +6526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1459508840}
   - component: {fileID: 1459508839}
+  - component: {fileID: 1459508841}
   m_Layer: 0
   m_Name: ShortcutCutsceneController
   m_TagString: Untagged
@@ -6562,6 +6565,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1459508841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459508838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e1c58bfb3943c14a9c40121221c752b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutscenePlayerPrefab: {fileID: 8620583717511749611, guid: 78c85dcd800364e4a80cb95771539232,
+    type: 3}
+  fadeInController: {fileID: 703766433}
+  phases: 
+  playDebug: 0
 --- !u!1 &1482526766
 GameObject:
   m_ObjectHideFlags: 0
@@ -9159,6 +9179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: framesPerSecond
       value: 11.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622165687117483730, guid: 358aecbdc271dcf4da96ee01980f48c2,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 358aecbdc271dcf4da96ee01980f48c2, type: 3}

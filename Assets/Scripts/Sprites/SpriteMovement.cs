@@ -111,6 +111,14 @@ public class SpriteMovement : EntityData
         return finishedMoving;
     }
 
+    public void setNewMovespeed(float newSpeed) {
+        tempMovementSpeed = newSpeed;
+    }
+
+    public void setOldMovespeed() {
+        tempMovementSpeed = MoveSpeed;
+    }
+
     protected void SetNextLocationActual(int characterLocX, int characterLocY) {
         characterNextLocation.x = characterLocX;
         characterNextLocation.y = characterLocY;
