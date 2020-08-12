@@ -24,7 +24,7 @@ public class PermSwitch3_2 : SwitchEntityData
   
             SwitchAnimation();
 
-            shortcutCutscene.initialiseShortcutCutscene();
+            if (GameData.Instance.map3_2Shortcut == false) shortcutCutscene.initialiseShortcutCutscene();
             //if (GameData.Instance.map3_2Shortcut == false) {
             //    GameData.Instance.map3_2Shortcut = true; //Set to True by the cutsceneplayerscript on scMap3-2
 
