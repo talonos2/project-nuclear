@@ -23,7 +23,7 @@ Pendleton: Of course sire.
 Meyster: Do not worry frail squire. Soon a hero will save this town.
 @hidechars time:0
 
-@fwspawnvfx x:7 y:19 z:0 Vfx:CurseFX
+@fwspawnvfx x:7 y:19.8 z:-10 Vfx:CurseFX
 @wait 1
 @char Pendleton
 Pendleton: We shall see sire.
@@ -34,10 +34,12 @@ Pendleton: We shall see sire.
 @fwmovepawn n:PawnPendleton d:e
 @fwmovepawn n:PawnPendleton d:e
 @fwmovepawn n:PawnPendleton d:e
+@fwmovepawn n:PawnPendleton d:e
+@fwmovepawn n:PawnPendleton d:e
 @fwmovepawn n:PawnPendleton d:n
 @fwmovepawn n:PawnPendleton d:n
 
-@wait 1.3
+@wait 1.6
 
 @fwdeletego n:PawnPendleton
 
