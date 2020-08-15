@@ -22,6 +22,8 @@ public class activateBomb : EntityData
     protected Renderer sMapRender;
     protected Renderer sCrystalRender;
     internal GroundShadow groundShadow;
+    private bool waiting;
+    private float waitingLeft;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,13 +37,25 @@ public class activateBomb : EntityData
         sMapRender.material = new Material(sMapRender.material);
         groundShadow = finalMap.GetComponent<GroundShadow>();
         if (GameData.Instance.map2_4Shortcut) {
-            Debug.Log("Did I try to detonate the bomb");
             detonateBomb();
         }
     }
 
+    void Update()
+    {
+        if (GameState.fullPause || !waiting) return;
 
-    private void detonateBomb() {
+        waitingLeft -= Time.deltaTime;
+        if (waitingLeft < 0) {
+            SoundManager.Instance.PlaySound("Explosion", 1);
+            detonateBomb();
+            GameState.isInBattle = false;
+            GameData.Instance.isCutscene = false;
+            waiting = false;
+        }
+
+    }
+        private void detonateBomb() {
         currentGround.GetComponent<Renderer>().material.mainTexture = newMap;
         currentPassabilityGrid.passabilityMap = newPathabilityMap;
         currentPassabilityGrid.configurePathabilityGrid();
@@ -62,6 +76,7 @@ public class activateBomb : EntityData
 
     public override void ProcessClick(CharacterStats stats)
     {
+        if (waiting) return;
         if (stats.currentPower != 3) {
             gabTextController.AddGabToPlay("You might be able to light the fuse if only you had some fire magic.");
         }
@@ -71,8 +86,11 @@ public class activateBomb : EntityData
             if (stats.HP < 1) { stats.HP = 1; }
             stats.mana -= 24;
             GameData.Instance.map2_4Shortcut = true;
-            SoundManager.Instance.PlaySound("Explosion", 1);
-            detonateBomb();
+            SoundManager.Instance.PlaySound("fuseForBomb", 1);
+            waiting = true;
+            waitingLeft = 2f;
+            GameData.Instance.isCutscene = true;
+            GameState.isInBattle = true;
         }
         else if (stats.currentPower == 3 && stats.mana <= 24) { gabTextController.AddGabToPlay("Not enough mana to light the fuse."); }
     }

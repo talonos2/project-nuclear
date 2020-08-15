@@ -18,6 +18,7 @@ public class ShortcutCutsceneMap2_3to3_3s : ShortcutPlayer
         phases.Add(false);//Phase 5
         phases.Add(false);//Phase 6
         phases.Add(false);//Phase 7
+        phases.Add(false);//Phase 8
 
         // startShortcutCutscene = true;
         setupPlayerObject();
@@ -83,16 +84,25 @@ public class ShortcutCutsceneMap2_3to3_3s : ShortcutPlayer
             movingBoulder.moving = true;
             //Drop ball
             //need splash sound effect here
+            SoundManager.Instance.PlaySound("fallingObject_.75_sec", 1);
             waiting = true;
-            waitTime = 2.25f;
+            waitTime = .7f;
         }
         if (phases[3])
+        {
+            SoundManager.Instance.PlaySound("fuseForBomb", 1);
+            SoundManager.Instance.PlaySound("singleSplash", 1);
+            waiting = true;
+            waitTime = 1.5f;
+        }
+
+        if (phases[4])
         {
             fadeInController.enableShortcutFadeOut(.25f);
             waiting = true;
             waitTime = .2f;
         }
-        if (phases[4])
+        if (phases[5])
         {
             Destroy(instantiatedSnowball);
             GameData.Instance.map3_3Shortcut = true;
@@ -101,7 +111,7 @@ public class ShortcutCutsceneMap2_3to3_3s : ShortcutPlayer
             waiting = true;
             waitTime = 3f; //waiting for fade in And seeing the new map
         }
-        if (phases[5])
+        if (phases[6])
         {
             GameData.Instance.map1_3toMap2_3Shortcut = false;
 
@@ -109,14 +119,14 @@ public class ShortcutCutsceneMap2_3to3_3s : ShortcutPlayer
             waiting = true;
             waitTime = .45f;
         }
-        if (phases[6])
+        if (phases[7])
         {
             setupBackInDungeon();
             fadeInController.enableShortcutFadeIn(.5f);
             waiting = true;
             waitTime = .45f;
         }
-        if (phases[7])
+        if (phases[8])
         {
             GameData.Instance.isCutscene = false;
             playingScene = false;
