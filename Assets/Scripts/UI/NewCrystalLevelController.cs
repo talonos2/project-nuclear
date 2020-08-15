@@ -36,7 +36,7 @@ public class NewCrystalLevelController : MonoBehaviour
     private float durationOfFill;
     private float timeSoFar;
 
-    private static readonly float BARS_PER_TING = .2f;
+    private static readonly float BARS_PER_TING = .4f;
     private int lastTingAt;
 
     void Start()

@@ -61,7 +61,10 @@ public class Combat : MonoBehaviour
 
     private void Init(Enemy monsterStats, CharacterStats playerStats, GameObject monsterToDelete)
     {
-        MusicManager.instance.TurnOnCombatMusic();
+        //if (GameData.Instance.FloorNumber != 20)
+        {
+            MusicManager.instance.TurnOnCombatMusic();
+        }
 
 
         AttackAnimationManager aam = AttackAnimationManager.Instance;
@@ -310,12 +313,15 @@ public class Combat : MonoBehaviour
 
         if (monsterStats.HP <= 0)
         {
-            MusicManager.instance.TurnOffCombatMusic();
+            if (GameData.Instance.FloorNumber != 20)
+            {
+                MusicManager.instance.TurnOffCombatMusic();
+            }
             blade.StartClose();
             combatEnded = true;
         }
 
-        if (GameState.isInBattle == false) { MusicManager.instance.TurnOffCombatMusic(); }
+        if (GameState.isInBattle == false&&GameData.Instance.FloorNumber!=20) { MusicManager.instance.TurnOffCombatMusic(); }
     }
 
     private void PlayerLoss()
@@ -363,6 +369,10 @@ public class Combat : MonoBehaviour
                 playerStats.defenseCrystalsGained += monsterStats.crystalDropAmount;
                 playerStats.HealthCrystalsGained += monsterStats.crystalDropAmount;
                 playerStats.ManaCrystalsGained += monsterStats.crystalDropAmount;
+                if(monsterStats.earthBoss2 || monsterStats.deathBoss2 || monsterStats.finalBoss || monsterStats.finalBossForm1)
+                {
+                    break;
+                }
                 CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject,monsterStats.powerupEffect);
                 CrystalSpawner.SpawnCrystalParticles(CrystalType.DEFENSE, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 CrystalSpawner.SpawnCrystalParticles(CrystalType.MANA, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
@@ -392,25 +402,25 @@ public class Combat : MonoBehaviour
             GameData.Instance.iceBoss1 = true;
             playerStats.powersGained = Math.Max(1, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetIce", 1f);
         }
         if (monsterStats.earthBoss) {
             GameData.Instance.earthBoss1 = true;
             playerStats.powersGained = Math.Max(2, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetEarth", 1f);
         }
         if (monsterStats.fireBoss) {
             GameData.Instance.fireBoss1 = true;
             playerStats.powersGained = Math.Max(3, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetFire", 1f);
         }
         if (monsterStats.airBoss) {
             GameData.Instance.airBoss1 = true;
             playerStats.powersGained = Math.Max(4, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
-        }
-        if (monsterStats.earthBoss2)
-        {
-            GameData.Instance.earthBoss2 = true;
+            SoundManager.Instance.PlaySound("GetAir", 1f);
         }
         if (monsterStats.fireBoss2)
         {
@@ -434,8 +444,12 @@ public class Combat : MonoBehaviour
 
     private void OnDestroy()
     {
+        Debug.Log(GameData.Instance.FloorNumber);
         GameState.isInBattle = false;
-        MusicManager.instance.TurnOffCombatMusic();
+        if (GameData.Instance.FloorNumber != 20)
+        {
+            MusicManager.instance.TurnOffCombatMusic();
+        }
     }
     private void DealDamageToEnemy()
     {
@@ -491,14 +505,14 @@ public class Combat : MonoBehaviour
         monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
 
         if (playerStats.accessoryHPVamp > 0) {//same. should have an animation...
-            playerStats.HP = (int)((float) playerStats.MaxHP * (1 + playerStats.accessoryHPVamp / 100));
+            playerStats.HP += (int)((float) playerStats.MaxHP * (playerStats.accessoryHPVamp / 100f));
             //Note: The vamp items have a multiplier higher then what is shown This is to gausian give them the
             //the correct amount of life steal when dealing with remainders. The change is stat +.2
             if (playerStats.HP > playerStats.MaxHP)
                 { playerStats.HP = playerStats.MaxHP; }
             }
         if (playerStats.accessoryMPVamp > 0) {
-            playerStats.mana = (int)((float)playerStats.MaxMana * (1 + playerStats.accessoryMPVamp / 100));
+            playerStats.mana += (int)((float)playerStats.MaxMana * (playerStats.accessoryMPVamp / 100f));
             if (playerStats.mana > playerStats.MaxMana)
             { playerStats.mana = playerStats.MaxMana; }
         }

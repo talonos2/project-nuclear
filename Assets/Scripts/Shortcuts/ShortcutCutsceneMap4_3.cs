@@ -68,6 +68,7 @@ public class ShortcutCutsceneMap4_3 : ShortcutPlayer
         }      
         if (phases[2])
         {
+            SoundManager.Instance.PlaySound("AirGust", 1);
             activateShortcut();
             GameData.Instance.map4_3Shortcut = true;
             waiting = true;

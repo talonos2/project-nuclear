@@ -433,7 +433,7 @@ public static class AttackAnimationExtensions
                 SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
                 return;
             case AttackAnimation.FINAL_BOSS:
-                SoundManager.Instance.PlaySound("Combat/EnemyAttackSwing", 1f);
+                SoundManager.Instance.PlaySound("Combat/BossThreeSlash", 1f);
                 return;
             case AttackAnimation.ORBITAL_LASER:
                 SoundManager.Instance.PlaySound("Combat/Laser", .7f);

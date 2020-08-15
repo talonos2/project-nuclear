@@ -51,7 +51,7 @@ public class SaveSlotUiController : MonoBehaviour
             saveSlotText.text = "Save Slot " + saveSlotNumber;
         }
         if (runNumber==0) characterPortrait.sprite = portraits.bustList[runNumber];
-        else characterPortrait.sprite = portraits.bustList[runNumber-1];
+        else characterPortrait.sprite = portraits.bustList[runNumber];
 
     }
 

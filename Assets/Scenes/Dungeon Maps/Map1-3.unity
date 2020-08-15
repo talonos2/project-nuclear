@@ -1987,6 +1987,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46863cff84265514cbfcaece720f184d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monster1: {fileID: 0}
+  monster2: {fileID: 0}
+  monster3: {fileID: 0}
+  monster4: {fileID: 0}
 --- !u!1001 &620777650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2094,6 +2098,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46863cff84265514cbfcaece720f184d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monster1: {fileID: 0}
+  monster2: {fileID: 0}
+  monster3: {fileID: 0}
+  monster4: {fileID: 0}
 --- !u!1001 &664271416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2499,6 +2507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46863cff84265514cbfcaece720f184d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monster1: {fileID: 0}
+  monster2: {fileID: 0}
+  monster3: {fileID: 0}
+  monster4: {fileID: 0}
 --- !u!1001 &704206397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2606,6 +2618,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46863cff84265514cbfcaece720f184d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monster1: {fileID: 0}
+  monster2: {fileID: 0}
+  monster3: {fileID: 0}
+  monster4: {fileID: 0}
 --- !u!1 &706335105
 GameObject:
   m_ObjectHideFlags: 0
@@ -4131,12 +4147,14 @@ MonoBehaviour:
   isBackgroundCharacter: 0
   isSpike: 0
   isPassable: 1
+  isOnCutsceneMap: 0
   gabText: Toggle Ice Power on and off with A or D. You deal extra ice damage when
     it's on.
   gabNumber: 1
-  sound: MenuOkay
+  sound: Tutorial
   forcePause: 1
-  time: 3
+  clipToPlayForTutorial: {fileID: 0}
+  time: 5
 --- !u!65 &1504060443
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4170,7 +4188,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 47
+  m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1523810015
 PrefabInstance:
@@ -5226,6 +5244,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!1001 &2118416879
 PrefabInstance:
   m_ObjectHideFlags: 0

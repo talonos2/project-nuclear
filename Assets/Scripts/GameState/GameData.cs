@@ -185,6 +185,7 @@ public class GameData : Singleton<GameData>
             GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().deactivatePowers();
             GameState.isInBattle = false;
             SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
+            MusicManager.instance.TurnOffCombatMusic();
             MusicManager.instance.FadeOutMusic(-2, 3);
             SceneManager.LoadScene("DeathScene");
             pauseTimer = true;

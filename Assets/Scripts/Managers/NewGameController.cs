@@ -124,7 +124,9 @@ public class NewGameController : MonoBehaviour
             CutsceneLoader.LoadCutscene();
         }
         if (GameData.Instance.RunNumber > 1 && GameData.Instance.RunNumber <= 30) {
-            GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
+            //GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
+            CutsceneLoader.runTownBackDialogue = true;
+            GameData.Instance.nextLocationSet = true;
             GameData.Instance.FloorNumber = 0;
             FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
             fadeout.attachToGUI(transform.parent.GetComponent<Canvas>());
@@ -160,10 +162,12 @@ public class NewGameController : MonoBehaviour
             if (runVariable.text == "" || Convert.ToInt32(runVariable.text)==0 )
             {
                 GameData.Instance.RunNumber = 1;
+                GameData.Instance.FloorNumber = 0;
                 CutsceneLoader.introCutscene = true;
             }
             else {
                 //load cutscene runvar-1
+                GameData.Instance.FloorNumber = 0;
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
             }
             CutsceneLoader.LoadCutscene();

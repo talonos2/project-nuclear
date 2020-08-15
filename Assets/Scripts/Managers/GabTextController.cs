@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class GabTextController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GabTextController : MonoBehaviour
     public Canvas gabTextCanvas;
     public Image gabBackgroundFader1;
     public Image gabBackgroundFader2;
+    public Image playerPanel;
     public TextMeshProUGUI gabTextToPrint;
     public List<Gab> gabPlayList;
     public float gabDelay = 1.5f;
@@ -18,6 +20,7 @@ public class GabTextController : MonoBehaviour
     private float gabDelayCounter;
     private bool playingGab;
     private bool playingDelay;
+    public VideoPlayer player;
 
     private static readonly float FADE_TIME = .3f;
     private static readonly float FADE_AMOUNT = .3f;
@@ -96,31 +99,55 @@ public class GabTextController : MonoBehaviour
             {
                 if ((currentGab.duration - gabDelayCounter) < FLASH_TIME)
                 {
-                    gabBackgroundFader2.color = Color.Lerp(new Color(1, 1, 0, 0), new Color(1, 1, 0, 1), gabDelayCounter / FLASH_TIME);
+                    gabBackgroundFader2.color = new Color(1, 1, 0, (currentGab.duration - gabDelayCounter) / FLASH_TIME);
                 }
                 else if ((currentGab.duration - gabDelayCounter) < FLASH_TIME * 2)
                 {
-                    gabBackgroundFader2.color = Color.Lerp(new Color(1, 1, 0, 1), new Color(1, 1, 1, .5f), (gabDelayCounter - FLASH_TIME) / FLASH_TIME);
+                    float partThroughNumberTwo = ((currentGab.duration-FLASH_TIME) - gabDelayCounter)/FLASH_TIME;
+                    gabBackgroundFader2.color = new Color(1, 1, partThroughNumberTwo, 1 - partThroughNumberTwo/2);
+                }
+                else if (gabDelayCounter < FADE_TIME)
+                {
+                    gabBackgroundFader2.color = new Color(1, 1, 1, gabDelayCounter/FADE_TIME/2f);
                 }
                 else
                 {
-                    gabBackgroundFader2.color = new Color(0, 0, 0, 1);
+                    gabBackgroundFader2.color = new Color(1, 1, 1, .5f);
                 }
             }
             else
             {
                 if ((currentGab.duration - gabDelayCounter) < FLASH_TIME)
                 {
-                    gabBackgroundFader2.color = Color.Lerp(new Color(1, 1, 0, 0), new Color(1, 1, 0, 1), gabDelayCounter / FLASH_TIME);
+                    gabBackgroundFader2.color = Color.Lerp(new Color(0, 0, 0, 0f), new Color(0, 0, 0, 1f), gabDelayCounter / FLASH_TIME);
                 }
-                else if ((currentGab.duration - gabDelayCounter) < FLASH_TIME * 2)
+                else if (gabDelayCounter > (currentGab.duration - FADE_TIME))
                 {
-                    gabBackgroundFader2.color = Color.Lerp(new Color(1, 1, 0, 1), new Color(1, 1, 1, .5f), (gabDelayCounter - FLASH_TIME) / FLASH_TIME);
+                    gabBackgroundFader1.color = new Color(0, 0, 0, Mathf.Lerp(0f, FADE_AMOUNT, (currentGab.duration - gabDelayCounter) / FADE_TIME));
                 }
                 else
                 {
                     gabBackgroundFader2.color = new Color(0, 0, 0, 1);
                 }
+            }
+            if (currentGab.clipToPlayForTutorial!=null)
+            {
+                if ((currentGab.duration - gabDelayCounter) < FLASH_TIME)
+                {
+                    playerPanel.color = new Color(1, 1, 1, (currentGab.duration-gabDelayCounter) / FLASH_TIME);
+                }
+                else if (gabDelayCounter < FADE_TIME)
+                {
+                    playerPanel.color = new Color(1, 1, 1, gabDelayCounter / FLASH_TIME);
+                }
+                else
+                {
+                    playerPanel.color = Color.white;
+                }
+            }
+            else
+            {
+                playerPanel.color = new Color(1, 1, 1, 0);
             }
         }
 
@@ -166,7 +193,11 @@ public class GabTextController : MonoBehaviour
         ShowGabUi();
         playingGab = true;
         playingDelay = false;
-        gabDelayCounter = gabDelay;
+        gabDelayCounter = currentGab.duration==0?gabDelay:currentGab.duration;
+        if (currentGab.clipToPlayForTutorial!=null)
+        {
+            player.clip = currentGab.clipToPlayForTutorial;
+        }
         if (currentGab.fullPause)
         {
             GameState.fullPause = true;
@@ -190,14 +221,16 @@ public class GabTextController : MonoBehaviour
         public bool fade;
         public bool flash;
         public float duration;
+        public VideoClip clipToPlayForTutorial;
 
-        public Gab(string gabText = "", bool fullPause = false, float duration = 0, bool fade = false, bool flash = false)
+        public Gab(string gabText = "", bool fullPause = false, float duration = 0, bool fade = false, bool flash = false, VideoClip clipToPlayForTutorial = null)
         {
             this.gabText = gabText;
             this.fullPause = fullPause;
             this.duration = duration;
             this.fade = fade;
             this.flash = flash;
+            this.clipToPlayForTutorial = clipToPlayForTutorial;
         }
     }
 }

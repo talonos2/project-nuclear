@@ -126,6 +126,7 @@ public class boulderMover : SpriteMovement
         facedDirection = stats.GetComponentInParent<SpriteMovement>().facedDirection;
         moving = true;
         GameState.isInBattle = true;
+        SoundManager.Instance.PlaySound("pushingSnowball", 1);
 
     }
 }

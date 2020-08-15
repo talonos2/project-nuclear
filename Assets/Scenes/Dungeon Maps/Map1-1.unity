@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1140,7 +1140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &326564850
 MonoBehaviour:
@@ -2920,6 +2920,90 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03874daf25e4bfc4eb1472c51a7e34ae, type: 3}
+--- !u!1 &1640809710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1640809714}
+  - component: {fileID: 1640809713}
+  - component: {fileID: 1640809712}
+  - component: {fileID: 1640809711}
+  m_Layer: 0
+  m_Name: GabTutorial2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1640809711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640809710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f180457f7a3f24fbc1094b330c3424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlatformTerrain: 0
+  isWindShifter: 0
+  isTeleporter: 0
+  isExit: 0
+  isBlockableTerrain: 0
+  isTallBlockableTerrain: 0
+  isBackgroundCharacter: 0
+  isSpike: 0
+  isPassable: 1
+  isOnCutsceneMap: 0
+  gabText: Combat plays automatically. Press 'Space' when the bar hits the center
+    to hit harder or defend better.
+  gabNumber: 4
+  sound: Tutorial
+  forcePause: 1
+  clipToPlayForTutorial: {fileID: 32900000, guid: f494d58a5bfc7f34fa23038771cd610f,
+    type: 3}
+  time: 12
+--- !u!65 &1640809712
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640809710}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1640809713
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640809710}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1640809714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640809710}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12, y: -8, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 46
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1686090831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3246,7 +3330,7 @@ Transform:
   m_LocalScale: {x: 3, y: 0.1, z: 3.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
 --- !u!114 &2018926737
 MonoBehaviour:
@@ -3282,6 +3366,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!1001 &2028132235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3766,7 +3853,7 @@ PrefabInstance:
     - target: {fileID: 3128599578249191483, guid: 13f55362b4ce93843a256a685f28550e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191483, guid: 13f55362b4ce93843a256a685f28550e,
         type: 3}
@@ -3793,7 +3880,18 @@ PrefabInstance:
       propertyPath: HP
       value: 550
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3128599578249191477, guid: 13f55362b4ce93843a256a685f28550e,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: 13f55362b4ce93843a256a685f28550e,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3128599578249191479, guid: 13f55362b4ce93843a256a685f28550e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 13f55362b4ce93843a256a685f28550e, type: 3}
 --- !u!1001 &2236789191173379026
 PrefabInstance:
@@ -3929,10 +4027,12 @@ MonoBehaviour:
   isBackgroundCharacter: 0
   isSpike: 0
   isPassable: 1
+  isOnCutsceneMap: 0
   gabText: Press "S" to rest; this heals but costs 30 seconds.
   gabNumber: 0
-  sound: MenuOkay
+  sound: Tutorial
   forcePause: 1
+  clipToPlayForTutorial: {fileID: 0}
   time: 3
 --- !u!1001 &3128599578103915811
 PrefabInstance:
@@ -4063,7 +4163,7 @@ PrefabInstance:
     - target: {fileID: 3664588965629725515, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3664588965629725519, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
@@ -4203,6 +4303,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 610.3008
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014867980103700925, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626370618705454695, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ac0871009d1c4cbb3ce4b6c5255a3, type: 3}
