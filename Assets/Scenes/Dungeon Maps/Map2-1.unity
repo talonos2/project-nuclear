@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -491,6 +491,7 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &140491208
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1476,6 +1477,7 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &661255769
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1931,6 +1933,7 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &803438076
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2121,6 +2124,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014867980103700897, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411563888526905263, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411563888526905263, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411563888526905263, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411563888526905263, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411563888526905263, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411563888526905263, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_textInfo.materialCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014867980103700925, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626370618705454695, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244069809540644330, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_VideoClip
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ac0871009d1c4cbb3ce4b6c5255a3, type: 3}
@@ -3653,11 +3706,14 @@ MonoBehaviour:
   isBackgroundCharacter: 0
   isSpike: 0
   isPassable: 1
+  isOnCutsceneMap: 0
   gabText: With Ice toggled on, Press C+direction to use it.
   gabNumber: 3
   sound: MenuOkay
   forcePause: 1
-  time: 3
+  clipToPlayForTutorial: {fileID: 32900000, guid: 4cbf1de86135590458639c58edd821c9,
+    type: 3}
+  time: 10
 --- !u!65 &1358145566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4140,6 +4196,7 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &1538365673
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4284,6 +4341,7 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &1553102655
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4922,6 +4980,7 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &1893272814
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5318,6 +5377,7 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!1 &2033073152
 GameObject:
   m_ObjectHideFlags: 0
@@ -5358,10 +5418,12 @@ MonoBehaviour:
   isBackgroundCharacter: 0
   isSpike: 0
   isPassable: 1
+  isOnCutsceneMap: 0
   gabText: Blue enemies take double damage from your Ice power.
   gabNumber: 2
   sound: MenuOkay
   forcePause: 1
+  clipToPlayForTutorial: {fileID: 0}
   time: 3
 --- !u!65 &2033073154
 BoxCollider:
@@ -5418,6 +5480,7 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!1001 &2236789191173379026
 PrefabInstance:
   m_ObjectHideFlags: 0
