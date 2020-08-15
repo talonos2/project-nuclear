@@ -22,6 +22,7 @@ public class ShortcutCutsceneMap1_3to2_3 : ShortcutPlayer
         phases.Add(false);//Phase 5
         phases.Add(false);//Phase 6
         phases.Add(false);//Phase 7
+        phases.Add(false);//Phase 8
 
         // startShortcutCutscene = true;
         setupPlayerObject();
@@ -71,23 +72,30 @@ public class ShortcutCutsceneMap1_3to2_3 : ShortcutPlayer
             waitTime = .5f;
         }
         if (phases[2]) {
-            instantiatedSnowball = Instantiate(snowballToSpawn, new Vector3(57.336f, 5, 0), Quaternion.identity);
+            instantiatedSnowball = Instantiate(snowballToSpawn, new Vector3(57.336f, 6, 0), Quaternion.identity);
             
             boulderMover movingBoulder= instantiatedSnowball.GetComponent<boulderMover>();
             movingBoulder.isOnCutsceneMap = true;
             movingBoulder.facedDirection = SpriteMovement.DirectionMoved.DOWN;
             movingBoulder.moving = true;
+            SoundManager.Instance.PlaySound("fallingObject_.75_sec", 1);
             //Drop ball
             //need splash sound effect here
             waiting = true;
-            waitTime = 2.5f;
+            waitTime = .68f;
         }
-        if (phases[3]) {
-            fadeInController.enableShortcutFadeOut(.5f);
+        if (phases[3])
+        {
+            SoundManager.Instance.PlaySound("singleSplash", 1);
             waiting = true;
-            waitTime = .45f;
+            waitTime = 1.75f;
         }
         if (phases[4]) {
+        fadeInController.enableShortcutFadeOut(.5f);
+        waiting = true;
+        waitTime = .45f;
+        }
+        if (phases[5]) {
             Destroy(instantiatedSnowball);
             GameData.Instance.map1_3toMap2_3Shortcut = true;
             setupNewAfterSnowballMap();
@@ -95,18 +103,18 @@ public class ShortcutCutsceneMap1_3to2_3 : ShortcutPlayer
             waiting = true;
             waitTime = 3.75f; //waiting for fade in And seeing the new map
         }
-        if (phases[5]) {
+        if (phases[6]) {
             fadeInController.enableShortcutFadeOut(.5f);
             waiting = true;
             waitTime = .45f;
         }
-        if (phases[6]) {
+        if (phases[7]) {
             setupBackInDungeon();
             fadeInController.enableShortcutFadeIn(.5f);
             waiting = true;
             waitTime = .45f;
         }
-        if (phases[7]) {
+        if (phases[8]) {
             GameData.Instance.isCutscene = false;
             playingScene = false;
             GameState.isInBattle = false;

@@ -44,6 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaf0a63810f4a14a846151d161453c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMainCharacter: 0
+  isAMonster: 0
+  isLargeMonster: 0
+  isInteractableObject: 0
+  isItem: 0
+  isSwitch: 0
+  isNPC: 0
+  isOnCutsceneMap: 0
+  MoveSpeed: 6.75
+  framesPerSecond: 30
+  facedDirection: 4
+  shortcutLocation: {x: 0, y: 0}
+  map1_3Shortcut: 0
+  map2_3Shortcut: 0
+  map3_1Shortcut: 0
+  shortcutPlayer: {fileID: 0}
 --- !u!1 &8724220277472218837
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,3 +172,6 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
