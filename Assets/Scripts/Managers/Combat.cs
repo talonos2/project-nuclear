@@ -61,7 +61,10 @@ public class Combat : MonoBehaviour
 
     private void Init(Enemy monsterStats, CharacterStats playerStats, GameObject monsterToDelete)
     {
-        MusicManager.instance.TurnOnCombatMusic();
+        //if (GameData.Instance.FloorNumber != 20)
+        {
+            MusicManager.instance.TurnOnCombatMusic();
+        }
 
 
         AttackAnimationManager aam = AttackAnimationManager.Instance;
@@ -310,12 +313,15 @@ public class Combat : MonoBehaviour
 
         if (monsterStats.HP <= 0)
         {
-            MusicManager.instance.TurnOffCombatMusic();
+            if (GameData.Instance.FloorNumber != 20)
+            {
+                MusicManager.instance.TurnOffCombatMusic();
+            }
             blade.StartClose();
             combatEnded = true;
         }
 
-        if (GameState.isInBattle == false) { MusicManager.instance.TurnOffCombatMusic(); }
+        if (GameState.isInBattle == false&&GameData.Instance.FloorNumber!=20) { MusicManager.instance.TurnOffCombatMusic(); }
     }
 
     private void PlayerLoss()
@@ -396,21 +402,25 @@ public class Combat : MonoBehaviour
             GameData.Instance.iceBoss1 = true;
             playerStats.powersGained = Math.Max(1, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetIce", 1f);
         }
         if (monsterStats.earthBoss) {
             GameData.Instance.earthBoss1 = true;
             playerStats.powersGained = Math.Max(2, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetEarth", 1f);
         }
         if (monsterStats.fireBoss) {
             GameData.Instance.fireBoss1 = true;
             playerStats.powersGained = Math.Max(3, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetFire", 1f);
         }
         if (monsterStats.airBoss) {
             GameData.Instance.airBoss1 = true;
             playerStats.powersGained = Math.Max(4, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetAir", 1f);
         }
         if (monsterStats.fireBoss2)
         {
@@ -434,8 +444,12 @@ public class Combat : MonoBehaviour
 
     private void OnDestroy()
     {
+        Debug.Log(GameData.Instance.FloorNumber);
         GameState.isInBattle = false;
-        MusicManager.instance.TurnOffCombatMusic();
+        if (GameData.Instance.FloorNumber != 20)
+        {
+            MusicManager.instance.TurnOffCombatMusic();
+        }
     }
     private void DealDamageToEnemy()
     {
