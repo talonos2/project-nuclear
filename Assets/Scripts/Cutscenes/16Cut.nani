@@ -49,13 +49,12 @@ Logos: Yes that is... somewhere else.  Hold on a second, let me have a look in t
 Logos: Okay, how about this time you close your 4th through 17th eye, and try looking again.
 @hidechars time:0
 
-@fwspawnvfx x:-2 y:4 z:0 Vfx:CurseFX
+@fwspawnvfx x:-2 y:4.8 z:-10 Vfx:CurseFX
 @wait 1
 
 @fwmovepawn n:PawnLogos d:s 
 @fwmovepawn n:PawnLogos d:s 
-@fwmovepawn n:PawnLogos d:s 
-@fwmovepawn n:PawnLogos d:s 
+
 
 
 
@@ -69,12 +68,14 @@ Metra: But, but- We aren't done with the lessons!
 Logos: I think you'll do fine.
 @hidechars time:0
 
-
+@fwmovepawn n:PawnLogos d:s 
+@fwmovepawn n:PawnLogos d:s 
 @fwmovepawn n:PawnLogos d:s 
 @fwmovepawn n:PawnLogos d:s 
 @fwmovepawn n:PawnLogos d:s 
 @fwmovepawn n:PawnLogos d:s
-@wait 0.8
+@fwmovepawn n:PawnLogos d:s
+@wait 1
 @fwdeletego n:PawnLogos
 
 ;@startRun

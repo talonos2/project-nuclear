@@ -2,12 +2,12 @@
 
 ;$@scene= church
 
-@fwspawnvfx x:-1 y:-5 z:0 Vfx:PawnMelvardius
-@fwturnpawn n:PawnMelvardius d:n
-@fwspawnvfx x:0 y:-5 z:0 Vfx:PawnMetra
-@fwturnpawn n:PawnMetra d:e
-@fwspawnvfx x:-5 y:-2 z:0 Vfx:PawnPaul
-@fwturnpawn n:PawnPaul d:w
+@fwspawnvfx x:-4 y:-2 z:0 Vfx:PawnMelvardius
+@fwturnpawn n:PawnMelvardius d:e
+@fwspawnvfx x:-5 y:-1 z:0 Vfx:PawnMetra
+@fwturnpawn n:PawnMetra d:n
+@fwspawnvfx x:3 y:-2 z:0 Vfx:PawnPaul
+@fwturnpawn n:PawnPaul d:e
 @fwspawnvfx x:-1 y:3 z:0 Vfx:PawnNelson
 @fwturnpawn n:PawnNelson d:n
 
@@ -19,17 +19,17 @@ Metra: Why is this happening?[br]Why is evil allowed to run rampant?
 @char Melvardius
 Melvardius: Look into the pool.  What do you see?
 @hidechars time:0
-@fwturnpawn n:PawnMetra d:n
+@fwturnpawn n:PawnMetra d:e
 
 @char Metra
 Metra: I see a few coins.[br]They were tossed in by devotees I suppose.
 @hidechars time:0
 @char Melvardius
-Melvardius: I see the image of Cedeej the mighty.
+Melvardius: I see a father seeking guidance.
 @hidechars time:0
-@fwturnpawn n:PawnMetra d:e
+@fwturnpawn n:PawnMetra d:s
 @char Metra
-Metra: That's just the reflection of his statue.
+Metra: That's just Paul's reflection.
 @hidechars time:0
 @char Melvardius
 Melvardius: There are many ways to look at a thing.[br]Some only see the darkness of the curse, but I wonder about the light.
@@ -37,16 +37,11 @@ Melvardius: There are many ways to look at a thing.[br]Some only see the darknes
 @char Metra
 Metra: I'm not sure I see the light in all this.
 @hideChars time:0
-;@hidePrinter Dialogue
-;@hidePrinter FWDialog
-;@hidePrinter Fullscreen
-;@hidePrinter Wide
-;@hidePrinter Chat
 
-@fwspawnvfx x:-1 y:-5 z:1 Vfx:CurseFX
+@fwspawnvfx x:-3 y:-0.2 z:-10 Vfx:CurseFX
 @wait 1
 
-@fwturnpawn n:PawnPaul d:s
+@fwturnpawn n:PawnPaul d:w
 @fwturnpawn n:PawnNelson d:s
 @fwturnpawn n:PawnMetra d:s
 
@@ -57,6 +52,12 @@ Melvardius: Did you see it that time?
 @fwmovepawn n:PawnMelvardius d:s
 @fwturnpawn n:PawnMetra d:s
 @fwmovepawn n:PawnMelvardius d:s
+@fwmovepawn n:PawnMelvardius d:s
+@fwmovepawn n:PawnMelvardius d:s
+@fwmovepawn n:PawnMelvardius d:s
+@fwmovepawn n:PawnMelvardius d:e
+@fwmovepawn n:PawnMelvardius d:e
+@fwmovepawn n:PawnMelvardius d:e
 @fwmovepawn n:PawnMelvardius d:s
 @fwmovepawn n:PawnMelvardius d:s
 
