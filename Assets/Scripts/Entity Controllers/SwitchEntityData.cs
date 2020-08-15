@@ -25,7 +25,12 @@ public class SwitchEntityData : EntityData
     public bool prePressed;
     private float tempResetTime = 0;
     private bool timerSet = false;
-    private float offsetFix = .00001f;
+
+    private int lastTickNumber = 0;
+
+    private static readonly float OFFSET_FIX = .00001f;
+    private static readonly float TIME_PER_TICK_SOUND = .7f;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -52,13 +57,21 @@ public class SwitchEntityData : EntityData
     override public void ProcessClick(CharacterStats stats) {
 
         if (isAnimating) { return; }
-        if (timerSet == true) {
-            tempResetTime = timeTillReset;
-            return; }
-        if (timeTillReset > 0) {
+        if (timerSet == true)
+        {
+            while (tempResetTime + TIME_PER_TICK_SOUND < timeTillReset)
+            {
+                tempResetTime += TIME_PER_TICK_SOUND;
+            }
+            lastTickNumber = (int)(tempResetTime / TIME_PER_TICK_SOUND);
+            return;
+        }
+        if (timeTillReset > 0)
+        {
             tempResetTime = timeTillReset;
             timerSet = true;
             SoundManager.Instance.PlaySound("Environment/TimeStart", 1f);
+            lastTickNumber = 0;
         }
 
         SoundManager.Instance.PlaySound("switchSound", 1f);
@@ -160,6 +173,12 @@ public class SwitchEntityData : EntityData
 
         if (timerSet) {
             tempResetTime -= Time.deltaTime;
+            int currentTickNumber = (int)(tempResetTime / TIME_PER_TICK_SOUND);
+            if (currentTickNumber != lastTickNumber)
+            {
+                if (lastTickNumber != 0) SoundManager.Instance.PlaySound("Environment/TickTock", 1);
+                lastTickNumber = currentTickNumber;
+            }
             if (tempResetTime <= 0) {
                 ToggleTiedObjects();
                 timerSet = false;
@@ -175,7 +194,7 @@ public class SwitchEntityData : EntityData
             if (forwardAnimation) frameNumber += 1;
             else frameNumber -= 1;
             animationCounter += 1;
-            sRender.material.SetFloat("_Frame", frameNumber+ offsetFix);
+            sRender.material.SetFloat("_Frame", frameNumber+ OFFSET_FIX);
             timeSinceLastFrame = 0;
             if (animationCounter == totalFrames - 1)
             {
