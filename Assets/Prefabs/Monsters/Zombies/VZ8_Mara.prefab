@@ -143,8 +143,8 @@ MonoBehaviour:
   isSwitch: 0
   isNPC: 0
   isOnCutsceneMap: 0
-  MoveSpeed: 7
-  framesPerSecond: 14
+  MoveSpeed: 4.5
+  framesPerSecond: 10
   facedDirection: 4
   PathRandomly: 0
   PathAntiRandomly: 0
@@ -243,6 +243,7 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
 --- !u!1 &3128599578980096542
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +376,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!1001 &7711866143073806567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -386,6 +388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: hazard-sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890276576694707740, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5508812850377085975, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
         type: 3}
@@ -451,11 +458,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.066536956
-      objectReference: {fileID: 0}
-    - target: {fileID: 6890276576694707740, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c317f2df12d5a46aebbb0e9cf6d28b, type: 3}
