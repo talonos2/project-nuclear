@@ -213,7 +213,7 @@ Transform:
   m_Children:
   - {fileID: 1717756075}
   m_Father: {fileID: 0}
-  m_RootOrder: 72
+  m_RootOrder: 70
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &57810111
 MonoBehaviour:
@@ -227,6 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5bc2752f76b7f345874109cceb86bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onShortcutMap: 0
+  shortcutToActivate: {fileID: 0}
 --- !u!1001 &69576047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -717,6 +719,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &174194967
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -920,7 +924,7 @@ PrefabInstance:
     - target: {fileID: 2055021339071006907, guid: e1596da7603e6f4459b725da6e1b63df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 70
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 2055021339071006907, guid: e1596da7603e6f4459b725da6e1b63df,
         type: 3}
@@ -1443,80 +1447,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e59e3f0ec37cee46a5881db99160d30, type: 3}
---- !u!1001 &486286449
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5409889015977693223, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_Name
-      value: MusicManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5409889015977693223, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 31.798351
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.7781124
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.0525
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 67
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e87489115aeaf2b46b8bd49294861d58, type: 3}
 --- !u!1001 &508769897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1690,6 +1620,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &547674858
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2789,6 +2721,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &750998161
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3200,51 +3134,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1596da7603e6f4459b725da6e1b63df, type: 3}
---- !u!1 &921147959
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 921147961}
-  - component: {fileID: 921147960}
-  m_Layer: 0
-  m_Name: This starts zone 2's muzic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &921147960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 921147959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429726101d8d5f147814fcc4ee606979, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapMusic: 4
-  combatMusic: 5
---- !u!4 &921147961
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 921147959}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34, y: 0.47460938, z: -10.234375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 68
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &923325389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3551,7 +3440,7 @@ PrefabInstance:
     - target: {fileID: 2055021339071006907, guid: e1596da7603e6f4459b725da6e1b63df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 71
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 2055021339071006907, guid: e1596da7603e6f4459b725da6e1b63df,
         type: 3}
@@ -4128,6 +4017,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1133519815
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4806,6 +4697,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1329525959
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5232,7 +5125,7 @@ PrefabInstance:
     - target: {fileID: 2055021339071006907, guid: e1596da7603e6f4459b725da6e1b63df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 73
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 2055021339071006907, guid: e1596da7603e6f4459b725da6e1b63df,
         type: 3}
@@ -5530,6 +5423,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1485737095
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5818,6 +5713,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1572656924
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5892,7 +5789,7 @@ PrefabInstance:
     - target: {fileID: 7020265778627501001, guid: a61269338a63a9d42820e35667b675e5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.335938
+      value: 49.81
       objectReference: {fileID: 0}
     - target: {fileID: 7020265778627501001, guid: a61269338a63a9d42820e35667b675e5,
         type: 3}
@@ -5947,7 +5844,7 @@ PrefabInstance:
     - target: {fileID: 7450388853071584331, guid: a61269338a63a9d42820e35667b675e5,
         type: 3}
       propertyPath: primBoulder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7450388853071584331, guid: a61269338a63a9d42820e35667b675e5,
         type: 3}
@@ -6499,6 +6396,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1717756078
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6696,6 +6595,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1740439704
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6992,6 +6893,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1762585930
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7443,6 +7346,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8332177918306501506, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2236789191275909186, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: presetItem
@@ -7456,11 +7364,6 @@ PrefabInstance:
     - target: {fileID: 2236789191275909186, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: isOnCutsceneMap
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8332177918306501506, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
-        type: 3}
-      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7743,7 +7646,7 @@ PrefabInstance:
     - target: {fileID: 2055021339071006907, guid: e1596da7603e6f4459b725da6e1b63df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 69
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 2055021339071006907, guid: e1596da7603e6f4459b725da6e1b63df,
         type: 3}
@@ -7843,6 +7746,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &2017415984
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8031,6 +7936,8 @@ MonoBehaviour:
   thePlayerjumping: 0
   spikes: 0
   lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!1001 &2048357739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8233,14 +8140,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2236789191275909186, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
-        type: 3}
-      propertyPath: isOnCutsceneMap
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8332177918306501506, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236789191275909186, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
+        type: 3}
+      propertyPath: isOnCutsceneMap
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8260,7 +8167,7 @@ PrefabInstance:
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.355938
+      value: 47.77
       objectReference: {fileID: 0}
     - target: {fileID: 8749909509001289797, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}

@@ -2520,7 +2520,7 @@ Transform:
   m_Children:
   - {fileID: 1995021769}
   m_Father: {fileID: 0}
-  m_RootOrder: 48
+  m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &350384445
 GameObject:
@@ -6538,6 +6538,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &866315190
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7963,7 +7964,7 @@ Transform:
   m_Children:
   - {fileID: 866315188}
   m_Father: {fileID: 0}
-  m_RootOrder: 47
+  m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1072132246
 GameObject:
@@ -12067,80 +12068,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1658645872
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5409889015977693223, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_Name
-      value: MusicManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5409889015977693223, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 38.562416
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.7781124
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.0525
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 49
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e87489115aeaf2b46b8bd49294861d58, type: 3}
 --- !u!1 &1677181606
 GameObject:
   m_ObjectHideFlags: 0
@@ -13984,7 +13911,7 @@ PrefabInstance:
     - target: {fileID: 3664588965629725519, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
       propertyPath: m_RootOrder
-      value: 46
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3664588965629725519, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
@@ -14351,6 +14278,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1995021771
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14632,6 +14560,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 1
+  isThisJohnDoe: 0
 --- !u!1001 &2019939606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14806,51 +14735,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040765191}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2058773681
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2058773683}
-  - component: {fileID: 2058773682}
-  m_Layer: 0
-  m_Name: This starts zone 3's muzic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2058773682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058773681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429726101d8d5f147814fcc4ee606979, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapMusic: 6
-  combatMusic: 7
---- !u!4 &2058773683
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058773681}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.76406, y: 0.47460938, z: -10.234375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 45
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2060740560
 GameObject:
   m_ObjectHideFlags: 0

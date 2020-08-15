@@ -64,8 +64,8 @@ MonoBehaviour:
   isSwitch: 0
   isNPC: 0
   isOnCutsceneMap: 0
-  MoveSpeed: 8
-  framesPerSecond: 14
+  MoveSpeed: 4.5
+  framesPerSecond: 10
   facedDirection: 4
   PathRandomly: 0
   PathAntiRandomly: 0
@@ -142,11 +142,11 @@ MonoBehaviour:
   hitsplatOffset: {x: 0, y: 0}
   combatOffset: {x: 0, y: 0}
   combatSprites:
-  - {fileID: -5817998509134764357, guid: 14dca9c925536a545951a94a70651320, type: 3}
-  - {fileID: 2643728883798948249, guid: 14dca9c925536a545951a94a70651320, type: 3}
-  - {fileID: 1611595851379681123, guid: 14dca9c925536a545951a94a70651320, type: 3}
-  - {fileID: 5655514085452977871, guid: 14dca9c925536a545951a94a70651320, type: 3}
-  - {fileID: 3445377128530010259, guid: 14dca9c925536a545951a94a70651320, type: 3}
+  - {fileID: -6597013357618177839, guid: e460c6bed1aa0cd46a5de8a84381ae8b, type: 3}
+  - {fileID: -9129508721721646715, guid: e460c6bed1aa0cd46a5de8a84381ae8b, type: 3}
+  - {fileID: 1131590522038840082, guid: e460c6bed1aa0cd46a5de8a84381ae8b, type: 3}
+  - {fileID: -1924205646206997790, guid: e460c6bed1aa0cd46a5de8a84381ae8b, type: 3}
+  - {fileID: -2934655175409295171, guid: e460c6bed1aa0cd46a5de8a84381ae8b, type: 3}
   attackAnimation: 3
   goodHit: {fileID: 0}
   badHit: {fileID: 0}
@@ -164,6 +164,7 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
 --- !u!1 &3128599578980096542
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +297,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!1 &4462987939224101677
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +389,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: hazard-sign
       objectReference: {fileID: 0}
+    - target: {fileID: 6890276576694707740, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5508812850377085975, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -451,11 +458,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.06468462
-      objectReference: {fileID: 0}
-    - target: {fileID: 6890276576694707740, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c317f2df12d5a46aebbb0e9cf6d28b, type: 3}
