@@ -103,7 +103,7 @@ public class CutsceneLoader : MonoBehaviour
             case 1:
                 return "TownMap_1";
             case 2:
-                SceneManager.LoadScene("TownInterior_Pub_1");
+                return "TownInterior_Pub_1";
                 break;
             case 3:
                 return "TownMap_1";
