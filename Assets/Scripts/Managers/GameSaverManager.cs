@@ -23,6 +23,7 @@ public class GameSaverManager
         public int PowersGained = 0;
         internal int furthestFloorAchieved;
         internal float[] bestTimes=new float [20];
+    public bool[] gabNumbers = new bool[32];
     public bool iceBoss1;
     public bool earthBoss1;
     public bool fireBoss1;
@@ -66,6 +67,8 @@ public class GameSaverManager
 
         public void SetupSave()
         {
+        gabNumbers = GabTriggerer.gabNumbers;
+
             HealhCrystalBonus = GameData.Instance.HealhCrystalBonus;
             ManaCrystalBonus = GameData.Instance.ManaCrystalBonus;
             AttackCrystalBonus = GameData.Instance.AttackCrystalBonus;
@@ -133,7 +136,9 @@ public class GameSaverManager
 
     public void PushSaveToGameData()
         {
-            GameData.Instance.HealhCrystalBonus = HealhCrystalBonus;
+        GabTriggerer.gabNumbers=gabNumbers;
+
+        GameData.Instance.HealhCrystalBonus = HealhCrystalBonus;
             GameData.Instance.ManaCrystalBonus = ManaCrystalBonus;
             GameData.Instance.AttackCrystalBonus = AttackCrystalBonus;
             GameData.Instance.DefenseCrystalBonus = DefenseCrystalBonus;

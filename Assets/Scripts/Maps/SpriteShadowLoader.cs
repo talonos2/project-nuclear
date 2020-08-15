@@ -59,7 +59,7 @@ public class SpriteShadowLoader : MonoBehaviour
         PassabilityGrid passGrid = GameObject.Find("Grid2").GetComponent<PassabilityGrid>();
         Vector4 tempVector = new Vector4(passGrid.width, passGrid.height, 0, 0);
         sRender.material.SetVector("_MapXY", tempVector);
-        ThePlayer = GameObject.FindGameObjectWithTag("Player");
+        if (GameData.Instance.FloorNumber != 0)  ThePlayer = GameObject.FindGameObjectWithTag("Player");
         //sRender.material.SetInt("_LightRad", ThePlayer.GetComponentInChildren<Renderer>().material.GetInt("_LightRad"));
         sRender.material.SetInt("_LightRad", 6);
         if (GameData.Instance.FloorNumber == 0)
@@ -73,8 +73,10 @@ public class SpriteShadowLoader : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {       
-        if (GameData.Instance.FloorNumber!=0) sRender.material.SetVector("_HeroXY", ThePlayer.transform.GetChild(0).GetChild(0).position);//shouldn't it be the sprite position rather than the player position?
+    {
+        Debug.Log(ThePlayer);
+        Vector3 posit = ThePlayer.transform.GetChild(0).GetChild(0).position;
+        if (GameData.Instance.FloorNumber!=0) sRender.material.SetVector("_HeroXY", posit);//shouldn't it be the sprite position rather than the player position?
         sRender.material.SetInt("_LightRad", lightRadius);
         this.transform.localPosition = new Vector3(xPosition,yPostioin,CalculateZCoor());
         if (groundObject.resetShadow) {

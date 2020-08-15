@@ -68,6 +68,7 @@ public class ShortcutCutsceneMap2_2stoMap3_2 : ShortcutPlayer
         }
         if (phases[2])
         {
+            SoundManager.Instance.PlaySound("Environment/Bridge", 1);
             activateShortcut();
             GameData.Instance.map3_2Shortcut = true;
             waiting = true;

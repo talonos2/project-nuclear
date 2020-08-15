@@ -12,7 +12,7 @@ public class GabTriggerer : DoodadData
 
     public string gabText;
     public int gabNumber;
-    private static bool[] gabNumbers = new bool[32];
+    public static bool[] gabNumbers = new bool[32];
     private double timeRemaining;
     public string sound;
     public bool forcePause;
