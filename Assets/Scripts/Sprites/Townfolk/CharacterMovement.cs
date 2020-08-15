@@ -181,8 +181,15 @@ public class CharacterMovement : SpriteMovement
                 }
                 else
                 {
-                    SetShieldGraphic(totalDashed, false);
-                    SetNextDashLocation();
+                    if (CheckExitStatus())
+                    {
+                        GameData.Instance.dashing = false;
+                    }
+                    else {
+                        SetShieldGraphic(totalDashed, false);
+                        SetNextDashLocation();
+                    }
+
                 }
             }
 
@@ -654,16 +661,18 @@ public class CharacterMovement : SpriteMovement
         }
     }
 
-    private void CheckExitStatus()
+    private bool CheckExitStatus()
     {
         GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
         if (exitLocation != null)
         {
             if (exitLocation.GetComponent<DoodadData>().isExit) {
                 playerStats.PushCharacterData();
-                exitLocation.GetComponent<ExitController>().TransitionMap(); 
+                exitLocation.GetComponent<ExitController>().TransitionMap();
+                return true;
             }
         }
+        return false;
 
     }
 
