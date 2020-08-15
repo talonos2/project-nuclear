@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class GabTriggerer : DoodadData
 {
@@ -15,6 +16,7 @@ public class GabTriggerer : DoodadData
     private double timeRemaining;
     public string sound;
     public bool forcePause;
+    public VideoClip clipToPlayForTutorial = null;
     public double time;
 
     public new void Start()
@@ -25,19 +27,19 @@ public class GabTriggerer : DoodadData
 
     public void TriggerGab()
     {
-        if (sound != null)
-        {
-            SoundManager.Instance.PlaySound(sound, 1f);
-        }
         if (!gabNumbers[gabNumber])
         {
+            if (sound != null)
+            {
+                SoundManager.Instance.PlaySound(sound, 1f);
+            }
             if (forcePause)
             {
                 timeRemaining = time;
                 GameState.fullPause = true;
             }
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
-            uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText,true,3,true,true));
+            uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText,true, (float)time, true,true, clipToPlayForTutorial));
             gabNumbers[gabNumber] = true;
         }
         GameObject.Destroy(this.gameObject);
