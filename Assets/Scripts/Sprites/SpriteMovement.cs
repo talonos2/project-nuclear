@@ -50,6 +50,7 @@ public class SpriteMovement : EntityData
     protected Vector2Int exitLocation = new Vector2Int(0, 0);
     protected float waitTimer = 0;
 
+
     public enum DirectionMoved
     { NONE, UP, RIGHT, DOWN, LEFT }
 
@@ -108,6 +109,14 @@ public class SpriteMovement : EntityData
             finishedMoving = MoveDown(tempMovementSpeed);
         }
         return finishedMoving;
+    }
+
+    public void setNewMovespeed(float newSpeed) {
+        tempMovementSpeed = newSpeed;
+    }
+
+    public void setOldMovespeed() {
+        tempMovementSpeed = MoveSpeed;
     }
 
     protected void SetNextLocationActual(int characterLocX, int characterLocY) {
@@ -406,7 +415,8 @@ public class SpriteMovement : EntityData
 
     public GameObject GetMapGrid() {
         GameObject MapGridRetrieved = GameObject.Find("Grid");
-            return MapGridRetrieved;
+        if (isOnCutsceneMap) MapGridRetrieved = GameObject.Find("Grid2");
+        return MapGridRetrieved;
     }
 
     protected bool ValidMoveLocation(int inputDirection)

@@ -33,6 +33,7 @@ public class SpikeController : DoodadData
         this.sRender.material = new Material(this.sRender.material);
 
         primToCheck = GameObject.Find("Grid").GetComponent<BobPrim>();
+        if (isOnCutsceneMap) primToCheck = GameObject.Find("Grid2").GetComponent<BobPrim>();
         if (primBoulder)
         {
             RunPrimAlgorythm();
@@ -43,7 +44,7 @@ public class SpikeController : DoodadData
     {
         if (primToCheck.result[primConnectionNumber])
         {
-            Open();
+            Open(false) ;
         }
         else
         {
@@ -64,13 +65,14 @@ public class SpikeController : DoodadData
         }
     }
 
-    private void Open(bool sound = true)
+    public void Open(bool sound = true)
     {
         this.isPassable = true;
         if (sound)
         {
             this.LowerSpikeAnimation();
         }
+        else this.LowerSpikeAnimation(false);
     }
 
 
@@ -96,16 +98,17 @@ public class SpikeController : DoodadData
         }
     }
 
-    public void LowerSpikeAnimation() {
+    public void LowerSpikeAnimation(bool sound = true) {
         isAnimating = true;
         animateRise = false;
-        SoundManager.Instance.PlaySound("DroppingSpikes", 1);
+        if (sound) SoundManager.Instance.PlaySound("DroppingSpikes", 1);
     }
 
     public void RaiseSpikeAnimation()
     {
         isAnimating = true;
         animateRise = true;
+        SoundManager.Instance.PlaySound("RaisingSpikes", 1);
     }
 
 }

@@ -41,6 +41,7 @@ public class SwitchEntityData : EntityData
     private void InitializeSpriteLocation()
     {
         MapGrid = GameObject.Find("Grid");
+        if (isOnCutsceneMap) MapGrid = GameObject.Find("Grid2");
         mapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
         SwitchLocation.x = (int)Math.Round(this.transform.position.x) - (int)mapZeroLocation.x;
         SwitchLocation.y = (int)Math.Round(this.transform.position.y) - (int)mapZeroLocation.y;
@@ -55,9 +56,9 @@ public class SwitchEntityData : EntityData
             tempResetTime = timeTillReset;
             return; }
         if (timeTillReset > 0) {
-
             tempResetTime = timeTillReset;
             timerSet = true;
+            SoundManager.Instance.PlaySound("Environment/TimeStart", 1f);
         }
 
         SoundManager.Instance.PlaySound("switchSound", 1f);
@@ -80,7 +81,10 @@ public class SwitchEntityData : EntityData
                 WindJumpController windJumpControlled = tiedEntity.GetComponent<WindJumpController>();
                 if (spikeControlled != null)
                 {
-                    spikeControlled.OpenAfterTime(time);
+                    if (prePressed) { spikeControlled.Open(false);
+                        prePressed = false;
+                    }
+                    else spikeControlled.OpenAfterTime(time);
                 }
                 if (bridgeControlled != null)
                 {
@@ -159,6 +163,7 @@ public class SwitchEntityData : EntityData
             if (tempResetTime <= 0) {
                 ToggleTiedObjects();
                 timerSet = false;
+                SoundManager.Instance.PlaySound("Environment/TimeStop", 1);
             }
         }
 

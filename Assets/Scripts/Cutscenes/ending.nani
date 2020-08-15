@@ -2524,7 +2524,10 @@
 		Wilson: Okay, meeting to order.
 
 
-		
+
+
+
+
 
 
 
@@ -2622,6 +2625,59 @@
 		Melvardius: That is all I ask.
 
 		@elseif !GetWorst()
+
+
+
+		@if GetMara()
+
+		@else
+		Svenra: The place isn't going to be the same without her.
+		Svenra: Did she get around to telling anyone her secret recipies?
+		Svenra: She never was big on writing stuff down.
+		@endif
+
+
+		Svenra: Yeah there isn't much to say.
+
+
+
+		douglass
+
+		Sara
+		at least I won't have to worry about her 
+
+		McDermit
+		Oh yeah, that weirdo.
+		I guess somebody's going to have to look after his garden.
+
+		todd
+
+		norma
+
+		derringer
+
+		melvardius
+		Never did quite see eye to eye with that preacher.
+		Kept coming by to make sure I was 
+
+		mara
+
+		devon
+		There were a couple'a out-of-towners.[br]Can't say much about them.
+		pendleton
+
+
+
+
+
+
+
+
+
+
+
+
+
 		@elseif GetWorst()
 
 
@@ -2733,6 +2789,71 @@
 
 
 		@elseif !GetWorst()
+
+		That night, outskirts of town.
+
+		@char Fluer
+		@if Sara
+			Fluer: There you are.
+			Fluer: Sara has been looking for you.
+		@else
+			Fluer: Hey, you just disappeared after the party.
+		@endif
+
+		@char Patrick
+		Patrick: There's still work to do.
+		Patrick: You want to help me with this box?
+
+		@char Fluer
+		Fluer: Not really.
+
+		@wait 1
+
+		Fluer: I mean, I will, but I'm not looking forward to it.
+
+		@char Patrick
+		Patrick: I've got to get going.
+		Patrick: Goodbyes would just slow me down.
+
+		@char Fluer
+		Fluer: Are you coming back this time?
+
+		@char Patrick
+		Patrick: ...
+		Patrick: Yeah.
+		Patrick: We just need someone to spread the word to the surrounding towns.
+		Patrick: I'm the most qualified.
+
+		@char Fluer
+		Fluer: In your very qualified opinion, is the middle of the night the best time to start a trip?
+
+		@char Patrick
+		Patrick: Look, either help with the box or just leave me alone.
+
+		@char Fluer
+		@if !GetSara()
+			Fluer: What happened to Sara wasn't your fault.
+		@else 
+			Fluer: What happened to the others wasn't your fault.
+		@endif
+		Fluer: We didn't think any of them were—
+
+		@char Patrick
+		Patrick: Yeah, I know.
+		Patrick: Of course none of it was my fault.
+		Patrick: But... if you lost a patient to consumption.[br]It would hurt.
+		Patrick: Even if it wasn't your fault.
+
+		@wait 1
+
+		@char Fluer
+		Fluer: Okay, lets get it loaded up.
+		Fluer: I'll let them know once you've gone.
+		@char Patrick
+		Patrick: I'll see you soon.
+		Patrick: I mean it.
+
+
 		@elseif GetWorst()
 
 		@char Patrick
@@ -2759,13 +2880,12 @@
 
 		
 		#day29
-		Years later, wherever...
-;		Perf: novelwriting
-;		Med: 
-;		Bad:
+		
 
 
 		@if GetPerfect()
+
+		Years later, wherever...
 
 		@char Jinn
 		Jinn: I don't know about this one. The writer wins?[br]Seems a little self-indulgent.
@@ -2802,11 +2922,60 @@
 		
 		@elseif !GetWorst()
 
+		Later that week, town hall.
 
+		@char Tristana
+		Tristana: You'd think it would be easier to write a story I lived through.
+		@char Jinn
+		Jinn: What's the problem?
+		@char Tristana
+		Tristana: So much happened that was important... but not, like, narratively important.
+		@char Jinn
+		Jinn: I don't understand, can't you just tell people what happened?
+		@char Tristana
+		Tristana: I'm going to, but I can't just put everything in.
+		Tristana: I wouldn't tell people what we all had for breakfast every day.
+		Tristana: The trouble is, a string of events in real life doesn't always wrap up with a neat little bow.
+		Tristana: There are always going to be things that we don't know.
+		@if !GetDerringer()
+			@char Tristana
+			Tristana: Like, what was up with that sword Derringer was working on?
+			@char Tasha
+			Tasha: Well, Jezerine said it was going to be some epic weapon.
+			Tasha: With both of them gone, I can't say.
+		@endif
+		@char Tasha
+		Tasha: That's the trouble. If you're writing a story you can't do that!
+		Tasha: You can't have buildup with no payoff.[br]Or big events that just come out of nowhere.
+		Tasha: Like, who was that weird lady with the giant hat?
+		Jinn: Yeah, she just one of our best swords and ran off with it.
 
+		@if GetDevon()
+			@char Tristana
+			Tristana: Did anyone else think that Devon was going to be a lot more interesting?
+			@char Devon
+			Devon: Excuse me?
+			@char Tristana
+			Tristana: Oh! Uh, didn't see you there.
+			Tristana: No offense.
+		@else
+			@char Tristana
+			Tristana: What about that myterious hunter who came to town?
+			Tristana: Like, I probably shouldn't make stuff up, but we really don't know anything about that guy.
+		@endif
+
+		@char Jinn
+		Jinn: Okay, but you're not writing a story. You're telling true events. Why not just tell it like it is?
+
+		@char Tristana
+		Tristana: Sure, but pacing.
+		Tristana: I'm going to try, but maybe some stories a medium specific.
+		Jinn: Are you saying this would make a better stage play?
+		Tristana: Maybe? There's got to be something out there, but I can't put my finger on it.
 
 		@elseif GetWorst()
 
+		Years later, wherever...
 
 		Publisher: Another Cursed Cave novel? I keep telling you, this series hasn't been selling for years.
 		Tristana: I know.

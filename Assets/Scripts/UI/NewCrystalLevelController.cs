@@ -36,6 +36,9 @@ public class NewCrystalLevelController : MonoBehaviour
     private float durationOfFill;
     private float timeSoFar;
 
+    private static readonly float BARS_PER_TING = .2f;
+    private int lastTingAt;
+
     void Start()
     {
         savedStats = GameObject.Find("GameStateData").GetComponent<CharacterStats>();
@@ -67,6 +70,7 @@ public class NewCrystalLevelController : MonoBehaviour
 
         //Debug.Log("Total " + oldCrystals+", new "+ newCrystals);
         startNumberOfBars = GetNumberOfBars(oldCrystals);
+        lastTingAt = (int)(startNumberOfBars / BARS_PER_TING);
         targetNumberOfBars = GetNumberOfBars(oldCrystals+newCrystals);
         //Debug.Log("Start " + startNumberOfBars + ", End " + targetNumberOfBars);
         float barIncrease = targetNumberOfBars-startNumberOfBars;
@@ -105,6 +109,8 @@ public class NewCrystalLevelController : MonoBehaviour
 
     private void AnimateCrystalBarsFilling()
     {
+        if (durationOfFill == 0)
+            return;
         timeSoFar += Time.deltaTime;
         if (timeSoFar >= durationOfFill)
         {
@@ -117,6 +123,12 @@ public class NewCrystalLevelController : MonoBehaviour
         amountThrough = Mathf.Pow(amountThrough, barAnimationCurveStrength);
 
         float currentBarAmount = startNumberOfBars + (targetNumberOfBars - startNumberOfBars) * amountThrough;
+        int currentTingLevel = (int)(currentBarAmount / BARS_PER_TING);
+        if (currentTingLevel != lastTingAt)
+        {
+            SoundManager.Instance.PlaySound("EndScreenTick"+(UnityEngine.Random.value>.5f?"":"2"), 1f);
+        }
+        lastTingAt = currentTingLevel;
 
         SetBarLevel(currentBarAmount);
     }
@@ -125,6 +137,7 @@ public class NewCrystalLevelController : MonoBehaviour
     {
         int fullBars = Mathf.FloorToInt(barAmount);
         float remainderBars = barAmount % 1.0f;
+
         int crystalAmount = Mathf.RoundToInt(Mathf.Lerp(crystalTiers[fullBars], crystalTiers[fullBars + 1], remainderBars));
 
         SetBarText(fullBars);

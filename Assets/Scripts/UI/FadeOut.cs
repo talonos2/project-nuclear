@@ -1,13 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FadeOut : MonoBehaviour
 {
     public float fadeTime = .125f;
     private float timeLeft;
     private string next;
+    private bool onGUI = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,11 +38,29 @@ public class FadeOut : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft > 0)
         {
-            this.GetComponent<Renderer>().material.SetFloat("_Alpha", 1-timeLeft/fadeTime);
+            if (!onGUI)
+            {
+                this.GetComponent<Renderer>().material.SetFloat("_Alpha", 1 - timeLeft / fadeTime);
+            }
+            else
+            {
+                this.GetComponent<Image>().color = new Color(0,0,0, 1 - timeLeft / fadeTime);
+            }
         }
         else
         {
             SceneManager.LoadScene(next);
         }
+    }
+
+    internal void attachToGUI(Canvas canvas)
+    {
+        onGUI = true;
+        RectTransform rt = this.gameObject.AddComponent<RectTransform>();
+        rt.SetParent(canvas.transform);
+        rt.localScale = new Vector3(500, 500, 1);
+        GameObject.Destroy(this.GetComponent<Renderer>());
+        Image i = this.gameObject.AddComponent<Image>();
+        i.color = new Color(0f, 0f, 0f, 0f);
     }
 }

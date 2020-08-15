@@ -33,6 +33,7 @@ namespace Naninovel
         public string MessageSound = default;
         [Tooltip("Pitch adjustment of the metasound.")]
         public float MessagePitch = 1f;
+        public int MessageNum = 1;
 
         public CharacterMetadata ()
         {

@@ -149,6 +149,7 @@ public class CharacterMovement : SpriteMovement
                     TiePositionToGrid();
                     CheckExitStatus();
                     CheckWindJumpStatus();
+                    CheckGabStatus();
                 }
             }
         }
@@ -174,6 +175,7 @@ public class CharacterMovement : SpriteMovement
                     sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                     CheckWindJumpStatus();
                     CheckExitStatus();
+                    CheckGabStatus();
                     tempFramesPerSecond = framesPerSecond;
                     tempMovementSpeed = MoveSpeed;
                 }
@@ -205,6 +207,7 @@ public class CharacterMovement : SpriteMovement
                 //  SetCurrentLocation();
                 CheckWindJumpStatus();
                 CheckExitStatus();
+                CheckGabStatus();
             }
         }
 
@@ -260,6 +263,7 @@ public class CharacterMovement : SpriteMovement
         if (playerStats.mana < playerStats.MaxMana || playerStats.HP < playerStats.MaxHP) {
             if (GameData.Instance.addHealToTimer()) {
                 SoundManager.Instance.PlaySound("Healing", 1);
+                playerStats.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(2);
                 playerStats.mana += (int)(playerStats.MaxMana * .125f);
                 playerStats.HP += (int)(playerStats.MaxHP * .125f);
                 if (playerStats.mana > playerStats.MaxMana) playerStats.mana = playerStats.MaxMana;
@@ -530,6 +534,7 @@ public class CharacterMovement : SpriteMovement
     public void TurnHasteOn()
     {
         GameData.Instance.hasted = true;
+        if (smoke==null) smoke = sRender.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
         smoke.Play();
         SoundManager.Instance.PlaySound("HasteOn", 1f);
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
@@ -657,6 +662,21 @@ public class CharacterMovement : SpriteMovement
             if (exitLocation.GetComponent<DoodadData>().isExit) {
                 playerStats.PushCharacterData();
                 exitLocation.GetComponent<ExitController>().TransitionMap(); 
+            }
+        }
+
+    }
+
+    private void CheckGabStatus()
+    {
+        GameObject gabLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
+        //Debug.Log("Is there gab?"+gabLocation);
+        if (gabLocation != null)
+        {
+            //Debug.Log("Gab here: " + gabLocation);
+            if (gabLocation.GetComponent<GabTriggerer>()!= null)
+            {
+                gabLocation.GetComponent<GabTriggerer>().TriggerGab();
             }
         }
 

@@ -18,6 +18,7 @@ public class BoulderController : DoodadData
     {
         base.Start();
         primToCheck = GameObject.Find("Grid").GetComponent<BobPrim>();
+        if (isOnCutsceneMap) primToCheck = GameObject.Find("Grid2").GetComponent<BobPrim>();
         if (primBoulder)
         {
             RunPrimAlgorythm();

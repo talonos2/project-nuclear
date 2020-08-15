@@ -84,16 +84,20 @@ public class GameData : Singleton<GameData>
     public bool map3_2Shortcut;
     public bool map3_3Shortcut;
     public bool map3_4Shortcut;
+    public bool map4_1Shortcut;
     public bool map4_3Shortcut;
     public bool map4_4Shortcut;
+    public bool map5_1Shortcut;
     public bool map5_2Shortcut;
     public bool map5_3Shortcut;
+    public bool map5_4Shortcut;
 
     public bool iceBoss1;
     public bool earthBoss1;
     public bool fireBoss1;
     public bool airBoss1;
     public bool deathBoss1;
+    public bool deathBoss2;
     public bool earthBoss2;
     public bool fireBoss2;
     public bool airBoss2;
@@ -119,7 +123,10 @@ public class GameData : Singleton<GameData>
 
     internal void autoSaveStats()
     {
-        LoadSaveController.autoSave(RunNumber, furthestFloorAchieved);
+        LoadSaveController autoSaveControl = new LoadSaveController();
+        autoSaveControl.autoSave();
+        
+        //.autoSave();
     }
 
     public void SetNextLocation(Vector2Int location, SpriteMovement.DirectionMoved facing)

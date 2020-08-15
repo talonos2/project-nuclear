@@ -36,6 +36,7 @@ public class MonsterMovement : SpriteMovement
     protected int CurrentFacing = 0;
     protected int stuck = 0;
     public bool bossMonster;
+    public SpriteRenderer hazardIcon;
     Random rand = new Random();
 
 
@@ -45,7 +46,7 @@ public class MonsterMovement : SpriteMovement
     void Update()
     {
 
-        if (GameState.isInBattle||GameState.fullPause || GameData.Instance.isInDialogue) {
+        if ((GameState.isInBattle||GameState.fullPause || GameData.Instance.isInDialogue) && !isOnCutsceneMap ) {
             return; 
         }
         if (bossMonster)
@@ -135,6 +136,7 @@ public class MonsterMovement : SpriteMovement
                 if (IsPlayerInView() && !CurrentlyChasingPlayer) {
                     CurrentlyChasingPlayer = true;
                     ChaseStepNumber = 0;
+                    hazardIcon.enabled = true;
                     waitTimer = SpotWaitTimer;
                 }
                 if (waitTimer >= 0)
@@ -142,6 +144,8 @@ public class MonsterMovement : SpriteMovement
                     waitTimer -= Time.deltaTime;
                     return;
                 }
+                
+                hazardIcon.enabled = false;
 
                 if (CurrentlyChasingPlayer) {
                     NextStep = GetChaseStep();
@@ -269,7 +273,7 @@ public class MonsterMovement : SpriteMovement
 
     protected bool IsPlayerInView()
     {
-        if (gameData.stealthed) {
+        if (GameData.Instance.stealthed) {
             return false;
         }
         bool PlayerFound = false;

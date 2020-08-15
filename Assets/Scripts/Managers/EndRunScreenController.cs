@@ -17,6 +17,7 @@ public class EndRunScreenController : MonoBehaviour
     public Image carryOnButton;
     public Sprite carryOnOn;
     public Sprite carryOnOff;
+    public Canvas canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class EndRunScreenController : MonoBehaviour
 
     public void EndRunAndLoadTown()
     {
-        SoundManager.Instance.PlaySound("MenuOkay", 1f);
+        SoundManager.Instance.PlayPersistentSound("EndScreenConfirm", 1f);
         if (GameData.Instance.RunNumber == 1) {
             GameData.Instance.isCutscene = true;
             CutsceneLoader.postRun1Cutscene = true;
@@ -49,7 +50,9 @@ public class EndRunScreenController : MonoBehaviour
         NewCrystalLevelController.AddCrystalsPostRun();
         GameData.Instance.autoSaveStats();
         GameData.Instance.SetNextLocation(new Vector2Int(-4,-13), SpriteMovement.DirectionMoved.DOWN);
-        SceneManager.LoadScene("TownMap_1");
+        FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+        fadeout.attachToGUI(canvas);
+        fadeout.InitNext("TownMap_1", 2);
     }
 
     public void SetButtonLit(bool on)

@@ -23,7 +23,8 @@ public class CutsceneLoader : MonoBehaviour
     void Update()
     {
         if (waitingForScriptPlyr) { return; }
-        if (dialogueWaiting) {
+        if (dialogueWaiting)
+        {
             dialogueWaiting = false;
             waitingForScriptPlyr = true;
             GameData.Instance.isInDialogue = true;
@@ -37,161 +38,150 @@ public class CutsceneLoader : MonoBehaviour
 
     }
 
-    public static void SetNextDialogue(string aDialogue) {
+    internal static void LoadCutsceneAndWorldSpaceFade(float fadeDuration)
+    {
+        GameData.Instance.isCutscene = true;
+        String sceneToTransitionTo = GetMapInWhichNextCutsceneTakesPlace();
+        FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+        fadeout.InitNext(sceneToTransitionTo, fadeDuration);
+    }
+
+    public static void SetNextDialogue(string aDialogue)
+    {
         nextDialogue = aDialogue;
         dialogueWaiting = true;
     }
 
-    public static void LoadEnding(){
-
-
+    public static void LoadEnding()
+    {
         GameData.Instance.isCutscene = true;
         SceneManager.LoadScene("WinScreen");
         //Console.Write("ending ends");
         return;
-
-
     }
 
 
-        public static void LoadCutscene(){
+    public static void LoadCutscene()
+    {
         GameData.Instance.isCutscene = true;
-        if (introCutscene) {
+        String sceneToTransitionTo = GetMapInWhichNextCutsceneTakesPlace();
+        SceneManager.LoadScene(GetMapInWhichNextCutsceneTakesPlace());
+    }
+
+    public static void LoadCutsceneAndFade(Canvas c, float fadeDuration)
+    {
+        GameData.Instance.isCutscene = true;
+        String sceneToTransitionTo = GetMapInWhichNextCutsceneTakesPlace();
+        FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+        fadeout.attachToGUI(c);
+        fadeout.InitNext(sceneToTransitionTo, fadeDuration);
+    }
+
+    public static String GetMapInWhichNextCutsceneTakesPlace()
+    {
+        if (introCutscene)
+        {
             switch (introSceneNumber)
             {
                 case 0:
-                    SceneManager.LoadScene("TownMap_1");
-                    break;
+                    return "TownMap_1";
                 case 1:
-                    SceneManager.LoadScene("TownInterior_Manor_1");
-                    break;
+                    return "TownInterior_Manor_1";
                 case 2:
-                    SceneManager.LoadScene("TownMap_1");
-                    break;
+                    return "TownMap_1";
             }
-            return;
+            return null;
         }
 
-
-
-
-        if (postRun1Cutscene) {
-            SceneManager.LoadScene("TownMap_1");
-            return;
+        if (postRun1Cutscene)
+        {
+            return "TownMap_1";
         }
-
 
         switch (GameData.Instance.RunNumber)
         {
             case 1:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 2:
                 SceneManager.LoadScene("TownInterior_Pub_1");
                 break;
             case 3:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 4:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 5:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 6:
-                SceneManager.LoadScene("TownMap_1");
-                //blacksmith
-                break;
+                return "TownMap_1"; //Blacksmith
             case 7:
-                SceneManager.LoadScene("TownInterior_Church_1");
-                break;
+                return "TownInterior_Church_1";
             case 8:
-                SceneManager.LoadScene("TownInterior_Pub_1");
-                break;
+                return "TownInterior_Pub_1";
             case 9:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 10:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 11:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 12:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 13:
-                SceneManager.LoadScene("TownInterior_Pub_1");
-                break;
+                return "TownInterior_Pub_1";
             case 14:
-                SceneManager.LoadScene("TownInterior_Manor_1");
-                break;
+                return "TownInterior_Manor_1";
             case 15:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 16:
-                SceneManager.LoadScene("TownInterior_SeersCottege_1");
-                //sagehut
-                break;
+                return "TownInterior_SeersCottege_1"; //sagehut
             case 17:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 18:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 19:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 20:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 21:
-                SceneManager.LoadScene("TownInterior_Manor_1");
-                break;
+                return "TownInterior_Manor_1";
             case 22:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 23:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 24:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 25:
-                SceneManager.LoadScene("TownInterior_Manor_1");
-                break;
+                return "TownInterior_Manor_1";
             case 26:
-                SceneManager.LoadScene("TownInterior_Manor_1");
-                break;
+                return "TownInterior_Manor_1";
             case 27:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 28:
-                SceneManager.LoadScene("TownInterior_SeersCottege_1");
-                break;
+                return "TownInterior_SeersCottege_1";
             case 29:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
             case 30:
-                SceneManager.LoadScene("TownMap_1");
-                break;
+                return "TownMap_1";
         }
+        return null;
     }
 
 
 
-    public void RunCutscene() {
+    public void RunCutscene()
+    {
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-    GameData gameData = GameData.Instance;
+        GameData gameData = GameData.Instance;
 
         if (postRun1Cutscene)
         {
-            if (GameData.Instance.hiroDeathMonster) {
+            if (GameData.Instance.hiroDeathMonster)
+            {
                 Instantiate(cutScenePlayer, new Vector3(cameraLocation[34].x, cameraLocation[34].y, 0), Quaternion.identity);
                 InitAndRunCutscene(cutScenes[34]);
             }
-            else {
+            else
+            {
                 Instantiate(cutScenePlayer, new Vector3(cameraLocation[35].x, cameraLocation[35].y, 0), Quaternion.identity);
                 InitAndRunCutscene(cutScenes[35]);
             }
@@ -200,19 +190,20 @@ public class CutsceneLoader : MonoBehaviour
 
         if (introCutscene)
         {
-            Instantiate(cutScenePlayer, new Vector3(cameraLocation[31+ introSceneNumber].x, cameraLocation[31 + introSceneNumber].y, 0), Quaternion.identity);
+            Instantiate(cutScenePlayer, new Vector3(cameraLocation[31 + introSceneNumber].x, cameraLocation[31 + introSceneNumber].y, 0), Quaternion.identity);
             InitAndRunCutscene(cutScenes[31 + introSceneNumber]);
             introSceneNumber += 1;
             if (introSceneNumber > 2)
                 introCutscene = false;
         }
-        else {
+        else
+        {
             Instantiate(cutScenePlayer, new Vector3(cameraLocation[gameData.RunNumber].x, cameraLocation[gameData.RunNumber].y, 0), Quaternion.identity);
             InitAndRunCutscene(cutScenes[gameData.RunNumber]);
         }
 
-       // RuntimeInitializer.InitializeAsync();
-       // Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[gameData.RunNumber]);
+        // RuntimeInitializer.InitializeAsync();
+        // Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(cutScenes[gameData.RunNumber]);
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
     }

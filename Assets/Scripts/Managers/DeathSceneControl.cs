@@ -1,6 +1,7 @@
 ﻿using Naninovel;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,7 +16,9 @@ public class DeathSceneControl : MonoBehaviour
     public GameObject button;
     private bool waitAFrame=true;
 
+    public TextMeshProUGUI textMeshToPrint;
     public string deathDialogueScript;
+    public string townGrowingSmallerText;
 
     public async void playDeathDialogueAsync()
     {
@@ -30,10 +33,13 @@ public class DeathSceneControl : MonoBehaviour
     void Start()
     {
         gameData = GameData.Instance;
-        delay = 2;
+        delay = 2f;
         string villagersLeft = "" + (31 - gameData.RunNumber);
-        textField = textObject.GetComponent<Text>();
-        textField.text = villagersLeft;
+        townGrowingSmallerText = "The Town Grows Smaller.\n<size=125>" + villagersLeft + "</size>\nVillagers Remain";
+        textMeshToPrint.enabled = false;
+        textMeshToPrint.text = townGrowingSmallerText;
+        //textField = textObject.GetComponent<Text>();
+        //textField.text = villagersLeft;
         playDeathDialogueAsync();
 
     }
@@ -42,23 +48,30 @@ public class DeathSceneControl : MonoBehaviour
     void Update()
     {
         if (GameData.Instance.isInDialogue) return;
+        textMeshToPrint.enabled = true;
         if (waitAFrame) { waitAFrame = false; return; }
 
         if (Input.GetButtonDown("Submit"))
         {
+            if (delay > 0) return;
             LoadEndRunScene();
         }
 
-        deathDiaglogPanel.SetActive(true);
-        button.SetActive(true);
+        //deathDiaglogPanel.SetActive(true);
+        //button.SetActive(true);
 
         delay -= Time.deltaTime;
         if (delay <= 0)
         {
-            textField.text = "" + (30 - gameData.RunNumber);
-            textField.color = Color.red;
+            townGrowingSmallerText= "The Town Grows Smaller.\n<color=red><size=125>" + (30 - gameData.RunNumber) + 
+                "</color></size>\nVillagers Remain";
+            textMeshToPrint.text = townGrowingSmallerText;
+            
+            //textField.text = "" + (30 - gameData.RunNumber);
+            // textField.color = Color.red;
+            //Play Sound Effect Here
         }
-        if (delay <= -8)
+        if (delay <= -4)
         {
             LoadEndRunScene();
         }

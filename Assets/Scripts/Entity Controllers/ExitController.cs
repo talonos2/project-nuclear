@@ -23,7 +23,7 @@ public class ExitController : DoodadData
         if (GameData.Instance.FloorNumber==0 && dungeonEntrance) {
 
             GameState.fullPause = false;
-            CutsceneLoader.LoadCutscene();
+            CutsceneLoader.LoadCutsceneAndWorldSpaceFade(.5f);
             return;
         }
 

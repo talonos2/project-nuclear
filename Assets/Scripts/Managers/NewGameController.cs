@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class NewGameController : MonoBehaviour
 {
-
     public GameObject RunNumberTextField;
     public GameObject dropDown;
 
@@ -25,8 +24,8 @@ public class NewGameController : MonoBehaviour
     public GameObject PendletonToggle;
 
     public Vector2Int Map1EntrancePoint;
-    public Vector2Int TownSpawnPosition;
-    public SpriteMovement.DirectionMoved TownSpwanFacing;
+    public static Vector2Int TownSpawnPosition;
+    public static SpriteMovement.DirectionMoved TownSpwanFacing;
     public SpriteMovement.DirectionMoved Map1Facing;
     public LoadSaveController loadSaveController;
 
@@ -34,6 +33,8 @@ public class NewGameController : MonoBehaviour
     public Image[] menuOptions;
     public Sprite[] onImages;
     public Sprite[] offImages;
+
+    internal bool inOtherMenu;
 
     private int currentMenuOptionSelected = -1;
 
@@ -44,27 +45,31 @@ public class NewGameController : MonoBehaviour
 
     void Update()
     {
+        if (inOtherMenu) return;
 
         if (Input.GetButtonDown("Submit"))
         {
-            Debug.Log("Hit submit");
+            //Debug.Log("Hit submit");
             switch(currentMenuOptionSelected)
             {
                 case 0:
+                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
                     StartNewGame();
                     break;
                 case 1:
-                    //TODO: This
+                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                    loadSaveController.LoadGame(0);
                     break;
                 case 2:
                     SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    loadSaveController.activateLoad();
+                    loadSaveController.activateLoad(this);
+                    inOtherMenu = true;
                     break;
                 case 3:
-                    //TODO: This
+                    //TODO: This is Options
                     break;
                 case 4:
-                    //TODO: This
+                    //TODO: This is Extras. 
                     break;
             }
         }
@@ -111,19 +116,22 @@ public class NewGameController : MonoBehaviour
     }
 
     public void StartNewGameActual() {
+        if (GameData.Instance.RunNumber == 0) GameData.Instance.RunNumber = 1;
+
         if (GameData.Instance.RunNumber==1) {
             CutsceneLoader.introCutscene = true;
             GameData.Instance.FloorNumber = 0;
             CutsceneLoader.LoadCutscene();
         }
         if (GameData.Instance.RunNumber > 1 && GameData.Instance.RunNumber <= 30) {
-            GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
+            //GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
+            CutsceneLoader.runTownBackDialogue = true;
+            GameData.Instance.nextLocationSet = true;
             GameData.Instance.FloorNumber = 0;
             FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+            fadeout.attachToGUI(transform.parent.GetComponent<Canvas>());
             fadeout.InitNext("TownMap_1", 1);
         }
-
-
     }
     public void StartNewGame (){
         SoundManager.Instance.PlaySound("MenuOkay", 1f);
@@ -138,14 +146,16 @@ public class NewGameController : MonoBehaviour
                 GameData.Instance.RunNumber = 1;
                 CutsceneLoader.introCutscene = true;
                 GameData.Instance.FloorNumber = 0;
-                CutsceneLoader.LoadCutscene();
+                CutsceneLoader.LoadCutsceneAndFade(this.transform.parent.GetComponent<Canvas>(),2);
             }
             else
             {
                 GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
                 GameData.Instance.FloorNumber = 0;
-                SceneManager.LoadScene("TownMap_1");
+                FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+                fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
+                fadeout.InitNext("TownMap_1", 2);
             }
         }
         if (runType.value == 1) {
@@ -171,7 +181,9 @@ public class NewGameController : MonoBehaviour
             }
             GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
             GameData.Instance.FloorNumber = 1;
-            SceneManager.LoadScene("Map1-1");
+            FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+            fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
+            fadeout.InitNext("Map1_1", 2);
 
         }
         if (runType.value == 3){
@@ -210,5 +222,9 @@ public class NewGameController : MonoBehaviour
 
     }
 
+    internal void ReActivate()
+    {
+        inOtherMenu = false;
 
+    }
 }

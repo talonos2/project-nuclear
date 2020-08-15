@@ -38,6 +38,7 @@ public class Enemy : Stats
     public bool deathBoss;
     public bool deathBoss2;
     public bool finalBoss;
+    public bool finalBossForm1;
 
     public void Start()
     {
@@ -49,6 +50,7 @@ public class Enemy : Stats
         if (earthBoss2 && GameData.Instance.earthBoss2 || earthBoss2 && !GameData.Instance.earthBoss1) { Destroy(this.gameObject); }
         if (fireBoss2 && GameData.Instance.fireBoss2 || fireBoss2 && !GameData.Instance.fireBoss1) { Destroy(this.gameObject); }
         if (airBoss2 && GameData.Instance.airBoss2 || airBoss2 && !GameData.Instance.airBoss1) { Destroy(this.gameObject); }
+        if (deathBoss2 && GameData.Instance.deathBoss2 || deathBoss2 && !GameData.Instance.deathBoss1) { Destroy(this.gameObject); }
     }
 
     public virtual void doUponDeath() {

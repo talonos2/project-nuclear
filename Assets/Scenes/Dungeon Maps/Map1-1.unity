@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1140,7 +1140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &326564850
 MonoBehaviour:
@@ -3246,7 +3246,7 @@ Transform:
   m_LocalScale: {x: 3, y: 0.1, z: 3.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
 --- !u!114 &2018926737
 MonoBehaviour:
@@ -3282,6 +3282,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!1001 &2028132235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3766,7 +3768,7 @@ PrefabInstance:
     - target: {fileID: 3128599578249191483, guid: 13f55362b4ce93843a256a685f28550e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191483, guid: 13f55362b4ce93843a256a685f28550e,
         type: 3}
@@ -3793,7 +3795,18 @@ PrefabInstance:
       propertyPath: HP
       value: 550
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3128599578249191477, guid: 13f55362b4ce93843a256a685f28550e,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: 13f55362b4ce93843a256a685f28550e,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3128599578249191479, guid: 13f55362b4ce93843a256a685f28550e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 13f55362b4ce93843a256a685f28550e, type: 3}
 --- !u!1001 &2236789191173379026
 PrefabInstance:
@@ -3854,6 +3867,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed9c8f56d9ee6748842ef7b33740cec, type: 3}
+--- !u!33 &2616208408616298442
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616208408616298446}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2616208408616298443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616208408616298446}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9, y: -7, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 45
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2616208408616298444
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616208408616298446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2616208408616298446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2616208408616298443}
+  - component: {fileID: 2616208408616298442}
+  - component: {fileID: 2616208408616298444}
+  - component: {fileID: 2616208408616298447}
+  m_Layer: 0
+  m_Name: GabTutorial1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2616208408616298447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616208408616298446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f180457f7a3f24fbc1094b330c3424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlatformTerrain: 0
+  isWindShifter: 0
+  isTeleporter: 0
+  isExit: 0
+  isBlockableTerrain: 0
+  isTallBlockableTerrain: 0
+  isBackgroundCharacter: 0
+  isSpike: 0
+  isPassable: 1
+  isOnCutsceneMap: 0
+  gabText: Press "S" to rest; this heals but costs 30 seconds.
+  gabNumber: 0
+  sound: MenuOkay
+  forcePause: 1
+  time: 3
 --- !u!1001 &3128599578103915811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3983,7 +4077,7 @@ PrefabInstance:
     - target: {fileID: 3664588965629725515, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3664588965629725519, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}

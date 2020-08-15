@@ -334,6 +334,7 @@ public class RandomChestController : EntityData
             Instantiate(healthFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
             SoundManager.Instance.PlaySound("Pool", 1f);
+            playerData.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(0);
         }
         else if (manaFountain)
         {
@@ -343,6 +344,7 @@ public class RandomChestController : EntityData
             Instantiate(manaFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
             SoundManager.Instance.PlaySound("Pool", 1f);
+            playerData.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(1);
         }
 
         playerData.PushCharacterData();
@@ -375,6 +377,7 @@ public class RandomChestController : EntityData
     private void InitializeNewMap()
     {
         MapGrid = GameObject.Find("Grid"); 
+        if (isOnCutsceneMap) MapGrid = GameObject.Find("Grid2");
         MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
     }
 

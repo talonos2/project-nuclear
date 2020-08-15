@@ -32,7 +32,7 @@ public class ExitDialogue : Naninovel.Commands.Command
 
         if (CutsceneLoader.introCutscene)
         {
-            CutsceneLoader.LoadCutscene();
+            CutsceneLoader.LoadCutsceneAndWorldSpaceFade(.5f);
         }
 
 

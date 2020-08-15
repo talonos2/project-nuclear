@@ -238,9 +238,11 @@ namespace Naninovel.UI
         protected virtual void PlayRevealSfxForChar (char character)
         {
             float pitch = 1f;
+            int num = 1;
             if (AuthorMeta != null && !(AuthorMeta.MessagePitch == 0))
             {
                 pitch = AuthorMeta.MessagePitch;
+                num = AuthorMeta.MessageNum;
             }
             if (charsSfx != null && charsSfx.Count > 0)
             {
@@ -251,7 +253,7 @@ namespace Naninovel.UI
 
                     if (!string.IsNullOrEmpty(charSfx.SfxName))
                     {
-                        audioManager.PlaySfxFast(charSfx.SfxName, 1f, true, pitch);
+                        audioManager.PlaySfxFast(charSfx.SfxName+num, 1f, true, pitch);
                     }
                     return;
                 }
@@ -260,7 +262,7 @@ namespace Naninovel.UI
             if (AuthorMeta != null && !string.IsNullOrEmpty(AuthorMeta.MessageSound))
                 audioManager.PlaySfxFast(AuthorMeta.MessageSound);
             else if (!string.IsNullOrEmpty(RevealSfx))
-                audioManager.PlaySfxFast(RevealSfx, 1f, true, pitch);
+                audioManager.PlaySfxFast(RevealSfx+num, 1f, true, pitch);
         }
 
         protected virtual IEnumerator ExecuteCommandForCharRoutine (char character)

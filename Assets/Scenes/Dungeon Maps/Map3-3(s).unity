@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6462,6 +6462,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &866315190
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11670,6 +11672,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4898377835807072795, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ac0871009d1c4cbb3ce4b6c5255a3, type: 3}
 --- !u!1 &1593309020
@@ -14379,6 +14386,8 @@ MonoBehaviour:
   aboveItem: 1
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &1995021771
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14637,7 +14646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowTexture: {fileID: 2800000, guid: 33eaaf5e0e722a84696f67531cc79711, type: 3}
-  glowTexture: {fileID: 2800000, guid: fd5843f93774f7542a537380b1f46877, type: 3}
+  glowTexture: {fileID: 2800000, guid: 09ad5ca0852937347bd9b4c039b51d99, type: 3}
   mapOffset: {x: -2.25, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
@@ -14658,6 +14667,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!1 &2040765191
 GameObject:
   m_ObjectHideFlags: 0
