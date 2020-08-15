@@ -820,6 +820,20 @@
 
 
 
+		@char Jezerine
+		Jezerine: I'll catch up to you guys in a bit.
+
+		@char Reya
+		Reya: I hear you really slughtered those horrors.
+		Reya: I'm a bit disappointed I didn't get a crack at them myself.
+
+		@char Jezerine
+		Jezerine: I knew some of those people. Some of the people I—
+
+		@char Reya
+		Reya: Yeah kid, this isn't really a friendly business.
+		Reya: But don't worry. First one's always the hardest.
+		Reya: You'll see how it is when you get out there.
 
 
 
@@ -1839,7 +1853,74 @@
 		Reya: Yaknow, because it's going to be really hard to keep your current job without this ring.
 
 
-		@elseif GetWorst()
+
+		@elseif !GetWorst()
+
+		@char Reya
+		Reya: Ugh, finally.
+		Elder: You've done it?[br]Broken the evil curse?
+		@char Reya
+		Reya: Probably, somebody should go check on that.
+		@char Tristana
+		Tristana: What did you seee down there?[br]What was the—
+		@char Reya
+		Reya: I don't know, go look.
+		Reya: I left most of it down there.
+		Reya: I just wanted this.
+		@if GetDerringer()
+			Derringer: I haven't seen Tradallian typology like that since—
+		@else
+			JohnDoe: What's up with the pommel?
+		@endif
+
+		@char Reya
+		Reya: Hey! Stay back![br]This sword's mine.
+		Reya: Unless you want to be the first living blood it tastes.
+
+
+		@char Patrick
+		Patrick: Hey, the way I see it, we were looking for someone to come save us.
+		Patrick: And someone did.
+		Patrick: So, lets have a bit of celibration for our hero.
+
+		@char Nelson
+		Nelson: That does seem prudent.
+		Nelson: What may we call you, madame?
+
+		@char Reya
+		Reya: Name's Reya.
+
+		@if GetNorma()
+			@char Norma
+			Norma: Last name?
+			@char Reya
+			Reya: No.
+		@endif
+
+		@if GetMara()
+			@char Mara
+			Mara: Alright, well if my bar's still standing I say we get some drinks.
+			Mara: I don't know about you all, but I could use one.
+		@endif
+
+		@char Reya
+		Reya: Alright, fine.[br]Lets celibrate.
+		Reya: It'll be a nice change of pace.
+
+
+		@wait 1.5
+
+
+		@char Jezerine
+		Jezerine: She is so cool!
+		Jezerine: I'm gonna—
+
+		@char Nelson
+		Nelson: Don't even think about it, young lady.
+
+
+
+		@else
 
 		@char Reya
 		Reya: Well now, that wasn't so tough.
@@ -1878,13 +1959,7 @@
 		Reya: Good girl.
 		Reya: You won't see me again, but this won't be the last time my deeds change your life.
 
-		@else
 
-		@char Reya
-		Reya: Ugh, finally.
-		Elder: You've done it?[br]Broken the evil curse?
-		@char Reya
-		Reya: Probably, somebody should go check on that.
 
 
 
@@ -2319,6 +2394,50 @@
 
 
 
+		Tasha: I'm not going to let it happen again.
+		Tasha: The next time disaster strikes,[br]well will be ready for it.
+		Tasha: No last minute solutions.[br]No half measures.
+
+
+		Tasha: I don't want our guards to be shown up by the next two-bit sellsword who breezes into town.
+
+		@if @GetMcDermit()
+			Tasha: Before, I could at least be relatively sure you'd survive a conflict.
+			Tasha: But now, I'm going to make sure you win!
+		@else
+			Tasha: I've seen too many of my men die.
+			Tasha: I won't fool myself by thinking I've seen the last.
+			Tasha: But I'm going to make sure that death's going to have to fight for every last one of you.
+		@endif
+
+		Tasha: But make not mistake. I would see every one of you gruesomely slaughtered before I excuse harm coming to any of our citizens.
+
+		Tasha: The loss of any one person diminishes us all.
+
+		@if !GetDerringer() || !GetNorma()
+			Tasha: Our infastructure.
+		@endif
+
+		@if !GetSara() || !GetMara()
+			Tasha: Our homes.
+		@endif
+
+		@if !GetMelvardius()
+		Tasha: Even out very souls.
+		@endif
+
+		Tasha: So any time you want to complain about the grueling training.
+		Tasha: The long hours.
+		Tasha: Or my bad attitude.
+		Tasha: I want you to do something.
+		Tasha: When you stagger home, before you collapse into your bed I want you to take a moment to look out your window.
+		Tasha: And When you see your neighbor out going for a walk.
+		Tasha: Or buying some worthless nick-nack.
+		Tasha: I want you to feel pride in your heart. To know that they can live their lives, not even thinking about the things you have to do.
+
+		@wait 1
+
+		Tasha: That's enough rest, now lets get back to work.
 
 
 		@elseif GetWorst()
