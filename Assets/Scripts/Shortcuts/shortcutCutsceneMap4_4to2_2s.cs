@@ -68,6 +68,7 @@ public class shortcutCutsceneMap4_4to2_2s : ShortcutPlayer
         }
         if (phases[2])
         {
+            SoundManager.Instance.PlaySound("Teleporter 1.0", 1);
             activateShortcut();
             GameData.Instance.map2_2Shortcut = true;
             waiting = true;

@@ -16,6 +16,6 @@ public class UIAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "" + stats.attack;
+        text.text = "" + (int)stats.attack;
     }
 }

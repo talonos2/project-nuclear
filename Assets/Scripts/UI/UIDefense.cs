@@ -16,6 +16,6 @@ public class UIDefense : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "" + stats.defense;
+        text.text = "" + (int)stats.defense;
     }
 }

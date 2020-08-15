@@ -67,6 +67,7 @@ public class ShortcutCutsceneMap4_4 : ShortcutPlayer
         }
         if (phases[2])
         {
+            SoundManager.Instance.PlaySound("Move floor", 1);
             activateShortcut();
             GameData.Instance.map4_4Shortcut = true;
             waiting = true;

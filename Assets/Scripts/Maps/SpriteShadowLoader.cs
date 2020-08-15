@@ -59,7 +59,7 @@ public class SpriteShadowLoader : MonoBehaviour
         PassabilityGrid passGrid = GameObject.Find("Grid2").GetComponent<PassabilityGrid>();
         Vector4 tempVector = new Vector4(passGrid.width, passGrid.height, 0, 0);
         sRender.material.SetVector("_MapXY", tempVector);
-        ThePlayer = GameObject.FindGameObjectWithTag("Player");
+        if (GameData.Instance.FloorNumber != 0)  ThePlayer = GameObject.FindGameObjectWithTag("Player");
         //sRender.material.SetInt("_LightRad", ThePlayer.GetComponentInChildren<Renderer>().material.GetInt("_LightRad"));
         sRender.material.SetInt("_LightRad", 6);
         if (GameData.Instance.FloorNumber == 0)

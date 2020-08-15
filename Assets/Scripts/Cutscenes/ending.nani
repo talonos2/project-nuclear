@@ -2521,12 +2521,85 @@
 
 
 		@char Wilson
-		Wilson: Okay, meeting to order.
+		Wilson: So... next we need to... to.
+
+		@char Tedd
+		Tedd: What's wrong dad?
+
+		@char Wilson
+		Wilson: Oh, just getting back to work.
+		Wilson: It's time to put the town back together after all!
+
+		@char Tedd
+		Tedd: 
 
 
+		@char Wilson
+		Wilson: Yes yes, everything has a place after all.
+		Wilson: It's just... like a puzzle.
+		Wilson: Like a puzzle with a few peices missing.
+
+		Tedd: Dad...
+
+		Wilson: It should be so simple.[br]Right?
+		@if !GetDerringer()
+			Wilson: If Derringer had chosen to move away it's not like all metalwork would cease.
+		@elseif !GetMara()
+			Wilson: Mara didn't run the only bar in town.[br]The others will be more than happy to pick up the slack.
+		@elseif !GetMelvardius()
+			Wilson: Melvardius was a pillar of the community.
+			Wilson: But, his order will send someone else to replace him.
+		@endif
+			
+		Wilson: I don't even need to do anything.
+		Wilson: People will follow opportunities and keep the town running.
+
+		@if !GetPendleton() || !GetDevon() || !GetDouglass()
+			Wilson: Some of the people we lost weren't even from here.
+			Wilson: So they're not my responsibility.[br]Right?
+		@endif
+
+		Wilson: Then... then there are the people I don't even have to replace.
+
+		@if !GetMcDermit && !GetNorma && !GetSara
+			Wilson: The town will hardly notice if we're missing a guard, or a shepard, or a maid.
+		@elseif !GetMcDermit && !GetSara
+			Wilson: The town will hardly notice if we're missing a guard, or a maid.
+		@elseif !GetNorma && !GetSara
+			Wilson: The town will hardly notice if we're missing a shepard, or a maid.
+		@elseif !GetMcDermit && !GetNorma
+			Wilson: The town will hardly notice if we're missing a guard, or a shepard.
+		@elseif !GetSara
+			Wilson: The town will hardly notice if we're missing a maid.
+		@elseif !GetNorma
+			Wilson: The town will hardly notice if we're missing a shepard.
+		@elseif !GetMcDermit
+			Wilson: The town will hardly notice if we're missing a guard.
+		@endif
 
 
+		Wilson: I just, go back to being a mayor.
+		Wilson: Back to looking at the big picture.
+		Wilson: It doesn't matter if a few people were lost.
+		Wilson: It's all just numbers on a ledger.
 
+		@if !GetTodd()
+			
+			Wilson: All... but one.
+			Tedd: Dad...
+			Wilson: The mayor wouldn't care.
+			Wilson: It's one less troublemaker.
+			Tedd: Dad...
+			Wilson: No longer stirring up trouble.
+			Wilson: No more... no more...
+			Tedd: Be the mayor tomorrow.
+			Tedd: For now, just be a father.
+			Wilson: I... can try.
+		@else
+			Wilson: Can I live with that?
+			Tedd: Maybe, just be a citizen for now.
+			Tedd: And we'll get through this together.
+		@endif
 
 
 
@@ -2626,55 +2699,72 @@
 
 		@elseif !GetWorst()
 
-
+		That afternoon, at the bar...
 
 		@if GetMara()
-
+		@char Mara
+		Mara: Can I interest you in the house special?
+		@char Svenra
+		Svenra: Why not? Won't be the least healthy thing that's happened to me today.
+		Svenra: You lot are lucky Mara's still around.
+		Svenra: Doubt any of you even knows what goes into her drinks.
+		@char Murtough
+		Murtough: I just figgure we don't want to know.
+		@char Mara
+		Mara: 
 		@else
 		Svenra: The place isn't going to be the same without her.
 		Svenra: Did she get around to telling anyone her secret recipies?
 		Svenra: She never was big on writing stuff down.
 		@endif
 
-
-		Svenra: Yeah there isn't much to say.
-
+		Svenra: Shame everyone can't be here.
 
 
-		douglass
-
-		Sara
-		at least I won't have to worry about her 
-
-		McDermit
-		Oh yeah, that weirdo.
-		I guess somebody's going to have to look after his garden.
-
-		todd
-
-		norma
-
-		derringer
-
-		melvardius
-		Never did quite see eye to eye with that preacher.
-		Kept coming by to make sure I was 
-
-		mara
-
-		devon
-		There were a couple'a out-of-towners.[br]Can't say much about them.
-		pendleton
+		@if !GetDouglass
+			Svenra: That hero who came to town.
+			Svenra: He must have done this a few times before.
+			Svenra: Just bad luck we're the one that did him in.
+		@elseif !GetPendleton
+			Svenra: That squire was barely a man but already so tired of everything.
+			Svenra: Could you imagine if he'd lived as long as I have?
+		@elseif !GetMcDermit
+			Svenra: It's a shame about that guard.
+			Svenra: Somebody's going to have to look after his garden.
+			Svenra: He always was so proud of those roses. 
+		@endif
 
 
+		@if !GetNorma
+			Svenra: Don't know if the cows'll listen to anyone else now that Norma's gone.
+			Svenra: Yaknow she had nicknames for all of 'em?
+		@elseif !GetSara
+			Svenra: Sara was too good for this town.
+			Svenra: I swear she was terrified of people ever finding her not working!
+			Svenra: Used to let her take naps in my cottage where folks couldn't see her, poor thing.
+		@elseif !GetDerringer
+			Svenra: I'm not going to miss that blacksmith's hammering.
+			Svenra: But I always thought those nicknacks he put together were nice.
+		@endif
 
+		@if !GetMelvardius
+			Svenra: Never did quite see eye to eye with that preacher.
+			Svenra: Was nice that he came by to check up on me though. 
+		@elseif !GetTodd
+			Svenra: Todd was a good kid. A bit odd, but he had a good heart.
+			Svenra: Makes me wish I never loaned him those old books.
+		@elseif !GetDevon
+			Svenra: That hunter didn't even know what he was getting into.
+			Svenra: Think I've seen him around a time or two.
+			Svenra: Name was Devon wasn't it?
+		@endif
 
+		@char Paul
+		Paul: Didn't know you cared.
 
-
-
-
-
-
+		@char Svenra
+		Svenra: I don't.
+		Svenra: I just... notice things.
 
 
 

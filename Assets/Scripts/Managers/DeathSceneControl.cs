@@ -66,6 +66,7 @@ public class DeathSceneControl : MonoBehaviour
             townGrowingSmallerText= "The Town Grows Smaller.\n<color=red><size=125>" + (30 - gameData.RunNumber) + 
                 "</color></size>\nVillagers Remain";
             textMeshToPrint.text = townGrowingSmallerText;
+            SoundManager.Instance.PlaySound("deathToll", .2f);
             
             //textField.text = "" + (30 - gameData.RunNumber);
             // textField.color = Color.red;

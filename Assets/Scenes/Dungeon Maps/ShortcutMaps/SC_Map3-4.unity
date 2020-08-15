@@ -329,6 +329,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &151008038
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -698,7 +699,7 @@ PrefabInstance:
     - target: {fileID: 3664588965629725519, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
       propertyPath: m_RootOrder
-      value: 49
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 3664588965629725519, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
@@ -883,51 +884,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09dad33617f9c034a8b7913846569c9c, type: 3}
---- !u!1 &421393818
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 421393820}
-  - component: {fileID: 421393819}
-  m_Layer: 0
-  m_Name: This starts zone 3's muzic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &421393819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421393818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429726101d8d5f147814fcc4ee606979, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapMusic: 6
-  combatMusic: 7
---- !u!4 &421393820
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421393818}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.3359375, y: 0.47460938, z: -10.234375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 48
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &452363119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,80 +2380,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 751904652}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &848268640
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5409889015977693223, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_Name
-      value: MusicManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5409889015977693223, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.537585
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.7781124
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.0525
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915564349687906916, guid: e87489115aeaf2b46b8bd49294861d58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e87489115aeaf2b46b8bd49294861d58, type: 3}
 --- !u!1001 &984546956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4202,6 +4084,11 @@ PrefabInstance:
       propertyPath: isOnCutsceneMap
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6242333733718312216, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: lightRadius
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
 --- !u!1 &1572371652
@@ -4259,6 +4146,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1572371655
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6072,6 +5960,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 1
+  isThisJohnDoe: 0
 --- !u!1001 &2026707082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6385,7 +6274,7 @@ PrefabInstance:
     - target: {fileID: 5515415378586867815, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 50
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 5515415378586867815, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
