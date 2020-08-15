@@ -52,6 +52,17 @@ public class GameSaverManager
     public bool map5_4Shortcut;
     public bool map1_3toMap2_3Shortcut;
 
+    public int Douglass;
+    public int Sara;
+    public int McDermit;
+    public int Todd;
+    public int Norma;
+    public int Derringer;
+    public int Melvardius;
+    public int Mara;
+    public int Devon;
+    public int Pendleton;
+
 
         public void SetupSave()
         {
@@ -68,7 +79,19 @@ public class GameSaverManager
             PowersGained = GameData.Instance.PowersGained;
             furthestFloorAchieved = GameData.Instance.furthestFloorAchieved;
             bestTimes = GameData.Instance.bestTimes;
-            iceBoss1=GameData.Instance.iceBoss1;
+
+      Douglass=GameData.Instance.Douglass;
+      Sara=GameData.Instance.Sara;
+      McDermit=GameData.Instance.McDermit;
+      Todd=GameData.Instance.Todd;
+      Norma=GameData.Instance.Norma;
+      Derringer=GameData.Instance.Derringer;
+      Melvardius=GameData.Instance.Melvardius;
+      Mara=GameData.Instance.Mara;
+      Devon=GameData.Instance.Devon;
+      Pendleton=GameData.Instance.Pendleton;
+
+    iceBoss1=GameData.Instance.iceBoss1;
         earthBoss1 = GameData.Instance.earthBoss1;
         fireBoss1 = GameData.Instance.fireBoss1;
         airBoss1 = GameData.Instance.airBoss1;
@@ -107,10 +130,6 @@ public class GameSaverManager
 
     }
 
-    internal void SetupBlankSave()
-    {
-        throw new NotImplementedException();
-    }
 
     public void PushSaveToGameData()
         {
@@ -128,7 +147,18 @@ public class GameSaverManager
             GameData.Instance.furthestFloorAchieved = furthestFloorAchieved;
             GameData.Instance.bestTimes = bestTimes;
 
-         GameData.Instance.iceBoss1= iceBoss1 ;
+        GameData.Instance.Douglass=Douglass ;
+        GameData.Instance.Sara=Sara;
+         GameData.Instance.McDermit= McDermit;
+         GameData.Instance.Todd=Todd;
+        GameData.Instance.Norma= Norma ;
+        GameData.Instance.Derringer=Derringer  ;
+         GameData.Instance.Melvardius=Melvardius;
+        GameData.Instance.Mara= Mara ;
+        GameData.Instance.Devon=Devon  ;
+        GameData.Instance.Pendleton=Pendleton  ;
+
+        GameData.Instance.iceBoss1= iceBoss1 ;
          GameData.Instance.earthBoss1= earthBoss1 ;
         GameData.Instance.fireBoss1= fireBoss1 ;
          GameData.Instance.airBoss1= airBoss1 ;

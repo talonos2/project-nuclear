@@ -18,6 +18,7 @@ public class activateBomb : EntityData
     public GameObject monster1;
     public GameObject monster2;
     public GameObject monster3;
+    public GabTextController gabTextController;
     protected Renderer sMapRender;
     protected Renderer sCrystalRender;
     internal GroundShadow groundShadow;
@@ -61,12 +62,18 @@ public class activateBomb : EntityData
 
     public override void ProcessClick(CharacterStats stats)
     {
-        if (stats.currentPower==3 && stats.mana>=24){
+        if (stats.currentPower != 3) {
+            gabTextController.AddGabToPlay("You might be able to light the fuse if only you had some fire magic.");
+        }
+        if (stats.currentPower == 3 && stats.mana >= 24)
+        {
             stats.HP -= 150;
             if (stats.HP < 1) { stats.HP = 1; }
             stats.mana -= 24;
             GameData.Instance.map2_4Shortcut = true;
+            SoundManager.Instance.PlaySound("Explosion", 1);
             detonateBomb();
         }
+        else if (stats.currentPower == 3 && stats.mana <= 24) { gabTextController.AddGabToPlay("Not enough mana to light the fuse."); }
     }
 }

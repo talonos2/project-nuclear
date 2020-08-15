@@ -38,6 +38,7 @@ public class Enemy : Stats
     public bool deathBoss;
     public bool deathBoss2;
     public bool finalBoss;
+    public bool finalBossForm1;
 
     public void Start()
     {

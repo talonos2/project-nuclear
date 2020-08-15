@@ -363,6 +363,10 @@ public class Combat : MonoBehaviour
                 playerStats.defenseCrystalsGained += monsterStats.crystalDropAmount;
                 playerStats.HealthCrystalsGained += monsterStats.crystalDropAmount;
                 playerStats.ManaCrystalsGained += monsterStats.crystalDropAmount;
+                if(monsterStats.earthBoss2 || monsterStats.deathBoss2 || monsterStats.finalBoss || monsterStats.finalBossForm1)
+                {
+                    break;
+                }
                 CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject,monsterStats.powerupEffect);
                 CrystalSpawner.SpawnCrystalParticles(CrystalType.DEFENSE, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 CrystalSpawner.SpawnCrystalParticles(CrystalType.MANA, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
@@ -407,10 +411,6 @@ public class Combat : MonoBehaviour
             GameData.Instance.airBoss1 = true;
             playerStats.powersGained = Math.Max(4, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
-        }
-        if (monsterStats.earthBoss2)
-        {
-            GameData.Instance.earthBoss2 = true;
         }
         if (monsterStats.fireBoss2)
         {
@@ -491,14 +491,14 @@ public class Combat : MonoBehaviour
         monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
 
         if (playerStats.accessoryHPVamp > 0) {//same. should have an animation...
-            playerStats.HP = (int)((float) playerStats.MaxHP * (1 + playerStats.accessoryHPVamp / 100));
+            playerStats.HP += (int)((float) playerStats.MaxHP * (playerStats.accessoryHPVamp / 100f));
             //Note: The vamp items have a multiplier higher then what is shown This is to gausian give them the
             //the correct amount of life steal when dealing with remainders. The change is stat +.2
             if (playerStats.HP > playerStats.MaxHP)
                 { playerStats.HP = playerStats.MaxHP; }
             }
         if (playerStats.accessoryMPVamp > 0) {
-            playerStats.mana = (int)((float)playerStats.MaxMana * (1 + playerStats.accessoryMPVamp / 100));
+            playerStats.mana += (int)((float)playerStats.MaxMana * (playerStats.accessoryMPVamp / 100f));
             if (playerStats.mana > playerStats.MaxMana)
             { playerStats.mana = playerStats.MaxMana; }
         }

@@ -22,6 +22,7 @@ public class SpriteShadowLoader : MonoBehaviour
     private float yPostioin;
     public int lightRadius=6;
     public bool isOnCutsceneMap;
+    public bool isThisJohnDoe;
     
     void Start()
     {
@@ -72,9 +73,8 @@ public class SpriteShadowLoader : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-
-        sRender.material.SetVector("_HeroXY", ThePlayer.transform.position);//shouldn't it be the sprite position rather than the player position?
+    {       
+        if (GameData.Instance.FloorNumber!=0) sRender.material.SetVector("_HeroXY", ThePlayer.transform.GetChild(0).GetChild(0).position);//shouldn't it be the sprite position rather than the player position?
         sRender.material.SetInt("_LightRad", lightRadius);
         this.transform.localPosition = new Vector3(xPosition,yPostioin,CalculateZCoor());
         if (groundObject.resetShadow) {
@@ -85,6 +85,10 @@ public class SpriteShadowLoader : MonoBehaviour
     private float CalculateZCoor()
     {
         float zPosition= - 10 + this.transform.position.y / 100;
+        if (isThisJohnDoe && GameData.Instance.RunNumber<15) {
+            belowGroundItem = true;
+        }
+
         if (belowGroundItem)
             zPosition = 1;
         if (actualGround)

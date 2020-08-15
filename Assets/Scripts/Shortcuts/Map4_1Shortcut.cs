@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,4 +17,20 @@ public class Map4_1Shortcut : MonoBehaviour
         }
     }
 
+    internal void setupShortcutAlert()
+    {
+        foreach (GameObject monster in monstersToDestroy)
+        {
+            monster.GetComponent<MonsterMovement>().setNewMovespeed (monster.GetComponent<MonsterMovement>().MoveSpeed * 2);
+            monster.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
+        }
+    }
+
+    internal void setupShortcut()
+    {
+        foreach (GameObject monster in monstersToDestroy)
+        {
+            Destroy(monster);
+        }
+    }
 }

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1140,7 +1140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &326564850
 MonoBehaviour:
@@ -3246,7 +3246,7 @@ Transform:
   m_LocalScale: {x: 3, y: 0.1, z: 3.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
 --- !u!114 &2018926737
 MonoBehaviour:
@@ -3282,6 +3282,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!1001 &2028132235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3766,7 +3768,7 @@ PrefabInstance:
     - target: {fileID: 3128599578249191483, guid: 13f55362b4ce93843a256a685f28550e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3128599578249191483, guid: 13f55362b4ce93843a256a685f28550e,
         type: 3}
@@ -3793,7 +3795,18 @@ PrefabInstance:
       propertyPath: HP
       value: 550
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3128599578249191477, guid: 13f55362b4ce93843a256a685f28550e,
+        type: 3}
+      propertyPath: SpottingDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: 13f55362b4ce93843a256a685f28550e,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3128599578249191479, guid: 13f55362b4ce93843a256a685f28550e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 13f55362b4ce93843a256a685f28550e, type: 3}
 --- !u!1001 &2236789191173379026
 PrefabInstance:
@@ -3929,6 +3942,7 @@ MonoBehaviour:
   isBackgroundCharacter: 0
   isSpike: 0
   isPassable: 1
+  isOnCutsceneMap: 0
   gabText: Press "S" to rest; this heals but costs 30 seconds.
   gabNumber: 0
   sound: MenuOkay

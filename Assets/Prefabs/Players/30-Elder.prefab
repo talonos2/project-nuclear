@@ -4889,6 +4889,7 @@ GameObject:
   - component: {fileID: 5090576699509108925}
   - component: {fileID: 5090576699509108924}
   - component: {fileID: 5090576699509108915}
+  - component: {fileID: 5601105375289546739}
   m_Layer: 0
   m_Name: 30-Elder
   m_TagString: Player
@@ -4932,6 +4933,7 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 0
+  isOnCutsceneMap: 0
   MoveSpeed: 6
   framesPerSecond: 8
   facedDirection: 4
@@ -4967,6 +4969,7 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 1
+  isOnCutsceneMap: 0
 --- !u!114 &5090576699509108924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5043,6 +5046,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5601105375289546739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5090576699509108914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6c73306a0b08d4f9502389d10f4800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthHealer: {fileID: 6779871452013414145, guid: d85027ac9da2f1241801844e7602ffa3,
+    type: 3}
+  manaHealer: {fileID: 6779871452013414145, guid: 013da2f242fe84840a89c7fb57d3c44b,
+    type: 3}
+  bothHealer: {fileID: 6779871452013414145, guid: 0a1743d8d5354c0489b8af040a7ad299,
+    type: 3}
 --- !u!1 &5090576701426293739
 GameObject:
   m_ObjectHideFlags: 0
@@ -5145,6 +5166,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 1
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &5090576701426293751
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5276,26 +5299,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 2893497967410854414, guid: 24f8a22df5c342f4d98b201a4a034aee,
         type: 3}
@@ -5561,6 +5564,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f8a22df5c342f4d98b201a4a034aee, type: 3}

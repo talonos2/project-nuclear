@@ -81,7 +81,10 @@ public class SwitchEntityData : EntityData
                 WindJumpController windJumpControlled = tiedEntity.GetComponent<WindJumpController>();
                 if (spikeControlled != null)
                 {
-                    spikeControlled.OpenAfterTime(time);
+                    if (prePressed) { spikeControlled.Open(false);
+                        prePressed = false;
+                    }
+                    else spikeControlled.OpenAfterTime(time);
                 }
                 if (bridgeControlled != null)
                 {

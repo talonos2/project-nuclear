@@ -292,6 +292,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &65969399
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -488,6 +490,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &199361707 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 131808658028473011, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 632224823}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5fea1177f7ee54e8e6534f6e7fb991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &213272103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -920,6 +934,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 57873405483397689, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
+        type: 3}
+      propertyPath: earthBoss2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57873405483397689, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
+        type: 3}
+      propertyPath: earthBoss
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6622165687117483734, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
         type: 3}
       propertyPath: m_Name
@@ -1015,11 +1039,6 @@ PrefabInstance:
       propertyPath: Pathing.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5372312010732874347, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
-        type: 3}
-      propertyPath: attackAnimation
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6622165687581963514, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1029,6 +1048,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372312010732874347, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
+        type: 3}
+      propertyPath: attackAnimation
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e3869a8ee3aa624da07cc9de5c17beb, type: 3}
@@ -1530,6 +1554,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &569736370
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1693,6 +1719,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5515415379851588918, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898377835807072795, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -3228,6 +3264,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &1474268819
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3392,6 +3430,7 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 0
+  isOnCutsceneMap: 0
   finalMap: {fileID: 2018926731}
   newMap: {fileID: 2800000, guid: 2447e3d50feb1674387d2fb439ccff70, type: 3}
   newShadowmap: {fileID: 2800000, guid: f3d79a276516aee4fbcd0aec4f61e9bd, type: 3}
@@ -3405,6 +3444,7 @@ MonoBehaviour:
   monster1: {fileID: 1435838860}
   monster2: {fileID: 1988241252}
   monster3: {fileID: 488232200}
+  gabTextController: {fileID: 199361707}
 --- !u!4 &1765819763
 Transform:
   m_ObjectHideFlags: 0
@@ -3745,6 +3785,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!1 &2047364644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3798,6 +3840,8 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
 --- !u!64 &2047364647
 MeshCollider:
   m_ObjectHideFlags: 0

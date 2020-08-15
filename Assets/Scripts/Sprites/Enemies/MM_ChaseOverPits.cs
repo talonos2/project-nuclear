@@ -29,6 +29,7 @@ public class MM_ChaseOverPits : MonsterMovement
                 {
                     CurrentlyChasingPlayer = true;
                     ChaseStepNumber = 0;
+                    hazardIcon.enabled = true;
                     waitTimer = SpotWaitTimer;
                 }
                 if (waitTimer >= 0)
@@ -36,6 +37,7 @@ public class MM_ChaseOverPits : MonsterMovement
                     waitTimer -= Time.deltaTime;
                     return;
                 }
+                hazardIcon.enabled = false;
 
                 if (CurrentlyChasingPlayer)
                 {

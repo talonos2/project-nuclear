@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Perm_Switch2_2 : SwitchEntityData
 {
+
+    public shortcutCutsceneMap4_4to2_2s shortcutCutscene;
     new void Start()
     {
         base.Start();
@@ -22,7 +24,7 @@ public class Perm_Switch2_2 : SwitchEntityData
             SwitchAnimation();
             if (GameData.Instance.map2_2Shortcut == false)
             {
-                GameData.Instance.map2_2Shortcut = true; //Set to True by the cutsceneplayerscript on scMap3-2
+                shortcutCutscene.initialiseShortcutCutscene();
 
                 //SceneManager.LoadScene("ScMap3-2", LoadSceneMode.Additive);
             }
