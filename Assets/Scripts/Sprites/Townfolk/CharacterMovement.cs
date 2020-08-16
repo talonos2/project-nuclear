@@ -606,6 +606,7 @@ public class CharacterMovement : SpriteMovement
     internal void PowerToggleLeftKeyReceived()
     {
         if (playerStats.powersGained == 0) return;
+        SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower -= 1;
         if (playerStats.currentPower < 0) {
             playerStats.currentPower = playerStats.powersGained;
@@ -621,6 +622,7 @@ public class CharacterMovement : SpriteMovement
     {
 
         if (playerStats.powersGained == 0) return;
+        SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower += 1;
         if (playerStats.currentPower > playerStats.powersGained)
         {

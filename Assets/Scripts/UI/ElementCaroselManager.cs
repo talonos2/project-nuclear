@@ -24,15 +24,15 @@ public class ElementCaroselManager : MonoBehaviour
     void Update()
     {
         thereIsOnlyOneRightNowLaterThereWillBeMore.gameObject.SetActive(stats.powersGained > 0);
-        if (elementIThinkIsSelected != stats.currentPower || doIThinkImBeingUsed != isPowerBeingUsed())
+        if (elementIThinkIsSelected != stats.currentPower || doIThinkImBeingUsed != IsPowerBeingUsed())
         {
             elementIThinkIsSelected = stats.currentPower;
-            doIThinkImBeingUsed = isPowerBeingUsed();
+            doIThinkImBeingUsed = IsPowerBeingUsed();
             thereIsOnlyOneRightNowLaterThereWillBeMore.sprite = (doIThinkImBeingUsed ? onSprites[elementIThinkIsSelected] : offSprites[elementIThinkIsSelected]);
         }
     }
 
-    private bool isPowerBeingUsed()
+    private bool IsPowerBeingUsed()
     {
         switch (elementIThinkIsSelected)
         {
