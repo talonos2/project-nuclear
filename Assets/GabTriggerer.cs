@@ -39,6 +39,10 @@ public class GabTriggerer : DoodadData
                 GameState.fullPause = true;
             }
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
+            if (uiController==null) //We must be in town.
+            {
+                uiController = GameObject.Find("TownMenuUi");
+            }
             uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText,true, (float)time, true,true, clipToPlayForTutorial));
             gabNumbers[gabNumber] = true;
         }
