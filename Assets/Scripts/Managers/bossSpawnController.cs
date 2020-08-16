@@ -51,7 +51,7 @@ public class bossSpawnController : MonoBehaviour
                 GameData.Instance.isInDialogue = true;
                 inCutscene = true;
                 mainCamera.enabled = false;
-                instantiatedCutscenePlayer=Instantiate(cutscenePlayerPrefab, bossSpawnController1.transform.parent.position, Quaternion.identity);
+                instantiatedCutscenePlayer=Instantiate(cutscenePlayerPrefab, bossSpawnController1.transform.parent.position+new Vector3(3.5f,0,0), Quaternion.identity);
                 break;
             case 1:
                 cutsceneTimer = cutsceneDelay;
@@ -59,7 +59,7 @@ public class bossSpawnController : MonoBehaviour
                 GameData.Instance.isInDialogue = true;
                 inCutscene = true;
                 mainCamera.enabled = false;
-                instantiatedCutscenePlayer = Instantiate(cutscenePlayerPrefab, bossSpawnController2.transform.parent.position, Quaternion.identity);
+                instantiatedCutscenePlayer = Instantiate(cutscenePlayerPrefab, bossSpawnController2.transform.parent.position + new Vector3(-6.5f, 0, 0), Quaternion.identity);
                 break;
             case 2:
                 cutsceneTimer = cutsceneDelay;
@@ -67,7 +67,7 @@ public class bossSpawnController : MonoBehaviour
                 GameData.Instance.isInDialogue = true;
                 inCutscene = true;
                 mainCamera.enabled = false;
-                instantiatedCutscenePlayer = Instantiate(cutscenePlayerPrefab, bossSpawnController3.transform.parent.position, Quaternion.identity);
+                instantiatedCutscenePlayer = Instantiate(cutscenePlayerPrefab, bossSpawnController3.transform.parent.position + new Vector3(-3.5f, 0, 0), Quaternion.identity);
                 break;
             case 3:
                 cutsceneTimer = cutsceneDelay;
@@ -75,7 +75,7 @@ public class bossSpawnController : MonoBehaviour
                 GameData.Instance.isInDialogue = true;
                 inCutscene = true;
                 mainCamera.enabled = false;
-                instantiatedCutscenePlayer = Instantiate(cutscenePlayerPrefab, bossSpawnController4.transform.parent.position, Quaternion.identity);
+                instantiatedCutscenePlayer = Instantiate(cutscenePlayerPrefab, bossSpawnController4.transform.parent.position + new Vector3(6.5f, 0, 0), Quaternion.identity);
                 break;
             case 4:
                 cutsceneTimer = cutsceneDelay;
