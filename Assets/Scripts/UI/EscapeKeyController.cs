@@ -144,7 +144,13 @@ public class EscapeKeyController : MonoBehaviour
         buttonSelected = 3;
         showButtonSelection();
         GameState.fullPause = false;
-        Application.Quit();
+#if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
     }
 
     internal void ReActivate()

@@ -46,6 +46,7 @@ public class CharacterInputController : MonoBehaviour
         if (Input.GetButtonDown("PowerActivate")) {
             characterController.PowerActivateKeyReceived();
         }
+#if UNITY_EDITOR
         if (Input.GetButtonDown("MurderPlayer"))
         {
             characterController.MurderPlayer();
@@ -57,6 +58,7 @@ public class CharacterInputController : MonoBehaviour
         {
             characterController.PowerDownCheat();
         }
+#endif
         if (Input.GetButtonDown("Rest"))
         {
             characterController.AttemptRest();
