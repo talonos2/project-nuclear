@@ -19,7 +19,7 @@ Wilson: Yes, very.
 @hidechars time:0
 
 @char Nelson
-Nelson: Very well. No doubt there are a few places in town that could use a little-
+Nelson: Very well. No doubt there are a few places in town that could use a little—
 @hidechars time:0
 
 @char Wilson
@@ -35,10 +35,10 @@ Wilson: Stop working. Here or anywhere.[br]Just go home.
 Wilson: Rest.
 @hidechars time:0
 
-@Wait 2
+@Wait 1
 
 @char Nelson
-Nelson: An employer cannot command one to not work...  On their own time.
+Nelson: An employer cannot command one to stop working...[br]On their own time.
 @hidechars time:0
 
 @char Wilson
@@ -48,17 +48,15 @@ Wilson: You'd miss her too.
 Wilson: If you gave yourself time.
 @hidechars time:0
 
+@fwturnpawn n:PawnNelson d:e
+
 @char Wilson
 Nelson: ...
 @hidechars time:0
 
-@fwmovepawn n:PawnNelson d:w
-@fwmovepawn n:PawnNelson d:w
-@fwmovepawn n:PawnNelson d:s
 
-@wait 1
 
-@fwspawnvfx x:-1 y:-5 z:0 Vfx:CurseFX
+@fwspawnvfx x:2 y:-1.6 z:-9.92 Vfx:CurseFX
 @wait 1
 
 @fwturnpawn n:PawnNelson d:w
@@ -68,11 +66,16 @@ Nelson: If you will excuse me sir.
 Nelson: It seems I do have one last job to do.
 @hidechars time:0
 
+@fwmovepawn n:PawnNelson d:w
+@fwmovepawn n:PawnNelson d:w
+@fwmovepawn n:PawnNelson d:s
+@fwmovepawn n:PawnNelson d:s
+@fwmovepawn n:PawnNelson d:s
 @fwmovepawn n:PawnNelson d:s
 @fwmovepawn n:PawnNelson d:s
 @fwmovepawn n:PawnNelson d:s
 
-@wait 1
+@wait 1.2
 
 ;$@startRun
 
