@@ -24,7 +24,7 @@ Jezerine: I will catch death
 @fwmovepawn n:PawnJezerine d:e
 @fwmovepawn n:PawnJezerine d:e
 @wait 0.4
-@fwspawnvfx x:-5 y:-14 z:0 Vfx:Firework
+@shakeScarecrow
 
 @char Jezerine
 Jezerine: And it will meet its end.
@@ -38,7 +38,7 @@ Nelson: It is not becoming of a young lady to play with swords.
 @fwmovepawn n:PawnJezerine d:w
 @fwmovepawn n:PawnJezerine d:w
 @wait 0.4
-@fwspawnvfx x:-5 y:-14 z:0 Vfx:Firework
+@shakeScarecrow
 
 @char Jezerine
 Jezerine: What will become of any of us if I do not?
@@ -82,9 +82,10 @@ you received "sweater"
 @fwmovepawn n:PawnJezerine d:e
 @fwmovepawn n:PawnJezerine d:e
 @fwmovepawn n:PawnJezerine d:e
+@wait .4
+@shakeScarecrow
 
-
-@wait 1.5
+@wait 1.1
 
 @fwdeletego n:PawnJezerine
 ;$@startRun

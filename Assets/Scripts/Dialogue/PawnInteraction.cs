@@ -23,6 +23,7 @@ public class PawnInteraction : EntityData
     private bool punching;
     private float punchTimer;
     public List<int> daysToPunchBag;
+    internal bool punchAnyway;
 
     // Start is called before the first frame update
     void Start()
@@ -111,7 +112,7 @@ public class PawnInteraction : EntityData
         }
     }
 
-    private void clickDummy()
+    public void clickDummy()
     {
         GameObject entityToCheck = null;
         entityToCheck = mapEntityGrid.grid[pawnLocation.x, pawnLocation.y + 1];
@@ -134,8 +135,8 @@ public class PawnInteraction : EntityData
     }
 
     void Update() {
-        if (GameState.fullPause == true  || GameState.isInBattle == true || GameData.Instance.isInDialogue || GameData.Instance.isCutscene) return;
-        if (isItTrainingDay()) {
+        if (GameState.fullPause == true  || GameState.isInBattle == true || GameData.Instance.isInDialogue) return;
+        if (isItTrainingDay() || punchAnyway) {
             punchTimer += Time.deltaTime;
             if (punchTimer >= 1f && punchTimer < 2.2f && !punching)
             {
@@ -148,6 +149,7 @@ public class PawnInteraction : EntityData
                 punching = false;
                 punchTimer = 0;
                 sRender.material.SetFloat("_Frame", FLOATING_POINT_FIX + 21);
+                punchAnyway = false;
             }
 
         }
