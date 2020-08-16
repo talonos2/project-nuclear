@@ -104,7 +104,6 @@ public class CutsceneLoader : MonoBehaviour
                 return "TownMap_1";
             case 2:
                 return "TownInterior_Pub_1";
-                break;
             case 3:
                 return "TownMap_1";
             case 4:
