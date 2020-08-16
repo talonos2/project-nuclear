@@ -329,7 +329,7 @@
 		@char Tristana
 		Tristana: How was it?
 		@char Devon
-		Devon: How was it?  It was terrible!  And now there's a curse?
+		Devon: How was it? It was terrible! And now there's a curse?
 		
 		@if GetDouglass()
 			@char Douglass
@@ -611,9 +611,9 @@
 
 
 		#day11
-	    Soon, at the entrance...
+		Soon, at the entrance...
 		@char Stranger
-		Stranger: huff... huff...  I made it?
+		Stranger: huff... huff... I made it?
 		@if !Getperfect()
 			Stranger: And this loot![br]I mean sure, it's not exactly precious metals.
 			Stranger: But there's gotta be an antiques dealer who will—
@@ -762,7 +762,7 @@
 		Soon, at the entrance...
 		@char Jezerine
 		Jezerine: Did you see that?!
-		Jezerine: I did it!  I totally just cleaned the floor with, like, a thousand monsters!
+		Jezerine: I did it! I totally just cleaned the floor with, like, a thousand monsters!
 		Jezerine: I am unstoppable!
 		@char Stranger
 		Stranger: Yeah, um, thanks miss.
@@ -818,22 +818,23 @@
 		@elseif !GetWorst()
 
 
+		Hey, you found one of the three endings we didn't get around to yet.
+		Sorry about that.
 
+		;@char Jezerine
+		;Jezerine: I'll catch up to you guys in a bit.
 
-		@char Jezerine
-		Jezerine: I'll catch up to you guys in a bit.
+		;@char Reya
+		;Reya: I hear you really slughtered those horrors.
+		;Reya: I'm a bit disappointed I didn't get a crack at them myself.
 
-		@char Reya
-		Reya: I hear you really slughtered those horrors.
-		Reya: I'm a bit disappointed I didn't get a crack at them myself.
+		;@char Jezerine
+		;Jezerine: I knew some of those people. Some of the people I—
 
-		@char Jezerine
-		Jezerine: I knew some of those people. Some of the people I—
-
-		@char Reya
-		Reya: Yeah kid, this isn't really a friendly business.
-		Reya: But don't worry. First one's always the hardest.
-		Reya: You'll see how it is when you get out there.
+		;@char Reya
+		;Reya: Yeah kid, this isn't really a friendly business.
+		;Reya: But don't worry. First one's always the hardest.
+		;Reya: You'll see how it is when you get out there.
 
 
 
@@ -1427,7 +1428,7 @@
 			@endif
 			@if GetDouglass()
 				@char Douglass
-				Douglass: Well, I've been in these caves before.  Always a bit dizzy afterwards.[br]Never quite this bad though.
+				Douglass: Well, I've been in these caves before. Always a bit dizzy afterwards.[br]Never quite this bad though.
 			@endif
 			@if GetDevon()
 				@char Devon
@@ -1684,7 +1685,8 @@
 		
 		@elseif !GetWorst()
 
-		
+		Hey, you found one of the three endings we didn't get around to yet.
+		Sorry about that.
 
 
 
@@ -1770,6 +1772,12 @@
 		Pendleton: It's a good thing I did. Where would we be if I hadn't?
 
 		@elseif !GetWorst()
+
+
+		Hey, you found one of the three endings we didn't get around to yet.
+		Sorry about that.
+
+		
 		@elseif GetWorst()
 
 		Soon, at the entrance...
@@ -2127,7 +2135,7 @@
 		@char JohnDoe
 		JohnDoe: Alright ya louts, get on outa there.
 		@char McDermit
-		McDermit: Thank you sir.  We couldn't have made it without you.
+		McDermit: Thank you sir. We couldn't have made it without you.
 		@char JohnDoe
 		JohnDoe: I couldn't very well leave you all stuck in a stone structure against your will.
 		@char McDermit
@@ -2157,12 +2165,12 @@
 
 		@wait 1
 
-		Reya: Hey, you handled things pretty well down there.  Ever thought about—
+		Reya: Hey, you handled things pretty well down there. Ever thought about—
 		@char JohnDoe
 		JohnDoe: Buzz off lady.
 
 		@char Mara
-		Mara: Alright! Lets hear it for...  well... don't think we ever got your name.
+		Mara: Alright! Lets hear it for... well... don't think we ever got your name.
 		@char JohnDoe
 		JohnDoe: Yeah. Why not keep a good thing going?
 		@char Norma
@@ -2180,7 +2188,7 @@
 
 		@elseif GetWorst()
 
-		Fluer: Are you okay?  Where are the rest?
+		Fluer: Are you okay? Where are the rest?
 		@char JohnDoe
 		JohnDoe: Place is full of monsters. You think they have a bunch of nice jail cells to put everyone in?
 		JohnDoe: I got shanghaied into this. Just be glad I killed the monsters for you.
@@ -2201,7 +2209,7 @@
 		@char Wilson
 		Wilson: Did you find anyone else in there?
 		@char JohnDoe
-		JohnDoe: What?  Is that not everybody?
+		JohnDoe: What? Is that not everybody?
 		JohnDoe: Guess I haven't been formally introduced to most of ya.
 		@char Wilson
 		Wilson: Well... you did what you could.
@@ -3315,7 +3323,7 @@
 
 				@if GetMcDermit()
 					@char McDermit
-					McDermit: Pact?  Were the rest of you talking to someone down there?
+					McDermit: Pact? Were the rest of you talking to someone down there?
 				@endif
 				@char Todd
 				Todd: Silence! I will show you the power I have been given!
