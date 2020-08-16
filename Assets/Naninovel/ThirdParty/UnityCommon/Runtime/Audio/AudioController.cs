@@ -117,7 +117,7 @@ namespace UnityCommon
 
         private AudioListener FindOrAddListener ()
         {
-            audioListener = Camera.main.GetComponent<AudioListener>();// FindObjectOfType<AudioListener>();
+            audioListener =  FindObjectOfType<AudioListener>();
             if (!audioListener) audioListener = gameObject.AddComponent<AudioListener>();
             return audioListener;
         }

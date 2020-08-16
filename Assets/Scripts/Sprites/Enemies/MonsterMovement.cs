@@ -136,7 +136,7 @@ public class MonsterMovement : SpriteMovement
                 if (IsPlayerInView() && !CurrentlyChasingPlayer) {
                     CurrentlyChasingPlayer = true;
                     ChaseStepNumber = 0;
-                    hazardIcon.enabled = true;
+                    hazardIcon.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
                     waitTimer = SpotWaitTimer;
                 }
                 if (waitTimer >= 0)
