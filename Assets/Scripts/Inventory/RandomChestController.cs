@@ -367,7 +367,7 @@ public class RandomChestController : EntityData
 
         if (result < 1) result = 1;
         if (result > 20) result = 20;
-        Debug.Log("rarity rolled " + result);
+
         return result;
 
     }
