@@ -212,9 +212,12 @@ public class ChooseItemUI : MonoBehaviour
                 //closeItemPickUI();
                 return;
             }
-            foundItemText = rolledItem.gameObject.name + " TODO: Brief Desc.";
-            oldItemText = playerData.accessory.gameObject.name + " TODO: Brief Desc.";
-            newItemSprite.sprite = itemIcons[2];
+            Accessory rolledAccItem = (Accessory)rolledItem;
+            Accessory oldAccItem = playerData.accessory;
+            foundItemText = rolledItem.gameObject.name+", " + rolledAccItem.equipmentStatDescription; 
+            oldItemText = playerData.accessory.gameObject.name + ", " + oldAccItem.equipmentStatDescription;
+            if (playerData.accessory.name == "No Accessory Equipped") oldItemText = playerData.accessory.gameObject.name;
+                newItemSprite.sprite = itemIcons[2];
             //oldItemSprite.sprite = itemIcons[2];
         }
 

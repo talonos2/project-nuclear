@@ -23,13 +23,14 @@ public class EscapeKeyController : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
+
             if (currentlyEscaped) {
                 SoundManager.Instance.PlaySound("MenuNope", 1f);
                 GameState.fullPause = false;
                 currentlyEscaped = false;
                 canvas.SetActive(false);
             }
-            else if (!currentlyEscaped) {
+            else if (!currentlyEscaped && GameState.fullPause!=true) {
                 SoundManager.Instance.PlaySound("MenuOpen", 1f);
                 GameState.fullPause = true;
                 currentlyEscaped = true;

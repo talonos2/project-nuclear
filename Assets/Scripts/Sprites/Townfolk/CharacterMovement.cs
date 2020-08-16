@@ -605,7 +605,7 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerToggleLeftKeyReceived()
     {
-        if (playerStats.powersGained == 0) return;
+        if (playerStats.powersGained == 0||GameState.fullPause) return;
         SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower -= 1;
         if (playerStats.currentPower < 0) {
@@ -613,7 +613,7 @@ public class CharacterMovement : SpriteMovement
         }
         if (GameState.isInBattle)
         {
-            GameObject.FindObjectOfType<Combat>().DisplayElementSwitchVFX(playerStats.currentPower);
+            //GameObject.FindObjectOfType<Combat>().DisplayElementSwitchVFX(playerStats.currentPower);
         }
     }
 
@@ -621,7 +621,7 @@ public class CharacterMovement : SpriteMovement
     internal void PowerToggleRightKeyReceived()
     {
 
-        if (playerStats.powersGained == 0) return;
+        if (playerStats.powersGained == 0 || GameState.fullPause) return;
         SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower += 1;
         if (playerStats.currentPower > playerStats.powersGained)
@@ -630,7 +630,7 @@ public class CharacterMovement : SpriteMovement
         }
         if (GameState.isInBattle)
         {
-            GameObject.FindObjectOfType<Combat>().DisplayElementSwitchVFX(playerStats.currentPower);
+            //GameObject.FindObjectOfType<Combat>().DisplayElementSwitchVFX(playerStats.currentPower);
         }
     }
 

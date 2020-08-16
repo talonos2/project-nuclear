@@ -30,6 +30,10 @@ public class SwitchEntityData : EntityData
 
     private static readonly float OFFSET_FIX = .00001f;
     private static readonly float TIME_PER_TICK_SOUND = .7f;
+    public bool lightning;
+    public bool fire;
+    public bool earth;
+    public bool water;
 
     // Start is called before the first frame update
     protected void Start()
@@ -55,6 +59,29 @@ public class SwitchEntityData : EntityData
     }
 
     override public void ProcessClick(CharacterStats stats) {
+        if (lightning)
+        {
+            stats.powersGained = 3;
+            if (stats.currentPower == 4) { stats.currentPower = 3; }
+        }
+        if (fire)
+        {
+            stats.powersGained = 2;
+            if (stats.currentPower == 3) { stats.currentPower = 2; }
+            stats.gameObject.GetComponent<CharacterMovement>().TurnHasteOff();
+        }
+        if (earth)
+        {
+            stats.powersGained = 1;
+            if (stats.currentPower == 2) { stats.currentPower = 1; }
+            GameData.Instance.stealthed = false;
+        }
+        if (water)
+        {
+            stats.powersGained = 0;
+            if (stats.currentPower == 1) { stats.currentPower = 0; }
+        }
+
 
         if (isAnimating) { return; }
         if (timerSet == true)
@@ -82,6 +109,9 @@ public class SwitchEntityData : EntityData
 
     public virtual void ToggleTiedObjects()
     {
+
+  
+
         bool movedABridge = false;
         if (activeSwitch)
         {

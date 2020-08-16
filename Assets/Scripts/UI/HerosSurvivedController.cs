@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HerosSurvivedController : MonoBehaviour
@@ -15,7 +16,7 @@ public class HerosSurvivedController : MonoBehaviour
     public Image blueMaid;
     public Image trapper;
     public Image blacksmith;
-
+    private float delay = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -32,5 +33,15 @@ public class HerosSurvivedController : MonoBehaviour
         if (GameData.Instance.Pendleton == 0) squire.enabled = false;
     }
 
+    private void Update()
+    {
+        if (GameData.Instance.isInDialogue) return;
+        delay -= Time.deltaTime;
+
+        if (delay < 0) {
+            SceneManager.LoadScene("TitleScreen");
+        }
+
+    }
 
 }
