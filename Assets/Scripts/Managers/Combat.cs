@@ -328,7 +328,7 @@ public class Combat : MonoBehaviour
     {
         MusicManager.instance.TurnOffCombatMusic();
         combatEnded = true;
-        GameState.isInBattle = false;
+        //GameState.isInBattle = false;
         blade.StartClose();
         //GameState.endRunFlag = true;
         KillPlayerAndLoadNextScene(true);
@@ -346,18 +346,14 @@ public class Combat : MonoBehaviour
         //playerStats.currentPower = elementSelected;
         playerStats.deactivatePowers();
         //
-        GameState.isInBattle = false;
-        GameState.fullPause = true;
+        //GameState.isInBattle = false;
+        //GameState.fullPause = true;
         Destroy(monsterSprite.gameObject);
         Destroy(playerSprite.gameObject);
         combatDarkening.material.SetFloat("_Alpha", 0);
         blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
-        Destroy(this);
-        //At this point play 'death' animation on player, which should end in a death of the player. 
-        //For now doing the scene transition to the death scene right away
-        SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
-        MusicManager.instance.FadeOutMusic(-2, 3);
-        SceneManager.LoadScene("DeathScene");
+        GameData.Instance.EndTheRun();
+        Destroy(this.gameObject);
     }
 
     private void KillMonsterAndGetRewards()
@@ -444,7 +440,6 @@ public class Combat : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log(GameData.Instance.FloorNumber);
         GameState.isInBattle = false;
         if (GameData.Instance.FloorNumber != 20)
         {
