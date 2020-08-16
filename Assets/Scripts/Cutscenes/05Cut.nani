@@ -25,11 +25,10 @@ Tasha: Again!
 
 ;breif pause between each
 ;thwack VFX
-@fwspawnvfx x:-7 y:-14 z:0 Vfx:Firework 
-@wait 0.5
-@fwspawnvfx x:-5 y:-14 z:0 Vfx:Firework
-@wait 0.5
-@fwspawnvfx x:-3 y:-14 z:0 Vfx:Firework
+@pawnclickobject n:PawnPaul
+@pawnclickobject n:PawnNorma
+@pawnclickobject n:PawnFluer
+@wait 1
 
 
 @char Tasha
@@ -37,11 +36,10 @@ Tasha: Again!
 @hidechars time:0
 
 ;thwack VFX
-@fwspawnvfx x:-7 y:-14 z:0 Vfx:Firework 
-@wait 0.5
-@fwspawnvfx x:-5 y:-14 z:0 Vfx:Firework
-@wait 0.5
-@fwspawnvfx x:-3 y:-14 z:0 Vfx:Firework
+@pawnclickobject n:PawnPaul
+@pawnclickobject n:PawnNorma
+@pawnclickobject n:PawnFluer
+@wait 1
 
 
 ;@fwspawnvfx x:4 y:24 z:0 Vfx:collapse ;fluer falls over
