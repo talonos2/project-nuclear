@@ -23,13 +23,14 @@ public class EscapeKeyController : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
+
             if (currentlyEscaped) {
                 SoundManager.Instance.PlaySound("MenuNope", 1f);
                 GameState.fullPause = false;
                 currentlyEscaped = false;
                 canvas.SetActive(false);
             }
-            else if (!currentlyEscaped) {
+            else if (!currentlyEscaped && GameState.fullPause!=true) {
                 SoundManager.Instance.PlaySound("MenuOpen", 1f);
                 GameState.fullPause = true;
                 currentlyEscaped = true;
@@ -143,7 +144,13 @@ public class EscapeKeyController : MonoBehaviour
         buttonSelected = 3;
         showButtonSelection();
         GameState.fullPause = false;
-        Application.Quit();
+#if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
     }
 
     internal void ReActivate()

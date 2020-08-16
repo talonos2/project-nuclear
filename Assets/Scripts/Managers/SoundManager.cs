@@ -198,5 +198,13 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        if (!Application.isEditor)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
+    }
+
     [Serializable] public class DictionaryOfStringAndFloat : SerializableDictionary<string, float> { }
 }

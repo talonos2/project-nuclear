@@ -71,6 +71,9 @@ public class NewGameController : MonoBehaviour
                 case 4:
                     //TODO: This is Extras. 
                     break;
+                case 5:
+                    Quit();
+                    break;
             }
         }
 
@@ -90,12 +93,12 @@ public class NewGameController : MonoBehaviour
 
     private int PrevMenuOption()
     {
-        return (currentMenuOptionSelected + 4)%5;  //TODO: Skip continue and load game if there's no game to load or continue.
+        return (currentMenuOptionSelected + 5)%6;  //TODO: Skip continue and load game if there's no game to load or continue.
     }
 
     private int NextMenuOption()
     {
-        return (currentMenuOptionSelected + 6)%5;
+        return (currentMenuOptionSelected + 7)%6;
     }
 
     public void RefreshSelectedOption(int menuOptionSelected)
@@ -228,5 +231,25 @@ public class NewGameController : MonoBehaviour
     {
         inOtherMenu = false;
 
+    }
+
+    public void Quit()
+    {
+        Debug.Log("Trying to Quit");
+#if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
+    }
+
+    private void OnApplicationQuit()
+    {
+        if (!Application.isEditor)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
     }
 }

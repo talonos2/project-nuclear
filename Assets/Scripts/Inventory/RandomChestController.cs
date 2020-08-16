@@ -260,7 +260,7 @@ public class RandomChestController : EntityData
         int amountGained=0;
 
         if (attackCrystal) {
-            amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
+            amountGained = (int)(9.0f * Mathf.Pow((rarity + 3) / 4f, 2));
             SpawnCrystalParticles(CrystalType.ATTACK, amountGained, playerData);
             playerData.AttackCrystalsGained += amountGained;
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
@@ -270,7 +270,7 @@ public class RandomChestController : EntityData
         }
         else if (armorCrystal)
         {
-            amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
+            amountGained = (int)(9.0f * Mathf.Pow((rarity + 3) / 4f, 2));
             SpawnCrystalParticles(CrystalType.DEFENSE, amountGained, playerData);
             playerData.defenseCrystalsGained += amountGained;
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
@@ -280,7 +280,7 @@ public class RandomChestController : EntityData
         }
         else if (healthCrystal)
         {
-            amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
+            amountGained = (int)(9.0f * Mathf.Pow((rarity + 3) / 4f, 2));
             SpawnCrystalParticles(CrystalType.HEALTH, amountGained, playerData);
             playerData.HealthCrystalsGained += amountGained;
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
@@ -290,7 +290,7 @@ public class RandomChestController : EntityData
         }
         else if (manaCrystal)
         {
-            amountGained = (int)(9 * Mathf.Pow((rarity + 3) / 4, 2));
+            amountGained = (int)(9.0f * Mathf.Pow((rarity + 3) / 4f, 2));
             SpawnCrystalParticles(CrystalType.MANA, amountGained, playerData);
             playerData.ManaCrystalsGained += amountGained;
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
@@ -367,6 +367,7 @@ public class RandomChestController : EntityData
 
         if (result < 1) result = 1;
         if (result > 20) result = 20;
+        Debug.Log("rarity rolled " + result);
         return result;
 
     }
