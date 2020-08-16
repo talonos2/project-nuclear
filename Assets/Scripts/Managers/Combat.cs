@@ -61,7 +61,10 @@ public class Combat : MonoBehaviour
 
     private void Init(Enemy monsterStats, CharacterStats playerStats, GameObject monsterToDelete)
     {
-        MusicManager.instance.TurnOnCombatMusic();
+        //if (GameData.Instance.FloorNumber != 20)
+        {
+            MusicManager.instance.TurnOnCombatMusic();
+        }
 
 
         AttackAnimationManager aam = AttackAnimationManager.Instance;
@@ -310,19 +313,22 @@ public class Combat : MonoBehaviour
 
         if (monsterStats.HP <= 0)
         {
-            MusicManager.instance.TurnOffCombatMusic();
+            if (GameData.Instance.FloorNumber != 20)
+            {
+                MusicManager.instance.TurnOffCombatMusic();
+            }
             blade.StartClose();
             combatEnded = true;
         }
 
-        if (GameState.isInBattle == false) { MusicManager.instance.TurnOffCombatMusic(); }
+        if (GameState.isInBattle == false&&GameData.Instance.FloorNumber!=20) { MusicManager.instance.TurnOffCombatMusic(); }
     }
 
     private void PlayerLoss()
     {
         MusicManager.instance.TurnOffCombatMusic();
         combatEnded = true;
-        GameState.isInBattle = false;
+        //GameState.isInBattle = false;
         blade.StartClose();
         //GameState.endRunFlag = true;
         KillPlayerAndLoadNextScene(true);
@@ -340,18 +346,14 @@ public class Combat : MonoBehaviour
         //playerStats.currentPower = elementSelected;
         playerStats.deactivatePowers();
         //
-        GameState.isInBattle = false;
-        GameState.fullPause = true;
+        //GameState.isInBattle = false;
+        //GameState.fullPause = true;
         Destroy(monsterSprite.gameObject);
         Destroy(playerSprite.gameObject);
         combatDarkening.material.SetFloat("_Alpha", 0);
         blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
-        Destroy(this);
-        //At this point play 'death' animation on player, which should end in a death of the player. 
-        //For now doing the scene transition to the death scene right away
-        SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
-        MusicManager.instance.FadeOutMusic(-2, 3);
-        SceneManager.LoadScene("DeathScene");
+        GameData.Instance.EndTheRun();
+        Destroy(this.gameObject);
     }
 
     private void KillMonsterAndGetRewards()
@@ -396,21 +398,25 @@ public class Combat : MonoBehaviour
             GameData.Instance.iceBoss1 = true;
             playerStats.powersGained = Math.Max(1, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetIce", 1f);
         }
         if (monsterStats.earthBoss) {
             GameData.Instance.earthBoss1 = true;
             playerStats.powersGained = Math.Max(2, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetEarth", 1f);
         }
         if (monsterStats.fireBoss) {
             GameData.Instance.fireBoss1 = true;
             playerStats.powersGained = Math.Max(3, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetFire", 1f);
         }
         if (monsterStats.airBoss) {
             GameData.Instance.airBoss1 = true;
             playerStats.powersGained = Math.Max(4, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
+            SoundManager.Instance.PlaySound("GetAir", 1f);
         }
         if (monsterStats.fireBoss2)
         {
@@ -435,7 +441,10 @@ public class Combat : MonoBehaviour
     private void OnDestroy()
     {
         GameState.isInBattle = false;
-        MusicManager.instance.TurnOffCombatMusic();
+        if (GameData.Instance.FloorNumber != 20)
+        {
+            MusicManager.instance.TurnOffCombatMusic();
+        }
     }
     private void DealDamageToEnemy()
     {

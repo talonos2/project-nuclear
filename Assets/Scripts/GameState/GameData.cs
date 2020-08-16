@@ -181,13 +181,7 @@ public class GameData : Singleton<GameData>
         minutes = (int)(timer / 60);
         if (minutes == 10)
         {
-            //Needs to really call the 'kill player' animation and then load deathscene from that script. That script should 'pause' the timer.
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().deactivatePowers();
-            GameState.isInBattle = false;
-            SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
-            MusicManager.instance.FadeOutMusic(-2, 3);
-            SceneManager.LoadScene("DeathScene");
-            pauseTimer = true;
+            EndTheRun();
         }
     }
 
@@ -197,5 +191,35 @@ public class GameData : Singleton<GameData>
         timer = 600;
     }
 
+    internal void EndTheRun()
+    {
+        pauseTimer = true;
+        GameState.fullPause = true;
+        Debug.Log(GameState.isInBattle);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().deactivatePowers();
+        SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
+        MusicManager.instance.TurnOffCombatMusic();
+        MusicManager.instance.FadeOutMusic(-2, 3);
+        Transform toSpawnDeathVFXOn = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
+        GameObject deathVFX = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/VFX/DeathFX"));
+        deathVFX.transform.position = toSpawnDeathVFXOn.position;
+        deathVFX.transform.position += new Vector3(0, .2f, -.2f);
+        toSpawnDeathVFXOn.gameObject.AddComponent<HideAfterPointEightSeconds>();
 
+    }
+}
+
+internal class HideAfterPointEightSeconds : MonoBehaviour
+{
+    private float timeUntilDeletion = .8f;
+
+    private void Update()
+    {
+        timeUntilDeletion -= Time.deltaTime;
+        if (timeUntilDeletion < 0)
+        {
+            GameObject.Destroy(this);
+            gameObject.SetActive(false);
+        }
+    }
 }

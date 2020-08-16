@@ -18,7 +18,7 @@ namespace Naninovel.UI
     /// </remarks>
     public class RevealableTextPrinterPanel : UITextPrinterPanel
     {
-        private static readonly int MESSAGE_SOUND_SKIPS = 8;
+        private static readonly int MESSAGE_SOUND_SKIPS = 16;
         [System.Serializable]
         private class CharsToSfx
         {
@@ -112,7 +112,7 @@ namespace Naninovel.UI
 
                     var lastRevealedChar = RevealableText.GetLastRevealedChar();
                     //Talonos hacked here:
-                    if ("?.!:".Contains("" + lastRevealedChar) || charsRevealed % MESSAGE_SOUND_SKIPS==0)
+                    if ("?.!:".Contains("" + lastRevealedChar) || (charsRevealed+ MESSAGE_SOUND_SKIPS-1) % MESSAGE_SOUND_SKIPS==0)
                     {
                         PlayRevealSfxForChar(lastRevealedChar);
                     }

@@ -153,6 +153,6 @@ public class MusicManager : MonoBehaviour
 
     public void TurnOffCombatMusic()
     {
-        FadeMusic(combatMusic, combatMusicFadeTime, .01f);
+        FadeMusic(combatMusic, combatMusicFadeTime, .00001f);
     }
 }
