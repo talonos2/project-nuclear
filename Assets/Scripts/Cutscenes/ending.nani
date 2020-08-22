@@ -76,7 +76,7 @@
 		@char McDermit
 		McDermit: Todd, we appreciate the help, but—
 		;@spawn ShakeCamera
-		McDermit: -camera shake- Aaaargh!
+		McDermit: Aaaargh!
 		@char Todd
 		Todd: As I was saying, you will watch the entrance.[br]Make certain that none enter.
 		Todd: And you, maid!
@@ -248,7 +248,7 @@
 		McDermit: I'm not sure. That last ice cider was a tad, crunchy.
 		@char Mara
 		Mara: You won't have to worry about that on this batch.
-		Mara: Finally got a still tough enough to run on lava.[br]Lets see what came out of it!
+		Mara: Finally got a still tough enough to run on lava.[br]Let's see what came out of it!
 		@char McDermit
 		McDermit: Maybe next time.
 		@char Mara
@@ -309,7 +309,7 @@
 		@char Devon
 		Devon: You! Just what did you—
 		@char Mara
-		Mara: This calls for a cellibration! Lets head back to the tavern.
+		Mara: This calls for a cellibration! Let's head back to the tavern.
 		Mara: Unless you louts let it fall apart while I was gone.
 		@char Wilson
 		Wilson: Sounds wonderful, come along Mr... did we ever get your name?
@@ -359,7 +359,7 @@
 			Devon: Fine alright? I'll hear you out.
 			@if GetMara()
 				@char Mara
-				Mara: Lets talk over some food, hun.
+				Mara: Let's talk over some food, hun.
 			@endif
 		@else
 			@char Devon
@@ -806,7 +806,7 @@
 		@char Pendleton
 		Pendleton: Not it.
 		@char Wilson
-		Wilson: Certainly, we'll help how we can, but now, lets just celibrate!
+		Wilson: Certainly, we'll help how we can, but now, let's just celibrate!
 
 		@wait 2
 
@@ -929,7 +929,7 @@
 		JohnDoe: You think I've forgiven you or something?
 		@char Murtough
 		Murtough: Probably not, but then again, I'm not sure I have either.
-		Murtough: Lets talk about it.
+		Murtough: Let's talk about it.
 
 
 
@@ -1108,7 +1108,7 @@
 		@char Tristana
 		Tristana: So... you were thinking about how it was a team effort?
 		@char Tedd
-		Tedd: Sure. Lets go with that.
+		Tedd: Sure. Let's go with that.
 
 
 
@@ -1126,7 +1126,7 @@
 		Tedd: I did what I had to.
 		Tedd: What so many before me have done.
 		@char Tristana
-		Tristana: Yes... you slew the monsters in the cavern. Lets talk about that, what was going through your mind as you bravely—
+		Tristana: Yes... you slew the monsters in the cavern. Let's talk about that, what was going through your mind as you bravely—
 		@char Tedd
 		Tedd: That those things, they used to be people.
 		Tedd: They all had jobs to do, people who loved them.
@@ -1367,7 +1367,7 @@
 			Sara: Can anything be done?
 			@char Logos
 			Logos: If it can I shall find it!
-			Logos: The rest of you, come with me.[br]Lets make sure this nightmare is truly over.
+			Logos: The rest of you, come with me.[br]Let's make sure this nightmare is truly over.
 			@char Fluer
 			Fluer: Wait!
 			Fluer: This isn't something only you can do. I want to help.
@@ -1514,7 +1514,7 @@
 		@char Darius
 		Darius: I didn't beat the older kids, but I lasted a long time!
 		@char Paul
-		Paul: Good job![br]Come on, lets go home.
+		Paul: Good job![br]Come on, let's go home.
 
 		@wait 2
 
@@ -1711,7 +1711,7 @@
 
 		Tristana: Can... can you just say something?
 		Tristana: Anything! Please!
-		-Door opening sound-
+		;-Door opening sound-
 		Tristana: Jinn! No!
 
 		@endif
@@ -1806,7 +1806,8 @@
 		Meyster: Mayor Wilson...
 		Meyster: It breaks my heart that I could not save you.[br]But you will be avenged.
 		@char Wilson
-		Wilson: Sir! What are you— -combat sounds-
+		Wilson: Sir! What are you—
+		;-combat sounds-
 
 
 
@@ -1889,7 +1890,7 @@
 		@char Patrick
 		Patrick: Hey, the way I see it, we were looking for someone to come save us.
 		Patrick: And someone did.
-		Patrick: So, lets have a bit of celibration for our hero.
+		Patrick: So, let's have a bit of celibration for our hero.
 
 		@char Nelson
 		Nelson: That does seem prudent.
@@ -1912,7 +1913,7 @@
 		@endif
 
 		@char Reya
-		Reya: Alright, fine.[br]Lets celibrate.
+		Reya: Alright, fine.[br]Let's celibrate.
 		Reya: It'll be a nice change of pace.
 
 
@@ -1982,7 +1983,7 @@
 
 		@if GetPerfect()
 
-		One week later- in the cave...
+		One week later, in the cave...
 
 		@char Wilson
 		Wilson: I'd heard you might be down here.
@@ -2017,7 +2018,7 @@
 
 		@elseif !GetWorst()
 
-		One week later- just outside the cave...
+		One week later, just outside the cave...
 
 		@char Wilson
 		Wilson: I thought I might find you here.
@@ -2088,7 +2089,7 @@
 
 		@elseif GetWorst()
 
-		One week later- in town...
+		One week later, in town...
 
 		@char Wilson
 		Wilson: I'd heard you might be here.
@@ -2170,7 +2171,7 @@
 		JohnDoe: Buzz off lady.
 
 		@char Mara
-		Mara: Alright! Lets hear it for... well... don't think we ever got your name.
+		Mara: Alright! Let's hear it for... well... don't think we ever got your name.
 		@char JohnDoe
 		JohnDoe: Yeah. Why not keep a good thing going?
 		@char Norma
@@ -2355,7 +2356,7 @@
 		Fluer: I need you to keep your distance.
 		Fluer: It will take time to study the potential for secondary infection.
 		@char Tasha
-		Tasha: Okay darling, lets all calm down. Come on out of there and lets all get something to eat.
+		Tasha: Okay darling, let's all calm down. Come on out of there and let's all get something to eat.
 		@char Fluer
 		Fluer: I can't come out. This entire cavern needs to be under quarentine until I understand what's going on here.
 		Fluer: I will need my tools. Just leave them at the entrance and I will retrieve them.
@@ -2445,7 +2446,7 @@
 
 		@wait 1
 
-		Tasha: That's enough rest, now lets get back to work.
+		Tasha: That's enough rest, now let's get back to work.
 
 
 		@elseif GetWorst()
@@ -2621,7 +2622,7 @@
 		@char Phillip
 		Phillip: I have a few suggestions.
 		@char Wilson
-		Wilson: Yes, we know, but lets give some of the others a chance speak up.
+		Wilson: Yes, we know, but let's give some of the others a chance speak up.
 		@char Derringer
 		Derringer: I'm afraid there are some repairs to be made, and a few things have gone missing.
 		@char Wilson
@@ -3064,7 +3065,7 @@
 		@wait 1
 
 		@char Fluer
-		Fluer: Okay, lets get it loaded up.
+		Fluer: Okay, let's get it loaded up.
 		Fluer: I'll let them know once you've gone.
 		@char Patrick
 		Patrick: I'll see you soon.
@@ -3241,7 +3242,7 @@
 		@char Patrick
 		Patrick: "Better late than never." Isn't that what you all kept telling me?
 		@char Jinn
-		Jinn: Lets put the bad times behind us and move forward.
+		Jinn: Let's put the bad times behind us and move forward.
 
 		@char Mara
 		Mara: Sounds good to me. I'm so hungry I could eat...
