@@ -45,7 +45,7 @@ public class PurpleCrystalInteraction : EntityData
 
         if (GameState.fullPause == true || GameData.Instance.isInDialogue) return;
 
-        SpawnNewMonster();
+        //SpawnNewMonster();
 
         Instantiate(purpleCrystalBreaking, this.transform.position , Quaternion.identity);
         Destroy(this.gameObject);
