@@ -39,22 +39,24 @@ Paul: Hear Hear!
 ;@hideChars time:0
 
 @fwspawnvfx x:0 y:-1 z:-9.82 Vfx:CurseFX
-@wait 1
+@wait 0.5
 
 
 @fwmovepawn n:PawnSara d:w
 @fwmovepawn n:PawnSara d:w
 @fwmovepawn n:PawnSara d:w
-@fwmovepawn n:PawnSara d:w
-@fwmovepawn n:PawnSara d:s
-@fwmovepawn n:PawnSara d:s
-@fwmovepawn n:PawnSara d:s
-@fwmovepawn n:PawnSara d:s
-@fwmovepawn n:PawnSara d:s
 
 @char Sara
 Sara: Aaaaah! The weapons![br]Where did we put the weapons?! 
-;@hideChars time:0
+
+@fwmovepawn n:PawnSara d:w
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+
+@wait 1
 
 @fwdeletego n:PawnSara
 
