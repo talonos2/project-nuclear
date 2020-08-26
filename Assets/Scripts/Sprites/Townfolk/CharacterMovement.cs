@@ -228,6 +228,13 @@ public class CharacterMovement : SpriteMovement
 
     }
 
+    internal void TurnStealthOff()
+    {
+        tempMovementSpeed = MoveSpeed;
+        tempFramesPerSecond = framesPerSecond;
+        GameData.Instance.stealthed = false;
+    }
+
     private void SetShieldGraphic(float amount, bool isCharging)
     {
         Material m = shield.GetComponent<Renderer>().material;
@@ -541,6 +548,8 @@ public class CharacterMovement : SpriteMovement
     public void TurnHasteOn()
     {
         GameData.Instance.hasted = true;
+        tempMovementSpeed = MoveSpeed * hasteSpeed;
+        tempFramesPerSecond = framesPerSecond * hasteSpeed;
         if (smoke==null) smoke = sRender.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
         smoke.Play();
         SoundManager.Instance.PlaySound("HasteOn", 1f);
@@ -550,6 +559,8 @@ public class CharacterMovement : SpriteMovement
     internal void TurnHasteOff()
     {
         GameData.Instance.hasted = false;
+        tempMovementSpeed = MoveSpeed;
+        tempFramesPerSecond = framesPerSecond;
         SoundManager.Instance.PlaySound("HasteOff", 1f);
         smoke.Stop();
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();

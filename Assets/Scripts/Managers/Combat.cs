@@ -159,6 +159,11 @@ public class Combat : MonoBehaviour
             Destroy(playerSprite.gameObject);
             combatDarkening.material.SetFloat("_Alpha", 0);
             blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
+            if (GameData.Instance.FloorNumber != 20)
+            {
+                MusicManager.instance.TurnOffCombatMusic();
+            }
+
             Destroy(this);
         }
         return;
@@ -353,6 +358,8 @@ public class Combat : MonoBehaviour
         combatDarkening.material.SetFloat("_Alpha", 0);
         blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
         GameData.Instance.EndTheRun();
+        MusicManager.instance.TurnOffCombatMusic();
+       
         Destroy(this.gameObject);
     }
 
@@ -440,11 +447,9 @@ public class Combat : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameState.isInBattle = false;
-        if (GameData.Instance.FloorNumber != 20)
-        {
-            MusicManager.instance.TurnOffCombatMusic();
-        }
+        //Do not reference GameData in here as it causes null pointer errors, and the executible version 
+        //of the game may be crashing due to it.
+        
     }
     private void DealDamageToEnemy()
     {
@@ -465,29 +470,29 @@ public class Combat : MonoBehaviour
         {
             if (playerStats.accessoryIceBonus != 0) { elementalCrit = true; }
             elementalDamage = incomingDamage * (.25f+playerStats.accessoryIceBonus/100);
-            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage *= 2; hitWeakness = true; }
-            if (playerStats.mana >= 2) { playerStats.mana -= 2; }
+            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage +=incomingDamage * (.25f*GameData.Instance.PowersGained); hitWeakness = true; }
+            if (playerStats.mana >= 4) { playerStats.mana -= 4; }
                 else { elementalDamage = 0; }
         }
         if (playerStats.currentPower == (int)ElementalPower.EARTH) {
             if (playerStats.accessoryEarthBonus != 0) { elementalCrit = true; }
             elementalDamage = incomingDamage *(.5f+ playerStats.accessoryEarthBonus/100);
-            if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage *= 2; hitWeakness = true; }
-            if (playerStats.mana >= 4) { playerStats.mana -= 4; }
+            if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage += incomingDamage * (.25f * GameData.Instance.PowersGained); hitWeakness = true; }
+            if (playerStats.mana >= 6) { playerStats.mana -= 6; }
                 else { elementalDamage = 0; }
         }
         if (playerStats.currentPower == (int)ElementalPower.FIRE) {
             if (playerStats.accessoryFireBonus != 0) { elementalCrit = true; }
             elementalDamage = incomingDamage * (.75f+playerStats.accessoryFireBonus/100);
-            if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage *= 2; hitWeakness = true; }
-            if (playerStats.mana >= 6) { playerStats.mana -= 6; }
+            if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage += incomingDamage * (.25f * GameData.Instance.PowersGained); hitWeakness = true; }
+            if (playerStats.mana >= 8) { playerStats.mana -= 8; }
                 else { elementalDamage = 0; }
         }
         if (playerStats.currentPower == (int)ElementalPower.AIR) {
             if (playerStats.accessoryAirBonus != 0) { elementalCrit = true; }
             elementalDamage = incomingDamage * (1.0f+playerStats.accessoryAirBonus/100);
-            if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage *= 2; hitWeakness = true; }
-            if (playerStats.mana >= 8) { playerStats.mana -= 8; }
+            if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage += incomingDamage * (.25f * GameData.Instance.PowersGained); hitWeakness = true; }
+            if (playerStats.mana >= 10) { playerStats.mana -= 10; }
                 else { elementalDamage = 0; }
         }
 
