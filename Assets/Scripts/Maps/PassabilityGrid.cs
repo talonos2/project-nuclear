@@ -144,7 +144,7 @@ public class PassabilityGrid : MonoBehaviour
         if (alternatePathabilitySetup) { width = altWidth; height = altHeight; }
         else { width = this.width; height = this.height; }
 
-        if (locX < 0 || locY < 0 || locX >= width || locY >= width)
+        if (locX < 0 || locY < 0 || locX >= width || locY >= height)
         {
             return false;
         }

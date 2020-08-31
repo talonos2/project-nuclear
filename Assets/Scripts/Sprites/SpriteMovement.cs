@@ -618,12 +618,15 @@ public class SpriteMovement : EntityData
         }
         int TempX = ThePlayer.GetComponent<CharacterMovement>().characterLocation.x - characterLocation.x;
         int TempY = ThePlayer.GetComponent<CharacterMovement>().characterLocation.y - characterLocation.y;
+
         if (TempX == 0 && TempY == 0)
         {
             return DirectionMoved.NONE;
         }
+        Debug.Log("TempX " + TempX + " TempY " + TempY);
         //Pick an axis based on a random number with the abs value distances as it's input
         int AxisChosen = Random.Range(0, (Math.Abs(TempX) + Math.Abs(TempY))) + 1;
+        Debug.Log("AxisChosen " + AxisChosen);
         if (Math.Abs(TempX) - AxisChosen >= 0)
         {
             //go x direction
@@ -633,6 +636,7 @@ public class SpriteMovement : EntityData
         else
         {
             //go y Direction
+            Debug.Log("Moving Y direction, TempY= " + TempY);
             if (TempY < 0) { return DirectionMoved.DOWN; }
             else { return DirectionMoved.UP; }
         }
