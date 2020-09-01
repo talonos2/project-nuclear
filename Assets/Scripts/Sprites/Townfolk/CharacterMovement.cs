@@ -23,9 +23,6 @@ public class CharacterMovement : SpriteMovement
     int previousFrame = 0;
     int previousStepSound = 0;
 
-
-
-
     new void Start()
     {
         base.Start();

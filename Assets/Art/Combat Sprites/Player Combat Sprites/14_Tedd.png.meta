@@ -1,7 +1,22 @@
 fileFormatVersion: 2
-guid: 39c0b78841aad9046b3c76044d667b60
+guid: 2a930b716a2b30245a5a77dc4bb486a6
 TextureImporter:
   internalIDToNameTable:
+  - first:
+      213: 1917543665388150330
+    second: 26_Wilson_0
+  - first:
+      213: 2801122147217307730
+    second: 26_Wilson_1
+  - first:
+      213: 3369488895924931882
+    second: 26_Wilson_2
+  - first:
+      213: -6213045992746715570
+    second: 26_Wilson_3
+  - first:
+      213: -4519836383069861367
+    second: 26_Wilson_4
   - first:
       213: 7362780109821069251
     second: 14_Tedd_0
@@ -17,18 +32,6 @@ TextureImporter:
   - first:
       213: -6352797890707438342
     second: 14_Tedd_4
-  - first:
-      213: 47834904527239393
-    second: 14_Tedd_5
-  - first:
-      213: 1015806368484007785
-    second: 14_Tedd_6
-  - first:
-      213: -7084847400963890861
-    second: 14_Tedd_7
-  - first:
-      213: 4385626028114911594
-    second: 14_Tedd_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -47,7 +50,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
@@ -90,7 +93,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,18 +104,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Windows Store Apps
-    maxTextureSize: 4096
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,8 +119,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 350
-        height: 350
+        width: 400
+        height: 400
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,7 +128,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93cd3544e489a0a4f8b7330685915224
+      spriteID: 0f679beb7e556644a8b36ddec0711e87
       internalID: 7362780109821069251
       vertices: []
       indices: 
@@ -146,10 +138,10 @@ TextureImporter:
       name: 14_Tedd_1
       rect:
         serializedVersion: 2
-        x: 350
+        x: 400
         y: 0
-        width: 350
-        height: 350
+        width: 400
+        height: 400
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,7 +149,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81a8c783db204da49a86637e0c946ffd
+      spriteID: c2f79e8f956283348a1a9770a0853608
       internalID: -3320346301415392198
       vertices: []
       indices: 
@@ -167,10 +159,10 @@ TextureImporter:
       name: 14_Tedd_2
       rect:
         serializedVersion: 2
-        x: 700
+        x: 800
         y: 0
-        width: 350
-        height: 350
+        width: 400
+        height: 400
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,7 +170,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 460cd85db4534d74e981e1a5d81fead0
+      spriteID: 9cd22b806e7e56e449c58cb4b4d73e02
       internalID: 7349948631334346831
       vertices: []
       indices: 
@@ -188,10 +180,10 @@ TextureImporter:
       name: 14_Tedd_3
       rect:
         serializedVersion: 2
-        x: 1050
+        x: 1200
         y: 0
-        width: 350
-        height: 350
+        width: 400
+        height: 400
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,7 +191,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4053d802a2124384e923528b9bfdd383
+      spriteID: c8061198ce1dec24d8bd76a847405648
       internalID: 4682804111682196371
       vertices: []
       indices: 
@@ -209,10 +201,10 @@ TextureImporter:
       name: 14_Tedd_4
       rect:
         serializedVersion: 2
-        x: 1400
+        x: 1600
         y: 0
-        width: 350
-        height: 350
+        width: 400
+        height: 400
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,92 +212,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7dd908f957c34f4cbf41fcd0e648c21
+      spriteID: a3f1bcd3f46ebf8469f13eb48def7e13
       internalID: -6352797890707438342
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 14_Tedd_5
-      rect:
-        serializedVersion: 2
-        x: 1750
-        y: 0
-        width: 350
-        height: 350
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99bcfeda39ec29a4aadcdd39ffcd0524
-      internalID: 47834904527239393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 14_Tedd_6
-      rect:
-        serializedVersion: 2
-        x: 2100
-        y: 0
-        width: 350
-        height: 350
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 774955215e95b5945b331dc35e769240
-      internalID: 1015806368484007785
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 14_Tedd_7
-      rect:
-        serializedVersion: 2
-        x: 2450
-        y: 0
-        width: 350
-        height: 350
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1844e2f3032772b41b9b00b3702c37d2
-      internalID: -7084847400963890861
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 14_Tedd_8
-      rect:
-        serializedVersion: 2
-        x: 2800
-        y: 0
-        width: 350
-        height: 350
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c3b0e1ebaaed5442b4e44b5a899918f
-      internalID: 4385626028114911594
       vertices: []
       indices: 
       edges: []
@@ -313,7 +221,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 300b63e34e9e209408a44f3e46d89f8a
+    spriteID: 29f330e37322b57488ab531a6ff0e423
     internalID: 0
     vertices: []
     indices: 
