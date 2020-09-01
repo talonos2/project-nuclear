@@ -5003,10 +5003,11 @@ MonoBehaviour:
   experience: 0
   expToLevel: 90
   combatSprites:
-  - {fileID: 465550061205098632, guid: b6f7a727fc249eb4299c4b4a14a7f3de, type: 3}
-  - {fileID: -5673332691330502973, guid: b6f7a727fc249eb4299c4b4a14a7f3de, type: 3}
-  - {fileID: -1828879446855036369, guid: b6f7a727fc249eb4299c4b4a14a7f3de, type: 3}
-  - {fileID: 8188973947541817224, guid: b6f7a727fc249eb4299c4b4a14a7f3de, type: 3}
+  - {fileID: -8817071041135016384, guid: 3804c8fc7ac8e3e449a88d06bbaf7d0b, type: 3}
+  - {fileID: 465550061205098632, guid: 3804c8fc7ac8e3e449a88d06bbaf7d0b, type: 3}
+  - {fileID: 2268188570924646033, guid: 3804c8fc7ac8e3e449a88d06bbaf7d0b, type: 3}
+  - {fileID: -5673332691330502973, guid: 3804c8fc7ac8e3e449a88d06bbaf7d0b, type: 3}
+  - {fileID: -1828879446855036369, guid: 3804c8fc7ac8e3e449a88d06bbaf7d0b, type: 3}
   bustSprite: {fileID: 21300000, guid: e0938108581626842add92b71a1d82a4, type: 3}
   MageClass: 1
   FighterClass: 0
@@ -5168,6 +5169,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &5090576701426293751
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5299,6 +5301,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 2893497967410854414, guid: 24f8a22df5c342f4d98b201a4a034aee,
         type: 3}
@@ -5564,26 +5586,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f8a22df5c342f4d98b201a4a034aee, type: 3}

@@ -329,10 +329,11 @@ MonoBehaviour:
   experience: 0
   expToLevel: 90
   combatSprites:
-  - {fileID: 5337094562624643755, guid: db47383ed8a15b4429244649727fd6cf, type: 3}
-  - {fileID: -2045306325045201959, guid: db47383ed8a15b4429244649727fd6cf, type: 3}
-  - {fileID: -527277345726344554, guid: db47383ed8a15b4429244649727fd6cf, type: 3}
-  - {fileID: 2375486365022902312, guid: db47383ed8a15b4429244649727fd6cf, type: 3}
+  - {fileID: 6243945433951465988, guid: 589e56db9fdf04e46aa750526909157e, type: 3}
+  - {fileID: 5337094562624643755, guid: 589e56db9fdf04e46aa750526909157e, type: 3}
+  - {fileID: 4286327066204419978, guid: 589e56db9fdf04e46aa750526909157e, type: 3}
+  - {fileID: -2045306325045201959, guid: 589e56db9fdf04e46aa750526909157e, type: 3}
+  - {fileID: -527277345726344554, guid: 589e56db9fdf04e46aa750526909157e, type: 3}
   bustSprite: {fileID: 21300000, guid: 6e3433e5e5d09a14bb5e3e1e13a681da, type: 3}
   MageClass: 1
   FighterClass: 0
@@ -494,6 +495,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &3792135918655489495
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5415,6 +5417,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8739170910170764569, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8370379400943561884, guid: 24f8a22df5c342f4d98b201a4a034aee,
         type: 3}
       propertyPath: m_Mesh
@@ -5431,6 +5438,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2893497967523635793, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388555579577474753, guid: 24f8a22df5c342f4d98b201a4a034aee,
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -5649,6 +5661,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211382146464418257, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f8a22df5c342f4d98b201a4a034aee, type: 3}
