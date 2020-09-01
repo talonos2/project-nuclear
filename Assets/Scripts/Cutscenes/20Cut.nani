@@ -37,7 +37,7 @@ Reya: Fine, I was getting tired of idle threats.
 @wait 0.4
 
 
-@fwspawnvfx x:9 y:20 z:0 Vfx:CurseFX
+@fwspawnvfx x:9 y:20.8 z:-9.92 Vfx:CurseFX
 @wait 1
 
 @wait 1
@@ -64,11 +64,13 @@ Tasha: You take it, or you'll have to go through me.
 
 
 @fwmovepawn n:PawnReya d:e
+@fwmovepawn n:PawnReya d:e
 @fwturnpawn n:PawnReya d:n
 @wait 0.5
 @fwmovepawn n:PawnReya d:e
 @fwmovepawn n:PawnReya d:e
-@wait 0.4
+@fwmovepawn n:PawnReya d:e
+@wait 0.5
 
 
 @fwdeletego n:PawnReya

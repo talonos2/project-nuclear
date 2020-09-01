@@ -152,7 +152,7 @@ public class MonsterMovement : SpriteMovement
                     SetNextLocation(NextStep);//
                     CheckForFight(characterNextLocation.x, characterNextLocation.y);//
                     if (ChaseStepNumber >= ChaseRange)
-                    {                       
+                    {
                         NextStep = PathToHomeLocation();
                         if (NextStep == (int)DirectionMoved.NONE) {
                             CurrentlyChasingPlayer = false;
@@ -160,7 +160,6 @@ public class MonsterMovement : SpriteMovement
                             return;
                         }
                     }
-
                     SetNextLocation(NextStep);
                     facedDirection = NextStep;
 

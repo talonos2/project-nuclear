@@ -34,7 +34,7 @@ Tristana: Yeah.
 @wait 2
 
 @char Elder
-Elder: You know.  You've done a lot of your interviews, but I'm not sure we got to know too much about you.
+Elder: You know. You've done a lot of your interviews, but I'm not sure we got to know too much about you.
 @hidechars time:0
 
 @char Tristana
@@ -45,7 +45,7 @@ Tristana: You're not supposed to.
 
 @char Tristana
 Tristana: I'm supposed to be the objective observer.
-Tristana: Stay in the backgrouund.[br]Keep my feelings out of it.
+Tristana: Stay in the background.[br]Keep my feelings out of it.
 Tristana: Don't get involved.
 @hidechars time:0
 
@@ -63,7 +63,7 @@ Elder: Yes, it was very unprofessional.
 Tristana: ...
 @hidechars time:0
 
-@fwspawnvfx x:10 y:22 z:0 Vfx:CurseFX
+@fwspawnvfx x:10 y:22 z:-10 Vfx:CurseFX
 @wait 1
 
 @char Tristana
@@ -78,5 +78,7 @@ Elder: Make sure to be unprofessional.
 @fwmovepawn n:PawnTristana d:e
 @fwmovepawn n:PawnTristana d:e
 @fwmovepawn n:PawnTristana d:e
+
+@wait 0.5
 
 @exit

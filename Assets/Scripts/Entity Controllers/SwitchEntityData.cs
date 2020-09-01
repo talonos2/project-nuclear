@@ -31,6 +31,7 @@ public class SwitchEntityData : EntityData
     private static readonly float OFFSET_FIX = .00001f;
     private static readonly float TIME_PER_TICK_SOUND = .7f;
 
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -55,6 +56,8 @@ public class SwitchEntityData : EntityData
     }
 
     override public void ProcessClick(CharacterStats stats) {
+        
+
 
         if (isAnimating) { return; }
         if (timerSet == true)
@@ -82,6 +85,9 @@ public class SwitchEntityData : EntityData
 
     public virtual void ToggleTiedObjects()
     {
+
+  
+
         bool movedABridge = false;
         if (activeSwitch)
         {

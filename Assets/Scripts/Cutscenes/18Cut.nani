@@ -23,7 +23,7 @@ Jinn: I used to teach a school here you know?[br]Before you scared everyone off.
 
 ;@wait
 
-@fwspawnvfx x:9 y:20 z:0 Vfx:CurseFX
+@fwspawnvfx x:9 y:21 z:-10 Vfx:CurseFX
 @wait 1
 
 @char Jinn
@@ -33,9 +33,11 @@ Jinn: Now it's time to teach you a lesson.
 @fwmovepawn n:PawnJinn d:e
 @fwmovepawn n:PawnJinn d:e
 @fwmovepawn n:PawnJinn d:e
+@fwmovepawn n:PawnJinn d:e
+@fwmovepawn n:PawnJinn d:e
 @fwmovepawn n:PawnJinn d:n
 
-@wait 0.66
+@wait 1
 
 @fwdeletego n:PawnJinn
 

@@ -32,29 +32,31 @@ Meyster: Fear not fair maiden! He was not the only one who knew how to swing a b
 Jezerine: We may not have guild cards, but we have our spirit.
 ;@hideChars time:0
 @char McDermit
-McDermit: Bandits or curses, we will do our duty.  All of us are ready to be chosen.
+McDermit: Bandits or curses, we will do our duty. All of us are ready to be chosen.
 ;@hideChars time:0
 @char Paul
 Paul: Hear Hear!
 ;@hideChars time:0
 
-@fwspawnvfx x:0 y:-1.2 z:-9.82 Vfx:CurseFX
-@wait 1
+@fwspawnvfx x:0 y:-1 z:-9.82 Vfx:CurseFX
+@wait 0.5
 
 
 @fwmovepawn n:PawnSara d:w
 @fwmovepawn n:PawnSara d:w
 @fwmovepawn n:PawnSara d:w
-@fwmovepawn n:PawnSara d:w
-@fwmovepawn n:PawnSara d:s
-@fwmovepawn n:PawnSara d:s
-@fwmovepawn n:PawnSara d:s
-@fwmovepawn n:PawnSara d:s
-@fwmovepawn n:PawnSara d:s
 
 @char Sara
-Sara: Aaaaah!  The weapons![br]Where did we put the weapons?! 
-;@hideChars time:0
+Sara: Aaaaah! The weapons![br]Where did we put the weapons?! 
+
+@fwmovepawn n:PawnSara d:w
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+@fwmovepawn n:PawnSara d:s
+
+@wait 1
 
 @fwdeletego n:PawnSara
 

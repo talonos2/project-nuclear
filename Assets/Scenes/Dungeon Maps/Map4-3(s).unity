@@ -1034,6 +1034,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4898377835807072795, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ac0871009d1c4cbb3ce4b6c5255a3, type: 3}
 --- !u!1001 &229267206
@@ -1270,6 +1275,7 @@ GameObject:
   - component: {fileID: 326564848}
   - component: {fileID: 326564851}
   - component: {fileID: 326564850}
+  - component: {fileID: 326564852}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -1339,6 +1345,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4b1240ff4efaa4398cc62c857a426a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &326564852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326564847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35107a825f8d2674a97beb6bd30b5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passabilityMap: {fileID: 4900000, guid: e1a6fdc377f77a44cb78b6bbb6171a75, type: 3}
+  width: 34
+  height: 32
+  alternatePathabilitySetup: 0
+  altWidth: 0
+  altHeight: 0
 --- !u!1001 &333703846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1461,6 +1485,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &343382831
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1756,6 +1783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc4c67204c7e964282228c688976330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortcut1: {fileID: 0}
+  shortcut2: {fileID: 0}
 --- !u!1001 &524677227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1858,6 +1887,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc4c67204c7e964282228c688976330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortcut1: {fileID: 0}
+  shortcut2: {fileID: 0}
 --- !u!1001 &547144597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1995,6 +2026,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &570034452
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2255,6 +2289,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &611842062
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2446,6 +2483,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &627565504
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2825,6 +2865,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &779584016
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3982,6 +4025,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1086638881
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4635,6 +4681,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1263778875
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4881,6 +4930,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1333042132
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5007,6 +5059,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1460859449
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5119,6 +5174,9 @@ MonoBehaviour:
   aboveItem: 1
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1500501300
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5315,6 +5373,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1511988014
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5392,6 +5453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc4c67204c7e964282228c688976330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortcut1: {fileID: 0}
+  shortcut2: {fileID: 0}
 --- !u!1001 &1545264745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6345,6 +6408,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1976099260
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6636,6 +6702,9 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!1001 &2037681877
 PrefabInstance:
   m_ObjectHideFlags: 0

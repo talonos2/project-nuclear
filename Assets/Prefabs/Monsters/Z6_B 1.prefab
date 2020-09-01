@@ -91,8 +91,9 @@ GameObject:
   - component: {fileID: 6622165687117483731}
   - component: {fileID: 6622165687117483730}
   - component: {fileID: 6622165687117483735}
-  - component: {fileID: 9211343129370528196}
   - component: {fileID: 4063590559853371377}
+  - component: {fileID: 4881022202586920164}
+  - component: {fileID: 9211343129370528196}
   m_Layer: 0
   m_Name: Z6_B 1
   m_TagString: Untagged
@@ -171,7 +172,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9211343129370528196
+--- !u!114 &4063590559853371377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,6 +180,75 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6622165687117483734}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d53f9fa64990149a2004edec47788e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalFrames: 6
+  framesPerSecond: 4
+  fireBoss: 0
+--- !u!114 &4881022202586920164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622165687117483734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33062cefd74f88a4f8bc1f2b33109df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 1250
+  HP: 1250
+  attack: 155
+  defense: 39
+  startPositionOnScreen: {x: 0.85, y: 1}
+  homePositionOnScreen: {x: -0.03, y: -1.11}
+  strikingPointOffset: {x: 0.3, y: -0.8}
+  gettingStruckPointOffset: {x: 0.01, y: 0.42}
+  scale: {x: 1, y: 1}
+  forceOpponentAdditionalScale: {x: 0.9, y: 0.9}
+  enemyName: Name me please
+  ExpGiven: 5000
+  weakness: 0
+  crystalType: 5
+  crystalDropAmount: 50
+  hitsplatOffset: {x: 3.48, y: 2.69}
+  combatOffset: {x: 1.2, y: 0}
+  combatSprites:
+  - {fileID: 5455440215019970200, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
+  - {fileID: 2896696592278850435, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
+  - {fileID: -7313548367045533161, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
+  - {fileID: -6527734923106440700, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
+  - {fileID: -1212847848265019255, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
+  - {fileID: 6523655307472929746, guid: 14dd951e4186ca6439b03c0567a64425, type: 3}
+  attackAnimation: 5
+  goodHit: {fileID: 0}
+  badHit: {fileID: 0}
+  goodBlock: {fileID: 0}
+  badBlock: {fileID: 0}
+  powerupEffect: {fileID: 8894956876987107773, guid: 9634af92fc9994940ab26a1014c11372,
+    type: 3}
+  iceBoss: 0
+  earthBoss: 0
+  earthBoss2: 0
+  fireBoss: 0
+  fireBoss2: 0
+  airBoss: 0
+  airBoss2: 0
+  deathBoss: 0
+  deathBoss2: 0
+  finalBoss: 0
+  finalBossForm1: 1
+--- !u!114 &9211343129370528196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622165687117483734}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
@@ -225,21 +295,6 @@ MonoBehaviour:
   deathBoss2: 0
   finalBoss: 0
   finalBossForm1: 1
---- !u!114 &4063590559853371377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6622165687117483734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82d53f9fa64990149a2004edec47788e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalFrames: 6
-  framesPerSecond: 4
-  fireBoss: 0
 --- !u!1 &6622165687581963513
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +427,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!1001 &5867446150381827533
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,7 +1,24 @@
-Re=6378.136
-H=900*1000
-sidp=Re/(Re+H)
-EarthCentralAngle=acosd(Re/(Re+H))
-ECAToCal=.5*EarthCentralAngle
-n=atand(sidp*sind(ECAToCal)/(1-sidp*cosd(ECAToCal)))
-90-(n+ECAToCal)
+a=10000;
+e=.2;
+b=(-((e*a)^2-a^2))^.5
+F= (a^2-b^2)^.5;
+c=2*b^2/a;
+v=130;
+r=a*(1-e^2)/(1+e*cosd(v));
+
+a=9500*1000;
+ u=3.986e14;
+ n=(u/a^3)^.5;
+ p=2*pi/n;
+ 
+ x=1.08607;
+ 
+ e=(x-1)/(x+1);
+ a=7571/(1-e);
+ 
+ k1= 66063.1704;
+ n= (u/a^3)^.5;
+ 
+ r2=k1*n/a^2;
+ p=20
+ hmm=360*p/86400

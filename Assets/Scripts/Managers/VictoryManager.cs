@@ -44,6 +44,14 @@ public class VictoryManager : MonoBehaviour
         delayWithCleanMap -= Time.deltaTime;
         if (cleanMap) {
             if (delayWithCleanMap <= 0) {
+                LoadSaveController saving = new LoadSaveController();
+
+                int victory = GameData.Instance.Mara + GameData.Instance.Sara + GameData.Instance.Pendleton + GameData.Instance.Douglass + GameData.Instance.Norma
+                    + GameData.Instance.Derringer + GameData.Instance.Melvardius + GameData.Instance.Todd + GameData.Instance.Devon + GameData.Instance.McDermit;
+                if (victory == 0) GameData.Instance.Worst = 1;
+                if (victory != 10) GameData.Instance.Perfect = 0;
+                saving.autoSave();
+
                 SceneManager.LoadScene("WinScreen");
             }
         }

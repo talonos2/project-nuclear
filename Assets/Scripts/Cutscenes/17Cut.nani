@@ -13,11 +13,11 @@
 
 
 @char Fluer
-Fluer: You know, I really have to admire your handiwork on this.  It's so richly detailed.
+Fluer: You know, I really have to admire your handiwork on this. It's so richly detailed.
 @hidechars time:0
 
 ;$@animate carvesound dummy
-@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+;@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 @wait 1
 
 @char Fluer
@@ -25,7 +25,7 @@ Fluer: You must have spent hours studying how those beasties look.
 @hidechars time:0
 
 ;$@animate carvesound dummy
-@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+;@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 ;$@wait
 @wait 1
 
@@ -41,16 +41,16 @@ Paul: Yep, just need to make one last cut.
 @fwspawnvfx x:4 y:25 z:0 Vfx:PawnCarvingCut
 
 ;$@animate break dummy
-@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+;@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 @wait 0.1
-@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+;@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 @wait 0.2
-@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
+;@fwspawnvfx x:4 y:25 z:0 Vfx:Firework
 ;$@wait
 
 
 @wait 1.5
-@fwspawnvfx x:4 y:24.8 z:-10 Vfx:CurseFX
+@fwspawnvfx x:4 y:25 z:-10 Vfx:CurseFX
 @wait 2
 
 

@@ -181,8 +181,9 @@ public class ChooseItemUI : MonoBehaviour
                 return;
             }
             totalStatChange = foundItemStat - oldItemStat;
-            foundItemText = rolledItem.gameObject.name + "   (<sprite="+0+"><color="+(totalStatChange<=0? "red" : "green") +">+"+foundItemStat+"</color>)";
-            oldItemText = playerData.weapon.gameObject.name + "  " + oldItemStat;
+            foundItemText = rolledItem.gameObject.name + "  <sprite=0> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
+                + (totalStatChange > 0 ? "+":"") + totalStatChange + "</color>)</size>";
+            oldItemText = "Current - " + playerData.weapon.gameObject.name + " <sprite=0> " + oldItemStat;
             newItemSprite.sprite = itemIcons[0];
             //oldItemSprite.sprite = itemIcons[0];
 
@@ -199,8 +200,9 @@ public class ChooseItemUI : MonoBehaviour
             }
 
             totalStatChange = foundItemStat - oldItemStat;
-            foundItemText = rolledItem.gameObject.name + "   (<sprite=" + 1 + "><color=" + (totalStatChange <= 0 ? "red" : "green") + ">+" + foundItemStat + "</color>)";
-            oldItemText = playerData.armor.gameObject.name + ", Defense: " + oldItemStat;
+            foundItemText = rolledItem.gameObject.name + "  <sprite=1> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") +">"
+                + (totalStatChange > 0 ? "+":"")+totalStatChange +"</color>)</size>";
+            oldItemText = "Current - "+playerData.armor.gameObject.name + " <sprite=" + 1 + "> " + oldItemStat;
             newItemSprite.sprite = itemIcons[1];
             //oldItemSprite.sprite = itemIcons[1];
         }
@@ -212,9 +214,12 @@ public class ChooseItemUI : MonoBehaviour
                 //closeItemPickUI();
                 return;
             }
-            foundItemText = rolledItem.gameObject.name + " TODO: Brief Desc.";
-            oldItemText = playerData.accessory.gameObject.name + " TODO: Brief Desc.";
-            newItemSprite.sprite = itemIcons[2];
+            Accessory rolledAccItem = (Accessory)rolledItem;
+            Accessory oldAccItem = playerData.accessory;
+            foundItemText = rolledItem.gameObject.name+", " + rolledAccItem.equipmentStatDescription; 
+            oldItemText = "Current - " + playerData.accessory.gameObject.name + ", " + oldAccItem.equipmentStatDescription;
+            if (playerData.accessory.name == "No Accessory Equipped") oldItemText = playerData.accessory.gameObject.name;
+                newItemSprite.sprite = itemIcons[2];
             //oldItemSprite.sprite = itemIcons[2];
         }
 

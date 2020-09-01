@@ -294,6 +294,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &65969399
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -863,6 +864,7 @@ GameObject:
   - component: {fileID: 326564848}
   - component: {fileID: 326564851}
   - component: {fileID: 326564850}
+  - component: {fileID: 326564852}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -927,6 +929,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4b1240ff4efaa4398cc62c857a426a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &326564852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326564847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35107a825f8d2674a97beb6bd30b5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passabilityMap: {fileID: 4900000, guid: 2c43e93513fac1d4c88ae3e66a9ab8c5, type: 3}
+  width: 30
+  height: 31
+  alternatePathabilitySetup: 0
+  altWidth: 0
+  altHeight: 0
 --- !u!1001 &400958060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -934,6 +954,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6622165687117483734, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
+        type: 3}
+      propertyPath: m_Name
+      value: Z2_B
+      objectReference: {fileID: 0}
     - target: {fileID: 57873405483397689, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
         type: 3}
       propertyPath: earthBoss2
@@ -943,11 +968,6 @@ PrefabInstance:
         type: 3}
       propertyPath: earthBoss
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6622165687117483734, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
-        type: 3}
-      propertyPath: m_Name
-      value: Z2_B
       objectReference: {fileID: 0}
     - target: {fileID: 6622165687117483740, guid: 8e3869a8ee3aa624da07cc9de5c17beb,
         type: 3}
@@ -1556,6 +1576,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &569736370
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3266,6 +3287,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &1474268819
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3787,6 +3809,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!1 &2047364644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,6 +3865,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &2047364647
 MeshCollider:
   m_ObjectHideFlags: 0
