@@ -41,6 +41,8 @@ public class MusicManager : MonoBehaviour
     public const int FINAL = 12;
     public const int FINAL_C = 13;
 
+    private float musicVolume = 1f;
+
 
     // Use this for initialization
     void Start()
@@ -91,7 +93,7 @@ public class MusicManager : MonoBehaviour
             if (fadeLengths[x] > 0)
             {
                 fadeLengths[x] -= Time.deltaTime;
-                music[x].audioSource.volume = Mathf.Lerp(fadeStartVolumes[x], fadeVolumes[x], 1 - (fadeLengths[x] / fadeStartTimes[x]))*music[x].additionalBalance;
+                music[x].audioSource.volume = Mathf.Lerp(fadeStartVolumes[x], fadeVolumes[x], 1 - (fadeLengths[x] / fadeStartTimes[x]))*music[x].additionalBalance*musicVolume;
                 if (music[x].audioSource.volume <= 0)
                 {
                     music[x].audioSource.Stop();
@@ -115,6 +117,23 @@ public class MusicManager : MonoBehaviour
             fadeLengths[x] = 0;
             music[x].audioSource.volume = 0;
         }
+    }
+
+    public void ChangeMusicVolume(float newMusicVolume)
+    {
+        for (int x = 0; x < music.Length; x++)
+        {
+            if (music[x].audioSource.volume > 0)
+            {
+                music[x].audioSource.volume = music[x].audioSource.volume / musicVolume * newMusicVolume;
+            }
+        }
+        musicVolume = newMusicVolume;
+    }
+
+    public float GetMusicVolume()
+    {
+        return musicVolume;
     }
 
     public void FadeMusic(int num, float time, float volume)

@@ -14,6 +14,8 @@ public class SoundManager : Singleton<SoundManager>
     private DictionaryOfStringAndFloat soundVolumeMap = new DictionaryOfStringAndFloat();
     private bool loadedJson = false;
 
+    public float soundEffectVolume = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -97,7 +99,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlaySound(string clip, float vol)
     {
-        float realVol = vol * SafeGetVolume(clip);
+        float realVol = vol * SafeGetVolume(clip)*soundEffectVolume;
         if (!audioSrc)
         {
             audioSrc = this.gameObject.AddComponent<AudioSource>();
@@ -107,7 +109,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlayPersistentSound(string clip, float vol)
     {
-        float realVol = vol * SafeGetVolume(clip);
+        float realVol = vol * SafeGetVolume(clip)*soundEffectVolume;
         audioSrc.clip = Resources.Load<AudioClip>("Sounds/" + clip);
         audioSrc.volume = realVol;
         audioSrc.Play();
@@ -155,7 +157,7 @@ public class SoundManager : Singleton<SoundManager>
         }
         if (environmentalSound.clip)
         {
-            float realVol = vol * SafeGetVolume(environmentalSound.clip.name);
+            float realVol = vol * SafeGetVolume(environmentalSound.clip.name)*soundEffectVolume;
             environmentalSound.volume = realVol / 9.0f;
         }
         else
