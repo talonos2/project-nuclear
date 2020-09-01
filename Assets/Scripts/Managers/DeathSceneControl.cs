@@ -35,7 +35,7 @@ public class DeathSceneControl : MonoBehaviour
     void Start()
     {
         gameData = GameData.Instance;
-        delay = 2f;
+        delay = 1.5f;
         string villagersLeft = "" + (31 - gameData.RunNumber);
         townGrowingSmallerText = "The Town Grows Smaller.\n<size=125>" + villagersLeft + "</size>\nVillagers Remain";
         textMeshToPrint.enabled = false;
@@ -79,7 +79,7 @@ public class DeathSceneControl : MonoBehaviour
             // textField.color = Color.red;
             //Play Sound Effect Here
         }
-        if (delay <= -4)
+        if (delay <= -3.5)
         {
             LoadEndRunScene();
         }

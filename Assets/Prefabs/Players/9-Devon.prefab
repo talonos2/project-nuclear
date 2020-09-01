@@ -4991,6 +4991,7 @@ MonoBehaviour:
   spikes: 0
   lightRadius: 6
   isOnCutsceneMap: 0
+  isThisJohnDoe: 0
 --- !u!64 &3930319588365984667
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5148,10 +5149,11 @@ MonoBehaviour:
   experience: 0
   expToLevel: 90
   combatSprites:
-  - {fileID: -3280718331428647545, guid: 7215542421e23784b8444f0122a91c70, type: 3}
-  - {fileID: -5005374748378487828, guid: 7215542421e23784b8444f0122a91c70, type: 3}
-  - {fileID: -7255089913148688825, guid: 7215542421e23784b8444f0122a91c70, type: 3}
-  - {fileID: 7503317677108085124, guid: 7215542421e23784b8444f0122a91c70, type: 3}
+  - {fileID: -3280718331428647545, guid: 022b419fb375a15439eb4787620d34b9, type: 3}
+  - {fileID: -5006884897517587850, guid: 022b419fb375a15439eb4787620d34b9, type: 3}
+  - {fileID: 1920110870744465882, guid: 022b419fb375a15439eb4787620d34b9, type: 3}
+  - {fileID: -5005374748378487828, guid: 022b419fb375a15439eb4787620d34b9, type: 3}
+  - {fileID: -7255089913148688825, guid: 022b419fb375a15439eb4787620d34b9, type: 3}
   bustSprite: {fileID: 21300000, guid: 559d900df3b0cf544b9cfdfa2031c126, type: 3}
   MageClass: 0
   FighterClass: 1
@@ -5384,6 +5386,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 2893497967410854414, guid: 24f8a22df5c342f4d98b201a4a034aee,
         type: 3}
@@ -5649,11 +5656,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884883716891765214, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f8a22df5c342f4d98b201a4a034aee, type: 3}
