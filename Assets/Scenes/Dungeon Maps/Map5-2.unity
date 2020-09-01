@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2385,6 +2385,7 @@ GameObject:
   - component: {fileID: 326564851}
   - component: {fileID: 326564850}
   - component: {fileID: 326564852}
+  - component: {fileID: 326564853}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -2482,6 +2483,24 @@ MonoBehaviour:
   - 7 10
   - 8 10
   result: 0000000000000000000000000000
+--- !u!114 &326564853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326564847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35107a825f8d2674a97beb6bd30b5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passabilityMap: {fileID: 4900000, guid: 31ae0032969f13a4d98bfd9f15f1df89, type: 3}
+  width: 43
+  height: 37
+  alternatePathabilitySetup: 0
+  altWidth: 0
+  altHeight: 0
 --- !u!1 &336535116
 GameObject:
   m_ObjectHideFlags: 0
