@@ -34,7 +34,7 @@ public class NewGameController : MonoBehaviour
     public Sprite[] onImages;
     public Sprite[] offImages;
 
-    internal bool inOtherMenu;
+    internal bool inSaveMenu;
 
     private int currentMenuOptionSelected = -1;
 
@@ -45,7 +45,11 @@ public class NewGameController : MonoBehaviour
 
     void Update()
     {
-        if (inOtherMenu) return;
+        if (Array.IndexOf<Scene>(SceneManager.GetAllScenes(), SceneManager.GetSceneByName("OptionsScreen"))>-1)
+        {
+            return;
+        }
+        if (inSaveMenu) return;
 
         if (Input.GetButtonDown("Submit"))
         {
@@ -63,10 +67,10 @@ public class NewGameController : MonoBehaviour
                 case 2:
                     SoundManager.Instance.PlaySound("MenuOkay", 1f);
                     loadSaveController.activateLoad(this);
-                    inOtherMenu = true;
+                    inSaveMenu = true;
                     break;
                 case 3:
-                    //TODO: This is Options
+                    OpenOptionsMenu();
                     break;
                 case 4:
                     //TODO: This is Extras. 
@@ -89,6 +93,12 @@ public class NewGameController : MonoBehaviour
         {
             RefreshSelectedOption(NextMenuOption());
         }
+    }
+
+    public void OpenOptionsMenu()
+    {
+        SoundManager.Instance.PlaySound("MenuOkay", 1f);
+        SceneManager.LoadScene("OptionsScreen", LoadSceneMode.Additive);
     }
 
     private int PrevMenuOption()
@@ -229,7 +239,7 @@ public class NewGameController : MonoBehaviour
 
     internal void ReActivate()
     {
-        inOtherMenu = false;
+        inSaveMenu = false;
 
     }
 
