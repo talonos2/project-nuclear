@@ -28,13 +28,15 @@ public class EscapeKeyController : MonoBehaviour
                 SoundManager.Instance.PlaySound("MenuNope", 1f);
                 GameState.fullPause = false;
                 currentlyEscaped = false;
-                canvas.SetActive(false);
+                CloseOptionsMenu();
+                //canvas.SetActive(false);
             }
             else if (!currentlyEscaped && GameState.fullPause!=true) {
                 SoundManager.Instance.PlaySound("MenuOpen", 1f);
                 GameState.fullPause = true;
                 currentlyEscaped = true;
-                canvas.SetActive(true);
+                OpenPauseMenu();
+                //canvas.SetActive(true);
             }
            
         }
@@ -98,6 +100,18 @@ public class EscapeKeyController : MonoBehaviour
             }
         }
     }
+
+    public void OpenPauseMenu()
+    {
+        SoundManager.Instance.PlaySound("MenuOkay", 1f);
+        SceneManager.LoadScene("PauseScreen", LoadSceneMode.Additive);
+    }
+
+    public void CloseOptionsMenu()
+    {
+        SceneManager.UnloadScene("PauseScreen");
+    }
+
 
     void OnEnable() {
         hideButtonSelection();
