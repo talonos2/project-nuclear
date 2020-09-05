@@ -9,7 +9,7 @@ public class map2_3ShortcutController : MonoBehaviour
     public PassabilityGrid grid;
     public GameObject boulder1;
     public GameObject boulder2;
-    public GameObject boulder3;
+    //public GameObject boulder3;
     public EnvironmentalSoundMagnitudeGrid environmentGrid;
     public TextAsset newPassabilityMap;
     public TextAsset newSoundMap;
@@ -29,7 +29,7 @@ public class map2_3ShortcutController : MonoBehaviour
         {
             boulder1.SetActive(true);
             boulder2.SetActive(true);
-            boulder3.SetActive(true);
+           // boulder3.SetActive(true);
             boulderInRiver.SetActive(true);
             grid.passabilityMap = newPassabilityMap;
             grid.configurePathabilityGrid();
@@ -41,7 +41,7 @@ public class map2_3ShortcutController : MonoBehaviour
         {
             boulder1.SetActive(false);
             boulder2.SetActive(false);
-            boulder3.SetActive(false);
+           // boulder3.SetActive(false);
             boulderInRiver.SetActive(false);
         }
     }
@@ -51,7 +51,7 @@ public class map2_3ShortcutController : MonoBehaviour
         {
             boulder1.SetActive(true);
             boulder2.SetActive(true);
-            boulder3.SetActive(true);
+           // boulder3.SetActive(true);
             boulderInRiver.SetActive(true);
             grid.passabilityMap = newPassabilityMap;
             grid.configurePathabilityGrid();
@@ -63,7 +63,7 @@ public class map2_3ShortcutController : MonoBehaviour
         {
             boulder1.SetActive(false);
             boulder2.SetActive(false);
-            boulder3.SetActive(false);
+           // boulder3.SetActive(false);
             boulderInRiver.SetActive(false);
         }
     }
