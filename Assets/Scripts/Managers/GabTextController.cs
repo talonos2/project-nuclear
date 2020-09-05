@@ -15,7 +15,7 @@ public class GabTextController : MonoBehaviour
     public Image playerPanel;
     public TextMeshProUGUI gabTextToPrint;
     public List<Gab> gabPlayList;
-    public float gabDelay = 1.5f;
+    public float gabDelay = 3f;
     public float delayBetweenGabs = .3f;
     private float gabDelayCounter;
     private bool playingGab;

@@ -264,7 +264,7 @@ public class RandomChestController : EntityData
             SpawnCrystalParticles(CrystalType.ATTACK, amountGained, playerData);
             playerData.AttackCrystalsGained += amountGained;
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
-            uiController.GetComponent<GabTextController>().AddGabToPlay("<B>" + amountGained + "</B> Attack Crystals absorbed into the magic ring. Your Attack has risen permanently!");
+            uiController.GetComponent<GabTextController>().AddGabToPlay("<B>" + amountGained + "</B><sprite=5>crystals absorbed into the magic ring.");
             Instantiate(crystalBreakingRed, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
@@ -274,7 +274,7 @@ public class RandomChestController : EntityData
             SpawnCrystalParticles(CrystalType.DEFENSE, amountGained, playerData);
             playerData.defenseCrystalsGained += amountGained;
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
-            uiController.GetComponent<GabTextController>().AddGabToPlay("<B>" + amountGained + "</B> Armor Crystals absorbed into the magic ring. Your Armor has risen permanently!");
+            uiController.GetComponent<GabTextController>().AddGabToPlay("<B>" + amountGained + "</B><sprite=3>crystals absorbed into the magic ring.");
             Instantiate(crystalBreakingYellow, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
@@ -284,7 +284,7 @@ public class RandomChestController : EntityData
             SpawnCrystalParticles(CrystalType.HEALTH, amountGained, playerData);
             playerData.HealthCrystalsGained += amountGained;
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
-            uiController.GetComponent<GabTextController>().AddGabToPlay("<B>" + amountGained + "</B> Health Crystals absorbed into the magic ring. Your Health has risen permanently!");
+            uiController.GetComponent<GabTextController>().AddGabToPlay("<B>" + amountGained + "</B><sprite=4>crystals absorbed into the magic ring.");
             Instantiate(crystalBreakingGreen, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
@@ -294,7 +294,7 @@ public class RandomChestController : EntityData
             SpawnCrystalParticles(CrystalType.MANA, amountGained, playerData);
             playerData.ManaCrystalsGained += amountGained;
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
-            uiController.GetComponent<GabTextController>().AddGabToPlay("<B>"+amountGained+ "</B> Mana Crystals absorbed into the magic ring. Your Mana has risen permanently!");
+            uiController.GetComponent<GabTextController>().AddGabToPlay("<B>"+amountGained+ "</B><sprite=6>crystals absorbed into the magic ring.");
             Instantiate(crystalBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
         }
