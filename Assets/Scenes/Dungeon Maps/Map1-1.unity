@@ -3890,6 +3890,11 @@ PrefabInstance:
       propertyPath: MoveSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3128599578249191477, guid: 13f55362b4ce93843a256a685f28550e,
+        type: 3}
+      propertyPath: SpotWaitTimer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3128599578249191479, guid: 13f55362b4ce93843a256a685f28550e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 13f55362b4ce93843a256a685f28550e, type: 3}
@@ -3940,15 +3945,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8332177918306501506, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2236789191275909186, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: healthCrystal
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332177918306501506, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed9c8f56d9ee6748842ef7b33740cec, type: 3}
@@ -4294,16 +4299,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4139699246663093168, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 134.30078
-      objectReference: {fileID: 0}
-    - target: {fileID: 4139699247924938187, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 610.3008
-      objectReference: {fileID: 0}
     - target: {fileID: 4014867980103700925, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_IsActive
@@ -4313,6 +4308,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139699246663093168, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 134.30078
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139699247924938187, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 610.3008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ac0871009d1c4cbb3ce4b6c5255a3, type: 3}
