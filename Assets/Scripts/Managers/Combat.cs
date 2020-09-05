@@ -158,6 +158,8 @@ public class Combat : MonoBehaviour
             Destroy(monsterSprite.gameObject);
             Destroy(playerSprite.gameObject);
             combatDarkening.material.SetFloat("_Alpha", 0);
+            monsterHPBar.color = new Color(1, 1, 1, 0);
+            monsterHPBarHolder.GetComponent<Image>().color = new Color(1, 1, 1, 0);
             blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
             if (GameData.Instance.FloorNumber != 20)
             {
