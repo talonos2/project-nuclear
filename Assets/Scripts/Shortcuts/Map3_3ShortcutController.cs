@@ -10,7 +10,7 @@ public class Map3_3ShortcutController : MonoBehaviour
     void Start()
     {
         if (GameData.Instance.map3_3Shortcut) {
-            bridgeShortcut.AddPlatform();
+            bridgeShortcut.SwapPlatform();
         }
         else {
             bridgeShortcut.RemovePlatform();
@@ -22,7 +22,7 @@ public class Map3_3ShortcutController : MonoBehaviour
     {
         if (GameData.Instance.map3_3Shortcut)
         {
-            bridgeShortcut.AddPlatform();
+            bridgeShortcut.SwapPlatform();
         }
         else
         {

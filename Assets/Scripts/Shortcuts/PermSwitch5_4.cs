@@ -37,7 +37,7 @@ public class PermSwitch5_4 : SwitchEntityData
                 if (bridgeControlled != null)
                 {
                     if (bridgeControlled.isPlatformTerrain) { bridgeControlled.RemovePlatform(); }
-                    else { bridgeControlled.AddPlatform(); }
+                    else { bridgeControlled.SwapPlatform(); }
 
                 }
             }

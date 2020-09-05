@@ -30,8 +30,7 @@ public class PermSwitch5_1 : SwitchEntityData
                 SpikeController spikeControlled = tiedEntity.GetComponent<SpikeController>();
                 if (spikeControlled != null)
                 {
-                    spikeControlled.isPassable = true;
-                    spikeControlled.LowerSpikeAnimation();
+                    spikeControlled.Open(false);
                 }
             }
             activeSwitch = false;

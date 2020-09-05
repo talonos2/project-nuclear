@@ -7,13 +7,16 @@ public class cameraClamp : MonoBehaviour
     private float mapHeight;
     private float mapWidth;
     private GameObject ThePlayer;
+    private Vector2 groundOffset;
     // Start is called before the first frame update
     void Start()
     {
         PassabilityGrid gridy = GameObject.Find("Grid").GetComponent<PassabilityGrid>();
         mapHeight = gridy.height;
         mapWidth = gridy.width;
+        groundOffset = gridy.GetComponentInChildren<GroundShadow>().mapOffset;
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
+
         //Debug.Log("map zero " + mapZeroLocation + " playerloc " + ThePlayer.transform.position);
        // float newXLocation = ThePlayer.transform.position.x - mapZeroLocation.x -8f;
         //float newYlocation = ThePlayer.transform.position.y - mapZeroLocation.y - 5.5f;
@@ -38,22 +41,26 @@ public class cameraClamp : MonoBehaviour
         float offsetY = 0;
         float offsetX = 0;
         //Debug.Log(relativeY);
-        if (relativeYLowClamp > 0)
+        if (relativeYLowClamp > 0+ groundOffset.y)
         {
-            offsetY += relativeYLowClamp;
-        }
-        if (relativeYHighClamp < 0) {
-            offsetY +=  relativeYHighClamp;
-        }
-        if (relativeXLowClamp > 0)
-        {
-            offsetX += relativeXLowClamp;
-        }
-        if (relativeXHighClamp < 0)
-        {
-            offsetX += relativeXHighClamp;
-        }
+            offsetY += relativeYLowClamp - groundOffset.y;
 
-        this.transform.localPosition = new Vector3(offsetX,offsetY,this.transform.localPosition.z);
+        }
+        if (relativeYHighClamp < 0 + groundOffset.y) {
+            offsetY +=  relativeYHighClamp - groundOffset.y;
+
+        }
+        if (relativeXLowClamp  > 0 + groundOffset.x)
+        {
+            offsetX += relativeXLowClamp - groundOffset.x;
+
+        }
+        if (relativeXHighClamp < 0 + groundOffset.x)
+        {
+            offsetX += relativeXHighClamp - groundOffset.x;
+
+        }
+        //Debug.Log(offsetX + " " + groundOffset.x);
+        this.transform.localPosition = new Vector3(offsetX+ groundOffset.x, offsetY+ groundOffset.y, this.transform.localPosition.z);
     }
 }
