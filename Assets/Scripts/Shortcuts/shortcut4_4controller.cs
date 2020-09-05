@@ -13,14 +13,14 @@ public class shortcut4_4controller : MonoBehaviour
         if (shortcutHolder) return;
         if (GameData.Instance.map4_4Shortcut)
         {
-            this.gameObject.GetComponent<BridgeController>().AddPlatform();
+            this.gameObject.GetComponent<BridgeController>().SwapPlatform();
         }
     }
 
     public void setupShortcut() {
-        bridge1.gameObject.GetComponent<BridgeController>().AddPlatform();
-        bridge2.gameObject.GetComponent<BridgeController>().AddPlatform();
-        bridge3.gameObject.GetComponent<BridgeController>().AddPlatform();
+        bridge1.gameObject.GetComponent<BridgeController>().SwapPlatform();
+        bridge2.gameObject.GetComponent<BridgeController>().SwapPlatform();
+        bridge3.gameObject.GetComponent<BridgeController>().SwapPlatform();
     }
 
 }

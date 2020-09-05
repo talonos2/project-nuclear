@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ public class BridgeController : DoodadData
     public int primConnectionNumber;
     public BobPrim primToCheck;
 
+    private List<float> swapTimes = new List<float>();
+
+    public bool playsSoundOnPlatformAdd = false;
+
     new void Start()
     {
         base.Start();
@@ -22,8 +27,24 @@ public class BridgeController : DoodadData
             //HidePlatform();
             RemovePlatform();
         }
+    }
 
-
+    protected void Update()
+    {
+        List<float> newSwapTimes = new List<float>();
+        foreach (float f in swapTimes)
+        {
+            float newf = f-Time.deltaTime;
+            if (newf <= 0)
+            {
+                SwapPlatform();
+            }
+            else
+            {
+                newSwapTimes.Add(newf);
+            }
+        }
+        swapTimes = newSwapTimes;
     }
 
     public void RunPrimAlgorythm(BobPrim checkedPrim) {
@@ -34,33 +55,42 @@ public class BridgeController : DoodadData
         }
         if (checkedPrim.result[primConnectionNumber])
         {
-            AddPlatform();            
+            SwapPlatform();            
         }
         else
         {
-            //HidePlatform();
             RemovePlatform();
         }
     }
     public void RemovePlatform() {
         this.isPlatformTerrain = false;
-        
-        
         this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
         MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = null;
 
     }
 
-    public void HidePlatform() {
-        this.isPlatformTerrain = false;
-        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+    public void SwapPlatform() {
+        this.isPlatformTerrain = !this.isPlatformTerrain;
+        if (playsSoundOnPlatformAdd)
+        {
+            SoundManager.Instance.PlaySound("Environment/Bridge", 1);
+        }
+        if (this.isPlatformTerrain == true)
+        {
+            MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = this.gameObject;
+        }
+        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = !invisibleBridge&& this.isPlatformTerrain == true;
     }
-    public void AddPlatform() {
-        this.isPlatformTerrain = true;
-        MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = this.gameObject;
-        if (!invisibleBridge) 
-            this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
-        
+
+    internal void SwapPlatformAfterTime(float time)
+    {
+        if (time == 0)
+        {
+            SwapPlatform();
+        }
+        else
+        {
+            swapTimes.Add(time);
+        }
     }
-   
 }

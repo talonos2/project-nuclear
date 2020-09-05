@@ -68,9 +68,7 @@ public class crystalSwitch : SwitchEntityData
                 WindJumpController windJumpControlled = tiedEntity.GetComponent<WindJumpController>();
                 if (bridgeControlled != null)
                 {
-                    //movedABridge = true;
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.HidePlatform(); }
-                    else { bridgeControlled.AddPlatform(); }
+                    bridgeControlled.SwapPlatform();
                 }
                 if (windJumpControlled != null)
                 {

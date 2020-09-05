@@ -17,6 +17,7 @@ public class SpikeController : DoodadData
     protected int frameToSet = 0;
 
     private float timeUntilOpen = 0;
+    private float timeUntilClose = 0;
 
     public bool primBoulder;
     //public bool primShortcutB;
@@ -46,10 +47,6 @@ public class SpikeController : DoodadData
         {
             Open(false) ;
         }
-        else
-        {
-
-        }
     }
 
     protected void Update()
@@ -63,16 +60,27 @@ public class SpikeController : DoodadData
                 Open();
             }
         }
+        if (timeUntilClose != 0)
+        {
+            timeUntilClose -= Time.deltaTime;
+            if (timeUntilClose <= 0)
+            {
+                timeUntilClose = 0;
+                Close();
+            }
+        }
     }
 
     public void Open(bool sound = true)
     {
         this.isPassable = true;
-        if (sound)
-        {
-            this.LowerSpikeAnimation();
-        }
-        else this.LowerSpikeAnimation(false);
+        LowerSpikeAnimation(sound);
+    }
+
+    public void Close(bool sound = true)
+    {
+        this.isPassable = false;
+        RaiseSpikeAnimation(sound);
     }
 
 
@@ -98,17 +106,29 @@ public class SpikeController : DoodadData
         }
     }
 
-    public void LowerSpikeAnimation(bool sound = true) {
+    internal void CloseAfterTime(float time)
+    {
+        if (time == 0)
+        {
+            Close();
+        }
+        else
+        {
+            timeUntilClose = time;
+        }
+    }
+
+    private void LowerSpikeAnimation(bool sound = true) {
         isAnimating = true;
         animateRise = false;
         if (sound) SoundManager.Instance.PlaySound("DroppingSpikes", 1);
     }
 
-    public void RaiseSpikeAnimation()
+    private void RaiseSpikeAnimation(bool sound = true)
     {
         isAnimating = true;
         animateRise = true;
-        SoundManager.Instance.PlaySound("RaisingSpikes", 1);
+        if (sound) SoundManager.Instance.PlaySound("RaisingSpikes", 1);
     }
 
 }

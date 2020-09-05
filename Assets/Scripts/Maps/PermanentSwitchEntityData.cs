@@ -30,8 +30,7 @@ public class PermanentSwitchEntityData : SwitchEntityData
                 BridgeController bridgeControlled = tiedEntity.GetComponent<BridgeController>();
                 if (spikeControlled != null)
                 {
-                    spikeControlled.isPassable = true;
-                    spikeControlled.LowerSpikeAnimation();
+                    spikeControlled.Open(false);
                 }
                 if (bridgeControlled != null)
                 {

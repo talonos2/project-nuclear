@@ -9,14 +9,14 @@ public class shortcut3_4controller : MonoBehaviour
     void Start()
     {
         if (GameData.Instance.map3_4Shortcut) {
-            bridgeToControl.AddPlatform();
+            bridgeToControl.SwapPlatform();
         }   
     }
 
     public void SetShortcut() {
         if (GameData.Instance.map3_4Shortcut)
         {
-            bridgeToControl.AddPlatform();
+            bridgeToControl.SwapPlatform();
         }
     }
 
