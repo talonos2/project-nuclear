@@ -45,10 +45,16 @@ public class SpriteMovement : EntityData
     protected Vector2Int characterNextLocation;
     [HideInInspector]
     public DirectionMoved facedDirection = DirectionMoved.LEFT;
-    //protected Renderer sRender;
     protected Vector2Int homeLocation;
     protected Vector2Int exitLocation = new Vector2Int(0, 0);
     protected float waitTimer = 0;
+
+    //Stuff to do with forced jumping:
+    protected Vector2Int jumpTarget;
+    protected Vector3 jumpStartPos;
+    protected float timeLeftInForcedJump = 0;
+    protected float totalTimeInForcedJump = 0;
+    protected float forcedJumpHeight = 0;
 
 
     public enum DirectionMoved
@@ -64,11 +70,10 @@ public class SpriteMovement : EntityData
         gameData = GameData.Instance;
         tempFramesPerSecond = framesPerSecond;
         tempMovementSpeed = MoveSpeed;
-
-
     }
 
-    public void SetRenderer() {
+    public void SetRenderer()
+    {
         this.sRender = this.GetComponentInChildren<Renderer>();
         this.sRender.material = new Material(this.sRender.material);
     }
@@ -90,7 +95,6 @@ public class SpriteMovement : EntityData
 
     protected float MoveToNextSquare()
     {
-
         float finishedMoving = 0;
         if (facedDirection == DirectionMoved.LEFT)
         {
@@ -111,15 +115,18 @@ public class SpriteMovement : EntityData
         return finishedMoving;
     }
 
-    public void setNewMovespeed(float newSpeed) {
+    public void setNewMovespeed(float newSpeed)
+    {
         tempMovementSpeed = newSpeed;
     }
 
-    public void setOldMovespeed() {
+    public void setOldMovespeed()
+    {
         tempMovementSpeed = MoveSpeed;
     }
 
-    protected void SetNextLocationActual(int characterLocX, int characterLocY) {
+    protected void SetNextLocationActual(int characterLocX, int characterLocY)
+    {
         characterNextLocation.x = characterLocX;
         characterNextLocation.y = characterLocY;
         UpdateNewEntityGridLocation();
@@ -130,12 +137,11 @@ public class SpriteMovement : EntityData
             UpdateEnvironmentSound();
         }
     }
-    protected void SetNextLocation(DirectionMoved nextStep) {
 
-        //Debug.Log("next step loc x " + CharacterLocation.x +" y "+ CharacterLocation.y);
-
-       
-        if (nextStep == DirectionMoved.UP) {
+    protected void SetNextLocation(DirectionMoved nextStep)
+    {
+        if (nextStep == DirectionMoved.UP)
+        {
             characterNextLocation.x = characterLocation.x;
             characterNextLocation.y = characterLocation.y + 1;
         }
@@ -147,7 +153,7 @@ public class SpriteMovement : EntityData
         }
         if (nextStep == DirectionMoved.LEFT)
         {
-            characterNextLocation.x = characterLocation.x-1;
+            characterNextLocation.x = characterLocation.x - 1;
             characterNextLocation.y = characterLocation.y;
         }
         if (nextStep == DirectionMoved.RIGHT)
@@ -162,17 +168,26 @@ public class SpriteMovement : EntityData
         }
     }
 
-    protected bool IsMoveLocationPassable(int LocX, int LocY) {
+    internal bool IsJumping()
+    {
+        return jumping;
+    }
 
+    internal bool IsInAForcedJump()
+    {
+        return timeLeftInForcedJump > 0;
+    }
+
+    protected bool IsMoveLocationPassable(int LocX, int LocY)
+    {
         bool MoveableLocation = false;
 
-
-        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY)) {
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
+        {
             if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
-           
-        
+
         return MoveableLocation;
     }
 
@@ -180,7 +195,8 @@ public class SpriteMovement : EntityData
     {
 
         bool MoveableLocation = false;
-        if (LocX < 0 || LocY < 0) {
+        if (LocX < 0 || LocY < 0)
+        {
             return MoveableLocation;
         }
 
@@ -193,7 +209,8 @@ public class SpriteMovement : EntityData
         return MoveableLocation;
     }
 
-    protected bool IsMoveLocationMonsterChaseable(int LocX, int LocY) {
+    protected bool IsMoveLocationMonsterChaseable(int LocX, int LocY)
+    {
         bool MoveableLocation = false;
 
         if (!MapGrid.GetComponent<PassabilityGrid>().InRange(LocX, LocY)) { return false; }
@@ -204,8 +221,6 @@ public class SpriteMovement : EntityData
             if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
-
-
         return MoveableLocation;
     }
 
@@ -216,13 +231,11 @@ public class SpriteMovement : EntityData
         if (!MapGrid.GetComponent<PassabilityGrid>().InRange(LocX, LocY)) { return false; }
 
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
-            || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.AIR || IsPlatformUp(LocX, LocY) )
+            || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.AIR || IsPlatformUp(LocX, LocY))
         {
             if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
-
-
         return MoveableLocation;
     }
 
@@ -237,35 +250,32 @@ public class SpriteMovement : EntityData
             if (doddadObject.GetComponent<DoodadData>().isPlatformTerrain)
                 MoveableLocation = true;
         }
-            return MoveableLocation;
+        return MoveableLocation;
     }
 
-    protected bool IsPlayerInMonsterTerritory(int LocX, int LocY) {
+    protected bool IsPlayerInMonsterTerritory(int LocX, int LocY)
+    {
         bool attackable = false;
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER)
             attackable = true;
         return attackable;
 
     }
-    protected bool IsRandomMoveLocationPassable(int LocX, int LocY) {
-
+    protected bool IsRandomMoveLocationPassable(int LocX, int LocY)
+    {
         bool MoveableLocation = false;
 
-        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER) {
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER)
+        {
             if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
-           
-        //Toggleable Terrain check
-       
 
         return MoveableLocation;
-
     }
 
     protected bool IsAntiRandomMoveLocationPassable(int LocX, int LocY)
     {
-
         bool MoveableLocation = false;
 
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL)
@@ -274,14 +284,11 @@ public class SpriteMovement : EntityData
                 MoveableLocation = true;
         }
 
-        //Toggleable Terrain check
-
-
         return MoveableLocation;
-
     }
 
-    protected bool IsLocationDoodadPlayerPassible(int LocX, int LocY) {
+    protected bool IsLocationDoodadPlayerPassible(int LocX, int LocY)
+    {
         bool MoveableLocation = false;
 
         GameObject DoddadObject = MapGrid.GetComponent<DoodadGrid>().grid[LocX, LocY];
@@ -289,10 +296,11 @@ public class SpriteMovement : EntityData
         {
             MoveableLocation = true;
         }
-        else {
+        else
+        {
             DoodadData doodadObject = DoddadObject.GetComponent<DoodadData>();
             if (doodadObject.isPassable)
-                MoveableLocation = true ;
+                MoveableLocation = true;
             if (doodadObject.isSpike && gameData.hasted)
                 MoveableLocation = true;
             if (doodadObject.isExit || doodadObject.isWindShifter || doodadObject.isPlatformTerrain)
@@ -300,7 +308,6 @@ public class SpriteMovement : EntityData
 
         }
         return MoveableLocation;
-
     }
     protected bool IsLocationDoodadMonsterPassible(int LocX, int LocY)
     {
@@ -313,14 +320,15 @@ public class SpriteMovement : EntityData
         }
         else
         {
-            if (DoddadObject.GetComponent<DoodadData>().isPassable|| DoddadObject.GetComponent<DoodadData>().isPlatformTerrain)
+            if (DoddadObject.GetComponent<DoodadData>().isPassable || DoddadObject.GetComponent<DoodadData>().isPlatformTerrain)
                 MoveableLocation = true;
         }
         return MoveableLocation;
 
     }
 
-    protected bool IsLocationEntityPassible(int LocX, int LocY) {
+    protected bool IsLocationEntityPassible(int LocX, int LocY)
+    {
         bool MoveableLocation = false;
         GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
         if (entityInLocation == null)
@@ -337,23 +345,25 @@ public class SpriteMovement : EntityData
         return MoveableLocation;
     }
 
-    protected GameObject isThereAMonster() {
+    protected GameObject IsThereAMonster()
+    {
         GameObject EnemyPresent = null;
-        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[characterNextLocation.x, characterNextLocation.y]; 
+        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().grid[characterNextLocation.x, characterNextLocation.y];
 
-        if (EntityToFight != null) {
-            if (EntityToFight.GetComponent<EntityData>().isAMonster) {
+        if (EntityToFight != null)
+        {
+            if (EntityToFight.GetComponent<EntityData>().isAMonster)
+            {
                 EnemyPresent = EntityToFight;
             }
         }
         return EnemyPresent;
     }
 
-    protected GameObject isThereAPlayer(int CharLocX, int CharLocY)
+    protected GameObject IsThereAPlayer(int CharLocX, int CharLocY)
     {
-
         GameObject EnemyPresent = null;
-        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().GetEntity(CharLocX, CharLocY); 
+        GameObject EntityToFight = MapGrid.GetComponent<EntityGrid>().GetEntity(CharLocX, CharLocY);
         //Make internal function to pull entity from entity grid and make boundery checks. 
 
         if (EntityToFight != null)
@@ -366,11 +376,13 @@ public class SpriteMovement : EntityData
         return EnemyPresent;
     }
 
-    protected void RemoveOldEntityGridLocation() {
-
+    protected void RemoveOldEntityGridLocation()
+    {
         MapGrid.GetComponent<EntityGrid>().grid[characterLocation.x, characterLocation.y] = null;
     }
-    protected void UpdateNewEntityGridLocation() {
+
+    protected void UpdateNewEntityGridLocation()
+    {
 
         MapGrid.GetComponent<EntityGrid>().grid[characterNextLocation.x, characterNextLocation.y] = this.gameObject;
     }
@@ -387,7 +399,8 @@ public class SpriteMovement : EntityData
         }
     }
 
-    public void InitializeNewMap() {
+    public void InitializeNewMap()
+    {
         MapGrid = GetMapGrid();
         mapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
         mapEntityGrid = MapGrid.GetComponent<EntityGrid>();
@@ -408,12 +421,10 @@ public class SpriteMovement : EntityData
                 SoundManager.Instance.ChangeEnvironmentTrack();
             }
         }
-        //GameObject exitLocationObj = GameObject.Find("Exit");
-        //exitLocation.x= exitLocationObj.transform.
-        //omponent<DoodadGrid>().grid[CharacterLocation.x, CharacterLocation.y]; 
     }
 
-    public GameObject GetMapGrid() {
+    public GameObject GetMapGrid()
+    {
         GameObject MapGridRetrieved = GameObject.Find("Grid");
         if (isOnCutsceneMap) MapGridRetrieved = GameObject.Find("Grid2");
         return MapGridRetrieved;
@@ -464,7 +475,7 @@ public class SpriteMovement : EntityData
 
     public void FaceDown()
     {
-        sRender.material.SetFloat("_Frame", 0+ FLOATING_POINT_FIX);
+        sRender.material.SetFloat("_Frame", 0 + FLOATING_POINT_FIX);
         animationStep = 0;
     }
 
@@ -485,7 +496,7 @@ public class SpriteMovement : EntityData
         }
         if (changed)
         {
-            sRender.material.SetFloat("_Frame", animationStep + FLOATING_POINT_FIX+(dir.GetHeroSpriteOffeset()*(GetFramesInFilmstrip()+GetNumberOfIdleFrames()) + GetNumberOfIdleFrames()));
+            sRender.material.SetFloat("_Frame", animationStep + FLOATING_POINT_FIX + (dir.GetHeroSpriteOffeset() * (GetFramesInFilmstrip() + GetNumberOfIdleFrames()) + GetNumberOfIdleFrames()));
         }
 
     }
@@ -502,7 +513,6 @@ public class SpriteMovement : EntityData
 
     public float MoveUp(float tempMovementSpeed)
     {
-    
         float DistanceToMove = 1;
         DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
@@ -517,34 +527,31 @@ public class SpriteMovement : EntityData
         Vector3 getMotion = new Vector3(0.0f, DistanceToMove, 0.0f);
         transform.position = transform.position + getMotion;
         return movedSoFar;
-
     }
 
     public void FaceUp()
     {
-        sRender.material.SetFloat("_Frame", 21+FLOATING_POINT_FIX);
+        sRender.material.SetFloat("_Frame", 21 + FLOATING_POINT_FIX);
         animationStep = 0;
     }
 
-    public bool JumpToTarget(float jumpMoveSpeed,Vector2Int jumpDistance)
+    public bool JumpToTarget()
     {
-        float DistanceToMoveX = Time.deltaTime * jumpMoveSpeed * jumpDistance.x;
-        float DistanceToMoveY = Time.deltaTime * jumpMoveSpeed * jumpDistance.y;
+        timeLeftInForcedJump = Mathf.Max(timeLeftInForcedJump - Time.deltaTime, 0);
+        float t = (totalTimeInForcedJump-timeLeftInForcedJump)/ totalTimeInForcedJump;
 
-        movedSoFarX += DistanceToMoveX;
-        movedSoFarY += DistanceToMoveY;
+        Debug.Log(t + ", " + timeLeftInForcedJump + ", " + totalTimeInForcedJump);
+
+        Vector3 newPosition = Vector3.Lerp(jumpStartPos, jumpStartPos + new Vector3(jumpTarget.x, jumpTarget.y,0), t);
+        float h = -((2 * t - 1) * (2 * t - 1))+1;
+        h *= forcedJumpHeight;
+
+        Debug.Log(t + ", " + jumpStartPos + ", " + jumpTarget);
+
+        transform.position = new Vector3(newPosition.x, newPosition.y + h, transform.position.z);
 
         //AnimateSpinning();
 
-        if (Math.Abs(movedSoFarX) > Math.Abs(jumpDistance.x) || Math.Abs(movedSoFarY) > Math.Abs(jumpDistance.y))
-        {
-            movedSoFarX = 0;
-            movedSoFarY = 0;
-            return true;
-        }
-        Vector3 getMotion = new Vector3(DistanceToMoveX, DistanceToMoveY, 0.0f);
-        transform.position = transform.position + getMotion;
-        
         return false;
     }
 
@@ -560,7 +567,7 @@ public class SpriteMovement : EntityData
             DistanceToMove = DistanceToMove - (movedSoFar - 1);
             movedSoFar = 0;
         }
-        Vector3 getMotion = new Vector3(-DistanceToMove, 0.0f,  0.0f);
+        Vector3 getMotion = new Vector3(-DistanceToMove, 0.0f, 0.0f);
         transform.position = transform.position + getMotion;
 
         return movedSoFar;
@@ -568,7 +575,7 @@ public class SpriteMovement : EntityData
 
     public void FaceLeft()
     {
-        sRender.material.SetFloat("_Frame", 7+ FLOATING_POINT_FIX);
+        sRender.material.SetFloat("_Frame", 7 + FLOATING_POINT_FIX);
         animationStep = 0;
     }
     public float MoveRight(float tempMovementSpeed)
@@ -590,7 +597,7 @@ public class SpriteMovement : EntityData
 
     public void FaceRight()
     {
-        sRender.material.SetFloat("_Frame", 14+ FLOATING_POINT_FIX);
+        sRender.material.SetFloat("_Frame", 14 + FLOATING_POINT_FIX);
         animationStep = 0;
     }
 
@@ -613,7 +620,8 @@ public class SpriteMovement : EntityData
 
     protected DirectionMoved GetChaseStep()
     {
-        if (gameData.stealthed) {
+        if (gameData.stealthed)
+        {
             return DirectionMoved.NONE;
         }
         int TempX = ThePlayer.GetComponent<CharacterMovement>().characterLocation.x - characterLocation.x;

@@ -131,6 +131,7 @@ namespace Naninovel
                     onError?.Invoke($"Expression `{expressionString}` syntax error: {expression.Error}");
                     return default;
                 }
+
                 var resultObj = expression.Evaluate();
                 if (resultObj is null)
                 {

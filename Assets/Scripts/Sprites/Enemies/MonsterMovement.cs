@@ -218,7 +218,7 @@ public class MonsterMovement : SpriteMovement
         if (gameData.dashing||gameData.stealthed){
             return;
         }
-        GameObject EnemyToFight = isThereAPlayer(locX, locY);
+        GameObject EnemyToFight = IsThereAPlayer(locX, locY);
         if (EnemyToFight != null)
         {
             Combat.InitiateFight(EnemyToFight, this.gameObject);
@@ -286,34 +286,34 @@ public class MonsterMovement : SpriteMovement
                 if (i == 3 && (j == 0 )) continue;
                 switch (facedDirection) {
                     case DirectionMoved.UP:
-                        if( isThereAPlayer(characterLocation.x + i - 2, characterLocation.y + j + 1) != null)
+                        if( IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y + j + 1) != null)
                         {
-                            ThePlayer = isThereAPlayer(characterLocation.x + i - 2, characterLocation.y + j + 1);
+                            ThePlayer = IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y + j + 1);
                             return true;
                         }
                         //if there is not a player found AND spot is not passible, set j=SpottingDistance as a way of skipping further checks along that line. 
                         if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x + i - 2, characterLocation.y + j + 1)) { j = SpottingDistance; }
                             break;
                     case DirectionMoved.DOWN:
-                        if (isThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1) != null)
+                        if (IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1) != null)
                         {
-                            ThePlayer = isThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1);
+                            ThePlayer = IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1);
                             return true;
                         }
                         if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x + i - 2, characterLocation.y - j - 1)) { j = SpottingDistance; }
                         break;
                     case DirectionMoved.LEFT:
-                        if (isThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2) != null)
+                        if (IsThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2) != null)
                         {
-                            ThePlayer = isThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2);
+                            ThePlayer = IsThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2);
                             return true;
                         }
                         if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x - j - 1, characterLocation.y + i - 2)) { j = SpottingDistance; }
                         break;
                     case DirectionMoved.RIGHT:
-                        if (isThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2) != null)
+                        if (IsThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2) != null)
                         {
-                            ThePlayer = isThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2);
+                            ThePlayer = IsThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2);
                             return true;
                         }
                         if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x + j + 1, characterLocation.y + i - 2)) { j = SpottingDistance; }
@@ -345,34 +345,34 @@ public class MonsterMovement : SpriteMovement
                 switch (facedDirection)
                 {
                     case DirectionMoved.UP:
-                        if (isThereAPlayer(characterLocation.x + i - 2, characterLocation.y + j + 1) != null)
+                        if (IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y + j + 1) != null)
                         {
-                            ThePlayer = isThereAPlayer(characterLocation.x + i - 2, characterLocation.y + j + 1);
+                            ThePlayer = IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y + j + 1);
                             return true;
                         }
                         //if there is not a player found AND spot is not passible, set j=SpottingDistance as a way of skipping further checks along that line. 
                         if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x + i - 2, characterLocation.y + j + 1)) { j = SpottingDistance; }
                         break;
                     case DirectionMoved.DOWN:
-                        if (isThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1) != null)
+                        if (IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1) != null)
                         {
-                            ThePlayer = isThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1);
+                            ThePlayer = IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1);
                             return true;
                         }
                         if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x + i - 2, characterLocation.y - j - 1)) { j = SpottingDistance; }
                         break;
                     case DirectionMoved.LEFT:
-                        if (isThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2) != null)
+                        if (IsThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2) != null)
                         {
-                            ThePlayer = isThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2);
+                            ThePlayer = IsThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2);
                             return true;
                         }
                         if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x - j - 1, characterLocation.y + i - 2)) { j = SpottingDistance; }
                         break;
                     case DirectionMoved.RIGHT:
-                        if (isThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2) != null)
+                        if (IsThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2) != null)
                         {
-                            ThePlayer = isThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2);
+                            ThePlayer = IsThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2);
                             return true;
                         }
                         if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x + j + 1, characterLocation.y + i - 2)) { j = SpottingDistance; }

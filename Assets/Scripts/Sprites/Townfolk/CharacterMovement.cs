@@ -9,9 +9,6 @@ public class CharacterMovement : SpriteMovement
     private static float DASH_LENGTH = 26;
 
     public CharacterStats playerStats;
-    private Vector2Int jumpTarget;
-    private float windJumpSpeed=0;
-    public static bool windJump;
     private float hasteSpeed = 2;
     private float stealthspeed = .75f;
     private float dashSpeed = 4;
@@ -36,106 +33,40 @@ public class CharacterMovement : SpriteMovement
     // Update is called once per frame
     void Update()
     {
-        //Footstep Sound
-        int currentFrame = Mathf.RoundToInt(sRender.material.GetFloat("_Frame"));
-        if (previousFrame != currentFrame && (currentFrame % 7 == 1 || currentFrame % 7 == 4))
-        {
-            int stepSound = UnityEngine.Random.Range(0, 2)+1; //Step sounds are no 0-indexed.
-            if (previousStepSound==1||(previousStepSound==2&&stepSound==2))
-            {
-                stepSound++;
-            }
-            string materialNameStart = "Stone";
-            if (groundMaterialGrid)
-            {
-                materialNameStart = groundMaterialGrid.grid[characterLocation.x, characterLocation.y].GetName();
-            }
-            SoundManager.Instance.PlaySound("Footsteps/"+materialNameStart+stepSound, 1f);
-            previousStepSound = stepSound;
-        }
-
-
-
-
-        previousFrame = currentFrame;
-
         if (GameState.isInBattle || GameState.fullPause || GameData.Instance.isInDialogue)
         {
             return;
         }
-        if (!currentlyMoving && waitTimer >= 0)
+
+        HandlePlayerFootstepSounds();
+        if (HandlePauseBeforeDash()) {return;}
+        AdjustSpeedAndReduceManaIfHasted();
+        AdjustSpeedAndReduceManaIfStealthed();
+
+        if (!currentlyMoving && timeLeftInForcedJump > 0)
         {
-            if (GameData.Instance.dashing)
-            {
-                SetShieldGraphic(waitTimer, true);
-            }
-            waitTimer -= Time.deltaTime;
-            return;
-        }
-
-
-        if (GameData.Instance.hasted) {
-            if (GameData.Instance.timerTrigger) {
-                if (playerStats.mana >= 12)
-                {
-                    playerStats.mana -= 12;
-                    tempMovementSpeed = MoveSpeed * hasteSpeed;
-                    tempFramesPerSecond = framesPerSecond * hasteSpeed;
-                }
-                else {
-                    TurnHasteOff();
-                    tempMovementSpeed = MoveSpeed;
-                    tempFramesPerSecond = framesPerSecond;
-                }
-            }
-        }
-        else
-        {
-        }
-
-        if (GameData.Instance.stealthed) {
-
-            if (GameData.Instance.timerTrigger)
-            {
-                if (playerStats.mana >= 4)
-                {
-                    playerStats.mana -= 4;
-                    tempMovementSpeed = MoveSpeed * stealthspeed;
-                    tempFramesPerSecond = framesPerSecond * stealthspeed;
-                }
-                else
-                {
-                    SoundManager.Instance.PlaySound("StealthOff", 1f);
-                    GameData.Instance.stealthed = false;
-                    tempMovementSpeed = MoveSpeed;
-                    tempFramesPerSecond = framesPerSecond;
-                }
-            }
-        }
-
-        if (!currentlyMoving && windJump) {
-            bool finishedMoving = JumpToTarget(windJumpSpeed, jumpTarget);
-            if (finishedMoving)
+            JumpToTarget();
+            bool finishedForcedJump = timeLeftInForcedJump <= 0;
+            if (finishedForcedJump)
             {
                 currentlyMoving = false;
-                windJump = false;
                 TiePositionToGrid();
                 tempFramesPerSecond = framesPerSecond;
-                CheckWindJumpStatus();
+                CheckIfStandingOnWindJumper();
             }
         }
-    
 
-        if (!currentlyMoving && (jumping|| jumpQueued))
+
+        if (!currentlyMoving && (jumping || jumpQueued))
         {
-            if (jumpQueued &&!jumping)
+            if (jumpQueued && !jumping)
             {
                 jumping = ActivateJump();
                 jumpQueued = false;
             }
 
             if (jumping)
-            { 
+            {
                 bool finishedMoving = ContinueJumping();
                 if (finishedMoving)
                 {
@@ -145,7 +76,7 @@ public class CharacterMovement : SpriteMovement
                     //   SetCurrentLocation();
                     TiePositionToGrid();
                     CheckExitStatus();
-                    CheckWindJumpStatus();
+                    CheckIfStandingOnWindJumper();
                     CheckGabStatus();
                 }
             }
@@ -170,7 +101,7 @@ public class CharacterMovement : SpriteMovement
                     TiePositionToGrid();
                     GameData.Instance.dashing = false;
                     sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                    CheckWindJumpStatus();
+                    CheckIfStandingOnWindJumper();
                     CheckExitStatus();
                     CheckGabStatus();
                     tempFramesPerSecond = framesPerSecond;
@@ -182,7 +113,8 @@ public class CharacterMovement : SpriteMovement
                     {
                         GameData.Instance.dashing = false;
                     }
-                    else {
+                    else
+                    {
                         SetShieldGraphic(totalDashed, false);
                         SetNextDashLocation();
                     }
@@ -190,10 +122,11 @@ public class CharacterMovement : SpriteMovement
                 }
             }
 
-            if (continueDashing) {
+            if (continueDashing)
+            {
                 if (ContinueMoving() == 0)
                 {
-                    continueDashing = false; 
+                    continueDashing = false;
                 }
             }
 
@@ -209,20 +142,101 @@ public class CharacterMovement : SpriteMovement
                 currentlyMoving = false;
                 TiePositionToGrid();
                 //  SetCurrentLocation();
-                CheckWindJumpStatus();
+                CheckIfStandingOnWindJumper();
                 CheckExitStatus();
                 CheckGabStatus();
             }
         }
 
-        sRender.material.SetInt("_IsSmoke", (GameData.Instance.hasted?1:0));
-        if (GameData.Instance.hasted&& !smoke.isPlaying)
+        sRender.material.SetInt("_IsSmoke", (GameData.Instance.hasted ? 1 : 0));
+        if (GameData.Instance.hasted && !smoke.isPlaying)
         {
             smoke.Play();
             smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
         }
-        sRender.material.SetInt("_IsStealthed", (GameData.Instance.stealthed?1:0));
+        sRender.material.SetInt("_IsStealthed", (GameData.Instance.stealthed ? 1 : 0));
 
+    }
+
+    private void AdjustSpeedAndReduceManaIfStealthed()
+    {
+        if (GameData.Instance.stealthed)
+        {
+
+            if (GameData.Instance.timerTrigger)
+            {
+                if (playerStats.mana >= 4)
+                {
+                    playerStats.mana -= 4;
+                    tempMovementSpeed = MoveSpeed * stealthspeed;
+                    tempFramesPerSecond = framesPerSecond * stealthspeed;
+                }
+                else
+                {
+                    SoundManager.Instance.PlaySound("StealthOff", 1f);
+                    GameData.Instance.stealthed = false;
+                    tempMovementSpeed = MoveSpeed;
+                    tempFramesPerSecond = framesPerSecond;
+                }
+            }
+        }
+    }
+
+    private void AdjustSpeedAndReduceManaIfHasted()
+    {
+        if (GameData.Instance.hasted)
+        {
+            if (GameData.Instance.timerTrigger)
+            {
+                if (playerStats.mana >= 12)
+                {
+                    playerStats.mana -= 12;
+                    tempMovementSpeed = MoveSpeed * hasteSpeed;
+                    tempFramesPerSecond = framesPerSecond * hasteSpeed;
+                }
+                else
+                {
+                    TurnHasteOff();
+                    tempMovementSpeed = MoveSpeed;
+                    tempFramesPerSecond = framesPerSecond;
+                }
+            }
+        }
+    }
+
+    private bool HandlePauseBeforeDash()
+    {
+        if (!currentlyMoving && waitTimer >= 0)
+        {
+            if (GameData.Instance.dashing)
+            {
+                SetShieldGraphic(waitTimer, true);
+            }
+            waitTimer -= Time.deltaTime;
+            return true;
+        }
+        return false;
+    }
+
+    private void HandlePlayerFootstepSounds()
+    {
+        int currentFrame = Mathf.RoundToInt(sRender.material.GetFloat("_Frame"));
+        if (previousFrame != currentFrame && (currentFrame % 7 == 1 || currentFrame % 7 == 4))
+        {
+            int stepSound = UnityEngine.Random.Range(0, 2) + 1; //Step sounds are no 0-indexed.
+            if (previousStepSound == 1 || (previousStepSound == 2 && stepSound == 2))
+            {
+                stepSound++;
+            }
+            string materialNameStart = "Stone";
+            if (groundMaterialGrid)
+            {
+                materialNameStart = groundMaterialGrid.grid[characterLocation.x, characterLocation.y].GetName();
+            }
+            SoundManager.Instance.PlaySound("Footsteps/" + materialNameStart + stepSound, 1f);
+            previousStepSound = stepSound;
+        }
+        previousFrame = currentFrame;
     }
 
     internal void TurnStealthOff()
@@ -312,7 +326,7 @@ public class CharacterMovement : SpriteMovement
         playerStats.powersGained = 4;
     }
 
-    private void CheckWindJumpStatus()
+    private void CheckIfStandingOnWindJumper()
     {
         GameObject windJumpLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
         if (windJumpLocation != null)
@@ -320,13 +334,13 @@ public class CharacterMovement : SpriteMovement
             if (windJumpLocation.GetComponent<DoodadData>().isWindShifter)
             {
                 SoundManager.Instance.PlaySound("AirGust",1);
+                jumpStartPos = transform.position;
                 jumpTarget = windJumpLocation.GetComponent<WindJumpController>().jumpDestOffset;
-                
                 SetNextLocationActual(characterLocation.x+jumpTarget.x, characterLocation.y +jumpTarget.y);
-                windJumpSpeed= windJumpLocation.GetComponent<WindJumpController>().jumpSpeedMultiplier;
-                windJump = true;
+                totalTimeInForcedJump = windJumpLocation.GetComponent<WindJumpController>().timeItTakesToJump;
+                forcedJumpHeight = windJumpLocation.GetComponent<WindJumpController>().jumpHeight;
+                timeLeftInForcedJump = totalTimeInForcedJump;
                 currentlyMoving = false;
-                
             }
         }
     }
@@ -344,7 +358,7 @@ public class CharacterMovement : SpriteMovement
             SetLookDirection();
         }
 
-        if (!currentlyMoving && !jumping && !GameData.Instance.dashing && !jumpQueued&&!windJump )
+        if (!currentlyMoving && !jumping && !GameData.Instance.dashing && !jumpQueued&&(timeLeftInForcedJump<=0))
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
@@ -368,7 +382,7 @@ public class CharacterMovement : SpriteMovement
             else { SetLookDirection(); }
 
             //Check if a monster is in the next location, and initiate combat if so
-            GameObject EnemyToFight = isThereAMonster();
+            GameObject EnemyToFight = IsThereAMonster();
             if (EnemyToFight != null && !GameData.Instance.dashing)
             {
                 Combat.InitiateFight(this.gameObject, EnemyToFight);

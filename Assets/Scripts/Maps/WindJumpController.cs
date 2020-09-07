@@ -7,8 +7,9 @@ public class WindJumpController : DoodadData
 {
     // Variables used in Character Movement script
     public Vector2Int jumpDestOffset;
-    public float jumpSpeedMultiplier = 2;
+    public float timeItTakesToJump = 2;
     public bool hiddenJumpter = false;
+    public float jumpHeight = 1;
 
     public void EnableWindJumper() {
         hiddenJumpter = false;
