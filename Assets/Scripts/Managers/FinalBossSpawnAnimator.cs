@@ -52,7 +52,7 @@ public class FinalBossSpawnAnimator : BossSpawnAnimator
             {
                 currentFrame += 1;
                 if (currentFrame == 3)
-                { SoundManager.Instance.PlaySound("SlimeBossSpawn", 1); }
+                { SoundManager.Instance.PlaySound("BossDrop", 1); }
                 if (currentFrame >= totalInSkyFrames)
                 {
                     //Instantiate(bossSpawnedPrefab, this.transform.parent.position, Quaternion.identity);
