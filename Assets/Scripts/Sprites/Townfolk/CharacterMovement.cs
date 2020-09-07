@@ -84,16 +84,16 @@ public class CharacterMovement : SpriteMovement
 
         if (!currentlyMoving && GameData.Instance.dashing || continueDashing)
         {
-            if (waitTimer >= 0)
-            {
-                Debug.Log("HI!! :D I don't think this is ever called. If you see me, come check out CharacterMovement.cs to see what changed!");
-                waitTimer -= Time.deltaTime;
-                SetShieldGraphic(waitTimer, true);
-                return;
-            }
+
             tempMovementSpeed = MoveSpeed * dashSpeed;
             tempFramesPerSecond = framesPerSecond * dashSpeed;
             totalDashed += Time.deltaTime * tempMovementSpeed;
+
+            if (!IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y) && IsThereAMonster()==null) {
+                totalDashed += Time.deltaTime * tempMovementSpeed;//Effectivly cuts penalty for dashing in half when running 
+                //into monsters, but not when running into walls/pits/boulders, ect
+            }
+
             if (!continueDashing)
             {
                 if (totalDashed >= DASH_LENGTH)
