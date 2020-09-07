@@ -21,7 +21,7 @@ public class ChooseItemUI : MonoBehaviour
     private bool pickingItem;
     private CharacterStats playerData;
     private InventoryItem rolledItem;
-    private float delayBeforePressing = .3f;
+    private float delayBeforePressing = .35f;
 
     public int selectedButton = -1;
     public Sprite equipOn;
@@ -45,24 +45,24 @@ public class ChooseItemUI : MonoBehaviour
     void Update()
     {
         if (GameState.fullPause || !pickingItem) { return; }
-        delayBeforePressing -= Time.deltaTime;
+        //delayBeforePressing -= Time.deltaTime;
 
         if (Input.GetButtonDown("Submit"))
         {
             ChooseItem();
-            delayBeforePressing = .3f; //So that the next item also has a delay
+            //delayBeforePressing = .35f; //So that the next item also has a delay
         }
 
-        if (Input.GetAxis("Horizontal")>.05f )
+        if (Input.GetButtonDown("SelectRight") )
         {
-            if (delayBeforePressing < 0) {
+           // if (delayBeforePressing < 0) {
                 //optionSelected = 0;
                 SelectButton(0);
-            }
+
 
         }
 
-        if (Input.GetAxis("Horizontal") < -.05f)
+        if (Input.GetButtonDown("SelectLeft"))
         {
             //optionSelected = 1;
             SelectButton(1);
