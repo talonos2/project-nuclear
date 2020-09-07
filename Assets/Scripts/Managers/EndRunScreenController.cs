@@ -24,9 +24,13 @@ public class EndRunScreenController : MonoBehaviour
     {
         SoundManager.Instance.ChangeEnvironmentVolume(0);
         timeBeforeAnimationStartsStatic = timeBeforeAnimationStarts;
-        bestWeapon.SetItem(GameData.bestWeaponFound);
-        bestArmor.SetItem(GameData.bestArmorFound);
-        bestAccessory.SetItem(GameData.bestAccessoryFound);
+        bestWeapon.SetItem(GameData.Instance.bestWeaponFound);
+        bestArmor.SetItem(GameData.Instance.bestArmorFound);
+        bestAccessory.SetItem(GameData.Instance.bestAccessoryFound);
+        GameData.Instance.bestAccessoryFound = null;
+        GameData.Instance.bestArmorFound = null;
+        GameData.Instance.bestWeaponFound = null;
+
     }
 
     // Update is called once per frame

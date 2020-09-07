@@ -292,7 +292,7 @@ public class MonsterMovement : SpriteMovement
                             return true;
                         }
                         //if there is not a player found AND spot is not passible, set j=SpottingDistance as a way of skipping further checks along that line. 
-                        if (!IsMoveLocationMonsterChaseable(characterLocation.x + i - 2, characterLocation.y + j + 1)) { j = SpottingDistance; }
+                        if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x + i - 2, characterLocation.y + j + 1)) { j = SpottingDistance; }
                             break;
                     case DirectionMoved.DOWN:
                         if (IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1) != null)
@@ -300,7 +300,7 @@ public class MonsterMovement : SpriteMovement
                             ThePlayer = IsThereAPlayer(characterLocation.x + i - 2, characterLocation.y - j - 1);
                             return true;
                         }
-                        if (!IsMoveLocationMonsterChaseable(characterLocation.x + i - 2, characterLocation.y - j - 1)) { j = SpottingDistance; }
+                        if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x + i - 2, characterLocation.y - j - 1)) { j = SpottingDistance; }
                         break;
                     case DirectionMoved.LEFT:
                         if (IsThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2) != null)
@@ -308,7 +308,7 @@ public class MonsterMovement : SpriteMovement
                             ThePlayer = IsThereAPlayer(characterLocation.x - j - 1, characterLocation.y + i - 2);
                             return true;
                         }
-                        if (!IsMoveLocationMonsterChaseable(characterLocation.x - j - 1, characterLocation.y + i - 2)) { j = SpottingDistance; }
+                        if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x - j - 1, characterLocation.y + i - 2)) { j = SpottingDistance; }
                         break;
                     case DirectionMoved.RIGHT:
                         if (IsThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2) != null)
@@ -316,7 +316,7 @@ public class MonsterMovement : SpriteMovement
                             ThePlayer = IsThereAPlayer(characterLocation.x + j + 1, characterLocation.y + i - 2);
                             return true;
                         }
-                        if (!IsMoveLocationMonsterChaseable(characterLocation.x + j + 1, characterLocation.y + i - 2)) { j = SpottingDistance; }
+                        if (!IsMoveLocationFlyingMonsterChaseable(characterLocation.x + j + 1, characterLocation.y + i - 2)) { j = SpottingDistance; }
                         break;
                 }
             }
