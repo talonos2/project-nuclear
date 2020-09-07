@@ -248,9 +248,9 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (i)
         {
-            if (!GameData.bestWeaponFound || GameData.bestWeaponFound < i)
+            if (!GameData.Instance.bestWeaponFound || GameData.Instance.bestWeaponFound < i)
             {
-                GameData.bestWeaponFound = i;
+                GameData.Instance.bestWeaponFound = i;
             }
 
 
@@ -265,9 +265,9 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (i)
         {
-            if (!GameData.bestArmorFound || (GameData.bestArmorFound < i))
+            if (!GameData.Instance.bestArmorFound || (GameData.Instance.bestArmorFound < i))
             {
-                GameData.bestArmorFound = i;
+                GameData.Instance.bestArmorFound = i;
             }
             if (playerData.armor.name != "Warm Jacket")
                 GameData.Instance.townArmor.Add(i);
@@ -280,11 +280,11 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (i)
         {
-            if (playerData.accessory.name != "No Accessory Equipped")
+            if (i.name != "No Accessory Equipped")
             {
-                if (!GameData.bestAccessoryFound || (GameData.bestAccessoryFound < i))
+                if (!GameData.Instance.bestAccessoryFound || (GameData.Instance.bestAccessoryFound < i))
                 {
-                    GameData.bestAccessoryFound = i;
+                    GameData.Instance.bestAccessoryFound = i;
                 }
 
                 GameData.Instance.townAccessories.Add(i);
