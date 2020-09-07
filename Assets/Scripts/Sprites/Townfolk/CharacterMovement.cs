@@ -39,58 +39,42 @@ public class CharacterMovement : SpriteMovement
         }
 
         HandlePlayerFootstepSounds();
-        if (HandlePauseBeforeDash()) {return;}
+        if (HandlePauseBeforeDash()) { return; }
         AdjustSpeedAndReduceManaIfHasted();
         AdjustSpeedAndReduceManaIfStealthed();
+        HandleCharacterForcedJump();
+        HandleCharacterJumpViaPower();
+        HandleIceDashContinue();
 
-        if (!currentlyMoving && timeLeftInForcedJump > 0)
+        //If in the process of moving, keep moving and do nothing else
+        if (currentlyMoving)
         {
-            JumpToTarget();
-            bool finishedForcedJump = timeLeftInForcedJump <= 0;
-            if (finishedForcedJump)
+            float finishedMoving = ContinueMoving();
+            if (finishedMoving == 0)
             {
                 currentlyMoving = false;
                 TiePositionToGrid();
-                tempFramesPerSecond = framesPerSecond;
+                //  SetCurrentLocation();
                 CheckIfStandingOnWindJumper();
+                CheckPostMoveExitStatus();
+                CheckGabStatus();
             }
         }
 
-
-        if (!currentlyMoving && (jumping || jumpQueued))
+        sRender.material.SetInt("_IsSmoke", (GameData.Instance.hasted ? 1 : 0));
+        if (GameData.Instance.hasted && !smoke.isPlaying)
         {
-            if (jumpQueued && !jumping)
-            {
-                jumping = ActivateJump();
-                jumpQueued = false;
-            }
-
-            if (jumping)
-            {
-                bool finishedMoving = ContinueJumping();
-                if (finishedMoving)
-                {
-                    currentlyMoving = false;
-                    jumping = false;
-                    tempFramesPerSecond = framesPerSecond;
-                    //   SetCurrentLocation();
-                    TiePositionToGrid();
-                    CheckExitStatus();
-                    CheckIfStandingOnWindJumper();
-                    CheckGabStatus();
-                }
-            }
+            smoke.Play();
+            smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
         }
+        sRender.material.SetInt("_IsStealthed", (GameData.Instance.stealthed ? 1 : 0));
 
-        if (!currentlyMoving && GameData.Instance.dashing || continueDashing)
+    }
+
+    private void HandleIceDashContinue()
+    {
+        if ((!currentlyMoving && GameData.Instance.dashing) || continueDashing)
         {
-            if (waitTimer >= 0)
-            {
-                Debug.Log("HI!! :D I don't think this is ever called. If you see me, come check out CharacterMovement.cs to see what changed!");
-                waitTimer -= Time.deltaTime;
-                SetShieldGraphic(waitTimer, true);
-                return;
-            }
             tempMovementSpeed = MoveSpeed * dashSpeed;
             tempFramesPerSecond = framesPerSecond * dashSpeed;
             totalDashed += Time.deltaTime * tempMovementSpeed;
@@ -102,14 +86,14 @@ public class CharacterMovement : SpriteMovement
                     GameData.Instance.dashing = false;
                     sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                     CheckIfStandingOnWindJumper();
-                    CheckExitStatus();
+                    CheckPostMoveExitStatus();
                     CheckGabStatus();
                     tempFramesPerSecond = framesPerSecond;
                     tempMovementSpeed = MoveSpeed;
                 }
                 else
                 {
-                    if (CheckExitStatus())
+                    if (CheckPostMoveExitStatus())
                     {
                         GameData.Instance.dashing = false;
                     }
@@ -131,31 +115,50 @@ public class CharacterMovement : SpriteMovement
             }
 
         }
+    }
 
-
-        //If in the process of moving, keep moving and do nothing else
-        if (currentlyMoving)
+    private void HandleCharacterJumpViaPower()
+    {
+        if (!currentlyMoving && (jumping || jumpQueued))
         {
-            float finishedMoving = ContinueMoving();
-            if (finishedMoving == 0)
+            if (jumpQueued && !jumping)
+            {
+                jumping = ActivateJump();
+                jumpQueued = false;
+            }
+
+            if (jumping)
+            {
+                bool finishedMoving = ContinueJumping();
+                if (finishedMoving)
+                {
+                    currentlyMoving = false;
+                    jumping = false;
+                    tempFramesPerSecond = framesPerSecond;
+                    //   SetCurrentLocation();
+                    TiePositionToGrid();
+                    CheckPostMoveExitStatus();
+                    CheckIfStandingOnWindJumper();
+                    CheckGabStatus();
+                }
+            }
+        }
+    }
+
+    private void HandleCharacterForcedJump()
+    {
+        if (!currentlyMoving && timeLeftInForcedJump > 0)
+        {
+            JumpToTarget();
+            bool finishedForcedJump = timeLeftInForcedJump <= 0;
+            if (finishedForcedJump)
             {
                 currentlyMoving = false;
                 TiePositionToGrid();
-                //  SetCurrentLocation();
+                tempFramesPerSecond = framesPerSecond;
                 CheckIfStandingOnWindJumper();
-                CheckExitStatus();
-                CheckGabStatus();
             }
         }
-
-        sRender.material.SetInt("_IsSmoke", (GameData.Instance.hasted ? 1 : 0));
-        if (GameData.Instance.hasted && !smoke.isPlaying)
-        {
-            smoke.Play();
-            smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
-        }
-        sRender.material.SetInt("_IsStealthed", (GameData.Instance.stealthed ? 1 : 0));
-
     }
 
     private void AdjustSpeedAndReduceManaIfStealthed()
@@ -639,7 +642,6 @@ public class CharacterMovement : SpriteMovement
         }
     }
 
-
     internal void PowerToggleRightKeyReceived()
     {
 
@@ -685,7 +687,7 @@ public class CharacterMovement : SpriteMovement
         }
     }
 
-    private bool CheckExitStatus()
+    private bool CheckPostMoveExitStatus()
     {
         GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
         if (exitLocation != null)
@@ -697,7 +699,6 @@ public class CharacterMovement : SpriteMovement
             }
         }
         return false;
-
     }
 
     private void CheckGabStatus()
@@ -714,7 +715,6 @@ public class CharacterMovement : SpriteMovement
         }
 
     }
-
 
     private int GetInputDirection()
     {
@@ -746,24 +746,7 @@ public class CharacterMovement : SpriteMovement
 
     private float ContinueMoving()
     {
-        float finishedMoving=0;
-        if (facedDirection == DirectionMoved.UP)
-        {
-            finishedMoving = MoveUp(tempMovementSpeed);
-        }
-        if (facedDirection == DirectionMoved.DOWN)
-        {
-            finishedMoving = MoveDown(tempMovementSpeed);
-        }
-        if (facedDirection == DirectionMoved.LEFT)
-        {
-            finishedMoving = MoveLeft(tempMovementSpeed);
-        }
-        if (facedDirection == DirectionMoved.RIGHT)
-        {
-            finishedMoving = MoveRight(tempMovementSpeed);
-        }
-        return finishedMoving;
+        return MoveDirection(tempMovementSpeed, facedDirection);
     }
 
     private bool ContinueJumping()

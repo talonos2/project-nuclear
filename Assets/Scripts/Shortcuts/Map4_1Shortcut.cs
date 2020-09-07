@@ -21,7 +21,7 @@ public class Map4_1Shortcut : MonoBehaviour
     {
         foreach (GameObject monster in monstersToDestroy)
         {
-            monster.GetComponent<MonsterMovement>().setNewMovespeed (monster.GetComponent<MonsterMovement>().MoveSpeed * 2);
+            monster.GetComponent<MonsterMovement>().SetNewMovespeed (monster.GetComponent<MonsterMovement>().MoveSpeed * 2);
             monster.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
         }
     }

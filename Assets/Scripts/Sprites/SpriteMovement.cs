@@ -95,32 +95,15 @@ public class SpriteMovement : EntityData
 
     protected float MoveToNextSquare()
     {
-        float finishedMoving = 0;
-        if (facedDirection == DirectionMoved.LEFT)
-        {
-            finishedMoving = MoveLeft(tempMovementSpeed);
-        }
-        if (facedDirection == DirectionMoved.RIGHT)
-        {
-            finishedMoving = MoveRight(tempMovementSpeed);
-        }
-        if (facedDirection == DirectionMoved.UP)
-        {
-            finishedMoving = MoveUp(tempMovementSpeed);
-        }
-        if (facedDirection == DirectionMoved.DOWN)
-        {
-            finishedMoving = MoveDown(tempMovementSpeed);
-        }
-        return finishedMoving;
+        return MoveDirection(tempMovementSpeed, facedDirection);
     }
 
-    public void setNewMovespeed(float newSpeed)
+    public void SetNewMovespeed(float newSpeed)
     {
         tempMovementSpeed = newSpeed;
     }
 
-    public void setOldMovespeed()
+    public void SetOldMovespeed()
     {
         tempMovementSpeed = MoveSpeed;
     }
@@ -454,31 +437,6 @@ public class SpriteMovement : EntityData
         return false;
     }
 
-    public float MoveDown(float tempMovementSpeed)
-    {
-
-        float DistanceToMove = Time.deltaTime * tempMovementSpeed;
-        movedSoFar += DistanceToMove;
-
-        AnimateMove(DirectionMoved.DOWN);
-
-
-        if (movedSoFar > 1)
-        {
-            DistanceToMove = DistanceToMove - (movedSoFar - 1);
-            movedSoFar = 0;
-        }
-        Vector3 getMotion = new Vector3(0.0f, -DistanceToMove, 0.0f);
-        transform.position = transform.position + getMotion;
-        return movedSoFar;
-    }
-
-    public void FaceDown()
-    {
-        sRender.material.SetFloat("_Frame", 0 + FLOATING_POINT_FIX);
-        animationStep = 0;
-    }
-
     protected void AnimateMove(DirectionMoved dir)
     {
         bool changed = false;
@@ -511,28 +469,22 @@ public class SpriteMovement : EntityData
         return 1;
     }
 
-    public float MoveUp(float tempMovementSpeed)
+    public float MoveDirection(float tempMovementSpeed, DirectionMoved dir)
     {
-        float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * tempMovementSpeed;
+        float DistanceToMove = Time.deltaTime * tempMovementSpeed;
         movedSoFar += DistanceToMove;
 
-        AnimateMove(DirectionMoved.UP);
+        AnimateMove(dir);
 
         if (movedSoFar > 1)
         {
             DistanceToMove = DistanceToMove - (movedSoFar - 1);
             movedSoFar = 0;
         }
-        Vector3 getMotion = new Vector3(0.0f, DistanceToMove, 0.0f);
+
+        Vector3 getMotion = DistanceToMove * dir.GetDirectionVector();
         transform.position = transform.position + getMotion;
         return movedSoFar;
-    }
-
-    public void FaceUp()
-    {
-        sRender.material.SetFloat("_Frame", 21 + FLOATING_POINT_FIX);
-        animationStep = 0;
     }
 
     public bool JumpToTarget()
@@ -555,62 +507,9 @@ public class SpriteMovement : EntityData
         return false;
     }
 
-    public float MoveLeft(float tempMovementSpeed)
-    {
-        float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * tempMovementSpeed;
-        movedSoFar += DistanceToMove;
-
-        AnimateMove(DirectionMoved.LEFT);
-        if (movedSoFar > 1)
-        {
-            DistanceToMove = DistanceToMove - (movedSoFar - 1);
-            movedSoFar = 0;
-        }
-        Vector3 getMotion = new Vector3(-DistanceToMove, 0.0f, 0.0f);
-        transform.position = transform.position + getMotion;
-
-        return movedSoFar;
-    }
-
-    public void FaceLeft()
-    {
-        sRender.material.SetFloat("_Frame", 7 + FLOATING_POINT_FIX);
-        animationStep = 0;
-    }
-    public float MoveRight(float tempMovementSpeed)
-    {
-        float DistanceToMove = 1;
-        DistanceToMove = Time.deltaTime * tempMovementSpeed;
-        movedSoFar += DistanceToMove;
-        AnimateMove(DirectionMoved.RIGHT);
-        if (movedSoFar > 1)
-        {
-            DistanceToMove = DistanceToMove - (movedSoFar - 1);
-            movedSoFar = 0;
-        }
-        Vector3 getMotion = new Vector3(DistanceToMove, 0.0f, 0.0f);
-        transform.position = transform.position + getMotion;
-
-        return movedSoFar;
-    }
-
-    public void FaceRight()
-    {
-        sRender.material.SetFloat("_Frame", 14 + FLOATING_POINT_FIX);
-        animationStep = 0;
-    }
-
     public void SetLookDirection()
     {
-        if (facedDirection == DirectionMoved.DOWN)
-            FaceDown();
-        if (facedDirection == DirectionMoved.UP)
-            FaceUp();
-        if (facedDirection == DirectionMoved.LEFT)
-            FaceLeft();
-        if (facedDirection == DirectionMoved.RIGHT)
-            FaceRight();
+        sRender.material.SetFloat("_Frame", (7*facedDirection.GetHeroSpriteOffeset()) + FLOATING_POINT_FIX);
     }
 
     protected void TiePositionToGrid()
@@ -680,11 +579,5 @@ public static class DirectionExtensions
                 return 0;
         }
         return 0;
-    }
-
-
-    public static int GiveMeOne(this Vector3 foo)
-    {
-        return 1;
     }
 }
