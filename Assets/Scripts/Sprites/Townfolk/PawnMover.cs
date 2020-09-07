@@ -105,24 +105,7 @@ public class PawnMover : SpriteMovement
 
     private float ContinueMoving()
     {
-        float finishedMoving = 0;
-        if (facedDirection == DirectionMoved.UP)
-        {
-            finishedMoving = MoveUp(MoveSpeed);
-        }
-        if (facedDirection == DirectionMoved.DOWN)
-        {
-            finishedMoving = MoveDown(MoveSpeed);
-        }
-        if (facedDirection == DirectionMoved.LEFT)
-        {
-            finishedMoving = MoveLeft(MoveSpeed);
-        }
-        if (facedDirection == DirectionMoved.RIGHT)
-        {
-            finishedMoving = MoveRight(MoveSpeed);
-        }
-        return finishedMoving;
+        return MoveDirection(MoveSpeed, facedDirection);
     }
 
     public void EnqueueMovement(String direction)
