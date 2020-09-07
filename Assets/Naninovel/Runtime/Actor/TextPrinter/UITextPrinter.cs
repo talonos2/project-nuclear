@@ -65,14 +65,13 @@ namespace Naninovel
             PrinterPanel = uiMngr.InstantiateUIPrefab(prefabResource.Object) as UITextPrinterPanel;
             PrinterPanel.transform.SetParent(Transform);
 
-            ResetText();
-
             await PrinterPanel.InitializeAsync();
 
             inputManager.Continue.AddObjectTrigger(PrinterPanel.ContinueInputTrigger);
             scriptPlayer.OnWaitingForInput += PrinterPanel.SetWaitForInputIndicatorVisible;
 
             SetAuthorId(null);
+            ResetText();
             IsVisible = false;
         }
 
