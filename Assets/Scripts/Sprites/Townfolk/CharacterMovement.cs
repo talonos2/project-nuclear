@@ -78,6 +78,13 @@ public class CharacterMovement : SpriteMovement
             tempMovementSpeed = MoveSpeed * dashSpeed;
             tempFramesPerSecond = framesPerSecond * dashSpeed;
             totalDashed += Time.deltaTime * tempMovementSpeed;
+
+            if (!IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y) && IsThereAMonster() == null)
+            {
+                totalDashed += Time.deltaTime * tempMovementSpeed;//Effectivly cuts penalty for dashing in half when running 
+                //into monsters, but not when running into walls/pits/boulders, ect
+            }
+
             if (!continueDashing)
             {
                 if (totalDashed >= DASH_LENGTH)
