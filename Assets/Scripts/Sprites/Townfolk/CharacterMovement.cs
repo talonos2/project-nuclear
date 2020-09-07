@@ -50,6 +50,7 @@ public class CharacterMovement : SpriteMovement
         if (currentlyMoving)
         {
             float finishedMoving = ContinueMoving();
+            CheckUpcomingExitStatus(characterNextLocation);
             if (finishedMoving == 0)
             {
                 currentlyMoving = false;
@@ -706,6 +707,31 @@ public class CharacterMovement : SpriteMovement
             }
         }
         return false;
+    }
+
+    private bool CheckUpcomingExitStatus(Vector2Int characterNextLocation)
+    {
+        GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterNextLocation.x, characterNextLocation.y];
+        if (exitLocation != null)
+        {
+            if (exitLocation.GetComponent<DoodadData>().isExit && characterCloseEnough(exitLocation, this.gameObject))
+            {
+                playerStats.PushCharacterData();
+                exitLocation.GetComponent<ExitController>().TransitionMap();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool characterCloseEnough(GameObject exitLocation, GameObject character)
+    {
+        float xdistance=exitLocation.transform.position.x-character.transform.position.x;
+        float ydistance = exitLocation.transform.position.y - character.transform.position.y;
+        float answer = (float)Math.Sqrt(xdistance * xdistance + ydistance * ydistance);
+        if (answer > .5) return false;
+        else return true;
+
     }
 
     private void CheckGabStatus()
