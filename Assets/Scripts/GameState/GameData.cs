@@ -197,7 +197,6 @@ public class GameData : Singleton<GameData>
     {
         pauseTimer = true;
         GameState.fullPause = true;
-        Debug.Log(GameState.isInBattle);
         GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().deactivatePowers();
         SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
         MusicManager.instance.TurnOffCombatMusic();
