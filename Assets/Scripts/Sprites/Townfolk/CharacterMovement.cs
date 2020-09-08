@@ -580,12 +580,15 @@ public class CharacterMovement : SpriteMovement
 
     internal void TurnHasteOff()
     {
-        GameData.Instance.hasted = false;
-        tempMovementSpeed = MoveSpeed;
-        tempFramesPerSecond = framesPerSecond;
-        SoundManager.Instance.PlaySound("HasteOff", 1f);
-        smoke.Stop();
-        smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
+        if (GameData.Instance.hasted)
+        {
+            GameData.Instance.hasted = false;
+            SoundManager.Instance.PlaySound("HasteOff", 1f);
+        }
+            tempMovementSpeed = MoveSpeed;
+            tempFramesPerSecond = framesPerSecond;
+            smoke.Stop();
+            smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
     internal void ActivateInvisibility()
