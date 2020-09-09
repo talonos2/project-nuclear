@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -456,6 +456,11 @@ PrefabInstance:
       propertyPath: particlePath.Array.data[3]
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
+        type: 3}
+      propertyPath: playParticlesOnSwitchUndo
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec8609d810b0de45948291888782910, type: 3}
 --- !u!1001 &25060404
@@ -633,6 +638,11 @@ PrefabInstance:
     - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
         type: 3}
       propertyPath: particlePath.Array.data[10]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
+        type: 3}
+      propertyPath: playParticlesOnSwitchUndo
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -959,6 +969,11 @@ PrefabInstance:
       propertyPath: times.Array.data[16]
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
+        type: 3}
+      propertyPath: playParticlesOnSwitchUndo
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec8609d810b0de45948291888782910, type: 3}
 --- !u!1001 &121241009
@@ -1273,6 +1288,11 @@ PrefabInstance:
       propertyPath: times.Array.data[5]
       value: 1.65
       objectReference: {fileID: 0}
+    - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
+        type: 3}
+      propertyPath: playParticlesOnSwitchUndo
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec8609d810b0de45948291888782910, type: 3}
 --- !u!1001 &139492226
@@ -1488,6 +1508,7 @@ MonoBehaviour:
   totalFrames: 9
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
   shortcutCutscene: {fileID: 1569308853}
 --- !u!1001 &186419002
 PrefabInstance:
@@ -2388,6 +2409,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5809469659354973922, guid: 1df4e2ced58d9af4fb9d5b667febd3c1,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1df4e2ced58d9af4fb9d5b667febd3c1, type: 3}
 --- !u!1 &421546547 stripped
@@ -2995,6 +3021,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7917211793286395627, guid: 6fc4a21d26910264797eb9a51acbf92d,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fc4a21d26910264797eb9a51acbf92d, type: 3}
 --- !u!1 &604184419 stripped
@@ -3492,6 +3523,11 @@ PrefabInstance:
       propertyPath: isPlatformTerrain
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5809469659354973922, guid: 1df4e2ced58d9af4fb9d5b667febd3c1,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6177650699421030874, guid: 1df4e2ced58d9af4fb9d5b667febd3c1,
         type: 3}
       propertyPath: m_Enabled
@@ -3571,6 +3607,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5809469659354973922, guid: 1df4e2ced58d9af4fb9d5b667febd3c1,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1df4e2ced58d9af4fb9d5b667febd3c1, type: 3}
@@ -4986,6 +5027,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5809469659354973922, guid: 1df4e2ced58d9af4fb9d5b667febd3c1,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1df4e2ced58d9af4fb9d5b667febd3c1, type: 3}
 --- !u!1 &1255939312 stripped
@@ -5065,6 +5111,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isPlatformTerrain
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7917211793286395627, guid: 6fc4a21d26910264797eb9a51acbf92d,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6177650699421030874, guid: 6fc4a21d26910264797eb9a51acbf92d,
         type: 3}
@@ -5350,6 +5401,11 @@ PrefabInstance:
       propertyPath: particlePath.Array.data[8]
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
+        type: 3}
+      propertyPath: playParticlesOnSwitchUndo
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec8609d810b0de45948291888782910, type: 3}
 --- !u!1001 &1348536440
@@ -5591,6 +5647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5809469659354973922, guid: 1df4e2ced58d9af4fb9d5b667febd3c1,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1df4e2ced58d9af4fb9d5b667febd3c1, type: 3}
@@ -6397,6 +6458,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7917211793286395627, guid: 6fc4a21d26910264797eb9a51acbf92d,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fc4a21d26910264797eb9a51acbf92d, type: 3}
 --- !u!1001 &1599966310
@@ -7040,17 +7106,22 @@ PrefabInstance:
     - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
         type: 3}
       propertyPath: times.Array.data[1]
-      value: 0.55
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
         type: 3}
       propertyPath: times.Array.data[2]
-      value: 0.65
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
         type: 3}
       propertyPath: times.Array.data[3]
-      value: 0.75
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586922833687720212, guid: dec8609d810b0de45948291888782910,
+        type: 3}
+      propertyPath: playParticlesOnSwitchUndo
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec8609d810b0de45948291888782910, type: 3}
@@ -8552,6 +8623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5809469659354973922, guid: 1df4e2ced58d9af4fb9d5b667febd3c1,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1df4e2ced58d9af4fb9d5b667febd3c1, type: 3}

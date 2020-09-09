@@ -31,6 +31,8 @@ public class SwitchEntityData : EntityData
     private static readonly float OFFSET_FIX = .00001f;
     private static readonly float TIME_PER_TICK_SOUND = .7f;
 
+    public bool playParticlesOnSwitchUndo;
+
 
     // Start is called before the first frame update
     protected void Start()
@@ -85,10 +87,6 @@ public class SwitchEntityData : EntityData
 
     public virtual void ToggleTiedObjects()
     {
-
-  
-
-        bool movedABridge = false;
         if (activeSwitch)
         {
             for (int x = 0; x < TiedEntities.Length; x++)
@@ -107,9 +105,7 @@ public class SwitchEntityData : EntityData
                 }
                 if (bridgeControlled != null)
                 {
-                    movedABridge = true;
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.HidePlatform(); }
-                    else { bridgeControlled.AddPlatform(); }
+                    bridgeControlled.SwapPlatformAfterTime(time);
                 }
                 if (windJumpControlled != null)
                 {
@@ -128,20 +124,23 @@ public class SwitchEntityData : EntityData
         }
         else
         {
-            foreach (GameObject tiedEntity in TiedEntities)
+            for (int x = 0; x < TiedEntities.Length; x++)
             {
+                GameObject tiedEntity = TiedEntities[x];
+                float time = 0;
+                if (playParticlesOnSwitchUndo)
+                {
+                    time = (times.Length > x ? times[x] : 0);
+                }
                 SpikeController spikeControlled = tiedEntity.GetComponent<SpikeController>();
                 BridgeController bridgeControlled = tiedEntity.GetComponent<BridgeController>();
                 if (spikeControlled != null)
                 {
-                    spikeControlled.isPassable = false;
-                    spikeControlled.RaiseSpikeAnimation();
+                    spikeControlled.CloseAfterTime(time);
                 }
                 if (bridgeControlled != null)
                 {
-                    movedABridge = true;
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.HidePlatform(); }
-                    else { bridgeControlled.AddPlatform(); }
+                    bridgeControlled.SwapPlatformAfterTime(time);
                 }
 
 
@@ -149,10 +148,13 @@ public class SwitchEntityData : EntityData
             activeSwitch = true;
             SwitchReverseAnimation();
 
-        }
-        if (movedABridge)
-        {
-            SoundManager.Instance.PlaySound("Environment/Bridge", 1);
+            if (playParticlesOnSwitchUndo)
+            {
+                SwitchTrailMover trail = GameObject.Instantiate<SwitchTrailMover>(mover);
+                trail.gameObject.transform.position = new Vector3(Mathf.RoundToInt(sRender.transform.position.x * 2f) / 2f, Mathf.RoundToInt(sRender.transform.position.y * 2f) / 2f, -.001f); ;
+                trail.InitStart();
+                trail.path = particlePath;
+            }
         }
     }
 

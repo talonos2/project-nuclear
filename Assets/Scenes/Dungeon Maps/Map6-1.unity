@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1615,17 +1615,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4463955122688461023, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4463955122688460992, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5515415379851588918, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -1638,11 +1643,6 @@ PrefabInstance:
     - target: {fileID: 5515415379851588917, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463955122688461023, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344176989764203060, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
@@ -3178,7 +3178,7 @@ PrefabInstance:
     - target: {fileID: 7020265778627501001, guid: a61269338a63a9d42820e35667b675e5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.17
+      value: -8.132
       objectReference: {fileID: 0}
     - target: {fileID: 7020265778627501001, guid: a61269338a63a9d42820e35667b675e5,
         type: 3}
@@ -6106,6 +6106,11 @@ PrefabInstance:
     - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: invisibleBridge
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: playsSoundOnPlatformAdd
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1569099945317364634, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
@@ -9245,7 +9250,7 @@ PrefabInstance:
     - target: {fileID: 7607908802619325897, guid: 03874daf25e4bfc4eb1472c51a7e34ae,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.838
+      value: -2.787
       objectReference: {fileID: 0}
     - target: {fileID: 7607908802619325897, guid: 03874daf25e4bfc4eb1472c51a7e34ae,
         type: 3}
@@ -15842,6 +15847,11 @@ PrefabInstance:
       propertyPath: tempBridge
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6115081063096965716, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
+        type: 3}
+      propertyPath: primShortcutBridge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1601452054967979184, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -20051,6 +20061,7 @@ MonoBehaviour:
   totalFrames: 5
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
   lightning: 0
   fire: 1
   earth: 0
@@ -20150,6 +20161,7 @@ MonoBehaviour:
   totalFrames: 5
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
   lightning: 0
   fire: 0
   earth: 1
@@ -20293,6 +20305,7 @@ MonoBehaviour:
   totalFrames: 5
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
   lightning: 0
   fire: 0
   earth: 0
@@ -20403,6 +20416,7 @@ MonoBehaviour:
   totalFrames: 5
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
   lightning: 1
   fire: 0
   earth: 0
@@ -20453,6 +20467,7 @@ MonoBehaviour:
   totalFrames: 5
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
 --- !u!114 &5586922833633007399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20486,6 +20501,7 @@ MonoBehaviour:
   totalFrames: 5
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
 --- !u!114 &5586922833794685603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20523,6 +20539,7 @@ MonoBehaviour:
   totalFrames: 5
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
 --- !u!114 &8507605489770229810
 MonoBehaviour:
   m_ObjectHideFlags: 0

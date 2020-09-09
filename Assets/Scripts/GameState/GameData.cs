@@ -58,6 +58,10 @@ public class GameData : Singleton<GameData>
     public List<Armor> townArmor = new List<Armor>();
     public List<Accessory> townAccessories = new List<Accessory>();
 
+    public Weapon bestWeaponFound;
+    public Armor bestArmorFound;
+    public Accessory bestAccessoryFound;
+
     public float[] bestTimes = new float[20];
     public float[] timesThisRun = new float[20];
 
@@ -107,9 +111,7 @@ public class GameData : Singleton<GameData>
     internal bool hiroDeathMonster;
     internal bool postRun1Cutscene;
 
-    internal static Weapon bestWeaponFound;
-    internal static Armor bestArmorFound;
-    internal static Accessory bestAccessoryFound;
+
 
     internal bool statsSetup=false;
 
@@ -195,7 +197,6 @@ public class GameData : Singleton<GameData>
     {
         pauseTimer = true;
         GameState.fullPause = true;
-        Debug.Log(GameState.isInBattle);
         GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().deactivatePowers();
         SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
         MusicManager.instance.TurnOffCombatMusic();

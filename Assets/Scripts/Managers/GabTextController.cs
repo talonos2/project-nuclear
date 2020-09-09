@@ -15,7 +15,7 @@ public class GabTextController : MonoBehaviour
     public Image playerPanel;
     public TextMeshProUGUI gabTextToPrint;
     public List<Gab> gabPlayList;
-    public float gabDelay = 1.5f;
+    public float gabDelay = 3f;
     public float delayBetweenGabs = .3f;
     private float gabDelayCounter;
     private bool playingGab;
@@ -48,7 +48,7 @@ public class GabTextController : MonoBehaviour
 
         if (playingGab)
         {
-            if (Input.GetButtonDown("Submit")&&gabDelayCounter>FADE_TIME)
+            if (Input.GetButtonDown("Submit")&&gabDelayCounter>FADE_TIME&&!currentGab.itemGab)
             {
                 gabDelayCounter = FADE_TIME;
             }
@@ -117,7 +117,7 @@ public class GabTextController : MonoBehaviour
             }
             else
             {
-                if ((currentGab.duration - gabDelayCounter) < FLASH_TIME)
+                /*if ((currentGab.duration - gabDelayCounter) < FLASH_TIME)
                 {
                     gabBackgroundFader2.color = Color.Lerp(new Color(0, 0, 0, 0f), new Color(0, 0, 0, 1f), gabDelayCounter / FLASH_TIME);
                 }
@@ -128,8 +128,9 @@ public class GabTextController : MonoBehaviour
                 else
                 {
                     gabBackgroundFader2.color = new Color(0, 0, 0, 1);
-                }
+                }*/
             }
+
             if (currentGab.clipToPlayForTutorial!=null)
             {
                 if ((currentGab.duration - gabDelayCounter) < FLASH_TIME)
@@ -173,7 +174,7 @@ public class GabTextController : MonoBehaviour
 
     public void AddGabToPlay(String gabTextToAdd)
     {
-        gabPlayList.Add(new Gab(gabTextToAdd, false));
+        gabPlayList.Add(new Gab(gabTextToAdd, false, 3f, false, false,null,true));
         if (!playingGab)
         {
             PlayNextGabText();
@@ -222,8 +223,9 @@ public class GabTextController : MonoBehaviour
         public bool flash;
         public float duration;
         public VideoClip clipToPlayForTutorial;
+        public bool itemGab;
 
-        public Gab(string gabText = "", bool fullPause = false, float duration = 0, bool fade = false, bool flash = false, VideoClip clipToPlayForTutorial = null)
+        public Gab(string gabText = "", bool fullPause = false, float duration = 0, bool fade = false, bool flash = false, VideoClip clipToPlayForTutorial = null, bool itemGab = false)
         {
             this.gabText = gabText;
             this.fullPause = fullPause;
@@ -231,6 +233,7 @@ public class GabTextController : MonoBehaviour
             this.fade = fade;
             this.flash = flash;
             this.clipToPlayForTutorial = clipToPlayForTutorial;
+            this.itemGab = itemGab;
         }
     }
 }

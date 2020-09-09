@@ -60,23 +60,8 @@ public class PawnInteraction : EntityData
         {
             GameData.Instance.isInDialogue = true;
             //GameState.isInBattle = true;
-            DirectionMoved playerFace = stats.GetComponentInParent<SpriteMovement>().facedDirection;
-            if (playerFace == DirectionMoved.RIGHT)
-            {
-                this.GetComponentInParent<SpriteMovement>().FaceLeft();
-            }
-            if (playerFace == DirectionMoved.LEFT)
-            {
-                this.GetComponentInParent<SpriteMovement>().FaceRight();
-            }
-            if (playerFace == DirectionMoved.UP)
-            {
-                this.GetComponentInParent<SpriteMovement>().FaceDown();
-            }
-            if (playerFace == DirectionMoved.DOWN)
-            {
-                this.GetComponentInParent<SpriteMovement>().FaceUp();
-            }
+
+            this.GetComponentInParent<SpriteMovement>().SetLookDirection();
 
             //movment.facedDirection
             RuntimeInitializer.InitializeAsync();

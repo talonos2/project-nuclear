@@ -49,7 +49,7 @@ public class crystalSwitch : SwitchEntityData
             if (stats.currentPower == 1) { stats.currentPower = 0; }
         }        
 
-        SoundManager.Instance.PlaySound("losingPower", 1f);
+        SoundManager.Instance.PlaySound("GlowingCrystal", 1f);
         crystalActivated = true;
         ToggleTiedObjects();
         brightenCrystal();
@@ -68,9 +68,7 @@ public class crystalSwitch : SwitchEntityData
                 WindJumpController windJumpControlled = tiedEntity.GetComponent<WindJumpController>();
                 if (bridgeControlled != null)
                 {
-                    //movedABridge = true;
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.HidePlatform(); }
-                    else { bridgeControlled.AddPlatform(); }
+                    bridgeControlled.SwapPlatform();
                 }
                 if (windJumpControlled != null)
                 {

@@ -21,7 +21,7 @@ public class ChooseItemUI : MonoBehaviour
     private bool pickingItem;
     private CharacterStats playerData;
     private InventoryItem rolledItem;
-    private float delayBeforePressing = .3f;
+    private float delayBeforePressing = .35f;
 
     public int selectedButton = -1;
     public Sprite equipOn;
@@ -45,24 +45,24 @@ public class ChooseItemUI : MonoBehaviour
     void Update()
     {
         if (GameState.fullPause || !pickingItem) { return; }
-        delayBeforePressing -= Time.deltaTime;
+        //delayBeforePressing -= Time.deltaTime;
 
         if (Input.GetButtonDown("Submit"))
         {
             ChooseItem();
-            delayBeforePressing = .3f; //So that the next item also has a delay
+            //delayBeforePressing = .35f; //So that the next item also has a delay
         }
 
-        if (Input.GetAxis("Horizontal")>.05f )
+        if (Input.GetButtonDown("SelectRight") )
         {
-            if (delayBeforePressing < 0) {
+           // if (delayBeforePressing < 0) {
                 //optionSelected = 0;
                 SelectButton(0);
-            }
+
 
         }
 
-        if (Input.GetAxis("Horizontal") < -.05f)
+        if (Input.GetButtonDown("SelectLeft"))
         {
             //optionSelected = 1;
             SelectButton(1);
@@ -248,9 +248,9 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (i)
         {
-            if (!GameData.bestWeaponFound || GameData.bestWeaponFound < i)
+            if (!GameData.Instance.bestWeaponFound || GameData.Instance.bestWeaponFound < i)
             {
-                GameData.bestWeaponFound = i;
+                GameData.Instance.bestWeaponFound = i;
             }
 
 
@@ -265,9 +265,9 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (i)
         {
-            if (!GameData.bestArmorFound || (GameData.bestArmorFound < i))
+            if (!GameData.Instance.bestArmorFound || (GameData.Instance.bestArmorFound < i))
             {
-                GameData.bestArmorFound = i;
+                GameData.Instance.bestArmorFound = i;
             }
             if (playerData.armor.name != "Warm Jacket")
                 GameData.Instance.townArmor.Add(i);
@@ -280,11 +280,11 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (i)
         {
-            if (playerData.accessory.name != "No Accessory Equipped")
+            if (i.name != "No Accessory Equipped")
             {
-                if (!GameData.bestAccessoryFound || (GameData.bestAccessoryFound < i))
+                if (!GameData.Instance.bestAccessoryFound || (GameData.Instance.bestAccessoryFound < i))
                 {
-                    GameData.bestAccessoryFound = i;
+                    GameData.Instance.bestAccessoryFound = i;
                 }
 
                 GameData.Instance.townAccessories.Add(i);

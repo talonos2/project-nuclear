@@ -234,12 +234,12 @@ namespace Naninovel
         /// <summary>
         /// Will play an SFX with the provided name if it's already loaded and won't save the state.
         /// </summary>
-        public void PlaySfxFast (string path, float volume = 1f, bool restartIfPlaying = true, float pitch = 1f)
+        public void PlaySfxFast (string path, float volume = 1f, bool restartIfPlaying = true)
         {
             if (!audioLoader.IsLoaded(path)) return;
-            Resource<AudioClip> clip = audioLoader.GetLoadedOrNull(path);
+            var clip = audioLoader.GetLoadedOrNull(path);
             if (!restartIfPlaying && audioController.IsClipPlaying(clip)) return;
-            audioController.PlayClip(clip, null, volume, false, sfxGroup, null, pitch);
+            audioController.PlayClip(clip, null, volume, false, sfxGroup);
         }
 
         public async Task PlayBgmAsync (string path, float volume = 1f, float fadeTime = 0f, bool loop = true, string introPath = null)

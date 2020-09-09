@@ -25,14 +25,11 @@ public class PermSwitch5_3 : SwitchEntityData
                 BridgeController bridgeControlled = tiedEntity.GetComponent<BridgeController>();
                 if (spikeControlled != null)
                 {
-                    spikeControlled.isPassable = true;
-                    spikeControlled.LowerSpikeAnimation();
+                    spikeControlled.Open(false);
                 }
                 if (bridgeControlled != null)
                 {
-                    if (bridgeControlled.isPlatformTerrain) { bridgeControlled.RemovePlatform(); }
-                        else { bridgeControlled.AddPlatform(); }
-                    
+                    bridgeControlled.SwapPlatform();
                 }
             }
             activeSwitch = false;

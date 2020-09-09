@@ -28,13 +28,13 @@ public class Map1_3Shortcut : MonoBehaviour
 
     public void setupShortcutAlert() {
         monster1.gameObject.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
-        monster1.GetComponent<MonsterMovement>().setNewMovespeed(monster1.GetComponent<MonsterMovement>().MoveSpeed * 2);
+        monster1.GetComponent<MonsterMovement>().SetNewMovespeed(monster1.GetComponent<MonsterMovement>().MoveSpeed * 2);
         monster2.gameObject.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
-        monster2.GetComponent<MonsterMovement>().setNewMovespeed(monster2.GetComponent<MonsterMovement>().MoveSpeed * 2);
+        monster2.GetComponent<MonsterMovement>().SetNewMovespeed(monster2.GetComponent<MonsterMovement>().MoveSpeed * 2);
         monster3.gameObject.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
-        monster3.GetComponent<MonsterMovement>().setNewMovespeed(monster3.GetComponent<MonsterMovement>().MoveSpeed * 2);
+        monster3.GetComponent<MonsterMovement>().SetNewMovespeed(monster3.GetComponent<MonsterMovement>().MoveSpeed * 2);
         monster4.gameObject.GetComponent<MonsterMovement>().hazardIcon.enabled = true;
-        monster4.GetComponent<MonsterMovement>().setNewMovespeed(monster4.GetComponent<MonsterMovement>().MoveSpeed * 2);
+        monster4.GetComponent<MonsterMovement>().SetNewMovespeed(monster4.GetComponent<MonsterMovement>().MoveSpeed * 2);
     }
     public void setupShortcut() {
         Destroy(monster1.gameObject);
