@@ -4,23 +4,24 @@
 
 @fwspawnvfx x:-4 y:-13 z:0 Vfx:PawnPaul
 @fwturnpawn n:PawnPaul d:s
-@fwspawnvfx x:-6 y:-15 z:0 Vfx:PawnTasha
-@fwturnpawn n:PawnTasha d:e
+@fwspawnvfx x:-6 y:-15 z:0 Vfx:PawnNorma
+@fwturnpawn n:PawnNorma d:e
 @fwspawnvfx x:-5 y:-16 z:0 Vfx:PawnMcDermit
 @fwturnpawn n:PawnMcDermit d:n
 
 
 
 @char McDermit
-McDermit: Is this how it's going to end?[br]We just stand here and watch as the civilians are sent to their doom?
+McDermit: Is this how it's going to go?
+McDermit: I couldn't stand to sit here and watch another civilian be sent to their doom.
 @hideChars time:0
 
 @fwspawnvfx x:-5 y:-14.8 z:-10 Vfx:CurseFX
 
 @wait 1
 
-@char Tasha
-Tasha: Not for you at least.
+@char Norma
+Norma: Looks like you won't have to.
 @hideChars time:0
 
 @fwmovepawn n:PawnMcDermit d:e
