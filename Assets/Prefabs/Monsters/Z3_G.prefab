@@ -190,7 +190,7 @@ MonoBehaviour:
   homePositionOnScreen: {x: 0.5, y: -0.3}
   strikingPointOffset: {x: 0.15, y: 0.3}
   gettingStruckPointOffset: {x: 0, y: 0}
-  scale: {x: 1, y: 1}
+  scale: {x: -1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Wind Drone
   ExpGiven: 990
@@ -368,6 +368,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: hazard-sign
       objectReference: {fileID: 0}
+    - target: {fileID: 6890276576694707740, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5508812850377085975, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -442,11 +447,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -2.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6890276576694707740, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c317f2df12d5a46aebbb0e9cf6d28b, type: 3}
