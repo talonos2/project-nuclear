@@ -102,8 +102,13 @@ public class SpriteShadowLoader : MonoBehaviour
             zPosition = -1;
         if (aboveItem)
             zPosition = -20;
-        if (thePlayerjumping && (CharacterMovement.windJump || SpriteMovement.jumping)) {
-            zPosition -= .01f;
+        if (GetComponent<SpriteMovement>()!=null)
+        {
+            SpriteMovement mover = GetComponent<SpriteMovement>();
+            if (mover.IsInAForcedJump()|| mover.IsJumping())
+            {
+                zPosition -= .01f;
+            }
         }
         if (spikes) {
             zPosition += .01f;

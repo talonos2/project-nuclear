@@ -18,7 +18,6 @@ namespace Naninovel.UI
     /// </remarks>
     public class RevealableTextPrinterPanel : UITextPrinterPanel
     {
-        private static readonly int MESSAGE_SOUND_SKIPS = 16;
         [System.Serializable]
         private class CharsToSfx
         {
@@ -96,7 +95,6 @@ namespace Naninovel.UI
             if (revealDelay <= 0) { RevealableText.RevealAll(); yield break; }
 
             var timeSinceLastReveal = 0f;
-            var charsRevealed = 0;
             while (!RevealableText.IsFullyRevealed)
             {
                 var charsToReveal = Mathf.FloorToInt(timeSinceLastReveal / revealDelay);
@@ -104,21 +102,10 @@ namespace Naninovel.UI
                 {
                     timeSinceLastReveal = timeSinceLastReveal % revealDelay;
                     for (int i = 0; i < charsToReveal; i++)
-                    {
                         RevealableText.RevealNextChar(revealDelay);
-                        charsRevealed++;
-                    }
-
 
                     var lastRevealedChar = RevealableText.GetLastRevealedChar();
-                    //Talonos hacked here:
-                    if ("?.!:".Contains("" + lastRevealedChar) || (charsRevealed+ MESSAGE_SOUND_SKIPS-1) % MESSAGE_SOUND_SKIPS==0)
-                    {
-                        PlayRevealSfxForChar(lastRevealedChar);
-                    }
-                    else
-                    {
-                    }
+                    PlayRevealSfxForChar(lastRevealedChar);
                     if (charsCommands != null && charsCommands.Count > 0)
                         yield return ExecuteCommandForCharRoutine(lastRevealedChar);
                 }
@@ -237,13 +224,6 @@ namespace Naninovel.UI
 
         protected virtual void PlayRevealSfxForChar (char character)
         {
-            float pitch = 1f;
-            int num = 1;
-            if (AuthorMeta != null && !(AuthorMeta.MessagePitch == 0))
-            {
-                pitch = AuthorMeta.MessagePitch;
-                num = AuthorMeta.MessageNum;
-            }
             if (charsSfx != null && charsSfx.Count > 0)
             {
                 foreach (var charSfx in charsSfx)
@@ -252,9 +232,7 @@ namespace Naninovel.UI
                     if (index < 0) continue;
 
                     if (!string.IsNullOrEmpty(charSfx.SfxName))
-                    {
-                        audioManager.PlaySfxFast(charSfx.SfxName+num, 1f, true, pitch);
-                    }
+                        audioManager.PlaySfxFast(charSfx.SfxName);
                     return;
                 }
             }
@@ -262,7 +240,7 @@ namespace Naninovel.UI
             if (AuthorMeta != null && !string.IsNullOrEmpty(AuthorMeta.MessageSound))
                 audioManager.PlaySfxFast(AuthorMeta.MessageSound);
             else if (!string.IsNullOrEmpty(RevealSfx))
-                audioManager.PlaySfxFast(RevealSfx+num, 1f, true, pitch);
+                audioManager.PlaySfxFast(RevealSfx);
         }
 
         protected virtual IEnumerator ExecuteCommandForCharRoutine (char character)

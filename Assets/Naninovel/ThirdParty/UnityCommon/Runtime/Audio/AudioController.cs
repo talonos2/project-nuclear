@@ -48,7 +48,7 @@ namespace UnityCommon
         }
 
         public void PlayClip (AudioClip clip, AudioSource audioSource = null, float volume = 1f, 
-            bool loop = false, AudioMixerGroup mixerGroup = null, AudioClip introClip = null, float pitch = 1f)
+            bool loop = false, AudioMixerGroup mixerGroup = null, AudioClip introClip = null)
         {
             if (!clip) return;
 
@@ -59,7 +59,7 @@ namespace UnityCommon
             if (audioSource && IsOwnedByController(audioSource)) audioSource = null;
             if (!audioSource) audioSource = GetPooledSource();
 
-            var track = new AudioTrack(clip, audioSource, this, volume, loop, mixerGroup, introClip, pitch);
+            var track = new AudioTrack(clip, audioSource, this, volume, loop, mixerGroup, introClip);
             audioTracks.Add(clip, track);
             track.Play();
         }
@@ -117,7 +117,7 @@ namespace UnityCommon
 
         private AudioListener FindOrAddListener ()
         {
-            audioListener =  FindObjectOfType<AudioListener>();
+            audioListener = FindObjectOfType<AudioListener>();
             if (!audioListener) audioListener = gameObject.AddComponent<AudioListener>();
             return audioListener;
         }

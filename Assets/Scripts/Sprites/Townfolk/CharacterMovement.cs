@@ -9,9 +9,6 @@ public class CharacterMovement : SpriteMovement
     private static float DASH_LENGTH = 26;
 
     public CharacterStats playerStats;
-    private Vector2Int jumpTarget;
-    private float windJumpSpeed=0;
-    public static bool windJump;
     private float hasteSpeed = 2;
     private float stealthspeed = .75f;
     private float dashSpeed = 4;
@@ -36,64 +33,146 @@ public class CharacterMovement : SpriteMovement
     // Update is called once per frame
     void Update()
     {
-        //Footstep Sound
-        int currentFrame = Mathf.RoundToInt(sRender.material.GetFloat("_Frame"));
-        if (previousFrame != currentFrame && (currentFrame % 7 == 1 || currentFrame % 7 == 4))
-        {
-            int stepSound = UnityEngine.Random.Range(0, 2)+1; //Step sounds are no 0-indexed.
-            if (previousStepSound==1||(previousStepSound==2&&stepSound==2))
-            {
-                stepSound++;
-            }
-            string materialNameStart = "Stone";
-            if (groundMaterialGrid)
-            {
-                materialNameStart = groundMaterialGrid.grid[characterLocation.x, characterLocation.y].GetName();
-            }
-            SoundManager.Instance.PlaySound("Footsteps/"+materialNameStart+stepSound, 1f);
-            previousStepSound = stepSound;
-        }
-
-
-
-
-        previousFrame = currentFrame;
-
         if (GameState.isInBattle || GameState.fullPause || GameData.Instance.isInDialogue)
         {
             return;
         }
-        if (!currentlyMoving && waitTimer >= 0)
+
+        HandlePlayerFootstepSounds();
+        if (HandlePauseBeforeDash()) { return; }
+        AdjustSpeedAndReduceManaIfHasted();
+        AdjustSpeedAndReduceManaIfStealthed();
+        HandleCharacterForcedJump();
+        HandleCharacterJumpViaPower();
+        HandleIceDashContinue();
+
+        //If in the process of moving, keep moving and do nothing else
+        if (currentlyMoving)
         {
-            if (GameData.Instance.dashing)
+            float finishedMoving = ContinueMoving();
+            CheckUpcomingExitStatus(characterNextLocation);
+            if (finishedMoving == 0)
             {
-                SetShieldGraphic(waitTimer, true);
-            }
-            waitTimer -= Time.deltaTime;
-            return;
-        }
-
-
-        if (GameData.Instance.hasted) {
-            if (GameData.Instance.timerTrigger) {
-                if (playerStats.mana >= 12)
-                {
-                    playerStats.mana -= 12;
-                    tempMovementSpeed = MoveSpeed * hasteSpeed;
-                    tempFramesPerSecond = framesPerSecond * hasteSpeed;
-                }
-                else {
-                    TurnHasteOff();
-                    tempMovementSpeed = MoveSpeed;
-                    tempFramesPerSecond = framesPerSecond;
-                }
+                currentlyMoving = false;
+                TiePositionToGrid();
+                //  SetCurrentLocation();
+                CheckIfStandingOnWindJumper();
+                CheckPostMoveExitStatus();
+                CheckGabStatus();
             }
         }
-        else
+
+        sRender.material.SetInt("_IsSmoke", (GameData.Instance.hasted ? 1 : 0));
+        if (GameData.Instance.hasted && !smoke.isPlaying)
         {
+            smoke.Play();
+            smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
         }
+        sRender.material.SetInt("_IsStealthed", (GameData.Instance.stealthed ? 1 : 0));
 
-        if (GameData.Instance.stealthed) {
+    }
+
+    private void HandleIceDashContinue()
+    {
+        if ((!currentlyMoving && GameData.Instance.dashing) || continueDashing)
+        {
+            tempMovementSpeed = MoveSpeed * dashSpeed;
+            tempFramesPerSecond = framesPerSecond * dashSpeed;
+            totalDashed += Time.deltaTime * tempMovementSpeed;
+
+            if (!IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y) && IsThereAMonster() == null)
+            {
+                totalDashed += Time.deltaTime * tempMovementSpeed;//Effectivly cuts penalty for dashing in half when running 
+                //into monsters, but not when running into walls/pits/boulders, ect
+            }
+
+            if (!continueDashing)
+            {
+                if (totalDashed >= DASH_LENGTH)
+                {
+                    TiePositionToGrid();
+                    GameData.Instance.dashing = false;
+                    sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    CheckIfStandingOnWindJumper();
+                    CheckPostMoveExitStatus();
+                    CheckGabStatus();
+                    tempFramesPerSecond = framesPerSecond;
+                    tempMovementSpeed = MoveSpeed;
+                }
+                else
+                {
+                    if (CheckPostMoveExitStatus())
+                    {
+                        GameData.Instance.dashing = false;
+                    }
+                    else
+                    {
+                        SetShieldGraphic(totalDashed, false);
+                        SetNextDashLocation();
+                    }
+
+                }
+            }
+
+            if (continueDashing)
+            {
+                if (ContinueMoving() == 0)
+                {
+                    continueDashing = false;
+                }
+            }
+
+        }
+    }
+
+    private void HandleCharacterJumpViaPower()
+    {
+        if (!currentlyMoving && (jumping || jumpQueued))
+        {
+            if (jumpQueued && !jumping)
+            {
+                jumping = ActivateJump();
+                jumpQueued = false;
+            }
+
+            if (jumping)
+            {
+                bool finishedMoving = ContinueJumping();
+                if (finishedMoving)
+                {
+                    currentlyMoving = false;
+                    jumping = false;
+                    tempFramesPerSecond = framesPerSecond;
+                    //   SetCurrentLocation();
+                    TiePositionToGrid();
+                    CheckPostMoveExitStatus();
+                    CheckIfStandingOnWindJumper();
+                    CheckGabStatus();
+                }
+            }
+        }
+    }
+
+    private void HandleCharacterForcedJump()
+    {
+        if (!currentlyMoving && timeLeftInForcedJump > 0)
+        {
+            JumpToTarget();
+            bool finishedForcedJump = timeLeftInForcedJump <= 0;
+            if (finishedForcedJump)
+            {
+                currentlyMoving = false;
+                TiePositionToGrid();
+                tempFramesPerSecond = framesPerSecond;
+                CheckIfStandingOnWindJumper();
+            }
+        }
+    }
+
+    private void AdjustSpeedAndReduceManaIfStealthed()
+    {
+        if (GameData.Instance.stealthed)
+        {
 
             if (GameData.Instance.timerTrigger)
             {
@@ -112,117 +191,63 @@ public class CharacterMovement : SpriteMovement
                 }
             }
         }
+    }
 
-        if (!currentlyMoving && windJump) {
-            bool finishedMoving = JumpToTarget(windJumpSpeed, jumpTarget);
-            if (finishedMoving)
-            {
-                currentlyMoving = false;
-                windJump = false;
-                TiePositionToGrid();
-                tempFramesPerSecond = framesPerSecond;
-                CheckWindJumpStatus();
-            }
-        }
-    
-
-        if (!currentlyMoving && (jumping|| jumpQueued))
+    private void AdjustSpeedAndReduceManaIfHasted()
+    {
+        if (GameData.Instance.hasted)
         {
-            if (jumpQueued &&!jumping)
+            if (GameData.Instance.timerTrigger)
             {
-                jumping = ActivateJump();
-                jumpQueued = false;
-            }
-
-            if (jumping)
-            { 
-                bool finishedMoving = ContinueJumping();
-                if (finishedMoving)
+                if (playerStats.mana >= 12)
                 {
-                    currentlyMoving = false;
-                    jumping = false;
-                    tempFramesPerSecond = framesPerSecond;
-                    //   SetCurrentLocation();
-                    TiePositionToGrid();
-                    CheckExitStatus();
-                    CheckWindJumpStatus();
-                    CheckGabStatus();
-                }
-            }
-        }
-
-        if (!currentlyMoving && GameData.Instance.dashing || continueDashing)
-        {
-            if (waitTimer >= 0)
-            {
-                Debug.Log("HI!! :D I don't think this is ever called. If you see me, come check out CharacterMovement.cs to see what changed!");
-                waitTimer -= Time.deltaTime;
-                SetShieldGraphic(waitTimer, true);
-                return;
-            }
-            tempMovementSpeed = MoveSpeed * dashSpeed;
-            tempFramesPerSecond = framesPerSecond * dashSpeed;
-            totalDashed += Time.deltaTime * tempMovementSpeed;
-            if (!continueDashing)
-            {
-                if (totalDashed >= DASH_LENGTH)
-                {
-                    TiePositionToGrid();
-                    GameData.Instance.dashing = false;
-                    sRender.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                    CheckWindJumpStatus();
-                    CheckExitStatus();
-                    CheckGabStatus();
-                    tempFramesPerSecond = framesPerSecond;
-                    tempMovementSpeed = MoveSpeed;
+                    playerStats.mana -= 12;
+                    tempMovementSpeed = MoveSpeed * hasteSpeed;
+                    tempFramesPerSecond = framesPerSecond * hasteSpeed;
                 }
                 else
                 {
-                    if (CheckExitStatus())
-                    {
-                        GameData.Instance.dashing = false;
-                    }
-                    else {
-                        SetShieldGraphic(totalDashed, false);
-                        SetNextDashLocation();
-                    }
-
+                    TurnHasteOff();
+                    tempMovementSpeed = MoveSpeed;
+                    tempFramesPerSecond = framesPerSecond;
                 }
             }
-
-            if (continueDashing) {
-                if (ContinueMoving() == 0)
-                {
-                    continueDashing = false; 
-                }
-            }
-
         }
+    }
 
-
-        //If in the process of moving, keep moving and do nothing else
-        if (currentlyMoving)
+    private bool HandlePauseBeforeDash()
+    {
+        if (!currentlyMoving && waitTimer >= 0)
         {
-            float finishedMoving = ContinueMoving();
-            if (finishedMoving == 0)
+            if (GameData.Instance.dashing)
             {
-                currentlyMoving = false;
-                TiePositionToGrid();
-                //  SetCurrentLocation();
-                CheckWindJumpStatus();
-                CheckExitStatus();
-                CheckGabStatus();
+                SetShieldGraphic(waitTimer, true);
             }
+            waitTimer -= Time.deltaTime;
+            return true;
         }
+        return false;
+    }
 
-        sRender.material.SetInt("_IsSmoke", (GameData.Instance.hasted?1:0));
-        if (GameData.Instance.hasted&& !smoke.isPlaying)
+    private void HandlePlayerFootstepSounds()
+    {
+        int currentFrame = Mathf.RoundToInt(sRender.material.GetFloat("_Frame"));
+        if (previousFrame != currentFrame && (currentFrame % 7 == 1 || currentFrame % 7 == 4))
         {
-            smoke.Play();
-            smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
+            int stepSound = UnityEngine.Random.Range(0, 2) + 1; //Step sounds are no 0-indexed.
+            if (previousStepSound == 1 || (previousStepSound == 2 && stepSound == 2))
+            {
+                stepSound++;
+            }
+            string materialNameStart = "Stone";
+            if (groundMaterialGrid)
+            {
+                materialNameStart = groundMaterialGrid.grid[characterLocation.x, characterLocation.y].GetName();
+            }
+            SoundManager.Instance.PlaySound("Footsteps/" + materialNameStart + stepSound, 1f);
+            previousStepSound = stepSound;
         }
-        sRender.material.SetInt("_IsStealthed", (GameData.Instance.stealthed?1:0));
-
+        previousFrame = currentFrame;
     }
 
     internal void TurnStealthOff()
@@ -312,7 +337,7 @@ public class CharacterMovement : SpriteMovement
         playerStats.powersGained = 4;
     }
 
-    private void CheckWindJumpStatus()
+    private void CheckIfStandingOnWindJumper()
     {
         GameObject windJumpLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
         if (windJumpLocation != null)
@@ -320,13 +345,13 @@ public class CharacterMovement : SpriteMovement
             if (windJumpLocation.GetComponent<DoodadData>().isWindShifter)
             {
                 SoundManager.Instance.PlaySound("AirGust",1);
+                jumpStartPos = transform.position;
                 jumpTarget = windJumpLocation.GetComponent<WindJumpController>().jumpDestOffset;
-                
                 SetNextLocationActual(characterLocation.x+jumpTarget.x, characterLocation.y +jumpTarget.y);
-                windJumpSpeed= windJumpLocation.GetComponent<WindJumpController>().jumpSpeedMultiplier;
-                windJump = true;
+                totalTimeInForcedJump = windJumpLocation.GetComponent<WindJumpController>().timeItTakesToJump;
+                forcedJumpHeight = windJumpLocation.GetComponent<WindJumpController>().jumpHeight;
+                timeLeftInForcedJump = totalTimeInForcedJump;
                 currentlyMoving = false;
-                
             }
         }
     }
@@ -344,7 +369,7 @@ public class CharacterMovement : SpriteMovement
             SetLookDirection();
         }
 
-        if (!currentlyMoving && !jumping && !GameData.Instance.dashing && !jumpQueued&&!windJump )
+        if (!currentlyMoving && !jumping && !GameData.Instance.dashing && !jumpQueued&&(timeLeftInForcedJump<=0))
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
@@ -368,7 +393,7 @@ public class CharacterMovement : SpriteMovement
             else { SetLookDirection(); }
 
             //Check if a monster is in the next location, and initiate combat if so
-            GameObject EnemyToFight = isThereAMonster();
+            GameObject EnemyToFight = IsThereAMonster();
             if (EnemyToFight != null && !GameData.Instance.dashing)
             {
                 Combat.InitiateFight(this.gameObject, EnemyToFight);
@@ -555,12 +580,15 @@ public class CharacterMovement : SpriteMovement
 
     internal void TurnHasteOff()
     {
-        GameData.Instance.hasted = false;
-        tempMovementSpeed = MoveSpeed;
-        tempFramesPerSecond = framesPerSecond;
-        SoundManager.Instance.PlaySound("HasteOff", 1f);
-        smoke.Stop();
-        smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
+        if (GameData.Instance.hasted)
+        {
+            GameData.Instance.hasted = false;
+            SoundManager.Instance.PlaySound("HasteOff", 1f);
+        }
+            tempMovementSpeed = MoveSpeed;
+            tempFramesPerSecond = framesPerSecond;
+            smoke.Stop();
+            smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
     internal void ActivateInvisibility()
@@ -625,7 +653,6 @@ public class CharacterMovement : SpriteMovement
         }
     }
 
-
     internal void PowerToggleRightKeyReceived()
     {
 
@@ -671,7 +698,7 @@ public class CharacterMovement : SpriteMovement
         }
     }
 
-    private bool CheckExitStatus()
+    private bool CheckPostMoveExitStatus()
     {
         GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
         if (exitLocation != null)
@@ -683,6 +710,30 @@ public class CharacterMovement : SpriteMovement
             }
         }
         return false;
+    }
+
+    private bool CheckUpcomingExitStatus(Vector2Int characterNextLocation)
+    {
+        GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterNextLocation.x, characterNextLocation.y];
+        if (exitLocation != null)
+        {
+            if (exitLocation.GetComponent<DoodadData>().isExit && characterCloseEnough(exitLocation, this.gameObject))
+            {
+                playerStats.PushCharacterData();
+                exitLocation.GetComponent<ExitController>().TransitionMap();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool characterCloseEnough(GameObject exitLocation, GameObject character)
+    {
+        float xdistance=exitLocation.transform.position.x-character.transform.position.x;
+        float ydistance = exitLocation.transform.position.y - character.transform.position.y;
+        float answer = (float)Math.Sqrt(xdistance * xdistance + ydistance * ydistance);
+        if (answer > .5) return false;
+        else return true;
 
     }
 
@@ -700,7 +751,6 @@ public class CharacterMovement : SpriteMovement
         }
 
     }
-
 
     private int GetInputDirection()
     {
@@ -732,24 +782,7 @@ public class CharacterMovement : SpriteMovement
 
     private float ContinueMoving()
     {
-        float finishedMoving=0;
-        if (facedDirection == DirectionMoved.UP)
-        {
-            finishedMoving = MoveUp(tempMovementSpeed);
-        }
-        if (facedDirection == DirectionMoved.DOWN)
-        {
-            finishedMoving = MoveDown(tempMovementSpeed);
-        }
-        if (facedDirection == DirectionMoved.LEFT)
-        {
-            finishedMoving = MoveLeft(tempMovementSpeed);
-        }
-        if (facedDirection == DirectionMoved.RIGHT)
-        {
-            finishedMoving = MoveRight(tempMovementSpeed);
-        }
-        return finishedMoving;
+        return MoveDirection(tempMovementSpeed, facedDirection);
     }
 
     private bool ContinueJumping()

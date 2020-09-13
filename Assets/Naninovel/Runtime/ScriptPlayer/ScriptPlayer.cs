@@ -476,7 +476,6 @@ namespace Naninovel
         /// </summary>
         public void EnableSkip ()
         {
-            Debug.Log("SkipMode should be active");
             if (!IsSkipAllowed()) return;
             SetSkipActive(true);
         }
@@ -651,7 +650,6 @@ namespace Naninovel
         private void SetSkipActive (bool isActive)
         {
             if (IsSkipActive == isActive) return;
-            //Debug.Log("Skipmode is active.");
             IsSkipActive = isActive;
             Time.timeScale = isActive ? config.SkipTimeScale : 1f;
             OnSkip?.Invoke(isActive);

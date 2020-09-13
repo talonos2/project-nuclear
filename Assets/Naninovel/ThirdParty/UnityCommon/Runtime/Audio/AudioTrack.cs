@@ -23,7 +23,7 @@ namespace UnityCommon
         private Timer stopTimer;
 
         public AudioTrack (AudioClip clip, AudioSource source, MonoBehaviour behaviourContainer = null,
-            float volume = 1f, bool loop = false, AudioMixerGroup mixerGroup = null, AudioClip introClip = null, float pitch = 1f)
+            float volume = 1f, bool loop = false, AudioMixerGroup mixerGroup = null, AudioClip introClip = null)
         {
             Clip = clip;
             IntroClip = introClip;
@@ -32,7 +32,6 @@ namespace UnityCommon
             Source.volume = volume;
             Source.loop = loop;
             Source.outputAudioMixerGroup = mixerGroup;
-            Source.pitch = pitch;
 
             volumeTweener = new Tweener<FloatTween>(behaviourContainer);
             stopTimer = new Timer(coroutineContainer: behaviourContainer, onCompleted: Stop);
