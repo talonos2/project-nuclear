@@ -15,6 +15,7 @@ public class cameraClamp : MonoBehaviour
         mapHeight = gridy.height;
         mapWidth = gridy.width;
         groundOffset = gridy.GetComponentInChildren<GroundShadow>().mapOffset;
+        Debug.Log(groundOffset);
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
 
         //Debug.Log("map zero " + mapZeroLocation + " playerloc " + ThePlayer.transform.position);
@@ -32,7 +33,11 @@ public class cameraClamp : MonoBehaviour
     {
         // float relativeX = mapZeroLocation.x - ThePlayer.transform.position.x - 8;
 
-        if (GameData.Instance.FloorNumber == 0) return;
+        if (GameData.Instance.FloorNumber == 0) {
+            this.transform.localPosition = new Vector3(groundOffset.x, groundOffset.y, this.transform.localPosition.z);
+            return;
+        }
+        
 
         float relativeYLowClamp = -mapHeight / 2 - ThePlayer.transform.position.y + 6f;
         float relativeYHighClamp = mapHeight / 2- ThePlayer.transform.position.y - 6f;
@@ -60,7 +65,9 @@ public class cameraClamp : MonoBehaviour
             offsetX += relativeXHighClamp - groundOffset.x;
 
         }
-        //Debug.Log(offsetX + " " + groundOffset.x);
+        Debug.Log("offsetx "+offsetX + " " + groundOffset.x);
+        Debug.Log("offsety " + offsetY + " " + groundOffset.y);
+
         this.transform.localPosition = new Vector3(offsetX+ groundOffset.x, offsetY+ groundOffset.y, this.transform.localPosition.z);
     }
 }
