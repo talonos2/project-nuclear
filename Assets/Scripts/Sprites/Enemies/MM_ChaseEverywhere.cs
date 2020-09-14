@@ -38,14 +38,14 @@ public class MM_ChaseEverywhere : MonsterMovement
                 facedDirection = NextStep;
                 //CheckForFight(characterNextLocation.x, characterNextLocation.y);//
 
-                if (!IsLocationEntityPassible(characterNextLocation.x, characterNextLocation.y) && stuck >= 15)
+                if (!IsLocationMonsterEntityPassible(characterNextLocation.x, characterNextLocation.y) && stuck >= 15)
                 {
                     NextStep = GetRandomStep();
                     SetNextLocation(NextStep);
                     facedDirection = NextStep;
                 }
 
-                if (IsLocationEntityPassible(characterNextLocation.x, characterNextLocation.y))
+                if (IsLocationMonsterEntityPassible(characterNextLocation.x, characterNextLocation.y))
                 {
                     CheckForFight(characterNextLocation.x, characterNextLocation.y);
                     if (!combatTriggered) {

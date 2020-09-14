@@ -288,7 +288,7 @@ public class SpriteMovement : EntityData
         return MoveableLocation;
     }
 
-    private bool IsLocationMonsterEntityPassible(int locX, int locY)
+    protected bool IsLocationMonsterEntityPassible(int locX, int locY)
     {
         bool MoveableLocation = false;
         GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[locX, locY];
