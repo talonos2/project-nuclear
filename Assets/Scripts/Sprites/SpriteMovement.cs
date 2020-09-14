@@ -325,6 +325,9 @@ public class SpriteMovement : EntityData
         GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
         if (entityInLocation == null)
             MoveableLocation = true;
+        else if (entityInLocation.GetComponent<EntityData>().isMainCharacter) {
+            MoveableLocation = true;
+        }
         return MoveableLocation;
     }
 
