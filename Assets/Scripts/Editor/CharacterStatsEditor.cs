@@ -90,6 +90,7 @@ public class CharacterStatsEditor : Editor
             //EditorGUIUtility.LookLikeControls();
             charac.startPositionOnScreen = EditorGUILayout.Vector2Field("Start Position", charac.startPositionOnScreen);
             charac.homePositionOnScreen = EditorGUILayout.Vector2Field("Home Position", charac.homePositionOnScreen);
+            charac.scale =  EditorGUILayout.Vector2Field("Scale", charac.scale);
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
         classes = EditorGUILayout.BeginFoldoutHeaderGroup(classes, "Classes");
