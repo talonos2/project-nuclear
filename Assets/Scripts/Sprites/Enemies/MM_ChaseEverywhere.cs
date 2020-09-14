@@ -36,7 +36,7 @@ public class MM_ChaseEverywhere : MonsterMovement
                 NextStep = GetChaseStep();
                 SetNextLocation(NextStep);//
                 facedDirection = NextStep;
-                CheckForFight(characterNextLocation.x, characterNextLocation.y);//
+                //CheckForFight(characterNextLocation.x, characterNextLocation.y);//
 
                 if (!IsLocationEntityPassible(characterNextLocation.x, characterNextLocation.y) && stuck >= 15)
                 {
@@ -47,7 +47,11 @@ public class MM_ChaseEverywhere : MonsterMovement
 
                 if (IsLocationEntityPassible(characterNextLocation.x, characterNextLocation.y))
                 {
-                    UpdateNewEntityGridLocation();
+                    CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                    if (!combatTriggered) {
+                        UpdateNewEntityGridLocation();
+                    }
+
                     RemoveOldEntityGridLocation();
                     characterLocation = characterNextLocation;
                     currentlyMoving = true;
@@ -73,6 +77,7 @@ public class MM_ChaseEverywhere : MonsterMovement
                 TiePositionToGrid();
             }
         }
+        handleActivateCombat();
     }
 
     void OnDestroy()

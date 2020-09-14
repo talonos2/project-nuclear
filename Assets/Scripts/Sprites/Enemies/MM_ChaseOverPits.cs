@@ -43,7 +43,7 @@ public class MM_ChaseOverPits : MonsterMovement
                 {
                     NextStep = GetChaseStep();
                     SetNextLocation(NextStep);//
-                    CheckForFight(characterNextLocation.x, characterNextLocation.y);//
+                    //CheckForFight(characterNextLocation.x, characterNextLocation.y);//
                     if (ChaseStepNumber >= ChaseRange)
                     {
                         NextStep = PathToHomeLocation();
@@ -69,7 +69,10 @@ public class MM_ChaseOverPits : MonsterMovement
 
                     if (IsMoveLocationFlyingMonsterChaseable(characterNextLocation.x, characterNextLocation.y))
                     {
+                    CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                    if (!combatTriggered) {
                         UpdateNewEntityGridLocation();
+                    }
                         RemoveOldEntityGridLocation();
                         characterLocation = characterNextLocation;
                         currentlyMoving = true;
@@ -89,6 +92,8 @@ public class MM_ChaseOverPits : MonsterMovement
         }
             if (currentlyMoving == true)
         {
+
+
             float finishedMoving = MoveToNextSquare();
             if (finishedMoving == 0)
             {
@@ -96,6 +101,8 @@ public class MM_ChaseOverPits : MonsterMovement
                 TiePositionToGrid();
             }
         }
+
+        handleActivateCombat();
     }
 
 
