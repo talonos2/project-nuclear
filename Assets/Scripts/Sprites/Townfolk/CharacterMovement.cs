@@ -19,6 +19,8 @@ public class CharacterMovement : SpriteMovement
     ParticleSystem smoke;
     int previousFrame = 0;
     int previousStepSound = 0;
+    private GameObject enemyToFightHolder;
+    internal bool combatDetected;
 
     new void Start()
     {
@@ -49,6 +51,13 @@ public class CharacterMovement : SpriteMovement
         //If in the process of moving, keep moving and do nothing else
         if (currentlyMoving)
         {
+            if (combatDetected) {
+                if (!EnemyToFarToFight(enemyToFightHolder)) {
+                    Combat.InitiateFight(this.gameObject, enemyToFightHolder);
+                    combatDetected = false;
+                    enemyToFightHolder = null;
+                }
+            }
             float finishedMoving = ContinueMoving();
             CheckUpcomingExitStatus(characterNextLocation);
             if (finishedMoving == 0)
@@ -380,10 +389,26 @@ public class CharacterMovement : SpriteMovement
             facedDirection = inputDirection;
 
             SetNextLocation(inputDirection);
-            if (IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
+            GameObject EnemyToFight=null;
+            if (IsPlayerMoveLocationTerrainPassable(characterNextLocation.x, characterNextLocation.y))
             {
                 //if it is possible, check for a monster attack
                 //Needs to be refractored a bit
+                EnemyToFight = IsThereAMonster();
+                if (EnemyToFight!=null)
+                {
+                    if (EnemyToFarToFight(EnemyToFight))
+                    {
+                        enemyToFightHolder = EnemyToFight;
+                        combatDetected = true;
+                    }
+                    else 
+                    {
+                        Combat.InitiateFight(this.gameObject, EnemyToFight);
+                    }
+
+                    //removeEntity
+                }
                 UpdateNewEntityGridLocation();
                 RemoveOldEntityGridLocation();
                 characterLocation = characterNextLocation;
@@ -393,12 +418,26 @@ public class CharacterMovement : SpriteMovement
             else { SetLookDirection(); }
 
             //Check if a monster is in the next location, and initiate combat if so
-            GameObject EnemyToFight = IsThereAMonster();
-            if (EnemyToFight != null && !GameData.Instance.dashing)
-            {
-                Combat.InitiateFight(this.gameObject, EnemyToFight);
-            }
+            //GameObject EnemyToFight = IsThereAMonster();    
+
+            //if (EnemyToFight != null && !GameData.Instance.dashing)
+            //{
+            //    Combat.InitiateFight(this.gameObject, EnemyToFight);
+            //}
+
         }
+    }
+
+    protected bool EnemyToFarToFight(GameObject enemyToFight)
+    {
+        float xdistance = enemyToFight.transform.position.x - this.transform.position.x;
+        float ydistance = enemyToFight.transform.position.y - this.transform.position.y;
+        float distanctToEnemy = (float)Math.Sqrt(xdistance * xdistance + ydistance * ydistance);
+        //Debug.Log("Distance to Monster " + distanctToEnemy);
+        //float distanctToMonster=enemyToFight.gameObject.transform.position.x * this.gameObject.transform.position.x
+        if (distanctToEnemy > 1.05)
+            return true;
+        else return false;
     }
 
     internal void PowerActivateKeyReceived()

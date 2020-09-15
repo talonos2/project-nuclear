@@ -152,10 +152,10 @@ MonoBehaviour:
   attack: 104
   defense: 24
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: -0.6, y: -1.6}
+  homePositionOnScreen: {x: -0.75, y: -1.7}
   strikingPointOffset: {x: 0, y: -0.5}
-  gettingStruckPointOffset: {x: 0.5, y: 1.1}
-  scale: {x: 1, y: 1}
+  gettingStruckPointOffset: {x: 0.7, y: 1.1}
+  scale: {x: -1.25, y: 1.25}
   forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Fire Drone
   ExpGiven: 1710
@@ -169,6 +169,7 @@ MonoBehaviour:
   - {fileID: 5270090745945235509, guid: 70be7ea7928acd14fa66281fd1459685, type: 3}
   - {fileID: 321571601570135014, guid: 70be7ea7928acd14fa66281fd1459685, type: 3}
   - {fileID: 3311622783826317757, guid: 70be7ea7928acd14fa66281fd1459685, type: 3}
+  - {fileID: 209951900221613079, guid: 70be7ea7928acd14fa66281fd1459685, type: 3}
   - {fileID: 209951900221613079, guid: 70be7ea7928acd14fa66281fd1459685, type: 3}
   attackAnimation: 1
   goodHit: {fileID: 0}
@@ -352,6 +353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: hazard-sign
       objectReference: {fileID: 0}
+    - target: {fileID: 6890276576694707740, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5508812850377085975, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -426,11 +432,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6890276576694707740, guid: 38c317f2df12d5a46aebbb0e9cf6d28b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c317f2df12d5a46aebbb0e9cf6d28b, type: 3}
