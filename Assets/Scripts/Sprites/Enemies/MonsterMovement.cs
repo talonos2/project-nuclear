@@ -38,6 +38,8 @@ public class MonsterMovement : SpriteMovement
     public bool bossMonster;
     public SpriteRenderer hazardIcon;
     Random rand = new Random();
+    protected bool combatTriggered;
+    private GameObject enemyToFightHolder;
 
 
 
@@ -65,12 +67,16 @@ public class MonsterMovement : SpriteMovement
                 facedDirection = NextStep;
                 if (IsMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
                 {
-                    UpdateNewEntityGridLocation();
+                    CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                    if (!combatTriggered) {
+                        UpdateNewEntityGridLocation();
+                    }
+                    
                     RemoveOldEntityGridLocation();
                     characterLocation = characterNextLocation;
                     currentlyMoving = true;
                 }
-                CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                
             }
 
             if (PathRandomly) {
@@ -83,7 +89,14 @@ public class MonsterMovement : SpriteMovement
                 facedDirection = NextStep;
                 if (IsRandomMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
                 {
-                    UpdateNewEntityGridLocation();
+                    if (IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y)) {
+                        CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                    }
+                        
+                    if (!combatTriggered)
+                    {
+                        UpdateNewEntityGridLocation();
+                    }
                     RemoveOldEntityGridLocation();
                     characterLocation = characterNextLocation;
                     currentlyMoving = true;
@@ -93,8 +106,8 @@ public class MonsterMovement : SpriteMovement
                     SetLookDirection();
                 }
 
-                if (IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y))
-                    CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                //if (IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y))
+                 //   CheckForFight(characterNextLocation.x, characterNextLocation.y);
             }
 
             if (PathAntiRandomly)
@@ -109,7 +122,14 @@ public class MonsterMovement : SpriteMovement
                 facedDirection = NextStep;
                 if (IsAntiRandomMoveLocationPassable(characterNextLocation.x, characterNextLocation.y))
                 {
-                    UpdateNewEntityGridLocation();
+                    if (!IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y))
+                    {
+                        CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                    }
+                    if (!combatTriggered)
+                    {
+                        UpdateNewEntityGridLocation();
+                    }
                     RemoveOldEntityGridLocation();
                     characterLocation = characterNextLocation;
                     currentlyMoving = true;
@@ -119,10 +139,10 @@ public class MonsterMovement : SpriteMovement
                     waitTimer = .25f;
                     SetLookDirection();
                 }
-                if (!IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y))
-                {
-                    CheckForFight(characterNextLocation.x, characterNextLocation.y);
-                }
+              // if (!IsPlayerInMonsterTerritory(characterNextLocation.x, characterNextLocation.y))
+               // {
+               //     CheckForFight(characterNextLocation.x, characterNextLocation.y);
+               // }
             }
 
 
@@ -150,7 +170,7 @@ public class MonsterMovement : SpriteMovement
                 if (CurrentlyChasingPlayer) {
                     NextStep = GetChaseStep();
                     SetNextLocation(NextStep);//
-                    CheckForFight(characterNextLocation.x, characterNextLocation.y);//
+                    //CheckForFight(characterNextLocation.x, characterNextLocation.y);//
                     if (ChaseStepNumber >= ChaseRange)
                     {
                         NextStep = PathToHomeLocation();
@@ -174,7 +194,11 @@ public class MonsterMovement : SpriteMovement
 
                     if (IsMoveLocationMonsterChaseable(characterNextLocation.x, characterNextLocation.y))
                     {
-                        UpdateNewEntityGridLocation();
+                        CheckForFight(characterNextLocation.x, characterNextLocation.y);
+                        if (!combatTriggered) {
+                            UpdateNewEntityGridLocation();
+                        }
+
                         RemoveOldEntityGridLocation();
                         characterLocation = characterNextLocation;
                         currentlyMoving = true;
@@ -199,6 +223,7 @@ public class MonsterMovement : SpriteMovement
 
         if (currentlyMoving == true)
         {
+            
             float finishedMoving = MoveToNextSquare();
             if (finishedMoving == 0)
             {
@@ -207,7 +232,31 @@ public class MonsterMovement : SpriteMovement
             }
         }
 
+        handleActivateCombat();
 
+    }
+
+    protected void handleActivateCombat()
+    {
+        if (combatTriggered) {
+            if (!EnemyToFarToFight(enemyToFightHolder)) {
+                Combat.InitiateFight(enemyToFightHolder, this.gameObject);
+                combatTriggered = false;
+            }
+            
+        }
+    }
+
+    protected bool EnemyToFarToFight(GameObject enemyToFight)
+    {
+        float xdistance = enemyToFight.transform.position.x - this.transform.position.x;
+        float ydistance = enemyToFight.transform.position.y - this.transform.position.y;
+        float distanctToEnemy = (float)Math.Sqrt(xdistance * xdistance + ydistance * ydistance);
+        //Debug.Log("Distance to Monster " + distanctToEnemy);
+        //float distanctToMonster=enemyToFight.gameObject.transform.position.x * this.gameObject.transform.position.x
+        if (distanctToEnemy > 1.05)
+            return true;
+        else return false;
     }
 
     protected void CheckForFight(int locX, int locY)
@@ -221,7 +270,9 @@ public class MonsterMovement : SpriteMovement
         GameObject EnemyToFight = IsThereAPlayer(locX, locY);
         if (EnemyToFight != null)
         {
-            Combat.InitiateFight(EnemyToFight, this.gameObject);
+            enemyToFightHolder = EnemyToFight;
+            combatTriggered = true;
+            //Combat.InitiateFight(EnemyToFight, this.gameObject);
         }
     }
 

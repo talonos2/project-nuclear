@@ -4998,7 +4998,7 @@ MonoBehaviour:
   homePositionOnScreen: {x: -0.45, y: -0.8}
   strikingPointOffset: {x: 0, y: 0}
   gettingStruckPointOffset: {x: 0, y: 0}
-  scale: {x: 1, y: 1}
+  scale: {x: -1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
   charName: Jinn
   HealthCrystalsGained: 0
@@ -5436,6 +5436,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6250904124119745716, guid: 24f8a22df5c342f4d98b201a4a034aee,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6666135057181556254, guid: 24f8a22df5c342f4d98b201a4a034aee,
         type: 3}
       propertyPath: m_Name
@@ -5650,11 +5655,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6250904124119745716, guid: 24f8a22df5c342f4d98b201a4a034aee,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f8a22df5c342f4d98b201a4a034aee, type: 3}

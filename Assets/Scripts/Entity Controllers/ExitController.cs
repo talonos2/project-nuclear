@@ -57,7 +57,7 @@ public class ExitController : DoodadData
 
         if (soundToPlayOnTransition != null)
         {
-            SoundManager.Instance.PlaySound(soundToPlayOnTransition.name, 1f);
+            SoundManager.Instance.PlayPersistentSound(soundToPlayOnTransition.name, 1f);
         }
         FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
         fadeout.InitNext(mapToLoad);

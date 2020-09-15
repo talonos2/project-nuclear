@@ -167,7 +167,7 @@ public class SpriteMovement : EntityData
 
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
         {
-            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationMonsterEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
 
@@ -192,6 +192,24 @@ public class SpriteMovement : EntityData
         return MoveableLocation;
     }
 
+    protected bool IsPlayerMoveLocationTerrainPassable(int LocX, int LocY)
+    {
+
+        bool MoveableLocation = false;
+        if (LocX < 0 || LocY < 0)
+        {
+            return MoveableLocation;
+        }
+
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
+            || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
+        {
+            if (IsLocationDoodadPlayerPassible(LocX, LocY) && IsLocationPlayerTerrainEntityPassable(LocX, LocY))
+                MoveableLocation = true;
+        }
+        return MoveableLocation;
+    }
+
     protected bool IsMoveLocationMonsterChaseable(int LocX, int LocY)
     {
         bool MoveableLocation = false;
@@ -201,7 +219,7 @@ public class SpriteMovement : EntityData
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
             || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
         {
-            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationMonsterEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
         return MoveableLocation;
@@ -216,7 +234,7 @@ public class SpriteMovement : EntityData
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
             || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.AIR || IsPlatformUp(LocX, LocY))
         {
-            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationMonsterEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
         return MoveableLocation;
@@ -250,7 +268,7 @@ public class SpriteMovement : EntityData
 
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER)
         {
-            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationMonsterEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
 
@@ -263,10 +281,25 @@ public class SpriteMovement : EntityData
 
         if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL)
         {
-            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationEntityPassible(LocX, LocY))
+            if (IsLocationDoodadMonsterPassible(LocX, LocY) && IsLocationMonsterEntityPassible(LocX, LocY))
                 MoveableLocation = true;
         }
 
+        return MoveableLocation;
+    }
+
+    protected bool IsLocationMonsterEntityPassible(int locX, int locY)
+    {
+        bool MoveableLocation = false;
+        GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[locX, locY];
+        if (entityInLocation == null)
+        {
+            MoveableLocation = true;
+        }
+        else if (entityInLocation.GetComponent<EntityData>().isMainCharacter) {
+            if (!GameData.Instance.dashing && !GameData.Instance.stealthed)
+                MoveableLocation = true;
+        }
         return MoveableLocation;
     }
 
@@ -325,6 +358,23 @@ public class SpriteMovement : EntityData
         GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
         if (entityInLocation == null)
             MoveableLocation = true;
+        else if (entityInLocation.GetComponent<EntityData>().isMainCharacter) {
+            MoveableLocation = true;
+        }
+        return MoveableLocation;
+    }
+
+    protected bool IsLocationPlayerTerrainEntityPassable(int LocX, int LocY)
+    {
+        bool MoveableLocation = false;
+        GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
+        if (entityInLocation == null)
+            MoveableLocation = true;
+        else if (entityInLocation.GetComponent<EntityData>().isMainCharacter || entityInLocation.GetComponent<EntityData>().isAMonster)
+        {
+            MoveableLocation = true;
+        }
+
         return MoveableLocation;
     }
 
@@ -580,4 +630,7 @@ public static class DirectionExtensions
         }
         return 0;
     }
+
+
+
 }

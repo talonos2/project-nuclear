@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SlimeMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: be212d9839ea1e740af0bd1d4c02ab71,
+  m_Shader: {fileID: -6465566751694194690, guid: 347f6ea97b867644daf5d269b21bf93c,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -22,6 +22,10 @@ Material:
     m_TexEnvs:
     - Texture2D_393E7247:
         m_Texture: {fileID: 2800000, guid: 86c0f7eb929f1874d8420e9fd8b2dd4b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_D272255D:
+        m_Texture: {fileID: 2800000, guid: cd1f9f1d02f39f24e8bdaf3bcdfd3920, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -53,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shadows:
-        m_Texture: {fileID: 2800000, guid: 8cff7d5b02c8d7b438d6883423ea7e40, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -63,8 +67,9 @@ Material:
     m_Floats:
     - Boolean_A267E349: 0
     - Vector1_1226684D: 8
-    - Vector1_370ED32A: 0.59
-    - Vector1_4FB17FBE: 0.55
+    - Vector1_370ED32A: 0.65
+    - Vector1_4FB17FBE: 0.7
+    - Vector1_794D4568: 11
     - Vector1_7B6AB870: 8
     - Vector1_B5E64FFE: 2
     - Vector1_DFAF785: 0.1
