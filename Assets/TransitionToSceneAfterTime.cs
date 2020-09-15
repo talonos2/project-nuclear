@@ -21,6 +21,7 @@ public class TransitionToSceneAfterTime : MonoBehaviour
             FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
             fadeout.InitNext(sceneToTransitionTo, 2);
             GameState.isInBattle = false;
+            GameObject.Destroy(this);
         }
     }
 }

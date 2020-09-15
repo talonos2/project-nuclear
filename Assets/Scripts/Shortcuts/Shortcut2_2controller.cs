@@ -5,11 +5,13 @@ using UnityEngine;
 public class Shortcut2_2controller : MonoBehaviour
 {
     public bool onShortcutMap;
+    public bool alwaysOn = false;
+
     public Shortcut2_2controller shortcutToActivate;
     void Start()
     {
         if (onShortcutMap) return;
-        if (!GameData.Instance.map2_2Shortcut)
+        if (!GameData.Instance.map2_2Shortcut&&!alwaysOn)
         {
             ExitController exit = gameObject.GetComponent<ExitController>();
             if (exit)
