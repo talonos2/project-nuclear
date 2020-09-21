@@ -116,7 +116,7 @@ public class GameData : Singleton<GameData>
     internal bool statsSetup=false;
 
     internal bool victory;
-
+    public bool[] gabNumbers = new bool[32];
 
     internal bool IsInTown()
     {

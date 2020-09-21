@@ -67,7 +67,8 @@ public class GameSaverManager
 
         public void SetupSave()
         {
-        gabNumbers = GabTriggerer.gabNumbers;
+        gabNumbers = GameData.Instance.gabNumbers;
+
 
             HealhCrystalBonus = GameData.Instance.HealhCrystalBonus;
             ManaCrystalBonus = GameData.Instance.ManaCrystalBonus;
@@ -136,7 +137,7 @@ public class GameSaverManager
 
     public void PushSaveToGameData()
         {
-        GabTriggerer.gabNumbers=gabNumbers;
+        GameData.Instance.gabNumbers =gabNumbers;
 
         GameData.Instance.HealhCrystalBonus = HealhCrystalBonus;
             GameData.Instance.ManaCrystalBonus = ManaCrystalBonus;
