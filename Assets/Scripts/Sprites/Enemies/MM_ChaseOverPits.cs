@@ -13,8 +13,16 @@ public class MM_ChaseOverPits : MonsterMovement
             return;
         }
 
+        HandleMonsterForcedJump();
+
         if (!currentlyMoving)
         {
+
+            if (IsInAForcedJump())
+            {
+                return;
+            }
+
             SetCurrentLocation();
 
 

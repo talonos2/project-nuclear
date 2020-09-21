@@ -44,6 +44,7 @@ public class MonsterMovement : SpriteMovement
 
 
 
+
     // Update is called once per frame
     void Update()
     {
@@ -56,10 +57,15 @@ public class MonsterMovement : SpriteMovement
             return;
         }
 
+        HandleMonsterForcedJump();
+        
+
         if (!currentlyMoving)
         {
+            if (IsInAForcedJump()) {
+                return; }
 
-            SetCurrentLocation();
+                SetCurrentLocation();
 
             if (PathViaSteps) {
                 NextStep = GetNextStep();
@@ -236,9 +242,25 @@ public class MonsterMovement : SpriteMovement
 
     }
 
+    protected void HandleMonsterForcedJump()
+    {
+        if (!currentlyMoving && timeLeftInForcedJump > 0)
+        {
+            JumpToTarget();
+            bool finishedForcedJump = timeLeftInForcedJump <= 0;
+            if (finishedForcedJump)
+            {
+                currentlyMoving = false;
+                TiePositionToGrid();
+                tempFramesPerSecond = framesPerSecond;
+            }
+        }
+    }
+
     protected void handleActivateCombat()
     {
         if (combatTriggered) {
+
             if (!EnemyToFarToFight(enemyToFightHolder)) {
                 Combat.InitiateFight(enemyToFightHolder, this.gameObject);
                 combatTriggered = false;
@@ -374,6 +396,116 @@ public class MonsterMovement : SpriteMovement
         }
 
         return PlayerFound;
+    }
+
+    internal bool AttemptPushMonster(DirectionMoved playerFacedDirection)
+    {
+
+        if (bossMonster)
+        {
+            return false;
+        }
+
+        bool isMonsterPushed = false;
+
+        if (playerFacedDirection == DirectionMoved.UP || playerFacedDirection == DirectionMoved.DOWN) {
+            Debug.Log("I should be moving here "+playerFacedDirection);
+            Debug.Log("Monster Location Before Push " + characterLocation.x + ", " + characterLocation.y);
+            if ((transform.position.x - (characterLocation.x+ mapZeroLocation.x))>0) {
+                if (IsMoveLocationPassable(characterLocation.x + 1, characterLocation.y))
+                {
+                    PushMonster(characterLocation.x + 1, characterLocation.y, 1, 0);
+                    facedDirection = DirectionMoved.RIGHT;
+                    SetLookDirection();
+                    isMonsterPushed = true;
+                }
+                else if (IsMoveLocationPassable(characterLocation.x - 1, characterLocation.y))
+                {
+                    PushMonster(characterLocation.x - 1, characterLocation.y, -1, 0);
+                    facedDirection = DirectionMoved.LEFT;
+                    SetLookDirection();
+                    isMonsterPushed = true;
+                }
+            }
+            else {
+                if (IsMoveLocationPassable(characterLocation.x - 1, characterLocation.y))
+                {
+                    PushMonster(characterLocation.x - 1, characterLocation.y, -1, 0);
+                    facedDirection = DirectionMoved.LEFT;
+                    SetLookDirection();
+                    isMonsterPushed = true;
+                }
+                else if (IsMoveLocationPassable(characterLocation.x + 1, characterLocation.y))
+                {
+                    PushMonster(characterLocation.x + 1, characterLocation.y, 1, 0);
+                    facedDirection = DirectionMoved.RIGHT;
+                    SetLookDirection();
+                    isMonsterPushed = true;
+                }
+            }
+            
+        }
+        else if (playerFacedDirection == DirectionMoved.RIGHT || playerFacedDirection == DirectionMoved.LEFT) {
+            if ((transform.position.y - (characterLocation.y + mapZeroLocation.y)) > 0)
+            {
+                if (IsMoveLocationPassable(characterLocation.x, characterLocation.y + 1))
+                {
+                    PushMonster(characterLocation.x, characterLocation.y + 1, 0, 1);
+                    facedDirection = DirectionMoved.UP;
+                    SetLookDirection();
+                    isMonsterPushed = true;
+                }
+                else if (IsMoveLocationPassable(characterLocation.x, characterLocation.y - 1))
+                {
+                    PushMonster(characterLocation.x, characterLocation.y - 1, 0, -1);
+                    facedDirection = DirectionMoved.DOWN;
+                    SetLookDirection();
+                    isMonsterPushed = true;
+                }
+            }
+            else {
+                if (IsMoveLocationPassable(characterLocation.x, characterLocation.y - 1))
+                {
+                    PushMonster(characterLocation.x, characterLocation.y - 1, 0, -1);
+                    facedDirection = DirectionMoved.DOWN;
+                    SetLookDirection();
+                    isMonsterPushed = true;
+                }
+                else if (IsMoveLocationPassable(characterLocation.x, characterLocation.y  +1))
+                {
+                    PushMonster(characterLocation.x, characterLocation.y + 1, 0, 1);
+                    facedDirection = DirectionMoved.UP;
+                    SetLookDirection();
+                    isMonsterPushed = true;
+                }
+            }
+                
+        }
+        return isMonsterPushed;
+    }
+
+    private void PushMonster(int LocX, int LocY, int jumpTargetX, int jumpTargetY)
+    {
+        
+        forcedJumpHeight = .7f;
+        timeLeftInForcedJump = .25f;
+        totalTimeInForcedJump = .25f;
+        currentlyMoving = false;
+        jumpStartPos = transform.position;
+        Debug.Log("reverse zero location " + (mapZeroLocation.x + (float)characterLocation.x) + " actual transomr position " + transform.position +", jumpTarget "+jumpTargetX);
+        jumpTarget.x = jumpTargetX - (transform.position.x - ((float)characterLocation.x + mapZeroLocation.x))  ;
+        Debug.Log("Jump target x " + jumpTarget.x);
+        jumpTarget.y = jumpTargetY - (transform.position.y - ((float)characterLocation.y + mapZeroLocation.y));
+        characterNextLocation.x = LocX;
+        characterNextLocation.y = LocY;
+        UpdateNewEntityGridLocation();    
+        RemoveOldEntityGridLocation();
+        characterLocation = characterNextLocation;
+        //TiePositionToGrid();
+
+
+        Debug.Log("Monster moved "+LocX+", "+LocY);
+        // if (IsInAForcedJump);
     }
 
     protected bool IsPlayerInViewByFlier()

@@ -329,7 +329,30 @@ public class CharacterMovement : SpriteMovement
             characterLocation = characterNextLocation;
             continueDashing = true;
         }
+        else if (attemptToPushMonster(characterNextLocation.x, characterNextLocation.y)) {
+            UpdateNewEntityGridLocation();
+            RemoveOldEntityGridLocation();
+            characterLocation = characterNextLocation;
+            continueDashing = true;
+        }
 
+    }
+
+    private bool attemptToPushMonster(int LocX, int LocY)
+    {
+        bool MoveableLocation = false;
+        GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
+        if (entityInLocation == null) {
+            return false;
+        }           
+        else if (entityInLocation.GetComponent<EntityData>().isAMonster)
+        {
+            if (entityInLocation.GetComponent<MonsterMovement>().AttemptPushMonster(this.facedDirection)){
+                MoveableLocation = true;
+            }
+            
+        }
+        return MoveableLocation;
     }
 
     internal void PowerDownCheat()
@@ -356,7 +379,7 @@ public class CharacterMovement : SpriteMovement
                 SoundManager.Instance.PlaySound("AirGust",1);
                 jumpStartPos = transform.position;
                 jumpTarget = windJumpLocation.GetComponent<WindJumpController>().jumpDestOffset;
-                SetNextLocationActual(characterLocation.x+jumpTarget.x, characterLocation.y +jumpTarget.y);
+                SetNextLocationActual(characterLocation.x+(int)jumpTarget.x, characterLocation.y +(int)jumpTarget.y);
                 if (Math.Abs(jumpTarget.x) > Math.Abs(jumpTarget.y)) {
                     if (jumpTarget.x < 0) { facedDirection = DirectionMoved.LEFT; }
                     else { facedDirection = DirectionMoved.RIGHT; }

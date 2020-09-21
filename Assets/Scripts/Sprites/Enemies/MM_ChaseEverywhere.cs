@@ -17,6 +17,8 @@ public class MM_ChaseEverywhere : MonsterMovement
             return;
         }
 
+        HandleMonsterForcedJump();
+
         if (waitTimer >= 0)
         {
             waitTimer -= Time.deltaTime;
@@ -27,6 +29,11 @@ public class MM_ChaseEverywhere : MonsterMovement
 
         if (!currentlyMoving)
         {
+            if (IsInAForcedJump())
+            {
+                return;
+            }
+
             SetCurrentLocation();
         
 

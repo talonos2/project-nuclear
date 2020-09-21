@@ -50,7 +50,7 @@ public class SpriteMovement : EntityData
     protected float waitTimer = 0;
 
     //Stuff to do with forced jumping:
-    protected Vector2Int jumpTarget;
+    protected Vector2 jumpTarget;
     protected Vector3 jumpStartPos;
     protected float timeLeftInForcedJump = 0;
     protected float totalTimeInForcedJump = 0;
