@@ -10,6 +10,9 @@ public class ObjectAnimator : MonoBehaviour
     protected float timeSinceLastFrame = 0;
     protected float offsetFix = .00001f;
     protected int currentFrame = 0;
+
+    public bool diesAtEndOfAnimation = false;
+
     void Start()
     {
         this.sRender = this.GetComponentInChildren<MeshRenderer>();
@@ -25,8 +28,17 @@ public class ObjectAnimator : MonoBehaviour
         {
             timeSinceLastFrame = 0;
             currentFrame += 1;
-            if (currentFrame == maxFrames) {
-                currentFrame = 0;
+            if (currentFrame == maxFrames)
+            {
+                if (diesAtEndOfAnimation)
+                {
+                    GameObject.Destroy(this.gameObject);
+                    return;
+                }
+                else
+                {
+                    currentFrame = 0;
+                }
             }
             sRender.material.SetFloat("_Frame", currentFrame + offsetFix);
         }
