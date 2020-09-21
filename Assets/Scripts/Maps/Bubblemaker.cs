@@ -19,7 +19,10 @@ public class Bubblemaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeUntilNext -= Time.deltaTime;
+        if (!GameState.fullPause && !GameState.isInBattle)
+        {
+            timeUntilNext -= Time.deltaTime;
+        }
         if (timeUntilNext < 0)
         {
             timeUntilNext = Random.Range(.7f, 1.3f) * frequency;
