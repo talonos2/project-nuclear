@@ -35,16 +35,19 @@ public class NewGameController : MonoBehaviour
     public Sprite[] offImages;
 
     internal bool inSaveMenu;
-
+    public bool keepInactive;
+    public Canvas canvasToLoad;
     private int currentMenuOptionSelected = -1;
 
     void Start()
     {
+        
         RefreshSelectedOption(0); //TODO: If save game, start on continue.
     }
 
     void Update()
     {
+        if (keepInactive) return;
         if (Array.IndexOf<Scene>(SceneManager.GetAllScenes(), SceneManager.GetSceneByName("OptionsScreen"))>-1)
         {
             return;
@@ -113,6 +116,7 @@ public class NewGameController : MonoBehaviour
 
     public void RefreshSelectedOption(int menuOptionSelected)
     {
+        if (keepInactive) return;
         if (menuOptionSelected != currentMenuOptionSelected && currentMenuOptionSelected != -1)
         {
             SoundManager.Instance.PlaySound("MenuMove", 1f);
@@ -142,7 +146,8 @@ public class NewGameController : MonoBehaviour
             GameData.Instance.nextLocationSet = true;
             GameData.Instance.FloorNumber = 0;
             FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
-            fadeout.attachToGUI(transform.parent.GetComponent<Canvas>());
+            if (!keepInactive) fadeout.attachToGUI(transform.parent.GetComponent<Canvas>());
+            else fadeout.attachToGUI(canvasToLoad);
             fadeout.InitNext("TownMap_1", 1);
         }
     }
@@ -167,7 +172,8 @@ public class NewGameController : MonoBehaviour
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
                 GameData.Instance.FloorNumber = 0;
                 FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
-                fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
+                if (!keepInactive) fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
+                else fadeout.attachToGUI(canvasToLoad);
                 fadeout.InitNext("TownMap_1", 2);
             }
         }
@@ -197,7 +203,8 @@ public class NewGameController : MonoBehaviour
             GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
             GameData.Instance.FloorNumber = 1;
             FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
-            fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
+            if (!keepInactive)  fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
+            else fadeout.attachToGUI(canvasToLoad);
             fadeout.InitNext("Map1_1", 2);
 
         }

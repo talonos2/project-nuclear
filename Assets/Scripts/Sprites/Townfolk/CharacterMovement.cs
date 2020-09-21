@@ -357,6 +357,16 @@ public class CharacterMovement : SpriteMovement
                 jumpStartPos = transform.position;
                 jumpTarget = windJumpLocation.GetComponent<WindJumpController>().jumpDestOffset;
                 SetNextLocationActual(characterLocation.x+jumpTarget.x, characterLocation.y +jumpTarget.y);
+                if (Math.Abs(jumpTarget.x) > Math.Abs(jumpTarget.y)) {
+                    if (jumpTarget.x < 0) { facedDirection = DirectionMoved.LEFT; }
+                    else { facedDirection = DirectionMoved.RIGHT; }
+                }
+                else {
+                    if (jumpTarget.y < 0) { facedDirection = DirectionMoved.DOWN; }
+                    else { facedDirection = DirectionMoved.UP; }
+                }
+                SetLookDirection();
+
                 totalTimeInForcedJump = windJumpLocation.GetComponent<WindJumpController>().timeItTakesToJump;
                 forcedJumpHeight = windJumpLocation.GetComponent<WindJumpController>().jumpHeight;
                 timeLeftInForcedJump = totalTimeInForcedJump;
