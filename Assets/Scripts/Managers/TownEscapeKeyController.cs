@@ -16,6 +16,7 @@ public class TownEscapeKeyController : MonoBehaviour
     public LoadSaveController loadSaveController;
     public bool inOtherMenu;
 
+
     void Update()
     {
         if (GameData.Instance.isCutscene || inOtherMenu) return;
@@ -157,6 +158,7 @@ public class TownEscapeKeyController : MonoBehaviour
         hideButtonSelection();
         buttonSelected = 3;
         showButtonSelection();
+        loadSaveController.newGameController.OpenOptionsMenu();
         //Load 'options' ui screen
     }
     public void MenuButtonClicked()

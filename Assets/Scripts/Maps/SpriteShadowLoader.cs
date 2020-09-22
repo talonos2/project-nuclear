@@ -23,7 +23,10 @@ public class SpriteShadowLoader : MonoBehaviour
     public int lightRadius=6;
     public bool isOnCutsceneMap;
     public bool isThisJohnDoe;
-    
+    SpriteMovement mover;
+    SpriteMovement pMover;
+    public bool isAPlayer;
+    public bool isAMonster;
     void Start()
     {
         groundObject = GameObject.Find("Ground").GetComponent<GroundShadow>();
@@ -34,19 +37,30 @@ public class SpriteShadowLoader : MonoBehaviour
         sRender.material.SetTexture("_Shadows", shadowTexture);
         sRender.material.SetTexture("_Glow", glowTexture);
         PassabilityGrid passGrid = GameObject.Find("Grid").GetComponent<PassabilityGrid>();
-        if(isOnCutsceneMap) passGrid = GameObject.Find("Grid2").GetComponent<PassabilityGrid>();
+        if (isOnCutsceneMap) passGrid = GameObject.Find("Grid2").GetComponent<PassabilityGrid>();
         Vector4 tempVector = new Vector4(passGrid.width, passGrid.height, 0, 0);
         sRender.material.SetVector("_MapXY", tempVector);
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
         //sRender.material.SetInt("_LightRad", ThePlayer.GetComponentInChildren<Renderer>().material.GetInt("_LightRad"));
         sRender.material.SetInt("_LightRad", 6);
-        if (GameData.Instance.FloorNumber==0)
+        if (GameData.Instance.FloorNumber == 0)
             sRender.material.SetInt("_LightRad", 0);
 
-        transform.position=transform.position + new Vector3(groundObject.mapOffset.x, groundObject.mapOffset.y, 0);
+        transform.position = transform.position + new Vector3(groundObject.mapOffset.x, groundObject.mapOffset.y, 0);
         xPosition = transform.localPosition.x;
         yPostioin = transform.localPosition.y;
 
+        if (isAMonster)
+        {
+            //Case for monsters
+            mover = transform.parent.GetComponent<SpriteMovement>();
+
+       }
+        if (isAPlayer && this.transform.parent.parent.GetComponent<SpriteMovement>() != null)
+        {
+            //Case for Player
+            pMover = transform.parent.parent.GetComponent<SpriteMovement>();
+        }
     }
 
     public void setOnCutsceneMap() {
@@ -102,14 +116,27 @@ public class SpriteShadowLoader : MonoBehaviour
             zPosition = -1;
         if (aboveItem)
             zPosition = -20;
-        if (GetComponent<SpriteMovement>()!=null)
+        if (mover!=null)
         {
-            SpriteMovement mover = GetComponent<SpriteMovement>();
-            if (mover.IsInAForcedJump()|| mover.IsJumping())
+            //Case for monsters
+            if (mover.IsInAForcedJump())
             {
                 zPosition -= .01f;
+                //zPosition -= this.transform.parent.transform.localPosition.y / 100;
             }
         }
+
+        if (pMover != null)
+        {
+            //The case of the player jumping
+            if ((pMover.IsInAForcedJump() || pMover.IsJumping()))
+            {
+                Debug.Log("Do I detect the player jumping");
+                zPosition -= .01f;
+                //zPosition -= this.transform.parent.transform.localPosition.y / 100;
+            }
+        }
+
         if (spikes) {
             zPosition += .01f;
         }

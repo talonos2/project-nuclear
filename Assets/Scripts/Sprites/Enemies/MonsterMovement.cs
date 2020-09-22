@@ -409,8 +409,8 @@ public class MonsterMovement : SpriteMovement
         bool isMonsterPushed = false;
 
         if (playerFacedDirection == DirectionMoved.UP || playerFacedDirection == DirectionMoved.DOWN) {
-            Debug.Log("I should be moving here "+playerFacedDirection);
-            Debug.Log("Monster Location Before Push " + characterLocation.x + ", " + characterLocation.y);
+            //Debug.Log("I should be moving here "+playerFacedDirection);
+           // Debug.Log("Monster Location Before Push " + characterLocation.x + ", " + characterLocation.y);
             if ((transform.position.x - (characterLocation.x+ mapZeroLocation.x))>0) {
                 if (IsMoveLocationPassable(characterLocation.x + 1, characterLocation.y))
                 {
@@ -492,9 +492,9 @@ public class MonsterMovement : SpriteMovement
         totalTimeInForcedJump = .25f;
         currentlyMoving = false;
         jumpStartPos = transform.position;
-        Debug.Log("reverse zero location " + (mapZeroLocation.x + (float)characterLocation.x) + " actual transomr position " + transform.position +", jumpTarget "+jumpTargetX);
+       // Debug.Log("reverse zero location " + (mapZeroLocation.x + (float)characterLocation.x) + " actual transomr position " + transform.position +", jumpTarget "+jumpTargetX);
         jumpTarget.x = jumpTargetX - (transform.position.x - ((float)characterLocation.x + mapZeroLocation.x))  ;
-        Debug.Log("Jump target x " + jumpTarget.x);
+        //Debug.Log("Jump target x " + jumpTarget.x);
         jumpTarget.y = jumpTargetY - (transform.position.y - ((float)characterLocation.y + mapZeroLocation.y));
         characterNextLocation.x = LocX;
         characterNextLocation.y = LocY;
@@ -504,7 +504,7 @@ public class MonsterMovement : SpriteMovement
         //TiePositionToGrid();
 
 
-        Debug.Log("Monster moved "+LocX+", "+LocY);
+       // Debug.Log("Monster moved "+LocX+", "+LocY);
         // if (IsInAForcedJump);
     }
 

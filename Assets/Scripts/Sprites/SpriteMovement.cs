@@ -542,13 +542,13 @@ public class SpriteMovement : EntityData
         timeLeftInForcedJump = Mathf.Max(timeLeftInForcedJump - Time.deltaTime, 0);
         float t = (totalTimeInForcedJump-timeLeftInForcedJump)/ totalTimeInForcedJump;
 
-        Debug.Log(t + ", " + timeLeftInForcedJump + ", " + totalTimeInForcedJump);
+       // Debug.Log(t + ", " + timeLeftInForcedJump + ", " + totalTimeInForcedJump);
 
         Vector3 newPosition = Vector3.Lerp(jumpStartPos, jumpStartPos + new Vector3(jumpTarget.x, jumpTarget.y,0), t);
         float h = -((2 * t - 1) * (2 * t - 1))+1;
         h *= forcedJumpHeight;
 
-        Debug.Log(t + ", " + jumpStartPos + ", " + jumpTarget);
+       // Debug.Log(t + ", " + jumpStartPos + ", " + jumpTarget);
 
         transform.position = new Vector3(newPosition.x, newPosition.y + h, transform.position.z);
 
