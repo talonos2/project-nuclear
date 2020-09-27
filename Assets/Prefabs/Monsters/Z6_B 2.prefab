@@ -156,7 +156,7 @@ MonoBehaviour:
   ChaseRange: 15
   SpotWaitTimer: 0.3
   LookPattern: 0000000000000000
-  bossMonster: 0
+  bossMonster: 1
   hazardIcon: {fileID: 4247305576883906376}
 --- !u!65 &6622165687117483735
 BoxCollider:
@@ -362,6 +362,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1001 &7308880267406885204
 PrefabInstance:
   m_ObjectHideFlags: 0

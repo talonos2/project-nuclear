@@ -12,7 +12,7 @@ public class GabTriggerer : DoodadData
 
     public string gabText;
     public int gabNumber;
-    public static bool[] gabNumbers = new bool[32];
+    //public static bool[] gabNumbers = new bool[32];
     private double timeRemaining;
     public string sound;
     public bool forcePause;
@@ -27,7 +27,7 @@ public class GabTriggerer : DoodadData
 
     public void TriggerGab()
     {
-        if (!gabNumbers[gabNumber])
+        if (!GameData.Instance.gabNumbers[gabNumber])
         {
             if (sound != null)
             {
@@ -44,7 +44,7 @@ public class GabTriggerer : DoodadData
                 uiController = GameObject.Find("TownMenuUi");
             }
             uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText,true, (float)time, true,true, clipToPlayForTutorial));
-            gabNumbers[gabNumber] = true;
+            GameData.Instance.gabNumbers[gabNumber] = true;
         }
         GameObject.Destroy(this.gameObject);
     }

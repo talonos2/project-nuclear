@@ -117,8 +117,9 @@ namespace UnityCommon
 
         private AudioListener FindOrAddListener ()
         {
+            Debug.Log("Gotten");
             audioListener = FindObjectOfType<AudioListener>();
-            if (!audioListener) audioListener = gameObject.AddComponent<AudioListener>();
+            //if (!audioListener) audioListener = gameObject.AddComponent<AudioListener>();
             return audioListener;
         }
 
