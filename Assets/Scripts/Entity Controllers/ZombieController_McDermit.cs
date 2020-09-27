@@ -8,7 +8,7 @@ public class ZombieController_McDermit : Enemy
     new void Start()
     {
         base.Start();
-        if (GameData.Instance.McDermit == 0 || GameData.Instance.bestTimes[6]==0 || GameData.Instance.RunNumber <=3) {
+        if (GameData.Instance.McDermit == 0 || GameData.Instance.bestTimes[7]==0 || GameData.Instance.RunNumber <=3) {
             Destroy(this.gameObject);
         }   
     }
