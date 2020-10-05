@@ -826,17 +826,6 @@
 
 		;@char Reya
 		;Reya: I hear you really slughtered those horrors.
-		@if GetPendleton()
-			Reya: You even outdid that little knight-in-training.
-			@char Jezerine
-			Jezerine: He's a good kid.
-			Jezerine: He just didn't have the tools I did.
-		@else
-			Reya: Even that little knight couldn't stand against you!
-			@char Jezerine
-			Jezerine: He was a good kid.
-		@endif
-
 		;Reya: I'm a bit disappointed I didn't get a crack at them myself.
 
 		;@char Jezerine
@@ -844,12 +833,6 @@
 
 		;@char Reya
 		;Reya: Yeah kid, this isn't really a friendly business.
-
-
-
-
-
-
 		;Reya: But don't worry. First one's always the hardest.
 		;Reya: You'll see how it is when you get out there.
 
@@ -3388,7 +3371,7 @@
 		Elder: Well, that's done...
 		@endif
 
-
+	@exit
 
 
 
