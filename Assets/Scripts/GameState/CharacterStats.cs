@@ -206,6 +206,13 @@ public class CharacterStats : Stats
         SavedStats.weapon = this.weapon;
         SavedStats.armor = this.armor;
         SavedStats.accessory = this.accessory;
+
+        setWeaponStats(weapon);
+        setArmorStats(armor);
+        setAccessoryStats(accessory);
+        SavedStats.weaponBonusAttack = this.weaponBonusAttack;
+        SavedStats.armorBonusDefense = this.armorBonusDefense;
+
     }
 
     //Each dungion run this section sets the stats. Main stats to set are the CrystalBuffs and Item buffs. 
@@ -320,6 +327,7 @@ public class CharacterStats : Stats
     }
 
     private void setWeaponStats(Weapon weaponChanged) {
+        if (weaponChanged.gameObject == null) return;
         weaponBonusAttack = weaponChanged.GetComponent<Weapon>().addAttack;
         setMaxStats();
     }
@@ -330,11 +338,13 @@ public class CharacterStats : Stats
     }
 
     private void setArmorStats(Armor armorChanged) {
+        if (armorChanged.gameObject == null) return;
         armorBonusDefense = armorChanged.GetComponent<Armor>().addDefense;
         setMaxStats();
     }
 
     private void setAccessoryStats(Accessory accessoryChanged) {
+        if (accessoryChanged.gameObject == null) return;
         float oldaccHealth=accessoryHealth;
         float oldaccMana= accessoryMana;
 
