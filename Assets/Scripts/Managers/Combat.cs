@@ -572,8 +572,7 @@ public class Combat : MonoBehaviour
     private float RollCrit()
     {
         float critValue = 0;
-        System.Random rand = new System.Random(100);
-        int roll = rand.Next() + 1;
+        int roll = UnityEngine.Random.Range(0, 100) + 1;
         if (roll <= playerStats.accessoryCritChance) { critValue = 1.5f; }
 
         return critValue;
@@ -582,8 +581,8 @@ public class Combat : MonoBehaviour
     private bool RollDodge()
     {
         bool dodgeValue = false;
-        System.Random rand = new System.Random(100);
-        int roll = rand.Next() + 1;
+        int roll = UnityEngine.Random.Range(0,100)+1;
+        //Debug.Log("Dodge rolled: " + roll + " vs dodge stat: " + playerStats.accessoryDodgeBonus);
         if (roll <= playerStats.accessoryDodgeBonus) { dodgeValue = true ; }
 
         return dodgeValue;
@@ -606,6 +605,7 @@ public class Combat : MonoBehaviour
         goodBlock = false;
         incomingDamage = Math.Max(incomingDamage, 0);
         if (RollDodge()) {
+            //Debug.Log("Dodged that!");
             incomingDamage = 0;
             //ShouldHaveDodgeEffect
         }
