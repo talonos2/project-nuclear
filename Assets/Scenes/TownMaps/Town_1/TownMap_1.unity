@@ -650,9 +650,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7426463875589292825, guid: 2a6b5610efc1eaa418537d5c3c42796f,
         type: 3}
+      propertyPath: Players.Array.size
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426463875589292825, guid: 2a6b5610efc1eaa418537d5c3c42796f,
+        type: 3}
       propertyPath: facing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7426463875589292825, guid: 2a6b5610efc1eaa418537d5c3c42796f,
+        type: 3}
+      propertyPath: Players.Array.data[30]
+      value: 
+      objectReference: {fileID: 8620583717511749611, guid: c1fe214aa32d31241b62dcd81afbbc4a,
+        type: 3}
     - target: {fileID: 2457180876599999501, guid: 2a6b5610efc1eaa418537d5c3c42796f,
         type: 3}
       propertyPath: cameraLocation.Array.data[1].x
@@ -6914,6 +6925,7 @@ GameObject:
   - component: {fileID: 2018926732}
   - component: {fileID: 2018926737}
   - component: {fileID: 2018926738}
+  - component: {fileID: 2018926736}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -6980,20 +6992,46 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018926731}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &2018926735
-Transform:
+--- !u!224 &2018926735
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018926731}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -1, y: -1.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.5, y: 0.10097424, z: 7.1}
   m_Children: []
   m_Father: {fileID: 326564849}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1, y: -1.25}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &2018926736
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018926731}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!114 &2018926737
 MonoBehaviour:
   m_ObjectHideFlags: 0

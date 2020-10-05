@@ -53,11 +53,15 @@ public class EndRunScreenController : MonoBehaviour
         GameData.Instance.RunNumber += 1;
         GameData.Instance.FloorNumber = 0;
         NewCrystalLevelController.AddCrystalsPostRun();
-        GameData.Instance.autoSaveStats();
+        if (GameData.Instance.RunNumber < 31) {
+            GameData.Instance.autoSaveStats();
+        }
         GameData.Instance.SetNextLocation(new Vector2Int(-4,-13), SpriteMovement.DirectionMoved.DOWN);
         FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
         fadeout.attachToGUI(canvas);
-        fadeout.InitNext("TownMap_1", 2);
+        if (GameData.Instance.RunNumber < 31)
+        { fadeout.InitNext("TownMap_1", 2); }          
+        else { fadeout.InitNext("TownMap_FinalRun", 2); }
     }
 
     public void SetButtonLit(bool on)

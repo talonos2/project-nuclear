@@ -40,13 +40,22 @@ public class SpawnPlayer : MonoBehaviour
                 if (runNumber >= 25 && runNumber <= 29) newPlayer = Instantiate(Players[28], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
                 if (runNumber ==30) newPlayer = Instantiate(Players[29], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
                 facing = gameData.nextFacing;
-                newPlayer.GetComponent<EntityData>().isMainCharacter = true;
-                characterMovement = newPlayer.GetComponent<CharacterMovement>();
-                characterMovement.SetRenderer();
-                characterMovement.facedDirection = facing;
-                characterMovement.SetLookDirection();
-                if (!CutsceneLoader.postRun1Cutscene && CutsceneLoader.runTownBackDialogue) CutsceneLoader.SetNextDialogue("enterTown");
+                if (runNumber < 31) {
+                    newPlayer.GetComponent<EntityData>().isMainCharacter = true;
+                    characterMovement = newPlayer.GetComponent<CharacterMovement>();
+                    characterMovement.SetRenderer();
+                    characterMovement.facedDirection = facing;
+                    characterMovement.SetLookDirection();
+                    if (!CutsceneLoader.postRun1Cutscene && CutsceneLoader.runTownBackDialogue) CutsceneLoader.SetNextDialogue("enterTown");
+                }
+                
+
                 CutsceneLoader.runTownBackDialogue = false;
+                if (runNumber == 31) {
+
+                    SetInTownPositions();
+                    Instantiate(Players[30], new Vector3(gameData.nextLocaiton.x, gameData.nextLocaiton.y, 0), Quaternion.identity);
+                }
                 return;
             }
             else {
@@ -220,6 +229,10 @@ public class SpawnPlayer : MonoBehaviour
                 gameData.nextLocaiton.x = 9;
                 gameData.nextLocaiton.y = 19;
                 gameData.nextFacing = SpriteMovement.DirectionMoved.RIGHT;
+                break;
+            case 31:
+                gameData.nextLocaiton.x = 9;
+                gameData.nextLocaiton.y = 19;
                 break;
 
         }
