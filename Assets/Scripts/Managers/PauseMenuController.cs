@@ -22,16 +22,40 @@ public class PauseMenuController : MonoBehaviour
 
 //    private int currentMenuOptionSelected = -1;
 
-    public GameObject pauseFirstButton;
+    public GameObject dungeonFirstButton, townFirstButton, optionsReturn;
 
+    public Button[] buttons;
 
     void Start()
     {
         //RefreshSelectedOption(0); //TODO: If save game, start on continue.
-        
+
+        Scene scene = SceneManager.GetActiveScene();
+
         EventSystem.current.SetSelectedGameObject(null);  //clears first button, then sets it
-        EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+        ;
+        if (scene.name == "TownMap_1" || scene.name == "TownInterior_Pub_1" || scene.name == "TownInterior_Church_1"
+        || scene.name == "TownInterior_Manor_1" || scene.name == "TownInterior_SeersCottage_1")
+        {
+            
+            Image disable = buttons[4].gameObject.GetComponent(typeof(Image)) as Image;
+            disable.enabled = false;
+            buttons[4].enabled = false;
+            EventSystem.current.SetSelectedGameObject(townFirstButton);
+        }
+        else
+        {
+            Image disable = buttons[0].gameObject.GetComponent(typeof(Image)) as Image;
+            disable.enabled = false;
+            buttons[0].enabled = false;
+            EventSystem.current.SetSelectedGameObject(dungeonFirstButton);
+        }
+
+
+        
+
     }
+
 
     void Update()
     {
@@ -40,99 +64,102 @@ public class PauseMenuController : MonoBehaviour
             return;
         }
         if (inSaveMenu) return;
-/*
-        if (Input.GetButtonDown("Submit"))
-        {
-            //Debug.Log("Hit submit");
-            switch(currentMenuOptionSelected)
-            {
-                case 0: //save
-                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    //StartNewGame();
-                    break;
-                case 1: //load
-                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    //loadSaveController.activateLoad(this);
-                    inSaveMenu = true;
-                    break;
-                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    loadSaveController.LoadGame(0);
-                    break;
-                case 2: //options
-                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    OpenOptionsMenu();
-                    break;
-                case 3: //main menu
-                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    break;
-                case 4: //abandon run
-                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    break;
-                case 5: // exit
-                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    break;
+
+        if (EventSystem.current.currentSelectedGameObject==null)
+        EventSystem.current.SetSelectedGameObject(optionsReturn);
+        /*
+                if (Input.GetButtonDown("Submit"))
+                {
+                    //Debug.Log("Hit submit");
+                    switch(currentMenuOptionSelected)
+                    {
+                        case 0: //save
+                            SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                            //StartNewGame();
+                            break;
+                        case 1: //load
+                            SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                            //loadSaveController.activateLoad(this);
+                            inSaveMenu = true;
+                            break;
+                            SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                            loadSaveController.LoadGame(0);
+                            break;
+                        case 2: //options
+                            SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                            OpenOptionsMenu();
+                            break;
+                        case 3: //main menu
+                            SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                            break;
+                        case 4: //abandon run
+                            SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                            break;
+                        case 5: // exit
+                            SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                            break;
+                    }
+                }
+
+                //Selecting Up
+                if (Input.GetButtonDown("SelectUp"))
+                {
+                    RefreshSelectedOption(PrevMenuOption());
+                }
+
+
+                //SelectingDownOption
+                if (Input.GetButtonDown("SelectDown"))
+                {
+                    RefreshSelectedOption(NextMenuOption());
+                }
+
             }
-        }
 
-        //Selecting Up
-        if (Input.GetButtonDown("SelectUp"))
-        {
-            RefreshSelectedOption(PrevMenuOption());
-        }
+            public void OpenOptionsMenu()
+            {
+                //SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                SceneManager.LoadScene("OptionsScreen", LoadSceneMode.Additive);
+            }
 
+            private int PrevMenuOption()
+            {
 
-        //SelectingDownOption
-        if (Input.GetButtonDown("SelectDown"))
-        {
-            RefreshSelectedOption(NextMenuOption());
-        }
+                if (currentMenuOptionSelected == 5)
+                    currentMenuOptionSelected = (currentMenuOptionSelected + 5) % 6;
 
-    }
+                return (currentMenuOptionSelected + 5)%6;  //TODO: Skip continue and load game if there's no game to load or continue.
+            }
 
-    public void OpenOptionsMenu()
-    {
-        //SoundManager.Instance.PlaySound("MenuOkay", 1f);
-        SceneManager.LoadScene("OptionsScreen", LoadSceneMode.Additive);
-    }
+            private int NextMenuOption()
+            {
+                currentMenuOptionSelected = (currentMenuOptionSelected + 7) % 6;
+                //        if (inDungeon == true && currentMenuOptionSelected == 5)
+                if (currentMenuOptionSelected == 5)
+                {
+                    Debug.Log("if goes off");
+                    currentMenuOptionSelected = (currentMenuOptionSelected + 7) % 6;
+                }
+                return currentMenuOptionSelected;
+            }
 
-    private int PrevMenuOption()
-    {
+            public void RefreshSelectedOption(int menuOptionSelected)
+            {
+                Debug.Log(menuOptionSelected);
+                if (menuOptionSelected != currentMenuOptionSelected && currentMenuOptionSelected != -1)
+                {
+                    SoundManager.Instance.PlaySound("MenuMove", 1f);
+                }
+                //TODO: Skip continue and load game if there's no game to load or continue. (Repeat check here because of mouse.)
+                currentMenuOptionSelected = menuOptionSelected;
+                selectionMarker.GetComponent<RectTransform>().localPosition = new Vector3(-170, 100 - 40 * menuOptionSelected, 0);
 
-        if (currentMenuOptionSelected == 5)
-            currentMenuOptionSelected = (currentMenuOptionSelected + 5) % 6;
-
-        return (currentMenuOptionSelected + 5)%6;  //TODO: Skip continue and load game if there's no game to load or continue.
-    }
-
-    private int NextMenuOption()
-    {
-        currentMenuOptionSelected = (currentMenuOptionSelected + 7) % 6;
-        //        if (inDungeon == true && currentMenuOptionSelected == 5)
-        if (currentMenuOptionSelected == 5)
-        {
-            Debug.Log("if goes off");
-            currentMenuOptionSelected = (currentMenuOptionSelected + 7) % 6;
-        }
-        return currentMenuOptionSelected;
-    }
-    
-    public void RefreshSelectedOption(int menuOptionSelected)
-    {
-        Debug.Log(menuOptionSelected);
-        if (menuOptionSelected != currentMenuOptionSelected && currentMenuOptionSelected != -1)
-        {
-            SoundManager.Instance.PlaySound("MenuMove", 1f);
-        }
-        //TODO: Skip continue and load game if there's no game to load or continue. (Repeat check here because of mouse.)
-        currentMenuOptionSelected = menuOptionSelected;
-        selectionMarker.GetComponent<RectTransform>().localPosition = new Vector3(-170, 100 - 40 * menuOptionSelected, 0);
-
-        for (int x = 0; x < menuOptions.Length; x++)
-        {
-            menuOptions[x].sprite = offImages[x];
-        }
-        menuOptions[menuOptionSelected].sprite = onImages[menuOptionSelected];
-        */
+                for (int x = 0; x < menuOptions.Length; x++)
+                {
+                    menuOptions[x].sprite = offImages[x];
+                }
+                menuOptions[menuOptionSelected].sprite = onImages[menuOptionSelected];
+                */
     }
  
 
@@ -180,13 +207,15 @@ public class PauseMenuController : MonoBehaviour
 #endif
     }
 
-    private void SaveGameButtonClicked()
+    public void SaveGameButtonClicked()
     {
      //   hideButtonSelection();
      //   buttonSelected = 1;
      //   showButtonSelection();
-        inOtherMenu = true;
-//        loadSaveController.activateLoad(this, true);
+     //   inOtherMenu = true;
+        foreach (Button flip in buttons)
+            flip.enabled = false;
+        loadSaveController.activateLoad(this, true);
     }
 
     public void LoadGameButtonClicked()
@@ -197,7 +226,9 @@ public class PauseMenuController : MonoBehaviour
         //canvas.SetActive(false);
 
         //loadSaveController.LoadGame(0);
-//        loadSaveController.activateLoad(this, false);
+        foreach (Button flip in buttons)
+            flip.enabled = false;
+        loadSaveController.activateLoad(this, false);
 
     }
     public void optionButtonClicked()
@@ -206,6 +237,8 @@ public class PauseMenuController : MonoBehaviour
         //buttonSelected = 2;
         //showButtonSelection();
         SceneManager.LoadScene("OptionsScreen", LoadSceneMode.Additive);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optionsReturn);
         //Load 'options' ui screen
     }
     public void MenuButtonClicked()
@@ -218,6 +251,19 @@ public class PauseMenuController : MonoBehaviour
         SceneManager.LoadScene("TitleScreen");
     }
 
+    public void ReActivate()
+    {
+        foreach (Button flip in buttons)
+            flip.enabled = true;
+    }
+
+    public void OptionsReturn()
+    {
+//        Scene scene = SceneManager.GetSceneByName("PauseScreen");
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optionsReturn);
+    }
 
 
 }

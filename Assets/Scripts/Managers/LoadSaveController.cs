@@ -30,6 +30,7 @@ public class LoadSaveController : MonoBehaviour
     private EscapeKeyController callingEscapeKeyControllerScriptReturn;
     private bool wait1Frame;
     private static int pointLocation = 0;
+    private PauseMenuController callingPauseMenuControllerScriptReturn;
     private NewGameController callingGameControllerScriptReturn;
     private TownEscapeKeyController callingTownEscapeScriptReturn;
     private float selectionDelayDefault = .15f;
@@ -39,6 +40,7 @@ public class LoadSaveController : MonoBehaviour
     private bool townSave;
     private bool townLoad;
     private bool dungeonLoad;
+    private bool pauseLoad;
     public NewGameController newGameController;
 
     // Start is called before the first frame update
@@ -156,7 +158,9 @@ public class LoadSaveController : MonoBehaviour
 
             if (townSave || townLoad) callingTownEscapeScriptReturn.ReActivate();
             else if (dungeonLoad) callingEscapeKeyControllerScriptReturn.ReActivate();
+            else if (pauseLoad) callingPauseMenuControllerScriptReturn.ReActivate();
             else callingGameControllerScriptReturn.ReActivate();
+            pauseLoad = false;
             townSave = false;
             townLoad = false;
             dungeonLoad = false;
@@ -297,6 +301,30 @@ public class LoadSaveController : MonoBehaviour
         newGameController.StartNewGameActual();
         
 
+    }
+
+    internal void activateLoad(PauseMenuController callingScript, bool saveFile)
+    {
+
+        if (saveFile)
+        {
+            townSave = true;
+            saveOrLoadText.text = "Save";
+        }
+        else
+        {
+            townLoad = true;
+            saveOrLoadText.text = "Load";
+        }
+
+     //   saveOrLoadText.text = "Load";
+        callingPauseMenuControllerScriptReturn = callingScript;
+        wait1Frame = false;
+        loadSaveActive = true;
+        aCanvasThis.enabled = true;
+        saveSlotSelected = 0;
+        pointLocation = 0;
+        SetupAllSaveUI(saveSlotSelected);
     }
 
     public void activateLoad(NewGameController callingScript)

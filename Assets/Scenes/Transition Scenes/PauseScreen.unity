@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -262,6 +262,11 @@ PrefabInstance:
       propertyPath: canvasToLoad
       value: 
       objectReference: {fileID: 228398711}
+    - target: {fileID: 5789716473624097901, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -472.0996
+      objectReference: {fileID: 0}
     - target: {fileID: 8254582454079792475, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -780,6 +785,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1925151880}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1893,9 +1909,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 2
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 1148059903}
+    m_SelectOnDown: {fileID: 1925151882}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2560,7 +2576,8 @@ AudioSource:
   m_GameObject: {fileID: 1372772450}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243845848804372736, guid: a8d2f798fc082fd408df1fe76f6182f5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 4befae3bb3f522b448e375726cf75607, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2802,7 +2819,8 @@ AudioSource:
   m_GameObject: {fileID: 1783946466}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243845848804372736, guid: a8d2f798fc082fd408df1fe76f6182f5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 39a0ad8ea8aaee946944b171c483f552, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3030,9 +3048,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 2
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 720618044}
+    m_SelectOnDown: {fileID: 393117913}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 0
@@ -3571,7 +3589,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadSaveController: {fileID: 228398710}
-  pauseFirstButton: {fileID: 1925151880}
+  inOtherMenu: 0
+  dungeonFirstButton: {fileID: 393117910}
+  townFirstButton: {fileID: 1925151880}
+  optionsReturn: {fileID: 351203904}
+  buttons:
+  - {fileID: 1925151882}
+  - {fileID: 393117913}
+  - {fileID: 351203907}
+  - {fileID: 550481570}
+  - {fileID: 1148059903}
+  - {fileID: 720618044}
 --- !u!224 &7203582173684565928
 RectTransform:
   m_ObjectHideFlags: 0

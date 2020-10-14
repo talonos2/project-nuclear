@@ -14,6 +14,7 @@ public class EscapeKeyController : MonoBehaviour
     public GameObject canvas;
     public GameObject[] selected;
     public LoadSaveController loadSaveController;
+    public PauseMenuController pauseMenuController;
     public bool inOtherMenu;
 
 
@@ -116,6 +117,7 @@ public class EscapeKeyController : MonoBehaviour
     {
         SoundManager.Instance.PlaySound("MenuOkay", 1f);
         SceneManager.LoadScene("PauseScreen", LoadSceneMode.Additive);
+
     }
 
     public void CloseOptionsMenu()

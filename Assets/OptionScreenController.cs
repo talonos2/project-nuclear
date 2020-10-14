@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class OptionScreenController : MonoBehaviour
 {
     private int currentMenuOptionSelected = 0;
+    PauseMenuController pauseMenuController;
 
     public Image[] optionsImages;
     public Sprite[] onSprites;
@@ -110,6 +111,8 @@ public class OptionScreenController : MonoBehaviour
 
     public void CloseOptionsMenu()
     {
+
+       // pauseMenuController.OptionsReturn();
         SceneManager.UnloadSceneAsync("OptionsScreen");
     }
 
