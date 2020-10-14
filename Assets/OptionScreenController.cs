@@ -15,6 +15,8 @@ public class OptionScreenController : MonoBehaviour
     public Sprite[] onSprites;
     public Sprite[] offSprites;
 
+    public GameObject optionFirstButton;
+
     public Image selectionMarker;
 
     public Transform[] sliders;
@@ -23,11 +25,14 @@ public class OptionScreenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EventSystem.current.SetSelectedGameObject(null);  //clears first button, then sets it
+        EventSystem.current.SetSelectedGameObject(optionFirstButton);
+
         sliders[0].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (MusicManager.instance.GetMusicVolume() * 380));
         sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (SoundManager.Instance.soundEffectVolume * 380));
-        sliders[2].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (printerMngr.PrintSpeed * 380));
+        //sliders[2].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (printerMngr.PrintSpeed * 380));
 
-        Debug.Log("Initializing to "+MusicManager.instance.GetMusicVolume() + ", " + SoundManager.Instance.soundEffectVolume + ", " + printerMngr.PrintSpeed);
+//        Debug.Log("Initializing to "+MusicManager.instance.GetMusicVolume() + ", " + SoundManager.Instance.soundEffectVolume + ", " + printerMngr.PrintSpeed);
     }
 
     void Update()
@@ -105,7 +110,7 @@ public class OptionScreenController : MonoBehaviour
 
     public void CloseOptionsMenu()
     {
-        SceneManager.UnloadScene("OptionsScreen");
+        SceneManager.UnloadSceneAsync("OptionsScreen");
     }
 
     private int PrevMenuOption()
