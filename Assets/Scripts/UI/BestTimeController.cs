@@ -20,6 +20,8 @@ public class BestTimeController : MonoBehaviour
     public float startTimeOffset;
     public float endTimeOffset;
     public float y;
+    public float maxYBend=20;
+    public float curveStrength = 0;
 
     public int floorsDroppedOff;
 
@@ -103,13 +105,15 @@ public class BestTimeController : MonoBehaviour
             if (timeSoFar < delay + duration)
             {
                 float t = (timeSoFar - delay) / duration;
-                bestTimeSlider.transform.localPosition = new Vector3(Mathf.Lerp(startTimeOffset, endTimeOffset, t), y, 0);
+                float realY = y - ((2 * t - 1) * (2 * t - 1) - 1) * -maxYBend;
+                bestTimeSlider.transform.localPosition = new Vector3(Mathf.Lerp(startTimeOffset, endTimeOffset, t), realY, 0);
                 float quickenedTimeTakenSoFar = (timeSoFar - delay) * (600 / duration);
                 if (quickenedTimeTakenSoFar >= GameData.Instance.timesThisRun[floorsDroppedOff] && GameData.Instance.timesThisRun[floorsDroppedOff] != 0)
                 {
                     float tForDropoff = GameData.Instance.timesThisRun[floorsDroppedOff] / 600f;
                     float dropoffx = Mathf.Lerp(startTimeOffset, endTimeOffset, tForDropoff);
-                    DropOffFloor(floorsDroppedOff, dropoffx);
+                    float dropoffy = y - ((2 * tForDropoff - 1) * (2 * tForDropoff - 1) - 1) * -maxYBend; ;
+                    DropOffFloor(floorsDroppedOff, dropoffx, dropoffy);
                     floorsDroppedOff++;
                 }
                 if (quickenedTimeTakenSoFar >= deathTime|| quickenedTimeTakenSoFar >=600)
@@ -124,12 +128,12 @@ public class BestTimeController : MonoBehaviour
         }
     }
 
-    private void DropOffFloor(int floorsDroppedOff, float dropoffx)
+    private void DropOffFloor(int floorsDroppedOff, float dropoffx, float dropoffy)
     {
         SoundManager.Instance.PlaySound("EndScreenLevel", 1f);
         FloorDropoffPrefab dropped = GameObject.Instantiate<FloorDropoffPrefab>(floorDropoffPrefab);
         dropped.GetComponent<RectTransform>().SetParent(this.GetComponent<RectTransform>());
-        dropped.GetComponent<RectTransform>().localPosition = new Vector3(dropoffx, y, 0);
+        dropped.GetComponent<RectTransform>().localPosition = new Vector3(dropoffx, dropoffy, 0);
         float timeTaken = (floorsDroppedOff == 0 ? GameData.Instance.timesThisRun[floorsDroppedOff] : GameData.Instance.timesThisRun[floorsDroppedOff] - GameData.Instance.timesThisRun[floorsDroppedOff - 1]);
         dropped.Initialize(floorsDroppedOff+1, timeTaken, timeTaken==GameData.Instance.bestTimes[floorsDroppedOff]);
     }
