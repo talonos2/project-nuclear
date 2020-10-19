@@ -25,6 +25,11 @@ public class PauseMenuController : MonoBehaviour
     public GameObject dungeonFirstButton, townFirstButton, optionsReturn;
 
     public Button[] buttons;
+    public Button abandon, Dungeon, save, load, options, main, exit; 
+
+    Text inOrOut;
+
+    
 
     void Start()
     {
@@ -33,21 +38,37 @@ public class PauseMenuController : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
 
         EventSystem.current.SetSelectedGameObject(null);  //clears first button, then sets it
-        ;
+
+        inOrOut = Dungeon.GetComponentInChildren<Text>();
+
+        // Debug.Log("basic " + inOrOut + " with .text = " + inOrOut.text);
+
+        Debug.Log("scene " + scene.name);
+
         if (scene.name == "TownMap_1" || scene.name == "TownInterior_Pub_1" || scene.name == "TownInterior_Church_1"
         || scene.name == "TownInterior_Manor_1" || scene.name == "TownInterior_SeersCottage_1")
         {
-            
-            Image disable = buttons[4].gameObject.GetComponent(typeof(Image)) as Image;
-            disable.enabled = false;
-            buttons[4].enabled = false;
+
+            //Image toOff = abandon.gameObject.GetComponent(typeof(Image)) as Image;
+            //toOff.enabled = false;
+            //abandon.interactable = false;
+            //abandon.enabled = false;
+            //enter.transform.Translate(-1000, 0, 0);
+
+            inOrOut.text = "Enter Dungeon";
+
             EventSystem.current.SetSelectedGameObject(townFirstButton);
         }
         else
         {
-            Image disable = buttons[0].gameObject.GetComponent(typeof(Image)) as Image;
-            disable.enabled = false;
-            buttons[0].enabled = false;
+            Image toOff = save.gameObject.GetComponent(typeof(Image)) as Image;
+            toOff.enabled = false;
+            save.enabled = false;
+            //toOff = enter.gameObject.GetComponent(typeof(Image)) as Image;
+            //toOff.enabled = false;
+            //abandon.transform.Translate(-1000, 0, 0);
+            //enter.enabled = false;
+            inOrOut.text = "Abandon Run";
             EventSystem.current.SetSelectedGameObject(dungeonFirstButton);
         }
 
@@ -265,5 +286,19 @@ public class PauseMenuController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(optionsReturn);
     }
 
+    public void DungeonButtonClick()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "TownMap_1" || scene.name == "TownInterior_Pub_1" || scene.name == "TownInterior_Church_1"
+        || scene.name == "TownInterior_Manor_1" || scene.name == "TownInterior_SeersCottage_1")
+        {
+            //needs to start cutscene instead
+            StartDungeonRun.StartRun();
+        }
+        else
+        {
+            //endrun code here
+        }
+    }
 
 }
