@@ -10,9 +10,9 @@ public class EndRunScreenController : MonoBehaviour
     public static float timeBeforeAnimationStartsStatic;
     public float timeBeforeAnimationStarts = 2f;
 
-    public ItemHolderUI bestWeapon;
-    public ItemHolderUI bestArmor;
-    public ItemHolderUI bestAccessory;
+    private List<ItemHolderUI> items = new List<ItemHolderUI>();
+    public ItemHolderUI templateToCopy;
+    public RectTransform content;
 
     public Image carryOnButton;
     public Sprite carryOnOn;
@@ -24,13 +24,15 @@ public class EndRunScreenController : MonoBehaviour
     {
         SoundManager.Instance.ChangeEnvironmentVolume(0);
         timeBeforeAnimationStartsStatic = timeBeforeAnimationStarts;
-        bestWeapon.SetItem(GameData.Instance.bestWeaponFound);
-        bestArmor.SetItem(GameData.Instance.bestArmorFound);
-        bestAccessory.SetItem(GameData.Instance.bestAccessoryFound);
-        GameData.Instance.bestAccessoryFound = null;
-        GameData.Instance.bestArmorFound = null;
-        GameData.Instance.bestWeaponFound = null;
-
+        int y = 0;
+        for (int x = GameData.Instance.itemsFoundThisRun.Count-1; x >= 0; x--)
+        {
+            ItemHolderUI newItemHolder = GameObject.Instantiate(templateToCopy);
+            newItemHolder.SetItem(GameData.Instance.itemsFoundThisRun[x]);
+            newItemHolder.transform.parent = content;
+            newItemHolder.transform.position = new Vector3(0, y++ * 25);
+        }
+        content.sizeDelta = new Vector2(0, 25 * GameData.Instance.itemsFoundThisRun.Count);
     }
 
     // Update is called once per frame
