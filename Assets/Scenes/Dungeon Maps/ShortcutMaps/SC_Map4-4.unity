@@ -197,6 +197,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &27808279
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -326,6 +328,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &91122802
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -441,6 +445,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &145968079
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -556,6 +562,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &203876729
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -671,6 +679,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &263224987
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -926,6 +936,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &320790241
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1213,7 +1225,7 @@ PrefabInstance:
     - target: {fileID: 6242333733718312216, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: lightRadius
-      value: 95
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -1319,7 +1331,7 @@ PrefabInstance:
     - target: {fileID: 8507605489950234113, guid: 8adc24ffbd31bed41bebadc99c4e6875,
         type: 3}
       propertyPath: lightRadius
-      value: 95
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7214654124223000325, guid: 8adc24ffbd31bed41bebadc99c4e6875, type: 3}
@@ -1358,6 +1370,7 @@ MonoBehaviour:
   totalFrames: 5
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
   shortcutCutscene: {fileID: 0}
 --- !u!1 &407069786
 GameObject:
@@ -1448,6 +1461,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &446970553
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1577,6 +1592,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &453527310
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1678,6 +1695,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &454452850
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1807,6 +1826,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &493932790
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1922,6 +1943,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &517668189
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2037,6 +2060,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &560408592
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2218,6 +2243,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &650044418
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2412,6 +2439,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &777301290
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2562,6 +2591,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &893463709
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2677,6 +2708,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &897423259
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2792,6 +2825,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 1
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &907178967
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3006,6 +3041,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1050946223
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3121,6 +3158,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1068504480
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3236,6 +3275,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1102800674
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3473,6 +3514,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1159104175
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3758,6 +3801,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1265101812
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3967,7 +4012,7 @@ PrefabInstance:
     - target: {fileID: 6242333733718312216, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: lightRadius
-      value: 95
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -4143,7 +4188,7 @@ PrefabInstance:
     - target: {fileID: 6242333733718312216, guid: 151f1a45fed4a7e44aee85a12ab6aa7c,
         type: 3}
       propertyPath: lightRadius
-      value: 95
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151f1a45fed4a7e44aee85a12ab6aa7c, type: 3}
@@ -4225,6 +4270,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1316023518
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4544,6 +4591,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1381962227
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4659,6 +4708,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1384317231
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4774,6 +4825,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1405483661
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4889,6 +4942,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1420997429
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4990,6 +5045,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1443469935
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5154,6 +5211,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1513266167
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5269,6 +5328,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1552851633
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5384,6 +5445,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1591806661
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5499,6 +5562,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1609557211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5698,6 +5763,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1646614890
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5813,6 +5880,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1649350019
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6084,6 +6153,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 1
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1656847972
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6199,6 +6270,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1696196756
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6345,6 +6418,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1753022013
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6491,6 +6566,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1783088209
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6606,6 +6683,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1867440078
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6896,6 +6975,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1946578061
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7075,9 +7156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83360528e91a02f43816a8a669578d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowTexture: {fileID: 2800000, guid: c2f777c008be81946ba71e7074bcdb83, type: 3}
+  shadowTexture: {fileID: 2800000, guid: 107787cf85d7189498d9d49dd440e34f, type: 3}
   glowTexture: {fileID: 2800000, guid: 572d349661bdea045af79a01123b76b2, type: 3}
   mapOffset: {x: 0.5, y: 0.5}
+  shadowMapOffset: {x: -50.05, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7097,9 +7179,11 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
-  lightRadius: 95
+  lightRadius: 6
   isOnCutsceneMap: 1
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1 &2097553648
 GameObject:
   m_ObjectHideFlags: 0
@@ -7187,6 +7271,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &2101730538
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7302,6 +7388,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &2105503344
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7417,6 +7505,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &2147055450
 MeshCollider:
   m_ObjectHideFlags: 0

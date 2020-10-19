@@ -52,7 +52,7 @@ public class SaveSlotUiController : MonoBehaviour
         }
 
         
-        if (runNumber==1) characterPortrait.sprite = portraits.bustList[0];
+        if (runNumber<=1) characterPortrait.sprite = portraits.bustList[0];
         if (runNumber == 2) characterPortrait.sprite = portraits.bustList[2];  
         if (runNumber >= 3 && runNumber <= 5) characterPortrait.sprite = portraits.bustList[5];  
         if (runNumber >= 6 && runNumber <= 10) characterPortrait.sprite = portraits.bustList[10];  
@@ -63,7 +63,7 @@ public class SaveSlotUiController : MonoBehaviour
         if (runNumber >= 19 && runNumber <= 24) characterPortrait.sprite = portraits.bustList[24]; 
         if (runNumber >= 25 && runNumber <= 29) characterPortrait.sprite = portraits.bustList[29];  
         if (runNumber == 30) characterPortrait.sprite = portraits.bustList[30]; 
-
+        
 
 
     }

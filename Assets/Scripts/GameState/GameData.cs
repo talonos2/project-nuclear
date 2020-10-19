@@ -58,9 +58,7 @@ public class GameData : Singleton<GameData>
     public List<Armor> townArmor = new List<Armor>();
     public List<Accessory> townAccessories = new List<Accessory>();
 
-    public Weapon bestWeaponFound;
-    public Armor bestArmorFound;
-    public Accessory bestAccessoryFound;
+    public List<InventoryItem> itemsFoundThisRun;
 
     public float[] bestTimes = new float[20];
     public float[] timesThisRun = new float[20];

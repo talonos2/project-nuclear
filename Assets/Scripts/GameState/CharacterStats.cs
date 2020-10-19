@@ -327,7 +327,7 @@ public class CharacterStats : Stats
     }
 
     private void setWeaponStats(Weapon weaponChanged) {
-        if (weaponChanged.gameObject == null) return;
+        if (!weaponChanged) return;
         weaponBonusAttack = weaponChanged.GetComponent<Weapon>().addAttack;
         setMaxStats();
     }
@@ -338,13 +338,13 @@ public class CharacterStats : Stats
     }
 
     private void setArmorStats(Armor armorChanged) {
-        if (armorChanged.gameObject == null) return;
+        if (!armorChanged) return;
         armorBonusDefense = armorChanged.GetComponent<Armor>().addDefense;
         setMaxStats();
     }
 
     private void setAccessoryStats(Accessory accessoryChanged) {
-        if (accessoryChanged.gameObject == null) return;
+        if (!accessoryChanged) return;
         float oldaccHealth=accessoryHealth;
         float oldaccMana= accessoryMana;
 

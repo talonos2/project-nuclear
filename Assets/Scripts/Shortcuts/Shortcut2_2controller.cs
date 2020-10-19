@@ -8,6 +8,8 @@ public class Shortcut2_2controller : MonoBehaviour
     public bool alwaysOn = false;
 
     public Shortcut2_2controller shortcutToActivate;
+    public GameObject sprite1;
+    public GameObject sprite2;
     void Start()
     {
         if (onShortcutMap) return;
@@ -18,14 +20,17 @@ public class Shortcut2_2controller : MonoBehaviour
             {
                 exit.removeExit();
             }
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
-        else { this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true; }
+        else { sprite1.SetActive(true);
+            sprite2.SetActive(true);
+        }
 
     }
 
     public void setupShortcut() {
-        shortcutToActivate.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+        shortcutToActivate.sprite1.SetActive(true);
+        shortcutToActivate.sprite2.SetActive(true);// = true;
     }
 
 }
