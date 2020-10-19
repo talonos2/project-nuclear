@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7177,6 +7177,16 @@ PrefabInstance:
         type: 3}
       propertyPath: dungeonEntrance
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046122573893151260, guid: 4121bc23a3c43ef458e9298b576766fc,
+        type: 3}
+      propertyPath: exitPosition.x
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046122573893151260, guid: 4121bc23a3c43ef458e9298b576766fc,
+        type: 3}
+      propertyPath: exitPosition.y
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4121bc23a3c43ef458e9298b576766fc, type: 3}
