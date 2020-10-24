@@ -19,20 +19,74 @@ public class EndRunScreenController : MonoBehaviour
     public Sprite carryOnOff;
     public Canvas canvas;
 
+    private int weaponCutoff;
+    private int armorCutoff;
+
     // Start is called before the first frame update
     void Start()
     {
+        switch (GameData.Instance.PowersGained)
+        {
+            case 0:
+                weaponCutoff = 4;
+                armorCutoff = 2;
+                break;
+            case 1:                //Beat Ice Area
+                weaponCutoff = 7;
+                armorCutoff = 4;
+                break;
+            case 2:                //Beat Earth Area
+                weaponCutoff = 15;
+                armorCutoff = 9;
+                break;
+            case 3:                //Beat Fire Area
+                weaponCutoff = 25;
+                armorCutoff = 13;
+                break;
+            case 4:                //Beat Air Area
+                weaponCutoff = 34;
+                armorCutoff = 17;
+                break;
+        }
+        if (GameData.Instance.deathBoss1)  //Has accessed final map
+        {
+            weaponCutoff = 39;
+            armorCutoff = 20;
+        }
         SoundManager.Instance.ChangeEnvironmentVolume(0);
         timeBeforeAnimationStartsStatic = timeBeforeAnimationStarts;
         int y = 0;
+
+        //GameData.Instance.townArmor.Sort();
+        //GameData.Instance.townWeapons.Sort();
+
+        Debug.Log(GameData.Instance.townWeapons);
+
         for (int x = GameData.Instance.itemsFoundThisRun.Count-1; x >= 0; x--)
         {
             ItemHolderUI newItemHolder = GameObject.Instantiate(templateToCopy);
             newItemHolder.SetItem(GameData.Instance.itemsFoundThisRun[x]);
-            newItemHolder.transform.parent = content;
-            newItemHolder.transform.position = new Vector3(0, y++ * 25);
+            newItemHolder.transform.SetParent(content);
+            newItemHolder.GetComponent<RectTransform>().localPosition = new Vector3(0, y++ * 25);
+            newItemHolder.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+            if (newItemHolder.GetItem() is Weapon)
+            {
+                if ((newItemHolder.GetItem() as Weapon).addAttack < weaponCutoff)
+                {
+                    newItemHolder.itemText.color = new Color(.6f, .6f, .6f);
+                    newItemHolder.itemStatText.color = new Color(.8f, .25f, .25f);
+                }
+            }
+            if (newItemHolder.GetItem() is Armor)
+            {
+                if ((newItemHolder.GetItem() as Armor).addDefense < armorCutoff)
+                {
+                    newItemHolder.itemText.color = new Color(.6f, .6f, .6f);
+                    newItemHolder.itemStatText.color = new Color(.8f, .25f, .25f);
+                }
+            }
         }
-        content.sizeDelta = new Vector2(0, 25 * GameData.Instance.itemsFoundThisRun.Count);
+        content.sizeDelta = new Vector2(0, -25 * GameData.Instance.itemsFoundThisRun.Count);
     }
 
     // Update is called once per frame
