@@ -758,8 +758,8 @@
 
 		
 		#day12
-		@if GetPerfect()
 		Soon, at the entrance...
+		@if GetPerfect()
 		@char Jezerine
 		Jezerine: Did you see that?!
 		Jezerine: I did it! I totally just cleaned the floor with, like, a thousand monsters!
@@ -826,10 +826,20 @@
 
 		;@char Reya
 		;Reya: I hear you really slughtered those horrors.
+		@if GetPendleton()
+			Reya: Even outdid that wannabe knight.
+			@char Jezerine
+			Jezerine: Hey, he's a good guy.
+		@else
+			Reya: Even that wannabe knight didn't make it out.
+			@char Jezerine
+			Jezerine: He was a good guy...
+		@endif
+
 		;Reya: I'm a bit disappointed I didn't get a crack at them myself.
 
 		;@char Jezerine
-		;Jezerine: I knew some of those people. Some of the people I—
+		;Jezerine: Some of them were people.[br]Friends of mine that I—
 
 		;@char Reya
 		;Reya: Yeah kid, this isn't really a friendly business.
