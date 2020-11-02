@@ -267,6 +267,10 @@ public class CharacterStats : Stats
         }
 
         armor = itemData.getDefaultArmor();
+
+        if (GameData.Instance.RunNumber == 12) {
+            armor = itemData.getJezerineArmor();
+        }
         accessory = itemData.getEmptyAccessory();
         setWeaponStats(weapon);
         setArmorStats(armor);
