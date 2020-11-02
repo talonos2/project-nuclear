@@ -47,8 +47,8 @@ public class Weapon : InventoryItem, IComparable
     public override bool Equals(object obj)
     {
         var weapon = obj as Weapon;
-        return weapon != null &&
-               base.Equals(obj) &&
+        if (!weapon) { return false; }
+        return base.Equals(obj) &&
                addAttack == weapon.addAttack;
     }
 

@@ -116,13 +116,13 @@ public class EscapeKeyController : MonoBehaviour
     public void OpenPauseMenu()
     {
         SoundManager.Instance.PlaySound("MenuOkay", 1f);
-        SceneManager.LoadScene("PauseScreen", LoadSceneMode.Additive);
+        SceneManager.LoadScene("PauseScreenDungeon", LoadSceneMode.Additive);
 
     }
 
     public void CloseOptionsMenu()
     {
-        SceneManager.UnloadSceneAsync("PauseScreen");
+        SceneManager.UnloadSceneAsync("PauseScreenDungeon");
     }
 
 /*

@@ -29,7 +29,7 @@ public class TownEscapeKeyController : MonoBehaviour
                 SoundManager.Instance.PlaySound("MenuNope", 1f);
                 GameState.fullPause = false;
                 currentlyEscaped = false;
-                SceneManager.UnloadSceneAsync("PauseScreen");
+                SceneManager.UnloadSceneAsync("PauseScreenTown");
                 //canvas.SetActive(false);
             }
             else if (!currentlyEscaped && GameState.fullPause != true)
@@ -38,7 +38,7 @@ public class TownEscapeKeyController : MonoBehaviour
                 GameState.fullPause = true;
                 currentlyEscaped = true;
                 SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                SceneManager.LoadScene("PauseScreen", LoadSceneMode.Additive);
+                SceneManager.LoadScene("PauseScreenTown", LoadSceneMode.Additive);
                 //canvas.SetActive(true);
             }
 

@@ -288,7 +288,7 @@ public class PauseMenuController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(optionsReturn);
     }
 
-    public void DungeonButtonClick()
+/*    public void DungeonButtonClick()
     {
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "TownMap_1" || scene.name == "TownInterior_Pub_1" || scene.name == "TownInterior_Church_1"
@@ -305,6 +305,20 @@ public class PauseMenuController : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().MurderPlayer();
             //characterController.MurderPlayer();
         }
+    }*/
+
+    public void AbandonButtonClick()
+    {
+        GameState.fullPause = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().MurderPlayer();
+    }
+
+
+
+    public void EnterButtonClick()
+    {
+        GameState.fullPause = false;
+        CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);
     }
 
 
