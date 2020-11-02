@@ -21,11 +21,13 @@ public class CharacterMovement : SpriteMovement
     int previousStepSound = 0;
     private GameObject enemyToFightHolder;
     internal bool combatDetected;
+    internal IsUIOn uiController;
 
     new void Start()
     {
         base.Start();
         playerStats = this.GetComponent<CharacterStats>();
+        uiController = this.gameObject.GetComponentInChildren<IsUIOn>();
         playerStats.setCharacterMoveScript(this);
         jumpPivot = sRender.transform.parent;
         shield = sRender.gameObject.transform.GetChild(0).gameObject;
@@ -798,6 +800,7 @@ public class CharacterMovement : SpriteMovement
         }
         return false;
     }
+
 
     private bool characterCloseEnough(GameObject exitLocation, GameObject character)
     {
