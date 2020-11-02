@@ -1260,6 +1260,90 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed9c8f56d9ee6748842ef7b33740cec, type: 3}
+--- !u!1 &437367255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 437367259}
+  - component: {fileID: 437367258}
+  - component: {fileID: 437367257}
+  - component: {fileID: 437367256}
+  m_Layer: 0
+  m_Name: GabTutorial1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &437367256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437367255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f180457f7a3f24fbc1094b330c3424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlatformTerrain: 0
+  isWindShifter: 0
+  isTeleporter: 0
+  isExit: 0
+  isBlockableTerrain: 0
+  isTallBlockableTerrain: 0
+  isBackgroundCharacter: 0
+  isSpike: 0
+  isPassable: 1
+  isOnCutsceneMap: 0
+  gabText: You inherited the ice power from your predecessor. Toggle Ice Power on
+    and off with A or D. You deal extra ice damage when it's on.
+  gabNumber: 1
+  sound: Tutorial
+  forcePause: 1
+  clipToPlayForTutorial: {fileID: 0}
+  time: 5
+  activationRequirement: 1
+--- !u!65 &437367257
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437367255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &437367258
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437367255}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &437367259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437367255}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12, y: -6, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 46
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &509098292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2970,6 +3054,7 @@ MonoBehaviour:
   clipToPlayForTutorial: {fileID: 32900000, guid: f494d58a5bfc7f34fa23038771cd610f,
     type: 3}
   time: 12
+  activationRequirement: 0
 --- !u!65 &1640809712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3239,6 +3324,90 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed9c8f56d9ee6748842ef7b33740cec, type: 3}
+--- !u!1 &1960485501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1960485505}
+  - component: {fileID: 1960485504}
+  - component: {fileID: 1960485503}
+  - component: {fileID: 1960485502}
+  m_Layer: 0
+  m_Name: GabTutorial1 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1960485502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960485501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f180457f7a3f24fbc1094b330c3424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlatformTerrain: 0
+  isWindShifter: 0
+  isTeleporter: 0
+  isExit: 0
+  isBlockableTerrain: 0
+  isTallBlockableTerrain: 0
+  isBackgroundCharacter: 0
+  isSpike: 0
+  isPassable: 1
+  isOnCutsceneMap: 0
+  gabText: With Ice toggled on, Press C+direction to use it.
+  gabNumber: 3
+  sound: Tutorial
+  forcePause: 1
+  clipToPlayForTutorial: {fileID: 32900000, guid: 4cbf1de86135590458639c58edd821c9,
+    type: 3}
+  time: 10
+  activationRequirement: 1
+--- !u!65 &1960485503
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960485501}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1960485504
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960485501}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1960485505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960485501}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9, y: -8, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 47
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2018926731
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,6 +3517,7 @@ MonoBehaviour:
   shadowTexture: {fileID: 2800000, guid: bcdb9edb042a7f04db6896a4e5e7401b, type: 3}
   glowTexture: {fileID: 2800000, guid: f5e94d736a660f04ca4feaef8b0502f2, type: 3}
   mapOffset: {x: 0.5, y: 0}
+  shadowMapOffset: {x: 0, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3370,6 +3540,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1001 &2028132235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4040,6 +4212,7 @@ MonoBehaviour:
   forcePause: 1
   clipToPlayForTutorial: {fileID: 0}
   time: 3
+  activationRequirement: 0
 --- !u!1001 &3128599578103915811
 PrefabInstance:
   m_ObjectHideFlags: 0
