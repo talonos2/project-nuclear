@@ -7,7 +7,7 @@ public class ZombieController_Devon : Enemy
     new void Start()
     {
         base.Start();
-        if (GameData.Instance.Devon == 0 || GameData.Instance.bestTimes[17] == 0 || GameData.Instance.RunNumber <= 9)
+        if (GameData.Instance.Devon == 0 || GameData.Instance.bestTimes[17] == Mathf.Infinity || GameData.Instance.RunNumber <= 9)
         {
             Destroy(this.gameObject);
         }

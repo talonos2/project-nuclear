@@ -7,7 +7,7 @@ public class ZombieController_Todd : Enemy
     new void Start()
     {
         base.Start();
-        if (GameData.Instance.Todd == 0 || GameData.Instance.bestTimes[9] == 0 || GameData.Instance.RunNumber <= 4)
+        if (GameData.Instance.Todd == 0 || GameData.Instance.bestTimes[9] == Mathf.Infinity || GameData.Instance.RunNumber <= 4)
         {
             Destroy(this.gameObject);
         }

@@ -35,6 +35,10 @@ public class ExitController : DoodadData
             //Keep track of your run time.
             gameData.timesThisRun[gameData.FloorNumber - 1] = gameData.timer;
             float timeTakenThisFloor = gameData.timer;
+
+            /*
+             * This has been commented out, because "old" best times must be preserved until the end run screen.
+             *
             if (gameData.FloorNumber > 1)
             {
                 timeTakenThisFloor -= gameData.timesThisRun[gameData.FloorNumber - 2];
@@ -42,7 +46,7 @@ public class ExitController : DoodadData
             if (gameData.bestTimes[gameData.FloorNumber - 1] == 0 || gameData.bestTimes[gameData.FloorNumber - 1] > timeTakenThisFloor)
             {
                 gameData.bestTimes[gameData.FloorNumber - 1] = timeTakenThisFloor;
-            }
+            } */
 
             gameData.FloorNumber += 1;
             if (townMap)

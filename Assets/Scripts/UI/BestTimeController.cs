@@ -7,11 +7,12 @@ using UnityEngine.UI;
 
 public class BestTimeController : MonoBehaviour
 {
-    public TextMeshProUGUI[] bestTimesTexts;
     public Image[] bestTimesMarkers;
     public Image bestTimeSlider;
     public Image skull;
     public RectTransform containerToShakeOnSkullDrop;
+
+    public TextMeshProUGUI bestTimeText;
 
 
     public float delay;
@@ -41,10 +42,21 @@ public class BestTimeController : MonoBehaviour
 
     public float durationOfSkullDrop = .3f;
     private float deathTime;
+    private bool deathSequenceOver;
 
     // Start is called before the first frame update
     void Start()
     {
+        for (int x = 0; x < 20; x++)
+        {
+            if (GameData.Instance.bestTimes[x] == 0)
+            {
+                GameData.Instance.bestTimes[x] = Mathf.Infinity;
+            }
+        }
+
+        bestTimeText.text = "Mouse over lines for more info.";
+        bestTimeText.color = new Color(1, 1, 1, 0);
         //Fill the thing with debug data if none exists. This is TEST CODE:
         if (GameData.Instance.timer==0)
         {
@@ -63,7 +75,12 @@ public class BestTimeController : MonoBehaviour
     void Update()
     {
         timeSoFar += Time.deltaTime;
-        if (deathSequencePlaying)
+        if (deathSequenceOver)
+        {
+            float t = Mathf.Clamp01(timeSoFar - durationOfDeathEffect);
+            bestTimeText.color = new Color(1, 1, 1, t);
+        }
+        else if (deathSequencePlaying)
         {
             PlayDeathSequence();
         }
@@ -95,6 +112,10 @@ public class BestTimeController : MonoBehaviour
             t = Mathf.Max(timeScreenWillShake - timeSinceSkullStoppedDropping, 0) / timeScreenWillShake;
             offset = UnityEngine.Random.insideUnitCircle * t * intensityOfScreenShake;
             containerToShakeOnSkullDrop.localPosition = offset;
+            if (t==0)
+            {
+                deathSequenceOver = true;
+            }
         }
     }
 
@@ -135,6 +156,7 @@ public class BestTimeController : MonoBehaviour
         dropped.GetComponent<RectTransform>().SetParent(this.GetComponent<RectTransform>());
         dropped.GetComponent<RectTransform>().localPosition = new Vector3(dropoffx, dropoffy, 0);
         float timeTaken = (floorsDroppedOff == 0 ? GameData.Instance.timesThisRun[floorsDroppedOff] : GameData.Instance.timesThisRun[floorsDroppedOff] - GameData.Instance.timesThisRun[floorsDroppedOff - 1]);
-        dropped.Initialize(floorsDroppedOff+1, timeTaken, timeTaken==GameData.Instance.bestTimes[floorsDroppedOff]);
+        Debug.Log(timeTaken + ", " + GameData.Instance.bestTimes[floorsDroppedOff]);
+        dropped.Initialize(floorsDroppedOff+1, timeTaken, timeTaken<GameData.Instance.bestTimes[floorsDroppedOff], GameData.Instance.bestTimes[floorsDroppedOff], bestTimeText);
     }
 }

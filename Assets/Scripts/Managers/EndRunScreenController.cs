@@ -25,6 +25,7 @@ public class EndRunScreenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         switch (GameData.Instance.PowersGained)
         {
             case 0:
@@ -101,6 +102,18 @@ public class EndRunScreenController : MonoBehaviour
     public void EndRunAndLoadTown()
     {
         SoundManager.Instance.PlayPersistentSound("EndScreenConfirm", 1f);
+
+        float cumulativeTime = 0;
+        for (int x = 0; x < 20; x++)
+        {
+            float timeThisFloor = GameData.Instance.timesThisRun[x] - cumulativeTime;
+            if (timeThisFloor < GameData.Instance.bestTimes[x])
+            {
+                GameData.Instance.bestTimes[x] = timeThisFloor;
+            }
+            cumulativeTime += timeThisFloor;
+        }
+
         if (GameData.Instance.RunNumber == 1) {
             GameData.Instance.isCutscene = true;
             CutsceneLoader.postRun1Cutscene = true;
