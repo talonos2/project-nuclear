@@ -14,6 +14,8 @@ public class EquipmentData : MonoBehaviour
     private Accessory noAccessoryItem;
 
     private bool EquipmentListCreated=false;
+    private Armor jezerineArmor;
+
     void Start() {
         if (!EquipmentListCreated) {
             CommonItemList = new EquipmentDataStorage[21];
@@ -83,6 +85,9 @@ public class EquipmentData : MonoBehaviour
                     {
                         defaultArmor = item.gameObject.GetComponent<Armor>();
                     }
+                    if (item.gameObject.name == "Hand Made Sweater") {
+                        jezerineArmor = item.gameObject.GetComponent<Armor>();
+                    }
                     if (item.gameObject.name == "No Accessory Equipped") {
                         noAccessoryItem = item.gameObject.GetComponent<Accessory>();
                     }
@@ -98,6 +103,11 @@ public class EquipmentData : MonoBehaviour
     internal Accessory getEmptyAccessory()
     {
         return noAccessoryItem;
+    }
+
+    internal Armor getJezerineArmor()
+    {
+        return jezerineArmor;
     }
 }
 
