@@ -79,6 +79,7 @@ public class LoadSaveController : MonoBehaviour
                 LoadGame(saveSlotSelected);
                 GameState.fullPause = false;
                 deactivateLoad();
+
             }
 
         }       
@@ -156,8 +157,8 @@ public class LoadSaveController : MonoBehaviour
         if (Input.GetButtonDown("Cancel")) {
             deactivateLoad();
 
-            if (townSave || townLoad) callingTownEscapeScriptReturn.ReActivate();
-            else if (dungeonLoad) callingEscapeKeyControllerScriptReturn.ReActivate();
+            //if ((townSave || townLoad)&& ! pauseLoad) callingTownEscapeScriptReturn.ReActivate();
+            if (dungeonLoad) callingEscapeKeyControllerScriptReturn.ReActivate();
             else if (pauseLoad) callingPauseMenuControllerScriptReturn.ReActivate();
             else callingGameControllerScriptReturn.ReActivate();
             pauseLoad = false;
@@ -299,7 +300,8 @@ public class LoadSaveController : MonoBehaviour
 
         aCanvasThis.enabled = false;
         newGameController.StartNewGameActual();
-        
+       
+
 
     }
 
@@ -316,7 +318,7 @@ public class LoadSaveController : MonoBehaviour
             townLoad = true;
             saveOrLoadText.text = "Load";
         }
-
+        pauseLoad = true;
      //   saveOrLoadText.text = "Load";
         callingPauseMenuControllerScriptReturn = callingScript;
         wait1Frame = false;
@@ -353,6 +355,7 @@ public class LoadSaveController : MonoBehaviour
 
     public void activateLoad(TownEscapeKeyController callingScript, bool saveFile)
     {
+        Debug.Log("I should never get here. If so check town escape key ui is activate");
         if (saveFile) { townSave = true;
             saveOrLoadText.text = "Save";
         }
@@ -375,6 +378,7 @@ public class LoadSaveController : MonoBehaviour
         aCanvasThis.enabled = false;
         saveSlotSelected = 0;
         pointLocation = 0;
+
     }
 
 
