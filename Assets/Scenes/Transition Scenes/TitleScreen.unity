@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -235,7 +235,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.89, y: -136.83}
-  m_SizeDelta: {x: 124.7, y: 42.7}
+  m_SizeDelta: {x: 124.7, y: 22.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55808030
 MonoBehaviour:
@@ -684,7 +684,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.89, y: -190.83}
-  m_SizeDelta: {x: 124.7, y: 42.7}
+  m_SizeDelta: {x: 124.7, y: 22.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &136140369
 MonoBehaviour:
@@ -1212,7 +1212,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.89, y: -100.83}
-  m_SizeDelta: {x: 124.7, y: 42.7}
+  m_SizeDelta: {x: 124.7, y: 22.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &242232564
 MonoBehaviour:
@@ -1305,7 +1305,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 3d38ed611d5a2344ba1a80af6f019e08, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3246,7 +3246,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.89, y: -118.83}
-  m_SizeDelta: {x: 124.7, y: 42.7}
+  m_SizeDelta: {x: 124.7, y: 22.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &617498721
 MonoBehaviour:
@@ -3453,6 +3453,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5789716473624097901, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -472.0996
+      objectReference: {fileID: 0}
     - target: {fileID: 324273467017365005, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_Enabled
@@ -3467,6 +3472,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.39990234
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145043875426067742, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 456.36914
       objectReference: {fileID: 0}
     - target: {fileID: 4919582733500243021, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
@@ -3517,16 +3527,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5789716473624097901, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -472.0996
-      objectReference: {fileID: 0}
-    - target: {fileID: 4145043875426067742, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 456.36914
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea1df5dda9f7d2046b73f662a04e08c5, type: 3}
@@ -6521,7 +6521,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.89, y: -171.5}
-  m_SizeDelta: {x: 124.7, y: 42.7}
+  m_SizeDelta: {x: 124.7, y: 22.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672379178
 MonoBehaviour:
@@ -7776,7 +7776,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.89, y: -154.1}
-  m_SizeDelta: {x: 124.7, y: 42.7}
+  m_SizeDelta: {x: 124.7, y: 22.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2135738980
 MonoBehaviour:
