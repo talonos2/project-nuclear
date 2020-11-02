@@ -18,6 +18,7 @@ public class PauseMenuController : MonoBehaviour
     //    public Sprite[] offImages;
 
     internal bool inSaveMenu;
+    internal Canvas canvas;
     public bool inOtherMenu;
 
 //    private int currentMenuOptionSelected = -1;
@@ -36,6 +37,7 @@ public class PauseMenuController : MonoBehaviour
         //RefreshSelectedOption(0); //TODO: If save game, start on continue.
 
         Scene scene = SceneManager.GetActiveScene();
+        canvas = this.gameObject.GetComponent<Canvas>();
 
         EventSystem.current.SetSelectedGameObject(null);  //clears first button, then sets it
 
@@ -293,12 +295,32 @@ public class PauseMenuController : MonoBehaviour
         || scene.name == "TownInterior_Manor_1" || scene.name == "TownInterior_SeersCottage_1")
         {
             //needs to start cutscene instead
-            StartDungeonRun.StartRun();
+            GameState.fullPause = false;
+            CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);
+            //StartDungeonRun.StartRun();
         }
         else
         {
             //endrun code here
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().MurderPlayer();
+            //characterController.MurderPlayer();
         }
     }
 
+
+    public void PlayButtonHoverSound() {
+        SoundManager.Instance.PlaySound("MenuMove", 1f);
+    }
+
+    public void PlayButtonSelectSound() {
+        SoundManager.Instance.PlaySound("MenuOkay", 1f);
+    }
+
 }
+
+/*
+public void ClosePauseMenuScene() {
+    Debug.Log("Did I call close pause scene");
+    SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("PauseScreen"));
+}*/
+

@@ -108,6 +108,8 @@ public class GameData : Singleton<GameData>
     internal float deathTime;
     internal bool hiroDeathMonster;
     internal bool postRun1Cutscene;
+    internal bool UI_On;
+    internal bool ManualUIToggleOff;
 
 
 

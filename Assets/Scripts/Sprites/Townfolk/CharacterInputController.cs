@@ -15,6 +15,8 @@ public class CharacterInputController : MonoBehaviour
     {
         characterController = this.gameObject.GetComponent<CharacterMovement>();
         characterEntityData=this.gameObject.GetComponent<EntityData>();
+
+
         if (characterEntityData.isMainCharacter) moveable = true;
     }
 
@@ -45,6 +47,14 @@ public class CharacterInputController : MonoBehaviour
         }
         if (Input.GetButtonDown("PowerActivate")) {
             characterController.PowerActivateKeyReceived();
+        }
+        if (Input.GetButtonDown("ToggleUICamera")) {
+            if (GameData.Instance.UI_On) {
+                GameData.Instance.ManualUIToggleOff = true;
+                characterController.uiController.turnOffUi(); }
+            else {
+                GameData.Instance.ManualUIToggleOff = false;
+                characterController.uiController.turnOnUi(); }
         }
 #if UNITY_EDITOR
         if (Input.GetButtonDown("MurderPlayer"))
