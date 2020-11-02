@@ -13,6 +13,7 @@ public class GabTextController : MonoBehaviour
     public Image gabBackgroundFader1;
     public Image gabBackgroundFader2;
     public Image playerPanel;
+    public Image playerPanelBorder;
     public TextMeshProUGUI gabTextToPrint;
     public List<Gab> gabPlayList;
     public float gabDelay = 3f;
@@ -136,14 +137,17 @@ public class GabTextController : MonoBehaviour
                 if ((currentGab.duration - gabDelayCounter) < FLASH_TIME)
                 {
                     playerPanel.color = new Color(1, 1, 1, (currentGab.duration-gabDelayCounter) / FLASH_TIME);
+                    playerPanelBorder.color = playerPanel.color;
                 }
                 else if (gabDelayCounter < FADE_TIME)
                 {
                     playerPanel.color = new Color(1, 1, 1, gabDelayCounter / FLASH_TIME);
+                    playerPanelBorder.color = playerPanel.color;
                 }
                 else
                 {
                     playerPanel.color = Color.white;
+                    playerPanelBorder.color = playerPanel.color;
                 }
             }
             else
