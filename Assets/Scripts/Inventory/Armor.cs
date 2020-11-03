@@ -47,8 +47,10 @@ public class Armor : InventoryItem, IComparable
     public override bool Equals(object obj)
     {
         var armor = obj as Armor;
-        return armor != null &&
-               base.Equals(obj) &&
+        if (!armor) {
+            return false;
+        }
+        return base.Equals(obj) &&
                addDefense == armor.addDefense;
     }
 
