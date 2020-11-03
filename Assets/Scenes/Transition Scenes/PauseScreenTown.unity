@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -888,11 +888,11 @@ RectTransform:
   - {fileID: 1984226428}
   - {fileID: 727349091}
   m_Father: {fileID: 7203582173684565928}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 172, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &362200701
@@ -1227,11 +1227,11 @@ RectTransform:
   - {fileID: 2131198459}
   - {fileID: 1154308900}
   m_Father: {fileID: 7203582173684565928}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 60}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 108, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &427186529
@@ -1565,11 +1565,11 @@ RectTransform:
   - {fileID: 907617521}
   - {fileID: 427186530}
   m_Father: {fileID: 7203582173684565928}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 240, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &606792034
@@ -1902,8 +1902,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 1049826773}
-    m_SelectOnDown: {fileID: 1925151882}
+    m_SelectOnUp: {fileID: 550481570}
+    m_SelectOnDown: {fileID: 1049826773}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 0
@@ -2240,11 +2240,11 @@ RectTransform:
   - {fileID: 216286301}
   - {fileID: 1431345516}
   m_Father: {fileID: 7203582173684565928}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 300, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049826772
@@ -2390,9 +2390,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 2
+    m_Mode: 4
     m_SelectOnUp: {fileID: 720618044}
-    m_SelectOnDown: {fileID: 393117913}
+    m_SelectOnDown: {fileID: 1925151882}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 0
@@ -2800,11 +2800,11 @@ RectTransform:
   - {fileID: 881757890}
   - {fileID: 1669838092}
   m_Father: {fileID: 7203582173684565928}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 60}
   m_SizeDelta: {x: 92, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925151882
@@ -2820,7 +2820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 2
     m_SelectOnUp: {fileID: 720618044}
     m_SelectOnDown: {fileID: 393117913}
     m_SelectOnLeft: {fileID: 0}
@@ -3292,10 +3292,9 @@ MonoBehaviour:
   townFirstButton: {fileID: 351203904}
   optionsReturn: {fileID: 351203904}
   buttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 393117913}
+  - {fileID: 1049826773}
   - {fileID: 1925151882}
+  - {fileID: 393117913}
   - {fileID: 351203907}
   - {fileID: 550481570}
   - {fileID: 720618044}
@@ -3320,11 +3319,11 @@ RectTransform:
   - {fileID: 7203582173214227459}
   - {fileID: 707531695}
   - {fileID: 606792035}
+  - {fileID: 1049826771}
   - {fileID: 1925151881}
   - {fileID: 393117915}
   - {fileID: 351203909}
   - {fileID: 550481572}
-  - {fileID: 1049826771}
   - {fileID: 720618046}
   m_Father: {fileID: 0}
   m_RootOrder: 0

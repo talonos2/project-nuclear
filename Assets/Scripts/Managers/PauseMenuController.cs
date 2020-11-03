@@ -36,6 +36,8 @@ public class PauseMenuController : MonoBehaviour
     {
         //RefreshSelectedOption(0); //TODO: If save game, start on continue.
 
+        
+
         Scene scene = SceneManager.GetActiveScene();
         canvas = this.gameObject.GetComponent<Canvas>();
 
@@ -73,7 +75,7 @@ public class PauseMenuController : MonoBehaviour
             inOrOut.text = "Abandon Run";
             EventSystem.current.SetSelectedGameObject(dungeonFirstButton);
         }
-
+        
 
         
 
@@ -197,7 +199,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("Trying to Quit");
+//        Debug.Log("Trying to Quit");
 #if UNITY_EDITOR
         // Application.Quit() does not work in the editor so
         // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
