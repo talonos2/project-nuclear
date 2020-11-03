@@ -105,15 +105,15 @@ public class GabTextController : MonoBehaviour
                 else if ((currentGab.duration - gabDelayCounter) < FLASH_TIME * 2)
                 {
                     float partThroughNumberTwo = ((currentGab.duration-FLASH_TIME) - gabDelayCounter)/FLASH_TIME;
-                    gabBackgroundFader2.color = new Color(1, 1, partThroughNumberTwo, 1 - partThroughNumberTwo/2);
+                    gabBackgroundFader2.color = new Color(1 - partThroughNumberTwo / 1.5f, 1- partThroughNumberTwo / 1.5f , partThroughNumberTwo/3, 1 - partThroughNumberTwo/2);
                 }
                 else if (gabDelayCounter < FADE_TIME)
                 {
-                    gabBackgroundFader2.color = new Color(1, 1, 1, gabDelayCounter/FADE_TIME/2f);
+                    gabBackgroundFader2.color = new Color(.33f, .33f, .33f, gabDelayCounter/FADE_TIME/2f);
                 }
                 else
                 {
-                    gabBackgroundFader2.color = new Color(1, 1, 1, .5f);
+                    gabBackgroundFader2.color = new Color(.33f, .33f, .33f, .5f);
                 }
             }
             else
