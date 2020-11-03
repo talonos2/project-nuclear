@@ -36,12 +36,14 @@ public class PauseMenuController : MonoBehaviour
     {
         //RefreshSelectedOption(0); //TODO: If save game, start on continue.
 
+        
+
         Scene scene = SceneManager.GetActiveScene();
         canvas = this.gameObject.GetComponent<Canvas>();
 
         EventSystem.current.SetSelectedGameObject(null);  //clears first button, then sets it
 
-        inOrOut = Dungeon.GetComponentInChildren<Text>();
+//        inOrOut = Dungeon.GetComponentInChildren<Text>();
 
         // Debug.Log("basic " + inOrOut + " with .text = " + inOrOut.text);
 
@@ -57,23 +59,23 @@ public class PauseMenuController : MonoBehaviour
             //abandon.enabled = false;
             //enter.transform.Translate(-1000, 0, 0);
 
-            inOrOut.text = "Enter Dungeon";
+//            inOrOut.text = "Enter Dungeon";
 
             EventSystem.current.SetSelectedGameObject(townFirstButton);
         }
         else
         {
-            Image toOff = save.gameObject.GetComponent(typeof(Image)) as Image;
-            toOff.enabled = false;
-            save.enabled = false;
+//            Image toOff = save.gameObject.GetComponent(typeof(Image)) as Image;
+//            toOff.enabled = false;
+//            save.enabled = false;
             //toOff = enter.gameObject.GetComponent(typeof(Image)) as Image;
             //toOff.enabled = false;
             //abandon.transform.Translate(-1000, 0, 0);
             //enter.enabled = false;
-            inOrOut.text = "Abandon Run";
+ //           inOrOut.text = "Abandon Run";
             EventSystem.current.SetSelectedGameObject(dungeonFirstButton);
         }
-
+        
 
         
 
@@ -197,7 +199,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("Trying to Quit");
+//        Debug.Log("Trying to Quit");
 #if UNITY_EDITOR
         // Application.Quit() does not work in the editor so
         // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
