@@ -224,6 +224,7 @@ namespace Naninovel
 
         public void ModifySfx (string path, float volume, bool loop, float time)
         {
+            Debug.Log(path);
             var state = sfxClips.Find(c => c.Path == path);
             if (state is null) return;
             state.Volume = volume;
@@ -236,6 +237,7 @@ namespace Naninovel
         /// </summary>
         public void PlaySfxFast (string path, float volume = 1f, bool restartIfPlaying = true)
         {
+            Debug.Log(path);
             if (!audioLoader.IsLoaded(path)) return;
             var clip = audioLoader.GetLoadedOrNull(path);
             if (!restartIfPlaying && audioController.IsClipPlaying(clip)) return;
@@ -305,6 +307,7 @@ namespace Naninovel
 
         public async Task PlaySfxAsync (string path, float volume = 1f, float fadeTime = 0f, bool loop = false)
         {
+            Debug.Log(path);
             var stateExists = sfxClips.Exists(c => c.Path == path);
             var clipState = stateExists ? sfxClips.Find(c => c.Path == path) : new ClipState { Path = path };
             clipState.IsLooped = loop;

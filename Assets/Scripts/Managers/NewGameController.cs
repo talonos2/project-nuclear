@@ -197,7 +197,8 @@ public class NewGameController : MonoBehaviour
             {
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
             }
-            else {
+            else
+            {
                 GameData.Instance.RunNumber = 1;
             }
             GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
