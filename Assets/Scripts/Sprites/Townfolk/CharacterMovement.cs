@@ -255,7 +255,7 @@ public class CharacterMovement : SpriteMovement
             {
                 materialNameStart = groundMaterialGrid.grid[characterLocation.x, characterLocation.y].GetName();
             }
-            Debug.Log("Footstep");
+           // Debug.Log("Footstep");
             SoundManager.Instance.PlaySound("Footsteps/" + materialNameStart + stepSound, 1f);
             previousStepSound = stepSound;
         }
@@ -360,16 +360,18 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerDownCheat()
     {
-        playerStats.attack = 0;
-        playerStats.defense = 1000;
-        
+        playerStats.AttackCrystalBuff = -1000;
+        playerStats.defenseCrystalBuff = 1000;
+        playerStats.PushCharacterData();        
     }
 
     internal void PowerUpCheat()
     {
+        playerStats.AttackCrystalBuff = 0;
         playerStats.AddExp(100000);
         playerStats.ShutUpLevelUpper();
         playerStats.powersGained = 4;
+        playerStats.PushCharacterData();
     }
 
     private void CheckIfStandingOnWindJumper()

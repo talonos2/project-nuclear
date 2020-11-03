@@ -6,6 +6,13 @@ public class IsUIOn : MonoBehaviour
 {
     public GameObject[] stuffToTurnOff;
 
+    void Start()
+    {
+        if (GameData.Instance.IsInTown())
+        {
+            turnOffUi();
+        }
+    }
     public void turnOffUi() {
         GameData.Instance.UI_On = false;
         foreach (GameObject t in stuffToTurnOff)
@@ -34,8 +41,8 @@ public class IsUIOn : MonoBehaviour
             //GameState.fullPause = false;
             turnOnUi();
         }
-
-        if (GameData.Instance.IsInTown() && !GameData.Instance.UI_On) {
+        //Debug.Log("is in town "+ GameData.Instance.IsInTown() + "UIOn " + GameData.Instance.UI_On);
+        if (GameData.Instance.IsInTown() && GameData.Instance.UI_On) {
             turnOffUi();
         }
 
