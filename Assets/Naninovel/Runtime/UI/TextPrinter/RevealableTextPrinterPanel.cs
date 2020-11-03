@@ -211,7 +211,12 @@ namespace Naninovel.UI
             actorNamePanel.gameObject.SetActive(isActive);
             if (!isActive) return;
 
-            actorNamePanel.Text = text;
+            if (!actorNamePanel.Text.Equals(text))
+            {
+                Debug.Log("Changing name from " + actorNamePanel.Text + " to " + text + ".");
+                actorNamePanel.Text = text;
+                audioManager.PlaySfxAsync("Chime");
+            }
         }
 
         protected virtual void HandleAvatarChanged (CharacterAvatarChangedArgs args)
