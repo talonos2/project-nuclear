@@ -22,6 +22,8 @@ public class EndRunScreenController : MonoBehaviour
     private int weaponCutoff;
     private int armorCutoff;
 
+    private bool preventMassSlaughterOfVillagers;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,6 +103,11 @@ public class EndRunScreenController : MonoBehaviour
 
     public void EndRunAndLoadTown()
     {
+        if (preventMassSlaughterOfVillagers)
+        {
+            return;
+        }
+        this.preventMassSlaughterOfVillagers = true;
         SoundManager.Instance.PlayPersistentSound("EndScreenConfirm", 1f);
 
         float cumulativeTime = 0;
