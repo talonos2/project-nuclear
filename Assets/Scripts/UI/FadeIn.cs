@@ -5,6 +5,8 @@ using UnityEngine;
 public class FadeIn : MonoBehaviour
 {
     public float fadeTime = .125f;
+    public bool celesteStyle = false;
+    public Vector2 fadeInWorldLocation = new Vector2(0, 0);
     private float defaultFadeTime = .125f;
     private float timeLeft;
     private Renderer meshRenderer;
@@ -16,6 +18,7 @@ public class FadeIn : MonoBehaviour
         timeLeft = fadeTime;
         meshRenderer = this.GetComponent<Renderer>();
         meshRenderer.enabled = true;
+        meshRenderer.material.SetFloat("_Alpha", 1);
     }
 
     public void enableShortcutFadeIn(float fadeDuration)
@@ -80,7 +83,15 @@ public class FadeIn : MonoBehaviour
             timeLeft -= Time.deltaTime;
             if (timeLeft > 0)
             {
-                meshRenderer.material.SetFloat("_Alpha", timeLeft / fadeTime);
+                if (celesteStyle)
+                {
+                    meshRenderer.material.SetVector("_Location", fadeInWorldLocation);
+                    meshRenderer.material.SetFloat("_Iris", timeLeft / fadeTime);
+                }
+                else
+                {
+                    meshRenderer.material.SetFloat("_Alpha", timeLeft / fadeTime);
+                }
             }
             else
             {
