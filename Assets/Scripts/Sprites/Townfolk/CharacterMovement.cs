@@ -9,9 +9,9 @@ public class CharacterMovement : SpriteMovement
     private static float DASH_LENGTH = 26;
 
     public CharacterStats playerStats;
-    private float hasteSpeed = 2;
-    private float stealthspeed = .75f;
-    private float dashSpeed = 4;
+    private readonly float hasteSpeed = 2;
+    private readonly float stealthspeed = .75f;
+    private readonly float dashSpeed = 4;
     private float totalDashed = 0;
     private bool continueDashing = false;
     private Transform jumpPivot;

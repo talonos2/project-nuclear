@@ -84,7 +84,10 @@ public class SpikeController : DoodadData
         if (hopeItsAnEntity != null && hopeItsAnEntity.GetComponent<EntityData>()!= null && hopeItsAnEntity.GetComponent<EntityData>().isMainCharacter)
         {
             CharacterMovement player = hopeItsAnEntity.GetComponent<CharacterMovement>();
-            player.JumpOffOfSpikes();
+            if (!GameData.Instance.hasted)
+            {
+                player.JumpOffOfSpikes();
+            }
         }
     }
 
