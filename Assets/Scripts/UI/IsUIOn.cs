@@ -5,6 +5,7 @@ using UnityEngine;
 public class IsUIOn : MonoBehaviour
 {
     public GameObject[] stuffToTurnOff;
+    private bool uiOffScene;
 
     void Start()
     {
@@ -14,6 +15,15 @@ public class IsUIOn : MonoBehaviour
         }
     }
     public void turnOffUi() {
+        GameData.Instance.UI_On = false;
+        foreach (GameObject t in stuffToTurnOff)
+        {
+            t.SetActive(false);
+        }
+    }
+
+    public void turnOffUiScene() {
+        uiOffScene = true;
         GameData.Instance.UI_On = false;
         foreach (GameObject t in stuffToTurnOff)
         {
@@ -32,6 +42,9 @@ public class IsUIOn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (uiOffScene) {
+            return;
+        }
         if (GameData.Instance.isInDialogue && !GameData.Instance.IsInTown() && GameData.Instance.UI_On && !GameData.Instance.ManualUIToggleOff) {
             //GameState.fullPause = true;
             turnOffUi();
@@ -45,6 +58,8 @@ public class IsUIOn : MonoBehaviour
         if (GameData.Instance.IsInTown() && GameData.Instance.UI_On) {
             turnOffUi();
         }
+
+
 
     }
 }
