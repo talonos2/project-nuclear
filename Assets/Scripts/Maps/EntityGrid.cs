@@ -59,7 +59,6 @@ public class EntityGrid : MonoBehaviour
             for (int x = 0; x < width; x++)
             {
                 if (grid[x, y] != null) { Gizmos.color = Color.red; }
-                Debug.Log("x " + x + " y " + y);
 
                 Gizmos.color = new Color(Gizmos.color.r, Gizmos.color.g, Gizmos.color.b, .25f);
                 Gizmos.DrawCube(new Vector3(x - xOffset + .5f, y - yOffset, 0f), new Vector3(1, 1, .2f));

@@ -134,7 +134,6 @@ public class SpriteShadowLoader : MonoBehaviour
             //The case of the player jumping
             if ((pMover.IsInAForcedJump() || pMover.IsJumping()))
             {
-                Debug.Log("Do I detect the player jumping");
                 zPosition -= .01f;
                 //zPosition -= this.transform.parent.transform.localPosition.y / 100;
             }

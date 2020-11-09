@@ -264,6 +264,7 @@ public class ChooseItemUI : MonoBehaviour
             if (playerData.armor.name != "Warm Jacket")
                 GameData.Instance.townArmor.Add(i);
             sendGabToTownMessage("<sprite=1> " + i.gameObject.name + " sent to town.");
+            Debug.Log("r");
         }
         CloseItemPickUI();
     }

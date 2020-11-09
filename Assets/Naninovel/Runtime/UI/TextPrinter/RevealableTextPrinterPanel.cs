@@ -213,7 +213,6 @@ namespace Naninovel.UI
 
             if (!actorNamePanel.Text.Equals(text))
             {
-                Debug.Log("Changing name from " + actorNamePanel.Text + " to " + text + ".");
                 actorNamePanel.Text = text;
                 audioManager.PlaySfxAsync("Chime");
             }

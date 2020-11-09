@@ -63,8 +63,6 @@ public class EndRunScreenController : MonoBehaviour
         //GameData.Instance.townArmor.Sort();
         //GameData.Instance.townWeapons.Sort();
 
-        Debug.Log(GameData.Instance.townWeapons);
-
         for (int x = GameData.Instance.itemsFoundThisRun.Count-1; x >= 0; x--)
         {
             ItemHolderUI newItemHolder = GameObject.Instantiate(templateToCopy);

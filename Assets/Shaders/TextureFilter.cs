@@ -30,8 +30,6 @@ public static class TextureFilter
 
         float endTime = Time.realtimeSinceStartup;
 
-        Debug.Log(endTime - startTime);
-
         Texture2D outTex = new Texture2D(inTex.width, inTex.height);
         outTex.SetPixels(outPixels);
         outTex.Apply();
