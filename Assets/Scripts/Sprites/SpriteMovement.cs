@@ -41,7 +41,8 @@ public class SpriteMovement : EntityData
     public static bool jumping;
     protected GameData gameData;
 
-    protected Vector2Int characterLocation;
+    [HideInInspector]
+    public Vector2Int characterLocation;
     protected Vector2Int characterNextLocation;
     [HideInInspector]
     public DirectionMoved facedDirection = DirectionMoved.LEFT;
@@ -192,7 +193,7 @@ public class SpriteMovement : EntityData
         return MoveableLocation;
     }
 
-    protected bool IsPlayerMoveLocationTerrainPassable(int LocX, int LocY)
+    public bool IsPlayerMoveLocationTerrainPassable(int LocX, int LocY)
     {
 
         bool MoveableLocation = false;

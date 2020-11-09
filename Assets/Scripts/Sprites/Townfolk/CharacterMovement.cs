@@ -83,6 +83,26 @@ public class CharacterMovement : SpriteMovement
 
     }
 
+    internal void JumpOffOfSpikes()
+    {
+        if (IsPlayerMoveLocationTerrainPassable(characterLocation.x - 1, characterLocation.y))
+        {
+            ForceJump(new Vector2(-1, 0), .12f, .3f);
+        }
+        else if (IsPlayerMoveLocationTerrainPassable(characterLocation.x + 1, characterLocation.y))
+        {
+            ForceJump(new Vector2(1, 0), .12f, .3f);
+        }
+        else if (IsPlayerMoveLocationTerrainPassable(characterLocation.x, characterLocation.y - 1))
+        {
+            ForceJump(new Vector2(0, -1), .12f, .3f);
+        }
+        else if (IsPlayerMoveLocationTerrainPassable(characterLocation.x, characterLocation.y + 1))
+        {
+            ForceJump(new Vector2(0, 1), .12f, .3f);
+        }
+    }
+
     private void HandleIceDashContinue()
     {
         if ((!currentlyMoving && GameData.Instance.dashing) || continueDashing)
@@ -381,26 +401,34 @@ public class CharacterMovement : SpriteMovement
         {
             if (windJumpLocation.GetComponent<DoodadData>().isWindShifter)
             {
+                WindJumpController wind = windJumpLocation.GetComponent<WindJumpController>();
                 SoundManager.Instance.PlaySound("AirGust",1);
-                jumpStartPos = transform.position;
-                jumpTarget = windJumpLocation.GetComponent<WindJumpController>().jumpDestOffset;
-                SetNextLocationActual(characterLocation.x+(int)jumpTarget.x, characterLocation.y +(int)jumpTarget.y);
-                if (Math.Abs(jumpTarget.x) > Math.Abs(jumpTarget.y)) {
-                    if (jumpTarget.x < 0) { facedDirection = DirectionMoved.LEFT; }
-                    else { facedDirection = DirectionMoved.RIGHT; }
-                }
-                else {
-                    if (jumpTarget.y < 0) { facedDirection = DirectionMoved.DOWN; }
-                    else { facedDirection = DirectionMoved.UP; }
-                }
-                SetLookDirection();
-
-                totalTimeInForcedJump = windJumpLocation.GetComponent<WindJumpController>().timeItTakesToJump;
-                forcedJumpHeight = windJumpLocation.GetComponent<WindJumpController>().jumpHeight;
-                timeLeftInForcedJump = totalTimeInForcedJump;
-                currentlyMoving = false;
+                ForceJump(wind.jumpDestOffset, wind.timeItTakesToJump, wind.jumpHeight);
             }
         }
+    }
+
+    public void ForceJump(Vector2 offset, float time, float height)
+    {
+        jumpStartPos = transform.position;
+        jumpTarget = offset;
+        SetNextLocationActual(characterLocation.x + (int)jumpTarget.x, characterLocation.y + (int)jumpTarget.y);
+        if (Math.Abs(jumpTarget.x) > Math.Abs(jumpTarget.y))
+        {
+            if (jumpTarget.x < 0) { facedDirection = DirectionMoved.LEFT; }
+            else { facedDirection = DirectionMoved.RIGHT; }
+        }
+        else
+        {
+            if (jumpTarget.y < 0) { facedDirection = DirectionMoved.DOWN; }
+            else { facedDirection = DirectionMoved.UP; }
+        }
+        SetLookDirection();
+
+        totalTimeInForcedJump = time;
+        forcedJumpHeight = height;
+        timeLeftInForcedJump = totalTimeInForcedJump;
+        currentlyMoving = false;
     }
 
     //Key command received from CharacterInputController script
@@ -662,10 +690,16 @@ public class CharacterMovement : SpriteMovement
             GameData.Instance.hasted = false;
             SoundManager.Instance.PlaySound("HasteOff", 1f);
         }
-            tempMovementSpeed = MoveSpeed;
-            tempFramesPerSecond = framesPerSecond;
-            smoke.Stop();
-            smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
+        tempMovementSpeed = MoveSpeed;
+        tempFramesPerSecond = framesPerSecond;
+        smoke.Stop();
+        smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
+        DoodadGrid doodads = MapGrid.GetComponent<DoodadGrid>();
+        GameObject hopefullyADoodad = doodads.grid[characterLocation.x, characterLocation.y];
+        if (hopefullyADoodad != null && hopefullyADoodad.GetComponent<SpikeController>() != null && !hopefullyADoodad.GetComponent<SpikeController>().isPassable)
+        {
+            JumpOffOfSpikes();
+        }
     }
 
     internal void ActivateInvisibility()
