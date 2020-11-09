@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class SpikeController : DoodadData
 {
-
-    private Vector2Int SpikeLocation;
     protected bool isAnimating;
     public float AnimationSpeed = 6;
     protected float timeSinceLastFrame = 0;
@@ -81,17 +79,16 @@ public class SpikeController : DoodadData
     {
         this.isPassable = false;
         RaiseSpikeAnimation(sound);
-    }
-
-
-    private void InitializeSpriteLocation()
-    {
-        MapGrid = GameObject.Find("Grid");
-        MapZeroLocation = MapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
-        SpikeLocation.x = (int)Math.Round(this.transform.position.x) - (int)MapZeroLocation.x;
-        SpikeLocation.y = (int)Math.Round(this.transform.position.y) - (int)MapZeroLocation.y;
-        MapGrid.GetComponent<EntityGrid>().grid[SpikeLocation.x, SpikeLocation.y] = this.gameObject;
-
+        GameObject hopeItsAnEntity = MapGrid.GetComponent<EntityGrid>().grid[DoodadLocation.x, DoodadLocation.y];
+        Debug.Log(hopeItsAnEntity);
+        if (hopeItsAnEntity != null && hopeItsAnEntity.GetComponent<EntityData>()!= null && hopeItsAnEntity.GetComponent<EntityData>().isMainCharacter)
+        {
+            CharacterMovement player = hopeItsAnEntity.GetComponent<CharacterMovement>();
+            if (!GameData.Instance.hasted)
+            {
+                player.JumpOffOfSpikes();
+            }
+        }
     }
 
     internal void OpenAfterTime(float time)
