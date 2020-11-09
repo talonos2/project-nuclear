@@ -47,8 +47,6 @@ public class PauseMenuController : MonoBehaviour
 
         // Debug.Log("basic " + inOrOut + " with .text = " + inOrOut.text);
 
-        Debug.Log("scene " + scene.name);
-
         if (scene.name == "TownMap_1" || scene.name == "TownInterior_Pub_1" || scene.name == "TownInterior_Church_1"
         || scene.name == "TownInterior_Manor_1" || scene.name == "TownInterior_SeersCottage_1")
         {

@@ -38,7 +38,6 @@ public class CharacterStats : Stats
     }
 
     internal void deactivatePowers() {
-        if (savedCharacterMovement == null) { Debug.Log("ERROR, No SAVED CHARACTER MOVEMENT"); }
         savedCharacterMovement.TurnHasteOff();
         if (GameData.Instance.stealthed)
             savedCharacterMovement.ActivateInvisibility();

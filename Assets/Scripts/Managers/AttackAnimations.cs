@@ -158,7 +158,6 @@ public static class AttackAnimationExtensions
         //Which frame are we in?
         for (int x = 10; x >= 0; x--)
         {
-            Debug.Log(x + ", " + aam.finalBossFrameTimes.Length);
             if (timeSinceStart >= aam.finalBossFrameTimes[x])
             {
                 return x;

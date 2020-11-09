@@ -151,8 +151,6 @@ public class OptionScreenController : MonoBehaviour
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(this.GetComponent<RectTransform>(), pedata.position, null, out Vector2 currentPos);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(this.GetComponent<RectTransform>(), pedata.pressPosition, null, out Vector2 startPos);
-        Debug.Log(currentPos);
-        Debug.Log(startPos);
 
         int boundSlider;
         if (startPos.y < 0)
@@ -169,8 +167,6 @@ public class OptionScreenController : MonoBehaviour
         }
 
         float newSliderValue = Mathf.Clamp((currentPos.x - 60) / 190, .001f, 1f);
-
-        Debug.Log(newSliderValue);
 
         sliders[boundSlider].GetComponent<RectTransform>().localPosition = new Vector2(0, 190-(newSliderValue * 380));
 

@@ -19,7 +19,5 @@ public class FWSystems
         GameObject GameStateData = GameObject.Instantiate(Resources.Load("Prefabs/Singletons/GameStateData") as GameObject);
         GameStateData.name = "GameStateData";
         Object.DontDestroyOnLoad(GameStateData);
-
-        Debug.Log("ManagersLoaded");
     }
 }

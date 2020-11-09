@@ -86,7 +86,6 @@ public class ElementCaroselManager : MonoBehaviour
                 difference += (stats.powersGained + 1);
             }
 
-            Debug.Log("tar " + targetDegreesRotated + ", powers " + stats.powersGained + ", difference " + difference + ", i" + i);
             targetDegreesRotated += difference;
 
             elementIThinkIsSelected = stats.currentPower;
