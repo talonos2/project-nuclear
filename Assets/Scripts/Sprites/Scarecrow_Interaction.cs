@@ -16,6 +16,7 @@ public class Scarecrow_Interaction : EntityData
     public float framesPerSecond=6;
     protected float FLOATING_POINT_FIX = .00001f;
     private float frameNumber = 0;
+    private EntityData playerEntityData;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,11 @@ public class Scarecrow_Interaction : EntityData
             InitializeSpriteLocation();
             this.sRender = this.GetComponentInChildren<Renderer>();
             this.sRender.material = new Material(this.sRender.material);
+
+        GameObject playerFinder = GameObject.FindGameObjectWithTag("Player");
+        if (playerFinder) playerEntityData = playerFinder.GetComponent<EntityData>();
+        else playerEntityData = this;
+
         }
 
 
@@ -41,6 +47,12 @@ public class Scarecrow_Interaction : EntityData
         if (GameState.fullPause == true || GameData.Instance.isInDialogue || HittingScarecrow) return;
 
         HittingScarecrow = true;
+        float scarecrowDistance = playerEntityData.distanceToEntity(this.transform);
+        if (scarecrowDistance < 8.9f) {
+            float playSoundOnVolume = Math.Min(.9f - (scarecrowDistance / 9), .25f);
+            SoundManager.Instance.PlaySound("Punching_Scarecrow", Math.Max(playSoundOnVolume,0));
+        }
+
         
 
         }
