@@ -40,6 +40,8 @@ public class Enemy : Stats
     public bool finalBoss;
     public bool finalBossForm1;
 
+    public bool testMonster;
+
     public void Start()
     {
         if (iceBoss && GameData.Instance.iceBoss1) { Destroy(this.gameObject); }

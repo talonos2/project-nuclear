@@ -153,7 +153,6 @@ public class LoadSaveController : MonoBehaviour
 
         }
 
-
         if (Input.GetButtonDown("Cancel")) {
             deactivateLoad();
 
@@ -268,6 +267,40 @@ public class LoadSaveController : MonoBehaviour
 
     }
 
+    public void SaveUiEntered(int slotEntered) {
+   
+        int slotOffset = slotEntered - pointLocation;
+        if (slotOffset!=0) SoundManager.Instance.PlaySound("MenuMove", 1f);
+        saveSlotSelected = saveSlotSelected + slotOffset;
+        if (saveSlotSelected < 0) {
+            saveSlotSelected = 31 + saveSlotSelected;
+        }
+        if (saveSlotSelected > 30) {
+            saveSlotSelected = saveSlotSelected - 31;
+        }
+        pointLocation = slotEntered;
+        saveSelector.GetComponent<RectTransform>().localPosition = new Vector3(-206, 125 - 80 * pointLocation, 0);
+    }
+    public void ClickedUI() {
+       // SoundManager.Instance.PlaySound("MenuOkay", 1f);
+        if (townSave)
+        {
+            //SaveSlotUiController tempUiSaveController = getUiSaveSlot();
+            //tempUiSaveController.savingOverlay.SetActive(true);
+            SaveGame(saveSlotSelected);
+            SetupAllSaveUI(saveSlotSelected);
+            //tempUiSaveController.savingOverlay.SetActive(false);
+        }
+        else
+        {
+            LoadGame(saveSlotSelected);
+            GameState.fullPause = false;
+            deactivateLoad();
+
+        }
+
+
+    }
     protected SaveSlotUiController getUiSaveSlot()
     {
         SaveSlotUiController tempUiSaveController=null;
