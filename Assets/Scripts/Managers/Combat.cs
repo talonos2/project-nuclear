@@ -52,6 +52,7 @@ public class Combat : MonoBehaviour
     private static int elementSelected;
 
     GameObject hitsplatTemplate;
+    GameObject hitsplat;
 
     GameObject[] eleVFXes = new GameObject[4];
     GameObject[] eleSwitchVFXes = new GameObject[4];
@@ -165,7 +166,7 @@ public class Combat : MonoBehaviour
             {
                 MusicManager.instance.TurnOffCombatMusic();
             }
-
+            if (hitsplat) { Destroy(hitsplat); }
             Destroy(this);
         }
         return;
@@ -361,7 +362,7 @@ public class Combat : MonoBehaviour
         blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
         GameData.Instance.EndTheRun();
         MusicManager.instance.TurnOffCombatMusic();
-       
+        if (hitsplat) Destroy(hitsplat);
         Destroy(this.gameObject);
     }
 
@@ -529,7 +530,7 @@ public class Combat : MonoBehaviour
         }
 
         //Make hitsplat
-        GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
+        hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position + (Vector3)monsterStats.gettingStruckPointOffset + AttackAnimationManager.Instance.monsterHitsplatOffset;
         hitsplat.transform.localPosition += (Vector3)monsterStats.hitsplatOffset;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Mathf.RoundToInt(elementalDamage), goodHit, hitWeakness, crit != 0, elementalCrit, (ElementalPower)playerStats.currentPower);
@@ -610,7 +611,7 @@ public class Combat : MonoBehaviour
             //ShouldHaveDodgeEffect
         }
         playerStats.HP -= Mathf.RoundToInt(incomingDamage);
-        GameObject hitsplat = GameObject.Instantiate(hitsplatTemplate);
+        hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = playerSprite.transform.position+(Vector3)playerStats.gettingStruckPointOffset+AttackAnimationManager.Instance.playerHitsplatOffset;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), 0, !goodBlock, false, false, false, ElementalPower.NULL);
         CheckCombatOver();

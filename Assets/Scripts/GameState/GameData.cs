@@ -113,6 +113,7 @@ public class GameData : Singleton<GameData>
 
 
 
+
     internal bool statsSetup=false;
 
     internal bool victory;
@@ -197,7 +198,9 @@ public class GameData : Singleton<GameData>
     {
         pauseTimer = true;
         GameState.fullPause = true;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().deactivatePowers();
+        GameObject thePlayer=GameObject.FindGameObjectWithTag("Player");
+        thePlayer.GetComponent<CharacterStats>().deactivatePowers();
+        thePlayer.GetComponent<CharacterMovement>().uiController.turnOffUiScene();
         SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
         MusicManager.instance.TurnOffCombatMusic();
         MusicManager.instance.FadeOutMusic(-2, 3);
