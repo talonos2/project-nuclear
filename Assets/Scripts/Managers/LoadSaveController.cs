@@ -24,6 +24,7 @@ public class LoadSaveController : MonoBehaviour
     internal int saveSlotSelected = 0;
 
     public Canvas aCanvasThis;
+    public static bool isListLoaded;
     public static List<GameSaverManager> savedDataList=new List<GameSaverManager>();
     //public NewGameController newGameButton;
     public bool loadSaveActive;
@@ -47,13 +48,17 @@ public class LoadSaveController : MonoBehaviour
 
     void Start()
     {
-
-        LoadSavedDataToList("Autosave");
-        for (int i = 1; i < 31; i++ ) {
-            LoadSavedDataToList("SaveSlot"+i);
+        if (!isListLoaded) {
+            LoadSavedDataToList("Autosave");
+            for (int i = 1; i < 31; i++)
+            {
+                LoadSavedDataToList("SaveSlot" + i);
+            }
+            isListLoaded = true;
         }
 
-        SetupAllSaveUI(saveSlotSelected);
+
+        //SetupAllSaveUI(saveSlotSelected);
         aCanvasThis.enabled = false;
 
 
