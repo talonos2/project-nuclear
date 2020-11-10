@@ -574,7 +574,7 @@ public class Combat : MonoBehaviour
     {
         float critValue = 0;
         int roll = UnityEngine.Random.Range(0, 100) + 1;
-        if (roll <= playerStats.accessoryCritChance) { critValue = 1.5f; }
+        /*if (roll <= playerStats.accessoryCritChance)*/ { critValue = 1.5f; }
 
         return critValue;
     }

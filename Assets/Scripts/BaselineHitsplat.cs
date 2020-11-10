@@ -15,6 +15,7 @@ public class BaselineHitsplat : Hitsplat
     public Sprite[] eleSlashes;
     public SpriteRenderer slashSprite;
     public SpriteRenderer critSprite;
+    public SpriteRenderer critItemSprite;
 
     protected override void CreateGraphics()
     {
@@ -66,9 +67,13 @@ public class BaselineHitsplat : Hitsplat
                     text2.font = eleMaterials[(int)type];
                     text2.SetText("" + elementalDamage);
                     slashSprite.sprite = eleSlashes[(int)type];
-                    if (effective||crit)
+                    if (effective)
                     {
                         critSprite.enabled = true;
+                    }
+                    if (crit)
+                    {
+                        critItemSprite.enabled = true;
                     }
                 }
                 else
