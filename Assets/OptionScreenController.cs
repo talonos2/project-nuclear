@@ -80,6 +80,10 @@ public class OptionScreenController : MonoBehaviour
         {
             ChangeSelected(.1f);
         }
+
+        if (Input.GetButtonDown("Cancel")) {
+            CloseOptionsMenu();
+        }
     }
 
     private void ChangeSelected(float amount)
