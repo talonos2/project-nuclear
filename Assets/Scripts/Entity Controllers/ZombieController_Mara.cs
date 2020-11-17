@@ -7,7 +7,11 @@ public class ZombieController_Mara : Enemy
     new void Start()
     {
         base.Start();
-        if (GameData.Instance.Mara == 0 || GameData.Instance.bestTimes[14] == 0 || GameData.Instance.RunNumber <= 8)
+        if (testMonster)
+        {
+            return;
+        }
+        if (GameData.Instance.Mara == 0 || GameData.Instance.bestTimes[15] == Mathf.Infinity || GameData.Instance.RunNumber <= 8)
         {
             Destroy(this.gameObject);
         }

@@ -37,7 +37,7 @@ public class FinalBossSpawnAnimator : BossSpawnAnimator
         if (initialwaiting)
         {
             frameCounter += Time.deltaTime;
-            if (frameCounter > 3.33f) {
+            if (frameCounter > 1.4f) {
                 frameCounter = 0;
                 initialwaiting = false;
             }

@@ -209,7 +209,7 @@ MonoBehaviour:
   defense: 22
   startPositionOnScreen: {x: 0.85, y: 1}
   homePositionOnScreen: {x: 0.5, y: 0.2}
-  strikingPointOffset: {x: 0, y: 0.6}
+  strikingPointOffset: {x: -0.2, y: 0.6}
   gettingStruckPointOffset: {x: 0, y: -0.8}
   scale: {x: -1.28, y: 1.28}
   forceOpponentAdditionalScale: {x: 1, y: 1}
@@ -217,8 +217,8 @@ MonoBehaviour:
   ExpGiven: 1300
   weakness: 0
   crystalType: 5
-  crystalDropAmount: 18
-  hitsplatOffset: {x: 0, y: 0}
+  crystalDropAmount: 15
+  hitsplatOffset: {x: 4.3, y: -4}
   combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: -6205657817455164098, guid: 2320a64d6ae38384b81b0bf5f9f939f6, type: 3}
@@ -244,6 +244,7 @@ MonoBehaviour:
   deathBoss2: 0
   finalBoss: 0
   finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &3128599578980096542
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +378,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1001 &7711866143073806567
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -23,21 +23,29 @@ public class TownEscapeKeyController : MonoBehaviour
 
             if (Input.GetButtonDown("Cancel"))
         {
+
             if (currentlyEscaped)
             {
+                SoundManager.Instance.PlaySound("MenuNope", 1f);
                 GameState.fullPause = false;
                 currentlyEscaped = false;
-                canvas.SetActive(false);
+                SceneManager.UnloadSceneAsync("PauseScreenTown");
+                //canvas.SetActive(false);
             }
-            else if (!currentlyEscaped)
+            else if (!currentlyEscaped && GameState.fullPause != true)
             {
+                SoundManager.Instance.PlaySound("MenuOpen", 1f);
                 GameState.fullPause = true;
                 currentlyEscaped = true;
-                canvas.SetActive(true);
+                SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                SceneManager.LoadScene("PauseScreenTown", LoadSceneMode.Additive);
+                //canvas.SetActive(true);
             }
 
-        }
 
+
+        }
+/*
         if (currentlyEscaped)
         {
             if (Input.GetButtonDown("Submit"))
@@ -102,6 +110,7 @@ public class TownEscapeKeyController : MonoBehaviour
                 }
             }
         }
+        */
     }
 
 

@@ -360,7 +360,7 @@ public class SelectItemUIController : MonoBehaviour
                     currentEquipCategorySelected = 3;
                 ShowCurrentlySelectedOption();
             }
-            else if (!selectingAnItem)
+            else if (!selectingAnItem && currentEquipCategorySelected != 3)
             {
                 currentItemSelected = 0;
                 selectingAnItem = true;
@@ -380,7 +380,7 @@ public class SelectItemUIController : MonoBehaviour
                         currentEquipCategorySelected = 3;
                     ShowCurrentlySelectedOption();
                 }
-                else if (!selectingAnItem)
+                else if (!selectingAnItem && currentEquipCategorySelected != 3)
                 {
                     currentItemSelected = 0;
                     selectingAnItem = true;

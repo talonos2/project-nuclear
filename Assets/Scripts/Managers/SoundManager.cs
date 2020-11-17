@@ -60,7 +60,6 @@ public class SoundManager : Singleton<SoundManager>
         }
         if (!soundVolumeMap.ContainsKey(s))
         {
-            Debug.Log("Does not contain " + s);
             soundVolumeMap.Add(s, 1f);
             SaveSoundMap();
         }

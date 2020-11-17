@@ -259,6 +259,21 @@ public class MonsterMovement : SpriteMovement
 
     protected void handleActivateCombat()
     {
+        if (combatTriggered && (GameData.Instance.dashing || GameData.Instance.stealthed)) {
+            NextStep = GetRandomStep();
+            SetNextLocation(NextStep);
+            if (IsMoveLocationPassable(characterNextLocation.x, characterNextLocation.y)) {
+                facedDirection = NextStep;
+                UpdateNewEntityGridLocation();         
+                RemoveOldEntityGridLocation();
+                characterLocation = characterNextLocation;
+                currentlyMoving = true;
+                combatTriggered = false;
+            }
+
+            return;
+        }
+
         if (combatTriggered) {
 
             if (!EnemyToFarToFight(enemyToFightHolder)) {

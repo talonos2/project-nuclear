@@ -9,7 +9,8 @@ public class NPCDialogeController : MonoBehaviour
     public string DailyDialogue;
     void Start()
     {
-        if (GameData.Instance.isCutscene) {
+        if (GameData.Instance.isCutscene|| GameData.Instance.RunNumber>=31) {
+            
             return;
         }
         InitAndRunDiag();

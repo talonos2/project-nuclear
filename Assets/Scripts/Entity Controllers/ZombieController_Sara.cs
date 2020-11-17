@@ -7,7 +7,11 @@ public class ZombieController_Sara : Enemy
     new void Start()
     {
         base.Start();
-        if (GameData.Instance.Sara == 0 || GameData.Instance.bestTimes[12] == 0 || GameData.Instance.RunNumber <= 2)
+        if (testMonster)
+        {
+            return;
+        }
+        if (GameData.Instance.Sara == 0 || GameData.Instance.bestTimes[13] == Mathf.Infinity || GameData.Instance.RunNumber <= 2)
        {
             Destroy(this.gameObject);
        }

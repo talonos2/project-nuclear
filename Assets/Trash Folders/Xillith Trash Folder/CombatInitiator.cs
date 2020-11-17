@@ -19,14 +19,10 @@ public class CombatInitiator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-            Debug.Log("entered");
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("huh");
         Time.timeScale = 0;
         SceneManager.LoadScene("Combat Scene", LoadSceneMode.Additive);
 

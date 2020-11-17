@@ -132,14 +132,14 @@ MonoBehaviour:
   homePositionOnScreen: {x: 0.5, y: 0.2}
   strikingPointOffset: {x: 0, y: 0.6}
   gettingStruckPointOffset: {x: 0, y: -0.8}
-  scale: {x: -1.28, y: 1.28}
+  scale: {x: -1.5, y: 1.5}
   forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Devon
   ExpGiven: 2900
   weakness: 0
   crystalType: 5
-  crystalDropAmount: 35
-  hitsplatOffset: {x: 0, y: 0}
+  crystalDropAmount: 20
+  hitsplatOffset: {x: 4.3, y: -4}
   combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: 8148812165185935779, guid: 45700514a256b634aa4d454861264418, type: 3}
@@ -165,6 +165,7 @@ MonoBehaviour:
   deathBoss2: 0
   finalBoss: 0
   finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &3128599578980096542
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +299,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1 &4710679315348504660
 GameObject:
   m_ObjectHideFlags: 0

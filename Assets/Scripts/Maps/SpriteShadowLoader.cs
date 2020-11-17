@@ -43,6 +43,8 @@ public class SpriteShadowLoader : MonoBehaviour
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
         //sRender.material.SetInt("_LightRad", ThePlayer.GetComponentInChildren<Renderer>().material.GetInt("_LightRad"));
         sRender.material.SetInt("_LightRad", 6);
+        sRender.material.SetVector("_CutsceneMapOffset", groundObject.shadowMapOffset);
+
         if (GameData.Instance.FloorNumber == 0)
             sRender.material.SetInt("_LightRad", 0);
 
@@ -76,6 +78,7 @@ public class SpriteShadowLoader : MonoBehaviour
         if (GameData.Instance.FloorNumber != 0)  ThePlayer = GameObject.FindGameObjectWithTag("Player");
         //sRender.material.SetInt("_LightRad", ThePlayer.GetComponentInChildren<Renderer>().material.GetInt("_LightRad"));
         sRender.material.SetInt("_LightRad", 6);
+        sRender.material.SetVector("_CutsceneMapOffset", groundObject.shadowMapOffset);
         if (GameData.Instance.FloorNumber == 0)
             sRender.material.SetInt("_LightRad", 0);
 
@@ -131,7 +134,6 @@ public class SpriteShadowLoader : MonoBehaviour
             //The case of the player jumping
             if ((pMover.IsInAForcedJump() || pMover.IsJumping()))
             {
-                Debug.Log("Do I detect the player jumping");
                 zPosition -= .01f;
                 //zPosition -= this.transform.parent.transform.localPosition.y / 100;
             }

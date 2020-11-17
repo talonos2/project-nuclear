@@ -73,6 +73,7 @@ public class NewGameController : MonoBehaviour
                     inSaveMenu = true;
                     break;
                 case 3:
+                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
                     OpenOptionsMenu();
                     break;
                 case 4:
@@ -114,6 +115,11 @@ public class NewGameController : MonoBehaviour
         return (currentMenuOptionSelected + 7)%6;
     }
 
+    public void ClickLoadGameMenu() {
+        SoundManager.Instance.PlaySound("MenuOkay", 1f);
+        loadSaveController.activateLoad(this);
+        inSaveMenu = true;
+    }
     public void RefreshSelectedOption(int menuOptionSelected)
     {
         if (keepInactive) return;
@@ -123,7 +129,7 @@ public class NewGameController : MonoBehaviour
         }
         //TODO: Skip continue and load game if there's no game to load or continue. (Repeat check here because of mouse.)
         currentMenuOptionSelected = menuOptionSelected;
-        selectionMarker.GetComponent<RectTransform>().localPosition = new Vector3(-70, -110 - 20 * menuOptionSelected, 0);
+        selectionMarker.GetComponent<RectTransform>().localPosition = new Vector3(-70, -100.83f - 17.6f * menuOptionSelected, 0);
 
         for (int x = 0; x < menuOptions.Length; x++)
         {
@@ -197,7 +203,8 @@ public class NewGameController : MonoBehaviour
             {
                 GameData.Instance.RunNumber = Convert.ToInt32(runVariable.text);
             }
-            else {
+            else
+            {
                 GameData.Instance.RunNumber = 1;
             }
             GameData.Instance.SetNextLocation(Map1EntrancePoint, Map1Facing);
@@ -252,7 +259,6 @@ public class NewGameController : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("Trying to Quit");
 #if UNITY_EDITOR
         // Application.Quit() does not work in the editor so
         // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game

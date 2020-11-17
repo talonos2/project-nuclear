@@ -235,7 +235,7 @@ public class ChooseItemUI : MonoBehaviour
     }
 
 
-    private void closeItemPickUI()
+    private void CloseItemPickUI()
     {
         selectedButton = -1;
         SelectButton(1);
@@ -248,32 +248,25 @@ public class ChooseItemUI : MonoBehaviour
     {
         if (i)
         {
-            if (!GameData.Instance.bestWeaponFound || GameData.Instance.bestWeaponFound < i)
-            {
-                GameData.Instance.bestWeaponFound = i;
-            }
-
-
+            GameData.Instance.itemsFoundThisRun.Add(i);
             if (playerData.weapon.name != "Knife")
                 GameData.Instance.townWeapons.Add(i);
             sendGabToTownMessage("<sprite=0> " + i.gameObject.name + " sent to town.");
         }
-        closeItemPickUI();
+        CloseItemPickUI();
     }
 
     private void SendToTown(Armor i)
     {
         if (i)
         {
-            if (!GameData.Instance.bestArmorFound || (GameData.Instance.bestArmorFound < i))
-            {
-                GameData.Instance.bestArmorFound = i;
-            }
+            GameData.Instance.itemsFoundThisRun.Add(i);
             if (playerData.armor.name != "Warm Jacket")
                 GameData.Instance.townArmor.Add(i);
             sendGabToTownMessage("<sprite=1> " + i.gameObject.name + " sent to town.");
+            Debug.Log("r");
         }
-        closeItemPickUI();
+        CloseItemPickUI();
     }
 
     private void SendToTown(Accessory i)
@@ -282,17 +275,13 @@ public class ChooseItemUI : MonoBehaviour
         {
             if (i.name != "No Accessory Equipped")
             {
-                if (!GameData.Instance.bestAccessoryFound || (GameData.Instance.bestAccessoryFound < i))
-                {
-                    GameData.Instance.bestAccessoryFound = i;
-                }
-
+                GameData.Instance.itemsFoundThisRun.Add(i);
                 GameData.Instance.townAccessories.Add(i);
                 sendGabToTownMessage("<sprite=2> " + i.gameObject.name + " sent to town.");
             }
 
         }
-        closeItemPickUI();
+        CloseItemPickUI();
     }
 }
 

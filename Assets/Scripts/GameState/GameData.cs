@@ -58,9 +58,7 @@ public class GameData : Singleton<GameData>
     public List<Armor> townArmor = new List<Armor>();
     public List<Accessory> townAccessories = new List<Accessory>();
 
-    public Weapon bestWeaponFound;
-    public Armor bestArmorFound;
-    public Accessory bestAccessoryFound;
+    public List<InventoryItem> itemsFoundThisRun;
 
     public float[] bestTimes = new float[20];
     public float[] timesThisRun = new float[20];
@@ -110,6 +108,9 @@ public class GameData : Singleton<GameData>
     internal float deathTime;
     internal bool hiroDeathMonster;
     internal bool postRun1Cutscene;
+    internal bool UI_On;
+    internal bool ManualUIToggleOff;
+
 
 
 
@@ -197,7 +198,9 @@ public class GameData : Singleton<GameData>
     {
         pauseTimer = true;
         GameState.fullPause = true;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().deactivatePowers();
+        GameObject thePlayer=GameObject.FindGameObjectWithTag("Player");
+        thePlayer.GetComponent<CharacterStats>().deactivatePowers();
+        thePlayer.GetComponent<CharacterMovement>().uiController.turnOffUiScene();
         SoundManager.Instance.PlayPersistentSound("TakenByCurse", 1f);
         MusicManager.instance.TurnOffCombatMusic();
         MusicManager.instance.FadeOutMusic(-2, 3);

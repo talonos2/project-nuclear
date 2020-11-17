@@ -18,6 +18,9 @@ public class GabTriggerer : DoodadData
     public bool forcePause;
     public VideoClip clipToPlayForTutorial = null;
     public double time;
+    public ActivationRequirement activationRequirement = ActivationRequirement.NONE;
+
+    public enum ActivationRequirement { NONE, NEEDS_ICE_POWER }
 
     public new void Start()
     {
@@ -27,7 +30,7 @@ public class GabTriggerer : DoodadData
 
     public void TriggerGab()
     {
-        if (!GameData.Instance.gabNumbers[gabNumber])
+        if (!GameData.Instance.gabNumbers[gabNumber]&&RequirementsMet())
         {
             if (sound != null)
             {
@@ -47,6 +50,20 @@ public class GabTriggerer : DoodadData
             GameData.Instance.gabNumbers[gabNumber] = true;
         }
         GameObject.Destroy(this.gameObject);
+    }
+
+    private bool RequirementsMet()
+    {
+        switch (activationRequirement)
+        {
+            case ActivationRequirement.NEEDS_ICE_POWER:
+                if (GameData.Instance.PowersGained<1)
+                {
+                    return false;
+                }
+                return true;
+        }
+        return true;
     }
 
     void Update()

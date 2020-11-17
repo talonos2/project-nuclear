@@ -129,17 +129,17 @@ MonoBehaviour:
   attack: 85
   defense: 22
   startPositionOnScreen: {x: 0.85, y: 1}
-  homePositionOnScreen: {x: 0.5, y: 0.2}
-  strikingPointOffset: {x: 0, y: 0.6}
-  gettingStruckPointOffset: {x: 0, y: -0.8}
-  scale: {x: -1.28, y: 1.28}
+  homePositionOnScreen: {x: 0.3, y: -0.5}
+  strikingPointOffset: {x: 0, y: 0}
+  gettingStruckPointOffset: {x: 0.1, y: 0.1}
+  scale: {x: -1, y: 1}
   forceOpponentAdditionalScale: {x: 1, y: 1}
   enemyName: Norma
   ExpGiven: 1500
   weakness: 0
   crystalType: 5
-  crystalDropAmount: 20
-  hitsplatOffset: {x: 0, y: 0}
+  crystalDropAmount: 15
+  hitsplatOffset: {x: 4.8, y: 0}
   combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: -6597013357618177839, guid: e460c6bed1aa0cd46a5de8a84381ae8b, type: 3}
@@ -165,6 +165,7 @@ MonoBehaviour:
   deathBoss2: 0
   finalBoss: 0
   finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &3128599578980096542
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +299,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1 &4462987939224101677
 GameObject:
   m_ObjectHideFlags: 0

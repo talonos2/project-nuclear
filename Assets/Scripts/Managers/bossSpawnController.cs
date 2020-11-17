@@ -126,7 +126,7 @@ public class bossSpawnController : MonoBehaviour
 
             waiting = true;
             waitTime = 2.8f;
-            if (bossCount == 4) { waitTime = 11.3f; }
+            if (bossCount == 4) { waitTime = 8.4f; }
         }
         if (phases[3])
         {

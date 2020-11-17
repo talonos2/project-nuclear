@@ -8,5 +8,6 @@ public class GroundShadow : MonoBehaviour
     public Texture shadowTexture;
     public Texture glowTexture;
     public Vector2 mapOffset;
+    public Vector2 shadowMapOffset;
     internal bool resetShadow;
 }

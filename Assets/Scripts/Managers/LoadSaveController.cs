@@ -24,12 +24,14 @@ public class LoadSaveController : MonoBehaviour
     internal int saveSlotSelected = 0;
 
     public Canvas aCanvasThis;
+    public static bool isListLoaded;
     public static List<GameSaverManager> savedDataList=new List<GameSaverManager>();
     //public NewGameController newGameButton;
     public bool loadSaveActive;
     private EscapeKeyController callingEscapeKeyControllerScriptReturn;
     private bool wait1Frame;
     private static int pointLocation = 0;
+    private PauseMenuController callingPauseMenuControllerScriptReturn;
     private NewGameController callingGameControllerScriptReturn;
     private TownEscapeKeyController callingTownEscapeScriptReturn;
     private float selectionDelayDefault = .15f;
@@ -39,19 +41,24 @@ public class LoadSaveController : MonoBehaviour
     private bool townSave;
     private bool townLoad;
     private bool dungeonLoad;
+    private bool pauseLoad;
     public NewGameController newGameController;
 
     // Start is called before the first frame update
 
     void Start()
     {
-
-        LoadSavedDataToList("Autosave");
-        for (int i = 1; i < 31; i++ ) {
-            LoadSavedDataToList("SaveSlot"+i);
+        if (!isListLoaded) {
+            LoadSavedDataToList("Autosave");
+            for (int i = 1; i < 31; i++)
+            {
+                LoadSavedDataToList("SaveSlot" + i);
+            }
+            isListLoaded = true;
         }
 
-        SetupAllSaveUI(saveSlotSelected);
+
+        //SetupAllSaveUI(saveSlotSelected);
         aCanvasThis.enabled = false;
 
 
@@ -77,6 +84,7 @@ public class LoadSaveController : MonoBehaviour
                 LoadGame(saveSlotSelected);
                 GameState.fullPause = false;
                 deactivateLoad();
+
             }
 
         }       
@@ -150,13 +158,14 @@ public class LoadSaveController : MonoBehaviour
 
         }
 
-
         if (Input.GetButtonDown("Cancel")) {
             deactivateLoad();
 
-            if (townSave || townLoad) callingTownEscapeScriptReturn.ReActivate();
-            else if (dungeonLoad) callingEscapeKeyControllerScriptReturn.ReActivate();
+            //if ((townSave || townLoad)&& ! pauseLoad) callingTownEscapeScriptReturn.ReActivate();
+            if (dungeonLoad) callingEscapeKeyControllerScriptReturn.ReActivate();
+            else if (pauseLoad) callingPauseMenuControllerScriptReturn.ReActivate();
             else callingGameControllerScriptReturn.ReActivate();
+            pauseLoad = false;
             townSave = false;
             townLoad = false;
             dungeonLoad = false;
@@ -263,6 +272,40 @@ public class LoadSaveController : MonoBehaviour
 
     }
 
+    public void SaveUiEntered(int slotEntered) {
+   
+        int slotOffset = slotEntered - pointLocation;
+        if (slotOffset!=0) SoundManager.Instance.PlaySound("MenuMove", 1f);
+        saveSlotSelected = saveSlotSelected + slotOffset;
+        if (saveSlotSelected < 0) {
+            saveSlotSelected = 31 + saveSlotSelected;
+        }
+        if (saveSlotSelected > 30) {
+            saveSlotSelected = saveSlotSelected - 31;
+        }
+        pointLocation = slotEntered;
+        saveSelector.GetComponent<RectTransform>().localPosition = new Vector3(-206, 125 - 80 * pointLocation, 0);
+    }
+    public void ClickedUI() {
+       // SoundManager.Instance.PlaySound("MenuOkay", 1f);
+        if (townSave)
+        {
+            //SaveSlotUiController tempUiSaveController = getUiSaveSlot();
+            //tempUiSaveController.savingOverlay.SetActive(true);
+            SaveGame(saveSlotSelected);
+            SetupAllSaveUI(saveSlotSelected);
+            //tempUiSaveController.savingOverlay.SetActive(false);
+        }
+        else
+        {
+            LoadGame(saveSlotSelected);
+            GameState.fullPause = false;
+            deactivateLoad();
+
+        }
+
+
+    }
     protected SaveSlotUiController getUiSaveSlot()
     {
         SaveSlotUiController tempUiSaveController=null;
@@ -295,8 +338,33 @@ public class LoadSaveController : MonoBehaviour
 
         aCanvasThis.enabled = false;
         newGameController.StartNewGameActual();
-        
+       
 
+
+    }
+
+    internal void activateLoad(PauseMenuController callingScript, bool saveFile)
+    {
+
+        if (saveFile)
+        {
+            townSave = true;
+            saveOrLoadText.text = "Save";
+        }
+        else
+        {
+            townLoad = true;
+            saveOrLoadText.text = "Load";
+        }
+        pauseLoad = true;
+     //   saveOrLoadText.text = "Load";
+        callingPauseMenuControllerScriptReturn = callingScript;
+        wait1Frame = false;
+        loadSaveActive = true;
+        aCanvasThis.enabled = true;
+        saveSlotSelected = 0;
+        pointLocation = 0;
+        SetupAllSaveUI(saveSlotSelected);
     }
 
     public void activateLoad(NewGameController callingScript)
@@ -325,6 +393,7 @@ public class LoadSaveController : MonoBehaviour
 
     public void activateLoad(TownEscapeKeyController callingScript, bool saveFile)
     {
+        Debug.Log("I should never get here. If so check town escape key ui is activate");
         if (saveFile) { townSave = true;
             saveOrLoadText.text = "Save";
         }
@@ -347,6 +416,7 @@ public class LoadSaveController : MonoBehaviour
         aCanvasThis.enabled = false;
         saveSlotSelected = 0;
         pointLocation = 0;
+
     }
 
 

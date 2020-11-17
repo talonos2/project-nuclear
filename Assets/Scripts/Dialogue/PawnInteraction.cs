@@ -120,7 +120,8 @@ public class PawnInteraction : EntityData
     }
 
     void Update() {
-        if (GameState.fullPause == true  || GameState.isInBattle == true || GameData.Instance.isInDialogue) return;
+        if (GameState.fullPause == true  || GameState.isInBattle == true || GameData.Instance.isInDialogue ||GameData.Instance.isCutscene) return;
+
         if (isItTrainingDay() || punchAnyway) {
             punchTimer += Time.deltaTime;
             if (punchTimer >= 1f && punchTimer < 2.2f && !punching)

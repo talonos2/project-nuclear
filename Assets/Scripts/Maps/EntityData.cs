@@ -41,4 +41,9 @@ public class EntityData : MonoBehaviour
         mapEntityGrid.grid[entityLocation.x, entityLocation.y] = null;
     }
 
+    public float distanceToEntity(Transform pollingTransform) {
+        float distanceToEntity=(float)Math.Pow(Math.Pow(this.transform.position.x - pollingTransform.position.x, 2) + Math.Pow(this.transform.position.y - pollingTransform.position.y, 2), .5);
+        return distanceToEntity;
+    }
+
 }

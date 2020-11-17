@@ -12,7 +12,6 @@ public class DeleteGOCommand : Naninovel.Commands.Command
 
     public override Task ExecuteAsync()
     {
-        Debug.Log("Trying to delete " + n);
         IEnumerable<GameObject> matches = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == n);
 
         if (matches.Count() == 0)
