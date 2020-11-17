@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 720618044}
   - component: {fileID: 720618043}
   m_Layer: 5
-  m_Name: ExitButton
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a644b1578a99d3b46a9c05d170f6a8b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 824699613c4c60148b5509517223843e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1058,8 +1058,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -119.3, y: -100}
-  m_SizeDelta: {x: 272, y: 24}
+  m_AnchoredPosition: {x: -109.5, y: -93.6}
+  m_SizeDelta: {x: 163.22, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &727349088
 GameObject:
@@ -1132,7 +1132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170, y: 100}
+  m_AnchoredPosition: {x: -190, y: 100}
   m_SizeDelta: {x: 97, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &892645699
@@ -2024,7 +2024,7 @@ GameObject:
   - component: {fileID: 7203582173684565935}
   - component: {fileID: 7203582173684565925}
   m_Layer: 5
-  m_Name: Canvas_EndRunScreen
+  m_Name: Canvas_OptionScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2055,14 +2055,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5a8fe9a8c58f23d49ab15212b266d7fb, type: 3}
   - {fileID: 21300000, guid: 365c3967581772a44968514a550efe7d, type: 3}
   - {fileID: 21300000, guid: 51dd9a378ea34c14b841db2d515a50e6, type: 3}
-  - {fileID: 21300000, guid: 44c25610a76ceb946b7eceafde122713, type: 3}
+  - {fileID: 21300000, guid: 0d3ddf9861d94fe44808504616418c0b, type: 3}
   offSprites:
   - {fileID: 21300000, guid: 3f94eb95ce270e84bb5220fe873999f7, type: 3}
   - {fileID: 21300000, guid: 78670265923af444eab2613ceba6517e, type: 3}
   - {fileID: 21300000, guid: e8952f7429b858f4dbe1b746b4be7201, type: 3}
   - {fileID: 21300000, guid: 225fdec3355accf429a11b9a974fabc3, type: 3}
   - {fileID: 21300000, guid: 94819e9d569ba714cabb163f5be04ac0, type: 3}
-  - {fileID: 21300000, guid: a644b1578a99d3b46a9c05d170f6a8b3, type: 3}
+  - {fileID: 21300000, guid: 824699613c4c60148b5509517223843e, type: 3}
   optionFirstButton: {fileID: 1925151880}
   selectionMarker: {fileID: 727349089}
   sliders:
