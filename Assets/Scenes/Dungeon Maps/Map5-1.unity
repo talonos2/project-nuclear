@@ -192,16 +192,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4139699246663093168, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 134.30078
-      objectReference: {fileID: 0}
-    - target: {fileID: 4139699247924938187, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 610.3008
-      objectReference: {fileID: 0}
     - target: {fileID: 4463955122688460992, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -212,15 +202,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8751859261986153538, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4463955121920554214, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 150.09961
       objectReference: {fileID: 0}
-    - target: {fileID: 8751859261986153538, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+    - target: {fileID: 4922549751740137241, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139699247705823676, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 134.30078
       objectReference: {fileID: 0}
     - target: {fileID: 4139699248026534451, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
@@ -232,20 +232,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 77.40039
       objectReference: {fileID: 0}
-    - target: {fileID: 4139699247705823676, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 134.30078
-      objectReference: {fileID: 0}
-    - target: {fileID: 4922549751740137241, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2741285865236930916, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139699246663093168, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 134.30078
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139699247924938187, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 610.3008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ac0871009d1c4cbb3ce4b6c5255a3, type: 3}
@@ -1364,6 +1364,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &438425955
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2618,6 +2620,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &839577352
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5104,6 +5108,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: celesteStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeTime
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.y
+      value: -9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
 --- !u!1001 &1658047612
@@ -6092,6 +6116,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1874160517
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6207,6 +6233,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1924355654
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6519,6 +6547,7 @@ MonoBehaviour:
   shadowTexture: {fileID: 2800000, guid: 6c73f97012a208a4799a7b20547c71eb, type: 3}
   glowTexture: {fileID: 2800000, guid: 20fc5e1a67a52664cb6662a6670b1d11, type: 3}
   mapOffset: {x: 0, y: 0.5}
+  shadowMapOffset: {x: 0, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6541,6 +6570,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1001 &2039230395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6672,6 +6703,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &2048794267
 MeshCollider:
   m_ObjectHideFlags: 0

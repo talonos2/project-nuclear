@@ -138,7 +138,7 @@ public class OptionScreenController : MonoBehaviour
         }
         currentMenuOptionSelected = menuOptionSelected;
 
-        selectionMarker.GetComponent<RectTransform>().localPosition = optionsImages[menuOptionSelected].transform.localPosition + new Vector3(-170, 0, 0);
+        selectionMarker.GetComponent<RectTransform>().localPosition =  new Vector3(-190, optionsImages[menuOptionSelected].transform.localPosition.y, 0);
 
         for (int x = 0; x < optionsImages.Length; x++)
         {

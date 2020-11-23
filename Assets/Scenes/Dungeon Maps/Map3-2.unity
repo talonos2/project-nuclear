@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1463,6 +1463,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: celesteStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeTime
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
@@ -10364,6 +10384,7 @@ MonoBehaviour:
   shadowTexture: {fileID: 2800000, guid: 063891eb8de05ff40b5f5c17d1313a1f, type: 3}
   glowTexture: {fileID: 2800000, guid: 6e08ec6cb3ca2d745b5e4778fcf8ed97, type: 3}
   mapOffset: {x: 2, y: 0.5}
+  shadowMapOffset: {x: 0, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0

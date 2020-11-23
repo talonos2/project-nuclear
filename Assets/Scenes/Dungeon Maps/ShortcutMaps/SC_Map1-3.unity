@@ -287,6 +287,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4463955122688460992, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -297,14 +302,19 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+    - target: {fileID: 4898377835807072795, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4898377835807072795, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+    - target: {fileID: 8751859261986153538, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
-      propertyPath: m_LocalPosition.z
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922549751740137241, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344176989764203060, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
@@ -316,16 +326,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.769989
-      objectReference: {fileID: 0}
-    - target: {fileID: 8751859261986153538, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4922549751740137241, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5626370618705454695, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
@@ -1186,6 +1186,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: celesteStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.y
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeTime
+      value: 1.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
 --- !u!1 &2018926731
@@ -1297,6 +1312,7 @@ MonoBehaviour:
   shadowTexture: {fileID: 2800000, guid: f64aaa8e3d145a44d843d0f6577eda57, type: 3}
   glowTexture: {fileID: 2800000, guid: eb6b342fb62172340b8a01eceb27b2c6, type: 3}
   mapOffset: {x: 0, y: 0.5}
+  shadowMapOffset: {x: 0, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,6 +1335,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 1
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1001 &8549361589599232492
 PrefabInstance:
   m_ObjectHideFlags: 0
