@@ -181,9 +181,25 @@ public class ChooseItemUI : MonoBehaviour
                 return;
             }
             totalStatChange = foundItemStat - oldItemStat;
-            foundItemText = rolledItem.gameObject.name + "  <sprite=0> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
-                + (totalStatChange > 0 ? "+":"") + totalStatChange + "</color>)</size>";
-            oldItemText = "Current - " + playerData.weapon.gameObject.name + " <sprite=0> " + oldItemStat;
+            if (rolledItem.Rare)
+            {
+                foundItemText =  rolledItem.gameObject.name + "  <color=white><sprite=0> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
+    + (totalStatChange > 0 ? "+" : "") + totalStatChange + "</color>)</size></color>";
+            }
+            else {
+                foundItemText = "<color=white>" + rolledItem.gameObject.name + "  <sprite=0> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
+    + (totalStatChange > 0 ? "+" : "") + totalStatChange + "</color>)</size></color>";
+            }
+
+            if (playerData.weapon.Rare)
+            {
+                oldItemText = "<color=white>Current - </color>" + playerData.weapon.gameObject.name + " <color=white><sprite=0> " + oldItemStat + "</color>";
+            }
+            else {
+                oldItemText = "<color=white>Current - " + playerData.weapon.gameObject.name + " <sprite=0> " + oldItemStat + "</color>";
+            }
+
+
             newItemSprite.sprite = itemIcons[0];
             //oldItemSprite.sprite = itemIcons[0];
 
@@ -200,9 +216,25 @@ public class ChooseItemUI : MonoBehaviour
             }
 
             totalStatChange = foundItemStat - oldItemStat;
-            foundItemText = rolledItem.gameObject.name + "  <sprite=1> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") +">"
-                + (totalStatChange > 0 ? "+":"")+totalStatChange +"</color>)</size>";
-            oldItemText = "Current - "+playerData.armor.gameObject.name + " <sprite=" + 1 + "> " + oldItemStat;
+
+            if (rolledItem.Rare)
+            {
+                foundItemText =  rolledItem.gameObject.name + "  <color=white><sprite=1> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
+                + (totalStatChange > 0 ? "+" : "") + totalStatChange + "</color>)</size></color>";
+            }
+            else {
+                foundItemText = "<color=white>" + rolledItem.gameObject.name + "  <sprite=1> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
+                + (totalStatChange > 0 ? "+" : "") + totalStatChange + "</color>)</size></color>";
+            }
+
+            if (playerData.armor.Rare)
+            {
+                oldItemText = "<color=white>Current - </color>" + playerData.armor.gameObject.name + " <color=white><sprite=" + 1 + "> " + oldItemStat + "</color>";
+            }
+            else {
+                oldItemText = "<color=white>Current - " + playerData.armor.gameObject.name + " <sprite=" + 1 + "> " + oldItemStat + "</color>";
+            }
+            
             newItemSprite.sprite = itemIcons[1];
             //oldItemSprite.sprite = itemIcons[1];
         }
@@ -216,9 +248,24 @@ public class ChooseItemUI : MonoBehaviour
             }
             Accessory rolledAccItem = (Accessory)rolledItem;
             Accessory oldAccItem = playerData.accessory;
-            foundItemText = rolledItem.gameObject.name+", " + rolledAccItem.equipmentStatDescription; 
-            oldItemText = "Current - " + playerData.accessory.gameObject.name + ", " + oldAccItem.equipmentStatDescription;
-            if (playerData.accessory.name == "No Accessory Equipped") oldItemText = playerData.accessory.gameObject.name;
+
+            if (rolledItem.Rare)
+            {
+                foundItemText =  rolledItem.gameObject.name + "<color=white>, " + rolledAccItem.equipmentStatDescription + "</color>";
+            }
+            else {
+                foundItemText = "<color=white>" + rolledItem.gameObject.name + ", " + rolledAccItem.equipmentStatDescription + "</color>";
+            }
+
+            if (playerData.accessory.Rare)
+            {
+                oldItemText = "<color=white>Current - </color>" + playerData.accessory.gameObject.name + "<color=white>, " + oldAccItem.equipmentStatDescription + "</color>";
+            }
+            else {
+                oldItemText = "<color=white>Current - " + playerData.accessory.gameObject.name + ", " + oldAccItem.equipmentStatDescription + "</color>";
+            }
+            
+            if (playerData.accessory.name == "No Accessory Equipped") oldItemText = "<color=white>"+playerData.accessory.gameObject.name+"</color>";
                 newItemSprite.sprite = itemIcons[2];
             //oldItemSprite.sprite = itemIcons[2];
         }
@@ -231,7 +278,7 @@ public class ChooseItemUI : MonoBehaviour
 
     private void sendGabToTownMessage(string itemSentString)
     {
-        gabTextController.AddGabToPlay(itemSentString);
+        gabTextController.AddItemGabToPlay(itemSentString);
     }
 
 
@@ -251,7 +298,8 @@ public class ChooseItemUI : MonoBehaviour
             GameData.Instance.itemsFoundThisRun.Add(i);
             if (playerData.weapon.name != "Knife")
                 GameData.Instance.townWeapons.Add(i);
-            sendGabToTownMessage("<sprite=0> " + i.gameObject.name + " sent to town.");
+            if (i.Rare) sendGabToTownMessage("<sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>");
+            else sendGabToTownMessage("<color=white><sprite=0> " + i.gameObject.name + " sent to town.</color>");
         }
         CloseItemPickUI();
     }
@@ -263,7 +311,8 @@ public class ChooseItemUI : MonoBehaviour
             GameData.Instance.itemsFoundThisRun.Add(i);
             if (playerData.armor.name != "Warm Jacket")
                 GameData.Instance.townArmor.Add(i);
-            sendGabToTownMessage("<sprite=1> " + i.gameObject.name + " sent to town.");
+            if (i.Rare) sendGabToTownMessage("<sprite=1> " + i.gameObject.name + " <color=white>sent to town.</color>");
+            else sendGabToTownMessage("<color=white><sprite=1> " + i.gameObject.name + " sent to town.</color>");
             Debug.Log("r");
         }
         CloseItemPickUI();
@@ -277,7 +326,8 @@ public class ChooseItemUI : MonoBehaviour
             {
                 GameData.Instance.itemsFoundThisRun.Add(i);
                 GameData.Instance.townAccessories.Add(i);
-                sendGabToTownMessage("<sprite=2> " + i.gameObject.name + " sent to town.");
+                if (i.Rare) sendGabToTownMessage("<sprite=2> " + i.gameObject.name + " <color=white>sent to town.</color>");
+                else sendGabToTownMessage("<color=white><sprite=2> " + i.gameObject.name + " sent to town.</color>");
             }
 
         }
