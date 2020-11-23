@@ -198,17 +198,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4463955122688460992, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5515415379851588918, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -471,6 +471,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &150125658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +488,7 @@ MonoBehaviour:
   shadowTexture: {fileID: 2800000, guid: 33a32fe453cdbb4419825d8b404a2217, type: 3}
   glowTexture: {fileID: 2800000, guid: 82cb5772c9591434396efe0115624fcd, type: 3}
   mapOffset: {x: 0.5, y: 0}
+  shadowMapOffset: {x: 0, y: 0}
 --- !u!64 &150125659
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -906,6 +909,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: celesteStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeTime
+      value: 1.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
 --- !u!1001 &390478467
@@ -1132,6 +1155,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &414601981
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1709,6 +1734,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &683382440
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1824,6 +1851,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &707248101
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2337,6 +2366,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &920176221
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3544,6 +3575,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1608302985
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3820,6 +3853,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1755196038
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3935,6 +3970,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1775666828
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4638,6 +4675,7 @@ MonoBehaviour:
   shadowTexture: {fileID: 2800000, guid: 7e2bebf913773c149abcbcadb7b07d1f, type: 3}
   glowTexture: {fileID: 2800000, guid: 2ea05beef96e5ad4e81cbfca08274d7e, type: 3}
   mapOffset: {x: 0, y: 0}
+  shadowMapOffset: {x: 0, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4660,6 +4698,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 1
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1001 &2026576490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4795,6 +4835,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &2050878717
 MeshCollider:
   m_ObjectHideFlags: 0

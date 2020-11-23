@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -799,6 +799,7 @@ MonoBehaviour:
   totalFrames: 9
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
   shortcutCS4_3: {fileID: 1664913190}
 --- !u!1001 &29130076
 PrefabInstance:
@@ -1118,6 +1119,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &92769309
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1233,6 +1236,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &92867565
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1348,6 +1353,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &114629027
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1463,6 +1470,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &124966211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1771,6 +1780,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &152920736
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1886,6 +1897,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &257223196
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2557,6 +2570,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &336535119
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2826,6 +2841,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &379383230
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2941,6 +2958,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &387940145
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3101,6 +3120,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &506258063
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3285,6 +3306,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &540846239
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3400,6 +3423,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &576472831
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3515,6 +3540,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &593403634
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3630,6 +3657,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &611464917
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4193,6 +4222,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &716067640
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4308,6 +4339,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &726354923
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4571,6 +4604,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &754426559
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4686,6 +4721,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &777875427
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4905,6 +4942,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &802068734
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5526,6 +5565,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &975036363
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5641,6 +5682,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1002950033
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5756,6 +5799,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1020546054
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5871,6 +5916,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1026676939
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5986,6 +6033,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1050566160
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6403,6 +6452,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1106154958
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6773,6 +6824,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1125274445
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6923,6 +6976,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1155627659
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7192,6 +7247,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1178854063
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7575,6 +7632,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1216316367
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7743,6 +7802,7 @@ MonoBehaviour:
   totalFrames: 9
   timeTillReset: 0
   prePressed: 0
+  playParticlesOnSwitchUndo: 0
   shortcutToLoad: {fileID: 1664913191}
 --- !u!1 &1229796820
 GameObject:
@@ -7800,6 +7860,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1229796823
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7984,6 +8046,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1349634122
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8351,6 +8415,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1418073417
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8466,6 +8532,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1440418030
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8581,6 +8649,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1484243820
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8830,6 +8900,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1487600693
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8945,6 +9017,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1493247513
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9060,6 +9134,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1528438077
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9299,6 +9375,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1547590714
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9434,6 +9512,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.y
+      value: -11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeTime
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: celesteStyle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
@@ -9662,6 +9760,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1618549164
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10016,6 +10116,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1668202130
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10210,6 +10312,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1732926308
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10325,6 +10429,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1786211257
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10521,6 +10627,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1842368956
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10776,6 +10884,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &1891504912
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11120,6 +11230,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &2005317449
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11235,6 +11347,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &2005824977
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11403,6 +11517,7 @@ MonoBehaviour:
   shadowTexture: {fileID: 2800000, guid: 1b7c58d66b0831a4e93ffb9e6d53cc49, type: 3}
   glowTexture: {fileID: 2800000, guid: 5e2939739bc91824d894d1148b73c588, type: 3}
   mapOffset: {x: 0, y: 0}
+  shadowMapOffset: {x: 0, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11425,6 +11540,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1 &2047536965
 GameObject:
   m_ObjectHideFlags: 0
@@ -11481,6 +11598,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &2047536968
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11676,12 +11795,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4463955122688460992, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+    - target: {fileID: 4463955122688460992, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -11749,6 +11868,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &2109883739
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11835,6 +11956,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 9
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160242698562488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11862,6 +11984,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 8
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160242813513145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11889,6 +12012,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 15
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160242830097787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11916,6 +12040,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 0
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160242860115977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11943,6 +12068,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 12
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160242966167433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11970,6 +12096,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 8
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160242996688207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11997,6 +12124,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 7
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243172833206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12024,6 +12152,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 11
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243268806538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12051,6 +12180,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 2
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243333679482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12078,6 +12208,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 15
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243338955794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12105,6 +12236,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 12
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243628613286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12132,6 +12264,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 3
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243635151912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12159,6 +12292,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 4
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243712715797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12186,6 +12320,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 3
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243766509866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12213,6 +12348,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 2
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243792765992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12240,6 +12376,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 10
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243862726099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12267,6 +12404,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 7
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160243869338195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12294,6 +12432,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 5
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244056060686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12321,6 +12460,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 13
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244084855180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12348,6 +12488,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 0
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244231227454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12375,6 +12516,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 13
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244232997299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12402,6 +12544,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 6
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244280930514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12429,6 +12572,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 10
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244431284708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12456,6 +12600,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 4
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244432199916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12483,6 +12628,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 11
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244440417754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12510,6 +12656,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 6
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244465542107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12537,6 +12684,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 14
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244496150016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12564,6 +12712,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 9
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244534471462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12591,6 +12740,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 1
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244650130300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12618,6 +12768,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 5
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &1306160244664436912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12645,6 +12796,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 1
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!1 &1459355885026636696
 GameObject:
   m_ObjectHideFlags: 0
@@ -13696,6 +13848,7 @@ MonoBehaviour:
   primShortcutBridge: 1
   primConnectionNumber: 14
   primToCheck: {fileID: 0}
+  playsSoundOnPlatformAdd: 0
 --- !u!114 &5544051119057014377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13718,6 +13871,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1 &6177650698978129729
 GameObject:
   m_ObjectHideFlags: 0
@@ -16623,6 +16778,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155509414804937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16645,6 +16802,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155509782353395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16667,6 +16826,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155509785464987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16689,6 +16850,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155509846163051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16711,6 +16874,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155509925555799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16733,6 +16898,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510087984744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16755,6 +16922,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510118280366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16777,6 +16946,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510221431962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16799,6 +16970,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510238147672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16821,6 +16994,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510241726952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16843,6 +17018,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510348903001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16865,6 +17042,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510412557031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16887,6 +17066,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510597313181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16909,6 +17090,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510604288337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16931,6 +17114,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510703388641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16953,6 +17138,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510717559495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16975,6 +17162,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510748461325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16997,6 +17186,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510748852229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17019,6 +17210,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510756678715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17041,6 +17234,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510781835834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17063,6 +17258,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510899206451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17085,6 +17282,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510951186911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17107,6 +17306,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155510951907410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17129,6 +17330,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155511097362541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17151,6 +17354,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155511212223215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17173,6 +17378,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155511387208754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17195,6 +17402,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155511394866098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17217,6 +17426,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155511417870539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17239,6 +17450,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155511452515785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17261,6 +17474,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &6997155511538922996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17283,6 +17498,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1001 &8295020036699700065
 PrefabInstance:
   m_ObjectHideFlags: 0

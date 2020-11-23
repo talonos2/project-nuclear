@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -192,16 +192,6 @@ PrefabInstance:
       propertyPath: bossMonster
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6622165687581963514, guid: 010d0c6938f606a478c9fc5715d03324,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6622165687581963514, guid: 010d0c6938f606a478c9fc5715d03324,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5861438705539806209, guid: 010d0c6938f606a478c9fc5715d03324,
         type: 3}
       propertyPath: airBoss
@@ -211,6 +201,16 @@ PrefabInstance:
         type: 3}
       propertyPath: airBoss2
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622165687581963514, guid: 010d0c6938f606a478c9fc5715d03324,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622165687581963514, guid: 010d0c6938f606a478c9fc5715d03324,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 010d0c6938f606a478c9fc5715d03324, type: 3}
@@ -488,6 +488,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!64 &156196629
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1699,6 +1701,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.x
+      value: -14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeInWorldLocation.y
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: celesteStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: fadeTime
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
@@ -4849,6 +4871,7 @@ MonoBehaviour:
   shadowTexture: {fileID: 2800000, guid: 7eee15d46a6f7b647a0910275297de75, type: 3}
   glowTexture: {fileID: 2800000, guid: 969a873821e2abb45bd3a502aaa4854c, type: 3}
   mapOffset: {x: 0, y: 0.5}
+  shadowMapOffset: {x: 0, y: 0}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4871,6 +4894,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1001 &8295020036699700065
 PrefabInstance:
   m_ObjectHideFlags: 0

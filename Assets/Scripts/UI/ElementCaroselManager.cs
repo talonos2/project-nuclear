@@ -75,7 +75,7 @@ public class ElementCaroselManager : MonoBehaviour
             {
                 i -= (stats.powersGained + 1);
             }
-            while (i < 0)
+            while (i <= 0)
             {
                 i += (stats.powersGained + 1);
             }
