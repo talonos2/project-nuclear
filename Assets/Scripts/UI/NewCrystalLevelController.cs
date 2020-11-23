@@ -11,6 +11,7 @@ public class NewCrystalLevelController : MonoBehaviour
     public GameObject crystalPanel;
     public Text startingCrystals;
     public TextMeshProUGUI crystalBonusText;
+    public SimpleTooltip crystalTooltip;
     // Start is called before the first frame update
 
     private static int[] crystalTiers = {0, 50, 150, 350, 650, 1075, 1625, 2300, 3100, 4025, 5075, 6250, 7550, 8975, 10525, 12200, 14000, 15925, 17975, 20150, 22450, 31451 };
@@ -67,6 +68,8 @@ public class NewCrystalLevelController : MonoBehaviour
                 break;
 
         }
+
+        crystalTooltip.infoLeft = oldCrystals + "/" + crystalTiers[GetCrystalTier(newCrystals)] + " Crystals Until Next Tier";
 
         //Debug.Log("Total " + oldCrystals+", new "+ newCrystals);
         startNumberOfBars = GetNumberOfBars(oldCrystals);

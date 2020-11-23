@@ -20,7 +20,6 @@ public class ElementCaroselManager : MonoBehaviour
     int elementsIThinkIhave = 0;
 
     int symbolsOn;
-    bool doIThinkImBeingUsed = false;
 
     private float degreesRotated;
     private float targetDegreesRotated;
