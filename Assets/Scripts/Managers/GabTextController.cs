@@ -15,6 +15,7 @@ public class GabTextController : MonoBehaviour
     public Image playerPanel;
     public Image playerPanelBorder;
     public TextMeshProUGUI gabTextToPrint;
+    public TextMeshProUGUI itemGabTextToPrint;
     public List<Gab> gabPlayList;
     public float gabDelay = 3f;
     public float delayBetweenGabs = .3f;
@@ -176,9 +177,17 @@ public class GabTextController : MonoBehaviour
         }
     }
 
+    public void AddItemGabToPlay(String gabTextToAdd)
+    {
+        gabPlayList.Add(new Gab(gabTextToAdd, false, 3f, false, false, null, true));
+        if (!playingGab)
+        {
+            PlayNextGabText();
+        }
+    }
     public void AddGabToPlay(String gabTextToAdd)
     {
-        gabPlayList.Add(new Gab(gabTextToAdd, false, 3f, false, false,null,true));
+        gabPlayList.Add(new Gab(gabTextToAdd, false, 3f, false, false,null,false));
         if (!playingGab)
         {
             PlayNextGabText();
@@ -195,6 +204,16 @@ public class GabTextController : MonoBehaviour
         Gab currentGab = gabPlayList[0];
         gabBackgroundFader1.color = new Color(0, 0, 0, 0);
         gabTextToPrint.text = currentGab.gabText;
+        if (currentGab.itemGab)
+        {
+            itemGabTextToPrint.text = currentGab.gabText;
+            gabTextToPrint.enabled = false;
+            itemGabTextToPrint.enabled = true;
+        }
+        else {
+            gabTextToPrint.enabled = true;
+            itemGabTextToPrint.enabled = false;
+        }
         ShowGabUi();
         playingGab = true;
         playingDelay = false;

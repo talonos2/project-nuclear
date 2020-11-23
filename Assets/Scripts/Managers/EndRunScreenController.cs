@@ -21,6 +21,7 @@ public class EndRunScreenController : MonoBehaviour
 
     private int weaponCutoff;
     private int armorCutoff;
+    private int accCutoff;
 
     private bool preventMassSlaughterOfVillagers;
 
@@ -33,28 +34,34 @@ public class EndRunScreenController : MonoBehaviour
             case 0:
                 weaponCutoff = 4;
                 armorCutoff = 2;
+                accCutoff = 0; 
                 break;
             case 1:                //Beat Ice Area
                 weaponCutoff = 7;
                 armorCutoff = 4;
+                accCutoff = 0;
                 break;
             case 2:                //Beat Earth Area
                 weaponCutoff = 15;
                 armorCutoff = 9;
+                accCutoff = 4;
                 break;
             case 3:                //Beat Fire Area
                 weaponCutoff = 25;
                 armorCutoff = 13;
+                accCutoff = 7;
                 break;
             case 4:                //Beat Air Area
                 weaponCutoff = 34;
                 armorCutoff = 17;
+                accCutoff = 11;
                 break;
         }
         if (GameData.Instance.deathBoss1)  //Has accessed final map
         {
             weaponCutoff = 39;
             armorCutoff = 20;
+            accCutoff = 15;
         }
         SoundManager.Instance.ChangeEnvironmentVolume(0);
         timeBeforeAnimationStartsStatic = timeBeforeAnimationStarts;
@@ -81,6 +88,14 @@ public class EndRunScreenController : MonoBehaviour
             if (newItemHolder.GetItem() is Armor)
             {
                 if ((newItemHolder.GetItem() as Armor).addDefense < armorCutoff)
+                {
+                    newItemHolder.itemText.color = new Color(.6f, .6f, .6f);
+                    newItemHolder.itemStatText.color = new Color(.8f, .25f, .25f);
+                }
+            }
+            if (newItemHolder.GetItem() is Accessory)
+            {
+                if ((newItemHolder.GetItem() as Accessory).getLowestFloor() < accCutoff)
                 {
                     newItemHolder.itemText.color = new Color(.6f, .6f, .6f);
                     newItemHolder.itemStatText.color = new Color(.8f, .25f, .25f);
