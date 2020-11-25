@@ -12,6 +12,7 @@ public class ItemHolderUI : MonoBehaviour
     public GameObject itemSpriteHolder;
     public TextMeshProUGUI itemText;
     public TextMeshProUGUI itemStatText;
+    public TextMeshProUGUI itemTextRare;
     public Image flashingBackground;
     public InventoryItem empty;
     private string itemDetailsText;
@@ -36,6 +37,13 @@ public class ItemHolderUI : MonoBehaviour
         itemSpriteHolder.GetComponent<Image>().sprite = itemToSet.itemIcon;
         itemSprite= itemToSet.itemIcon;
         itemText.text = itemToSet.name;
+        if (itemToSet.Rare) {
+            itemText.enabled = false;
+            itemTextRare.enabled = true;
+            itemTextRare.text = itemToSet.name;
+            //itemText.colorGradient.;
+            //itemText.color = new Color(218,165,32,1);
+        }
         if (itemToSet.Weapon) {
             Weapon tempwpn = (Weapon)itemToSet;
             itemStatText.text = "+" + tempwpn.addAttack + " ATK";

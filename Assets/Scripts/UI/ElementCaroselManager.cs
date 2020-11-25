@@ -20,7 +20,6 @@ public class ElementCaroselManager : MonoBehaviour
     int elementsIThinkIhave = 0;
 
     int symbolsOn;
-    bool doIThinkImBeingUsed = false;
 
     private float degreesRotated;
     private float targetDegreesRotated;
@@ -75,7 +74,7 @@ public class ElementCaroselManager : MonoBehaviour
             {
                 i -= (stats.powersGained + 1);
             }
-            while (i < 0)
+            while (i <= 0)
             {
                 i += (stats.powersGained + 1);
             }

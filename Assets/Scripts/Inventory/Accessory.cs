@@ -46,6 +46,13 @@ public class Accessory : InventoryItem
         return CompareItem(w1, w2) != 0;
     }
 
+    public int getLowestFloor()
+    {
+        string[] Floors = floorFoundOn.Split(' ');
+        if (Floors[0] == null) return -1;
+        return    System.Convert.ToInt32(Floors[0]);
+
+    }
     public static int CompareItem(Accessory x, Accessory y)
     {
 

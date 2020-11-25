@@ -21,6 +21,10 @@ public class ContinueNextRunButtonController : MonoBehaviour
         //Load 'load game' ui screen
     }
 
+    public void HighlightButtonSound() {
+        SoundManager.Instance.PlaySound("MenuMove", 1f);
+    }
+
     private void Update()
     {
 
