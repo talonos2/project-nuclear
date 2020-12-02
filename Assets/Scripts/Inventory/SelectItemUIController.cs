@@ -403,6 +403,7 @@ public class SelectItemUIController : MonoBehaviour
                 if (currentEquipCategorySelected < 0)
                     currentEquipCategorySelected = 0;
                 ShowCurrentlySelectedOption();
+                populateItemLists();
             }
             else if (selectingAnItem)
             {
@@ -424,6 +425,7 @@ public class SelectItemUIController : MonoBehaviour
                     if (currentEquipCategorySelected < 0)
                         currentEquipCategorySelected = 0;
                     ShowCurrentlySelectedOption();
+                    populateItemLists();
                 }
                 else if (selectingAnItem)
                 {
