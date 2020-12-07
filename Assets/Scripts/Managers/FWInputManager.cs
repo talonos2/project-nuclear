@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class FWInputManager: Singleton<FWInputManager>
 {
-
-    public Enemy monsterStats;
-    public CharacterStats playerStats;
-
     public Dictionary<InputAction, KeyCode[]> keyBindings = new Dictionary<InputAction, KeyCode[]>();
 
-    public bool determinedUserPreference = false;
+    private bool started = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetToArrowKeys();
+        if (!started)
+        {
+            SetToArrowKeys();
+        }
     }
 
     public void SetToArrowKeys()
     {
+        Debug.Log("SneakyKeybind to Arrows!");
         keyBindings = new Dictionary<InputAction, KeyCode[]>();
         keyBindings.Add(InputAction.LEFT, new KeyCode[] { KeyCode.LeftArrow });
         keyBindings.Add(InputAction.RIGHT, new KeyCode[] { KeyCode.RightArrow });
@@ -31,14 +31,39 @@ public class FWInputManager: Singleton<FWInputManager>
         keyBindings.Add(InputAction.MENU_DOWN, new KeyCode[] { KeyCode.DownArrow, KeyCode.S });
         keyBindings.Add(InputAction.ROTATE_LEFT, new KeyCode[] { KeyCode.A });
         keyBindings.Add(InputAction.ROTATE_RIGHT, new KeyCode[] { KeyCode.D });
-        keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.X });
+        keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.C });
         keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.S });
+        keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
+        keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.X, KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
+    }
+
+    public void SetToWASD()
+    {
+        Debug.Log("SneakyKeybind to WASD!");
+        keyBindings = new Dictionary<InputAction, KeyCode[]>();
+        keyBindings.Add(InputAction.LEFT, new KeyCode[] { KeyCode.A });
+        keyBindings.Add(InputAction.RIGHT, new KeyCode[] { KeyCode.D });
+        keyBindings.Add(InputAction.UP, new KeyCode[] { KeyCode.W });
+        keyBindings.Add(InputAction.DOWN, new KeyCode[] { KeyCode.S });
+        keyBindings.Add(InputAction.MENU_LEFT, new KeyCode[] { KeyCode.LeftArrow, KeyCode.A });
+        keyBindings.Add(InputAction.MENU_RIGHT, new KeyCode[] { KeyCode.RightArrow, KeyCode.D });
+        keyBindings.Add(InputAction.MENU_UP, new KeyCode[] { KeyCode.UpArrow, KeyCode.W });
+        keyBindings.Add(InputAction.MENU_DOWN, new KeyCode[] { KeyCode.DownArrow, KeyCode.S });
+        keyBindings.Add(InputAction.ROTATE_LEFT, new KeyCode[] { KeyCode.LeftArrow });
+        keyBindings.Add(InputAction.ROTATE_RIGHT, new KeyCode[] { KeyCode.RightArrow });
+        keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.UpArrow });
+        keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.C, KeyCode.DownArrow });
         keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
         keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.X, KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
     }
 
     public bool GetKeyDown(InputAction action)
     {
+        if (!started)
+        {
+            SetToArrowKeys();
+            started = true;
+        }
         foreach (KeyCode key in keyBindings[action])
         {
             if (Input.GetKeyDown(key))
@@ -51,6 +76,11 @@ public class FWInputManager: Singleton<FWInputManager>
 
     public bool GetKeyUp(InputAction action)
     {
+        if (!started)
+        {
+            SetToArrowKeys();
+            started = true;
+        }
         foreach (KeyCode key in keyBindings[action])
         {
             if (Input.GetKeyUp(key))
@@ -63,6 +93,11 @@ public class FWInputManager: Singleton<FWInputManager>
 
     public bool GetKey(InputAction action)
     {
+        if (!started)
+        {
+            SetToArrowKeys();
+            started = true;
+        }
         foreach (KeyCode key in keyBindings[action])
         {
             if (Input.GetKey(key))

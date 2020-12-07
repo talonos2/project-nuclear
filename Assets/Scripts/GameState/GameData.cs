@@ -118,6 +118,7 @@ public class GameData : Singleton<GameData>
 
     internal bool victory;
     public bool[] gabNumbers = new bool[32];
+    internal KeymapType sneakyKeyMap = KeymapType.UNDEFINED;
 
     internal bool IsInTown()
     {
@@ -226,4 +227,9 @@ internal class HideAfterPointEightSeconds : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+}
+
+internal enum KeymapType
+{
+    UNDEFINED, WASD, ARROWS;
 }
