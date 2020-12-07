@@ -42,6 +42,9 @@ public class SelectItemUIController : MonoBehaviour
 
     private float delayCounter;
     private float delayReset = .15f;
+    private int topScrollPointer=0;
+    private int bottomScrollPointer=9;
+    private RectTransform itemContainerRectTrans;
 
     CharacterStats newPlayer;
 
@@ -73,6 +76,7 @@ public class SelectItemUIController : MonoBehaviour
 
         currentEquipCategorySelected = 0;
         currentItemSelected = -1;
+        itemContainerRectTrans = itemContainer.GetComponent<RectTransform>();
 
         currentlyDisplayedItems = new List<ItemHolderUI>();
         populateWeaponList();
@@ -304,7 +308,7 @@ public class SelectItemUIController : MonoBehaviour
         /*
          *Controls The submit button selection 
          */
-        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
+        if (Input.GetButtonDown("Submit"))
         {
             delayCounter = delayReset + .15f;
             if (currentEquipCategorySelected == 3)
@@ -329,7 +333,7 @@ public class SelectItemUIController : MonoBehaviour
                 }
                 currentEquipCategorySelected++;
                 selectingAnItem = false;
-                PopulateItemLists();
+                populateItemLists();
                 ShowCurrentlySelectedOption();
             }
             else
@@ -337,7 +341,7 @@ public class SelectItemUIController : MonoBehaviour
                 if (currentlyDisplayedItems.Count == 0)
                 {
                     currentEquipCategorySelected = (currentEquipCategorySelected + 1) % 4;
-                    PopulateItemLists();
+                    populateItemLists();
                     ShowCurrentlySelectedOption();
                     return;
                 }
@@ -350,7 +354,7 @@ public class SelectItemUIController : MonoBehaviour
 
         /*If Selecting to the right*/
 
-        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_RIGHT))
+        if (Input.GetButtonDown("SelectRight"))
         {
             delayCounter = delayReset + .3f;
             if (currentlyDisplayedItems.Count == 0)
@@ -368,7 +372,7 @@ public class SelectItemUIController : MonoBehaviour
             }
         }
 
-        if (FWInputManager.Instance.GetKey(InputAction.MENU_RIGHT))
+        if (Input.GetButton("SelectRight"))
         {
             if (delayCounter <= 0)
             {
@@ -394,7 +398,7 @@ public class SelectItemUIController : MonoBehaviour
         }
 
         //Selcting to the left
-        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_LEFT))
+        if (Input.GetButtonDown("SelectLeft"))
         {
             delayCounter = delayReset + .3f;
             if (currentlyDisplayedItems.Count == 0 || !selectingAnItem)
@@ -414,7 +418,7 @@ public class SelectItemUIController : MonoBehaviour
 
         }
 
-        if (FWInputManager.Instance.GetKey(InputAction.MENU_LEFT))
+        if (Input.GetButton("SelectLeft"))
         {
             if (delayCounter <= 0)
             {
@@ -440,7 +444,7 @@ public class SelectItemUIController : MonoBehaviour
         }
 
         //Selecting Up
-        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_UP))
+        if (Input.GetButtonDown("SelectUp"))
         {
             delayCounter = delayReset + .3f;
             if (!selectingAnItem)
@@ -448,7 +452,7 @@ public class SelectItemUIController : MonoBehaviour
                 currentEquipCategorySelected -= 1;
                 if (currentEquipCategorySelected < 0)
                     currentEquipCategorySelected = 0;
-                PopulateItemLists();
+                populateItemLists();
                 ShowCurrentlySelectedOption();
             }
             else if (selectingAnItem)
@@ -456,11 +460,12 @@ public class SelectItemUIController : MonoBehaviour
                 currentItemSelected -= 1;
                 if (currentItemSelected < 0)
                     currentItemSelected = 0;
+                SetScrollUpPositions();
                 showItemSelected();
             }
         }
 
-        if (FWInputManager.Instance.GetKey(InputAction.MENU_UP))
+        if (Input.GetButton("SelectUp"))
         {
             if (delayCounter <= 0)
             {
@@ -470,14 +475,16 @@ public class SelectItemUIController : MonoBehaviour
                     currentEquipCategorySelected -= 1;
                     if (currentEquipCategorySelected < 0)
                         currentEquipCategorySelected = 0;
-                    PopulateItemLists();
+                    populateItemLists();
                     ShowCurrentlySelectedOption();
+
                 }
                 else if (selectingAnItem)
                 {
                     currentItemSelected -= 1;
                     if (currentItemSelected < 0)
                         currentItemSelected = 0;
+                    SetScrollUpPositions();
                     showItemSelected();
                 }
             }
@@ -488,7 +495,7 @@ public class SelectItemUIController : MonoBehaviour
         }
 
         //SelectingDownOption
-        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_DOWN))
+        if (Input.GetButtonDown("SelectDown"))
         {
             delayCounter = delayReset + .3f;
             if (!selectingAnItem)
@@ -496,7 +503,7 @@ public class SelectItemUIController : MonoBehaviour
                 currentEquipCategorySelected += 1;
                 if (currentEquipCategorySelected > 3)
                     currentEquipCategorySelected = 3;
-                PopulateItemLists();
+                populateItemLists();
                 ShowCurrentlySelectedOption();
             }
             else if (selectingAnItem)
@@ -504,11 +511,12 @@ public class SelectItemUIController : MonoBehaviour
                 currentItemSelected += 1;
                 if (currentItemSelected >= currentlyDisplayedItems.Count)
                     currentItemSelected -= 1;
+                SetScrollDownPositions();
                 showItemSelected();
             }
         }
 
-        if (FWInputManager.Instance.GetKey(InputAction.MENU_DOWN))
+        if (Input.GetButton("SelectDown"))
         {
             if (delayCounter <= 0)
             {
@@ -518,7 +526,7 @@ public class SelectItemUIController : MonoBehaviour
                     currentEquipCategorySelected += 1;
                     if (currentEquipCategorySelected > 3)
                         currentEquipCategorySelected = 3;
-                    PopulateItemLists();
+                    populateItemLists();
                     ShowCurrentlySelectedOption();
                 }
                 else if (selectingAnItem)
@@ -526,6 +534,7 @@ public class SelectItemUIController : MonoBehaviour
                     currentItemSelected += 1;
                     if (currentItemSelected >= currentlyDisplayedItems.Count)
                         currentItemSelected -= 1;
+                    SetScrollDownPositions();
                     showItemSelected();
                 }
             }
@@ -539,7 +548,43 @@ public class SelectItemUIController : MonoBehaviour
 
     }
 
-    private void PopulateItemLists()
+    public void ChangeScrollPointerLocations()
+    {
+
+        topScrollPointer = Mathf.RoundToInt((itemContainerRectTrans.localPosition.y - 185.95f) / 37.35f);
+        bottomScrollPointer = topScrollPointer + 9;
+        Debug.Log("top pointer " + topScrollPointer);
+    }
+    private void SetScrollDownPositions()
+    {
+        if (currentItemSelected > bottomScrollPointer)
+        {
+            //bottomScrollPointer = currentItemSelected;
+            //topScrollPointer=currentItemSelected-9;
+            itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f + 37.35f * (currentItemSelected - 9), itemContainerRectTrans.localPosition.z);
+
+        }
+        else if (currentItemSelected < topScrollPointer) {
+            itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f + 37.35f * (currentItemSelected - 9), itemContainerRectTrans.localPosition.z);
+        }
+        //if (185.95f + 37.35f * (currentItemSelected - 9) <)
+
+    }
+
+    private void SetScrollUpPositions()
+    {
+        if (currentItemSelected < topScrollPointer) {
+            //bottomScrollPointer = currentItemSelected+9;
+            //topScrollPointer =currentItemSelected;
+            itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f + 37.35f * currentItemSelected, itemContainerRectTrans.localPosition.z);
+
+        }
+        else if (currentItemSelected > bottomScrollPointer) {
+            itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f + 37.35f * currentItemSelected, itemContainerRectTrans.localPosition.z);
+        }
+    }
+
+    private void populateItemLists()
     {
         if (currentEquipCategorySelected == 0)
         {
@@ -553,6 +598,10 @@ public class SelectItemUIController : MonoBehaviour
         {
             populateAccessoryList();
         }
+        bottomScrollPointer=9;
+        topScrollPointer=0;
+        itemContainerRectTrans.localPosition= new Vector3(itemContainerRectTrans.localPosition.x, 185.95f, itemContainerRectTrans.localPosition.z);
+
     }
 
     private void SwapArmor()
@@ -621,7 +670,7 @@ public class SelectItemUIController : MonoBehaviour
         savedStats.setFullHPMP();
         GameData.Instance.townAccessories.Remove((Accessory)itemToSwap);
         accessoryUIPrefab.SetItem(itemToSwap);
-        PopulateItemLists();
+        populateItemLists();
         selectingAnItem = false;
         showItemSelected();
         ShowCurrentlySelectedOption();
