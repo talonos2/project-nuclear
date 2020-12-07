@@ -231,5 +231,5 @@ internal class HideAfterPointEightSeconds : MonoBehaviour
 
 internal enum KeymapType
 {
-    UNDEFINED, WASD, ARROWS;
+    UNDEFINED, WASD, ARROWS
 }
