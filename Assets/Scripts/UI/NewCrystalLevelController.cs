@@ -69,7 +69,7 @@ public class NewCrystalLevelController : MonoBehaviour
 
         }
 
-        crystalTooltip.infoLeft = oldCrystals + "/" + crystalTiers[GetCrystalTier(newCrystals)] + " Crystals Until Next Tier";
+        crystalTooltip.infoLeft = oldCrystals+ newCrystals + "/" + crystalTiers[GetCrystalTier(oldCrystals+newCrystals)] + " Crystals Until Next Tier";
 
         //Debug.Log("Total " + oldCrystals+", new "+ newCrystals);
         startNumberOfBars = GetNumberOfBars(oldCrystals);

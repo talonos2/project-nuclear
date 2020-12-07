@@ -825,7 +825,7 @@
 		;Jezerine: I'll catch up to you guys in a bit.
 
 		;@char Reya
-		;Reya: I hear you really slughtered those horrors.
+		;Reya: I hear you really slaughtered those horrors.
 		@if GetPendleton()
 			Reya: Even outdid that wannabe knight.
 			@char Jezerine
@@ -1695,8 +1695,51 @@
 		
 		@elseif !GetWorst()
 
-		Hey, you found one of the three endings we didn't get around to yet.
-		Sorry about that.
+		Years later, in class...
+
+		@char Jinn
+		Jinn: Now these caves, chambers, are being found more and more thoughout the world. We had one in our own city not long ago.
+		Jinn: Since then, we've figure out that these chambers were built to—
+
+		@char Hans
+		Hans: What happened to the cave in our city?
+
+		@char Jinn
+		Jinn: The town worked together to fight the monsters inside it.
+
+		@char Bartholomew
+
+		@if !GetDouglass()
+			Bartholomew: But Douglass was a hero! Why couldn't he just—
+			@char Jinn
+			Jinn: Douglass... Douglass did what he could.
+			Jinn: Ahem...
+		@else
+			Bartholomew: But Douglass is so cool![br]Why couldn't he just do it by himself?
+		@endif
+
+		@char Jinn
+		Jinn: Okay. Who can tell my why one person couldn't clear the cave out by themself?
+
+		@char Gretta
+		Gretta: Because they couldn't stay too long?
+
+		@char Jinn
+		Jinn: That's right.
+		Jinn: Back then, people who stayed in the chamber too long got sick.
+		Jinn: This was because of the—
+
+		@char Hans
+		Hans: But who stopped the curse?
+
+		@if GetMcDermit()
+			Hans: Was it the town guards?
+		@endif
+
+		@char Jinn
+		Jinn: That... doesn't really matter.
+		Jinn: It was a joint effort from the entire town.
+
 
 
 
@@ -1783,6 +1826,13 @@
 
 		@elseif !GetWorst()
 
+		Later, outside the cave...
+
+		@if GetPendleton()
+
+		@else
+
+		@endif
 
 		Hey, you found one of the three endings we didn't get around to yet.
 		Sorry about that.
