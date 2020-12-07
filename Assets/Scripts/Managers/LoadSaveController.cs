@@ -12,10 +12,10 @@ public class LoadSaveController : MonoBehaviour
 {
 
     public SaveSlotUiController saveSlotPrefab1;
-    public  SaveSlotUiController saveSlotPrefab2;
-    public  SaveSlotUiController saveSlotPrefab3;
-    public  SaveSlotUiController saveSlotPrefab4;
-    public  SaveSlotUiController saveSlotPrefab5;
+    public SaveSlotUiController saveSlotPrefab2;
+    public SaveSlotUiController saveSlotPrefab3;
+    public SaveSlotUiController saveSlotPrefab4;
+    public SaveSlotUiController saveSlotPrefab5;
     public Image saveSelector;
     public TextMeshProUGUI saveOrLoadText;
     //public GameObject itemContainer;
@@ -25,7 +25,7 @@ public class LoadSaveController : MonoBehaviour
 
     public Canvas aCanvasThis;
     public static bool isListLoaded;
-    public static List<GameSaverManager> savedDataList=new List<GameSaverManager>();
+    public static List<GameSaverManager> savedDataList = new List<GameSaverManager>();
     //public NewGameController newGameButton;
     public bool loadSaveActive;
     private EscapeKeyController callingEscapeKeyControllerScriptReturn;
@@ -36,7 +36,7 @@ public class LoadSaveController : MonoBehaviour
     private TownEscapeKeyController callingTownEscapeScriptReturn;
     private float selectionDelayDefault = .15f;
     private float selectionDelay = 0;
-    private float speedupTimeDefault=1.25f;
+    private float speedupTimeDefault = 1.25f;
     private float speedupTimer;
     private bool townSave;
     private bool townLoad;
@@ -48,7 +48,8 @@ public class LoadSaveController : MonoBehaviour
 
     void Start()
     {
-        if (!isListLoaded) {
+        if (!isListLoaded)
+        {
             LoadSavedDataToList("Autosave");
             for (int i = 1; i < 31; i++)
             {
@@ -68,11 +69,13 @@ public class LoadSaveController : MonoBehaviour
     private void Update()
     {
         if (!loadSaveActive) return;
-        if (!wait1Frame) {wait1Frame = true; return; }
+        if (!wait1Frame) { wait1Frame = true; return; }
 
-        if (Input.GetButtonDown("Submit")) {
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
+        {
             SoundManager.Instance.PlaySound("MenuOkay", 1f);
-            if (townSave) {
+            if (townSave)
+            {
                 //SaveSlotUiController tempUiSaveController = getUiSaveSlot();
                 //tempUiSaveController.savingOverlay.SetActive(true);
                 SaveGame(saveSlotSelected);
@@ -83,15 +86,15 @@ public class LoadSaveController : MonoBehaviour
             {
                 LoadGame(saveSlotSelected);
                 GameState.fullPause = false;
-                deactivateLoad();
+                DeactivateLoad();
 
             }
 
-        }       
+        }
 
-        if (Input.GetButtonDown("SelectUp"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_UP))
         {
-            selectionDelay = selectionDelayDefault+.4f;
+            selectionDelay = selectionDelayDefault + .4f;
             speedupTimer = speedupTimeDefault;
             saveSlotSelected -= 1;
             if (saveSlotSelected < 0)
@@ -103,12 +106,12 @@ public class LoadSaveController : MonoBehaviour
             SetupAllSaveUI(saveSlotSelected);
         }
 
-        if (Input.GetButtonDown("SelectDown"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_DOWN))
         {
-            selectionDelay = selectionDelayDefault+.4f;
+            selectionDelay = selectionDelayDefault + .4f;
             speedupTimer = speedupTimeDefault;
             saveSlotSelected += 1;
-            if (saveSlotSelected >30 )
+            if (saveSlotSelected > 30)
                 saveSlotSelected = 0;
             SoundManager.Instance.PlaySound("MenuMove", 1f);
             pointLocation++;
@@ -117,49 +120,9 @@ public class LoadSaveController : MonoBehaviour
             SetupAllSaveUI(saveSlotSelected);
         }
 
-        if (Input.GetAxisRaw("SelectUp") > .1f)
+        if (FWInputManager.Instance.GetKeyDown(InputAction.GO_BACK))
         {
-            selectionDelay -= Time.deltaTime;
-            speedupTimer -= Time.deltaTime;
-            if (speedupTimer <= 0) selectionDelay -= Time.deltaTime / 2.5f;
-            if (speedupTimer <= -.75f) selectionDelay -= Time.deltaTime / 1.75f;
-            if (selectionDelay <= 0)
-            {
-                saveSlotSelected -= 1;
-                if (saveSlotSelected < 0)
-                    saveSlotSelected = 30;
-                SoundManager.Instance.PlaySound("MenuMove", 1f);
-                pointLocation--;
-                if (pointLocation < 0)
-                    pointLocation = 0;
-                SetupAllSaveUI(saveSlotSelected);
-                selectionDelay = selectionDelayDefault;
-            }
-
-        }
-        else if (Input.GetAxisRaw("SelectDown") > .1f)
-        {
-            selectionDelay -= Time.deltaTime;
-            speedupTimer -= Time.deltaTime;
-            if (speedupTimer <= 0) selectionDelay -= Time.deltaTime / 2.5f;
-            if (speedupTimer <= -.75f) selectionDelay -= Time.deltaTime / 1.75f;
-            if (selectionDelay <= 0)
-            {
-                saveSlotSelected += 1;
-                if (saveSlotSelected > 30)
-                    saveSlotSelected = 0;
-                SoundManager.Instance.PlaySound("MenuMove", 1f);
-                pointLocation++;
-                if (pointLocation > 4)
-                    pointLocation = 4;
-                SetupAllSaveUI(saveSlotSelected);
-                selectionDelay = selectionDelayDefault;
-            }
-
-        }
-
-        if (Input.GetButtonDown("Cancel")) {
-            deactivateLoad();
+            DeactivateLoad();
 
             //if ((townSave || townLoad)&& ! pauseLoad) callingTownEscapeScriptReturn.ReActivate();
             if (dungeonLoad) callingEscapeKeyControllerScriptReturn.ReActivate();
@@ -181,7 +144,7 @@ public class LoadSaveController : MonoBehaviour
         saveSelector.GetComponent<RectTransform>().localPosition = new Vector3(-206, 125 - 80 * pointLocation, 0);
 
         //if (saveSlot < 5) { saveSlot = 0; }
-         saveSlot -= pointLocation;
+        saveSlot -= pointLocation;
         if (saveSlot < 0)
             saveSlot = 31 + saveSlot;
 
@@ -208,7 +171,7 @@ public class LoadSaveController : MonoBehaviour
         savedGame = savedDataList[saveSlot];
         saveSlotPrefab5.SetupSaveSlotUI(savedGame.iceBoss1, savedGame.earthBoss1, savedGame.fireBoss1, savedGame.airBoss1, savedGame.RunNumber, saveSlot);
 
-        
+
 
     }
 
@@ -223,7 +186,7 @@ public class LoadSaveController : MonoBehaviour
 
         if (!File.Exists(appPath + "/Saves/" + saveName + ".binary"))
         {
-            saveFile = File.Create(appPath + "/Saves/"+ saveName + ".binary");
+            saveFile = File.Create(appPath + "/Saves/" + saveName + ".binary");
 
             formatter.Serialize(saveFile, gameSaver);
             saveFile.Close();
@@ -237,7 +200,7 @@ public class LoadSaveController : MonoBehaviour
     }
 
 
-    internal void autoSave()
+    internal void AutoSave()
     {
         SaveGame(0);
 
@@ -245,7 +208,7 @@ public class LoadSaveController : MonoBehaviour
 
     internal void SaveGame(int saveSlot)
     {
-        
+
 
         string appPath = Application.dataPath;
         string saveName;
@@ -254,7 +217,7 @@ public class LoadSaveController : MonoBehaviour
         GameSaverManager gameSaver = new GameSaverManager();
         gameSaver.SetupSave();
         if (saveSlot == 0) saveName = "AutoSave";
-            else saveName = "SaveSlot" + saveSlot;
+        else saveName = "SaveSlot" + saveSlot;
         if (!Directory.Exists(appPath + "/Saves")) { Directory.CreateDirectory(appPath + "/Saves"); }
         if (!File.Exists(appPath + "/Saves/" + saveName + ".binary"))
         {
@@ -262,32 +225,37 @@ public class LoadSaveController : MonoBehaviour
             formatter.Serialize(saveFile, gameSaver);
             saveFile.Close();
         }
-        else {
+        else
+        {
             saveFile = File.OpenWrite(appPath + "/Saves/" + saveName + ".binary");
             formatter.Serialize(saveFile, gameSaver);
             saveFile.Close();
         }
-        savedDataList[saveSlot]= gameSaver;
+        savedDataList[saveSlot] = gameSaver;
 
 
     }
 
-    public void SaveUiEntered(int slotEntered) {
-   
+    public void SaveUiEntered(int slotEntered)
+    {
+
         int slotOffset = slotEntered - pointLocation;
-        if (slotOffset!=0) SoundManager.Instance.PlaySound("MenuMove", 1f);
+        if (slotOffset != 0) SoundManager.Instance.PlaySound("MenuMove", 1f);
         saveSlotSelected = saveSlotSelected + slotOffset;
-        if (saveSlotSelected < 0) {
+        if (saveSlotSelected < 0)
+        {
             saveSlotSelected = 31 + saveSlotSelected;
         }
-        if (saveSlotSelected > 30) {
+        if (saveSlotSelected > 30)
+        {
             saveSlotSelected = saveSlotSelected - 31;
         }
         pointLocation = slotEntered;
         saveSelector.GetComponent<RectTransform>().localPosition = new Vector3(-206, 125 - 80 * pointLocation, 0);
     }
-    public void ClickedUI() {
-       // SoundManager.Instance.PlaySound("MenuOkay", 1f);
+    public void ClickedUI()
+    {
+        // SoundManager.Instance.PlaySound("MenuOkay", 1f);
         if (townSave)
         {
             //SaveSlotUiController tempUiSaveController = getUiSaveSlot();
@@ -300,7 +268,7 @@ public class LoadSaveController : MonoBehaviour
         {
             LoadGame(saveSlotSelected);
             GameState.fullPause = false;
-            deactivateLoad();
+            DeactivateLoad();
 
         }
 
@@ -308,11 +276,12 @@ public class LoadSaveController : MonoBehaviour
     }
     protected SaveSlotUiController getUiSaveSlot()
     {
-        SaveSlotUiController tempUiSaveController=null;
-        switch (pointLocation) {
+        SaveSlotUiController tempUiSaveController = null;
+        switch (pointLocation)
+        {
             case 0:
                 //tempUiSaveController = saveSlotPrefab1;
-            break;
+                break;
             case 1:
                 tempUiSaveController = saveSlotPrefab2;
                 break;
@@ -332,18 +301,18 @@ public class LoadSaveController : MonoBehaviour
     public void LoadGame(int saveSlot)
     {
         GameSaverManager gameSaver = new GameSaverManager();
-        
-        gameSaver= savedDataList[saveSlot];
+
+        gameSaver = savedDataList[saveSlot];
         gameSaver.PushSaveToGameData();
 
         aCanvasThis.enabled = false;
         newGameController.StartNewGameActual();
-       
+
 
 
     }
 
-    internal void activateLoad(PauseMenuController callingScript, bool saveFile)
+    internal void ActivateLoad(PauseMenuController callingScript, bool saveFile)
     {
 
         if (saveFile)
@@ -357,7 +326,7 @@ public class LoadSaveController : MonoBehaviour
             saveOrLoadText.text = "Load";
         }
         pauseLoad = true;
-     //   saveOrLoadText.text = "Load";
+        //   saveOrLoadText.text = "Load";
         callingPauseMenuControllerScriptReturn = callingScript;
         wait1Frame = false;
         loadSaveActive = true;
@@ -367,7 +336,7 @@ public class LoadSaveController : MonoBehaviour
         SetupAllSaveUI(saveSlotSelected);
     }
 
-    public void activateLoad(NewGameController callingScript)
+    public void ActivateLoad(NewGameController callingScript)
     {
         saveOrLoadText.text = "Load";
         callingGameControllerScriptReturn = callingScript;
@@ -379,7 +348,7 @@ public class LoadSaveController : MonoBehaviour
         SetupAllSaveUI(saveSlotSelected);
     }
 
-    internal void activateLoad(EscapeKeyController callingScript)
+    internal void ActivateLoad(EscapeKeyController callingScript)
     {
         saveOrLoadText.text = "Load";
         callingEscapeKeyControllerScriptReturn = callingScript;
@@ -391,13 +360,17 @@ public class LoadSaveController : MonoBehaviour
         SetupAllSaveUI(saveSlotSelected);
     }
 
-    public void activateLoad(TownEscapeKeyController callingScript, bool saveFile)
+    public void ActivateLoad(TownEscapeKeyController callingScript, bool saveFile)
     {
         Debug.Log("I should never get here. If so check town escape key ui is activate");
-        if (saveFile) { townSave = true;
+        if (saveFile)
+        {
+            townSave = true;
             saveOrLoadText.text = "Save";
         }
-        else { townLoad = true;
+        else
+        {
+            townLoad = true;
             saveOrLoadText.text = "Load";
         }
 
@@ -410,7 +383,8 @@ public class LoadSaveController : MonoBehaviour
         SetupAllSaveUI(saveSlotSelected);
     }
 
-    public void deactivateLoad() {
+    public void DeactivateLoad()
+    {
         wait1Frame = false;
         loadSaveActive = false;
         aCanvasThis.enabled = false;

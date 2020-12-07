@@ -53,7 +53,7 @@ public class DeathSceneControl : MonoBehaviour
         textMeshToPrint.enabled = true;
         if (waitAFrame) { waitAFrame = false; return; }
 
-        if (Input.GetButtonDown("Submit"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
         {
             if (delay > 0) return;
             LoadEndRunScene();

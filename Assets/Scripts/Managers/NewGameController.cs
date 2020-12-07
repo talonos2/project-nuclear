@@ -54,7 +54,7 @@ public class NewGameController : MonoBehaviour
         }
         if (inSaveMenu) return;
 
-        if (Input.GetButtonDown("Submit"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
         {
             //Debug.Log("Hit submit");
             switch(currentMenuOptionSelected)
@@ -69,7 +69,7 @@ public class NewGameController : MonoBehaviour
                     break;
                 case 2:
                     SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    loadSaveController.activateLoad(this);
+                    loadSaveController.ActivateLoad(this);
                     inSaveMenu = true;
                     break;
                 case 3:
@@ -86,14 +86,14 @@ public class NewGameController : MonoBehaviour
         }
 
         //Selecting Up
-        if (Input.GetButtonDown("SelectUp"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_UP))
         {
             RefreshSelectedOption(PrevMenuOption());
         }
 
 
         //SelectingDownOption
-        if (Input.GetButtonDown("SelectDown"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_DOWN))
         {
             RefreshSelectedOption(NextMenuOption());
         }
@@ -117,7 +117,7 @@ public class NewGameController : MonoBehaviour
 
     public void ClickLoadGameMenu() {
         SoundManager.Instance.PlaySound("MenuOkay", 1f);
-        loadSaveController.activateLoad(this);
+        loadSaveController.ActivateLoad(this);
         inSaveMenu = true;
     }
     public void RefreshSelectedOption(int menuOptionSelected)

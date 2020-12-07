@@ -50,7 +50,7 @@ public class GabTextController : MonoBehaviour
 
         if (playingGab)
         {
-            if (Input.GetButtonDown("Submit")&&gabDelayCounter>FADE_TIME&&!currentGab.itemGab)
+            if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE)&& gabDelayCounter>FADE_TIME&&!currentGab.itemGab)
             {
                 gabDelayCounter = FADE_TIME;
             }

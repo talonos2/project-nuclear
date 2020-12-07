@@ -304,7 +304,7 @@ public class RandomChestController : EntityData
 
             InventoryItem itemFound=itemListData.getRandomCommonItem(rarity);
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
-            uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, itemFound);
+            uiController.GetComponent<ChooseItemUI>().SetupItemChoiceDisplay(playerData, itemFound);
 
 
             
@@ -318,7 +318,7 @@ public class RandomChestController : EntityData
             InventoryItem rareItemFound = itemListData.getRandomRareItem(rarity);
             //InventoryItem itemTypeCheck = rareItemFound.GetComponent<InventoryItem>();
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
-            uiController.GetComponent<ChooseItemUI>().setupItemChoiceDisplay(playerData, rareItemFound);
+            uiController.GetComponent<ChooseItemUI>().SetupItemChoiceDisplay(playerData, rareItemFound);
 
             Instantiate(rareItemBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);

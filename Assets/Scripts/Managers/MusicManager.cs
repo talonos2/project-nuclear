@@ -85,6 +85,11 @@ public class MusicManager : MonoBehaviour
         this.combatMusic = combatMusic;
     }
 
+    internal void SyncCombatToPreexistingMusic()
+    {
+        music[combatMusic].pleaseSyncWith = music[mapMusic].audioSource;
+    }
+
     // Update is called once per frame
     void Update()
     {

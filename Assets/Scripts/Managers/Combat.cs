@@ -62,7 +62,7 @@ public class Combat : MonoBehaviour
 
     private void Init(Enemy monsterStats, CharacterStats playerStats, GameObject monsterToDelete)
     {
-        //if (GameData.Instance.FloorNumber != 20)
+        if (GameData.Instance.FloorNumber != 20)
         {
             MusicManager.instance.TurnOnCombatMusic();
         }
@@ -251,7 +251,7 @@ public class Combat : MonoBehaviour
         playerSprite.transform.localPosition = new Vector3(playerSprite.transform.localPosition.x, playerSprite.transform.localPosition.y, -.05f);
         monsterSprite.GetComponent<SpriteRenderer>().sprite = monsterStats.combatSprites[enemyFrame];
 
-        if (Input.GetButtonDown("Attack/Defend") && buttonPressedTime > .5f)
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE) && buttonPressedTime > .5f)
         {
             buttonPressedTime = 0;
             if (playerDamagePoint - amountThrough < SWAY_TOLERANCE / 2.0f && playerDamagePoint - amountThrough > SWAY_TOLERANCE / -2.0f)

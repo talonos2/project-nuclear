@@ -127,7 +127,7 @@ public class GameData : Singleton<GameData>
     internal void autoSaveStats()
     {
         LoadSaveController autoSaveControl = new LoadSaveController();
-        autoSaveControl.autoSave();
+        autoSaveControl.AutoSave();
         
         //.autoSave();
     }

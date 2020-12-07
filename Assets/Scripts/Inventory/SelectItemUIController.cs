@@ -304,7 +304,7 @@ public class SelectItemUIController : MonoBehaviour
         /*
          *Controls The submit button selection 
          */
-        if (Input.GetButtonDown("Submit"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
         {
             delayCounter = delayReset + .15f;
             if (currentEquipCategorySelected == 3)
@@ -329,7 +329,7 @@ public class SelectItemUIController : MonoBehaviour
                 }
                 currentEquipCategorySelected++;
                 selectingAnItem = false;
-                populateItemLists();
+                PopulateItemLists();
                 ShowCurrentlySelectedOption();
             }
             else
@@ -337,7 +337,7 @@ public class SelectItemUIController : MonoBehaviour
                 if (currentlyDisplayedItems.Count == 0)
                 {
                     currentEquipCategorySelected = (currentEquipCategorySelected + 1) % 4;
-                    populateItemLists();
+                    PopulateItemLists();
                     ShowCurrentlySelectedOption();
                     return;
                 }
@@ -350,7 +350,7 @@ public class SelectItemUIController : MonoBehaviour
 
         /*If Selecting to the right*/
 
-        if (Input.GetButtonDown("SelectRight"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_RIGHT))
         {
             delayCounter = delayReset + .3f;
             if (currentlyDisplayedItems.Count == 0)
@@ -368,7 +368,7 @@ public class SelectItemUIController : MonoBehaviour
             }
         }
 
-        if (Input.GetButton("SelectRight"))
+        if (FWInputManager.Instance.GetKey(InputAction.MENU_RIGHT))
         {
             if (delayCounter <= 0)
             {
@@ -394,7 +394,7 @@ public class SelectItemUIController : MonoBehaviour
         }
 
         //Selcting to the left
-        if (Input.GetButtonDown("SelectLeft"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_LEFT))
         {
             delayCounter = delayReset + .3f;
             if (currentlyDisplayedItems.Count == 0 || !selectingAnItem)
@@ -413,7 +413,7 @@ public class SelectItemUIController : MonoBehaviour
 
         }
 
-        if (Input.GetButton("SelectLeft"))
+        if (FWInputManager.Instance.GetKey(InputAction.MENU_LEFT))
         {
             if (delayCounter <= 0)
             {
@@ -438,7 +438,7 @@ public class SelectItemUIController : MonoBehaviour
         }
 
         //Selecting Up
-        if (Input.GetButtonDown("SelectUp"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_UP))
         {
             delayCounter = delayReset + .3f;
             if (!selectingAnItem)
@@ -446,7 +446,7 @@ public class SelectItemUIController : MonoBehaviour
                 currentEquipCategorySelected -= 1;
                 if (currentEquipCategorySelected < 0)
                     currentEquipCategorySelected = 0;
-                populateItemLists();
+                PopulateItemLists();
                 ShowCurrentlySelectedOption();
             }
             else if (selectingAnItem)
@@ -458,7 +458,7 @@ public class SelectItemUIController : MonoBehaviour
             }
         }
 
-        if (Input.GetButton("SelectUp"))
+        if (FWInputManager.Instance.GetKey(InputAction.MENU_UP))
         {
             if (delayCounter <= 0)
             {
@@ -468,7 +468,7 @@ public class SelectItemUIController : MonoBehaviour
                     currentEquipCategorySelected -= 1;
                     if (currentEquipCategorySelected < 0)
                         currentEquipCategorySelected = 0;
-                    populateItemLists();
+                    PopulateItemLists();
                     ShowCurrentlySelectedOption();
                 }
                 else if (selectingAnItem)
@@ -486,7 +486,7 @@ public class SelectItemUIController : MonoBehaviour
         }
 
         //SelectingDownOption
-        if (Input.GetButtonDown("SelectDown"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_DOWN))
         {
             delayCounter = delayReset + .3f;
             if (!selectingAnItem)
@@ -494,7 +494,7 @@ public class SelectItemUIController : MonoBehaviour
                 currentEquipCategorySelected += 1;
                 if (currentEquipCategorySelected > 3)
                     currentEquipCategorySelected = 3;
-                populateItemLists();
+                PopulateItemLists();
                 ShowCurrentlySelectedOption();
             }
             else if (selectingAnItem)
@@ -506,7 +506,7 @@ public class SelectItemUIController : MonoBehaviour
             }
         }
 
-        if (Input.GetButton("SelectDown"))
+        if (FWInputManager.Instance.GetKey(InputAction.MENU_DOWN))
         {
             if (delayCounter <= 0)
             {
@@ -516,7 +516,7 @@ public class SelectItemUIController : MonoBehaviour
                     currentEquipCategorySelected += 1;
                     if (currentEquipCategorySelected > 3)
                         currentEquipCategorySelected = 3;
-                    populateItemLists();
+                    PopulateItemLists();
                     ShowCurrentlySelectedOption();
                 }
                 else if (selectingAnItem)
@@ -537,7 +537,7 @@ public class SelectItemUIController : MonoBehaviour
 
     }
 
-    private void populateItemLists()
+    private void PopulateItemLists()
     {
         if (currentEquipCategorySelected == 0)
         {
@@ -619,7 +619,7 @@ public class SelectItemUIController : MonoBehaviour
         savedStats.setFullHPMP();
         GameData.Instance.townAccessories.Remove((Accessory)itemToSwap);
         accessoryUIPrefab.SetItem(itemToSwap);
-        populateItemLists();
+        PopulateItemLists();
         selectingAnItem = false;
         showItemSelected();
         ShowCurrentlySelectedOption();
