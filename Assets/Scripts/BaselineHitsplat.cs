@@ -16,6 +16,7 @@ public class BaselineHitsplat : Hitsplat
     public SpriteRenderer slashSprite;
     public SpriteRenderer critSprite;
     public SpriteRenderer critItemSprite;
+    public SpriteRenderer dodgeSprite;
 
     protected override void CreateGraphics()
     {
@@ -74,6 +75,10 @@ public class BaselineHitsplat : Hitsplat
                     if (crit)
                     {
                         critItemSprite.enabled = true;
+                    }
+                    if (dodge)
+                    {
+                        dodgeSprite.enabled = true;
                     }
                 }
                 else
