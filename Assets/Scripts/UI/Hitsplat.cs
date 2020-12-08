@@ -34,7 +34,7 @@ public class Hitsplat : MonoBehaviour
 
     public TextMeshPro text1;
     public TextMeshPro text2;
-    public float timeBetweenAppearances = .1f;
+    public float timeBetweenAppearances = .10f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,21 +51,23 @@ public class Hitsplat : MonoBehaviour
                 if (appearDelays[x] > 0)
                 {
                     appearDelays[x] -= Time.deltaTime;
-                    continue;
                 }
-                thingsToBounce[x].gameObject.SetActive(true);
-
-                thingsToBounce[x].position = new Vector3(startPosition[x].x, height[x] + startPosition[x].y, -99);
-                height[x] += yVelo[x];
-                yVelo[x] -= gravity;
-                if (height[x] <= baseHeight)
+                else
                 {
-                    height[x] = baseHeight+float.Epsilon;
-                    yVelo[x] *= (float)(-bounciness);
-                    bounces[x] -= 1;
-                    if (bounces[x] <= 0)
+                    thingsToBounce[x].gameObject.SetActive(true);
+
+                    thingsToBounce[x].localPosition = new Vector3(startPosition[x].x, height[x] + startPosition[x].y, -1);
+                    height[x] += yVelo[x];
+                    yVelo[x] -= gravity;
+                    if (height[x] <= baseHeight)
                     {
-                        isBouncing = false;
+                        height[x] = baseHeight + float.Epsilon;
+                        yVelo[x] *= (float)(-bounciness);
+                        bounces[x] -= 1;
+                        if (bounces[x] <= 0)
+                        {
+                            isBouncing = false;
+                        }
                     }
                 }
             }
@@ -88,7 +90,7 @@ public class Hitsplat : MonoBehaviour
             yVelo[x] = baseYVelo;
             height[x] = baseHeight;
             bounces[x] = maxBounces;
-            this.startPosition[x] = thingsToBounce[x].position;
+            this.startPosition[x] = thingsToBounce[x].localPosition;
             appearDelays[x] = x * timeBetweenAppearances;
         }
 
