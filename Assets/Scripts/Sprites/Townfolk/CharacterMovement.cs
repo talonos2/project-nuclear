@@ -50,18 +50,19 @@ public class CharacterMovement : SpriteMovement
         HandleCharacterJumpViaPower();
         HandleIceDashContinue();
 
+        if (combatDetected)
+        {
+            if (!EnemyToFarToFight(enemyToFightHolder))
+            {
+                Combat.InitiateFight(this.gameObject, enemyToFightHolder);
+                combatDetected = false;
+                enemyToFightHolder = null;
+            }
+        }
         //If in the process of moving, keep moving and do nothing else
         if (currentlyMoving)
         {
-            if (combatDetected)
-            {
-                if (!EnemyToFarToFight(enemyToFightHolder))
-                {
-                    Combat.InitiateFight(this.gameObject, enemyToFightHolder);
-                    combatDetected = false;
-                    enemyToFightHolder = null;
-                }
-            }
+
             float finishedMoving = ContinueMoving();
             CheckUpcomingExitStatus(characterNextLocation);
             if (finishedMoving == 0)
@@ -419,6 +420,18 @@ public class CharacterMovement : SpriteMovement
     {
         jumpStartPos = transform.position;
         jumpTarget = offset;
+        
+        SetNextLocation(characterLocation.x + (int)jumpTarget.x, characterLocation.y + (int)jumpTarget.y);
+        GameObject EnemyToFight = null;
+        EnemyToFight = IsThereAMonster();
+        if (EnemyToFight != null)
+        {
+            if (EnemyToFarToFight(EnemyToFight))
+            {
+                enemyToFightHolder = EnemyToFight;
+                combatDetected = true;
+            }
+        }
         SetNextLocationActual(characterLocation.x + (int)jumpTarget.x, characterLocation.y + (int)jumpTarget.y);
         if (Math.Abs(jumpTarget.x) > Math.Abs(jumpTarget.y))
         {
@@ -572,9 +585,10 @@ public class CharacterMovement : SpriteMovement
         switch (facedDirection)
         {
             case DirectionMoved.UP:
-                if (isLocationJumpOverable(characterLocation.x, characterLocation.y + 1) && IsPlayerMoveLocationPassable(characterLocation.x, characterLocation.y + 2))
+                if (isLocationJumpOverable(characterLocation.x, characterLocation.y + 1) && IsPlayerJumpLocationPassable(characterLocation.x, characterLocation.y + 2))
                 {
-
+                    SetNextLocation(characterLocation.x, characterLocation.y + 2);
+                    SetupCombatOnJump();
                     SetNextLocationActual(characterLocation.x, characterLocation.y + 2);
                     tempFramesPerSecond *= jumpSpeed;
                 }
@@ -584,9 +598,10 @@ public class CharacterMovement : SpriteMovement
                 }
                 break;
             case DirectionMoved.DOWN:
-                if (isLocationJumpOverable(characterLocation.x, characterLocation.y - 1) && IsPlayerMoveLocationPassable(characterLocation.x, characterLocation.y - 2))
+                if (isLocationJumpOverable(characterLocation.x, characterLocation.y - 1) && IsPlayerJumpLocationPassable(characterLocation.x, characterLocation.y - 2))
                 {
-
+                    SetNextLocation(characterLocation.x, characterLocation.y - 2);
+                    SetupCombatOnJump();
                     SetNextLocationActual(characterLocation.x, characterLocation.y - 2);
                     tempFramesPerSecond *= jumpSpeed;
                 }
@@ -596,18 +611,20 @@ public class CharacterMovement : SpriteMovement
                 }
                 break;
             case DirectionMoved.LEFT:
-                if (isLocationJumpOverable(characterLocation.x - 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x - 2, characterLocation.y))
+                if (isLocationJumpOverable(characterLocation.x - 1, characterLocation.y) && IsPlayerJumpLocationPassable(characterLocation.x - 2, characterLocation.y))
                 {
-
+                    SetNextLocation(characterLocation.x-2, characterLocation.y);
+                    SetupCombatOnJump();
                     SetNextLocationActual(characterLocation.x - 2, characterLocation.y);
                     tempFramesPerSecond *= jumpSpeed;
                 }
                 else jumpingTemp = false;
                 break;
             case DirectionMoved.RIGHT:
-                if (isLocationJumpOverable(characterLocation.x + 1, characterLocation.y) && IsPlayerMoveLocationPassable(characterLocation.x + 2, characterLocation.y))
+                if (isLocationJumpOverable(characterLocation.x + 1, characterLocation.y) && IsPlayerJumpLocationPassable(characterLocation.x + 2, characterLocation.y))
                 {
-
+                    SetNextLocation(characterLocation.x+2, characterLocation.y );
+                    SetupCombatOnJump();
                     SetNextLocationActual(characterLocation.x + 2, characterLocation.y);
                     tempFramesPerSecond *= jumpSpeed;
                 }
@@ -623,6 +640,18 @@ public class CharacterMovement : SpriteMovement
         return jumpingTemp;
     }
 
+    private void SetupCombatOnJump() {      
+        GameObject EnemyToFight = null;
+        EnemyToFight = IsThereAMonster();
+        if (EnemyToFight != null)
+        {
+            if (EnemyToFarToFight(EnemyToFight))
+            {
+                enemyToFightHolder = EnemyToFight;
+                combatDetected = true;
+            }
+        }
+    }
     private bool isLocationJumpOverable(int characterLocationx, int characterLocationy)
     {
         bool jumpable = true;

@@ -151,6 +151,15 @@ public class SpriteMovement : EntityData
             UpdateEnvironmentSound();
         }
     }
+    protected void SetNextLocation(int xLocation, int yLocation)
+    {
+        characterNextLocation.x = xLocation;
+        characterNextLocation.y = yLocation;
+        if (this is CharacterMovement)
+        {
+            UpdateEnvironmentSound();
+        }
+    }
 
     internal bool IsJumping()
     {
@@ -188,6 +197,23 @@ public class SpriteMovement : EntityData
             || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
         {
             if (IsLocationDoodadPlayerPassible(LocX, LocY) && IsLocationPlayerEntityPassable(LocX, LocY))
+                MoveableLocation = true;
+        }
+        return MoveableLocation;
+    }
+    protected bool IsPlayerJumpLocationPassable(int LocX, int LocY)
+    {
+
+        bool MoveableLocation = false;
+        if (LocX < 0 || LocY < 0)
+        {
+            return MoveableLocation;
+        }
+
+        if (MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.NORMAL
+            || MapGrid.GetComponent<PassabilityGrid>().grid[LocX, LocY] == PassabilityType.MONSTER || IsPlatformUp(LocX, LocY))
+        {
+            if (IsLocationDoodadPlayerPassible(LocX, LocY) && IsLocationPlayerJumpEntityPassable(LocX, LocY))
                 MoveableLocation = true;
         }
         return MoveableLocation;
@@ -360,6 +386,22 @@ public class SpriteMovement : EntityData
         if (entityInLocation == null)
             MoveableLocation = true;
         else if (entityInLocation.GetComponent<EntityData>().isMainCharacter) {
+            MoveableLocation = true;
+        }
+        return MoveableLocation;
+    }
+
+    protected bool IsLocationPlayerJumpEntityPassable(int LocX, int LocY)
+    {
+        bool MoveableLocation = false;
+        GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
+        if (entityInLocation == null)
+            MoveableLocation = true;
+        else if (entityInLocation.GetComponent<EntityData>().isMainCharacter)
+        {
+            MoveableLocation = true;
+        }
+        else if (entityInLocation.GetComponent<EntityData>().isAMonster || entityInLocation.GetComponent<EntityData>().isLargeMonster) {
             MoveableLocation = true;
         }
         return MoveableLocation;
