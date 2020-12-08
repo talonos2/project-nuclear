@@ -22,7 +22,7 @@ public class EscapeKeyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.GO_BACK))
         {
 
             if (currentlyEscaped)
@@ -149,7 +149,7 @@ public class EscapeKeyController : MonoBehaviour
         //buttonSelected = 1;
         //showButtonSelection();
         //canvas.SetActive(false);
-        loadSaveController.activateLoad(this);
+        loadSaveController.ActivateLoad(this);
 
     }
     public void optionButtonClicked()

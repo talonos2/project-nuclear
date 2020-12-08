@@ -21,7 +21,7 @@ public class TownEscapeKeyController : MonoBehaviour
     {
         if (GameData.Instance.isCutscene || inOtherMenu) return;
 
-            if (Input.GetButtonDown("Cancel"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.GO_BACK))
         {
 
             if (currentlyEscaped)
@@ -45,72 +45,72 @@ public class TownEscapeKeyController : MonoBehaviour
 
 
         }
-/*
-        if (currentlyEscaped)
-        {
-            if (Input.GetButtonDown("Submit"))
-            {
-                if (buttonSelected == 0) { StartRunButtonClicked(); }
-                if (buttonSelected == 1) { SaveGameButtonClicked(); }
-                if (buttonSelected == 2) { LoadGameButtonClicked(); }
-                if (buttonSelected == 3) { optionButtonClicked(); }
-                if (buttonSelected == 4) { MenuButtonClicked(); }
-                if (buttonSelected == 5) { ExitGameButtonClicked(); }
-            }
-            if (Input.GetButtonDown("SelectNext"))
-            {
-
-                delayCounter = delayReset + .3f;
-                hideButtonSelection();
-                buttonSelected += 1;
-                if (buttonSelected >= selected.Length) { buttonSelected = 0; }
-                showButtonSelection();
-
-
-            }
-            if (Input.GetButtonDown("SelectPrevious"))
-            {
-
-                delayCounter = delayReset + .3f;
-                hideButtonSelection();
-                buttonSelected -= 1;
-                if (buttonSelected < 0) { buttonSelected = selected.Length - 1; }
-                showButtonSelection();
-
-
-            }
-            if (Input.GetButton("SelectNext"))
-            {
-                if (delayCounter <= 0)
+        /*
+                if (currentlyEscaped)
                 {
-                    delayCounter = delayReset;
-                    hideButtonSelection();
-                    buttonSelected += 1;
-                    if (buttonSelected >= selected.Length) { buttonSelected = 0; }
-                    showButtonSelection();
+                    if (Input.GetButtonDown("Submit"))
+                    {
+                        if (buttonSelected == 0) { StartRunButtonClicked(); }
+                        if (buttonSelected == 1) { SaveGameButtonClicked(); }
+                        if (buttonSelected == 2) { LoadGameButtonClicked(); }
+                        if (buttonSelected == 3) { optionButtonClicked(); }
+                        if (buttonSelected == 4) { MenuButtonClicked(); }
+                        if (buttonSelected == 5) { ExitGameButtonClicked(); }
+                    }
+                    if (Input.GetButtonDown("SelectNext"))
+                    {
+
+                        delayCounter = delayReset + .3f;
+                        hideButtonSelection();
+                        buttonSelected += 1;
+                        if (buttonSelected >= selected.Length) { buttonSelected = 0; }
+                        showButtonSelection();
+
+
+                    }
+                    if (Input.GetButtonDown("SelectPrevious"))
+                    {
+
+                        delayCounter = delayReset + .3f;
+                        hideButtonSelection();
+                        buttonSelected -= 1;
+                        if (buttonSelected < 0) { buttonSelected = selected.Length - 1; }
+                        showButtonSelection();
+
+
+                    }
+                    if (Input.GetButton("SelectNext"))
+                    {
+                        if (delayCounter <= 0)
+                        {
+                            delayCounter = delayReset;
+                            hideButtonSelection();
+                            buttonSelected += 1;
+                            if (buttonSelected >= selected.Length) { buttonSelected = 0; }
+                            showButtonSelection();
+                        }
+                        else
+                        {
+                            delayCounter -= Time.deltaTime;
+                        }
+                    }
+                    if (Input.GetButton("SelectPrevious"))
+                    {
+                        if (delayCounter <= 0)
+                        {
+                            delayCounter = delayReset;
+                            hideButtonSelection();
+                            buttonSelected -= 1;
+                            if (buttonSelected < 0) { buttonSelected = selected.Length - 1; }
+                            showButtonSelection();
+                        }
+                        else
+                        {
+                            delayCounter -= Time.deltaTime;
+                        }
+                    }
                 }
-                else
-                {
-                    delayCounter -= Time.deltaTime;
-                }
-            }
-            if (Input.GetButton("SelectPrevious"))
-            {
-                if (delayCounter <= 0)
-                {
-                    delayCounter = delayReset;
-                    hideButtonSelection();
-                    buttonSelected -= 1;
-                    if (buttonSelected < 0) { buttonSelected = selected.Length - 1; }
-                    showButtonSelection();
-                }
-                else
-                {
-                    delayCounter -= Time.deltaTime;
-                }
-            }
-        }
-        */
+                */
     }
 
 
@@ -139,7 +139,7 @@ public class TownEscapeKeyController : MonoBehaviour
         buttonSelected = 0;
         showButtonSelection();
         GameState.fullPause = false;
-        CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);        
+        CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);
         //StartDungeonRun.StartRun();
         //Load 'load game' ui screen
     }
@@ -150,7 +150,7 @@ public class TownEscapeKeyController : MonoBehaviour
         buttonSelected = 1;
         showButtonSelection();
         inOtherMenu = true;
-        loadSaveController.activateLoad(this, true);
+        loadSaveController.ActivateLoad(this, true);
     }
     public void LoadGameButtonClicked()
     {
@@ -159,7 +159,7 @@ public class TownEscapeKeyController : MonoBehaviour
         showButtonSelection();
         inOtherMenu = true;
         canvas.SetActive(false);
-        loadSaveController.activateLoad(this, false);
+        loadSaveController.ActivateLoad(this, false);
         //Load 'load game' ui screen
     }
     public void optionButtonClicked()

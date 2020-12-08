@@ -47,22 +47,20 @@ public class ChooseItemUI : MonoBehaviour
         if (GameState.fullPause || !pickingItem) { return; }
         //delayBeforePressing -= Time.deltaTime;
 
-        if (Input.GetButtonDown("Submit"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
         {
             ChooseItem();
             //delayBeforePressing = .35f; //So that the next item also has a delay
         }
 
-        if (Input.GetButtonDown("SelectRight") )
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_RIGHT))
         {
-           // if (delayBeforePressing < 0) {
-                //optionSelected = 0;
-                SelectButton(0);
-
-
+            // if (delayBeforePressing < 0) {
+            //optionSelected = 0;
+            SelectButton(0);
         }
 
-        if (Input.GetButtonDown("SelectLeft"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_LEFT))
         {
             //optionSelected = 1;
             SelectButton(1);
@@ -114,46 +112,48 @@ public class ChooseItemUI : MonoBehaviour
             if (optionSelected == 0)
             {
 
-                
-                    SendToTown(playerData.weapon);
+
+                SendToTown(playerData.weapon);
                 playerData.setWeapon((Weapon)rolledItem);
 
             }
             else
             {
-                
-                    SendToTown((Weapon)rolledItem);
+
+                SendToTown((Weapon)rolledItem);
             }
         }
         else if (rolledItem is Armor)
         {
             if (optionSelected == 0)
             {
-                
+
                 SendToTown(playerData.armor);
                 playerData.setArmor((Armor)rolledItem);
             }
             else
             {
-                    SendToTown((Armor)rolledItem);
+                SendToTown((Armor)rolledItem);
             }
         }
         else if (rolledItem is Accessory)
         {
             if (optionSelected == 0)
             {
-                
+
                 SendToTown(playerData.accessory);
                 playerData.setAccessory((Accessory)rolledItem);
             }
-            else {
+            else
+            {
 
-                    SendToTown((Accessory)rolledItem);
+                SendToTown((Accessory)rolledItem);
             }
         }
     }
 
-    public void setupItemChoiceDisplay(CharacterStats playerData, InventoryItem rolledItem) {
+    public void SetupItemChoiceDisplay(CharacterStats playerData, InventoryItem rolledItem)
+    {
         this.playerData = playerData;
         this.rolledItem = rolledItem;
         GameState.isInBattle = true;
@@ -170,12 +170,14 @@ public class ChooseItemUI : MonoBehaviour
         int oldItemStat;
         int totalStatChange;
         String foundItemText = "";
-        String oldItemText = "No Item Equipped";        
+        String oldItemText = "No Item Equipped";
 
-        if (rolledItem is Weapon) {
+        if (rolledItem is Weapon)
+        {
             foundItemStat = rolledItem.GetComponent<Weapon>().addAttack;
             oldItemStat = playerData.weapon.GetComponent<Weapon>().addAttack;
-            if (rolledItem.name == playerData.weapon.name||foundItemStat == oldItemStat) {
+            if (rolledItem.name == playerData.weapon.name || foundItemStat == oldItemStat)
+            {
                 SendToTown((Weapon)rolledItem);
                 //closeItemPickUI();
                 return;
@@ -183,10 +185,11 @@ public class ChooseItemUI : MonoBehaviour
             totalStatChange = foundItemStat - oldItemStat;
             if (rolledItem.Rare)
             {
-                foundItemText =  rolledItem.gameObject.name + "  <color=white><sprite=0> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
+                foundItemText = rolledItem.gameObject.name + "  <color=white><sprite=0> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
     + (totalStatChange > 0 ? "+" : "") + totalStatChange + "</color>)</size></color>";
             }
-            else {
+            else
+            {
                 foundItemText = "<color=white>" + rolledItem.gameObject.name + "  <sprite=0> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
     + (totalStatChange > 0 ? "+" : "") + totalStatChange + "</color>)</size></color>";
             }
@@ -195,7 +198,8 @@ public class ChooseItemUI : MonoBehaviour
             {
                 oldItemText = "<color=white>Current - </color>" + playerData.weapon.gameObject.name + " <color=white><sprite=0> " + oldItemStat + "</color>";
             }
-            else {
+            else
+            {
                 oldItemText = "<color=white>Current - " + playerData.weapon.gameObject.name + " <sprite=0> " + oldItemStat + "</color>";
             }
 
@@ -208,7 +212,7 @@ public class ChooseItemUI : MonoBehaviour
         {
             foundItemStat = rolledItem.GetComponent<Armor>().addDefense;
             oldItemStat = playerData.armor.GetComponent<Armor>().addDefense;
-            if (rolledItem.name == playerData.armor.name || foundItemStat== oldItemStat)
+            if (rolledItem.name == playerData.armor.name || foundItemStat == oldItemStat)
             {
                 SendToTown((Armor)rolledItem);
                 //closeItemPickUI();
@@ -219,10 +223,11 @@ public class ChooseItemUI : MonoBehaviour
 
             if (rolledItem.Rare)
             {
-                foundItemText =  rolledItem.gameObject.name + "  <color=white><sprite=1> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
+                foundItemText = rolledItem.gameObject.name + "  <color=white><sprite=1> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
                 + (totalStatChange > 0 ? "+" : "") + totalStatChange + "</color>)</size></color>";
             }
-            else {
+            else
+            {
                 foundItemText = "<color=white>" + rolledItem.gameObject.name + "  <sprite=1> " + foundItemStat + " <size=40>(<color=" + (totalStatChange <= 0 ? "red" : "green") + ">"
                 + (totalStatChange > 0 ? "+" : "") + totalStatChange + "</color>)</size></color>";
             }
@@ -231,10 +236,11 @@ public class ChooseItemUI : MonoBehaviour
             {
                 oldItemText = "<color=white>Current - </color>" + playerData.armor.gameObject.name + " <color=white><sprite=" + 1 + "> " + oldItemStat + "</color>";
             }
-            else {
+            else
+            {
                 oldItemText = "<color=white>Current - " + playerData.armor.gameObject.name + " <sprite=" + 1 + "> " + oldItemStat + "</color>";
             }
-            
+
             newItemSprite.sprite = itemIcons[1];
             //oldItemSprite.sprite = itemIcons[1];
         }
@@ -251,9 +257,10 @@ public class ChooseItemUI : MonoBehaviour
 
             if (rolledItem.Rare)
             {
-                foundItemText =  rolledItem.gameObject.name + "<color=white>, " + rolledAccItem.equipmentStatDescription + "</color>";
+                foundItemText = rolledItem.gameObject.name + "<color=white>, " + rolledAccItem.equipmentStatDescription + "</color>";
             }
-            else {
+            else
+            {
                 foundItemText = "<color=white>" + rolledItem.gameObject.name + ", " + rolledAccItem.equipmentStatDescription + "</color>";
             }
 
@@ -261,12 +268,13 @@ public class ChooseItemUI : MonoBehaviour
             {
                 oldItemText = "<color=white>Current - </color>" + playerData.accessory.gameObject.name + "<color=white>, " + oldAccItem.equipmentStatDescription + "</color>";
             }
-            else {
+            else
+            {
                 oldItemText = "<color=white>Current - " + playerData.accessory.gameObject.name + ", " + oldAccItem.equipmentStatDescription + "</color>";
             }
-            
-            if (playerData.accessory.name == "No Accessory Equipped") oldItemText = "<color=white>"+playerData.accessory.gameObject.name+"</color>";
-                newItemSprite.sprite = itemIcons[2];
+
+            if (playerData.accessory.name == "No Accessory Equipped") oldItemText = "<color=white>" + playerData.accessory.gameObject.name + "</color>";
+            newItemSprite.sprite = itemIcons[2];
             //oldItemSprite.sprite = itemIcons[2];
         }
 
