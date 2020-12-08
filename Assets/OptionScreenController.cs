@@ -123,12 +123,15 @@ public class OptionScreenController : MonoBehaviour
 
     private int PrevMenuOption()
     {
-        return (currentMenuOptionSelected + 5) % 6;
+        //%5 is the number of options (n), 4 and 6 is just 1 above or below the number of options (n-1, n+1)
+        int n = optionsImages.Length;
+        return (currentMenuOptionSelected + n-1) % n;
     }
 
     private int NextMenuOption()
     {
-        return (currentMenuOptionSelected + 7) % 6;
+        int n = optionsImages.Length;
+        return (currentMenuOptionSelected + n+1) % n;
     }
 
     public void RefreshSelectedOption(int menuOptionSelected)

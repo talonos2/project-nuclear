@@ -94,7 +94,7 @@ public class ChooseItemUI : MonoBehaviour
         }
     }
 
-    private void ChooseItem()
+    public void ChooseItem()
     {
         //Debug.Log("What did I pick "+optionSelected);
         if (!pickingItem) { return; }
