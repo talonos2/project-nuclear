@@ -72,14 +72,6 @@ public class BaselineHitsplat : Hitsplat
                     {
                         critSprite.enabled = true;
                     }
-                    if (crit)
-                    {
-                        critItemSprite.enabled = true;
-                    }
-                    if (dodge)
-                    {
-                        dodgeSprite.enabled = true;
-                    }
                 }
                 else
                 {
@@ -87,6 +79,21 @@ public class BaselineHitsplat : Hitsplat
                     text2.SetText("");
                     slashSprite.enabled = false;
                 }
+
+                if (crit)
+                {
+                    Debug.Log("Crit Recieved");
+                    critItemSprite.enabled = true;
+                }
+                else
+                {
+                    Debug.Log("No crit");
+                }
+                if (dodge)
+                {
+                    dodgeSprite.enabled = true;
+                }
+
                 break;
 
         }
