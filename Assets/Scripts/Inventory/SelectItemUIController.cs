@@ -311,6 +311,11 @@ public class SelectItemUIController : MonoBehaviour
         /*
          *Controls The submit button selection 
          */
+        if (Input.GetButtonDown("Cancel")) {
+            selectingAnItem = false;
+            showItemSelected();
+        }
+
         if (Input.GetButtonDown("Submit"))
         {
             delayCounter = delayReset + .15f;
