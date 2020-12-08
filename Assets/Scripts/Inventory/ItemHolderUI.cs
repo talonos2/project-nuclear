@@ -40,6 +40,10 @@ public class ItemHolderUI : MonoBehaviour
         if (listItem) selectItemUiControl.MouseSetEquipmentSelection(this.GetComponent<RectTransform>().localPosition.y);
     }
 
+    public void ItemMouseClicked() {
+        if (listItem) selectItemUiControl.MouseSelectEquipment(this.GetComponent<RectTransform>().localPosition.y);
+    }
+
     public void SetItem(InventoryItem itemToSet, bool isAListItem) {
         listItem = isAListItem;
         if (null==itemToSet)
@@ -52,14 +56,21 @@ public class ItemHolderUI : MonoBehaviour
         if (listItem) itemSpriteHolder.SetActive(false);
         itemSprite = itemToSet.itemIcon;
 
+
         itemText.text = itemToSet.name;
-        if (itemToSet.Rare) {
+        if (itemToSet.Rare)
+        {
             itemText.enabled = false;
             itemTextRare.enabled = true;
             itemTextRare.text = itemToSet.name;
-            //itemText.colorGradient.;
-            //itemText.color = new Color(218,165,32,1);
         }
+        else {
+            itemText.enabled = true;
+            itemTextRare.enabled = false;
+            itemTextRare.text = itemToSet.name;
+        }
+
+        
         if (itemToSet.Weapon) {
             Weapon tempwpn = (Weapon)itemToSet;
             itemStatText.text = "+" + tempwpn.addAttack + " ATK";

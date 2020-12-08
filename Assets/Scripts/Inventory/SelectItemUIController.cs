@@ -41,6 +41,9 @@ public class SelectItemUIController : MonoBehaviour
     private CharacterStats savedStats;
 
     private float delayCounter;
+
+
+
     private float delayReset = .15f;
     private int topScrollPointer=0;
     private int bottomScrollPointer=9;
@@ -563,6 +566,23 @@ public class SelectItemUIController : MonoBehaviour
         if (currentItemSelected > bottomScrollPointer) SetScrollDownPositions();
         showItemSelected();
         //do math based on mouse position and pane position to find selected item
+    }
+    internal void MouseSelectEquipment(float localPositionY)
+    {
+        switch (currentEquipCategorySelected)
+        {
+            case 0: //Selecting a Weapon
+                SwapWeapon();
+                break;
+            case 1: //Going into Armor Selection
+                SwapArmor();
+                break;
+            case 2: //Going into Accessory Selection
+                SwapAccessory();
+                break;
+        }
+        populateItemLists();
+        ShowCurrentlySelectedOption();
     }
     public void ChangeScrollPointerLocations()
     {
