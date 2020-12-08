@@ -12,7 +12,7 @@ public class ZombieController_McDermit : Enemy
         {
             return;
         }
-        if (GameData.Instance.McDermit == 0 || GameData.Instance.bestTimes[7]== Mathf.Infinity || GameData.Instance.RunNumber <=3) {
+        if (GameData.Instance.McDermit == 0 || GameData.Instance.bestTimes[7] > 600 || GameData.Instance.RunNumber <=3) {
             Destroy(this.gameObject);
         }   
     }

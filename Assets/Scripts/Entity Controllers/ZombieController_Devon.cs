@@ -11,7 +11,7 @@ public class ZombieController_Devon : Enemy
         {
             return;
         }
-        if (GameData.Instance.Devon == 0 || GameData.Instance.bestTimes[17] == Mathf.Infinity || GameData.Instance.RunNumber <= 9)
+        if (GameData.Instance.Devon == 0 || GameData.Instance.bestTimes[17] > 600 || GameData.Instance.RunNumber <= 9)
         {
             Destroy(this.gameObject);
         }

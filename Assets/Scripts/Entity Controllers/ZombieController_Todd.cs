@@ -11,7 +11,7 @@ public class ZombieController_Todd : Enemy
         {
             return;
         }
-        if (GameData.Instance.Todd == 0 || GameData.Instance.bestTimes[9] == Mathf.Infinity || GameData.Instance.RunNumber <= 4)
+        if (GameData.Instance.Todd == 0 || GameData.Instance.bestTimes[9] > 600 || GameData.Instance.RunNumber <= 4)
         {
             Destroy(this.gameObject);
         }

@@ -11,7 +11,7 @@ public class ZombieController_Sara : Enemy
         {
             return;
         }
-        if (GameData.Instance.Sara == 0 || GameData.Instance.bestTimes[13] == Mathf.Infinity || GameData.Instance.RunNumber <= 2)
+        if (GameData.Instance.Sara == 0 || GameData.Instance.bestTimes[13] > 600 || GameData.Instance.RunNumber <= 2)
        {
             Destroy(this.gameObject);
        }
