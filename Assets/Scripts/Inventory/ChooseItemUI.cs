@@ -178,7 +178,7 @@ public class ChooseItemUI : MonoBehaviour
             oldItemStat = playerData.weapon.GetComponent<Weapon>().addAttack;
             if (rolledItem.name == playerData.weapon.name || foundItemStat == oldItemStat)
             {
-                SendToTown((Weapon)rolledItem);
+                SendDuplicateToTown((Weapon)rolledItem);
                 //closeItemPickUI();
                 return;
             }
@@ -214,7 +214,7 @@ public class ChooseItemUI : MonoBehaviour
             oldItemStat = playerData.armor.GetComponent<Armor>().addDefense;
             if (rolledItem.name == playerData.armor.name || foundItemStat == oldItemStat)
             {
-                SendToTown((Armor)rolledItem);
+                SendDuplicateToTown((Armor)rolledItem);
                 //closeItemPickUI();
                 return;
             }
@@ -248,7 +248,7 @@ public class ChooseItemUI : MonoBehaviour
         {
             if (rolledItem.name == playerData.accessory.name)
             {
-                SendToTown((Accessory)rolledItem);
+                SendDuplicateToTown((Accessory)rolledItem);
                 //closeItemPickUI();
                 return;
             }
@@ -284,9 +284,9 @@ public class ChooseItemUI : MonoBehaviour
         //newItemSprite.GetComponent<Image>().sprite = rolledItem.GetComponent<InventoryItem>().itemIcon;
     }
 
-    private void sendGabToTownMessage(string itemSentString)
+    private void sendGabToTownMessage(string itemSentString, float duration=3f)
     {
-        gabTextController.AddItemGabToPlay(itemSentString);
+        gabTextController.AddItemGabToPlay(itemSentString, duration);
     }
 
 
@@ -311,6 +311,8 @@ public class ChooseItemUI : MonoBehaviour
         }
         CloseItemPickUI();
     }
+
+
 
     private void SendToTown(Armor i)
     {
@@ -341,6 +343,49 @@ public class ChooseItemUI : MonoBehaviour
         }
         CloseItemPickUI();
     }
+
+    private void SendDuplicateToTown(Weapon i)
+    {
+        if (i)
+        {
+            GameData.Instance.itemsFoundThisRun.Add(i);
+            if (playerData.weapon.name != "Knife")
+                GameData.Instance.townWeapons.Add(i);
+            if (i.Rare) sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped.</color> <sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>", duration: 5f);
+            else sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped. <sprite=0> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
+        }
+        CloseItemPickUI();
+    }
+
+    private void SendDuplicateToTown(Armor i)
+    {
+        if (i)
+        {
+            GameData.Instance.itemsFoundThisRun.Add(i);
+            if (playerData.armor.name != "Warm Jacket")
+                GameData.Instance.townArmor.Add(i);
+            if (i.Rare) sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped.</color> <sprite=1> " + i.gameObject.name + " <color=white>sent to town.</color>", duration: 5f);
+            else sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped. <sprite=1> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
+            Debug.Log("r");
+        }
+        CloseItemPickUI();
+    }
+    private void SendDuplicateToTown(Accessory i)
+    {
+        if (i)
+        {
+            if (i.name != "No Accessory Equipped")
+            {
+                GameData.Instance.itemsFoundThisRun.Add(i);
+                GameData.Instance.townAccessories.Add(i);
+                if (i.Rare) sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped.</color> <sprite=2> " + i.gameObject.name + " <color=white>sent to town.</color>", 5f);
+                else sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped. <sprite=2> " + i.gameObject.name + " sent to town.</color>", duration:5f);
+            }
+
+        }
+        CloseItemPickUI();
+    }
+
 }
 
 

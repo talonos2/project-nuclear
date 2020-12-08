@@ -177,9 +177,9 @@ public class GabTextController : MonoBehaviour
         }
     }
 
-    public void AddItemGabToPlay(String gabTextToAdd)
+    public void AddItemGabToPlay(String gabTextToAdd, float playTime=3f)
     {
-        gabPlayList.Add(new Gab(gabTextToAdd, false, 3f, false, false, null, true));
+        gabPlayList.Add(new Gab(gabTextToAdd, false, playTime, false, false, null, true));
         if (!playingGab)
         {
             PlayNextGabText();
