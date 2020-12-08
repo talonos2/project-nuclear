@@ -26,6 +26,7 @@ public class Hitsplat : MonoBehaviour
     protected int physicalDamage = 0;
     protected int elementalDamage = 0;
     protected bool crit = false;
+    protected bool dodge = false;
     protected bool elementalCrit = false;
     protected bool goodTiming = false;
     protected bool effective = false;
@@ -75,7 +76,7 @@ public class Hitsplat : MonoBehaviour
         }
     }
 
-    public virtual void Init(int physicalDamage, int elementalDamage, bool goodTiming, bool effective, bool crit, bool elementalCrit, ElementalPower elementalType)
+    public virtual void Init(int physicalDamage, int elementalDamage, bool goodTiming, bool effective, bool crit, bool elementalCrit, ElementalPower elementalType, bool dodge)
     {
         yVelo = new float[thingsToBounce.Length];
         height = new float[thingsToBounce.Length];

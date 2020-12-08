@@ -533,7 +533,7 @@ public class Combat : MonoBehaviour
         hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = monsterSprite.transform.position + (Vector3)monsterStats.gettingStruckPointOffset + AttackAnimationManager.Instance.monsterHitsplatOffset;
         hitsplat.transform.localPosition += (Vector3)monsterStats.hitsplatOffset;
-        hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Mathf.RoundToInt(elementalDamage), goodHit, hitWeakness, crit != 0, elementalCrit, (ElementalPower)playerStats.currentPower);
+        hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), Mathf.RoundToInt(elementalDamage), goodHit, hitWeakness, crit != 0, elementalCrit, (ElementalPower)playerStats.currentPower, false);
 
         //Cleanup:
         goodHit = false;
@@ -605,7 +605,8 @@ public class Combat : MonoBehaviour
         
         goodBlock = false;
         incomingDamage = Math.Max(incomingDamage, 0);
-        if (RollDodge()) {
+        bool dodge = RollDodge();
+        if (dodge) {
             //Debug.Log("Dodged that!");
             incomingDamage = 0;
             //ShouldHaveDodgeEffect
@@ -613,7 +614,7 @@ public class Combat : MonoBehaviour
         playerStats.HP -= Mathf.RoundToInt(incomingDamage);
         hitsplat = GameObject.Instantiate(hitsplatTemplate);
         hitsplat.transform.position = playerSprite.transform.position+(Vector3)playerStats.gettingStruckPointOffset+AttackAnimationManager.Instance.playerHitsplatOffset;
-        hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), 0, !goodBlock, false, false, false, ElementalPower.NULL);
+        hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), 0, !goodBlock, false, false, false, ElementalPower.NULL, dodge);
         CheckCombatOver();
     }
 
