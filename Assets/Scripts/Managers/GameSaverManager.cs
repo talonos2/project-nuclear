@@ -63,9 +63,10 @@ public class GameSaverManager
     public int Mara;
     public int Devon;
     public int Pendleton;
+    internal KeymapType sneakyKeyMap = KeymapType.UNDEFINED;
 
 
-        public void SetupSave()
+    public void SetupSave()
         {
         gabNumbers = GameData.Instance.gabNumbers;
 
@@ -119,6 +120,8 @@ public class GameSaverManager
         map5_2Shortcut = GameData.Instance.map5_2Shortcut;
         map5_3Shortcut = GameData.Instance.map5_3Shortcut;
         map5_4Shortcut = GameData.Instance.map5_4Shortcut;
+
+        sneakyKeyMap = GameData.Instance.sneakyKeyMap;
 
         foreach (Weapon wpnItem in GameData.Instance.townWeapons) {
             townWeapons.Add(wpnItem.name);
@@ -188,6 +191,8 @@ public class GameSaverManager
             GameData.Instance.map5_3Shortcut = map5_3Shortcut;
         GameData.Instance.map5_4Shortcut = map5_4Shortcut;
         GameData.Instance.map1_3toMap2_3Shortcut = map1_3toMap2_3Shortcut;
+
+        GameData.Instance.sneakyKeyMap = sneakyKeyMap;
 
            GameObject equipmentData = GameObject.Find("EquipmentData");
 
