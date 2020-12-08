@@ -51,8 +51,12 @@ namespace Naninovel.Commands
 
         public override async Task ExecuteAsync ()
         {
-            await base.ExecuteAsync();
+            await ActorManager.GetOrAddActorAsync(Id);
+            DoItOnItsOwn();
+        }
 
+        public async Task DoItOnItsOwn()
+        {
             if (AvatarTexturePath is null) // Check if we can map current appearance to an avatar texture path.
             {
                 var avatarPath = $"{Id}/{Appearance}";
@@ -71,6 +75,8 @@ namespace Naninovel.Commands
                     ActorManager.RemoveAvatarTextureFor(Id);
                 else ActorManager.SetAvatarTexturePathFor(Id, AvatarTexturePath);
             }
+
+            await base.ExecuteAsync();
         }
 
         protected override async Task ApplyModificationsAsync (ICharacterActor actor, EasingType easingType)

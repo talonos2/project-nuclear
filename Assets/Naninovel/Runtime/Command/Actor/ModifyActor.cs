@@ -98,9 +98,7 @@ namespace Naninovel.Commands
                 Debug.LogError("Actor ID was not provided.");
                 return;
             }
-
             var actor = await ActorManager.GetOrAddActorAsync(Id);
-
             undoData.Executed = true;
             undoData.State = ActorManager.GetActorState(actor.Id);
 

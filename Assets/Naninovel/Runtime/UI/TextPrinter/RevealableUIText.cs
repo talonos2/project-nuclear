@@ -68,7 +68,7 @@ namespace Naninovel.UI
 
         public void HideAll ()
         {
-            SetLastRevealedVisibleCharIndex(-1);
+            SetLastRevealedVisibleCharIndex(0);
         }
 
         public bool RevealNextChar (float revealDelay)
