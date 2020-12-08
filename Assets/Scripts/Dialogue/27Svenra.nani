@@ -83,7 +83,7 @@
 		
 		#day11
 		@char Svenra
-		Svenra: No, I ain't teachin' you to throw fireballs.
+		Svenra: No. I ain't teachin' you to throw fireballs.
 		Svenra: Stop askin'.
 		@exit
 
@@ -108,7 +108,7 @@
 
 		#day14
 		@char Svenra
-		Svenra: Don't look at me young'n.[br]I already did my part against the scarecrow menace.
+		Svenra: Don't look to me young'n.[br]I already did my part against the scarecrow menace.
 		@exit
 
 		
@@ -169,22 +169,22 @@
 		
 		#day23
 		;stay
-		@fwturnpawn n:PawnSvenra d:e
+		@fwturnpawn n:PawnSvenra d:s
+		@char Svenra
+		Svenra: So! How long have those old places been around anyway?
+		@hidechars time:0
 		@char Elder
-		Elder: So! How long have those old places been around anyway?
+		Elder: Well, longer than the town has.
 		@hidechars time:0
 		@char Svenra
-		Svenra: Well, longer than the town has.
-		@hidechars time:0
-		@char Elder
-		Elder: Here's a map, get markin' where they all are!
+		Svenra: Here's a map, get markin' where they all are!
 		@exit
 
 		
 		#day24
 		@char Svenra
 		Svenra: You're welcome.
-		Svenra: besides, all that scarecrow choppin' was too noisy.
+		Svenra: Besides, all that scarecrow choppin' was too noisy.
 		@hidechars time:0
 		@char Tasha
 		Tasha: Don't get too used to it.
@@ -201,7 +201,7 @@
 		
 		#day26
 		@char Svenra
-		Svenra: What do you suppose will happen?[br]When there aren't any of us left?
+		Svenra: What do you suppose will happen?[br]When there aren't any of us left...
 		@fwturnpawn n:PawnSvenra d:e
 		@exit
 

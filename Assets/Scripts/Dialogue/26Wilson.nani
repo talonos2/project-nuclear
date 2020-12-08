@@ -85,7 +85,7 @@
 		
 		#day9
 		@char Wilson
-		Wilson: There are those who risk their lives every day.
+		Wilson: There are those who risk their lives every day.[br]Surely we can handle this.
 		@fwturnpawn n:PawnWilson d:e
 		@exit
 
@@ -107,8 +107,10 @@
 		
 		#day12
 		@char Wilson
-		Wilson: I know we don't agree on a few things Jezerine, but I appreciate your effort.
+		Wilson: I know we don't agree on a few things Jessica, but I appreciate your effort.
 		@fwturnpawn n:PawnWilson d:e
+		@char Jezerine
+		Jezerine: ...
 		@exit
 		
 
@@ -124,7 +126,7 @@
 		;stay
 		@fwturnpawn n:PawnWilson d:n
 		@char Wilson
-		Wilson: Ha! Take that straw man!
+		Wilson: Ha! Take that, straw man!
 		@exit
 
 		

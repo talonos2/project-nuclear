@@ -97,13 +97,13 @@
 		
 		#day11
 		@char Patrick
-		Patrick: I still feel sick, but only a little bit... Ever since I got back.
+		Patrick: Ever since I got back I've felt better.[br]But not well, just better.
 		@exit
 
 		
 		#day12
 		@char Patrick
-		Patrick: I've been asking around. Other people feel ill too.[br]Not terrible, but not great.
+		Patrick: I've been asking around. Other people got sick too.[br]Not terribly ill, but not so great either.
 		@exit
 		
 
@@ -120,7 +120,7 @@
 		Patrick: Do you think they're okay?
 		@hidechars time:0
 		@char Metra
-		Metra: If they weren't, do you think you'd be more helpful there, or here?
+		Metra: If they weren't, would it change what you need to do?
 		@hidechars time:0
 		@exit
 
@@ -221,17 +221,18 @@
 		
 		#day26
 		;stay
-		@fwturnpawn n:PawnPatrick d:e
+		@fwturnpawn n:PawnPatrick d:w
 		@char Patrick
-		Patrick: Yeah, I pretty much just relax once I get past this area here... (looking at map with pins)
+		Patrick: Yeah, I pretty much just relax once I get past this part of the map...
 		@exit
 
 		
 		#day27
 		;stay
-		@fwturnpawn n:PawnPatrick d:e
+		@fwturnpawn n:PawnPatrick d:s
 		@char Patrick
-		Patrick: The safe area isn't the town...[br]The town is in the safe area...(looking at map with pins)
+		Patrick: We've been thinking about the map wrong.
+		Patrick: The safe area isn't around the town...[br]The town is inside the safe area...
 		@exit
 
 		
@@ -239,7 +240,7 @@
 		;stay
 		@fwturnpawn n:PawnPatrick d:s
 		@char Patrick
-		Patrick: It definitely looks like the safe zone is centered on that shrine.(looking at map with pins)
+		Patrick: If I'm reading the map right, it definitely looks like the safe zone is centered on that shrine.
 		@exit
 
 		
