@@ -17,17 +17,31 @@ public class ItemHolderUI : MonoBehaviour
     public InventoryItem empty;
     private string itemDetailsText;
     private Sprite itemSprite;
-
+    private SelectItemUIController selectItemUiControl;
     private float pulseTime;
     public float pulseWidth = .5f;
+    private bool listItem=true;
 
+
+    private void Start()
+    {
+       if (listItem) selectItemUiControl=GameObject.FindObjectOfType<SelectItemUIController>();
+        
+    
+    }
     public void Update()
     {
+
         pulseTime += Time.deltaTime;
         flashingBackground.color = new Color(flashingBackground.color.r, flashingBackground.color.g, flashingBackground.color.b, Mathf.Sin(pulseTime/pulseWidth) * .2f + .65f);
     }
 
-    public void SetItem(InventoryItem itemToSet) {
+    public void ItemSelectedViaMouse() {
+        if (listItem) selectItemUiControl.MouseSetEquipmentSelection(this.GetComponent<RectTransform>().localPosition.y);
+    }
+
+    public void SetItem(InventoryItem itemToSet, bool isAListItem) {
+        listItem = isAListItem;
         if (null==itemToSet)
         {
             itemToSet = empty;
@@ -35,7 +49,9 @@ public class ItemHolderUI : MonoBehaviour
         itemStored = itemToSet;
         itemDetailsText = itemToSet.equipmentDescription;
         itemSpriteHolder.GetComponent<Image>().sprite = itemToSet.itemIcon;
-        itemSprite= itemToSet.itemIcon;
+        if (listItem) itemSpriteHolder.SetActive(false);
+        itemSprite = itemToSet.itemIcon;
+
         itemText.text = itemToSet.name;
         if (itemToSet.Rare) {
             itemText.enabled = false;
