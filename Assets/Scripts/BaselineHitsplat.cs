@@ -87,7 +87,7 @@ public class BaselineHitsplat : Hitsplat
                 }
                 else
                 {
-                    Debug.Log("No crit");
+                   // Debug.Log("No crit");
                 }
                 if (dodge)
                 {

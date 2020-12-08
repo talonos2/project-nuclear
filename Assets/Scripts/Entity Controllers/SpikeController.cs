@@ -37,6 +37,7 @@ public class SpikeController : DoodadData
         {
             RunPrimAlgorythm();
         }
+        if (isPassable) {  this.sRender.material.SetInt("_HasEmissive", 0); }
     }
 
     public void RunPrimAlgorythm()
@@ -71,7 +72,7 @@ public class SpikeController : DoodadData
 
     public void Open(bool sound = true)
     {
-        this.isPassable = true;
+        this.isPassable = true;        
         LowerSpikeAnimation(sound);
     }
 
@@ -89,6 +90,7 @@ public class SpikeController : DoodadData
                 player.JumpOffOfSpikes();
             }
         }
+        this.sRender.material.SetInt("_HasEmissive", 1);
     }
 
     internal void OpenAfterTime(float time)
