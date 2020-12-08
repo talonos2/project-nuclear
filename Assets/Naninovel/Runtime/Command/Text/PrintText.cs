@@ -2,6 +2,7 @@
 
 using System.Threading.Tasks;
 using UnityCommon;
+using UnityEngine;
 
 namespace Naninovel.Commands
 {
