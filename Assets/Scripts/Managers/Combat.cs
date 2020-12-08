@@ -9,7 +9,7 @@ public class Combat : MonoBehaviour
 {
     private static readonly float ENTER_TIME = .3f;
     private static readonly float EXIT_TIME = .3f;
-    
+
     private bool oneLastEnterFrame = true;
 
     //Starts a fight, creating a new game object with an instance of this monobehavior.
@@ -73,7 +73,7 @@ public class Combat : MonoBehaviour
         this.monsterStats = monsterStats;
         this.playerStats = playerStats;
         this.monsterToDelete = monsterToDelete;
-        gameData= GameData.Instance;
+        gameData = GameData.Instance;
         //Create monster sprites:
 
         monsterSprite = new GameObject("Monster Sprite");
@@ -123,7 +123,7 @@ public class Combat : MonoBehaviour
     private void SetMonsterAndPlayerScale()
     {
         Vector3 pScale = (Vector3)(playerStats.scale * monsterStats.forceOpponentAdditionalScale) + new Vector3(0, 0, 1);
-        playerSprite.transform.localScale = pScale*1/6;
+        playerSprite.transform.localScale = pScale * 1 / 6;
 
         Vector3 mScale = (Vector3)(monsterStats.scale * playerStats.forceOpponentAdditionalScale) + new Vector3(0, 0, 1);
         monsterSprite.transform.localScale = mScale * 1 / 6;
@@ -131,7 +131,7 @@ public class Combat : MonoBehaviour
 
     public void Update()
     {
-        playerSprite.transform.parent.localPosition = new Vector3(monsterStats.combatOffset.x, monsterStats.combatOffset.y,2);
+        playerSprite.transform.parent.localPosition = new Vector3(monsterStats.combatOffset.x, monsterStats.combatOffset.y, 2);
         if (GameState.fullPause) return;
 
         if (enterTimer < ENTER_TIME)
@@ -178,17 +178,17 @@ public class Combat : MonoBehaviour
     {
         float amountThrough = exitTimer / EXIT_TIME;
 
-        monsterHPBar.color = new Color(1, 1, 1, 1-amountThrough);
-        monsterHPBarHolder.GetComponent<Image>().color = new Color(1, 1, 1, 1-amountThrough);
+        monsterHPBar.color = new Color(1, 1, 1, 1 - amountThrough);
+        monsterHPBarHolder.GetComponent<Image>().color = new Color(1, 1, 1, 1 - amountThrough);
 
         if (exitStartPos == new Vector3(-1000, -1000, -1000))
         {
             exitStartPos = playerSprite.transform.localPosition;
         }
 
-        combatDarkening.material.SetFloat("_Alpha", (1-amountThrough) / 2.0f);
+        combatDarkening.material.SetFloat("_Alpha", (1 - amountThrough) / 2.0f);
 
-        blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1-amountThrough);
+        blade.swayBall.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1 - amountThrough);
 
         monsterSprite.GetComponent<SpriteRenderer>().color = new Color((1 - amountThrough), (1 - amountThrough), (1 - amountThrough), (1 - amountThrough));
 
@@ -242,7 +242,7 @@ public class Combat : MonoBehaviour
         }
         else
         {
-            blade.HandleLeftSideSway(((totalTime+  amountThrough - enemyDamagePoint)%totalTime) / leftSideTime);
+            blade.HandleLeftSideSway(((totalTime + amountThrough - enemyDamagePoint) % totalTime) / leftSideTime);
         }
 
         int playerFrame = AttackAnimation.HOP.HandleAnimation(timeSinceLastPlayerAttack, playerSprite, monsterSprite, monsterStats, playerStats);
@@ -259,7 +259,7 @@ public class Combat : MonoBehaviour
                 goodHit = true;
                 blade.SpawnGoodParticles();
             }
-            else if (enemyDamagePoint - amountThrough < SWAY_TOLERANCE/2.0f && enemyDamagePoint - amountThrough > SWAY_TOLERANCE / -2.0f)
+            else if (enemyDamagePoint - amountThrough < SWAY_TOLERANCE / 2.0f && enemyDamagePoint - amountThrough > SWAY_TOLERANCE / -2.0f)
             {
                 goodBlock = true;
                 blade.SpawnGoodParticles();
@@ -287,7 +287,7 @@ public class Combat : MonoBehaviour
             monsterDidDamageRecently = false;
             monsterDidSoundRecently = false;
         }
-        if (!playerDidDamageRecently && timeSinceLastPlayerAttack > AttackAnimation.PLAYER_HOP.GetDamagePoint() + (SWAY_TOLERANCE/2.0f))
+        if (!playerDidDamageRecently && timeSinceLastPlayerAttack > AttackAnimation.PLAYER_HOP.GetDamagePoint() + (SWAY_TOLERANCE / 2.0f))
         {
             this.DealDamageToEnemy();
             playerDidDamageRecently = true;
@@ -314,7 +314,7 @@ public class Combat : MonoBehaviour
     private void CheckCombatOver()
     {
         //TODO: If the time is up, combat ends immediately.
-        if (gameData.minutes==10 || playerStats.HP <= 0)
+        if (gameData.minutes == 10 || playerStats.HP <= 0)
         {
             PlayerLoss();
         }
@@ -329,7 +329,7 @@ public class Combat : MonoBehaviour
             combatEnded = true;
         }
 
-        if (GameState.isInBattle == false&&GameData.Instance.FloorNumber!=20) { MusicManager.instance.TurnOffCombatMusic(); }
+        if (GameState.isInBattle == false && GameData.Instance.FloorNumber != 20) { MusicManager.instance.TurnOffCombatMusic(); }
     }
 
     private void PlayerLoss()
@@ -342,7 +342,8 @@ public class Combat : MonoBehaviour
         KillPlayerAndLoadNextScene(true);
     }
 
-    private void KillPlayerAndLoadNextScene(bool timeOut) {
+    private void KillPlayerAndLoadNextScene(bool timeOut)
+    {
         if (!timeOut)
         {
             GameData.Instance.deathTime = GameData.Instance.timer;
@@ -375,18 +376,18 @@ public class Combat : MonoBehaviour
                 playerStats.defenseCrystalsGained += monsterStats.crystalDropAmount;
                 playerStats.HealthCrystalsGained += monsterStats.crystalDropAmount;
                 playerStats.ManaCrystalsGained += monsterStats.crystalDropAmount;
-                if(monsterStats.earthBoss2 || monsterStats.deathBoss2 || monsterStats.finalBoss || monsterStats.finalBossForm1)
+                if (monsterStats.earthBoss2 || monsterStats.deathBoss2 || monsterStats.finalBoss || monsterStats.finalBossForm1)
                 {
                     break;
                 }
-                CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject,monsterStats.powerupEffect);
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 CrystalSpawner.SpawnCrystalParticles(CrystalType.DEFENSE, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 CrystalSpawner.SpawnCrystalParticles(CrystalType.MANA, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 CrystalSpawner.SpawnCrystalParticles(CrystalType.HEALTH, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 break;
             case CrystalType.ATTACK:
                 playerStats.AttackCrystalsGained += monsterStats.crystalDropAmount;
-                CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats,  monsterStats.gameObject, monsterStats.powerupEffect);
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
                 break;
             case CrystalType.DEFENSE:
                 playerStats.defenseCrystalsGained += monsterStats.crystalDropAmount;
@@ -404,25 +405,29 @@ public class Combat : MonoBehaviour
                 break;
         }
         playerStats.AddExp(monsterStats.ExpGiven);
-        if (monsterStats.iceBoss) {
+        if (monsterStats.iceBoss)
+        {
             GameData.Instance.iceBoss1 = true;
             playerStats.powersGained = Math.Max(1, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
             SoundManager.Instance.PlaySound("GetIce", 1f);
         }
-        if (monsterStats.earthBoss) {
+        if (monsterStats.earthBoss)
+        {
             GameData.Instance.earthBoss1 = true;
             playerStats.powersGained = Math.Max(2, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
             SoundManager.Instance.PlaySound("GetEarth", 1f);
         }
-        if (monsterStats.fireBoss) {
+        if (monsterStats.fireBoss)
+        {
             GameData.Instance.fireBoss1 = true;
             playerStats.powersGained = Math.Max(3, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
             SoundManager.Instance.PlaySound("GetFire", 1f);
         }
-        if (monsterStats.airBoss) {
+        if (monsterStats.airBoss)
+        {
             GameData.Instance.airBoss1 = true;
             playerStats.powersGained = Math.Max(4, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
@@ -436,10 +441,12 @@ public class Combat : MonoBehaviour
         {
             GameData.Instance.airBoss2 = true;
         }
-        if (monsterStats.deathBoss) {
+        if (monsterStats.deathBoss)
+        {
             GameData.Instance.deathBoss1 = true;
         }
-        if (monsterStats.finalBoss) {
+        if (monsterStats.finalBoss)
+        {
             GameData.Instance.victory = true;
         }
         //playerStats.currentPower = elementSelected;
@@ -452,7 +459,7 @@ public class Combat : MonoBehaviour
     {
         //Do not reference GameData in here as it causes null pointer errors, and the executible version 
         //of the game may be crashing due to it.
-        
+
     }
     private void DealDamageToEnemy()
     {
@@ -461,7 +468,7 @@ public class Combat : MonoBehaviour
         if (goodHit) { SoundManager.Instance.PlaySound("Combat/GoodHit", 1f); }
         else { SoundManager.Instance.PlaySound("Combat/BadHit", 1f); }
 
-        incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent/100);
+        incomingDamage = incomingDamage * (1 + playerStats.accessoryAttackPercent / 100);
         incomingDamage -= monsterStats.defense;
         incomingDamage = Math.Max(incomingDamage, 0);
 
@@ -472,49 +479,54 @@ public class Combat : MonoBehaviour
         if (playerStats.currentPower == (int)ElementalPower.ICE)
         {
             if (playerStats.accessoryIceBonus != 0) { elementalCrit = true; }
-            elementalDamage = incomingDamage * (.25f+playerStats.accessoryIceBonus/100);
-            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage +=incomingDamage * (.25f*GameData.Instance.PowersGained); hitWeakness = true; }
+            elementalDamage = incomingDamage * (.25f + playerStats.accessoryIceBonus / 100);
+            if (monsterStats.weakness == ElementalPower.ICE) { elementalDamage += incomingDamage * (.25f * GameData.Instance.PowersGained); hitWeakness = true; }
             if (playerStats.mana >= 4) { playerStats.mana -= 4; }
-                else { elementalDamage = 0; }
+            else { elementalDamage = 0; }
         }
-        if (playerStats.currentPower == (int)ElementalPower.EARTH) {
+        if (playerStats.currentPower == (int)ElementalPower.EARTH)
+        {
             if (playerStats.accessoryEarthBonus != 0) { elementalCrit = true; }
-            elementalDamage = incomingDamage *(.5f+ playerStats.accessoryEarthBonus/100);
+            elementalDamage = incomingDamage * (.5f + playerStats.accessoryEarthBonus / 100);
             if (monsterStats.weakness == ElementalPower.EARTH) { elementalDamage += incomingDamage * (.25f * GameData.Instance.PowersGained); hitWeakness = true; }
             if (playerStats.mana >= 6) { playerStats.mana -= 6; }
-                else { elementalDamage = 0; }
+            else { elementalDamage = 0; }
         }
-        if (playerStats.currentPower == (int)ElementalPower.FIRE) {
+        if (playerStats.currentPower == (int)ElementalPower.FIRE)
+        {
             if (playerStats.accessoryFireBonus != 0) { elementalCrit = true; }
-            elementalDamage = incomingDamage * (.75f+playerStats.accessoryFireBonus/100);
+            elementalDamage = incomingDamage * (.75f + playerStats.accessoryFireBonus / 100);
             if (monsterStats.weakness == ElementalPower.FIRE) { elementalDamage += incomingDamage * (.25f * GameData.Instance.PowersGained); hitWeakness = true; }
             if (playerStats.mana >= 8) { playerStats.mana -= 8; }
-                else { elementalDamage = 0; }
+            else { elementalDamage = 0; }
         }
-        if (playerStats.currentPower == (int)ElementalPower.AIR) {
+        if (playerStats.currentPower == (int)ElementalPower.AIR)
+        {
             if (playerStats.accessoryAirBonus != 0) { elementalCrit = true; }
-            elementalDamage = incomingDamage * (1.0f+playerStats.accessoryAirBonus/100);
+            elementalDamage = incomingDamage * (1.0f + playerStats.accessoryAirBonus / 100);
             if (monsterStats.weakness == ElementalPower.AIR) { elementalDamage += incomingDamage * (.25f * GameData.Instance.PowersGained); hitWeakness = true; }
             if (playerStats.mana >= 10) { playerStats.mana -= 10; }
-                else { elementalDamage = 0; }
+            else { elementalDamage = 0; }
         }
 
-        if (goodHit) { incomingDamage = (incomingDamage+ monsterStats.defense)*1.20f- monsterStats.defense; }
+        if (goodHit) { incomingDamage = (incomingDamage + monsterStats.defense) * 1.20f - monsterStats.defense; }
 
         float crit = RollCrit(); //should probably have an animation too
 
         incomingDamage *= (1 + crit);
 
-        monsterStats.HP -=  Mathf.RoundToInt(incomingDamage)+ Mathf.RoundToInt(elementalDamage);
+        monsterStats.HP -= Mathf.RoundToInt(incomingDamage) + Mathf.RoundToInt(elementalDamage);
 
-        if (playerStats.accessoryHPVamp > 0) {//same. should have an animation...
-            playerStats.HP += (int)((float) playerStats.MaxHP * (playerStats.accessoryHPVamp / 100f));
+        if (playerStats.accessoryHPVamp > 0)
+        {//same. should have an animation...
+            playerStats.HP += (int)((float)playerStats.MaxHP * (playerStats.accessoryHPVamp / 100f));
             //Note: The vamp items have a multiplier higher then what is shown This is to gausian give them the
             //the correct amount of life steal when dealing with remainders. The change is stat +.2
             if (playerStats.HP > playerStats.MaxHP)
-                { playerStats.HP = playerStats.MaxHP; }
-            }
-        if (playerStats.accessoryMPVamp > 0) {
+            { playerStats.HP = playerStats.MaxHP; }
+        }
+        if (playerStats.accessoryMPVamp > 0)
+        {
             playerStats.mana += (int)((float)playerStats.MaxMana * (playerStats.accessoryMPVamp / 100f));
             if (playerStats.mana > playerStats.MaxMana)
             { playerStats.mana = playerStats.MaxMana; }
@@ -582,9 +594,8 @@ public class Combat : MonoBehaviour
     private bool RollDodge()
     {
         bool dodgeValue = false;
-        int roll = UnityEngine.Random.Range(0,100)+1;
-        //Debug.Log("Dodge rolled: " + roll + " vs dodge stat: " + playerStats.accessoryDodgeBonus);
-        if (roll <= playerStats.accessoryDodgeBonus) { dodgeValue = true ; }
+        int roll = UnityEngine.Random.Range(0, 100) + 1;
+        if (roll <= playerStats.accessoryDodgeBonus) { dodgeValue = true; }
 
         return dodgeValue;
     }
@@ -596,25 +607,28 @@ public class Combat : MonoBehaviour
         else { SoundManager.Instance.PlaySound("Combat/BadBlock", 1f); }
 
         float incomingDamage = monsterStats.attack;
-        if (goodBlock) {
+        if (goodBlock)
+        {
             //incomingDamage *= .9f;
-            incomingDamage -= playerStats.defense*1.2f+1;
+            incomingDamage -= playerStats.defense * 1.2f + 1;
 
         }
-         else incomingDamage -= playerStats.defense;
-        
+        else incomingDamage -= playerStats.defense;
+
         goodBlock = false;
         incomingDamage = Math.Max(incomingDamage, 0);
         bool dodge = RollDodge();
-        if (dodge) {
+        if (dodge)
+        {
             //Debug.Log("Dodged that!");
             incomingDamage = 0;
             //ShouldHaveDodgeEffect
         }
         playerStats.HP -= Mathf.RoundToInt(incomingDamage);
         hitsplat = GameObject.Instantiate(hitsplatTemplate);
-        hitsplat.transform.position = playerSprite.transform.position+(Vector3)playerStats.gettingStruckPointOffset+AttackAnimationManager.Instance.playerHitsplatOffset;
+        hitsplat.transform.position = playerSprite.transform.position + (Vector3)playerStats.gettingStruckPointOffset + AttackAnimationManager.Instance.playerHitsplatOffset;
         hitsplat.GetComponent<Hitsplat>().Init(Mathf.RoundToInt(incomingDamage), 0, !goodBlock, false, false, false, ElementalPower.NULL, dodge);
+        playerStats.HP = Mathf.Max(playerStats.HP, 0);
         CheckCombatOver();
     }
 
