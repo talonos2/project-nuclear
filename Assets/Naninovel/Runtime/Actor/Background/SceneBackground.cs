@@ -41,6 +41,7 @@ namespace Naninovel
             SpriteRenderer = GameObject.AddComponent<TransitionalSpriteRenderer>();
             SpriteRenderer.Pivot = metadata.Pivot;
             SpriteRenderer.PixelsPerUnit = metadata.PixelsPerUnit;
+            SpriteRenderer.Opacity = 0;
 
             SetVisibility(false);
         }

@@ -107,9 +107,9 @@ namespace Naninovel
 
         public async Task FadeToAsync (float opacity, float duration, EasingType easingType = default)
         {
-            if (fadeTweener.IsRunning) fadeTweener.CompleteInstantly();
-            var tween = new FloatTween(Opacity, opacity, duration, value => Opacity = value, false, easingType);
-            await fadeTweener.RunAsync(tween);
+            //if (fadeTweener.IsRunning) fadeTweener.CompleteInstantly();
+            //var tween = new FloatTween(Opacity, opacity, duration, value => Opacity = value, false, easingType);
+            //await fadeTweener.RunAsync(tween);
         }
 
         public async Task FadeOutAsync (float duration) => await FadeToAsync(0, duration);
