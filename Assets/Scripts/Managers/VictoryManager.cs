@@ -50,7 +50,7 @@ public class VictoryManager : MonoBehaviour
                     + GameData.Instance.Derringer + GameData.Instance.Melvardius + GameData.Instance.Todd + GameData.Instance.Devon + GameData.Instance.McDermit;
                 if (victory == 0) GameData.Instance.Worst = 1;
                 if (victory != 10) GameData.Instance.Perfect = 0;
-                saving.autoSave();
+                saving.AutoSave();
 
                 SceneManager.LoadScene("WinScreen");
             }

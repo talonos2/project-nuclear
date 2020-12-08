@@ -238,7 +238,7 @@ public class PauseMenuController : MonoBehaviour
      //   inOtherMenu = true;
         foreach (Button flip in buttons)
             flip.enabled = false;
-        loadSaveController.activateLoad(this, true);
+        loadSaveController.ActivateLoad(this, true);
     }
 
     public void LoadGameButtonClicked()
@@ -251,7 +251,7 @@ public class PauseMenuController : MonoBehaviour
         //loadSaveController.LoadGame(0);
         foreach (Button flip in buttons)
             flip.enabled = false;
-        loadSaveController.activateLoad(this, false);
+        loadSaveController.ActivateLoad(this, false);
 
     }
     public void optionButtonClicked()

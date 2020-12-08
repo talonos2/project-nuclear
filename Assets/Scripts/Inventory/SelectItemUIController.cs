@@ -42,6 +42,9 @@ public class SelectItemUIController : MonoBehaviour
 
     private float delayCounter;
     private float delayReset = .15f;
+    private int topScrollPointer=0;
+    private int bottomScrollPointer=9;
+    private RectTransform itemContainerRectTrans;
 
     CharacterStats newPlayer;
 
@@ -65,14 +68,15 @@ public class SelectItemUIController : MonoBehaviour
         newPlayer.setInitialStats();
         savedStats = GameObject.Find("GameStateData").GetComponent<CharacterStats>();
 
-        weaponUIPrefab.SetItem(savedStats.weapon);
-        armorUIPrefab.SetItem(savedStats.armor);
-        accessoryUIPrefab.SetItem(savedStats.accessory);
+        weaponUIPrefab.SetItem(savedStats.weapon,false);
+        armorUIPrefab.SetItem(savedStats.armor,false);
+        accessoryUIPrefab.SetItem(savedStats.accessory,false);
 
         updateTotalBonuses();
 
         currentEquipCategorySelected = 0;
         currentItemSelected = -1;
+        itemContainerRectTrans = itemContainer.GetComponent<RectTransform>();
 
         currentlyDisplayedItems = new List<ItemHolderUI>();
         populateWeaponList();
@@ -145,7 +149,7 @@ public class SelectItemUIController : MonoBehaviour
         foreach (Weapon wpnObject in GameData.Instance.townWeapons)
         {
             ItemHolderUI listItem = Instantiate<ItemHolderUI>(itemUIPrefab);
-            listItem.GetComponent<ItemHolderUI>().SetItem(wpnObject);
+            listItem.GetComponent<ItemHolderUI>().SetItem(wpnObject,true);
             listItem.gameObject.SetActive(true);
             listItem.transform.SetParent(itemContainer.transform, false);
             currentlyDisplayedItems.Add(listItem);
@@ -168,7 +172,7 @@ public class SelectItemUIController : MonoBehaviour
         foreach (Armor armrObject in GameData.Instance.townArmor)
         {
             ItemHolderUI listItem = Instantiate<ItemHolderUI>(itemUIPrefab);
-            listItem.GetComponent<ItemHolderUI>().SetItem(armrObject);
+            listItem.GetComponent<ItemHolderUI>().SetItem(armrObject,true);
             listItem.gameObject.SetActive(true);
             listItem.transform.SetParent(itemContainer.transform, false);
             currentlyDisplayedItems.Add(listItem);
@@ -198,7 +202,7 @@ public class SelectItemUIController : MonoBehaviour
             emptySet = false;
             ItemHolderUI listItem = Instantiate<ItemHolderUI>(itemUIPrefab);
 
-            listItem.GetComponent<ItemHolderUI>().SetItem(accObject);
+            listItem.GetComponent<ItemHolderUI>().SetItem(accObject,true);
             listItem.gameObject.SetActive(true);
             listItem.transform.SetParent(itemContainer.transform, false);
             currentlyDisplayedItems.Add(listItem);
@@ -456,6 +460,7 @@ public class SelectItemUIController : MonoBehaviour
                 currentItemSelected -= 1;
                 if (currentItemSelected < 0)
                     currentItemSelected = 0;
+                SetScrollUpPositions();
                 showItemSelected();
             }
         }
@@ -472,12 +477,14 @@ public class SelectItemUIController : MonoBehaviour
                         currentEquipCategorySelected = 0;
                     populateItemLists();
                     ShowCurrentlySelectedOption();
+
                 }
                 else if (selectingAnItem)
                 {
                     currentItemSelected -= 1;
                     if (currentItemSelected < 0)
                         currentItemSelected = 0;
+                    SetScrollUpPositions();
                     showItemSelected();
                 }
             }
@@ -504,6 +511,7 @@ public class SelectItemUIController : MonoBehaviour
                 currentItemSelected += 1;
                 if (currentItemSelected >= currentlyDisplayedItems.Count)
                     currentItemSelected -= 1;
+                SetScrollDownPositions();
                 showItemSelected();
             }
         }
@@ -526,6 +534,7 @@ public class SelectItemUIController : MonoBehaviour
                     currentItemSelected += 1;
                     if (currentItemSelected >= currentlyDisplayedItems.Count)
                         currentItemSelected -= 1;
+                    SetScrollDownPositions();
                     showItemSelected();
                 }
             }
@@ -536,6 +545,66 @@ public class SelectItemUIController : MonoBehaviour
         }
 
 
+
+    }
+
+    public void MouseSetEquipType(int equipType)
+    {
+        currentEquipCategorySelected = equipType;
+        currentItemSelected = 0;
+        selectingAnItem = false;
+        populateItemLists();
+        ShowCurrentlySelectedOption();
+    }
+    public void MouseSetEquipmentSelection(float localPositionY) {
+        currentItemSelected = Mathf.RoundToInt((localPositionY*-1 - 17.175f) / 37.35f);
+        selectingAnItem = true;
+        if (currentItemSelected< topScrollPointer)SetScrollUpPositions();
+        if (currentItemSelected > bottomScrollPointer) SetScrollDownPositions();
+        showItemSelected();
+        //do math based on mouse position and pane position to find selected item
+    }
+    public void ChangeScrollPointerLocations()
+    {
+
+        topScrollPointer = Mathf.RoundToInt((itemContainerRectTrans.localPosition.y - 185.95f) / 37.35f);
+        bottomScrollPointer = topScrollPointer + 9;
+        //Debug.Log("TOP POINTER LOCATION UPDATED " + topScrollPointer);
+    }
+    private void SetScrollDownPositions()
+    {
+        
+        if (currentItemSelected > bottomScrollPointer)
+        {
+            //bottomScrollPointer = currentItemSelected;
+            //topScrollPointer=currentItemSelected-9;
+            itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f + 37.35f * (currentItemSelected - 9), itemContainerRectTrans.localPosition.z);
+
+        }
+        else if (currentItemSelected < topScrollPointer) {
+            if (currentItemSelected < 9) { itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f, itemContainerRectTrans.localPosition.z); }
+            else { itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f + 37.35f * (currentItemSelected - 9), itemContainerRectTrans.localPosition.z); }
+            
+        }
+
+        //if (185.95f + 37.35f * (currentItemSelected - 9) <)
+
+    }
+
+    private void SetScrollUpPositions()
+    {
+
+        if (currentItemSelected < topScrollPointer) {
+            //bottomScrollPointer = currentItemSelected+9;
+            //topScrollPointer =currentItemSelected;
+            itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f + 37.35f * currentItemSelected, itemContainerRectTrans.localPosition.z);
+
+        }
+        else if (currentItemSelected > bottomScrollPointer) {
+            if (currentItemSelected + 9 > currentlyDisplayedItems.Count) { itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f + 37.35f * currentItemSelected-9, itemContainerRectTrans.localPosition.z); }
+            else { itemContainerRectTrans.localPosition = new Vector3(itemContainerRectTrans.localPosition.x, 185.95f + 37.35f * currentItemSelected, itemContainerRectTrans.localPosition.z); }
+            
+        }
 
     }
 
@@ -553,6 +622,10 @@ public class SelectItemUIController : MonoBehaviour
         {
             populateAccessoryList();
         }
+        bottomScrollPointer=9;
+        topScrollPointer=0;
+        itemContainerRectTrans.localPosition= new Vector3(itemContainerRectTrans.localPosition.x, 185.95f, itemContainerRectTrans.localPosition.z);
+
     }
 
     private void SwapArmor()
@@ -582,7 +655,7 @@ public class SelectItemUIController : MonoBehaviour
         InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
         savedStats.setArmor((Armor)itemToSwap);
         GameData.Instance.townArmor.Remove((Armor)itemToSwap);
-        armorUIPrefab.SetItem(itemToSwap);
+        armorUIPrefab.SetItem(itemToSwap,false);
         showItemSelected();
         ShowCurrentlySelectedOption();
         updateTotalBonuses();
@@ -620,7 +693,7 @@ public class SelectItemUIController : MonoBehaviour
         savedStats.setMaxStats();
         savedStats.setFullHPMP();
         GameData.Instance.townAccessories.Remove((Accessory)itemToSwap);
-        accessoryUIPrefab.SetItem(itemToSwap);
+        accessoryUIPrefab.SetItem(itemToSwap,false);
         populateItemLists();
         selectingAnItem = false;
         showItemSelected();
@@ -652,7 +725,7 @@ public class SelectItemUIController : MonoBehaviour
         InventoryItem itemToSwap = currentlyDisplayedItems[currentItemSelected].GetComponent<ItemHolderUI>().GetItem();
         savedStats.setWeapon((Weapon)itemToSwap);
         GameData.Instance.townWeapons.Remove((Weapon)itemToSwap);
-        weaponUIPrefab.SetItem(itemToSwap);
+        weaponUIPrefab.SetItem(itemToSwap,false);
         showItemSelected();
         ShowCurrentlySelectedOption();
         updateTotalBonuses();

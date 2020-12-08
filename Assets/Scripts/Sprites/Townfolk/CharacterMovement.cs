@@ -53,8 +53,10 @@ public class CharacterMovement : SpriteMovement
         //If in the process of moving, keep moving and do nothing else
         if (currentlyMoving)
         {
-            if (combatDetected) {
-                if (!EnemyToFarToFight(enemyToFightHolder)) {
+            if (combatDetected)
+            {
+                if (!EnemyToFarToFight(enemyToFightHolder))
+                {
                     Combat.InitiateFight(this.gameObject, enemyToFightHolder);
                     combatDetected = false;
                     enemyToFightHolder = null;
@@ -275,7 +277,7 @@ public class CharacterMovement : SpriteMovement
             {
                 materialNameStart = groundMaterialGrid.grid[characterLocation.x, characterLocation.y].GetName();
             }
-           // Debug.Log("Footstep");
+            // Debug.Log("Footstep");
             SoundManager.Instance.PlaySound("Footsteps/" + materialNameStart + stepSound, 1f);
             previousStepSound = stepSound;
         }
@@ -328,8 +330,10 @@ public class CharacterMovement : SpriteMovement
     internal void AttemptRest()
     {
         if (GameState.isInBattle) return;
-        if (playerStats.mana < playerStats.MaxMana || playerStats.HP < playerStats.MaxHP) {
-            if (GameData.Instance.addHealToTimer()) {
+        if (playerStats.mana < playerStats.MaxMana || playerStats.HP < playerStats.MaxHP)
+        {
+            if (GameData.Instance.addHealToTimer())
+            {
                 SoundManager.Instance.PlaySound("Healing", 1);
                 playerStats.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(2);
                 playerStats.mana += (int)(playerStats.MaxMana * .125f);
@@ -352,7 +356,8 @@ public class CharacterMovement : SpriteMovement
             characterLocation = characterNextLocation;
             continueDashing = true;
         }
-        else if (attemptToPushMonster(characterNextLocation.x, characterNextLocation.y)) {
+        else if (attemptToPushMonster(characterNextLocation.x, characterNextLocation.y))
+        {
             UpdateNewEntityGridLocation();
             RemoveOldEntityGridLocation();
             characterLocation = characterNextLocation;
@@ -365,15 +370,17 @@ public class CharacterMovement : SpriteMovement
     {
         bool MoveableLocation = false;
         GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[LocX, LocY];
-        if (entityInLocation == null) {
+        if (entityInLocation == null)
+        {
             return false;
-        }           
+        }
         else if (entityInLocation.GetComponent<EntityData>().isAMonster)
         {
-            if (entityInLocation.GetComponent<MonsterMovement>().AttemptPushMonster(this.facedDirection)){
+            if (entityInLocation.GetComponent<MonsterMovement>().AttemptPushMonster(this.facedDirection))
+            {
                 MoveableLocation = true;
             }
-            
+
         }
         return MoveableLocation;
     }
@@ -382,7 +389,7 @@ public class CharacterMovement : SpriteMovement
     {
         playerStats.AttackCrystalBuff = -1000;
         playerStats.defenseCrystalBuff = 1000;
-        playerStats.PushCharacterData();        
+        playerStats.PushCharacterData();
     }
 
     internal void PowerUpCheat()
@@ -402,7 +409,7 @@ public class CharacterMovement : SpriteMovement
             if (windJumpLocation.GetComponent<DoodadData>().isWindShifter)
             {
                 WindJumpController wind = windJumpLocation.GetComponent<WindJumpController>();
-                SoundManager.Instance.PlaySound("AirGust",1);
+                SoundManager.Instance.PlaySound("AirGust", 1);
                 ForceJump(wind.jumpDestOffset, wind.timeItTakesToJump, wind.jumpHeight);
             }
         }
@@ -432,19 +439,21 @@ public class CharacterMovement : SpriteMovement
     }
 
     //Key command received from CharacterInputController script
-    public void MoveKeyReceived(DirectionMoved inputDirection) {
+    public void MoveKeyReceived(DirectionMoved inputDirection)
+    {
 
         if (GameState.isInBattle || GameState.fullPause)
         {
             return;
         }
 
-        if (waitTimer >= 0 && inputDirection != (int)DirectionMoved.NONE) {
+        if (waitTimer >= 0 && inputDirection != (int)DirectionMoved.NONE)
+        {
             facedDirection = inputDirection;
             SetLookDirection();
         }
 
-        if (!currentlyMoving && !jumping && !GameData.Instance.dashing && !jumpQueued&&(timeLeftInForcedJump<=0))
+        if (!currentlyMoving && !jumping && !GameData.Instance.dashing && !jumpQueued && (timeLeftInForcedJump <= 0))
         {
             if (inputDirection == (int)DirectionMoved.NONE)
             {
@@ -455,20 +464,20 @@ public class CharacterMovement : SpriteMovement
             facedDirection = inputDirection;
 
             SetNextLocation(inputDirection);
-            GameObject EnemyToFight=null;
+            GameObject EnemyToFight = null;
             if (IsPlayerMoveLocationTerrainPassable(characterNextLocation.x, characterNextLocation.y))
             {
                 //if it is possible, check for a monster attack
                 //Needs to be refractored a bit
                 EnemyToFight = IsThereAMonster();
-                if (EnemyToFight!=null)
+                if (EnemyToFight != null)
                 {
                     if (EnemyToFarToFight(EnemyToFight))
                     {
                         enemyToFightHolder = EnemyToFight;
                         combatDetected = true;
                     }
-                    else 
+                    else
                     {
                         Combat.InitiateFight(this.gameObject, EnemyToFight);
                     }
@@ -512,7 +521,8 @@ public class CharacterMovement : SpriteMovement
         {
             return;
         }
-        if (playerStats.currentPower != (int)ElementalPower.EARTH && GameData.Instance.stealthed) {
+        if (playerStats.currentPower != (int)ElementalPower.EARTH && GameData.Instance.stealthed)
+        {
             SoundManager.Instance.PlaySound("StealthOff", 1f);
             GameData.Instance.stealthed = false;
             tempMovementSpeed = MoveSpeed;
@@ -605,9 +615,10 @@ public class CharacterMovement : SpriteMovement
                 break;
 
         }
-        if (jumpingTemp == true) {
+        if (jumpingTemp == true)
+        {
             playerStats.mana -= 10;
-            SoundManager.Instance.PlaySound("Jump",1);
+            SoundManager.Instance.PlaySound("Jump", 1);
         }
         return jumpingTemp;
     }
@@ -620,18 +631,22 @@ public class CharacterMovement : SpriteMovement
             jumpable = false;
         }
         GameObject entityInLocation = MapGrid.GetComponent<EntityGrid>().grid[characterLocationx, characterLocationy];
-        if (entityInLocation != null )
+        if (entityInLocation != null)
         {
-            if (entityInLocation.GetComponent<EntityData>().isItem) {
+            if (entityInLocation.GetComponent<EntityData>().isItem)
+            {
                 jumpable = false;
             }
-            if (entityInLocation.GetComponent<EntityData>().isLargeMonster) {
+            if (entityInLocation.GetComponent<EntityData>().isLargeMonster)
+            {
                 jumpable = false;
-            }            
+            }
         }
-        GameObject doodadObject= MapGrid.GetComponent<DoodadGrid>().grid[characterLocationx, characterLocationy];
-        if (doodadObject != null) {
-            if (doodadObject.GetComponent<DoodadData>().isTallBlockableTerrain) {
+        GameObject doodadObject = MapGrid.GetComponent<DoodadGrid>().grid[characterLocationx, characterLocationy];
+        if (doodadObject != null)
+        {
+            if (doodadObject.GetComponent<DoodadData>().isTallBlockableTerrain)
+            {
                 jumpable = false;
             }
         }
@@ -653,7 +668,7 @@ public class CharacterMovement : SpriteMovement
             {
                 playerStats.mana -= 6;
                 tempMovementSpeed = MoveSpeed * hasteSpeed;
-                tempFramesPerSecond = framesPerSecond*hasteSpeed;
+                tempFramesPerSecond = framesPerSecond * hasteSpeed;
                 TurnHasteOn();
                 if (GameData.Instance.stealthed)
                 {
@@ -669,7 +684,7 @@ public class CharacterMovement : SpriteMovement
             }
         }
 
-       
+
     }
 
     public void TurnHasteOn()
@@ -677,7 +692,7 @@ public class CharacterMovement : SpriteMovement
         GameData.Instance.hasted = true;
         tempMovementSpeed = MoveSpeed * hasteSpeed;
         tempFramesPerSecond = framesPerSecond * hasteSpeed;
-        if (smoke==null) smoke = sRender.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
+        if (smoke == null) smoke = sRender.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
         smoke.Play();
         SoundManager.Instance.PlaySound("HasteOn", 1f);
         smoke.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
@@ -717,7 +732,7 @@ public class CharacterMovement : SpriteMovement
             {
                 playerStats.mana -= 2;
                 tempMovementSpeed = MoveSpeed * stealthspeed;
-                tempFramesPerSecond = framesPerSecond*stealthspeed;
+                tempFramesPerSecond = framesPerSecond * stealthspeed;
                 SoundManager.Instance.PlaySound("StealthOn", 1f);
                 GameData.Instance.stealthed = true;
                 TurnHasteOff();
@@ -735,7 +750,7 @@ public class CharacterMovement : SpriteMovement
     {
         if (playerStats.mana >= 5)
         {
-            SoundManager.Instance.PlaySound("ShieldDash",1);
+            SoundManager.Instance.PlaySound("ShieldDash", 1);
             sRender.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             playerStats.mana -= 5;
             GameData.Instance.dashing = true;
@@ -752,10 +767,11 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerToggleLeftKeyReceived()
     {
-        if (playerStats.powersGained == 0||GameState.fullPause) return;
+        if (playerStats.powersGained == 0 || GameState.fullPause) return;
         SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower -= 1;
-        if (playerStats.currentPower < 0) {
+        if (playerStats.currentPower < 0)
+        {
             playerStats.currentPower = playerStats.powersGained;
         }
         if (GameState.isInBattle)
@@ -780,25 +796,28 @@ public class CharacterMovement : SpriteMovement
         }
     }
 
-    public void ActivateKeyReceived() {
+    public void ActivateKeyReceived()
+    {
         if (GameState.isInBattle || GameState.fullPause)
         {
             return;
         }
         GameObject entityToCheck = null;
-        if (!currentlyMoving && !jumping &&!GameData.Instance.dashing) {
-            switch (facedDirection) {
+        if (!currentlyMoving && !jumping && !GameData.Instance.dashing)
+        {
+            switch (facedDirection)
+            {
                 case DirectionMoved.UP:
-                    entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y+1];
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y + 1];
                     break;
                 case DirectionMoved.DOWN:
                     entityToCheck = mapEntityGrid.grid[characterLocation.x, characterLocation.y - 1];
                     break;
                 case DirectionMoved.LEFT:
-                    entityToCheck = mapEntityGrid.grid[characterLocation.x-1, characterLocation.y];
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x - 1, characterLocation.y];
                     break;
                 case DirectionMoved.RIGHT:
-                    entityToCheck = mapEntityGrid.grid[characterLocation.x+1, characterLocation.y];
+                    entityToCheck = mapEntityGrid.grid[characterLocation.x + 1, characterLocation.y];
                     break;
 
             }
@@ -814,7 +833,8 @@ public class CharacterMovement : SpriteMovement
         GameObject exitLocation = MapGrid.GetComponent<DoodadGrid>().grid[characterLocation.x, characterLocation.y];
         if (exitLocation != null)
         {
-            if (exitLocation.GetComponent<DoodadData>().isExit) {
+            if (exitLocation.GetComponent<DoodadData>().isExit)
+            {
                 playerStats.PushCharacterData();
                 exitLocation.GetComponent<ExitController>().TransitionMap();
                 return true;
@@ -841,7 +861,7 @@ public class CharacterMovement : SpriteMovement
 
     private bool characterCloseEnough(GameObject exitLocation, GameObject character)
     {
-        float xdistance=exitLocation.transform.position.x-character.transform.position.x;
+        float xdistance = exitLocation.transform.position.x - character.transform.position.x;
         float ydistance = exitLocation.transform.position.y - character.transform.position.y;
         float answer = (float)Math.Sqrt(xdistance * xdistance + ydistance * ydistance);
         if (answer > .5) return false;
@@ -856,7 +876,7 @@ public class CharacterMovement : SpriteMovement
         if (gabLocation != null)
         {
             //Debug.Log("Gab here: " + gabLocation);
-            if (gabLocation.GetComponent<GabTriggerer>()!= null)
+            if (gabLocation.GetComponent<GabTriggerer>() != null)
             {
                 gabLocation.GetComponent<GabTriggerer>().TriggerGab();
             }
@@ -867,26 +887,27 @@ public class CharacterMovement : SpriteMovement
     private int GetInputDirection()
     {
 
-        int NextInputDirection=-1;
+        int NextInputDirection = -1;
 
-            if (Input.GetAxisRaw("Horizontal") > .1)
-            {
-                NextInputDirection = (int)DirectionMoved.RIGHT;             
-            }
-            if (Input.GetAxisRaw("Horizontal") < -.1)
-            {
-                NextInputDirection = (int)DirectionMoved.LEFT;
-            }
-            if (Input.GetAxisRaw("Vertical") > .1)
-            {
-                NextInputDirection = (int)DirectionMoved.UP;
-            }
-            if (Input.GetAxisRaw("Vertical") < -.1)
-            {
-                NextInputDirection = (int)DirectionMoved.DOWN;
-            }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.RIGHT))
+        {
+            NextInputDirection = (int)DirectionMoved.RIGHT;
+        }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.LEFT))
+        {
+            NextInputDirection = (int)DirectionMoved.LEFT;
+        }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.UP))
+        {
+            NextInputDirection = (int)DirectionMoved.UP;
+        }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.DOWN))
+        {
+            NextInputDirection = (int)DirectionMoved.DOWN;
+        }
 
-        if (NextInputDirection == -1) {
+        if (NextInputDirection == -1)
+        {
             NextInputDirection = (int)DirectionMoved.NONE;
         }
         return NextInputDirection;
@@ -917,8 +938,8 @@ public class CharacterMovement : SpriteMovement
             return true;
         }
 
-        jumpPivot.transform.localPosition = new Vector3(0,JUMP_HEIGHT*(-movedSoFar * movedSoFar + 2* movedSoFar), 0);
-        transform.Translate(dir.GetDirectionVector()*DistanceToMove);
+        jumpPivot.transform.localPosition = new Vector3(0, JUMP_HEIGHT * (-movedSoFar * movedSoFar + 2 * movedSoFar), 0);
+        transform.Translate(dir.GetDirectionVector() * DistanceToMove);
         GameData.Instance.jumping = true;
         return false;
     }

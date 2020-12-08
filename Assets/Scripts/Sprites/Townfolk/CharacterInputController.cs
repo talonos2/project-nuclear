@@ -14,7 +14,7 @@ public class CharacterInputController : MonoBehaviour
     void Start()
     {
         characterController = this.gameObject.GetComponent<CharacterMovement>();
-        characterEntityData=this.gameObject.GetComponent<EntityData>();
+        characterEntityData = this.gameObject.GetComponent<EntityData>();
 
 
         if (characterEntityData.isMainCharacter) moveable = true;
@@ -34,34 +34,43 @@ public class CharacterInputController : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Submit")){
-                characterController.ActivateKeyReceived();
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
+        {
+            characterController.ActivateKeyReceived();
 
         }
-        if (Input.GetButtonDown("PowerToggleLeft")) {
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ROTATE_LEFT))
+        {
             characterController.PowerToggleLeftKeyReceived();
         }
-        if (Input.GetButtonDown("PowerToggleRight"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ROTATE_RIGHT))
         {
             characterController.PowerToggleRightKeyReceived();
         }
-        if (Input.GetButtonDown("PowerActivate")) {
+        if (FWInputManager.Instance.GetKeyDown(InputAction.USE_POWER))
+        {
             characterController.PowerActivateKeyReceived();
         }
-        if (Input.GetButtonDown("ToggleUICamera")) {
-            if (GameData.Instance.UI_On) {
+        if (Input.GetButtonDown("ToggleUICamera"))
+        {
+            if (GameData.Instance.UI_On)
+            {
                 GameData.Instance.ManualUIToggleOff = true;
-                characterController.uiController.turnOffUi(); }
-            else {
+                characterController.uiController.turnOffUi();
+            }
+            else
+            {
                 GameData.Instance.ManualUIToggleOff = false;
-                characterController.uiController.turnOnUi(); }
+                characterController.uiController.turnOnUi();
+            }
         }
 #if UNITY_EDITOR
         if (Input.GetButtonDown("MurderPlayer"))
         {
             characterController.MurderPlayer();
         }
-        if (Input.GetButtonDown("PowerUp")) {
+        if (Input.GetButtonDown("PowerUp"))
+        {
             characterController.PowerUpCheat();
         }
         if (Input.GetButtonDown("PowerDown"))
@@ -69,7 +78,7 @@ public class CharacterInputController : MonoBehaviour
             characterController.PowerDownCheat();
         }
 #endif
-        if (Input.GetButtonDown("Rest"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.REST))
         {
             characterController.AttemptRest();
         }
@@ -84,19 +93,19 @@ public class CharacterInputController : MonoBehaviour
 
         DirectionMoved NextInputDirection = DirectionMoved.NONE;
 
-        if (Input.GetAxisRaw("Horizontal") > .1)
+        if (FWInputManager.Instance.GetKey(InputAction.RIGHT))
         {
             NextInputDirection = DirectionMoved.RIGHT;
         }
-        if (Input.GetAxisRaw("Horizontal") < -.1)
+        if (FWInputManager.Instance.GetKey(InputAction.LEFT))
         {
             NextInputDirection = DirectionMoved.LEFT;
         }
-        if (Input.GetAxisRaw("Vertical") > .1)
+        if (FWInputManager.Instance.GetKey(InputAction.UP))
         {
             NextInputDirection = DirectionMoved.UP;
         }
-        if (Input.GetAxisRaw("Vertical") < -.1)
+        if (FWInputManager.Instance.GetKey(InputAction.DOWN))
         {
             NextInputDirection = DirectionMoved.DOWN;
         }

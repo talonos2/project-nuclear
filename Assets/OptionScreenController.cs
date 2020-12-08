@@ -33,12 +33,12 @@ public class OptionScreenController : MonoBehaviour
         sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (SoundManager.Instance.soundEffectVolume * 380));
         //sliders[2].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (printerMngr.PrintSpeed * 380));
 
-//        Debug.Log("Initializing to "+MusicManager.instance.GetMusicVolume() + ", " + SoundManager.Instance.soundEffectVolume + ", " + printerMngr.PrintSpeed);
+        //        Debug.Log("Initializing to "+MusicManager.instance.GetMusicVolume() + ", " + SoundManager.Instance.soundEffectVolume + ", " + printerMngr.PrintSpeed);
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
         {
             //Debug.Log("Hit submit");
             switch (currentMenuOptionSelected)
@@ -60,28 +60,29 @@ public class OptionScreenController : MonoBehaviour
         }
 
         //Selecting Up
-        if (Input.GetButtonDown("SelectUp"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_UP))
         {
             RefreshSelectedOption(PrevMenuOption());
         }
 
         //SelectingDownOption
-        if (Input.GetButtonDown("SelectDown"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_DOWN))
         {
             RefreshSelectedOption(NextMenuOption());
         }
 
-        if (Input.GetButtonDown("SelectLeft"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_LEFT))
         {
             ChangeSelected(-.1f);
         }
 
-        if (Input.GetButtonDown("SelectRight"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.MENU_RIGHT))
         {
             ChangeSelected(.1f);
         }
 
-        if (Input.GetButtonDown("Cancel")) {
+        if (FWInputManager.Instance.GetKeyDown(InputAction.GO_BACK))
+        {
             CloseOptionsMenu();
         }
     }
@@ -94,7 +95,7 @@ public class OptionScreenController : MonoBehaviour
         {
             case 1:
                 oldSliderValue = MusicManager.instance.GetMusicVolume();
-                newSliderValue = Mathf.Clamp(oldSliderValue+amount, .001f, 1f);
+                newSliderValue = Mathf.Clamp(oldSliderValue + amount, .001f, 1f);
                 MusicManager.instance.ChangeMusicVolume(newSliderValue);
                 sliders[0].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (MusicManager.instance.GetMusicVolume() * 380));
                 break;
@@ -116,7 +117,7 @@ public class OptionScreenController : MonoBehaviour
     public void CloseOptionsMenu()
     {
 
-       // pauseMenuController.OptionsReturn();
+        // pauseMenuController.OptionsReturn();
         SceneManager.UnloadSceneAsync("OptionsScreen");
     }
 
@@ -138,7 +139,7 @@ public class OptionScreenController : MonoBehaviour
         }
         currentMenuOptionSelected = menuOptionSelected;
 
-        selectionMarker.GetComponent<RectTransform>().localPosition =  new Vector3(-190, optionsImages[menuOptionSelected].transform.localPosition.y, 0);
+        selectionMarker.GetComponent<RectTransform>().localPosition = new Vector3(-190, optionsImages[menuOptionSelected].transform.localPosition.y, 0);
 
         for (int x = 0; x < optionsImages.Length; x++)
         {
@@ -172,7 +173,7 @@ public class OptionScreenController : MonoBehaviour
 
         float newSliderValue = Mathf.Clamp((currentPos.x - 60) / 190, .001f, 1f);
 
-        sliders[boundSlider].GetComponent<RectTransform>().localPosition = new Vector2(0, 190-(newSliderValue * 380));
+        sliders[boundSlider].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (newSliderValue * 380));
 
         switch (boundSlider)
         {

@@ -97,7 +97,6 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         showing = true;
         cursorInside = true;
-        Debug.Log("Attemting to show tooltip.");
 
         // Update the text for both layers
         tooltipController.SetCustomStyledText(infoLeft, simpleTooltipStyle, STController.TextAlign.Left);

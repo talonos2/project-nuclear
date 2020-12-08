@@ -11,6 +11,7 @@ public class MusicLoop : MonoBehaviour
     public float additionalBalance = 1.00f;
 
     internal AudioSource audioSource;
+    internal AudioSource pleaseSyncWith;
 
     public void Start()
     {
@@ -36,5 +37,9 @@ public class MusicLoop : MonoBehaviour
         audioSource.loop = true;
         audioSource.clip = loop;
         audioSource.Play();
+        if (pleaseSyncWith != null)
+        {
+            audioSource.time = pleaseSyncWith.time;
+        }
     }
 }

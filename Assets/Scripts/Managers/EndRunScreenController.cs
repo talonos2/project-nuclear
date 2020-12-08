@@ -73,7 +73,7 @@ public class EndRunScreenController : MonoBehaviour
         for (int x = GameData.Instance.itemsFoundThisRun.Count-1; x >= 0; x--)
         {
             ItemHolderUI newItemHolder = GameObject.Instantiate(templateToCopy);
-            newItemHolder.SetItem(GameData.Instance.itemsFoundThisRun[x]);
+            newItemHolder.SetItem(GameData.Instance.itemsFoundThisRun[x], false);
             newItemHolder.transform.SetParent(content);
             newItemHolder.GetComponent<RectTransform>().localPosition = new Vector3(0, y++ * 25);
             newItemHolder.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
@@ -108,7 +108,7 @@ public class EndRunScreenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
         {
             EndRunAndLoadTown();
         }
