@@ -2749,19 +2749,19 @@
 
 		Wilson: Then... then there are the people I don't even have to replace.
 
-		@if !GetMcDermit && !GetNorma && !GetSara
+		@if !GetMcDermit() && !GetNorma() && !GetSara()
 			Wilson: The town will hardly notice if we're missing a guard, or a shepard, or a maid.
-		@elseif !GetMcDermit && !GetSara
+		@elseif !GetMcDermit() && !GetSara()
 			Wilson: The town will hardly notice if we're missing a guard, or a maid.
-		@elseif !GetNorma && !GetSara
+		@elseif !GetNorma() && !GetSara()
 			Wilson: The town will hardly notice if we're missing a shepard, or a maid.
-		@elseif !GetMcDermit && !GetNorma
+		@elseif !GetMcDermit() && !GetNorma()
 			Wilson: The town will hardly notice if we're missing a guard, or a shepard.
-		@elseif !GetSara
+		@elseif !GetSara()
 			Wilson: The town will hardly notice if we're missing a maid.
-		@elseif !GetNorma
+		@elseif !GetNorma()
 			Wilson: The town will hardly notice if we're missing a shepard.
-		@elseif !GetMcDermit
+		@elseif !GetMcDermit()
 			Wilson: The town will hardly notice if we're missing a guard.
 		@endif
 
