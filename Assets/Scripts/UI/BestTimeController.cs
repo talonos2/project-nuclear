@@ -47,14 +47,6 @@ public class BestTimeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int x = 0; x < 20; x++)
-        {
-            if (GameData.Instance.bestTimes[x] == 0)
-            {
-                GameData.Instance.bestTimes[x] = Mathf.Infinity;
-            }
-        }
-
         bestTimeText.text = "Mouse over lines for more info.";
         bestTimeText.color = new Color(1, 1, 1, 0);
         //Fill the thing with debug data if none exists. This is TEST CODE:
