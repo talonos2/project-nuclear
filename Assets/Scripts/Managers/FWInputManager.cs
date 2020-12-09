@@ -19,7 +19,7 @@ public class FWInputManager: Singleton<FWInputManager>
 
     public void SetToArrowKeys()
     {
-        Debug.Log("SneakyKeybind to Arrows!");
+        //Debug.Log("SneakyKeybind to Arrows!");
         keyBindings = new Dictionary<InputAction, KeyCode[]>();
         keyBindings.Add(InputAction.LEFT, new KeyCode[] { KeyCode.LeftArrow });
         keyBindings.Add(InputAction.RIGHT, new KeyCode[] { KeyCode.RightArrow });
@@ -39,7 +39,7 @@ public class FWInputManager: Singleton<FWInputManager>
 
     public void SetToWASD()
     {
-        Debug.Log("SneakyKeybind to WASD!");
+        //Debug.Log("SneakyKeybind to WASD!");
         keyBindings = new Dictionary<InputAction, KeyCode[]>();
         keyBindings.Add(InputAction.LEFT, new KeyCode[] { KeyCode.A });
         keyBindings.Add(InputAction.RIGHT, new KeyCode[] { KeyCode.D });

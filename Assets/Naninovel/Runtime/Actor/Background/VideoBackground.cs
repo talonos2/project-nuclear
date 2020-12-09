@@ -41,6 +41,7 @@ namespace Naninovel
                 localeMngr, $"{metadata.LoaderConfiguration.PathPrefix}/{id}");
 
             SpriteRenderer = GameObject.AddComponent<TransitionalSpriteRenderer>();
+            SpriteRenderer.Opacity = 0;
             SpriteRenderer.Pivot = metadata.Pivot;
             SpriteRenderer.PixelsPerUnit = metadata.PixelsPerUnit;
 

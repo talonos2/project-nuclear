@@ -11,7 +11,7 @@ public class ZombieController_Maldarvius : Enemy
         {
             return;
         }
-        if (GameData.Instance.Melvardius == 0 || GameData.Instance.bestTimes[12] == Mathf.Infinity || GameData.Instance.RunNumber <= 7)
+        if (GameData.Instance.Melvardius == 0 || GameData.Instance.bestTimes[12] > 600 || GameData.Instance.RunNumber <= 7)
         {
             Destroy(this.gameObject);
         }

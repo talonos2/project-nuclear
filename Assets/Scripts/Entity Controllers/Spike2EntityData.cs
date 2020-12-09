@@ -21,6 +21,7 @@ public class Spike2EntityData : SpikeController
             timeSinceLastFrame = 0;
             if (frameNumber == totalFrames - 1) { isAnimating = false;
                 frameNumber = 0;
+                if (!animateRise) this.sRender.material.SetInt("_HasEmissive", 0);
             }
         }
     }

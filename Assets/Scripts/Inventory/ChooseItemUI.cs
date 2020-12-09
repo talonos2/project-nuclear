@@ -304,8 +304,10 @@ public class ChooseItemUI : MonoBehaviour
         if (i)
         {
             GameData.Instance.itemsFoundThisRun.Add(i);
-            if (playerData.weapon.name != "Knife")
+            if (i.name != "Knife") {
                 GameData.Instance.townWeapons.Add(i);
+                
+            }
             if (i.Rare) sendGabToTownMessage("<sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>");
             else sendGabToTownMessage("<color=white><sprite=0> " + i.gameObject.name + " sent to town.</color>");
         }
@@ -319,11 +321,13 @@ public class ChooseItemUI : MonoBehaviour
         if (i)
         {
             GameData.Instance.itemsFoundThisRun.Add(i);
-            if (playerData.armor.name != "Warm Jacket")
+            if (i.name != "Warm Jacket") {
                 GameData.Instance.townArmor.Add(i);
+                
+            }
             if (i.Rare) sendGabToTownMessage("<sprite=1> " + i.gameObject.name + " <color=white>sent to town.</color>");
             else sendGabToTownMessage("<color=white><sprite=1> " + i.gameObject.name + " sent to town.</color>");
-            Debug.Log("r");
+
         }
         CloseItemPickUI();
     }
@@ -349,8 +353,7 @@ public class ChooseItemUI : MonoBehaviour
         if (i)
         {
             GameData.Instance.itemsFoundThisRun.Add(i);
-            if (playerData.weapon.name != "Knife")
-                GameData.Instance.townWeapons.Add(i);
+                
             if (i.Rare) sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped.</color> <sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>", duration: 5f);
             else sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped. <sprite=0> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
         }
@@ -362,8 +365,6 @@ public class ChooseItemUI : MonoBehaviour
         if (i)
         {
             GameData.Instance.itemsFoundThisRun.Add(i);
-            if (playerData.armor.name != "Warm Jacket")
-                GameData.Instance.townArmor.Add(i);
             if (i.Rare) sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped.</color> <sprite=1> " + i.gameObject.name + " <color=white>sent to town.</color>", duration: 5f);
             else sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped. <sprite=1> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
             Debug.Log("r");
