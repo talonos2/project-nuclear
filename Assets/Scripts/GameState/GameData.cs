@@ -60,7 +60,10 @@ public class GameData : Singleton<GameData>
 
     public List<InventoryItem> itemsFoundThisRun;
 
-    public float[] bestTimes = new float[20];
+    public float[] bestTimes = new float[] {Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity };
     public float[] timesThisRun = new float[20];
 
     public string killer = "time";
