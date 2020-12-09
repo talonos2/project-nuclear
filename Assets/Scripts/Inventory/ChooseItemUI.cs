@@ -306,10 +306,10 @@ public class ChooseItemUI : MonoBehaviour
             GameData.Instance.itemsFoundThisRun.Add(i);
             if (i.name != "Knife") {
                 GameData.Instance.townWeapons.Add(i);
-                if (i.Rare) sendGabToTownMessage("<sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>");
-                else sendGabToTownMessage("<color=white><sprite=0> " + i.gameObject.name + " sent to town.</color>");
+                
             }
-
+            if (i.Rare) sendGabToTownMessage("<sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>");
+            else sendGabToTownMessage("<color=white><sprite=0> " + i.gameObject.name + " sent to town.</color>");
         }
         CloseItemPickUI();
     }
@@ -323,10 +323,10 @@ public class ChooseItemUI : MonoBehaviour
             GameData.Instance.itemsFoundThisRun.Add(i);
             if (i.name != "Warm Jacket") {
                 GameData.Instance.townArmor.Add(i);
-                if (i.Rare) sendGabToTownMessage("<sprite=1> " + i.gameObject.name + " <color=white>sent to town.</color>");
-                else sendGabToTownMessage("<color=white><sprite=1> " + i.gameObject.name + " sent to town.</color>");
-            }
                 
+            }
+            if (i.Rare) sendGabToTownMessage("<sprite=1> " + i.gameObject.name + " <color=white>sent to town.</color>");
+            else sendGabToTownMessage("<color=white><sprite=1> " + i.gameObject.name + " sent to town.</color>");
 
         }
         CloseItemPickUI();
