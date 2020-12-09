@@ -158,6 +158,7 @@ public class ChooseItemUI : MonoBehaviour
         this.rolledItem = rolledItem;
         GameState.isInBattle = true;
         pickingItem = true;
+        GameState.pickingItem = true;
         chooseItemUiCanvas.enabled = true;
         SelectButton(1);
         SetItemUI();
@@ -296,6 +297,7 @@ public class ChooseItemUI : MonoBehaviour
         SelectButton(1);
         chooseItemUiCanvas.enabled = false;
         GameState.isInBattle = false;
+        GameState.pickingItem = false;
         pickingItem = false;
     }
 
