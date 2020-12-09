@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapMusic: 1
   combatMusic: -1
+  alwaysOn: 0
 --- !u!4 &24224242
 Transform:
   m_ObjectHideFlags: 0
@@ -277,11 +278,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passabilityMap: {fileID: 4900000, guid: 46f3cd9064d183642938854062f2b933, type: 3}
-  width: 15
-  height: 15
-  alternatePathabilitySetup: 0
-  altWidth: 0
-  altHeight: 0
+  width: 30
+  height: 19
+  alternatePathabilitySetup: 1
+  altWidth: 15
+  altHeight: 15
 --- !u!4 &326564849
 Transform:
   m_ObjectHideFlags: 0
@@ -1917,10 +1918,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83360528e91a02f43816a8a669578d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowTexture: {fileID: 2800000, guid: b2ad6758e1ac0bf48a27cd527cafb838, type: 3}
-  glowTexture: {fileID: 2800000, guid: fd5843f93774f7542a537380b1f46877, type: 3}
+  shadowTexture: {fileID: 2800000, guid: 0475886e6ebc2c946b29c87750a67efd, type: 3}
+  glowTexture: {fileID: 2800000, guid: c2f4a01e2c519f247a23be651ab2120e, type: 3}
   mapOffset: {x: 0, y: 0}
-  shadowMapOffset: {x: 0, y: 0}
+  shadowMapOffset: {x: 0.5, y: 1}
 --- !u!114 &2018926738
 MonoBehaviour:
   m_ObjectHideFlags: 0
