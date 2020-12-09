@@ -148,7 +148,7 @@ public class BestTimeController : MonoBehaviour
         dropped.GetComponent<RectTransform>().SetParent(this.GetComponent<RectTransform>());
         dropped.GetComponent<RectTransform>().localPosition = new Vector3(dropoffx, dropoffy, 0);
         float timeTaken = (floorsDroppedOff == 0 ? GameData.Instance.timesThisRun[floorsDroppedOff] : GameData.Instance.timesThisRun[floorsDroppedOff] - GameData.Instance.timesThisRun[floorsDroppedOff - 1]);
-        Debug.Log(timeTaken + ", " + GameData.Instance.bestTimes[floorsDroppedOff]);
+       // Debug.Log(timeTaken + ", " + GameData.Instance.bestTimes[floorsDroppedOff]);
         dropped.Initialize(floorsDroppedOff+1, timeTaken, timeTaken<GameData.Instance.bestTimes[floorsDroppedOff], GameData.Instance.bestTimes[floorsDroppedOff], bestTimeText);
     }
 }

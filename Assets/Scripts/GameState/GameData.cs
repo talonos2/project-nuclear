@@ -63,8 +63,17 @@ public class GameData : Singleton<GameData>
     public float[] bestTimes = new float[] {Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity,
         Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
         Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
-        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity};
-    public float[] timesThisRun = new float[20];
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity };
+
+    //public float[] bestTimes = new float[] {
+   //     1200, 1200, 1200, 1200, 1200,
+   //     1200, 1200, 1200, 1200, 1200,
+  ////      1200, 1200, 1200, 1200, 1200,
+   //     1200, 1200, 1200, 1200, 1200 };
+    public float[] timesThisRun = new float[] {Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity };
 
     public string killer = "time";
 
@@ -150,7 +159,7 @@ public class GameData : Singleton<GameData>
         killer = "time";
         for (int x = 0; x < 20; x++)
         {
-            GameData.Instance.timesThisRun[x] = 0;
+            GameData.Instance.timesThisRun[x] = Mathf.Infinity;
         }
         pauseTimer = false;
     }
@@ -167,6 +176,15 @@ public class GameData : Singleton<GameData>
 
     }
 
+    private void Start()
+    {
+       
+        for (int i = 0; i <= 19; i++) {
+            bestTimes[i] = Mathf.Infinity;
+        }
+        
+
+    }
     void Update()
     {
 

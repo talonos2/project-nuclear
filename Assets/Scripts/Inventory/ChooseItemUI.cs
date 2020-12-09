@@ -369,7 +369,7 @@ public class ChooseItemUI : MonoBehaviour
             GameData.Instance.itemsFoundThisRun.Add(i);
             if (i.Rare) sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped.</color> <sprite=1> " + i.gameObject.name + " <color=white>sent to town.</color>", duration: 5f);
             else sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped. <sprite=1> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
-            Debug.Log("r");
+            //Debug.Log("r");
         }
         CloseItemPickUI();
     }

@@ -22,7 +22,11 @@ public class GameSaverManager
         public int RunNumber = 0;
         public int PowersGained = 0;
         internal int furthestFloorAchieved;
-        internal float[] bestTimes=new float [20];
+        //internal float[] bestTimes=new float [20];
+    internal float[] bestTimes = new float[] {Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity };
     public bool[] gabNumbers = new bool[32];
     public bool iceBoss1;
     public bool earthBoss1;
@@ -68,6 +72,8 @@ public class GameSaverManager
 
     public void SetupSave()
         {
+
+
         gabNumbers = GameData.Instance.gabNumbers;
 
 
@@ -82,10 +88,10 @@ public class GameSaverManager
             FloorNumber = 0;
             RunNumber = GameData.Instance.RunNumber;
             PowersGained = GameData.Instance.PowersGained;
-            furthestFloorAchieved = GameData.Instance.furthestFloorAchieved;
-            bestTimes = GameData.Instance.bestTimes;
+            furthestFloorAchieved = GameData.Instance.furthestFloorAchieved;    
+        bestTimes = GameData.Instance.bestTimes;
 
-      Douglass=GameData.Instance.Douglass;
+        Douglass =GameData.Instance.Douglass;
       Sara=GameData.Instance.Sara;
       McDermit=GameData.Instance.McDermit;
       Todd=GameData.Instance.Todd;
@@ -135,11 +141,13 @@ public class GameSaverManager
             townAccessories.Add(accItem.name);
         }
 
+       
     }
 
 
     public void PushSaveToGameData()
         {
+
         GameData.Instance.gabNumbers =gabNumbers;
 
         GameData.Instance.HealhCrystalBonus = HealhCrystalBonus;
@@ -234,6 +242,8 @@ public class GameSaverManager
                 }
             }
         }
+
+
 
     }
 
