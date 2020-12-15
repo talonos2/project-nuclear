@@ -14,6 +14,7 @@ public class ChooseItemUI : MonoBehaviour
     public Image equipItemButton;
     public Image sendItemHomeButton;
     public Canvas chooseItemUiCanvas;
+    public ShowItemsInMenuController itemSelectionViewerUI;
     private int optionSelected = 0;
     protected float delayReset = .2f;
     protected float delayCounter = .3f;
@@ -115,6 +116,8 @@ public class ChooseItemUI : MonoBehaviour
 
                 SendToTown(playerData.weapon);
                 playerData.setWeapon((Weapon)rolledItem);
+                playerData.PushCharacterData();
+                itemSelectionViewerUI.ShowSelectedItemAndClose(0);
 
             }
             else
@@ -130,6 +133,8 @@ public class ChooseItemUI : MonoBehaviour
 
                 SendToTown(playerData.armor);
                 playerData.setArmor((Armor)rolledItem);
+                playerData.PushCharacterData();
+                itemSelectionViewerUI.ShowSelectedItemAndClose(1);
             }
             else
             {
@@ -143,6 +148,8 @@ public class ChooseItemUI : MonoBehaviour
 
                 SendToTown(playerData.accessory);
                 playerData.setAccessory((Accessory)rolledItem);
+                playerData.PushCharacterData();
+                itemSelectionViewerUI.ShowSelectedItemAndClose(2);
             }
             else
             {
@@ -162,6 +169,7 @@ public class ChooseItemUI : MonoBehaviour
         chooseItemUiCanvas.enabled = true;
         SelectButton(1);
         SetItemUI();
+        itemSelectionViewerUI.OpenForFoundItemSelection();
     }
 
     private void SetItemUI()
@@ -295,6 +303,7 @@ public class ChooseItemUI : MonoBehaviour
     {
         selectedButton = -1;
         SelectButton(1);
+        itemSelectionViewerUI.ShowSelectedItemAndClose(-1);
         chooseItemUiCanvas.enabled = false;
         GameState.isInBattle = false;
         GameState.pickingItem = false;
