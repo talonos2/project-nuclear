@@ -168,6 +168,7 @@ public class NewGameController : MonoBehaviour
             if (runVariable.text == "" || Convert.ToInt32(runVariable.text) == 1)
             {
                 GameData.Instance.RunNumber = 1;
+                Debug.Log(GameData.Instance.bestTimes);
                 CutsceneLoader.introCutscene = true;
                 GameData.Instance.FloorNumber = 0;
                 CutsceneLoader.LoadCutsceneAndFade(this.transform.parent.GetComponent<Canvas>(),2);
