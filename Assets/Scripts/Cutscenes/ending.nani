@@ -818,14 +818,28 @@
 		@elseif !GetWorst()
 
 
-		Hey, you found one of the three endings we didn't get around to yet.
-		Sorry about that.
+		Later that day, at home.
 
-		;@char Jezerine
-		;Jezerine: I'll catch up to you guys in a bit.
+		@char Jezerine
+		Jezerine: Hey! Who's there?
 
-		;@char Reya
-		;Reya: I hear you really slaughtered those horrors.
+		@char Reya
+		Reya: Heh, look at you.
+		Reya: Still have the wrong reflexes.
+
+		@char Jezerine
+		Jezerine: You should be grateful I didn't cut you down where you—
+
+		@char Reya
+		Reya: I didn't say they were slow.[br]I said they were wrong.
+		Reya: When I stepped in, you got ready to run.
+		Reya: You still haven't learned that you don't have to run from anyone.
+
+		@char Jezerine
+		Jezerine: What do you want?
+
+		@char Reya
+		Reya: I hear you really slaughtered those monsters.
 		@if GetPendleton()
 			Reya: Even outdid that wannabe knight.
 			@char Jezerine
@@ -836,28 +850,71 @@
 			Jezerine: He was a good guy...
 		@endif
 
-		;Reya: I'm a bit disappointed I didn't get a crack at them myself.
+		Reya: I'm a bit disappointed I didn't get a crack at those horrors myself.
 
-		;@char Jezerine
-		;Jezerine: Some of them were people.[br]Friends of mine that I—
+		@char Jezerine
+		Jezerine: Some of them were people.[br]Friends of mine that I—
 
-		;@char Reya
-		;Reya: Yeah kid, this isn't really a friendly business.
-		;Reya: But don't worry. First one's always the hardest.
-		;Reya: You'll see how it is when you get out there.
+		@char Reya
+		Reya: Yeah kid, this isn't really a friendly business.
+		Reya: But don't worry. First one's always the hardest.
+		Reya: You'll see how it is when you get out there.
 
+		@char Jezerine
+		Jezerine: What are you talking about?
+
+		@char Reya
+		Reya: You're coming with me.
+
+		@char Jezerine
+		Jezerine: Excuse me? Why would I do that?
+
+		@char Reya
+		Reya: Because you've got a taste for it now.
+		Reya: You don't really think you can chop a mummy's head off and then go back to waiting tables do you?
+
+		@char Jezerine
+		Jezerine: I didn't wait tables.
+
+		@char Reya
+
+		@if !@getNorma()
+			Reya: I hear they could use a new stablehand.
+		@else
+			Reya: That's right, what did you do exactly?
+		@endif
+
+		@char Jezerine
+		Jezerine: ...
+
+		@char Reya
+		Reya: You sat around waiting for something exciting to happen. Something to give you purpose.
+		Reya: Think it'll happen twice?
+
+		@char Jezerine
+		Jezerine: I... hadn't really...
+
+		@char Reya
+		Reya: It won't.
+		Reya: But, come with me, and I'll show you how to find it yourself.
+		Reya: What do you say?
+
+		@char Jezerine
+		Jezerine: Fine.
+		Jezerine: Nothing left for me here anyway.
 
 
 
 		@elseif GetWorst()
+
+		Soon, at the entrance.
 
 		@char Jezerine
 		Jezerine: It is done.
 		The monsters are dead?
 		Jezerine: All but one.
 
-		...
-
+		... Later.
 
 		Jezerine: Old friends cannot stand the sight of me, not after the things I've done.
 		Jezerine: Not after what I've become.
@@ -873,7 +930,6 @@
 		Nelson: You've been through a lot. We're here for you when you're ready.
 		@char Jezerine
 		Jezerine: ...[br]Thanks.
-		door sound
 		@Wait 2
 
 		Jezerine: Now I must roam the world alone.
@@ -1826,16 +1882,108 @@
 
 		@elseif !GetWorst()
 
-		Later, outside the cave...
+		Soon, outside the cave...
+
+		@Char Elder
+		Elder: And that's the last of them.[br]Everyone is out.
+
+		@char Patrick
+		Patrick: You did it![br]The nightmare is over!
+
+		@char Meyster
+		Meyster: T'was no more than my sacred duty.
+		Meyster: I would dishonor myself if I did any less.
+
+		@if GetTodd()
+			@char Wilson
+			Wilson: Well, it may be just another day to you, but for us this is a reason to celebrate!
+		@else
+			@char Wilson
+			Wilson: And we... could ask no more of you.
+		@endif
+
+
+		@char Fluer
+		Fluer: Perhaps you should rest
+
+		@char Meyster
+		Meyster: Nonsense!
 
 		@if GetPendleton()
 
+			@char Meyster
+			Meyster: Come Pendleton! I need you to pack my things!
+			Meyster: We won't tarry long! The next adventure waits just over the next rise!
+
+			@char Pendleton
+			Pendleton: Yes sire.
+
+			@char Tasha
+			Tasha: That's it?
+			Tasha: There's still much you could do here.[br]Won't you stay a bit longer?
+
+			Meyster: If I remain here, some other calamity may go unanswered!
+			Meyster: 
+
+			@char Tasha
+			Tasha: the world will always have its problems. But perhaps...
+			Tasha: Perhaps you have earned a little rest?
+
+			@char Meyster
+			Meyster: It is a poor knight who puts his own comfort above that of others!
+
+			@char Wilson
+			Wilson: We had planned a feast.
+
+			@char Meyster
+			Meyster: Well, it would be rude to deny you your celebration.
+			Meyster: But then I will be off!
+
+			@char Fluer
+			Fluer: That man, he has to stop someday.
+			
+			@char JohnDoe
+			JohnDoe: Probably should have stopped years ago.
+
+			@char Pendleton
+			Pendleton: I'm sure he'll figure it out.
+			Pendleton: Eventually.
+
 		@else
+
+			@char Meyster
+			Meyster: Come Pendleton! I need you to—
+			Meyster: I need you to...
+
+			@char Fluer
+			Fluer: Perhaps a good strong drink will—
+
+			@char Meyster
+			Meyster: No.
+			Meyster: I... I won't drink and cheer where my squire...
+			Meyster: Where he...
+
+			@char Metra
+			Metra: I saw how it happened. You have nothing to be—
+
+			@char Meyster
+			Meyster: I have tarried too long already!
+			Meyster: Weeks spent waiting for adventure to find me![br]That is not the way of a knight.
+			Meyster: The road calls.[br]I can carry my own baggage.
+
+			@char JohnDoe
+			JohnDoe: Sounds like you're gonna.
+
+			@if
+			@char Meyster
+			Meyster: What was that, criminal?
+
+			@char JohnDoe
+			JohnDoe: Don't worry about it.[br]I'll go ahead and drink for you.
+
 
 		@endif
 
-		Hey, you found one of the three endings we didn't get around to yet.
-		Sorry about that.
 
 		
 		@elseif GetWorst()
