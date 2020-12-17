@@ -7,10 +7,11 @@ public class ContinueNextRunButtonController : MonoBehaviour
     
     public Canvas canvas;
     private bool isActive;
+    private float delayToShow;
 
     void Start()
     {
-
+        delayToShow = .3f;
     }
     public void StartRunButtonClicked()
     {
@@ -27,6 +28,11 @@ public class ContinueNextRunButtonController : MonoBehaviour
 
     private void Update()
     {
+        if (delayToShow > 0) {
+            delayToShow -= Time.deltaTime;
+            canvas.enabled = false;
+            return;
+        }
 
         if (GameData.Instance.isInDialogue || GameData.Instance.isCutscene)
         {
