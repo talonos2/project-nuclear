@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static HealingType;
 
 public class RandomChestController : EntityData
 {
@@ -334,7 +335,7 @@ public class RandomChestController : EntityData
             Instantiate(healthFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
             SoundManager.Instance.PlaySound("Pool", 1f);
-            playerData.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(0);
+            playerData.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(HEALTH);
         }
         else if (manaFountain)
         {
@@ -344,7 +345,7 @@ public class RandomChestController : EntityData
             Instantiate(manaFountainBreaking, this.transform.position + new Vector3(0, .5f, -10), Quaternion.identity, this.transform);
             Destroy(instanciatedObject);
             SoundManager.Instance.PlaySound("Pool", 1f);
-            playerData.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(1);
+            playerData.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(MANA);
         }
 
         playerData.PushCharacterData();
