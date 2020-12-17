@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class ShowItemsInMenuController : MonoBehaviour
     public ItemHolderUI accessoryUIPrefab;
     public TextMeshProUGUI itemDetailsDescription;
     public GameObject picToMove;
-    private RectTransform recTranOfPic;
+    public GameObject extraTextToMove;
     private bool openForItemSelection;
     private bool flashFinished;
     private CharacterStats savedStats;
@@ -19,6 +20,10 @@ public class ShowItemsInMenuController : MonoBehaviour
     private float delayBeforeClose = 0f;
     private bool animateOpen;
     private bool animateClose;
+    public bool inPauseMenu;
+    private bool animatingDropOpen;
+    private bool animatingDropClosed;
+    private float speedToAnimate;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +32,14 @@ public class ShowItemsInMenuController : MonoBehaviour
         weaponUIPrefab.SetItem(savedStats.weapon, false);
         armorUIPrefab.SetItem(savedStats.armor, false);
         accessoryUIPrefab.SetItem(savedStats.accessory, false);
-        if (!inDungeonUi) { setDescriptionText(0); }
-        if (inDungeonUi) { recTranOfPic = picToMove.GetComponent<RectTransform>(); }
+
+
        
     }
 
     public void setDescriptionText(int slotNum) {
+        //Debug.Log("Am I entering "+slotNum);
+        if (!inPauseMenu) { return; }
         weaponUIPrefab.flashingBackground.enabled = false;
         armorUIPrefab.flashingBackground.enabled = false;
         accessoryUIPrefab.flashingBackground.enabled = false;
@@ -54,26 +61,59 @@ public class ShowItemsInMenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!inDungeonUi || GameState.fullPause) {
+        if (!inDungeonUi) {
             return;
         }
-        if (delayBeforeClose > 0) {
+
+        HandleChangedItemFlashing();
+        if (openForItemSelection) { return; }
+        speedToAnimate = animateSpeed * Time.deltaTime * 30;
+        HandleAnimateOpen();
+        HandleAnimateClose();
+        HandleDropdownClose();
+        HandleDropdownOpen();       
+        
+    }
+
+    private void HandleChangedItemFlashing()
+    {
+        if (delayBeforeClose > 0)
+        {
             delayBeforeClose -= Time.deltaTime;
-            if (delayBeforeClose < 1 && !flashFinished) {
+            if (delayBeforeClose < 1 && !flashFinished)
+            {
                 weaponUIPrefab.flashingBackground.enabled = false;
                 armorUIPrefab.flashingBackground.enabled = false;
                 accessoryUIPrefab.flashingBackground.enabled = false;
                 flashFinished = true;
             }
-            if (delayBeforeClose < 0) {
+            if (delayBeforeClose < 0)
+            {
                 openForItemSelection = false;
             }
 
         }
-        if (openForItemSelection) { return; }
-        //-610 to -435 (open)
-        float speedToAnimate = animateSpeed * Time.deltaTime*10;
-        if (animateClose) {
+    }
+
+    private void HandleAnimateOpen()
+    {
+                //-610 to -435 (open)
+        if (animateOpen)
+        {
+            picToMove.transform.localPosition = new Vector3(picToMove.transform.localPosition.x + speedToAnimate, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
+            if (picToMove.transform.localPosition.x > -435)
+            {
+                picToMove.transform.localPosition = new Vector3(-435, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
+                animateOpen = false;
+                if (inPauseMenu) { animatingDropOpen = true; }
+            }
+        }
+    }
+
+    private void HandleAnimateClose()
+    {
+        if (animateClose)
+        {
             picToMove.transform.localPosition = new Vector3(picToMove.transform.localPosition.x - speedToAnimate, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
             if (picToMove.transform.localPosition.x < -610)
             {
@@ -84,28 +124,74 @@ public class ShowItemsInMenuController : MonoBehaviour
                 accessoryUIPrefab.flashingBackground.enabled = false;
             }
         }
-        if (animateOpen) {
-            picToMove.transform.localPosition = new Vector3(picToMove.transform.localPosition.x + speedToAnimate, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
-            if (picToMove.transform.localPosition.x > -435) {
-                picToMove.transform.localPosition = new Vector3(-435, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
-                animateOpen = false;
+    }
+
+    private void HandleDropdownClose()
+    {
+        if (animatingDropClosed)
+        {
+            extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, extraTextToMove.transform.localPosition.y + speedToAnimate, extraTextToMove.transform.localPosition.z);
+            if (extraTextToMove.transform.localPosition.y > -12.5f)
+            {
+                extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -12.5f, extraTextToMove.transform.localPosition.z);
+                animatingDropClosed = false;
+                animateClose = true;
             }
         }
-        
+    }
+
+    private void HandleDropdownOpen()
+    {
+        if (inPauseMenu)
+        {
+            if (animatingDropOpen)
+            {
+                extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, extraTextToMove.transform.localPosition.y - speedToAnimate, extraTextToMove.transform.localPosition.z);
+                if (extraTextToMove.transform.localPosition.y < -105.5f)
+                {
+                    extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -105.5f, extraTextToMove.transform.localPosition.z);
+                    animatingDropOpen = false;
+                }
+            }
+        }
     }
 
     public void SetToAnimateOpen() {
-
-            animateOpen = true;
+        //onMouseEnter
+        if (inPauseMenu) { return; }
+        animateOpen = true;
             animateClose = false;       
 
     }
-    public void SetToAnimateClose() {
-
-            animateClose = true;
-            animateOpen = false;
+    public void SetToAnimateClose()
+    {
+        //onMouseExit
+        if (inPauseMenu) { return; }
+        animateClose = true;
+        animateOpen = false;
 
     }
+
+    internal void SetPauseAnimateOpen()
+    {
+        animateOpen = true;
+        animateClose = false;
+        inPauseMenu = true;
+        setDescriptionText(0);
+
+    }
+
+    internal void SetPauseAnimateClose()
+    {
+        animatingDropClosed = true;
+        animateOpen = false;
+        inPauseMenu = false;
+        weaponUIPrefab.flashingBackground.enabled = false;
+        armorUIPrefab.flashingBackground.enabled = false;
+        accessoryUIPrefab.flashingBackground.enabled = false;
+    }
+
+
     public void OpenForFoundItemSelection() {
         picToMove.transform.localPosition = new Vector3(-435, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
         openForItemSelection = true;

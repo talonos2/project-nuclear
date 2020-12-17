@@ -15,7 +15,9 @@ public class EscapeKeyController : MonoBehaviour
     public GameObject[] selected;
     public LoadSaveController loadSaveController;
     public PauseMenuController pauseMenuController;
+    public ShowItemsInMenuController ItemsEquippedUI;
     public bool inOtherMenu;
+
 
 
 
@@ -117,12 +119,13 @@ public class EscapeKeyController : MonoBehaviour
     {
         SoundManager.Instance.PlaySound("MenuOkay", 1f);
         SceneManager.LoadScene("PauseScreenDungeon", LoadSceneMode.Additive);
-
+        ItemsEquippedUI.SetPauseAnimateOpen();
     }
 
     public void CloseOptionsMenu()
     {
         SceneManager.UnloadSceneAsync("PauseScreenDungeon");
+        ItemsEquippedUI.SetPauseAnimateClose();
     }
 
 /*

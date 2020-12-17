@@ -3426,7 +3426,7 @@ PrefabInstance:
     - target: {fileID: 837440485475924232, guid: e57c9d93702050e46ac671f994b9c66f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.575
+      value: -2.574997
       objectReference: {fileID: 0}
     - target: {fileID: 837440485475924232, guid: e57c9d93702050e46ac671f994b9c66f,
         type: 3}
@@ -3436,7 +3436,7 @@ PrefabInstance:
     - target: {fileID: 837440485475924232, guid: e57c9d93702050e46ac671f994b9c66f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.29998
+      value: -0.29998016
       objectReference: {fileID: 0}
     - target: {fileID: 837440485475924232, guid: e57c9d93702050e46ac671f994b9c66f,
         type: 3}
@@ -3835,7 +3835,7 @@ PrefabInstance:
     - target: {fileID: 837440485475924232, guid: e57c9d93702050e46ac671f994b9c66f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.71001
+      value: -0.7100067
       objectReference: {fileID: 0}
     - target: {fileID: 837440485475924232, guid: e57c9d93702050e46ac671f994b9c66f,
         type: 3}
@@ -4646,9 +4646,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8849652909285115094}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 6256140756511763562}
   - {fileID: 1249022415442752114}
@@ -4659,9 +4659,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 507, y: 256.2}
-  m_SizeDelta: {x: 354.9, y: 672.6}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &8849652909285115094
 GameObject:
   m_ObjectHideFlags: 0
@@ -4681,7 +4681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8849652909285115095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4698,6 +4698,9 @@ MonoBehaviour:
   armorUIPrefab: {fileID: 2641144880869328116}
   accessoryUIPrefab: {fileID: 4532042406923418975}
   itemDetailsDescription: {fileID: 5848929021581535975}
+  picToMove: {fileID: 0}
+  inDungeonUi: 0
+  animateSpeed: 10
 --- !u!114 &8982246311995458034
 MonoBehaviour:
   m_ObjectHideFlags: 0
