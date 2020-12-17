@@ -503,7 +503,8 @@ public class CharacterMovement : SpriteMovement
                 currentlyMoving = true;
 
             }
-            else { SetLookDirection(); }
+            else {
+                SetLookDirection(); }
 
             //Check if a monster is in the next location, and initiate combat if so
             //GameObject EnemyToFight = IsThereAMonster();    
@@ -940,6 +941,8 @@ public class CharacterMovement : SpriteMovement
 
     private float ContinueMoving()
     {
+
+
         return MoveDirection(tempMovementSpeed, facedDirection);
     }
 

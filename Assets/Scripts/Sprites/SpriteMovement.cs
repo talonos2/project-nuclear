@@ -14,7 +14,7 @@ public class SpriteMovement : EntityData
     //Sprite Animation:
     private float timeSinceLastAnimation = 0;
     private int animationStep = 0;
-    private DirectionMoved lastAnimatedFacing = DirectionMoved.DOWN;
+    private DirectionMoved lastAnimatedFacing = DirectionMoved.NONE;
 
     public float MoveSpeed = 6;
     public float framesPerSecond = 30;
@@ -538,6 +538,7 @@ public class SpriteMovement : EntityData
         {
             timeSinceLastAnimation = 0;
             animationStep = (animationStep + 1) % GetFramesInFilmstrip();
+            Debug.Log("animating step " +dir);
             changed = true;
         }
         if (facedDirection != lastAnimatedFacing)
