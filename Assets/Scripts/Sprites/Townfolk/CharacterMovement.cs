@@ -796,23 +796,19 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerToggleLeftKeyReceived()
     {
-        if (playerStats.powersGained == 0 || GameState.fullPause) return;
+        if (playerStats.powersGained == 0 || GameState.fullPause || GameState.pickingItem) return;
         SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower -= 1;
         if (playerStats.currentPower < 0)
         {
             playerStats.currentPower = playerStats.powersGained;
         }
-        if (GameState.isInBattle)
-        {
-            //GameObject.FindObjectOfType<Combat>().DisplayElementSwitchVFX(playerStats.currentPower);
-        }
     }
 
     internal void PowerToggleRightKeyReceived()
     {
 
-        if (playerStats.powersGained == 0 || GameState.fullPause) return;
+        if (playerStats.powersGained == 0 || GameState.fullPause || GameState.pickingItem) return;
         SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower += 1;
         if (playerStats.currentPower > playerStats.powersGained)
