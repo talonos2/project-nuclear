@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static HealingAnimationController;
 
 public class CharacterMovement : SpriteMovement
 {
@@ -336,7 +337,7 @@ public class CharacterMovement : SpriteMovement
             if (GameData.Instance.addHealToTimer())
             {
                 SoundManager.Instance.PlaySound("Healing", 1);
-                playerStats.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(2);
+                playerStats.gameObject.GetComponent<HealingAnimationController>().PlayHealingAnimation(HealingType.BOTH);
                 playerStats.mana += (int)(playerStats.MaxMana * .125f);
                 playerStats.HP += (int)(playerStats.MaxHP * .125f);
                 if (playerStats.mana > playerStats.MaxMana) playerStats.mana = playerStats.MaxMana;
