@@ -35,7 +35,7 @@ public class HerosSurvivedController : MonoBehaviour
 
     private void Update()
     {
-        if (GameData.Instance.isInDialogue) return;
+        if (GameData.Instance.isInDialogue || GameData.Instance.isCutscene) return;
         delay -= Time.deltaTime;
 
         if (delay < 0) {
