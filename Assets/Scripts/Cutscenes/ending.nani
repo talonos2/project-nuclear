@@ -1974,7 +1974,6 @@
 			@char JohnDoe
 			JohnDoe: Sounds like you're gonna.
 
-			@if
 			@char Meyster
 			Meyster: What was that, criminal?
 
@@ -2631,11 +2630,18 @@
 
 		Tasha: The loss of any one person diminishes us all.
 
-		@if !GetDerringer() || !GetNorma()
+		@if !GetDerringer()
+			Tasha: Our infastructure.
+		@elseif !GetNorma()
 			Tasha: Our infastructure.
 		@endif
 
-		@if !GetSara() || !GetMara()
+
+
+
+		@if !GetSara()
+			Tasha: Our homes.
+		@elseif !GetMara()
 			Tasha: Our homes.
 		@endif
 
@@ -2890,31 +2896,34 @@
 		Wilson: I don't even need to do anything.
 		Wilson: People will follow opportunities and keep the town running.
 
-		@if !GetPendleton() || !GetDevon() || !GetDouglass()
+		@if !GetPendleton()
+			Wilson: Some of the people we lost weren't even from here.
+			Wilson: So they're not my responsibility.[br]Right?
+		@elseif !GetDevon()
+			Wilson: Some of the people we lost weren't even from here.
+			Wilson: So they're not my responsibility.[br]Right?
+		@elseif !GetDouglass()
 			Wilson: Some of the people we lost weren't even from here.
 			Wilson: So they're not my responsibility.[br]Right?
 		@endif
 
 		Wilson: Then... then there are the people I don't even have to replace.
 
-		@if !GetMcDermit() && !GetNorma() && !GetSara()
-			Wilson: The town will hardly notice if we're missing a guard, or a shepard, or a maid.
-		@elseif !GetMcDermit() && !GetSara()
-			Wilson: The town will hardly notice if we're missing a guard, or a maid.
-		@elseif !GetNorma() && !GetSara()
-			Wilson: The town will hardly notice if we're missing a shepard, or a maid.
-		@elseif !GetMcDermit() && !GetNorma()
-			Wilson: The town will hardly notice if we're missing a guard, or a shepard.
-		@elseif !GetSara()
-			Wilson: The town will hardly notice if we're missing a maid.
-		@elseif !GetNorma()
-			Wilson: The town will hardly notice if we're missing a shepard.
-		@elseif !GetMcDermit()
-			Wilson: The town will hardly notice if we're missing a guard.
+
+		@if !GetMcDermit()
+			Wilson: The town will hardly notice if we're missing a guard
+		@endif
+
+		@if !GetNorma()
+			Wilson: A shepard's animals can just be adopted by others.
+		@endif
+
+		@if !GetSara()
+			Wilson: Did we ever really need a maid?
 		@endif
 
 
-		Wilson: I just, go back to being a mayor.
+		Wilson: I should just... go back to being a mayor.
 		Wilson: Back to looking at the big picture.
 		Wilson: It doesn't matter if a few people were lost.
 		Wilson: It's all just numbers on a ledger.
