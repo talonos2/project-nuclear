@@ -54,7 +54,6 @@
 		
 
 		#day4
-		;complete
 		Soon, at the entrance...
 		@char Todd
 		Todd: Ah hahahaha!
@@ -102,7 +101,7 @@
 
 		#day5
 		Soon, at the entrance...
-		@if GetPerfect()
+		;@if GetPerfect()
 		@char Logos
 		Logos: Are you alright?
 		@char Norma
@@ -130,7 +129,7 @@
 		@char Norma
 		Norma: Sure, just don't get yourself in trouble.
 		Norma: If anybody needs me I'll be out making sure the sheep don't drown themselves or something.
-		@endif
+		;@endif
 
 		
 		
@@ -140,7 +139,7 @@
 		#day6
 
 
-		@elseif GetPerfect()
+		;@if GetPerfect()
 
 		Hours later, at the blacksmith's shop...
 		@char Tasha
@@ -185,12 +184,12 @@
 		Tasha: There's a feast, if you care.
 
 
-		@elseif !GetWorst()
-		@elseif GetWorst()
+		;@elseif !GetWorst()
+		;@elseif GetWorst()
 
 
 
-		@endif
+		;@endif
 
 
 		@exit
@@ -198,7 +197,7 @@
 		
 		#day7
 
-		@elseif GetPerfect()
+		;@if GetPerfect()
 		Days later, at the church...
 		@char Melvardius
 		Melvardius: In ages past the gods were many.[br]Splintered across the cosmos.
@@ -231,13 +230,18 @@
 		Darius: Dad, do we have to stay for all this?
 		@char Paul
 		Paul: We do boy, we do.
+
+
+
+
+		;@endif
 		
 		@exit
 		
 
 		#day8
 
-		@elseif GetPerfect()
+		;@if GetPerfect()
 		Days later, at the pub...
 		@char Mara
 		Mara: I don't know about you lot, but I'm in the mood for another round!
@@ -275,12 +279,12 @@
 		Mara: Don't worry, hun. I'm sure you'll get used to 'em.
 
 
-		@elseif !GetWorst()
-		@elseif GetWorst()
+		;@elseif !GetWorst()
+		;@elseif GetWorst()
 
 
 
-		@endif
+		;@endif
 		
 
 		@exit
