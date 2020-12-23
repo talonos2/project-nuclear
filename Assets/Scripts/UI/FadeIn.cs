@@ -12,6 +12,7 @@ public class FadeIn : MonoBehaviour
     private Renderer meshRenderer;
     private bool shortCutFadeIn;
     private bool shortCutFadeOut;
+    private bool started = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +88,11 @@ public class FadeIn : MonoBehaviour
                 {
                     meshRenderer.material.SetVector("_Location", fadeInWorldLocation);
                     meshRenderer.material.SetFloat("_Iris", timeLeft / fadeTime);
+                    if (timeLeft < .75f && !started)
+                    {
+                        GameState.fullPause = false;
+                        started = true;
+                    }
                 }
                 else
                 {
