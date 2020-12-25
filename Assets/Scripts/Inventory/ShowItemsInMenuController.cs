@@ -131,9 +131,9 @@ public class ShowItemsInMenuController : MonoBehaviour
         if (animatingDropClosed)
         {
             extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, extraTextToMove.transform.localPosition.y + speedToAnimate, extraTextToMove.transform.localPosition.z);
-            if (extraTextToMove.transform.localPosition.y > -12.5f)
+            if (extraTextToMove.transform.localPosition.y > 0)
             {
-                extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -12.5f, extraTextToMove.transform.localPosition.z);
+                extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, 0, extraTextToMove.transform.localPosition.z);
                 animatingDropClosed = false;
                 animateClose = true;
             }
@@ -147,9 +147,9 @@ public class ShowItemsInMenuController : MonoBehaviour
             if (animatingDropOpen)
             {
                 extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, extraTextToMove.transform.localPosition.y - speedToAnimate, extraTextToMove.transform.localPosition.z);
-                if (extraTextToMove.transform.localPosition.y < -105.5f)
+                if (extraTextToMove.transform.localPosition.y < -120f)
                 {
-                    extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -105.5f, extraTextToMove.transform.localPosition.z);
+                    extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -120f, extraTextToMove.transform.localPosition.z);
                     animatingDropOpen = false;
                 }
             }
