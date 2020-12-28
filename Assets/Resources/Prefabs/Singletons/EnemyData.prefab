@@ -58,6 +58,8 @@ MonoBehaviour:
   weakness: 3
   crystalType: 3
   crystalDropAmount: 12
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: 0}
   - {fileID: 0}
@@ -79,6 +81,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &827846531077113007
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +141,8 @@ MonoBehaviour:
   weakness: 4
   crystalType: 3
   crystalDropAmount: 20
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: 0}
   - {fileID: 0}
@@ -158,6 +164,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &1561709137489326470
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +224,8 @@ MonoBehaviour:
   weakness: 0
   crystalType: 5
   crystalDropAmount: 210
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -233,6 +243,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &1984966368155950946
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,8 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 105
-  HP: 105
+  MaxHP: 110
+  HP: 110
   attack: 40
   defense: 8
   startPositionOnScreen: {x: 0.85, y: 1}
@@ -291,6 +303,8 @@ MonoBehaviour:
   weakness: 2
   crystalType: 1
   crystalDropAmount: 5
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -308,6 +322,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &2336016274750735320
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +382,8 @@ MonoBehaviour:
   weakness: 3
   crystalType: 4
   crystalDropAmount: 30
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -383,6 +401,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &2605010660601057676
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +461,8 @@ MonoBehaviour:
   weakness: 1
   crystalType: 5
   crystalDropAmount: 15
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -458,6 +480,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &2755349454602390168
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +540,8 @@ MonoBehaviour:
   weakness: 3
   crystalType: 1
   crystalDropAmount: 12
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -533,6 +559,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &2760781383947197025
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +619,8 @@ MonoBehaviour:
   weakness: 0
   crystalType: 5
   crystalDropAmount: 50
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -608,6 +638,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &2890289784685799572
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +698,8 @@ MonoBehaviour:
   weakness: 3
   crystalType: 5
   crystalDropAmount: 65
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -683,6 +717,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &3285584308365703404
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +777,8 @@ MonoBehaviour:
   weakness: 4
   crystalType: 5
   crystalDropAmount: 110
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -758,6 +796,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &4029425963261980473
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +856,8 @@ MonoBehaviour:
   weakness: 2
   crystalType: 1
   crystalDropAmount: 2
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -834,6 +876,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &4386044017345740628
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +936,8 @@ MonoBehaviour:
   weakness: 2
   crystalType: 2
   crystalDropAmount: 30
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -909,6 +955,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &4699885649082519313
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,6 +1015,8 @@ MonoBehaviour:
   weakness: 4
   crystalType: 1
   crystalDropAmount: 20
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: 0}
   - {fileID: 0}
@@ -988,6 +1038,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &4713860520958778024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1098,8 @@ MonoBehaviour:
   weakness: 1
   crystalType: 3
   crystalDropAmount: 30
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -1063,6 +1117,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &4848392439506292885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,6 +1177,8 @@ MonoBehaviour:
   weakness: 4
   crystalType: 2
   crystalDropAmount: 20
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -1138,6 +1196,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &4853902709626568051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,6 +1256,8 @@ MonoBehaviour:
   weakness: 1
   crystalType: 2
   crystalDropAmount: 2
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: -5516807709991325739, guid: 39442b4647825ae4babd624b820af6df, type: 3}
   attackAnimation: 0
@@ -1215,6 +1277,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &5496230649167645518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1410,8 @@ MonoBehaviour:
   weakness: 1
   crystalType: 3
   crystalDropAmount: 2
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -1364,6 +1430,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &5648562717899212257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1490,8 @@ MonoBehaviour:
   weakness: 1
   crystalType: 4
   crystalDropAmount: 2
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -1440,6 +1510,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &6346479501008770178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1570,8 @@ MonoBehaviour:
   weakness: 2
   crystalType: 5
   crystalDropAmount: 35
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -1515,6 +1589,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &7274372838845481732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1649,8 @@ MonoBehaviour:
   weakness: 0
   crystalType: 3
   crystalDropAmount: 1
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -1590,6 +1668,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &7333873151289894206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,8 +1713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 155
-  HP: 155
+  MaxHP: 160
+  HP: 160
   attack: 49
   defense: 14
   startPositionOnScreen: {x: 0.85, y: 1}
@@ -1648,6 +1728,8 @@ MonoBehaviour:
   weakness: 2
   crystalType: 4
   crystalDropAmount: 5
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -1665,6 +1747,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &7378701172255309393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,6 +1807,8 @@ MonoBehaviour:
   weakness: 4
   crystalType: 1
   crystalDropAmount: 30
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -1740,6 +1826,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &7891320591109204527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,6 +1886,8 @@ MonoBehaviour:
   weakness: 3
   crystalType: 3
   crystalDropAmount: 5
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -1815,6 +1905,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &7982560400985809361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1965,8 @@ MonoBehaviour:
   weakness: 3
   crystalType: 2
   crystalDropAmount: 12
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: 0}
   - {fileID: 0}
@@ -1894,6 +1988,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &8126632054429326452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +2048,8 @@ MonoBehaviour:
   weakness: 3
   crystalType: 4
   crystalDropAmount: 20
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites:
   - {fileID: 0}
   - {fileID: 0}
@@ -1973,6 +2071,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &8451098583420310700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,8 +2116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d875c2ff6d9be1a498eab6f106f632b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 135
-  HP: 135
+  MaxHP: 130
+  HP: 130
   attack: 35
   defense: 14
   startPositionOnScreen: {x: 0.85, y: 1}
@@ -2031,6 +2131,8 @@ MonoBehaviour:
   weakness: 2
   crystalType: 2
   crystalDropAmount: 5
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -2048,6 +2150,8 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0
 --- !u!1 &8627591396735245944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,6 +2210,8 @@ MonoBehaviour:
   weakness: 4
   crystalType: 4
   crystalDropAmount: 12
+  hitsplatOffset: {x: 0, y: 0}
+  combatOffset: {x: 0, y: 0}
   combatSprites: []
   attackAnimation: 0
   goodHit: {fileID: 0}
@@ -2123,3 +2229,5 @@ MonoBehaviour:
   deathBoss: 0
   deathBoss2: 0
   finalBoss: 0
+  finalBossForm1: 0
+  testMonster: 0

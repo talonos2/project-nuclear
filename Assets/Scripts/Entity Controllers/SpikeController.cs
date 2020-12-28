@@ -81,7 +81,7 @@ public class SpikeController : DoodadData
         this.isPassable = false;
         RaiseSpikeAnimation(sound);
         GameObject hopeItsAnEntity = MapGrid.GetComponent<EntityGrid>().grid[DoodadLocation.x, DoodadLocation.y];
-        Debug.Log(hopeItsAnEntity);
+        //Debug.Log(hopeItsAnEntity);
         if (hopeItsAnEntity != null && hopeItsAnEntity.GetComponent<EntityData>()!= null && hopeItsAnEntity.GetComponent<EntityData>().isMainCharacter)
         {
             CharacterMovement player = hopeItsAnEntity.GetComponent<CharacterMovement>();
