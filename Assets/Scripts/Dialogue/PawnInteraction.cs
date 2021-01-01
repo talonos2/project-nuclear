@@ -33,6 +33,10 @@ public class PawnInteraction : EntityData
         this.sRender.material = new Material(this.sRender.material);
     }
 
+    internal void SetPunchAnyway()
+    {
+        punchAnyway = true;
+    }
 
     private void InitializeSpriteLocation()
     {
@@ -120,7 +124,8 @@ public class PawnInteraction : EntityData
     }
 
     void Update() {
-        if (GameState.fullPause == true  || GameState.isInBattle == true || GameData.Instance.isInDialogue ||GameData.Instance.isCutscene) return;
+        if (GameState.fullPause == true  || GameState.isInBattle == true || GameData.Instance.isInDialogue) return;
+        if (GameData.Instance.isCutscene && !punchAnyway) return;//So training dummies can punch during cutscenes
 
         if (isItTrainingDay() || punchAnyway) {
             punchTimer += Time.deltaTime;

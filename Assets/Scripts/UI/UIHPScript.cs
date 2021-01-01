@@ -38,7 +38,7 @@ public class UIHPScript : MonoBehaviour
 
         if (stats.HP>oldHP+stats.MaxHP*.1f|| (oldHP != stats.MaxHP&&stats.HP==stats.MaxHP))
         {
-            Debug.Log("Constant: " + oldHP + ", " + (stats.HP + stats.MaxHP * .1f) + ", " + (oldHP != stats.MaxHP) + ", " + (stats.HP == stats.MaxHP));
+            //Debug.Log("Constant: " + oldHP + ", " + (stats.HP + stats.MaxHP * .1f) + ", " + (oldHP != stats.MaxHP) + ", " + (stats.HP == stats.MaxHP));
             timeSinceFlash = 0;
         }
 

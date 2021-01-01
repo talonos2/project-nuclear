@@ -80,15 +80,15 @@ public class ShowItemsInMenuController : MonoBehaviour
         if (delayBeforeClose > 0)
         {
             delayBeforeClose -= Time.deltaTime;
-            if (delayBeforeClose < 1 && !flashFinished)
+            if (delayBeforeClose < .25 && !flashFinished)
             {
-                weaponUIPrefab.flashingBackground.enabled = false;
-                armorUIPrefab.flashingBackground.enabled = false;
-                accessoryUIPrefab.flashingBackground.enabled = false;
                 flashFinished = true;
             }
             if (delayBeforeClose < 0)
             {
+                weaponUIPrefab.flashingBackground.enabled = false;
+                armorUIPrefab.flashingBackground.enabled = false;
+                accessoryUIPrefab.flashingBackground.enabled = false;
                 openForItemSelection = false;
             }
 
@@ -114,7 +114,7 @@ public class ShowItemsInMenuController : MonoBehaviour
     {
         if (animateClose)
         {
-            picToMove.transform.localPosition = new Vector3(picToMove.transform.localPosition.x - speedToAnimate, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
+            picToMove.transform.localPosition = new Vector3(picToMove.transform.localPosition.x - speedToAnimate*1.5f, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
             if (picToMove.transform.localPosition.x < -610)
             {
                 picToMove.transform.localPosition = new Vector3(-610, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
@@ -130,10 +130,10 @@ public class ShowItemsInMenuController : MonoBehaviour
     {
         if (animatingDropClosed)
         {
-            extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, extraTextToMove.transform.localPosition.y + speedToAnimate, extraTextToMove.transform.localPosition.z);
-            if (extraTextToMove.transform.localPosition.y > -12.5f)
+            extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, extraTextToMove.transform.localPosition.y + speedToAnimate*1.5f, extraTextToMove.transform.localPosition.z);
+            if (extraTextToMove.transform.localPosition.y > 0)
             {
-                extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -12.5f, extraTextToMove.transform.localPosition.z);
+                extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, 0, extraTextToMove.transform.localPosition.z);
                 animatingDropClosed = false;
                 animateClose = true;
             }
@@ -147,9 +147,9 @@ public class ShowItemsInMenuController : MonoBehaviour
             if (animatingDropOpen)
             {
                 extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, extraTextToMove.transform.localPosition.y - speedToAnimate, extraTextToMove.transform.localPosition.z);
-                if (extraTextToMove.transform.localPosition.y < -105.5f)
+                if (extraTextToMove.transform.localPosition.y < -120f)
                 {
-                    extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -105.5f, extraTextToMove.transform.localPosition.z);
+                    extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -120f, extraTextToMove.transform.localPosition.z);
                     animatingDropOpen = false;
                 }
             }
@@ -198,7 +198,7 @@ public class ShowItemsInMenuController : MonoBehaviour
     }
     public void ShowSelectedItemAndClose(int itemSelected) {
 
-        delayBeforeClose = 1.5f;
+        if (itemSelected!=-1) delayBeforeClose = .75f;
         flashFinished=false;
         animateClose = true;
         if (itemSelected ==0) {

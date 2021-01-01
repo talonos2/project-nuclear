@@ -538,7 +538,7 @@ public class SpriteMovement : EntityData
         {
             timeSinceLastAnimation = 0;
             animationStep = (animationStep + 1) % GetFramesInFilmstrip();
-            Debug.Log("animating step " + animationStep);
+            //Debug.Log("animating step " + animationStep);
             changed = true;
         }
         if (facedDirection != lastAnimatedFacing)
