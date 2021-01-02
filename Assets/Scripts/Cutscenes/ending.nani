@@ -2560,7 +2560,7 @@
 			@char Devon
 			Devon: Who are you people?
 		@endif
-		
+
 		@elseif GetWorst()
 
 		@char Fluer
@@ -2627,7 +2627,7 @@
 
 		@elseif !GetWorst()
 
-
+		@char Tasha
 
 		Tasha: I'm not going to let it happen again.
 		Tasha: The next time disaster strikes,[br]well will be ready for it.
@@ -2756,8 +2756,8 @@
 		Tasha: We did what we had to.[br]The cave was using them to block our path.
 
 		@char Metra
-		Metra: They were blocking a path.[br]But there was always more than one.
-		Metra: Maybe they weren't blocking the path to slow us down.
+		Metra: They were always blocking a path.[br]But there was always more than one.
+		Metra: Maybe they weren't trying to slow us down.
 		Metra: Maybe they were saying "no, don't go this way."
 
 		@if !GetDouglass()
@@ -2786,9 +2786,12 @@
 		@elseif !GetDerringer()
 		Metra: Was Derringer trying to block our shortcut, or remind us that we had found better one?
 		@elseif !GetPendleton()
+		@char Meyster
 		Meyster: So, was Pendleton...?
+		@char Metra
 		Metra: Maybe he wanted us to use the other path we had opened?
 		Metra: I'm sorry.
+		@char Meyster
 		Meyster: It is not victory that makes a hero.
 		@endif
 
@@ -2892,11 +2895,11 @@
 		Wilson: It's time to put the town back together after all!
 
 		@char Tedd
-		Tedd: 
+		Tedd: May I help?
 
 
 		@char Wilson
-		Wilson: Yes yes, everything has a place after all.
+		Wilson: Of course, everyone has a place after all.
 		Wilson: It's just... like a puzzle.
 		Wilson: Like a puzzle with a few peices missing.
 
@@ -2913,7 +2916,7 @@
 		@endif
 			
 		Wilson: I don't even need to do anything.
-		Wilson: People will follow opportunities and keep the town running.
+		Wilson: Industrious folk will fill gaps and keep the town running.
 
 		@if !GetPendleton()
 			Wilson: Some of the people we lost weren't even from here.
@@ -2938,7 +2941,7 @@
 		@endif
 
 		@if !GetSara()
-			Wilson: Did we ever really need a maid?
+			Wilson: And did we ever really need a maid?
 		@endif
 
 
@@ -2954,13 +2957,13 @@
 			Wilson: The mayor wouldn't care.
 			Wilson: It's one less troublemaker.
 			Tedd: Dad...
-			Wilson: No longer stirring up trouble.
+			Wilson: No more rabbel-rousing.
 			Wilson: No more... no more...
 			Tedd: Be the mayor tomorrow.
 			Tedd: For now, just be a father.
 			Wilson: I... can try.
 		@else
-			Wilson: Can I live with that?
+			Wilson: Surely I can live with that?
 			Tedd: Maybe, just be a citizen for now.
 			Tedd: And we'll get through this together.
 		@endif
@@ -3005,8 +3008,10 @@
 
 		
 		#day27
-		Days later, outside Svenra's cottage...
+		
 		@if GetPerfect()
+
+		Days later, outside Svenra's cottage...
 
 		@char Svenra
 		Svenra: What do you want?
@@ -3066,58 +3071,62 @@
 		That afternoon, at the bar...
 
 		@if GetMara()
-		@char Mara
-		Mara: Can I interest you in the house special?
-		@char Svenra
-		Svenra: Why not? Won't be the least healthy thing that's happened to me today.
-		Svenra: You lot are lucky Mara's still around.
-		Svenra: Doubt any of you even knows what goes into her drinks.
-		@char Murtough
-		Murtough: I just figgure we don't want to know.
-		@char Mara
-		Mara: 
+			@char Mara
+			Mara: Can I interest you in the house special?
+			@char Svenra
+			Svenra: Why not? Won't be the least healthy thing that's happened to me today.
+			Svenra: You lot are lucky Mara's still around.
+			Svenra: Doubt any of you even knows what goes into her drinks.
+			@char Murtough
+			Murtough: I just figgure we don't want to know.
+			@char Mara
+			Mara: He ain't wrong.
 		@else
-		Svenra: The place isn't going to be the same without her.
-		Svenra: Did she get around to telling anyone her secret recipies?
-		Svenra: She never was big on writing stuff down.
+			@char Svenra
+			Svenra: The place isn't going to be the same without her.
+			Svenra: Did she get around to telling anyone her secret recipies?
+			@char Murtough
+			Murtough: She never was big on writing stuff down.
 		@endif
 
+		@char Svenra
 		Svenra: Shame everyone can't be here.
 
 
-		@if !GetDouglass
-			Svenra: That hero who came to town.
+		@if !GetDouglass()
+			Svenra: That hero wasn't so bad.
+			Svenra: Just bad luck our hole in the ground was the one that did him in.
 			Svenra: He must have done this a few times before.
-			Svenra: Just bad luck we're the one that did him in.
-		@elseif !GetPendleton
+		@elseif !GetPendleton()
 			Svenra: That squire was barely a man but already so tired of everything.
 			Svenra: Could you imagine if he'd lived as long as I have?
-		@elseif !GetMcDermit
+		@elseif !GetMcDermit()
 			Svenra: It's a shame about that guard.
 			Svenra: Somebody's going to have to look after his garden.
 			Svenra: He always was so proud of those roses. 
 		@endif
 
 
-		@if !GetNorma
-			Svenra: Don't know if the cows'll listen to anyone else now that Norma's gone.
+
+		@if !GetNorma()
+			Svenra: That Norma, don't know if the cows'll listen to anyone else now that she's gone.
 			Svenra: Yaknow she had nicknames for all of 'em?
-		@elseif !GetSara
+		@elseif !GetSara()
 			Svenra: Sara was too good for this town.
 			Svenra: I swear she was terrified of people ever finding her not working!
-			Svenra: Used to let her take naps in my cottage where folks couldn't see her, poor thing.
-		@elseif !GetDerringer
+			Svenra: Used to let her take naps in my cottage where folks couldn't see her.[br]Poor thing.
+		@elseif !GetDerringer()
 			Svenra: I'm not going to miss that blacksmith's hammering.
 			Svenra: But I always thought those nicknacks he put together were nice.
 		@endif
 
-		@if !GetMelvardius
-			Svenra: Never did quite see eye to eye with that preacher.
+		@if !GetMelvardius()
+			Svenra: That preacher and I never did quite see eye to eye.
 			Svenra: Was nice that he came by to check up on me though. 
-		@elseif !GetTodd
-			Svenra: Todd was a good kid. A bit odd, but he had a good heart.
+		@elseif !GetTodd()
+			Svenra: Todd was a good kid. A bit odd, but he had a solid heart.
 			Svenra: Makes me wish I never loaned him those old books.
-		@elseif !GetDevon
+		@elseif !GetDevon()
 			Svenra: That hunter didn't even know what he was getting into.
 			Svenra: Think I've seen him around a time or two.
 			Svenra: Name was Devon wasn't it?
@@ -3134,6 +3143,7 @@
 
 		@elseif GetWorst()
 
+		Days later, outside Svenra's cottage...
 
 		@char elder
 		Elder: What is going on in there?
@@ -3247,7 +3257,7 @@
 		That night, outskirts of town.
 
 		@char Fluer
-		@if Sara
+		@if GetSara()
 			Fluer: There you are.
 			Fluer: Sara has been looking for you.
 		@else
@@ -3263,7 +3273,7 @@
 
 		@wait 1
 
-		Fluer: I mean, I will, but I'm not looking forward to it.
+		Fluer: I mean, I will, but I'm not excited about it.
 
 		@char Patrick
 		Patrick: I've got to get going.
@@ -3279,7 +3289,7 @@
 		Patrick: I'm the most qualified.
 
 		@char Fluer
-		Fluer: In your very qualified opinion, is the middle of the night the best time to start a trip?
+		Fluer: In your very qualified opinion...[br]Is the middle of the night the best time to start a trip?
 
 		@char Patrick
 		Patrick: Look, either help with the box or just leave me alone.
@@ -3398,11 +3408,11 @@
 			Tasha: Well, Jezerine said it was going to be some epic weapon.
 			Tasha: With both of them gone, I can't say.
 		@endif
-		@char Tasha
-		Tasha: That's the trouble. If you're writing a story you can't do that!
-		Tasha: You can't have buildup with no payoff.[br]Or big events that just come out of nowhere.
-		Tasha: Like, who was that weird lady with the giant hat?
-		Jinn: Yeah, she just one of our best swords and ran off with it.
+		@char Tristana
+		Tristana: That's the trouble. If you're writing a story you can't do that!
+		Tristana: You can't have buildup with no payoff.[br]Or big events that just come out of nowhere.
+		Tristana: Like, who was that weird lady with the giant hat?
+		Jinn: Yeah, she just took one of our best swords and ran off with it.
 
 		@if GetDevon()
 			@char Tristana
@@ -3422,9 +3432,9 @@
 		Jinn: Okay, but you're not writing a story. You're telling true events. Why not just tell it like it is?
 
 		@char Tristana
-		Tristana: Sure, but pacing.
-		Tristana: I'm going to try, but maybe some stories a medium specific.
-		Jinn: Are you saying this would make a better stage play?
+		Tristana: Sure, but... pacing.
+		Tristana: I'm going to try, but maybe some stories are meant for specific mediums.
+		Jinn: Do you think it would make a better stage play?
 		Tristana: Maybe? There's got to be something out there, but I can't put my finger on it.
 
 		@elseif GetWorst()
@@ -3602,9 +3612,7 @@
 		@elseif GetWorst()
 		@char Elder
 		Elder: Well, that's done.
-		Elder: Guess I'll just...
-		@wait 4
-		Elder: Well, that's done...
+		Elder: What now?
 		@endif
 
 	@exit
