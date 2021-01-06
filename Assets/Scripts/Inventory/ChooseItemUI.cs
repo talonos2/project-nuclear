@@ -124,6 +124,7 @@ public class ChooseItemUI : MonoBehaviour
             {
 
                 SendToTown((Weapon)rolledItem);
+                itemSelectionViewerUI.CloseSelectedItemViewer();
             }
         }
         else if (rolledItem is Armor)
@@ -139,6 +140,7 @@ public class ChooseItemUI : MonoBehaviour
             else
             {
                 SendToTown((Armor)rolledItem);
+                itemSelectionViewerUI.CloseSelectedItemViewer();
             }
         }
         else if (rolledItem is Accessory)
@@ -155,6 +157,7 @@ public class ChooseItemUI : MonoBehaviour
             {
 
                 SendToTown((Accessory)rolledItem);
+                itemSelectionViewerUI.CloseSelectedItemViewer();
             }
         }
     }
@@ -168,8 +171,9 @@ public class ChooseItemUI : MonoBehaviour
         GameState.pickingItem = true;
         chooseItemUiCanvas.enabled = true;
         SelectButton(1);
-        SetItemUI();
         itemSelectionViewerUI.OpenForFoundItemSelection();
+        SetItemUI();
+
     }
 
     private void SetItemUI()
@@ -365,8 +369,8 @@ public class ChooseItemUI : MonoBehaviour
         {
             GameData.Instance.itemsFoundThisRun.Add(i);
                 
-            if (i.Rare) sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped.</color> <sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>", duration: 5f);
-            else sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped. <sprite=0> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
+            if (i.Rare) sendGabToTownMessage("<color=white><size=40><b>Duplicate</b></size> item found that is already equipped.</color> <sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>", duration: 5f);
+            else sendGabToTownMessage("<color=white><size=40><b>Duplicate</b></size> item found that is already equipped. <sprite=0> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
         }
         CloseItemPickUI();
     }

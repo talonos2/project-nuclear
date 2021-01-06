@@ -24,8 +24,7 @@ public class ClickObjectCommand : Naninovel.Commands.Command
             return Task.CompletedTask;
         }
         //clickedObject.EnqueueMovement(d);
-
-        clickedObject.punchAnyway = true ;
+        clickedObject.SetPunchAnyway() ;
 
         return Task.CompletedTask;
     }

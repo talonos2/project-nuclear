@@ -54,7 +54,6 @@
 		
 
 		#day4
-		;complete
 		Soon, at the entrance...
 		@char Todd
 		Todd: Ah hahahaha!
@@ -102,7 +101,7 @@
 
 		#day5
 		Soon, at the entrance...
-		@if GetPerfect()
+		;@if GetPerfect()
 		@char Logos
 		Logos: Are you alright?
 		@char Norma
@@ -130,7 +129,7 @@
 		@char Norma
 		Norma: Sure, just don't get yourself in trouble.
 		Norma: If anybody needs me I'll be out making sure the sheep don't drown themselves or something.
-		@endif
+		;@endif
 
 		
 		
@@ -140,7 +139,7 @@
 		#day6
 
 
-		@elseif GetPerfect()
+		;@if GetPerfect()
 
 		Hours later, at the blacksmith's shop...
 		@char Tasha
@@ -185,12 +184,12 @@
 		Tasha: There's a feast, if you care.
 
 
-		@elseif !GetWorst()
-		@elseif GetWorst()
+		;@elseif !GetWorst()
+		;@elseif GetWorst()
 
 
 
-		@endif
+		;@endif
 
 
 		@exit
@@ -198,7 +197,7 @@
 		
 		#day7
 
-		@elseif GetPerfect()
+		;@if GetPerfect()
 		Days later, at the church...
 		@char Melvardius
 		Melvardius: In ages past the gods were many.[br]Splintered across the cosmos.
@@ -231,13 +230,18 @@
 		Darius: Dad, do we have to stay for all this?
 		@char Paul
 		Paul: We do boy, we do.
+
+
+
+
+		;@endif
 		
 		@exit
 		
 
 		#day8
 
-		@elseif GetPerfect()
+		;@if GetPerfect()
 		Days later, at the pub...
 		@char Mara
 		Mara: I don't know about you lot, but I'm in the mood for another round!
@@ -275,12 +279,12 @@
 		Mara: Don't worry, hun. I'm sure you'll get used to 'em.
 
 
-		@elseif !GetWorst()
-		@elseif GetWorst()
+		;@elseif !GetWorst()
+		;@elseif GetWorst()
 
 
 
-		@endif
+		;@endif
 		
 
 		@exit
@@ -338,15 +342,16 @@
 			@char Devon
 			Devon: Didn't I see you down there?
 			@char Douglass
-			Douglass: Yes, but I wasn't feeling like myself at the time.
+			Douglass: Yes.
+			Douglass: Sorry, I wasn't feeling quite like myself at the time.
 		@endif
 
 		@char Devon
-		Devon: What about the people down there?[br]Were they pushed in too?
+		Devon: What about the other people down there?[br]Were they pushed in too?
 		@char Logos
 		Logos: No, the people you saw were victims of the curse. Overtaken by its fel magics.
 		@char Devon
-		Devon: But that means the ones that were...
+		Devon: But that means that they were...
 		@char Metra
 		Metra: You did what you could. We are greatful.
 
@@ -416,13 +421,15 @@
 
 		
 		#day10
-		That night, at the pub...
+		
 		;realizes ring won't work away from cave.
 		;good: ready to hunt pillager
 		;med: returns to life of squireship
 		;bad: no longer wants to be a knight
 
 		@if GetPerfect()
+
+		That night, at the pub...
 
 		@char Logos
 		Logos: A toast!
@@ -474,12 +481,71 @@
 		Meyster: If there is one flaw I dare mention, it's that you do not know how to spin a proper story!
 
 
+		@elseif !GetWorst()
+
+		@char Meyster
+
+		Soon, at the cave entrance...
+
+		Meyster: Pendleton! You have returned!
+
+		@if GetTodd()
+			@char Todd
+			Todd: I'm not Pendlton.
+			@char Meyster
+			Meyster: Ah, sorry.
+			Meyster: Just, you know, from the side you look—Ah! There you are!
+			@char Pendleton
+			Pendleton: Yes?
+		@else
+			@char Pendleton
+			Pendleton: Yes?
+		@endif
+
+		@char Meyster
+		Meyster: You did it! You completed your first nobel quest!
+		@char Pendleton
+		Pendleton: Yes, I suppose I did.
+		@char Meyster
+		Meyster: It is a bittersweet occasion.
+		Meyster: For, while I revel in your trumph...[br]I did not think I would be losing my squire so soon.
+		@char Pendleton
+		Pendleton: Losing?
+		@char Meyster
+		Meyster: You are not a student anymore.
+		@char Pendleton
+		Pendleton: I still have much to learn.
+		@char Meyster
+		Meyster: Ah but now you will learn by doing!
+		Meyster: There is no better school than the open road.
+		@char Pendleton
+		Pendleton: I... I am not ready.
+		@char Meyster
+		Meyster: Pardon? I saw you vanquish evil myself!
+		@char pendleton
+		Pendleton: That shouldn't count, I had magic at the time.
+		@if GetDouglass()
+			Pendleton: Speaking of, I ought to be returning this ring to Hiro.
+		@else
+			@char Meyster
+			Meyster: Magic you still posess!
+			Meyster: I am sure Hiro would be honored if you carried on his legacy.
+			@char Pendleton
+			Pendleton: No, I'm sure the honoroable thing to do would be to return the ring to his next of kin.
+		@endif
+
+		@char Meyster
+		Meyster: What will you do then?
+		@char Pendleton
+		Pendleton: I will continue training, at least a little while longer.
+		@char Meyster
+		Meyster: Very well, if that is what you want.
 
 
 
+		@else
 
-
-		@elseif GetWorst()
+		Soon, at the cave entrance...
 
 		@char Meyster
 		Meyster: Pendleton! You're...
@@ -520,62 +586,7 @@
 		@char Pendleton
 		Pendleton: Eventually.
 
-
-		@else
-
-		Meyster: Pendleton! You have returned!
-
-		@if GetTodd()
-			@char Todd
-			Todd: I'm not Pendlton.
-			@char Meyster
-			Meyster: Ah, sorry.
-			Meyster: Just, you know, from the side you look—Ah! There you are!
-			@char Pendleton
-			Pendleton: Yes?
-		@else
-			@char Pendleton
-			Pendleton: Yes?
-		@endif
-
-		@char Meyster
-		Meyster: You did it! You completed your first nobel quest!
-		@char Pendleton
-		Pendleton: Yes, I suppose I did.
-		@char Meyster
-		Meyster: It is a bittersweet occasion.
-		Meyster: I revel in your trumph.
-		Meyster: But I did not think I would be losing my squire so soon.
-		@char Pendleton
-		Pendleton: Losing?
-		@char Meyster
-		Meyster: You are not a student anymore.
-		@char Pendleton
-		Pendleton: I still have much to learn.
-		@char Meyster
-		Meyster: Ah but now you will learn by doing!
-		Meyster: There is no better school than the open road.
-		@char Pendleton
-		Pendleton: I... I am not ready.
-		@char Meyster
-		Meyster: Pardon? I saw you vanquish evil myself!
-		@char pendleton
-		Pendleton: That shouldn't count, I had magic at the time.
-		@if GetHiro()
-			Pendleton: Speaking of, I ought to be returning this ring to Hiro.
-		else
-			@char Meyster
-			Meyster: I am sure Hiro would be honored if you carried on his legacy.
-			@char Pendleton
-			Pendleton: No, I'm sure the honoroably thing to do would be to return it to his next of kin.
-		@endif
-
-		@char Meyster
-		Meyster: Then, what will you do?
-		@char Pendleton
-		Pendleton: I will continue training, at least a little while longer.
-		@char Meyster
-		Meyster: Very well, if that is what you want.
+		
 
 		@endif
 
@@ -611,9 +622,12 @@
 
 
 		#day11
+		;mixed up one
+
+
 		Soon, at the entrance...
 		@char Stranger
-		Stranger: huff... huff... I made it?
+		Stranger: Huff... huff... I made it?
 		@if !Getperfect()
 			Stranger: And this loot![br]I mean sure, it's not exactly precious metals.
 			Stranger: But there's gotta be an antiques dealer who will—
@@ -624,22 +638,24 @@
 		@char Logos
 		Logos: I was worried when we lost sight of you!
 		@if GetWorst()
-		Tedd: Where's everyone else?
-		@char Stranger
-		Stranger: I, uh, didn't see anybody.
-		Stranger: Guess the monsters ate them.
+			@char Tedd
+			Tedd: Where's everyone else?
+			@char Stranger
+			Stranger: I, uh, didn't see anybody.
+			Stranger: Guess the monsters ate them.
 		@endif
 
-		@if !GetPerfect()
 		@char Tasha
 		Tasha: Come along, we have much to celibrate.
-		@char Wilson
-		Wilson: Do we?
-		@char Tasha
-		Tasha: Honoring sacrafice is part of celibrating.
-			@if !GetTodd()
+
+		@if !GetPerfect()
 			@char Wilson
-			Wilson: Well, you lot go on without me.
+			Wilson: Do we?
+			@char Tasha
+			Tasha: Honoring sacrafice is part of celibrating.
+			@if !GetTodd()
+				@char Wilson
+				Wilson: Well, you lot go on without me.
 			@endif
 		@endif
 		@char Stranger
@@ -659,11 +675,11 @@
 
 		@if GetWorst()
 			@char Reya
-			Reya: Maybe you should be.[br]You didn't let anything stand in your way after all.
+			Reya: Maybe you should be.[br]I heard that nothing could stop you.
 			@char Stranger
 			Stranger: So?
 			@char Reya
-			Reya: You've got potential. Maybe we can help each other out.
+			Reya: You've got potential.[br]Maybe we can help each other out.
 			@char Stranger
 			Stranger: I don't want your help.
 			@char Reya
@@ -672,7 +688,7 @@
 			@char Stranger
 			Stranger: So I'll go hide.[br]Done it before.
 			@char Reya
-			Reya: Nah, I know your type, you've always hid in plain sight. But now?[br]You're going to be famous.
+			Reya: Nah, I know your type. You've always hid in plain sight. But now?[br]You're going to be famous.
 			@char Stranger
 			Stranger: Fine, so what do I do now?
 			@char Reya
@@ -690,7 +706,7 @@
 
 		@elseif !GetPerfect()
 			@char Reya
-			Reya: Didn't go looking for a lot of civilians either did ya?
+			Reya: Didn't go looking to rescue a lot of folks either, did ya?
 			@char Stranger
 			Stranger: What of it?
 			@char Reya
@@ -737,10 +753,10 @@
 			@wait 2
 
 			@char Sara
+			Sara: There you are!
 			Sara: So, I wanted to thank you. None of us would have made it if it weren't for you.
 			@char Stranger
 			Stranger: You don't owe me anything.[br]Trust me.
-			@wait 1
 			@char Sara
 			Sara: Oh don't try that false modesty on me Mr...[br]Say, I don't think I know your name.
 			@char Stranger
@@ -758,8 +774,8 @@
 
 		
 		#day12
-		Soon, at the entrance...
 		@if GetPerfect()
+		Soon, at the entrance...
 		@char Jezerine
 		Jezerine: Did you see that?!
 		Jezerine: I did it! I totally just cleaned the floor with, like, a thousand monsters!
@@ -833,7 +849,7 @@
 		@char Reya
 		Reya: I didn't say they were slow.[br]I said they were wrong.
 		Reya: When I stepped in, you got ready to run.
-		Reya: You still haven't learned that you don't have to run from anyone.
+		Reya: You don't have to run from anybody.
 
 		@char Jezerine
 		Jezerine: What do you want?
@@ -877,18 +893,17 @@
 		Jezerine: I didn't wait tables.
 
 		@char Reya
+		Reya: That's right, what did you do exactly?
 
 		@if !@getNorma()
-			Reya: I hear they could use a new stablehand.
-		@else
-			Reya: That's right, what did you do exactly?
+			Reya: Say, I hear there's an opening for a stablehand.
 		@endif
 
 		@char Jezerine
 		Jezerine: ...
 
 		@char Reya
-		Reya: You sat around waiting for something exciting to happen. Something to give you purpose.
+		Reya: You sat around waiting for something exciting to happen.[br]Something to give you purpose.
 		Reya: Think it'll happen twice?
 
 		@char Jezerine
@@ -951,7 +966,6 @@
 
 
 		#day13
-		; complete
 		Later than expected, at the entrance...
 		@if GetPerfect()
 
@@ -1016,7 +1030,7 @@
 			Douglass: Well, as a fellow warrior I thank you for carrying on where I could not.
 			@char Murtough
 			Murtough: I'm not a warrior, just a soldier.
-			Murtough: And you're just some kid who's barely gotten his hands bloody.
+			Murtough: And you're just some kid who has barely gotten his hands bloody.
 		@endif
 
 		@if GetSara()
@@ -1027,7 +1041,8 @@
 			Murtough: Just be glad you didn't get in my way.
 		@endif
 
-		@if GetTedd()
+		@if GetTodd()
+			@char Wilson
 			Wilson: Is there anything we can do for you?
 			@char Murtough
 			Murtough: Guess so.
@@ -1156,23 +1171,22 @@
 			Tedd: Douglass was a hero. Look where that got him.
 		@endif
 
-		Tedd: Everybody had their part to play.
-		Tedd: Some paid a higher price than others.
+		Tedd: We all fought.[br]We all had to.
+		Tedd: Everyone else paid a price.[br]Some more than others.
 
-		no devon?
 		@If !GetDevon()
 			Tedd: Even people we don't even know.
-			Tedd: Some hunter who never should have been involved.
+			Tedd: Like a hunter who never should have been involved.
 		@endif
 
 		Tedd: I was just the one to cross the finish line.
 		Tedd: If anything, I lost the least.
-		@if !GetTodd
+		@if !GetTodd()
 			Tedd: Just a brother...
 		@endif
 
 		@char Tristana
-		Tristana: So... you were thinking about how it was a team effort?
+		Tristana: So... you're saying it was a team effort?
 		@char Tedd
 		Tedd: Sure. Let's go with that.
 
@@ -1288,9 +1302,9 @@
 		@endif
 
 		@char Paul
-		Aren't they all weapons?
+		Paul: Aren't they all weapons?
 
-		@if GetMcDermit
+		@if GetMcDermit()
 			@char McDermit
 			McDermit: Some of them are armor.
 		@endif
@@ -1303,26 +1317,26 @@
 			@char Sara
 			Sara: What should we do with all the daggers?
 			@if GetMara()
+				@char Mara
 				Mara: We've got enough of them, how about folks get one with every purchase?
 			@endif
 			@char Phillip
-			Phillip: There may be a lot for one person.
-			Phillip: But we could make these things collector's items.
+			Phillip: I plan to make them collector's items.
 		@endif
 
 		Phillip: Okay, next item up...
 		Phillip: Hey, could we get this one cleaned?
 
 		@char Nelson
-		Tedd: Sorry, I must have missed it.
+		Nelson: Sorry, I must have missed it.
 
 		@char Wilson
-		Wilson: Perhaps we could slow things down a bit?
+		Wilson: Maybe we should slow things down a bit?
 		Wilson: Perhaps this is a job for a professional appraiser?
 
 		@char Phillip
-		Phillip: What, you want to pay their comission?
-		Phillip: It's not about what we say it's worth.[br]It's what folks are willing to pay.
+		Phillip: What? You want to pay their comission?
+		Phillip: It's not about what it's worth.[br]It's about what customers are willing to pay.
 
 		@if GetDerringer()
 			@char Derringer
@@ -1404,13 +1418,13 @@
 		Soon, at the entrance...
 
 		@char Logos
-		Logos: So... that's what it looks like from that angle...
+		Logos: So... that's what it looks like from inside...
 		@if !GetWorst()
 			Logos: I think I'll stick to scrying in the future.
 		@endif
 
 		@char JohnDoe
-		JohnDoe: Hey! he made it!
+		JohnDoe: Hey! He made it!
 
 		@if GetPerfect()
 			@char Logos
@@ -1465,42 +1479,38 @@
 			Wilson: Alright, you heard the man!
 			@char Metra
 			Metra: Hey, are you doing okay?
-			@if Sara
+			@if GetSara()
 				@char Sara
 				Sara: Oh, I'm alright.
 				Sara: I'm, uh, going to see if the doctor is still doing discount amputations...
-			@endif
-			@if GetMara()
-				@char Mara
-				Mara: Just feeling a bit woozy
-			@endif
-			@if GetDerringer()
+			@elseif GetDerringer()
 				@char Derringer
 				Derringer: My teeth hurt...
+			@elseif GetMara()
+				@char Mara
+				Mara: I'm just feeling a bit woozy
 			@endif
 			@if GetPendleton()
 				@char Pendleton
 				Pendleton: I'm fine, it's just that my hair has gone a bit funny.
-			@endif
-			@if GetMelvardius()
+			@elseif GetMelvardius()
 				@char Melvardius
 				Melvardius: Just a bit of a rash, I'm sure.
-			@endif
-			@if GetNorma()
+			@elseif GetNorma()
+				@char Norma
 				Norma: Just hungry.[br]Really, weirdly, hungry.
-			@endif
-			@if GetMcDermit()
-				McDermit: It's just a bit bright out.[br]How long was I down there?
 			@endif
 			@if GetDouglass()
 				@char Douglass
-				Douglass: Well, I've been in these caves before. Always a bit dizzy afterwards.[br]Never quite this bad though.
-			@endif
-			@if GetDevon()
+				Douglass: I've been in these caves before. Always a bit dizzy afterwards.
+				Douglass: Never quite this bad though...
+			@elseif GetMcDermit()
+				@char McDermit
+				McDermit: It's just a bit bright out.[br]How long was I down there?
+			@elseif GetDevon()
 				@char Devon
 				Devon: I'm fine... thanks. Just going to get as far from here as I can.
-			@endif
-			@if GetTodd()
+			@elseif GetTodd()
 				@char Todd
 				Todd: No! Stay back! I'm fine...[br]Excellent, in fact.
 			@endif
@@ -1513,6 +1523,8 @@
 			Logos: Just... so very tired.
 			@char Patrick
 			Patrick: We'll have a celibration ready for you when you're up to it.
+			@char Logos
+			Logos: Yes yes, I'll get around to it.
 		@elseif GetWorst()
 			@char Logos
 			Logos: Indeed.[br]Now, out of my way ruffian.
@@ -1611,12 +1623,15 @@
 		Wilson: Are you sure you won't stay?
 
 		@char Paul
-		Paul: I'm afraid not.
-		Paul: I can't ever look at this place the same again.
+		Paul: After what happened...
+		Paul: I'll never be able to see this place the same way.
+
+		@char Wilson
+		Wilson: Well, if that is what you want...
 
 		@char Patrick
 		Patrick: You've got some, uh... slime.
-		Patrick: It's coming out of that box there.
+		Patrick: It's dripping out of that box there.
 
 		@char Paul
 		Paul: Just taking a souvenir, that's all.
@@ -1626,7 +1641,10 @@
 
 		@char Paul
 		Paul: No!
-		Paul: That's fine. I'll be fine.
+		Paul: I mean...[br]It's fine. I'll be fine.
+		Paul: Ha! Giddy-up!
+
+		@wait 2
 
 		@char Darius
 		Darius: Dad? Can I come out now?
@@ -1640,7 +1658,7 @@
 		@char Darius
 		Darius: I'm hungry dad. I can't eat these vegetables.
 		@char Paul
-		Paul: Sure, you were saying that before you grew fangs.
+		Paul: You were saying that before you grew fangs.
 		Paul: We're going to try veggies a bit longer.
 		@char Darius
 		Darius: If I catch something can I eat it?
@@ -1754,7 +1772,7 @@
 		Years later, in class...
 
 		@char Jinn
-		Jinn: Now these caves, chambers, are being found more and more thoughout the world. We had one in our own city not long ago.
+		Jinn: Now these caves, or chambers, are being found more and more thoughout the world. We had one in our own city not long ago.
 		Jinn: Since then, we've figure out that these chambers were built to—
 
 		@char Hans
@@ -1782,7 +1800,7 @@
 
 		@char Jinn
 		Jinn: That's right.
-		Jinn: Back then, people who stayed in the chamber too long got sick.
+		Jinn: Back then, people got sick if they stayed in the chamber too long.
 		Jinn: This was because of the—
 
 		@char Hans
@@ -1904,7 +1922,7 @@
 
 
 		@char Fluer
-		Fluer: Perhaps you should rest
+		Fluer: Perhaps you should rest.
 
 		@char Meyster
 		Meyster: Nonsense!
@@ -1913,7 +1931,7 @@
 
 			@char Meyster
 			Meyster: Come Pendleton! I need you to pack my things!
-			Meyster: We won't tarry long! The next adventure waits just over the next rise!
+			Meyster: We can't tarry long! Adventure waits just over the horizon!
 
 			@char Pendleton
 			Pendleton: Yes sire.
@@ -1923,14 +1941,13 @@
 			Tasha: There's still much you could do here.[br]Won't you stay a bit longer?
 
 			Meyster: If I remain here, some other calamity may go unanswered!
-			Meyster: 
 
 			@char Tasha
-			Tasha: the world will always have its problems. But perhaps...
+			Tasha: The world will always have its problems. But perhaps...
 			Tasha: Perhaps you have earned a little rest?
 
 			@char Meyster
-			Meyster: It is a poor knight who puts his own comfort above that of others!
+			Meyster: It is a poor knight who puts his own comfort above the needs of others!
 
 			@char Wilson
 			Wilson: We had planned a feast.
@@ -1956,7 +1973,7 @@
 			Meyster: I need you to...
 
 			@char Fluer
-			Fluer: Perhaps a good strong drink will—
+			Fluer: I can mix a drink stronger than—
 
 			@char Meyster
 			Meyster: No.
@@ -1979,7 +1996,6 @@
 
 			@char JohnDoe
 			JohnDoe: Don't worry about it.[br]I'll go ahead and drink for you.
-
 
 		@endif
 
@@ -2074,18 +2090,21 @@
 
 		@char Reya
 		Reya: Ugh, finally.
+		@char Elder
 		Elder: You've done it?[br]Broken the evil curse?
 		@char Reya
 		Reya: Probably, somebody should go check on that.
 		@char Tristana
-		Tristana: What did you seee down there?[br]What was the—
+		Tristana: What did you see down there?[br]What was the—
 		@char Reya
-		Reya: I don't know, go look.
+		Reya: I don't know.[br]Go look yourself.
 		Reya: I left most of it down there.
 		Reya: I just wanted this.
 		@if GetDerringer()
+			@char Derringer
 			Derringer: I haven't seen Tradallian typology like that since—
 		@else
+			@char JohnDoe
 			JohnDoe: What's up with the pommel?
 		@endif
 
@@ -2115,12 +2134,12 @@
 
 		@if GetMara()
 			@char Mara
-			Mara: Alright, well if my bar's still standing I say we get some drinks.
-			Mara: I don't know about you all, but I could use one.
+			Mara: Alright. If my bar's still standing I say we get some drinks.
+			Mara: I don't know about you lot, but I could use one.
 		@endif
 
 		@char Reya
-		Reya: Alright, fine.[br]Let's celibrate.
+		Reya: You know  what?[br]I think I'd like to see you celibrate my accomplishments.
 		Reya: It'll be a nice change of pace.
 
 
@@ -2239,52 +2258,51 @@
 		Nelson: They will be ready in just a moment.
 
 		@char Wilson
-		Wilson: Did something happen to the shrines?
+		Wilson: Did something happen to the graves?
 
 		@char Nelson
 		Nelson: Just the ravages of time.
 
 		@char Wilson
-		Wilson: I did not think it had been so long?
+		Wilson: I did not think it had been so long.
 
 		@char Nelson
 		Nelson: It has been long enough.[br]They deserve our respect.
 
-		@if GetDouglass()
-		Nelson: The hero who brought that magic ring with him.
-		Nelson: We didn't even get to ask where he was from.[br]Or who might be waiting for him to return.
-		@elseif GetDevon()
-		Nelson: That man... do you realize that none of us even know his name?
-		Nelson: Was he selling his wares to provide for his family?
-		Nelson: A family that will never see his return?
-		@elseif GetPendleton()
-		Nelson: The young squire may not have been from here.
-		Nelson: But I feel it fitting that he have a place here now.
+		@if !GetDouglass()
+			Nelson: The hero who brought that magic ring with him.
+			Nelson: We did not even get to ask where he was from.[br]Or who might be waiting for him to return.
+		@elseif !GetDevon()
+			Nelson: That hunter... do you realize that none of us even know his name?
+			Nelson: Was he selling his wares to support himself?[br]Or a family that will never see his return?
+		@elseif !GetPendleton()
+			Nelson: The young squire may not have been from our town.
+			Nelson: But I feel it fitting that he have a place here now.
 		@endif
 
-		@if GetSara()
-		Nelson: Poor Sara. We hardly knew her.
-		Nelson: I think she was afraid we wouldn't like her.
-		@elseif GetMcDermit
-		Nelson: It seems fitting that the last guard to stay to defend us would give his life for us.
-		Nelson: I don't think McDermit would have wanted to go any other way.
-		@elseif GetNorma
-		Nelson: I don't think Norma wanted any of this.
-		Nelson: Perhaps she was just too stubborn to leave.
-		@elseif GetMara
-		Nelson: I don't know if we could have made it through without Mara.
-		Nelson: She always did what she could to keep the town's spirits up.
+		@if !GetSara()
+			Nelson: Poor Sara. We hardly knew her.
+			Nelson: I think she was afraid we wouldn't like her.
+		@elseif !GetMcDermit()
+			Nelson: The only guard to stay to defend us gave his life for us.
+			Nelson: I don't think McDermit would have wanted to go any other way.
+		@elseif !GetNorma()
+			Nelson: I don't think Norma wanted any of this.
+			Nelson: Perhaps she was just too stubborn to leave.
+		@elseif !GetMara()
+			Nelson: I don't know if we could have made it through without Mara.
+			Nelson: She always did what she could to keep the town's spirits up.
 		@endif
 
-		@if GetTodd()
-		Nelson: I think that some may judge Todd too harshly.
-		Nelson: Perhaps he wanted to tread his own path.
-		@if GetMelvardius
-		Nelson: I don't know what we'll do without Melvardius.
-		Nelson: Perhaps he now truly feels the peace he always tried to teach us.
-		@if GetDerringer
-		Nelson: I never got to know our blacksmith.
-		Nelson: I wish I had. His last piece is a work of art, even unfinished.
+		@if !GetTodd()
+			Nelson: I think that some may judge Todd too harshly.
+			Nelson: Perhaps he wanted to tread his own path.
+		@elseif !GetMelvardius()
+			Nelson: I don't know what we will do without Melvardius.
+			Nelson: Perhaps he now truly feels the peace he always tried to teach us.
+		@elseif !GetDerringer()
+			Nelson: I never got to know our blacksmith.
+			Nelson: I wish I had. Even unfinished, his last piece is a work of art.
 		@endif
 
 		@char Wilson
@@ -2333,7 +2351,6 @@
 
 		
 		#day22
-		;Complete, but needs name
 		Soon, at the entrance...
 		@char JohnDoe
 		JohnDoe: Ha HA! That wasn't so bad.
@@ -2373,6 +2390,7 @@
 
 		@wait 1
 
+		@char Reya
 		Reya: Hey, you handled things pretty well down there. Ever thought about—
 		@char JohnDoe
 		JohnDoe: Buzz off lady.
@@ -2393,9 +2411,9 @@
 		Stranger: Wait, what did you say?
 
 
-
 		@elseif GetWorst()
 
+		@char Fluer
 		Fluer: Are you okay? Where are the rest?
 		@char JohnDoe
 		JohnDoe: Place is full of monsters. You think they have a bunch of nice jail cells to put everyone in?
@@ -2440,12 +2458,12 @@
 		@char JohnDoe
 		JohnDoe: I'm getting real tired of people telling me what I do and don't have to do.
 		@char Murtough
-		Murtough: Look, its been a long time...
+		Murtough: Look, it has been a long time...
 		@char JohnDoe
 		JohnDoe: Yeah, and it ain't over yet.
 		@if GetMelvardius()
 			@char Melvardius
-			Melvardius: Surely you can find it in your heart to—
+			Melvardius: Surely you see that you must find it in your heart to—
 			@char JohnDoe
 			JohnDoe: Bin it, pointy hat.
 		@endif
@@ -2453,8 +2471,6 @@
 		Murtough: Look, I'm sorry.[br]What do you even want?
 		@char JohnDoe
 		JohnDoe: When I figure it out.[br]You'll be the first to know.
-
-
 
 		@if GetMara()
 			@char Mara
@@ -2469,7 +2485,7 @@
 			Mara: Sheesh, what's with him?
 		@endif
 
-
+		
 		@endif
 
 
@@ -2481,6 +2497,7 @@
 		Soon, at the entrance...
 
 		@if !GetWorst()
+		@char Tasha
 		Tasha: You did it![br]Come on! Everyone wants to—
 		@char Fluer
 		Fluer: Sure sure, in a bit.[br]I need to look at these samples I collected.
@@ -2490,8 +2507,8 @@
 			@char Fluer
 			Fluer: Some of the samples are larger than others.
 		@endif
-		@char Wilson
-		Wilson: Come on, we're going to have a feast down at the tavern!
+		@char Elder
+		Elder: Come on, we're going to have a feast down at the tavern!
 		@if GetMara()
 			@char Mara
 			Mara: I do not remember agreeing to that...
@@ -2502,6 +2519,7 @@
 			@char Melvardius
 			Melvardius: Evil?
 		@endif
+		@char Nelson
 		Nelson: Filth?
 		@if GetTodd()
 			@char Todd
@@ -2539,9 +2557,10 @@
 		
 		;fadetoblack
 		@if GetDevon()
-		@char Devon
-		Devon: Who are you people?
+			@char Devon
+			Devon: Who are you people?
 		@endif
+
 		@elseif GetWorst()
 
 		@char Fluer
@@ -2608,7 +2627,7 @@
 
 		@elseif !GetWorst()
 
-
+		@char Tasha
 
 		Tasha: I'm not going to let it happen again.
 		Tasha: The next time disaster strikes,[br]well will be ready for it.
@@ -2737,8 +2756,8 @@
 		Tasha: We did what we had to.[br]The cave was using them to block our path.
 
 		@char Metra
-		Metra: They were blocking a path.[br]But there was always more than one.
-		Metra: Maybe they weren't blocking the path to slow us down.
+		Metra: They were always blocking a path.[br]But there was always more than one.
+		Metra: Maybe they weren't trying to slow us down.
 		Metra: Maybe they were saying "no, don't go this way."
 
 		@if !GetDouglass()
@@ -2767,9 +2786,12 @@
 		@elseif !GetDerringer()
 		Metra: Was Derringer trying to block our shortcut, or remind us that we had found better one?
 		@elseif !GetPendleton()
+		@char Meyster
 		Meyster: So, was Pendleton...?
+		@char Metra
 		Metra: Maybe he wanted us to use the other path we had opened?
 		Metra: I'm sorry.
+		@char Meyster
 		Meyster: It is not victory that makes a hero.
 		@endif
 
@@ -2873,11 +2895,11 @@
 		Wilson: It's time to put the town back together after all!
 
 		@char Tedd
-		Tedd: 
+		Tedd: May I help?
 
 
 		@char Wilson
-		Wilson: Yes yes, everything has a place after all.
+		Wilson: Of course, everyone has a place after all.
 		Wilson: It's just... like a puzzle.
 		Wilson: Like a puzzle with a few peices missing.
 
@@ -2894,7 +2916,7 @@
 		@endif
 			
 		Wilson: I don't even need to do anything.
-		Wilson: People will follow opportunities and keep the town running.
+		Wilson: Industrious folk will fill gaps and keep the town running.
 
 		@if !GetPendleton()
 			Wilson: Some of the people we lost weren't even from here.
@@ -2919,7 +2941,7 @@
 		@endif
 
 		@if !GetSara()
-			Wilson: Did we ever really need a maid?
+			Wilson: And did we ever really need a maid?
 		@endif
 
 
@@ -2935,13 +2957,13 @@
 			Wilson: The mayor wouldn't care.
 			Wilson: It's one less troublemaker.
 			Tedd: Dad...
-			Wilson: No longer stirring up trouble.
+			Wilson: No more rabbel-rousing.
 			Wilson: No more... no more...
 			Tedd: Be the mayor tomorrow.
 			Tedd: For now, just be a father.
 			Wilson: I... can try.
 		@else
-			Wilson: Can I live with that?
+			Wilson: Surely I can live with that?
 			Tedd: Maybe, just be a citizen for now.
 			Tedd: And we'll get through this together.
 		@endif
@@ -2986,8 +3008,10 @@
 
 		
 		#day27
-		Days later, outside Svenra's cottage...
+		
 		@if GetPerfect()
+
+		Days later, outside Svenra's cottage...
 
 		@char Svenra
 		Svenra: What do you want?
@@ -3047,58 +3071,62 @@
 		That afternoon, at the bar...
 
 		@if GetMara()
-		@char Mara
-		Mara: Can I interest you in the house special?
-		@char Svenra
-		Svenra: Why not? Won't be the least healthy thing that's happened to me today.
-		Svenra: You lot are lucky Mara's still around.
-		Svenra: Doubt any of you even knows what goes into her drinks.
-		@char Murtough
-		Murtough: I just figgure we don't want to know.
-		@char Mara
-		Mara: 
+			@char Mara
+			Mara: Can I interest you in the house special?
+			@char Svenra
+			Svenra: Why not? Won't be the least healthy thing that's happened to me today.
+			Svenra: You lot are lucky Mara's still around.
+			Svenra: Doubt any of you even knows what goes into her drinks.
+			@char Murtough
+			Murtough: I just figgure we don't want to know.
+			@char Mara
+			Mara: He ain't wrong.
 		@else
-		Svenra: The place isn't going to be the same without her.
-		Svenra: Did she get around to telling anyone her secret recipies?
-		Svenra: She never was big on writing stuff down.
+			@char Svenra
+			Svenra: The place isn't going to be the same without her.
+			Svenra: Did she get around to telling anyone her secret recipies?
+			@char Murtough
+			Murtough: She never was big on writing stuff down.
 		@endif
 
+		@char Svenra
 		Svenra: Shame everyone can't be here.
 
 
-		@if !GetDouglass
-			Svenra: That hero who came to town.
+		@if !GetDouglass()
+			Svenra: That hero wasn't so bad.
+			Svenra: Just bad luck our hole in the ground was the one that did him in.
 			Svenra: He must have done this a few times before.
-			Svenra: Just bad luck we're the one that did him in.
-		@elseif !GetPendleton
+		@elseif !GetPendleton()
 			Svenra: That squire was barely a man but already so tired of everything.
 			Svenra: Could you imagine if he'd lived as long as I have?
-		@elseif !GetMcDermit
+		@elseif !GetMcDermit()
 			Svenra: It's a shame about that guard.
 			Svenra: Somebody's going to have to look after his garden.
 			Svenra: He always was so proud of those roses. 
 		@endif
 
 
-		@if !GetNorma
-			Svenra: Don't know if the cows'll listen to anyone else now that Norma's gone.
+
+		@if !GetNorma()
+			Svenra: That Norma, don't know if the cows'll listen to anyone else now that she's gone.
 			Svenra: Yaknow she had nicknames for all of 'em?
-		@elseif !GetSara
+		@elseif !GetSara()
 			Svenra: Sara was too good for this town.
 			Svenra: I swear she was terrified of people ever finding her not working!
-			Svenra: Used to let her take naps in my cottage where folks couldn't see her, poor thing.
-		@elseif !GetDerringer
+			Svenra: Used to let her take naps in my cottage where folks couldn't see her.[br]Poor thing.
+		@elseif !GetDerringer()
 			Svenra: I'm not going to miss that blacksmith's hammering.
 			Svenra: But I always thought those nicknacks he put together were nice.
 		@endif
 
-		@if !GetMelvardius
-			Svenra: Never did quite see eye to eye with that preacher.
+		@if !GetMelvardius()
+			Svenra: That preacher and I never did quite see eye to eye.
 			Svenra: Was nice that he came by to check up on me though. 
-		@elseif !GetTodd
-			Svenra: Todd was a good kid. A bit odd, but he had a good heart.
+		@elseif !GetTodd()
+			Svenra: Todd was a good kid. A bit odd, but he had a solid heart.
 			Svenra: Makes me wish I never loaned him those old books.
-		@elseif !GetDevon
+		@elseif !GetDevon()
 			Svenra: That hunter didn't even know what he was getting into.
 			Svenra: Think I've seen him around a time or two.
 			Svenra: Name was Devon wasn't it?
@@ -3115,6 +3143,7 @@
 
 		@elseif GetWorst()
 
+		Days later, outside Svenra's cottage...
 
 		@char elder
 		Elder: What is going on in there?
@@ -3228,7 +3257,7 @@
 		That night, outskirts of town.
 
 		@char Fluer
-		@if Sara
+		@if GetSara()
 			Fluer: There you are.
 			Fluer: Sara has been looking for you.
 		@else
@@ -3244,7 +3273,7 @@
 
 		@wait 1
 
-		Fluer: I mean, I will, but I'm not looking forward to it.
+		Fluer: I mean, I will, but I'm not excited about it.
 
 		@char Patrick
 		Patrick: I've got to get going.
@@ -3260,7 +3289,7 @@
 		Patrick: I'm the most qualified.
 
 		@char Fluer
-		Fluer: In your very qualified opinion, is the middle of the night the best time to start a trip?
+		Fluer: In your very qualified opinion...[br]Is the middle of the night the best time to start a trip?
 
 		@char Patrick
 		Patrick: Look, either help with the box or just leave me alone.
@@ -3379,11 +3408,11 @@
 			Tasha: Well, Jezerine said it was going to be some epic weapon.
 			Tasha: With both of them gone, I can't say.
 		@endif
-		@char Tasha
-		Tasha: That's the trouble. If you're writing a story you can't do that!
-		Tasha: You can't have buildup with no payoff.[br]Or big events that just come out of nowhere.
-		Tasha: Like, who was that weird lady with the giant hat?
-		Jinn: Yeah, she just one of our best swords and ran off with it.
+		@char Tristana
+		Tristana: That's the trouble. If you're writing a story you can't do that!
+		Tristana: You can't have buildup with no payoff.[br]Or big events that just come out of nowhere.
+		Tristana: Like, who was that weird lady with the giant hat?
+		Jinn: Yeah, she just took one of our best swords and ran off with it.
 
 		@if GetDevon()
 			@char Tristana
@@ -3403,9 +3432,9 @@
 		Jinn: Okay, but you're not writing a story. You're telling true events. Why not just tell it like it is?
 
 		@char Tristana
-		Tristana: Sure, but pacing.
-		Tristana: I'm going to try, but maybe some stories a medium specific.
-		Jinn: Are you saying this would make a better stage play?
+		Tristana: Sure, but... pacing.
+		Tristana: I'm going to try, but maybe some stories are meant for specific mediums.
+		Jinn: Do you think it would make a better stage play?
 		Tristana: Maybe? There's got to be something out there, but I can't put my finger on it.
 
 		@elseif GetWorst()
@@ -3583,9 +3612,7 @@
 		@elseif GetWorst()
 		@char Elder
 		Elder: Well, that's done.
-		Elder: Guess I'll just...
-		@wait 4
-		Elder: Well, that's done...
+		Elder: What now?
 		@endif
 
 	@exit
