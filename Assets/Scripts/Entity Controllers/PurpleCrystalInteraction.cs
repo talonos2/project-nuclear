@@ -75,7 +75,7 @@ public class PurpleCrystalInteraction : EntityData
             monsterMovement.SetSpawningCrystal(this.gameObject);
             monsterMovement.MoveSpeed = monsterSpeed;
         }
-        SoundManager.Instance.PlaySound("SpawnWraith", 1);
+        SoundManager.Instance.PlaySound("WraithSpawn", 1);
 
 
     }

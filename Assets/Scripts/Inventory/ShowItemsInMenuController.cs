@@ -12,6 +12,7 @@ public class ShowItemsInMenuController : MonoBehaviour
     public TextMeshProUGUI itemDetailsDescription;
     public GameObject picToMove;
     public GameObject extraTextToMove;
+
     public bool openForItemSelection;
     private bool flashFinished;
     private CharacterStats savedStats;
@@ -24,7 +25,7 @@ public class ShowItemsInMenuController : MonoBehaviour
     public bool animatingDropOpen;
     public bool animatingDropClosed;
     private float speedToAnimate;
-
+    private bool isUiLocalOn;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +65,15 @@ public class ShowItemsInMenuController : MonoBehaviour
         if (!inDungeonUi) {
             return;
         }
+        /*if (GameData.Instance.UI_On == true && isUiLocalOn==false) { isUiLocalOn = true;
+            picToMove.SetActive(true);
+             extraTextToMove.SetActive(true);
+        }
+        if (GameData.Instance.UI_On == false && isUiLocalOn==true) { isUiLocalOn = false;
+            picToMove.SetActive(false);
+            extraTextToMove.SetActive(false);
+        }*/
+
 
         HandleChangedItemFlashing();
         if (openForItemSelection) { return; }
