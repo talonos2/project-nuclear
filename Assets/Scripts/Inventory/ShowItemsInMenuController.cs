@@ -12,17 +12,17 @@ public class ShowItemsInMenuController : MonoBehaviour
     public TextMeshProUGUI itemDetailsDescription;
     public GameObject picToMove;
     public GameObject extraTextToMove;
-    private bool openForItemSelection;
+    public bool openForItemSelection;
     private bool flashFinished;
     private CharacterStats savedStats;
     public bool inDungeonUi;
     public float animateSpeed=10;
     private float delayBeforeClose = 0f;
-    private bool animateOpen;
-    private bool animateClose;
+    public bool animateOpen;
+    public bool animateClose;
     public bool inPauseMenu;
-    private bool animatingDropOpen;
-    private bool animatingDropClosed;
+    public bool animatingDropOpen;
+    public bool animatingDropClosed;
     private float speedToAnimate;
 
     // Start is called before the first frame update
@@ -196,13 +196,18 @@ public class ShowItemsInMenuController : MonoBehaviour
 
 
     public void OpenForFoundItemSelection() {
-        picToMove.transform.localPosition = new Vector3(-435, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
+        picToMove.transform.localPosition = new Vector3(-405, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
         openForItemSelection = true;
+
     }
 
     public void ShowSelectedItemAndClose(int itemSelected) {
 
-        if (itemSelected!=-1) delayBeforeClose = .75f;
+        if (itemSelected != -1) delayBeforeClose = .75f;
+        else { openForItemSelection = false;
+            delayBeforeClose = 0;
+
+        }
         flashFinished=false;
         animateClose = true;
         animateOpen = false;

@@ -62,7 +62,7 @@ public class UIHPScript : MonoBehaviour
             int beepNum = (int)(timeSoFar / beepFrequency);
             if (lastBeepAt == beepNum-1)
             {
-                SoundManager.Instance.PlaySound("Old/MenuMoveOld", 1.0f);
+                SoundManager.Instance.PlaySound("Old/MenuMoveOld2", 1.0f);
             }
             lastBeepAt = beepNum;
         }
