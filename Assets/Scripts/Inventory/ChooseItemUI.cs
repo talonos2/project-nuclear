@@ -124,6 +124,7 @@ public class ChooseItemUI : MonoBehaviour
             {
 
                 SendToTown((Weapon)rolledItem);
+                itemSelectionViewerUI.CloseSelectedItemViewer();
             }
         }
         else if (rolledItem is Armor)
@@ -139,6 +140,7 @@ public class ChooseItemUI : MonoBehaviour
             else
             {
                 SendToTown((Armor)rolledItem);
+                itemSelectionViewerUI.CloseSelectedItemViewer();
             }
         }
         else if (rolledItem is Accessory)
@@ -155,6 +157,7 @@ public class ChooseItemUI : MonoBehaviour
             {
 
                 SendToTown((Accessory)rolledItem);
+                itemSelectionViewerUI.CloseSelectedItemViewer();
             }
         }
     }
