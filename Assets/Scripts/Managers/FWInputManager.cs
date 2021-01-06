@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +36,11 @@ public class FWInputManager: Singleton<FWInputManager>
         keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.S });
         keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
         keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.X, KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
+    }
+
+    internal bool IsWASD()
+    {
+        return keyBindings[InputAction.LEFT][0] == KeyCode.C;
     }
 
     public void SetToWASD()
