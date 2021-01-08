@@ -50,9 +50,12 @@ public class GabTriggerer : DoodadData
             }
             if (changesBasedOnControlSceme && FWInputManager.Instance.IsWASD())
             {
+                uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText2, true, (float)time, true, true, clipToPlayForTutorial));
+            }
+            else
+            {
                 uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText, true, (float)time, true, true, clipToPlayForTutorial));
             }
-            uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText2, true, (float)time, true, true, clipToPlayForTutorial));
             GameData.Instance.gabNumbers[gabNumber] = true;
         }
         GameObject.Destroy(this.gameObject);
