@@ -12,7 +12,7 @@ public class DeleteGOCommand : Naninovel.Commands.Command
 
     public override Task ExecuteAsync()
     {
-        IEnumerable<GameObject> matches = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == n);
+        IEnumerable<GameObject> matches = Object.FindObjectsOfType<GameObject>().Where(obj => obj.name == n);
 
         if (matches.Count() == 0)
         {
@@ -21,7 +21,7 @@ public class DeleteGOCommand : Naninovel.Commands.Command
         }
         if (matches.Count() > 1)
         {
-            Debug.LogWarning("There are multiple GOs named " + n + " that could be deleted wuth fwdeletego. I will delete them all. This might not be what you intend.");
+            Debug.LogWarning("There are multiple GOs named " + n + " that could be deleted with fwdeletego. I will delete them all. This might not be what you intend.");
         }
 
         foreach (GameObject go in matches)
