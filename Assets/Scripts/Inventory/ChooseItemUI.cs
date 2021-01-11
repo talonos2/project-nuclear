@@ -22,7 +22,6 @@ public class ChooseItemUI : MonoBehaviour
     private bool pickingItem;
     private CharacterStats playerData;
     private InventoryItem rolledItem;
-    private float delayBeforePressing = .35f;
 
     public int selectedButton = -1;
     public Sprite equipOn;
@@ -368,7 +367,7 @@ public class ChooseItemUI : MonoBehaviour
         if (i)
         {
             GameData.Instance.itemsFoundThisRun.Add(i);
-                
+            GameData.Instance.townWeapons.Add(i);
             if (i.Rare) sendGabToTownMessage("<color=white><size=40><b>Duplicate</b></size> item found that is already equipped.</color> <sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>", duration: 5f);
             else sendGabToTownMessage("<color=white><size=40><b>Duplicate</b></size> item found that is already equipped. <sprite=0> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
         }
@@ -380,6 +379,7 @@ public class ChooseItemUI : MonoBehaviour
         if (i)
         {
             GameData.Instance.itemsFoundThisRun.Add(i);
+            GameData.Instance.townArmor.Add(i);
             if (i.Rare) sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped.</color> <sprite=1> " + i.gameObject.name + " <color=white>sent to town.</color>", duration: 5f);
             else sendGabToTownMessage("<color=white><b>Duplicate</b> item found that is already equipped. <sprite=1> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
             //Debug.Log("r");
