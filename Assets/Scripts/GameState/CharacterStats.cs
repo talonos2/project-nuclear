@@ -206,6 +206,11 @@ public class CharacterStats : Stats
         SavedStats.armor = this.armor;
         SavedStats.accessory = this.accessory;
 
+        SavedStats.FighterClass = this.FighterClass;
+        SavedStats.MageClass = this.MageClass;
+        SavedStats.ScoutClass = this.ScoutClass;
+        SavedStats.SurvivorClass = this.SurvivorClass;
+
         setWeaponStats(weapon);
         setArmorStats(armor);
         setAccessoryStats(accessory);

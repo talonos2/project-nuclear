@@ -19,6 +19,7 @@ public class ZombieController_Derringer : Enemy
 
     override public void doUponDeath()
     {
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Derringer = 0;
 
     }

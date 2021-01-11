@@ -19,6 +19,7 @@ public class ZombieController_Maldarvius : Enemy
 
     override public void doUponDeath()
     {
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Melvardius = 0;
 
     }

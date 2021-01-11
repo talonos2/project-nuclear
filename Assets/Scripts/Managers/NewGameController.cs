@@ -65,7 +65,8 @@ public class NewGameController : MonoBehaviour
                     break;
                 case 1:
                     SoundManager.Instance.PlaySound("MenuOkay", 1f);
-                    loadSaveController.LoadGame(0);
+                    ContinueGame();
+                    
                     break;
                 case 2:
                     SoundManager.Instance.PlaySound("MenuOkay", 1f);
@@ -97,6 +98,11 @@ public class NewGameController : MonoBehaviour
         {
             RefreshSelectedOption(NextMenuOption());
         }
+    }
+
+    public void ContinueGame()
+    {
+        loadSaveController.LoadGame(0);
     }
 
     public void OpenOptionsMenu()

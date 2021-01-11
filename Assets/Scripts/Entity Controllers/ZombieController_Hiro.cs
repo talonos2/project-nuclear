@@ -19,6 +19,7 @@ public class ZombieController_Hiro : Enemy
 
     override public void doUponDeath()
     {
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Douglass = 0;
 
     }
