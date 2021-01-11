@@ -12,6 +12,7 @@ public class ShowItemsInMenuController : MonoBehaviour
     public TextMeshProUGUI itemDetailsDescription;
     public GameObject picToMove;
     public GameObject extraTextToMove;
+    public GameObject picToHide;
 
     public bool openForItemSelection;
     private bool flashFinished;
@@ -26,6 +27,7 @@ public class ShowItemsInMenuController : MonoBehaviour
     public bool animatingDropClosed;
     private float speedToAnimate;
     private bool isUiLocalOn;
+    private bool itemUiHidden;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,10 +61,17 @@ public class ShowItemsInMenuController : MonoBehaviour
             accessoryUIPrefab.flashingBackground.enabled = true;
         }
     }
+
+    public void HideItemUI() {
+        itemUiHidden = true;
+        picToHide.SetActive(false);
+        extraTextToMove.SetActive(false);
+
+}
     // Update is called once per frame
     void Update()
     {
-        if (!inDungeonUi) {
+        if (!inDungeonUi || itemUiHidden) {
             return;
         }
         /*if (GameData.Instance.UI_On == true && isUiLocalOn==false) { isUiLocalOn = true;

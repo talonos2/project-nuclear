@@ -20,6 +20,10 @@ public class IsUIOn : MonoBehaviour
         {
             t.SetActive(false);
         }
+        GameObject uiToTurnOff = GameObject.Find("EscapeMenuUi");
+        if (uiToTurnOff) {
+            uiToTurnOff.GetComponentInChildren<ShowItemsInMenuController>().HideItemUI();
+        }
     }
 
     public void turnOffUiScene() {
@@ -28,6 +32,11 @@ public class IsUIOn : MonoBehaviour
         foreach (GameObject t in stuffToTurnOff)
         {
             t.SetActive(false);
+        }
+        GameObject uiToTurnOff = GameObject.Find("EscapeMenuUi");
+        if (uiToTurnOff)
+        {
+            uiToTurnOff.GetComponentInChildren<ShowItemsInMenuController>().HideItemUI();
         }
     }
 
