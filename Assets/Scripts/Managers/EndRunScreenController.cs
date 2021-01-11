@@ -145,6 +145,7 @@ public class EndRunScreenController : MonoBehaviour
         if (GameData.Instance.RunNumber < 31) {
             GameData.Instance.autoSaveStats();
         }
+        GameData.Instance.itemsFoundThisRun.Clear();
         GameData.Instance.SetNextLocation(new Vector2Int(-4,-13), SpriteMovement.DirectionMoved.DOWN);
         FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
         fadeout.attachToGUI(canvas);

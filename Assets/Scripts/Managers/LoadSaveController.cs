@@ -42,6 +42,7 @@ public class LoadSaveController : MonoBehaviour
     private bool townLoad;
     private bool dungeonLoad;
     private bool pauseLoad;
+    private bool loadingGame = false;
     public NewGameController newGameController;
 
     // Start is called before the first frame update
@@ -76,17 +77,15 @@ public class LoadSaveController : MonoBehaviour
             SoundManager.Instance.PlaySound("MenuOkay", 1f);
             if (townSave)
             {
-                //SaveSlotUiController tempUiSaveController = getUiSaveSlot();
+               // SaveSlotUiController tempUiSaveController = getUiSaveSlot();
                 //tempUiSaveController.savingOverlay.SetActive(true);
                 SaveGame(saveSlotSelected);
                 SetupAllSaveUI(saveSlotSelected);
-                //tempUiSaveController.savingOverlay.SetActive(false);
+
             }
             else
             {
-                LoadGame(saveSlotSelected);
-                GameState.fullPause = false;
-                DeactivateLoad();
+                SetupLoadingGame();
 
             }
 
@@ -266,21 +265,34 @@ public class LoadSaveController : MonoBehaviour
         }
         else
         {
-            LoadGame(saveSlotSelected);
-            GameState.fullPause = false;
-            DeactivateLoad();
+            SetupLoadingGame();
+
 
         }
-
-
     }
+
+    private void SetupLoadingGame()
+    {
+        if (!loadingGame)
+        {
+
+            loadingGame = true;
+            SaveSlotUiController tempUiSaveController = getUiSaveSlot();
+            tempUiSaveController.savingOverlay.SetActive(true);
+            LoadGame(saveSlotSelected);
+            //LoadGame(saveSlotSelected);
+            //GameState.fullPause = false;
+            //DeactivateLoad();
+        }
+    }
+
     protected SaveSlotUiController getUiSaveSlot()
     {
         SaveSlotUiController tempUiSaveController = null;
         switch (pointLocation)
         {
             case 0:
-                //tempUiSaveController = saveSlotPrefab1;
+                tempUiSaveController = saveSlotPrefab1;
                 break;
             case 1:
                 tempUiSaveController = saveSlotPrefab2;
@@ -300,13 +312,16 @@ public class LoadSaveController : MonoBehaviour
 
     public void LoadGame(int saveSlot)
     {
-        GameSaverManager gameSaver = new GameSaverManager();
 
-        gameSaver = savedDataList[saveSlot];
-        gameSaver.PushSaveToGameData();
+            GameSaverManager gameSaver = new GameSaverManager();
 
-        aCanvasThis.enabled = false;
-        newGameController.StartNewGameActual();
+            gameSaver = savedDataList[saveSlot];
+            gameSaver.PushSaveToGameData();
+
+            //aCanvasThis.enabled = false;
+            newGameController.StartNewGameActual();
+        
+
 
 
 

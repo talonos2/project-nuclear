@@ -214,7 +214,7 @@ namespace Naninovel.UI
             if (!actorNamePanel.Text.Equals(text))
             {
                 actorNamePanel.Text = text;
-                SoundManager.Instance.PlaySound("Old/MenuMoveOld", 1.0f);
+                SoundManager.Instance.PlaySound("Old/MenuMoveOld2", 1.0f);
             }
         }
 
