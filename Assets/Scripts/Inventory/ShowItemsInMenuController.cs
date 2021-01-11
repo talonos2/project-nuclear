@@ -12,19 +12,20 @@ public class ShowItemsInMenuController : MonoBehaviour
     public TextMeshProUGUI itemDetailsDescription;
     public GameObject picToMove;
     public GameObject extraTextToMove;
-    private bool openForItemSelection;
+
+    public bool openForItemSelection;
     private bool flashFinished;
     private CharacterStats savedStats;
     public bool inDungeonUi;
     public float animateSpeed=10;
     private float delayBeforeClose = 0f;
-    private bool animateOpen;
-    private bool animateClose;
+    public bool animateOpen;
+    public bool animateClose;
     public bool inPauseMenu;
-    private bool animatingDropOpen;
-    private bool animatingDropClosed;
+    public bool animatingDropOpen;
+    public bool animatingDropClosed;
     private float speedToAnimate;
-
+    private bool isUiLocalOn;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +65,15 @@ public class ShowItemsInMenuController : MonoBehaviour
         if (!inDungeonUi) {
             return;
         }
+        /*if (GameData.Instance.UI_On == true && isUiLocalOn==false) { isUiLocalOn = true;
+            picToMove.SetActive(true);
+             extraTextToMove.SetActive(true);
+        }
+        if (GameData.Instance.UI_On == false && isUiLocalOn==true) { isUiLocalOn = false;
+            picToMove.SetActive(false);
+            extraTextToMove.SetActive(false);
+        }*/
+
 
         HandleChangedItemFlashing();
         if (openForItemSelection) { return; }
@@ -101,9 +111,9 @@ public class ShowItemsInMenuController : MonoBehaviour
         if (animateOpen)
         {
             picToMove.transform.localPosition = new Vector3(picToMove.transform.localPosition.x + speedToAnimate, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
-            if (picToMove.transform.localPosition.x > -435)
+            if (picToMove.transform.localPosition.x > -405)
             {
-                picToMove.transform.localPosition = new Vector3(-435, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
+                picToMove.transform.localPosition = new Vector3(-405, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
                 animateOpen = false;
                 if (inPauseMenu) { animatingDropOpen = true; }
             }
@@ -126,6 +136,7 @@ public class ShowItemsInMenuController : MonoBehaviour
         }
     }
 
+
     private void HandleDropdownClose()
     {
         if (animatingDropClosed)
@@ -136,6 +147,7 @@ public class ShowItemsInMenuController : MonoBehaviour
                 extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, 0, extraTextToMove.transform.localPosition.z);
                 animatingDropClosed = false;
                 animateClose = true;
+                extraTextToMove.SetActive(false);
             }
         }
     }
@@ -147,9 +159,9 @@ public class ShowItemsInMenuController : MonoBehaviour
             if (animatingDropOpen)
             {
                 extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, extraTextToMove.transform.localPosition.y - speedToAnimate, extraTextToMove.transform.localPosition.z);
-                if (extraTextToMove.transform.localPosition.y < -120f)
+                if (extraTextToMove.transform.localPosition.y < -169f)
                 {
-                    extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -120f, extraTextToMove.transform.localPosition.z);
+                    extraTextToMove.transform.localPosition = new Vector3(extraTextToMove.transform.localPosition.x, -169f, extraTextToMove.transform.localPosition.z);
                     animatingDropOpen = false;
                 }
             }
@@ -177,6 +189,7 @@ public class ShowItemsInMenuController : MonoBehaviour
         animateOpen = true;
         animateClose = false;
         inPauseMenu = true;
+        extraTextToMove.SetActive(true);
         setDescriptionText(0);
 
     }
@@ -193,14 +206,21 @@ public class ShowItemsInMenuController : MonoBehaviour
 
 
     public void OpenForFoundItemSelection() {
-        picToMove.transform.localPosition = new Vector3(-435, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
+        picToMove.transform.localPosition = new Vector3(-405, picToMove.transform.localPosition.y, picToMove.transform.localPosition.z);
         openForItemSelection = true;
+
     }
+
     public void ShowSelectedItemAndClose(int itemSelected) {
 
-        if (itemSelected!=-1) delayBeforeClose = .75f;
+        if (itemSelected != -1) delayBeforeClose = .75f;
+        else { openForItemSelection = false;
+            delayBeforeClose = 0;
+
+        }
         flashFinished=false;
         animateClose = true;
+        animateOpen = false;
         if (itemSelected ==0) {
             weaponUIPrefab.SetItem(savedStats.weapon, false);
             weaponUIPrefab.flashingBackground.enabled = true;
@@ -214,6 +234,15 @@ public class ShowItemsInMenuController : MonoBehaviour
             accessoryUIPrefab.SetItem(savedStats.accessory, false);
             accessoryUIPrefab.flashingBackground.enabled = true;
         }
+
+    }
+
+
+    internal void CloseSelectedItemViewer()
+    {
+        animateClose = true;
+        animateOpen = false;
+        openForItemSelection = false;
 
     }
 

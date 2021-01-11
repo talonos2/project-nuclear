@@ -19,6 +19,8 @@ public class GabTriggerer : DoodadData
     public VideoClip clipToPlayForTutorial = null;
     public double time;
     public ActivationRequirement activationRequirement = ActivationRequirement.NONE;
+    public bool changesBasedOnControlSceme = false;
+    public string gabText2;
 
     public enum ActivationRequirement { NONE, NEEDS_ICE_POWER }
 
@@ -46,7 +48,14 @@ public class GabTriggerer : DoodadData
             {
                 uiController = GameObject.Find("TownMenuUi");
             }
-            uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText,true, (float)time, true,true, clipToPlayForTutorial));
+            if (changesBasedOnControlSceme && FWInputManager.Instance.IsWASD())
+            {
+                uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText2, true, (float)time, true, true, clipToPlayForTutorial));
+            }
+            else
+            {
+                uiController.GetComponent<GabTextController>().AddGabToPlay(new GabTextController.Gab(gabText, true, (float)time, true, true, clipToPlayForTutorial));
+            }
             GameData.Instance.gabNumbers[gabNumber] = true;
         }
         GameObject.Destroy(this.gameObject);

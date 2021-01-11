@@ -409,6 +409,7 @@ public class Combat : MonoBehaviour
         {
             GameData.Instance.iceBoss1 = true;
             playerStats.powersGained = Math.Max(1, playerStats.powersGained);
+
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
             SoundManager.Instance.PlaySound("GetIce", 1f);
         }
