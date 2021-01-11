@@ -19,6 +19,7 @@ public class ZombieController_Norma : Enemy
 
     override public void doUponDeath()
     {
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Norma = 0;
 
     }

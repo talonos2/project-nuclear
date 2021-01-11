@@ -19,6 +19,7 @@ public class ZombieController_Pendleton : Enemy
 
     override public void doUponDeath()
     {
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Pendleton = 0;
 
     }

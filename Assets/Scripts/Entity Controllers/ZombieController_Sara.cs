@@ -19,6 +19,7 @@ public class ZombieController_Sara : Enemy
 
     override public void doUponDeath()
     {
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Sara = 0;
 
     }
