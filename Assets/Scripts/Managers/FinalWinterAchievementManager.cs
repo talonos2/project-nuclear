@@ -5,7 +5,7 @@ using UnityEngine;
 /*
 At Any Cost                - Kill one of your own villagers
 No Respect for the Fallen  - Kill Every Villager
-May you make it further than I - Unlock Every Shortcut
+May you make it further than I - Unlock A Shortcut
 Paving the Way             - Unlock Every Shortcut
 Clutch Return              - Send a piece of equipment home in your last 3 seconds
 Treasures of the Cave      - Get a Rare Item
