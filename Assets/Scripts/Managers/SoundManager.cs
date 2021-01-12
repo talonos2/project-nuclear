@@ -25,16 +25,16 @@ public class SoundManager : Singleton<SoundManager>
     private void LoadSoundJSON()
     {
         String appPath = Application.dataPath;
-        if (!Directory.Exists(appPath + "/Sound"))
+        if (!Directory.Exists(appPath + "/StreamingAssets/Sound"))
         {
-            Directory.CreateDirectory(appPath + "/Sound");
+            Directory.CreateDirectory(appPath + "/StreamingAssets/Sound");
         }
 
-       // Debug.Log("Here, checking.");
-        if (File.Exists(appPath + "/Sound/soundVolumeMap.json"))
+        // Debug.Log("Here, checking.");
+        if (File.Exists(appPath + "/StreamingAssets/Sound/soundVolumeMap.json"))
         {
             //Debug.Log("Found, Loading.");
-            StreamReader reader = new StreamReader(appPath+"/Sound/soundVolumeMap.json");
+            StreamReader reader = new StreamReader(appPath+ "/StreamingAssets/Sound/soundVolumeMap.json");
             String json = reader.ReadToEnd();
             //Debug.Log("Loaded: " + json);
             soundVolumeMap = JsonUtility.FromJson<DictionaryOfStringAndFloat>(json);
@@ -47,7 +47,7 @@ public class SoundManager : Singleton<SoundManager>
         else
         {
             //Debug.Log("Not found, creating.");
-            File.Create(appPath + "/Sound/soundVolumeMap.json");
+            File.Create(appPath + "/StreamingAssets/Sound/soundVolumeMap.json");
         }
     }
 
@@ -69,7 +69,7 @@ public class SoundManager : Singleton<SoundManager>
     private void SaveSoundMap()
     {
         String appPath = Application.dataPath;
-        StreamWriter writer = new StreamWriter(appPath + "/Sound/soundVolumeMap.json", false);
+        StreamWriter writer = new StreamWriter(appPath + "/StreamingAssets/Sound/soundVolumeMap.json", false);
         //foreach (string s in soundVolumeMap.Keys)
         //{
         //    Debug.Log(s+", "+soundVolumeMap[s]);

@@ -325,6 +325,10 @@ public class ChooseItemUI : MonoBehaviour
             if (i.Rare) sendGabToTownMessage("<sprite=0> " + i.gameObject.name + " <color=white>sent to town.</color>");
             else sendGabToTownMessage("<color=white><sprite=0> " + i.gameObject.name + " sent to town.</color>");
         }
+        if (GameData.Instance.timer > 594)
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.RETURN_ITEM_ON_TIME);
+        }
         CloseItemPickUI();
     }
 
