@@ -19,6 +19,7 @@ public class ZombieController_Mara : Enemy
 
     override public void doUponDeath()
     {
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Mara = 0;
 
     }

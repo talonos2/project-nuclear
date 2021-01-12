@@ -20,7 +20,7 @@ public class ZombieController_McDermit : Enemy
     override public void doUponDeath()
     {
         GameData.Instance.McDermit = 0;
-
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
     }
 
 

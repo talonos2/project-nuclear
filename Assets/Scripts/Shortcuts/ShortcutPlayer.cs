@@ -28,6 +28,7 @@ public class ShortcutPlayer : MonoBehaviour
 
     protected void setupBackInDungeon()
     {
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.UNLOCK_SHORTCUT);
         Destroy(instantiatedCutscenePlayer);
         GameData.Instance.isInDialogue = false;
         mainCamera.enabled = true;
