@@ -3470,10 +3470,11 @@
 
 		#day30
 		
-		Soon, at the entrance...
+		
 
 		@if GetPerfect()
 
+		Soon, at the entrance...
 		@char Elder
 		Elder: Is it over?
 		@char Metra
@@ -3528,16 +3529,12 @@
 		Melvardius: And that in and of itself is enough to frighten me.
 		Melvardius: We will need to carefully consider how we proceed.
 
-		@elseif !GetWorst()
-
-		@char Elder
-		Elder: We have won, but it has cost us.
-
-		
+		@elseif !GetWorst()		
 
 		;fadetoblack
 
 		@if GetTodd()
+		That night, at the cave entrance...
 			@char Todd
 			Todd: You've all felt it haven't you?
 			Todd: The power of the dark lord.
@@ -3579,6 +3576,9 @@
 
 				@char Melvardius
 				Melvardius: That's enough of that.
+
+				;shakecamera stop
+
 				@char Todd
 				Todd: How... did you?
 				@char Melvardius
@@ -3607,11 +3607,123 @@
 				Todd: Follow, or don't, it's your choice.
 			@endif
 
+		@elseif GetMara()
+		Days later, at the bar...
+		
+		@char Mara
+		Mara: What's the matter doc? You're looking a bit glum.
+		Mara: Why don't you have a drink?[br]It's my new recipe everyone's raving about.
+
+		@char Fluer
+		Fluer: I'm just...
+		Fluer: I wish they hadn't broken the stuff in that cave.
+
+		@char Elder
+		Elder: People were angry.[br]Can you blame them?
+
+		@char Fluer
+		Fluer: Well, no.
+		Fluer: But maybe we could have learned something from all that stuff.
+
+		@char Mara
+		Mara: Yeah, such is life, right?
+		Mara: Here's a brew for ya.[br]On the house.
+
+		@char Fluer
+		Fluer: And it seems like people got so sick right after that!
+		Fluer: I feel like there must have been some connection.
+
+		@char JohnDoe
+		JohnDoe: I think you're just seeing things corralatin' instead of causatin'.
+
+		@char Mara
+		Mara: Folks got better eventually, right?
+		Mara: That's something to celebrate!
+		Mara: Have a drink.
+
+		@char Fluer
+		Fluer: All that stuff must have been doing something down there...
+
+		@char Murtough
+		Murtough: Logos might have sorted it out, if he had survived.
+
+		@char Mara
+		Mara: Aye, that's a good point. We should drink to the fallen.
+		Mara: Fluer?
+
+		@char Fluer
+		Fluer: I'm... not thirsty.
+
+		@char Elder
+		Elder: This is getting tiresome.
+		Elder: Just hold her down.[br]She's the last one anyway.
+
+		@char Fluer
+		Fluer: Hey! Let go!
+
+		@char Mara
+		Mara: Oh relax honey. You'll like the new recipie.
+		Mara: And, once you lift the quarantine, so will everyone else.
+		
+
+		@elseif GetNorma()
+
+		Weeks later, at town hall...
+
+		@char Wilson
+		Wilson: Norma, how are you doing?
+
+		@char Norma
+		Norma: Just fine.
+		Norma: You need something?
+
+		@char Wilson
+		Wilson: I just worried.[br]It seems like your... growths... have returned.
+
+		@char Norma
+		Norma: Oh, the crystals?
+		Norma: I just got tired of filing them down.
+
+		@char Wilson
+		Wilson: Oh, okay.
+		Wilson: And I heard that there have been some troubles with rustlers?
+
+		@char Norma
+		Norma: Some animals have gone missing, sure.
+		Norma: They to had to fend for themselves for nearly a month.
+		Norma: Can't expect that to end well.
+
+		@char Wilson
+		Wilson: I was talking about the recent ones.
+		Wilson: Paul said he'd found one up a tree.[br]At least what was left of it.
+		Wilson: I heard that it was terrible, torn apart.
+
+		@char Norma
+		Norma: Just when I thought I had the woods all to myself.
+		Norma: Someone's got to go snooping around.
+
+		@char Wilson
+		Wilson: Excuse me?
+
+		@char Norma
+		Norma: I figured up a tree was a good enough spot.
+		Norma: What are they going to do?[br]Cut it down?
+
+		@char Wilson
+		Wilson: Ah... I'll just...[br]get out of your hair.
+
+		@char Norma
+		Norma: No no, stay.[br]I insist.
+		Norma: Lately, cattle haven't really been... satisfying.
+		Norma: I think it's time to move up the food chain.
+
+
 		@else
-		
+
+		@char Elder
+		Elder: Something about me I guess. (to be added)
 
 
-		
 		@endif
 		
 
