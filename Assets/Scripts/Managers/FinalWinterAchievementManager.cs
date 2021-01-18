@@ -133,19 +133,33 @@ public class FinalWinterAchievementManager : Singleton<FinalWinterAchievementMan
 {
     public void GiveAchievement(FWBoolAchievement achievement)
     {
-        Steamworks.SteamUserStats.GetAchievement(achievement.GetName(), out bool alreadyComplete);
-        if (!alreadyComplete)
+        try
         {
-            Steamworks.SteamUserStats.SetAchievement(achievement.GetName());
+            Steamworks.SteamUserStats.GetAchievement(achievement.GetName(), out bool alreadyComplete);
+            if (!alreadyComplete)
+            {
+                Steamworks.SteamUserStats.SetAchievement(achievement.GetName());
+            }
+        }
+        catch (System.InvalidOperationException e)
+        {
+            Debug.LogWarning("Steamworks Unreachable.");
         }
     }
 
     public void SetStatAndGiveAchievement(FWBoolAchievement achievement, int currentStat)
     {
-        Steamworks.SteamUserStats.GetStat(achievement.GetName(), out int oldStat);
-        if (oldStat < currentStat)
+        try
         {
-            Steamworks.SteamUserStats.SetStat(achievement.GetName(), currentStat);
+            Steamworks.SteamUserStats.GetStat(achievement.GetName(), out int oldStat);
+            if (oldStat < currentStat)
+            {
+                Steamworks.SteamUserStats.SetStat(achievement.GetName(), currentStat);
+            }
+        }
+        catch (System.InvalidOperationException e)
+        {
+            Debug.LogWarning("Steamworks Unreachable.");
         }
     }
 }
