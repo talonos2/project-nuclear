@@ -316,6 +316,7 @@ public class RandomChestController : EntityData
         }
         else if (rareItemChest)
         {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.FIND_RARE_ITEM);
             InventoryItem rareItemFound = itemListData.getRandomRareItem(rarity);
             //InventoryItem itemTypeCheck = rareItemFound.GetComponent<InventoryItem>();
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
