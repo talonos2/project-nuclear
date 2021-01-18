@@ -21,6 +21,7 @@ public class ZombieController_Devon : Enemy
     {
         FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Devon = 0;
+        GameObject.Find("Canvas_VillagersMissing").GetComponent<MissingVillagerDropdownController>().SetAnimateUponVillagerDeath();
 
     }
 }

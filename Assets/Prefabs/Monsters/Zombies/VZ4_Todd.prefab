@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 3128599578249191483}
   - component: {fileID: 3128599578249191476}
   - component: {fileID: 3128599578249191477}
-  - component: {fileID: 3128599578249191478}
   - component: {fileID: 3128599578249191472}
   - component: {fileID: 6188242708980757739}
   m_Layer: 0
@@ -136,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainCharacter: 0
-  isAMonster: 0
+  isAMonster: 1
   isLargeMonster: 0
   isInteractableObject: 0
   isItem: 0
@@ -145,6 +144,7 @@ MonoBehaviour:
   isOnCutsceneMap: 0
   MoveSpeed: 4.5
   framesPerSecond: 10
+  characterLocation: {x: 0, y: 0}
   facedDirection: 4
   PathRandomly: 0
   PathAntiRandomly: 0
@@ -158,26 +158,6 @@ MonoBehaviour:
   LookPattern: 01000000
   bossMonster: 0
   hazardIcon: {fileID: 4480291257649381997}
---- !u!114 &3128599578249191478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3128599578249191473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b61252a66b3eb34b8c0519976aac2ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMainCharacter: 0
-  isAMonster: 1
-  isLargeMonster: 0
-  isInteractableObject: 0
-  isItem: 0
-  isSwitch: 0
-  isNPC: 0
-  isOnCutsceneMap: 0
 --- !u!65 &3128599578249191472
 BoxCollider:
   m_ObjectHideFlags: 0

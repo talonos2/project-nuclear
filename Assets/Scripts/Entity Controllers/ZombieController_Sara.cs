@@ -21,6 +21,6 @@ public class ZombieController_Sara : Enemy
     {
         FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Sara = 0;
-
+        GameObject.Find("Canvas_VillagersMissing").GetComponent<MissingVillagerDropdownController>().SetAnimateUponVillagerDeath();
     }
 }

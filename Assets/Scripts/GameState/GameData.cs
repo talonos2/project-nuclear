@@ -237,6 +237,10 @@ public class GameData : Singleton<GameData>
         }
 
     }
+    public int VillagersDead() {
+        int villagersDead = 10 - Douglass - Sara - McDermit - Todd - Norma - Derringer - Melvardius - Mara - Devon - Pendleton;
+        return villagersDead;
+    }
 }
 
 internal class HideAfterPointEightSeconds : MonoBehaviour
