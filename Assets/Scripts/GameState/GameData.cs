@@ -231,6 +231,10 @@ public class GameData : Singleton<GameData>
         deathVFX.transform.position = toSpawnDeathVFXOn.position;
         deathVFX.transform.position += new Vector3(0, .2f, -.2f);
         toSpawnDeathVFXOn.gameObject.AddComponent<HideAfterPointEightSeconds>();
+        if (RunNumber == 1)
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.LOSE_DOUGLAS);
+        }
 
     }
 }
