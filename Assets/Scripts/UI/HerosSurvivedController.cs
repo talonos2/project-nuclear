@@ -21,16 +21,30 @@ public class HerosSurvivedController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameData.Instance.Douglass == 0) hiro.enabled = false;
-        if (GameData.Instance.Sara == 0) blueMaid.enabled = false;
-        if (GameData.Instance.McDermit == 0) guard.enabled = false;
-        if (GameData.Instance.Todd == 0) cultest.enabled = false;
-        if (GameData.Instance.Norma == 0) redMaid.enabled = false;
-        if (GameData.Instance.Derringer == 0) blacksmith.enabled = false;
-        if (GameData.Instance.Melvardius == 0) priest.enabled = false;
-        if (GameData.Instance.Mara == 0) greenMaid.enabled = false;
-        if (GameData.Instance.Devon == 0) trapper.enabled = false;
-        if (GameData.Instance.Pendleton == 0) squire.enabled = false;
+        int deadPeople = 0;
+        if (GameData.Instance.Douglass == 0) { hiro.enabled = false; deadPeople++; }
+        if (GameData.Instance.Sara == 0) {blueMaid.enabled = false; deadPeople++; }
+        if (GameData.Instance.McDermit == 0) {guard.enabled = false; deadPeople++; }
+        if (GameData.Instance.Todd == 0) {cultest.enabled = false; deadPeople++; }
+        if (GameData.Instance.Norma == 0) {redMaid.enabled = false; deadPeople++; }
+        if (GameData.Instance.Derringer == 0) {blacksmith.enabled = false; deadPeople++; }
+        if (GameData.Instance.Melvardius == 0) {priest.enabled = false; deadPeople++; }
+        if (GameData.Instance.Mara == 0) {greenMaid.enabled = false; deadPeople++; }
+        if (GameData.Instance.Devon == 0) {trapper.enabled = false; deadPeople++; }
+        if (GameData.Instance.Pendleton == 0) {squire.enabled = false; deadPeople++; }
+        FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.WIN_GAME);
+        if (GameData.Instance.RunNumber == 4)
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.WIN_GAME_AS_TODD);
+        }
+        if (GameData.Instance.RunNumber == 30)
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.WIN_GAME_AS_ELDER);
+        }
+        if (deadPeople == 0)
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.WIN_GAME_NO_VILLAGE_KILLS);
+        }
     }
 
     private void Update()
