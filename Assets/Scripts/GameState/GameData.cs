@@ -233,6 +233,11 @@ public class GameData : Singleton<GameData>
         toSpawnDeathVFXOn.gameObject.AddComponent<HideAfterPointEightSeconds>();
 
     }
+    internal int VillagersDead()
+    {
+        int deadVillagers =10- Douglass- Sara- McDermit- Todd- Norma- Derringer- Melvardius- Mara- Devon- Pendleton;
+        return deadVillagers;
+    }
 }
 
 internal class HideAfterPointEightSeconds : MonoBehaviour
@@ -249,6 +254,8 @@ internal class HideAfterPointEightSeconds : MonoBehaviour
         }
     }
 }
+
+
 
 internal enum KeymapType
 {
