@@ -28,7 +28,6 @@ Historian                  - Beat the game with 25 different people
 Spirit of the People       - Talk to everybody in town on all 28 days.
 I have seen it all...      - See both the good and the bad ending for 28 different people.
 Fratricide                 - Kill Tedd as Todd, or vise versa
-Revenge!                   - Kill John Doe As Murtough, or vice versa
 Fallen from Grace          - As Sir Meyster the Paladin, kill your own squire.
 Children of the Conquerors - Kill [x] monsters (10x what's needed for a typical playthrough.) 
 */
@@ -39,8 +38,8 @@ EQUIP_BEST_RARE_ITEM, KILL_TODD_AS_TEDD, KILL_PENDLETON_AS_MEYSTER, COMPLETE_LEV
 
 public enum FWStatAchievement
 {
-    UNLOCK_ALL_SHORTCUTS, GET_LOTS_OF_CRYSTALS, GET_LOTS_OF_LEVELS, WIN_WITH_10_PEOPLE, WIN_WITH_25_PEOPLE, READ_ALL_ENDINGS, READ_ALL_DIALOGUE, KILL_TODD_AS_TEDD,
-    KILL_PENDLETON_AS_MEYSTER, KILL_LOTS_OF_MONSTERS, REACH_LEVEL_4_NO_PICKUPS, REACH_LEVEL_16_NO_PICKUPS, REACH_LEVEL_16_FEW_MONSTERS, COLLECT_12_KNIVES
+    UNLOCK_ALL_SHORTCUTS, GET_LOTS_OF_CRYSTALS, GET_LOTS_OF_LEVELS, WIN_WITH_10_PEOPLE, WIN_WITH_25_PEOPLE, READ_ALL_ENDINGS, READ_ALL_DIALOGUE,
+    KILL_LOTS_OF_MONSTERS, REACH_LEVEL_4_NO_PICKUPS, REACH_LEVEL_16_NO_PICKUPS, REACH_LEVEL_16_FEW_MONSTERS, COLLECT_12_KNIVES
 }
 
 public static class AchievementExtensions
@@ -96,33 +95,29 @@ public static class AchievementExtensions
         switch (achievement)
         {
             case FWStatAchievement.UNLOCK_ALL_SHORTCUTS:
-                return "UNLOCK_ALL_SHORTCUTS";
+                return "UNLOCK_ALL_SHORTCUTSz";
             case FWStatAchievement.GET_LOTS_OF_CRYSTALS:
-                return "GET_LOTS_OF_CRYSTALS";
+                return "GET_LOTS_OF_CRYSTALSz";
             case FWStatAchievement.GET_LOTS_OF_LEVELS:
-                return "GET_LOTS_OF_LEVELS";
+                return "GET_LOTS_OF_LEVELSz";
             case FWStatAchievement.WIN_WITH_10_PEOPLE:
-                return "WIN_WITH_10_PEOPLE";
+                return "WIN_WITH_10_PEOPLEz";
             case FWStatAchievement.WIN_WITH_25_PEOPLE:
-                return "WIN_WITH_25_PEOPLE";
+                return "WIN_WITH_25_PEOPLEz";
             case FWStatAchievement.READ_ALL_ENDINGS:
-                return "READ_ALL_ENDINGS";
+                return "READ_ALL_ENDINGSz";
             case FWStatAchievement.READ_ALL_DIALOGUE:
-                return "READ_ALL_DIALOGUE";
-            case FWStatAchievement.KILL_TODD_AS_TEDD:
-                return "KILL_TODD_AS_TEDD";
-            case FWStatAchievement.KILL_PENDLETON_AS_MEYSTER:
-                return "KILL_PENDLETON_AS_MEYSTER";
+                return "READ_ALL_DIALOGUEz";
             case FWStatAchievement.KILL_LOTS_OF_MONSTERS:
-                return "KILL_LOTS_OF_MONSTERS";
+                return "KILL_LOTS_OF_MONSTERSz";
             case FWStatAchievement.REACH_LEVEL_4_NO_PICKUPS:
-                return "REACH_LEVEL_4_NO_PICKUPS";
+                return "REACH_LEVEL_4_NO_PICKUPSz";
             case FWStatAchievement.REACH_LEVEL_16_NO_PICKUPS:
-                return "REACH_LEVEL_16_NO_PICKUPS";
+                return "REACH_LEVEL_16_NO_PICKUPSz";
             case FWStatAchievement.REACH_LEVEL_16_FEW_MONSTERS:
-                return "REACH_LEVEL_16_FEW_MONSTERS";
+                return "REACH_LEVEL_16_FEW_MONSTERSz";
             case FWStatAchievement.COLLECT_12_KNIVES:
-                return "COLLECT_12_KNIVES";
+                return "COLLECT_12_KNIVESz";
             default:
                 throw new UnityException("Bad Achievement String.");
         }

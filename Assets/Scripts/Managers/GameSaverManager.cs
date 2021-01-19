@@ -6,23 +6,23 @@ using UnityEngine;
 [Serializable]
 public class GameSaverManager
 {
-    
-        public int HealhCrystalBonus;
-        public int ManaCrystalBonus;
-        public int AttackCrystalBonus;
-        public int DefenseCrystalBonus;
 
-        public int HealhCrystalTotal = 0;
-        public int ManaCrystalTotal = 0;
-        public int AttackCrystalTotal = 0;
-        public int DefenseCrystalTotal = 0;
+    public int HealhCrystalBonus;
+    public int ManaCrystalBonus;
+    public int AttackCrystalBonus;
+    public int DefenseCrystalBonus;
 
-        public int FloorNumber = 0;
+    public int HealhCrystalTotal = 0;
+    public int ManaCrystalTotal = 0;
+    public int AttackCrystalTotal = 0;
+    public int DefenseCrystalTotal = 0;
 
-        public int RunNumber = 0;
-        public int PowersGained = 0;
-        internal int furthestFloorAchieved;
-        //internal float[] bestTimes=new float [20];
+    public int FloorNumber = 0;
+
+    public int RunNumber = 0;
+    public int PowersGained = 0;
+    internal int furthestFloorAchieved;
+    //internal float[] bestTimes=new float [20];
     internal float[] bestTimes = new float[] {Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity,
         Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
         Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
@@ -36,11 +36,11 @@ public class GameSaverManager
     private bool fireBoss2;
     private bool airBoss2;
     private bool deathBoss;
-    private bool deathBoss2; 
-    
+    private bool deathBoss2;
+
     public List<String> townWeapons = new List<String>();
-        public List<String> townArmor = new List<String>();
-        public List<String> townAccessories = new List<String>();
+    public List<String> townArmor = new List<String>();
+    public List<String> townAccessories = new List<String>();
 
     public bool map1_3Shortcut;
     public bool map2_2Shortcut;
@@ -69,40 +69,44 @@ public class GameSaverManager
     public int Pendleton;
     internal KeymapType sneakyKeyMap = KeymapType.UNDEFINED;
 
+    internal int monstersKilledInThisGame;
+    internal int totalLevelUpsInThisGame;
+    internal int daggersFound;
+
 
     public void SetupSave()
-        {
+    {
 
 
         gabNumbers = GameData.Instance.gabNumbers;
 
 
-            HealhCrystalBonus = GameData.Instance.HealhCrystalBonus;
-            ManaCrystalBonus = GameData.Instance.ManaCrystalBonus;
-            AttackCrystalBonus = GameData.Instance.AttackCrystalBonus;
-            DefenseCrystalBonus = GameData.Instance.DefenseCrystalBonus;
-            HealhCrystalTotal = GameData.Instance.HealhCrystalTotal;
-            ManaCrystalTotal = GameData.Instance.ManaCrystalTotal;
-            AttackCrystalTotal = GameData.Instance.AttackCrystalTotal;
-            DefenseCrystalTotal = GameData.Instance.DefenseCrystalTotal;
-            FloorNumber = 0;
-            RunNumber = GameData.Instance.RunNumber;
-            PowersGained = GameData.Instance.PowersGained;
-            furthestFloorAchieved = GameData.Instance.furthestFloorAchieved;    
+        HealhCrystalBonus = GameData.Instance.HealhCrystalBonus;
+        ManaCrystalBonus = GameData.Instance.ManaCrystalBonus;
+        AttackCrystalBonus = GameData.Instance.AttackCrystalBonus;
+        DefenseCrystalBonus = GameData.Instance.DefenseCrystalBonus;
+        HealhCrystalTotal = GameData.Instance.HealhCrystalTotal;
+        ManaCrystalTotal = GameData.Instance.ManaCrystalTotal;
+        AttackCrystalTotal = GameData.Instance.AttackCrystalTotal;
+        DefenseCrystalTotal = GameData.Instance.DefenseCrystalTotal;
+        FloorNumber = 0;
+        RunNumber = GameData.Instance.RunNumber;
+        PowersGained = GameData.Instance.PowersGained;
+        furthestFloorAchieved = GameData.Instance.furthestFloorAchieved;
         bestTimes = GameData.Instance.bestTimes;
 
-        Douglass =GameData.Instance.Douglass;
-      Sara=GameData.Instance.Sara;
-      McDermit=GameData.Instance.McDermit;
-      Todd=GameData.Instance.Todd;
-      Norma=GameData.Instance.Norma;
-      Derringer=GameData.Instance.Derringer;
-      Melvardius=GameData.Instance.Melvardius;
-      Mara=GameData.Instance.Mara;
-      Devon=GameData.Instance.Devon;
-      Pendleton=GameData.Instance.Pendleton;
+        Douglass = GameData.Instance.Douglass;
+        Sara = GameData.Instance.Sara;
+        McDermit = GameData.Instance.McDermit;
+        Todd = GameData.Instance.Todd;
+        Norma = GameData.Instance.Norma;
+        Derringer = GameData.Instance.Derringer;
+        Melvardius = GameData.Instance.Melvardius;
+        Mara = GameData.Instance.Mara;
+        Devon = GameData.Instance.Devon;
+        Pendleton = GameData.Instance.Pendleton;
 
-    iceBoss1=GameData.Instance.iceBoss1;
+        iceBoss1 = GameData.Instance.iceBoss1;
         earthBoss1 = GameData.Instance.earthBoss1;
         fireBoss1 = GameData.Instance.fireBoss1;
         airBoss1 = GameData.Instance.airBoss1;
@@ -127,9 +131,14 @@ public class GameSaverManager
         map5_3Shortcut = GameData.Instance.map5_3Shortcut;
         map5_4Shortcut = GameData.Instance.map5_4Shortcut;
 
+        monstersKilledInThisGame = GameData.Instance.monstersKilledInThisGame;
+        totalLevelUpsInThisGame = GameData.Instance.totalLevelUpsInThisGame;
+        daggersFound = GameData.Instance.daggersFound;
+
         sneakyKeyMap = GameData.Instance.sneakyKeyMap;
 
-        foreach (Weapon wpnItem in GameData.Instance.townWeapons) {
+        foreach (Weapon wpnItem in GameData.Instance.townWeapons)
+        {
             townWeapons.Add(wpnItem.name);
         }
         foreach (Armor armItem in GameData.Instance.townArmor)
@@ -141,44 +150,44 @@ public class GameSaverManager
             townAccessories.Add(accItem.name);
         }
 
-       
+
     }
 
 
     public void PushSaveToGameData()
-        {
+    {
 
-        GameData.Instance.gabNumbers =gabNumbers;
+        GameData.Instance.gabNumbers = gabNumbers;
 
         GameData.Instance.HealhCrystalBonus = HealhCrystalBonus;
-            GameData.Instance.ManaCrystalBonus = ManaCrystalBonus;
-            GameData.Instance.AttackCrystalBonus = AttackCrystalBonus;
-            GameData.Instance.DefenseCrystalBonus = DefenseCrystalBonus;
-            GameData.Instance.HealhCrystalTotal = HealhCrystalTotal;
-            GameData.Instance.ManaCrystalTotal = ManaCrystalTotal;
-            GameData.Instance.AttackCrystalTotal = AttackCrystalTotal;
-            GameData.Instance.DefenseCrystalTotal = DefenseCrystalTotal;
-            GameData.Instance.FloorNumber = 0;
-            GameData.Instance.RunNumber = RunNumber;
-            GameData.Instance.PowersGained = PowersGained;
-            GameData.Instance.furthestFloorAchieved = furthestFloorAchieved;
-            GameData.Instance.bestTimes = bestTimes;
+        GameData.Instance.ManaCrystalBonus = ManaCrystalBonus;
+        GameData.Instance.AttackCrystalBonus = AttackCrystalBonus;
+        GameData.Instance.DefenseCrystalBonus = DefenseCrystalBonus;
+        GameData.Instance.HealhCrystalTotal = HealhCrystalTotal;
+        GameData.Instance.ManaCrystalTotal = ManaCrystalTotal;
+        GameData.Instance.AttackCrystalTotal = AttackCrystalTotal;
+        GameData.Instance.DefenseCrystalTotal = DefenseCrystalTotal;
+        GameData.Instance.FloorNumber = 0;
+        GameData.Instance.RunNumber = RunNumber;
+        GameData.Instance.PowersGained = PowersGained;
+        GameData.Instance.furthestFloorAchieved = furthestFloorAchieved;
+        GameData.Instance.bestTimes = bestTimes;
 
-        GameData.Instance.Douglass=Douglass ;
-        GameData.Instance.Sara=Sara;
-         GameData.Instance.McDermit= McDermit;
-         GameData.Instance.Todd=Todd;
-        GameData.Instance.Norma= Norma ;
-        GameData.Instance.Derringer=Derringer  ;
-         GameData.Instance.Melvardius=Melvardius;
-        GameData.Instance.Mara= Mara ;
-        GameData.Instance.Devon=Devon  ;
-        GameData.Instance.Pendleton=Pendleton  ;
+        GameData.Instance.Douglass = Douglass;
+        GameData.Instance.Sara = Sara;
+        GameData.Instance.McDermit = McDermit;
+        GameData.Instance.Todd = Todd;
+        GameData.Instance.Norma = Norma;
+        GameData.Instance.Derringer = Derringer;
+        GameData.Instance.Melvardius = Melvardius;
+        GameData.Instance.Mara = Mara;
+        GameData.Instance.Devon = Devon;
+        GameData.Instance.Pendleton = Pendleton;
 
-        GameData.Instance.iceBoss1= iceBoss1 ;
-         GameData.Instance.earthBoss1= earthBoss1 ;
-        GameData.Instance.fireBoss1= fireBoss1 ;
-         GameData.Instance.airBoss1= airBoss1 ;
+        GameData.Instance.iceBoss1 = iceBoss1;
+        GameData.Instance.earthBoss1 = earthBoss1;
+        GameData.Instance.fireBoss1 = fireBoss1;
+        GameData.Instance.airBoss1 = airBoss1;
         GameData.Instance.earthBoss2 = earthBoss2;
         GameData.Instance.fireBoss2 = fireBoss2;
         GameData.Instance.airBoss2 = airBoss2;
@@ -188,35 +197,41 @@ public class GameSaverManager
         GameData.Instance.map1_3Shortcut = map1_3Shortcut;
         GameData.Instance.map2_2Shortcut = map2_2Shortcut;
         GameData.Instance.map2_4Shortcut = map2_4Shortcut;
-        GameData.Instance.map3_2Shortcut= map3_2Shortcut;
-        GameData.Instance.map3_3Shortcut=map3_3Shortcut;
+        GameData.Instance.map3_2Shortcut = map3_2Shortcut;
+        GameData.Instance.map3_3Shortcut = map3_3Shortcut;
         GameData.Instance.map3_4Shortcut = map3_4Shortcut;
         GameData.Instance.map4_1Shortcut = map4_1Shortcut;
         GameData.Instance.map4_3Shortcut = map4_3Shortcut;
         GameData.Instance.map4_4Shortcut = map4_4Shortcut;
         GameData.Instance.map5_1Shortcut = map5_1Shortcut;
         GameData.Instance.map5_2Shortcut = map5_2Shortcut;
-            GameData.Instance.map5_3Shortcut = map5_3Shortcut;
+        GameData.Instance.map5_3Shortcut = map5_3Shortcut;
         GameData.Instance.map5_4Shortcut = map5_4Shortcut;
         GameData.Instance.map1_3toMap2_3Shortcut = map1_3toMap2_3Shortcut;
 
         GameData.Instance.sneakyKeyMap = sneakyKeyMap;
 
-           GameObject equipmentData = GameObject.Find("EquipmentData");
+        GameData.Instance.monstersKilledInThisGame = monstersKilledInThisGame;
+        GameData.Instance.totalLevelUpsInThisGame = totalLevelUpsInThisGame;
+        GameData.Instance.daggersFound = daggersFound;
+
+        GameObject equipmentData = GameObject.Find("EquipmentData");
 
         GameData.Instance.townWeapons.Clear();
         GameData.Instance.townArmor.Clear();
         GameData.Instance.townAccessories.Clear();
 
 
-        foreach (String itemName in townWeapons) {
+        foreach (String itemName in townWeapons)
+        {
             foreach (Transform item in equipmentData.transform)
             {
-                if (itemName == item.name) {
+                if (itemName == item.name)
+                {
                     GameData.Instance.townWeapons.Add(item.GetComponent<Weapon>());
                     break;
                 }
-            }            
+            }
         }
 
         foreach (String itemName in townArmor)
@@ -248,5 +263,5 @@ public class GameSaverManager
     }
 
 
-    
+
 }

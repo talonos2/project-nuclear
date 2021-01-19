@@ -53,6 +53,12 @@ public class ExitController : DoodadData
                 FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.REACH_LEVEL_16_NO_PICKUPS, gameData.FloorNumber);
             }
 
+            //Do we trigger "Low Kill" achievements?
+            if (GameData.Instance.monstersKilledInThisRun <= 15)
+            {
+                FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.REACH_LEVEL_16_FEW_MONSTERS, gameData.FloorNumber);
+            }
+
             gameData.FloorNumber += 1;
             if (townMap)
             {

@@ -329,6 +329,11 @@ public class ChooseItemUI : MonoBehaviour
         {
             FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.RETURN_ITEM_ON_TIME);
         }
+        if (!i.Rare && i.floorFoundOn.Equals("1"))
+        {
+            GameData.Instance.daggersFound += 1;
+            FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.COLLECT_12_KNIVES, GameData.Instance.daggersFound);
+        }
         CloseItemPickUI();
     }
 
@@ -376,6 +381,12 @@ public class ChooseItemUI : MonoBehaviour
             else sendGabToTownMessage("<color=white><size=40><b>Duplicate</b></size> item found that is already equipped. <sprite=0> " + i.gameObject.name + " sent to town.</color>", duration: 5f);
         }
         CloseItemPickUI();
+
+        if (!i.Rare&&i.floorFoundOn.Equals("1"))
+        {
+            GameData.Instance.daggersFound += 1;
+            FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.COLLECT_12_KNIVES, GameData.Instance.daggersFound);
+        }
     }
 
     private void SendDuplicateToTown(Armor i)
