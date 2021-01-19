@@ -98,6 +98,8 @@ public class ShowItemsInMenuController : MonoBehaviour
     {
         if (delayBeforeClose > 0)
         {
+            
+            openForItemSelection = true;
             delayBeforeClose -= Time.deltaTime;
             if (delayBeforeClose < .25 && !flashFinished)
             {
@@ -219,13 +221,13 @@ public class ShowItemsInMenuController : MonoBehaviour
         openForItemSelection = true;
 
     }
-
+     
     public void ShowSelectedItemAndClose(int itemSelected) {
 
         if (itemSelected != -1) delayBeforeClose = .75f;
         else { openForItemSelection = false;
             delayBeforeClose = 0;
-
+            
         }
         flashFinished=false;
         animateClose = true;

@@ -170,7 +170,7 @@ public class ChooseItemUI : MonoBehaviour
         GameState.pickingItem = true;
         chooseItemUiCanvas.enabled = true;
         SelectButton(1);
-        itemSelectionViewerUI.OpenForFoundItemSelection();
+
         SetItemUI();
 
     }
@@ -292,6 +292,8 @@ public class ChooseItemUI : MonoBehaviour
 
         this.foundItemText.text = foundItemText;
         currentItemText.text = oldItemText;
+
+        itemSelectionViewerUI.OpenForFoundItemSelection();
         //foundItemSprite.GetComponent<Image>().sprite = rolledItem.GetComponent<InventoryItem>().itemIcon;
         //newItemSprite.GetComponent<Image>().sprite = rolledItem.GetComponent<InventoryItem>().itemIcon;
     }
