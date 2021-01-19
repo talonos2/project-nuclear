@@ -64,8 +64,24 @@ public class PawnInteraction : EntityData
         {
             GameData.Instance.isInDialogue = true;
             //GameState.isInBattle = true;
+            if (stats.GetComponentInParent<SpriteMovement>().facedDirection == SpriteMovement.DirectionMoved.DOWN)
+            {
+                this.GetComponentInParent<SpriteMovement>().SetLookDirection(3);
+            }
+            if (stats.GetComponentInParent<SpriteMovement>().facedDirection == SpriteMovement.DirectionMoved.UP)
+            {
+                this.GetComponentInParent<SpriteMovement>().SetLookDirection(0);
+            }
+            if (stats.GetComponentInParent<SpriteMovement>().facedDirection == SpriteMovement.DirectionMoved.RIGHT)
+            {
+                this.GetComponentInParent<SpriteMovement>().SetLookDirection(1);
+            }
+            if (stats.GetComponentInParent<SpriteMovement>().facedDirection == SpriteMovement.DirectionMoved.LEFT)
+            {
+                this.GetComponentInParent<SpriteMovement>().SetLookDirection(2);
+            }
 
-            this.GetComponentInParent<SpriteMovement>().SetLookDirection();
+            //this.GetComponentInParent<SpriteMovement>().SetLookDirection();
 
             //movment.facedDirection
             RuntimeInitializer.InitializeAsync();

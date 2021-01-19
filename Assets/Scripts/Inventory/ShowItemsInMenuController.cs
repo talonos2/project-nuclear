@@ -62,6 +62,13 @@ public class ShowItemsInMenuController : MonoBehaviour
         }
     }
 
+    internal void ShowItemUI()
+    {
+        itemUiHidden = false;
+        picToHide.SetActive(true);
+        extraTextToMove.SetActive(true);
+    }
+
     public void HideItemUI() {
         itemUiHidden = true;
         picToHide.SetActive(false);

@@ -88,6 +88,8 @@ public class SpriteMovement : EntityData
         homeLocation.y = characterLocation.y;
     }
 
+
+
     protected void SetCurrentLocation()
     {
         characterLocation.x = (int)Math.Round(this.transform.position.x) - (int)mapZeroLocation.x;
@@ -604,7 +606,12 @@ public class SpriteMovement : EntityData
 
     public void SetLookDirection()
     {
-        sRender.material.SetFloat("_Frame", (7*facedDirection.GetHeroSpriteOffeset()) + FLOATING_POINT_FIX);
+        sRender.material.SetFloat("_Frame", (7 * facedDirection.GetHeroSpriteOffeset()) + FLOATING_POINT_FIX);
+    }
+    internal void SetLookDirection(int oppositeOfPlayer)
+    {
+        int oppPlayer = (int)oppositeOfPlayer;
+        sRender.material.SetFloat("_Frame", 7 * oppPlayer + FLOATING_POINT_FIX);
     }
 
     protected void TiePositionToGrid()
@@ -675,6 +682,7 @@ public static class DirectionExtensions
         }
         return 0;
     }
+
 
 
 
