@@ -35,7 +35,7 @@ public class ExitController : DoodadData
             //Keep track of your run time.
             gameData.timesThisRun[gameData.FloorNumber - 1] = gameData.timer;
 
-
+            //Was it fast?
             float timeTakenThisFloor = gameData.timer;
             if (gameData.FloorNumber > 1)
             {
@@ -44,6 +44,13 @@ public class ExitController : DoodadData
             if (timeTakenThisFloor < 10.5f)
             {
                 FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.COMPLETE_LEVEL_FAST);
+            }
+
+            //Do we trigger "No pickup" achievements?
+            if (GameData.Instance.itemsFoundThisRun.Count==0)
+            {
+                FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.REACH_LEVEL_4_NO_PICKUPS, gameData.FloorNumber);
+                FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.REACH_LEVEL_16_NO_PICKUPS, gameData.FloorNumber);
             }
 
             gameData.FloorNumber += 1;

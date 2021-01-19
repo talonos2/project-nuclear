@@ -404,6 +404,11 @@ public class Combat : MonoBehaviour
             default:
                 break;
         }
+
+        int totalCrystals = playerStats.ManaCrystalsGained + playerStats.HealthCrystalsGained + playerStats.AttackCrystalsGained + playerStats.defenseCrystalsGained +
+                            GameData.Instance.ManaCrystalTotal + GameData.Instance.HealhCrystalTotal + GameData.Instance.AttackCrystalTotal + GameData.Instance.DefenseCrystalTotal;
+        FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.GET_LOTS_OF_CRYSTALS, totalCrystals);
+
         playerStats.AddExp(monsterStats.ExpGiven);
         if (monsterStats.iceBoss)
         {

@@ -55,8 +55,10 @@ public class Enemy : Stats
         if (deathBoss2 && GameData.Instance.deathBoss2 || deathBoss2 && !GameData.Instance.deathBoss1) { Destroy(this.gameObject); }
     }
 
-    public virtual void doUponDeath() {
-        //Will do nothing unless a child script changes this. Called by Combat. 
+    public virtual void doUponDeath()
+    {
+        GameData.Instance.monstersKilledInThisGame += 1;
+        FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.KILL_LOTS_OF_MONSTERS, GameData.Instance.monstersKilledInThisGame);
     }
 
 }
