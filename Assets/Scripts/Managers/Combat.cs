@@ -516,6 +516,12 @@ public class Combat : MonoBehaviour
 
         incomingDamage *= (1 + crit);
 
+        if (monsterStats.MaxHP==monsterStats.HP && 
+            Mathf.RoundToInt(incomingDamage) + Mathf.RoundToInt(elementalDamage)>monsterStats.HP&&
+            GameData.Instance.FloorNumber > 15)
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_ZONE_5_IN_ONE_SHOT);
+        }
         monsterStats.HP -= Mathf.RoundToInt(incomingDamage) + Mathf.RoundToInt(elementalDamage);
 
         if (playerStats.accessoryHPVamp > 0)
