@@ -470,6 +470,9 @@ public class CharacterStats : Stats
         baseAttack += AttackPerLevel;
         baseDefense += DefensePerLevel;
         setMaxStats();
+
+        GameData.Instance.totalLevelUpsInThisGame += 1;
+        FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.GET_LOTS_OF_LEVELS, GameData.Instance.totalLevelUpsInThisGame);
     }
 
     private void SetExpToNextLevel()

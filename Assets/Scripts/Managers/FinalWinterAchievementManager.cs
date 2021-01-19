@@ -147,7 +147,7 @@ public class FinalWinterAchievementManager : Singleton<FinalWinterAchievementMan
         }
     }
 
-    public void SetStatAndGiveAchievement(FWBoolAchievement achievement, int currentStat)
+    public void SetStatAndGiveAchievement(FWStatAchievement achievement, int currentStat)
     {
         try
         {
