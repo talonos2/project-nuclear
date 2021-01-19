@@ -286,10 +286,10 @@ public class CharacterStats : Stats
         defenseCrystalBuff = GameData.Instance.DefenseCrystalBonus;
 
 
-        if (GameData.Instance.iceBoss1) { powersGained = 1; }
-        if (GameData.Instance.earthBoss1) { powersGained = 2; }
-        if (GameData.Instance.fireBoss1) { powersGained = 3; }
-        if (GameData.Instance.airBoss1) { powersGained = 4; }
+        if (GameData.Instance.iceBoss1) { powersGained = 1; FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.GET_ICE); }
+        if (GameData.Instance.earthBoss1) { powersGained = 2; FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.GET_EARTH); }
+        if (GameData.Instance.fireBoss1) { powersGained = 3; FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.GET_FIRE); }
+        if (GameData.Instance.airBoss1) { powersGained = 4; FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.GET_AIR); }
 
         setMaxStats();
         setFullHPMP();
@@ -338,6 +338,10 @@ public class CharacterStats : Stats
         if (!weaponChanged) return;
         weaponBonusAttack = weaponChanged.GetComponent<Weapon>().addAttack;
         setMaxStats();
+        if (weaponChanged.Rare && weaponChanged.floorFoundOn.Equals("20"))
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.EQUIP_BEST_RARE_ITEM);
+        }
     }
 
     internal void ShutUpLevelUpper()
@@ -349,6 +353,10 @@ public class CharacterStats : Stats
         if (!armorChanged) return;
         armorBonusDefense = armorChanged.GetComponent<Armor>().addDefense;
         setMaxStats();
+        if (armorChanged.Rare && armorChanged.floorFoundOn.Equals("20"))
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.EQUIP_BEST_RARE_ITEM);
+        }
     }
 
     private void setAccessoryStats(Accessory accessoryChanged) {
@@ -389,7 +397,10 @@ public class CharacterStats : Stats
 
         setMaxStats();
 
-
+        if (accessoryChanged.Rare && accessoryChanged.floorFoundOn.Equals("20"))
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.EQUIP_BEST_RARE_ITEM);
+        }
 
     }
 
