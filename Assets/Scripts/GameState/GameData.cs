@@ -127,7 +127,7 @@ public class GameData : Singleton<GameData>
 
 
     internal bool statsSetup=false;
-
+    internal int monstersKilledInThisRun;
     internal bool victory;
     public bool[] gabNumbers = new bool[32];
     internal KeymapType sneakyKeyMap = KeymapType.UNDEFINED;
@@ -135,6 +135,7 @@ public class GameData : Singleton<GameData>
     //This stuff is used by achievements and needs to be saved in the game data.
     internal int monstersKilledInThisGame;
     internal int totalLevelUpsInThisGame;
+    internal int daggersFound;
 
     internal bool IsInTown()
     {

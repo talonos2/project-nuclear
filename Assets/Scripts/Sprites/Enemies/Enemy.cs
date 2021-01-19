@@ -59,6 +59,8 @@ public class Enemy : Stats
     {
         GameData.Instance.monstersKilledInThisGame += 1;
         FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.KILL_LOTS_OF_MONSTERS, GameData.Instance.monstersKilledInThisGame);
+
+        GameData.Instance.monstersKilledInThisRun += 1;
     }
 
 }
