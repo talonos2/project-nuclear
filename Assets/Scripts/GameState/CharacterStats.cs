@@ -338,6 +338,10 @@ public class CharacterStats : Stats
         if (!weaponChanged) return;
         weaponBonusAttack = weaponChanged.GetComponent<Weapon>().addAttack;
         setMaxStats();
+        if (weaponChanged.Rare && weaponChanged.floorFoundOn.Equals("20"))
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.EQUIP_BEST_RARE_ITEM);
+        }
     }
 
     internal void ShutUpLevelUpper()
@@ -349,6 +353,10 @@ public class CharacterStats : Stats
         if (!armorChanged) return;
         armorBonusDefense = armorChanged.GetComponent<Armor>().addDefense;
         setMaxStats();
+        if (armorChanged.Rare && armorChanged.floorFoundOn.Equals("20"))
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.EQUIP_BEST_RARE_ITEM);
+        }
     }
 
     private void setAccessoryStats(Accessory accessoryChanged) {
@@ -389,7 +397,10 @@ public class CharacterStats : Stats
 
         setMaxStats();
 
-
+        if (accessoryChanged.Rare && accessoryChanged.floorFoundOn.Equals("20"))
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.EQUIP_BEST_RARE_ITEM);
+        }
 
     }
 
