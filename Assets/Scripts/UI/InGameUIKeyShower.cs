@@ -64,9 +64,9 @@ public class InGameUIKeyShower : MonoBehaviour
 
     private void setupWASDKeyText()
     {
-        togglLeftKeyToDisplay="<-";
-        togglRightKeyToDisplay="->";
-        ActivateKeyToDisplay="up";
+        togglLeftKeyToDisplay= "<size=60>←</size>";
+        togglRightKeyToDisplay= "<size=60>→</size>";
+        ActivateKeyToDisplay= "<size=60>↑</size>";
         healKeyToDisplay="c";
 }
 

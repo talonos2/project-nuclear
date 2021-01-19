@@ -6,23 +6,25 @@ public class Shortcut2_2controller : MonoBehaviour
 {
     public bool onShortcutMap;
     public bool alwaysOn = false;
-
+    public bool exitTeleporter;
     public Shortcut2_2controller shortcutToActivate;
     public GameObject sprite1;
     public GameObject sprite2;
     void Start()
     {
         if (onShortcutMap) return;
-        if (!GameData.Instance.map2_2Shortcut&&!alwaysOn)
+        if (!GameData.Instance.map2_2Shortcut&&!alwaysOn&&!exitTeleporter)
         {
             ExitController exit = gameObject.GetComponent<ExitController>();
             if (exit)
             {
                 exit.removeExit();
-            }
+            }            
             //Destroy(this.gameObject);
         }
-        else { sprite1.SetActive(true);
+
+        if (GameData.Instance.map2_2Shortcut) {
+            sprite1.SetActive(true);
             sprite2.SetActive(true);
         }
 

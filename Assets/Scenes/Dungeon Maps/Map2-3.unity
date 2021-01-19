@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onShortcutMap: 0
   alwaysOn: 0
+  exitTeleporter: 0
   shortcutToActivate: {fileID: 0}
   sprite1: {fileID: 0}
   sprite2: {fileID: 0}
@@ -8120,6 +8121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapMusic: 4
   combatMusic: 5
+  alwaysOn: 0
 --- !u!4 &921147961
 Transform:
   m_ObjectHideFlags: 0
@@ -9767,7 +9769,6 @@ GameObject:
   - component: {fileID: 1353453882}
   - component: {fileID: 1353453881}
   - component: {fileID: 1353453880}
-  - component: {fileID: 1353453879}
   - component: {fileID: 1353453878}
   m_Layer: 0
   m_Name: Teleporter (1)
@@ -9790,38 +9791,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onShortcutMap: 0
   alwaysOn: 0
-  shortcutToActivate: {fileID: 0}
+  exitTeleporter: 1
+  shortcutToActivate: {fileID: 1353453878}
   sprite1: {fileID: 643282655}
   sprite2: {fileID: 980888844}
---- !u!114 &1353453879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1353453877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa51906f3ccdc4a4ba7dd0a601615daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlatformTerrain: 0
-  isWindShifter: 0
-  isTeleporter: 0
-  isExit: 0
-  isBlockableTerrain: 0
-  isTallBlockableTerrain: 0
-  isBackgroundCharacter: 0
-  isSpike: 0
-  isPassable: 0
-  isOnCutsceneMap: 0
-  mapToLoad: Map2-3
-  exitPosition: {x: 14, y: 12}
-  townMap: 0
-  dungeonEntrance: 0
-  exitFacing: 4
-  soundToPlayOnTransition: {fileID: 8300000, guid: 7f6ff81dd35c3dc4ca466066f9c224ef,
-    type: 3}
 --- !u!212 &1353453880
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11202,6 +11175,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2593004536559010741, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4463955122688460992, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -11213,6 +11191,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4898377835807072795, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502947213680399574, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -12410,6 +12393,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8332177918306501506, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2236789191275909186, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: presetItem
@@ -12418,11 +12406,6 @@ PrefabInstance:
     - target: {fileID: 2236789191275909186, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: manaFountain
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8332177918306501506, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
-        type: 3}
-      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12568,11 +12551,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3664588965629725513, guid: bf0b7a704cdbc0849b55da4f8e060d37,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3664588965629725512, guid: bf0b7a704cdbc0849b55da4f8e060d37,
         type: 3}
       propertyPath: fadeInWorldLocation.x
@@ -12592,6 +12570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: celesteStyle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664588965629725513, guid: bf0b7a704cdbc0849b55da4f8e060d37,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0b7a704cdbc0849b55da4f8e060d37, type: 3}
