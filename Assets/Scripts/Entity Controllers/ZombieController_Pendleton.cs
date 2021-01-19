@@ -23,5 +23,9 @@ public class ZombieController_Pendleton : Enemy
         GameData.Instance.Pendleton = 0;
         GameObject.Find("Canvas_VillagersMissing").GetComponent<MissingVillagerDropdownController>().SetAnimateUponVillagerDeath();
 
+        if (GameData.Instance.RunNumber == 19)
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_PENDLETON_AS_MEYSTER);
+        }
     }
 }

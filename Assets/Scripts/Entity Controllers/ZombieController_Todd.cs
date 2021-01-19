@@ -22,5 +22,9 @@ public class ZombieController_Todd : Enemy
         FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_VILLAGER);
         GameData.Instance.Todd = 0;
         GameObject.Find("Canvas_VillagersMissing").GetComponent<MissingVillagerDropdownController>().SetAnimateUponVillagerDeath();
+        if (GameData.Instance.RunNumber==14)
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.KILL_TODD_AS_TEDD);
+        }
     }
 }
