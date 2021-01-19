@@ -23,7 +23,9 @@ public class IsUIOn : MonoBehaviour
         GameObject uiToTurnOff = GameObject.Find("EscapeMenuUi");
         if (uiToTurnOff) {
             uiToTurnOff.GetComponentInChildren<ShowItemsInMenuController>().HideItemUI();
+            uiToTurnOff.GetComponentInChildren<MissingVillagerDropdownController>().HideCharDeathUI();
         }
+
     }
 
     public void turnOffUiScene() {
@@ -37,6 +39,7 @@ public class IsUIOn : MonoBehaviour
         if (uiToTurnOff)
         {
             uiToTurnOff.GetComponentInChildren<ShowItemsInMenuController>().HideItemUI();
+            uiToTurnOff.GetComponentInChildren<MissingVillagerDropdownController>().HideCharDeathUI();
         }
     }
 
@@ -45,6 +48,12 @@ public class IsUIOn : MonoBehaviour
         foreach (GameObject t in stuffToTurnOff)
         {
             t.SetActive(true);
+        }
+        GameObject uiToTurnOff = GameObject.Find("EscapeMenuUi");
+        if (uiToTurnOff)
+        {
+            uiToTurnOff.GetComponentInChildren<ShowItemsInMenuController>().ShowItemUI();
+            uiToTurnOff.GetComponentInChildren<MissingVillagerDropdownController>().ShowCharDeathUI();
         }
     }
 

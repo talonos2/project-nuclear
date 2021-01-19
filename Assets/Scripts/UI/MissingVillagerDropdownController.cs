@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -24,6 +25,11 @@ public class MissingVillagerDropdownController : MonoBehaviour
         }
     }
 
+    internal void HideCharDeathUI()
+    {
+        panelToDropDown.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -47,6 +53,11 @@ public class MissingVillagerDropdownController : MonoBehaviour
                 animateOpen = false;
             }
         }
+    }
+
+    internal void ShowCharDeathUI()
+    {
+        panelToDropDown.SetActive(true);
     }
 
     private void HandleAnimateClose()
