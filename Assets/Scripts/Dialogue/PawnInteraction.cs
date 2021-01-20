@@ -16,6 +16,7 @@ public class PawnInteraction : EntityData
     protected float FLOATING_POINT_FIX = .00001f;
 
     public String scriptName;
+    public int pawnNum;
     private bool waitFrameAfterDialogue;
     private DirectionMoved clickedDirection;
     public bool clickForwarding;
@@ -81,11 +82,15 @@ public class PawnInteraction : EntityData
                 this.GetComponentInParent<SpriteMovement>().SetLookDirection(2);
             }
 
-            //this.GetComponentInParent<SpriteMovement>().SetLookDirection();
+            Vector2Int whoWhen = new Vector2Int(pawnNum, GameData.Instance.RunNumber);
 
-            //movment.facedDirection
+            if (pawnNum != 0 && !GameData.Instance.dialoguesSeen.Contains(whoWhen))
+            {
+                GameData.Instance.dialoguesSeen.Add(whoWhen);
+                FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.READ_ALL_DIALOGUE, GameData.Instance.dialoguesSeen.Count);
+            }
+
             RuntimeInitializer.InitializeAsync();
-           
             Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(scriptName);
 
         }

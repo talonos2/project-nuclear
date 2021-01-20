@@ -113,6 +113,11 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1 &3197830226131927733
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +193,9 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 0
+  isOnCutsceneMap: 0
   scriptName: 25Metra
+  pawnNum: 25
   clickForwarding: 0
   punchBag: 1
   daysToPunchBag: 080000000d000000
@@ -211,8 +218,10 @@ MonoBehaviour:
   isItem: 0
   isSwitch: 0
   isNPC: 0
+  isOnCutsceneMap: 0
   MoveSpeed: 6
   framesPerSecond: 8
+  characterLocation: {x: 0, y: 0}
   facedDirection: 4
 --- !u!1 &9098332579223588280
 GameObject:
