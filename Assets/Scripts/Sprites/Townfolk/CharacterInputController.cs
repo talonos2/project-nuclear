@@ -64,6 +64,12 @@ public class CharacterInputController : MonoBehaviour
                 characterController.uiController.turnOnUi();
             }
         }
+
+        if (Input.GetButtonDown("PowerUp"))
+        {
+            characterController.PowerUpCheat();
+        }
+
 #if UNITY_EDITOR
         if (Input.GetButtonDown("MurderPlayer"))
         {

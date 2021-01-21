@@ -19,10 +19,10 @@ public class ZombieController_McDermit : Enemy
             Destroy(this.gameObject);
         }
 
-        playerObject = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteMovement>();
+        //playerObject = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteMovement>();
 
     }
-    void Update()
+    /*void Update()
     {
         if (!GameData.Instance.spokenToMcDermit) {
             if (playerObject.distanceToEntity(this.transform) < 4)
@@ -41,7 +41,7 @@ public class ZombieController_McDermit : Enemy
         Engine.GetService<ScriptPlayer>().PreloadAndPlayAsync(speakToMcDermitScript);
 
 
-    }
+    }*/
     override public void doUponDeath()
     {
         GameData.Instance.McDermit = 0;
