@@ -19,7 +19,7 @@ public class MissingVillagerDropdownController : MonoBehaviour
     void Start()
     {
         updateVillagerStatusText();
-        if (GameData.Instance.RunNumber == 1)
+        if (GameData.Instance.RunNumber == 1||GameData.Instance.VillagersDead()==0)
         {
             panelToDropDown.SetActive(false);
         }
@@ -57,7 +57,7 @@ public class MissingVillagerDropdownController : MonoBehaviour
 
     internal void ShowCharDeathUI()
     {
-        panelToDropDown.SetActive(true);
+        if (GameData.Instance.VillagersDead()>0) panelToDropDown.SetActive(true);
     }
 
     private void HandleAnimateClose()
@@ -89,6 +89,7 @@ public class MissingVillagerDropdownController : MonoBehaviour
     }
 
     public void SetAnimateUponVillagerDeath() {
+        panelToDropDown.SetActive(true);
         updateVillagerStatusText();
         animateOpen = true;
         animateClose = false;

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 79716290105087121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1.05, y: 2.1, z: 1}
   m_Children: []
   m_Father: {fileID: 2667092308361575544}
   m_RootOrder: 0
@@ -113,6 +113,11 @@ MonoBehaviour:
   aboveItem: 0
   thePlayerjumping: 0
   spikes: 0
+  lightRadius: 6
+  isOnCutsceneMap: 0
+  isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!114 &5085822731891250274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,3 +209,4 @@ MonoBehaviour:
   isBackgroundCharacter: 0
   isSpike: 0
   isPassable: 0
+  isOnCutsceneMap: 0

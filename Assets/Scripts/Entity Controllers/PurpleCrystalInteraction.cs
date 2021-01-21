@@ -48,6 +48,8 @@ public class PurpleCrystalInteraction : EntityData
         //SpawnNewMonster();
 
         Instantiate(purpleCrystalBreaking, this.transform.position , Quaternion.identity);
+        SoundManager.Instance.PlaySound("CrystalShatter", 1);
+        SoundManager.Instance.PlaySound("WraithSpawn", 1);
         Destroy(this.gameObject);
 
         //instantiate a broken crystal and destroy this object
