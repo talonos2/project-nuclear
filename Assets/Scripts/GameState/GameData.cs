@@ -132,11 +132,12 @@ public class GameData : Singleton<GameData>
     public bool[] gabNumbers = new bool[32];
     internal KeymapType sneakyKeyMap = KeymapType.UNDEFINED;
 
-    //This stuff is used by achievements and needs to be saved in the game data.
     internal int monstersKilledInThisGame;
     internal int totalLevelUpsInThisGame;
     internal int daggersFound;
     internal bool spokenToMcDermit;
+
+    internal List<Vector2Int> dialoguesSeen = new List<Vector2Int>();
 
     internal bool IsInTown()
     {

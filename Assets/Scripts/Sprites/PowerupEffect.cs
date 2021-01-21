@@ -103,6 +103,6 @@ public class PowerupEffect : MonoBehaviour
 
     public void OnImpact()
     {
-        collectionSound.Play();
+        SoundManager.Instance.PlaySound("GetEnergy", 1f);
     }
 }
