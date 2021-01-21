@@ -38,6 +38,8 @@ public class GameSaverManager
     private bool deathBoss;
     private bool deathBoss2;
 
+    private bool spokenToMcDermit;
+
     public List<String> townWeapons = new List<String>();
     public List<String> townArmor = new List<String>();
     public List<String> townAccessories = new List<String>();
@@ -105,6 +107,8 @@ public class GameSaverManager
         Mara = GameData.Instance.Mara;
         Devon = GameData.Instance.Devon;
         Pendleton = GameData.Instance.Pendleton;
+
+        spokenToMcDermit = GameData.Instance.spokenToMcDermit;
 
         iceBoss1 = GameData.Instance.iceBoss1;
         earthBoss1 = GameData.Instance.earthBoss1;
@@ -183,6 +187,8 @@ public class GameSaverManager
         GameData.Instance.Mara = Mara;
         GameData.Instance.Devon = Devon;
         GameData.Instance.Pendleton = Pendleton;
+
+        GameData.Instance.spokenToMcDermit= spokenToMcDermit;
 
         GameData.Instance.iceBoss1 = iceBoss1;
         GameData.Instance.earthBoss1 = earthBoss1;

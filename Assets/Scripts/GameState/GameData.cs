@@ -136,6 +136,7 @@ public class GameData : Singleton<GameData>
     internal int monstersKilledInThisGame;
     internal int totalLevelUpsInThisGame;
     internal int daggersFound;
+    internal bool spokenToMcDermit;
 
     internal bool IsInTown()
     {
