@@ -13,7 +13,7 @@ public class CutsceneLoader : MonoBehaviour
     public Vector2[] introCameraLocation;
     internal static bool introCutscene;
     internal static bool endCutscene;
-    private static int introSceneNumber;
+    internal static int introSceneNumber;
     internal static bool postRun1Cutscene;
     internal static bool runTownBackDialogue;
     internal static bool waitingForScriptPlyr;

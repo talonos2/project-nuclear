@@ -38,16 +38,29 @@ public class NewGameController : MonoBehaviour
     public bool keepInactive;
     public Canvas canvasToLoad;
     private int currentMenuOptionSelected = -1;
+    private bool hasInputBeenReset;
+    
 
     void Start()
     {
         
         RefreshSelectedOption(0); //TODO: If save game, start on continue.
+        Input.ResetInputAxes();
     }
 
     void Update()
     {
+
         if (keepInactive) return;
+        if (!hasInputBeenReset)
+        {
+            Debug.Log("Resetting input I thought " + Time.frameCount);
+            Debug.Log("What's in the input string " + Input.inputString);
+
+            Input.ResetInputAxes();
+            Debug.Log("What's in the input string after " + Input.inputString);
+            hasInputBeenReset = true;
+        }
         if (Array.IndexOf<Scene>(SceneManager.GetAllScenes(), SceneManager.GetSceneByName("OptionsScreen"))>-1)
         {
             return;
@@ -56,8 +69,8 @@ public class NewGameController : MonoBehaviour
 
         if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
         {
-            //Debug.Log("Hit submit");
-            switch(currentMenuOptionSelected)
+            Debug.Log("keypressed found in NewGame on frame " + Time.frameCount);
+            switch (currentMenuOptionSelected)
             {
                 case 0:
                     SoundManager.Instance.PlaySound("MenuOkay", 1f);
@@ -167,7 +180,6 @@ public class NewGameController : MonoBehaviour
         SoundManager.Instance.PlaySound("MenuOkay", 1f);
         Text runVariable=RunNumberTextField.GetComponent <Text> ();
         Dropdown runType = dropDown.GetComponent<Dropdown>();
-        
 
         if (runType.value == 0)
         {
@@ -176,6 +188,7 @@ public class NewGameController : MonoBehaviour
                 GameData.Instance.RunNumber = 1;
                 //Debug.Log(GameData.Instance.bestTimes);
                 CutsceneLoader.introCutscene = true;
+                CutsceneLoader.introSceneNumber = 0;
                 GameData.Instance.FloorNumber = 0;
                 CutsceneLoader.LoadCutsceneAndFade(this.transform.parent.GetComponent<Canvas>(),2);
             }
@@ -187,6 +200,7 @@ public class NewGameController : MonoBehaviour
                 FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
                 if (!keepInactive) fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
                 else fadeout.attachToGUI(canvasToLoad);
+
                 fadeout.InitNext("TownMap_1", 2);
             }
         }
