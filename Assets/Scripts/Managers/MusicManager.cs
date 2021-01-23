@@ -58,6 +58,10 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    //public float GetMusicVolume() {
+    //    return musicVolume;
+   // }
+
     /// <summary>
     /// Sets up the Music Manager's singleton design pattern - only one instance of
     /// the manager is allowed to exist and is referenced by the variable "instance"

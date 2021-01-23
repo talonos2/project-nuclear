@@ -44,7 +44,7 @@ public class LogoSceneController : MonoBehaviour
             }
         }
 
-        if (minDelayUntilNextScene < -5)
+        if (minDelayUntilNextScene < -4)
         {
             SceneManager.LoadScene("TitleScreen");
             GameData.Instance.startSceneLoaded = true;

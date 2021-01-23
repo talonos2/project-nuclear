@@ -85,6 +85,10 @@ namespace Naninovel
                 printer.Value.PrintDelay = PrintDelay;
         }
 
+        public float GetPrintSpeed() {
+            return PrintSpeed;
+        }
+
         public override ActorMetadata GetActorMetadata (string actorId) => 
             config.Metadata.GetMetaById(actorId) ?? config.DefaultMetadata;
 

@@ -139,6 +139,7 @@ public class GameData : Singleton<GameData>
 
     internal List<Vector2Int> dialoguesSeen = new List<Vector2Int>();
     internal bool startSceneLoaded;
+    internal OptionSaveManager optionsState;
 
     internal bool IsInTown()
     {
