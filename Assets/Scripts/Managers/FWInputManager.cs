@@ -19,10 +19,7 @@ public class FWInputManager: Singleton<FWInputManager>
         }
     }
 
-    private void Update()
-    {
-        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE)) { Debug.Log("keypressed in fwinput updatethread on frame "+Time.frameCount); }
-    }
+
 
     public void SetToArrowKeys()
     {

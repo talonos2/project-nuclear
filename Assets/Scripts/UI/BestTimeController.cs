@@ -85,7 +85,7 @@ public class BestTimeController : MonoBehaviour
 
     private void PlayDeathSequence()
     {
-        Debug.Log("Playing Death S");
+       // Debug.Log("Playing Death S");
         float t = Mathf.Max(durationOfDeathEffect - timeSoFar, 0) / durationOfDeathEffect;
         bestTimeSlider.color = Color.red;
         UnityEngine.Random r = new UnityEngine.Random();
