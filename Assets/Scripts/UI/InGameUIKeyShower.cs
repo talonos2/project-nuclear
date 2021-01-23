@@ -66,8 +66,8 @@ public class InGameUIKeyShower : MonoBehaviour
     {
         togglLeftKeyToDisplay= "<size=60>←</size>";
         togglRightKeyToDisplay= "<size=60>→</size>";
-        ActivateKeyToDisplay= "<size=60>↑</size>";
-        healKeyToDisplay="c";
+        ActivateKeyToDisplay= "c";
+        healKeyToDisplay="r";
 }
 
     private void setupArrowKeyText()
@@ -75,7 +75,7 @@ public class InGameUIKeyShower : MonoBehaviour
         togglLeftKeyToDisplay = "a";
         togglRightKeyToDisplay = "d";
         ActivateKeyToDisplay = "c";
-        healKeyToDisplay = "s";
+        healKeyToDisplay = "r";
     }
 
     // Update is called once per frame

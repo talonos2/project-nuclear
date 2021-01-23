@@ -12,7 +12,7 @@ public class FWInputManager: Singleton<FWInputManager>
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("FWInputManager started");
+        //Debug.Log("FWInputManager started");
         if (!started)
         {
             SetToArrowKeys();
@@ -39,14 +39,14 @@ public class FWInputManager: Singleton<FWInputManager>
         keyBindings.Add(InputAction.ROTATE_LEFT, new KeyCode[] { KeyCode.A });
         keyBindings.Add(InputAction.ROTATE_RIGHT, new KeyCode[] { KeyCode.D });
         keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.C });
-        keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.S });
+        keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.R });
         keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
-        keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.X, KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
+        keyBindings.Add(InputAction.GO_BACK, new KeyCode[] {  KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
     }
 
     internal bool IsWASD()
     {
-        return keyBindings[InputAction.LEFT][0] == KeyCode.C;
+        return keyBindings[InputAction.LEFT][0] == KeyCode.A;
     }
 
     public void SetToWASD()
@@ -63,14 +63,15 @@ public class FWInputManager: Singleton<FWInputManager>
         keyBindings.Add(InputAction.MENU_DOWN, new KeyCode[] { KeyCode.DownArrow, KeyCode.S });
         keyBindings.Add(InputAction.ROTATE_LEFT, new KeyCode[] { KeyCode.LeftArrow });
         keyBindings.Add(InputAction.ROTATE_RIGHT, new KeyCode[] { KeyCode.RightArrow });
-        keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.UpArrow });
-        keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.C, KeyCode.DownArrow });
+        keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.C, KeyCode.UpArrow });
+        keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.R });
         keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
-        keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.X, KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
+        keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
     }
 
     public bool GetKeyDown(InputAction action)
     {
+        if (!GameData.Instance.startSceneLoaded) { return false ; }
         if (!started)
         {
             SetToArrowKeys();
@@ -80,7 +81,7 @@ public class FWInputManager: Singleton<FWInputManager>
         {
             if (Input.GetKeyDown(key))
             {
-                Debug.Log("key pressed in FWInputManager " + key);
+//                Debug.Log("key pressed in FWInputManager " + key);
                 return true;
             }
         }

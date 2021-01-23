@@ -83,7 +83,7 @@ public class FloorDropoffPrefab : MonoBehaviour
         int minutes = (int)(timeTaken / 60);
         int subSeconds = (int)((timeTaken % 1) * 10);
 
-        textToDisplay = minutes + ":" + ((seconds < 10) ? "0" + seconds : "" + seconds + "."+subSeconds ) + " on Floor "+floorNum;
+        textToDisplay = "Spent "+minutes + ":" + ((seconds < 10) ? "0" + seconds : "" + seconds + "."+subSeconds )+" on floor "+floorNum;
         if (record)
         {
             if (oldTimeTaken == Mathf.Infinity)

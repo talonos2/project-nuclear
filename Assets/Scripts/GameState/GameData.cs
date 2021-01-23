@@ -138,6 +138,7 @@ public class GameData : Singleton<GameData>
     internal bool spokenToMcDermit;
 
     internal List<Vector2Int> dialoguesSeen = new List<Vector2Int>();
+    internal bool startSceneLoaded;
 
     internal bool IsInTown()
     {
