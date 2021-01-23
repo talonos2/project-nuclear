@@ -316,7 +316,7 @@ public class Combat : MonoBehaviour
         //TODO: If the time is up, combat ends immediately.
         if (gameData.minutes == 10 || playerStats.HP <= 0)
         {
-            PlayerLoss();
+            PlayerLoss(playerStats.HP > 0);
         }
 
         if (monsterStats.HP <= 0)
@@ -332,14 +332,12 @@ public class Combat : MonoBehaviour
         if (GameState.isInBattle == false && GameData.Instance.FloorNumber != 20) { MusicManager.instance.TurnOffCombatMusic(); }
     }
 
-    private void PlayerLoss()
+    private void PlayerLoss(bool timeOut)
     {
         MusicManager.instance.TurnOffCombatMusic();
         combatEnded = true;
-        //GameState.isInBattle = false;
         blade.StartClose();
-        //GameState.endRunFlag = true;
-        KillPlayerAndLoadNextScene(true);
+        KillPlayerAndLoadNextScene(timeOut);
     }
 
     private void KillPlayerAndLoadNextScene(bool timeOut)
