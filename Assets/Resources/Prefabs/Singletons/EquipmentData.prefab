@@ -538,20 +538,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'A cursed mana stone put to good use: drains mana and gives
-    it to the wielder. (Heals 2% max mana/hit)'
+    it to the wielder. (Heals 1% max mana/hit)'
   floorFoundOn: 14 15
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 971072248089452544, guid: e411a1936e8505e498ae9e3bb62c3bfc, type: 3}
-  equipmentStatDescription: Heals 2% max MP/hit
+  equipmentStatDescription: Heals 1% max MP/hit
   effectType: 10
   effectType1: 0
   effectType2: 0
   effectType3: 0
   effectType4: 0
-  effectStrength: 2.2
+  effectStrength: 1.2
   effectStrength1: 0
   effectStrength2: 0
   effectStrength3: 0
@@ -652,20 +652,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: A cursed mana stone put to good use: drains mana and
-    gives it to the wielder. (Heals 3% max mana/hit, +100 Mana)'
+    gives it to the wielder. (Heals 1.5% max mana/hit, +100 Mana)'
   floorFoundOn: 14
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 971072248089452544, guid: e411a1936e8505e498ae9e3bb62c3bfc, type: 3}
-  equipmentStatDescription: Heals 3% max MP/hit, +100 Mana
+  equipmentStatDescription: Heals 1.5% max MP/hit, +100 Mana
   effectType: 10
   effectType1: 2
   effectType2: 0
   effectType3: 0
   effectType4: 0
-  effectStrength: 3.2
+  effectStrength: 1.7
   effectStrength1: 100
   effectStrength2: 0
   effectStrength3: 0
@@ -818,7 +818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Empowers those who wear it, aiding in their ascent
     to legend. (+50% XP gain when worn, +8 Atk, +4 Def)'
-  floorFoundOn: 11
+  floorFoundOn: 11 12
   Weapon: 0
   Armor: 0
   Accessory: 1
@@ -1201,20 +1201,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: This dreaded charm absorbs the life essence of those
-    near the wearer. (Heals 3% max HP/hit, +100 HP)'
+    near the wearer. (Heals 1.5% max HP/hit, +100 HP)'
   floorFoundOn: 12
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 971072248089452544, guid: e411a1936e8505e498ae9e3bb62c3bfc, type: 3}
-  equipmentStatDescription: Heals 3% max HP/hit, +100 HP
+  equipmentStatDescription: Heals 1.5% max HP/hit, +100 HP
   effectType: 9
   effectType1: 1
   effectType2: 0
   effectType3: 0
   effectType4: 0
-  effectStrength: 3.2
+  effectStrength: 1.7
   effectStrength1: 100
   effectStrength2: 0
   effectStrength3: 0
@@ -1708,7 +1708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentDescription: Empowers those who wear it, aiding in their ascent to legend.
     (+50% XP gain when worn)
-  floorFoundOn: 11
+  floorFoundOn: 10 11
   Weapon: 0
   Armor: 0
   Accessory: 1
@@ -2689,8 +2689,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d09994437f189448cb959489ae9f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentDescription: 'Common: It smoulders, but never quite goes out. (Fire damage
-    dealt + 25%)'
+  equipmentDescription: It smoulders, but never quite goes out. (Fire damage dealt
+    + 25%)
   floorFoundOn: 13
   Weapon: 0
   Armor: 0
@@ -3010,7 +3010,7 @@ GameObject:
   - component: {fileID: 6874240062893999921}
   - component: {fileID: 3344976989185780366}
   m_Layer: 0
-  m_Name: Syphons's Medallion
+  m_Name: Syphon's Medallion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3043,20 +3043,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: This dreaded charm absorbs the life essence of those near
-    the wearer. (Heals 2% max HP/hit)
+    the wearer. (Heals 1% max HP/hit)
   floorFoundOn: 12
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 0
   itemIcon: {fileID: 971072248089452544, guid: e411a1936e8505e498ae9e3bb62c3bfc, type: 3}
-  equipmentStatDescription: Heals 2% max HP/hit
+  equipmentStatDescription: Heals 1% max HP/hit
   effectType: 9
   effectType1: 0
   effectType2: 0
   effectType3: 0
   effectType4: 0
-  effectStrength: 2.2
+  effectStrength: 1.2
   effectStrength1: 0
   effectStrength2: 0
   effectStrength3: 0
@@ -3331,7 +3331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: It glows blue with untapped power. (MP + 50)
-  floorFoundOn: 6
+  floorFoundOn: 5 6
   Weapon: 0
   Armor: 0
   Accessory: 1
@@ -4875,21 +4875,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentDescription: 'Rare: Guides the wearer''s hand, helping them strike vulnerable
-    places. (10% chance of x2.5 damage, Atk +8)'
+    places. (10% chance of x2.5 damage, Atk +10)'
   floorFoundOn: 15
   Weapon: 0
   Armor: 0
   Accessory: 1
   Rare: 1
   itemIcon: {fileID: 971072248089452544, guid: e411a1936e8505e498ae9e3bb62c3bfc, type: 3}
-  equipmentStatDescription: 10% chance of x2.5 Dmg, Atk +8
+  equipmentStatDescription: 10% chance of x2.5 Dmg, Atk +10
   effectType: 11
   effectType1: 4
   effectType2: 0
   effectType3: 0
   effectType4: 0
   effectStrength: 10
-  effectStrength1: 8
+  effectStrength1: 10
   effectStrength2: 0
   effectStrength3: 0
   effectStrength4: 0
@@ -4953,11 +4953,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8475618078259157552}
     m_Modifications:
-    - target: {fileID: 495438900836472273, guid: 5b75dafd3a0d0624591f8637752cbc17,
-        type: 3}
-      propertyPath: m_Name
-      value: No Accessory Equipped
-      objectReference: {fileID: 0}
     - target: {fileID: 4730018020663208119, guid: 5b75dafd3a0d0624591f8637752cbc17,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5012,6 +5007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 495438900836472273, guid: 5b75dafd3a0d0624591f8637752cbc17,
+        type: 3}
+      propertyPath: m_Name
+      value: No Accessory Equipped
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b75dafd3a0d0624591f8637752cbc17, type: 3}

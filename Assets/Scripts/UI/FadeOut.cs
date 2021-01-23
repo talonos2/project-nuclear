@@ -11,6 +11,8 @@ public class FadeOut : MonoBehaviour
     private float timeLeft;
     private string next;
     private bool onGUI = false;
+    private bool scenelessFadeoutFinished;
+    private bool scenelessFadeout;
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +51,19 @@ public class FadeOut : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(next);
+            if (!scenelessFadeout) SceneManager.LoadScene(next);
         }
+    }
+
+    internal bool scenelessFadeOutFinished()
+    {
+        return scenelessFadeoutFinished;
+    }
+
+    internal void InitScenelessFadeout(float fadeTime)
+    {
+        this.fadeTime = fadeTime;
+        scenelessFadeout = true;
     }
 
     internal void attachToGUI(Canvas canvas)

@@ -37,7 +37,6 @@ public class ShowItemsInMenuController : MonoBehaviour
         accessoryUIPrefab.SetItem(savedStats.accessory, false);
 
 
-       
     }
 
     public void setDescriptionText(int slotNum) {
@@ -66,7 +65,7 @@ public class ShowItemsInMenuController : MonoBehaviour
     {
         itemUiHidden = false;
         picToHide.SetActive(true);
-        extraTextToMove.SetActive(true);
+        if (inPauseMenu) extraTextToMove.SetActive(true);
     }
 
     public void HideItemUI() {

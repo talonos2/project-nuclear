@@ -64,6 +64,8 @@ public class CharacterInputController : MonoBehaviour
                 characterController.uiController.turnOnUi();
             }
         }
+
+
 #if UNITY_EDITOR
         if (Input.GetButtonDown("MurderPlayer"))
         {
