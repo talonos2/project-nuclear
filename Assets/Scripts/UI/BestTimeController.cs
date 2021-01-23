@@ -85,6 +85,7 @@ public class BestTimeController : MonoBehaviour
 
     private void PlayDeathSequence()
     {
+        Debug.Log("Playing Death S");
         float t = Mathf.Max(durationOfDeathEffect - timeSoFar, 0) / durationOfDeathEffect;
         bestTimeSlider.color = Color.red;
         UnityEngine.Random r = new UnityEngine.Random();
@@ -115,8 +116,6 @@ public class BestTimeController : MonoBehaviour
     {
         if (timeSoFar > delay)
         {
-            if (timeSoFar < delay + duration)
-            {
                 float t = (timeSoFar - delay) / duration;
                 float realY = y - ((2 * t - 1) * (2 * t - 1) - 1) * -maxYBend;
                 bestTimeSlider.transform.localPosition = new Vector3(Mathf.Lerp(startTimeOffset, endTimeOffset, t), realY, 0);
@@ -137,7 +136,6 @@ public class BestTimeController : MonoBehaviour
                     deathPosition = bestTimeSlider.transform.localPosition;
                     targetSkullPosition = deathPosition + new Vector3(0, -60,0);
                 }
-            }
         }
     }
 
