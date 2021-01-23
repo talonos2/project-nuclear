@@ -16,7 +16,6 @@ public class SwitchMapMusicOnMapStart : MonoBehaviour
             MusicManager.instance.FadeOutMusic(MusicManager.instance.mapMusic, .25f);
             MusicManager.instance.FadeMusic(mapMusic, .25f, MusicManager.globalMusicVolume);
             MusicManager.instance.SetMapMusic(mapMusic);
-            Debug.Log("Case 1");
         }
         if (combatMusic != MusicManager.instance.combatMusic&&!alwaysOn)
         {

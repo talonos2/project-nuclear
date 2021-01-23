@@ -53,7 +53,6 @@ public class MusicManager : MonoBehaviour
         fadeStartVolumes = new float[music.Length];
         for (int x = 0; x < music.Length; x++)
         {
-            Debug.Log(x);
             music[x].audioSource.volume = 0;
             fadeLengths[x] = 0;
         }
