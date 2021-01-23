@@ -26,7 +26,7 @@ public class GameData : Singleton<GameData>
 
     public int FloorNumber = 0;
 
-    public int RunNumber = 1;
+    public int RunNumber = 0;
     public int PowersGained = 0;
     public bool timerTrigger;
     public bool hasted;
@@ -117,6 +117,7 @@ public class GameData : Singleton<GameData>
     public bool airBoss2;
 
 
+
     internal float deathTime;
     internal bool hiroDeathMonster;
     internal bool postRun1Cutscene;
@@ -124,7 +125,7 @@ public class GameData : Singleton<GameData>
     internal bool ManualUIToggleOff;
 
     internal bool loadingFromDungeon;
-
+    internal bool startSceneLoaded;
 
     internal bool statsSetup=false;
     internal int monstersKilledInThisRun;
@@ -138,7 +139,7 @@ public class GameData : Singleton<GameData>
     internal bool spokenToMcDermit;
 
     internal List<Vector2Int> dialoguesSeen = new List<Vector2Int>();
-    internal bool startSceneLoaded;
+
     internal OptionSaveManager optionsState;
 
     internal bool IsInTown()
