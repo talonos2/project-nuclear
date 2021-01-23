@@ -12,7 +12,7 @@ public class FWInputManager: Singleton<FWInputManager>
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("FWInputManager started");
+        //Debug.Log("FWInputManager started");
         if (!started)
         {
             SetToArrowKeys();
@@ -71,6 +71,7 @@ public class FWInputManager: Singleton<FWInputManager>
 
     public bool GetKeyDown(InputAction action)
     {
+        if (!GameData.Instance.startSceneLoaded) { return false ; }
         if (!started)
         {
             SetToArrowKeys();
@@ -80,7 +81,7 @@ public class FWInputManager: Singleton<FWInputManager>
         {
             if (Input.GetKeyDown(key))
             {
-                Debug.Log("key pressed in FWInputManager " + key);
+//                Debug.Log("key pressed in FWInputManager " + key);
                 return true;
             }
         }

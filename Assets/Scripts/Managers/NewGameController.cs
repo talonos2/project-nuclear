@@ -54,11 +54,11 @@ public class NewGameController : MonoBehaviour
         if (keepInactive) return;
         if (!hasInputBeenReset)
         {
-            Debug.Log("Resetting input I thought " + Time.frameCount);
-            Debug.Log("What's in the input string " + Input.inputString);
+//            Debug.Log("Resetting input I thought " + Time.frameCount);
+//            Debug.Log("What's in the input string " + Input.inputString);
 
             Input.ResetInputAxes();
-            Debug.Log("What's in the input string after " + Input.inputString);
+          //  Debug.Log("What's in the input string after " + Input.inputString);
             hasInputBeenReset = true;
         }
         if (Array.IndexOf<Scene>(SceneManager.GetAllScenes(), SceneManager.GetSceneByName("OptionsScreen"))>-1)
@@ -69,7 +69,7 @@ public class NewGameController : MonoBehaviour
 
         if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
         {
-            Debug.Log("keypressed found in NewGame on frame " + Time.frameCount);
+            //Debug.Log("keypressed found in NewGame on frame " + Time.frameCount);
             switch (currentMenuOptionSelected)
             {
                 case 0:
