@@ -40,10 +40,14 @@ public class LogoSceneController : MonoBehaviour
                 SceneManager.UnloadSceneAsync("LogoScreen");
                 loadingTitleScreen.allowSceneActivation = true;
 
-
-
                 //SceneManager.SetActiveScene(SceneManager.GetSceneByName("TitleScreen"));
             }
+        }
+
+        if (minDelayUntilNextScene < -5)
+        {
+            SceneManager.LoadScene("TitleScreen");
+            GameData.Instance.startSceneLoaded = true;
         }
 
         /*if (fadingOut) {

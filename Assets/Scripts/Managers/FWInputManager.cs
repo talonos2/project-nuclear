@@ -19,10 +19,7 @@ public class FWInputManager: Singleton<FWInputManager>
         }
     }
 
-    private void Update()
-    {
-        if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE)) { Debug.Log("keypressed in fwinput updatethread on frame "+Time.frameCount); }
-    }
+
 
     public void SetToArrowKeys()
     {
@@ -39,14 +36,14 @@ public class FWInputManager: Singleton<FWInputManager>
         keyBindings.Add(InputAction.ROTATE_LEFT, new KeyCode[] { KeyCode.A });
         keyBindings.Add(InputAction.ROTATE_RIGHT, new KeyCode[] { KeyCode.D });
         keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.C });
-        keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.S });
+        keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.R });
         keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
-        keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.X, KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
+        keyBindings.Add(InputAction.GO_BACK, new KeyCode[] {  KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
     }
 
     internal bool IsWASD()
     {
-        return keyBindings[InputAction.LEFT][0] == KeyCode.C;
+        return keyBindings[InputAction.LEFT][0] == KeyCode.A;
     }
 
     public void SetToWASD()
@@ -63,10 +60,10 @@ public class FWInputManager: Singleton<FWInputManager>
         keyBindings.Add(InputAction.MENU_DOWN, new KeyCode[] { KeyCode.DownArrow, KeyCode.S });
         keyBindings.Add(InputAction.ROTATE_LEFT, new KeyCode[] { KeyCode.LeftArrow });
         keyBindings.Add(InputAction.ROTATE_RIGHT, new KeyCode[] { KeyCode.RightArrow });
-        keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.UpArrow });
-        keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.C, KeyCode.DownArrow });
+        keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.C, KeyCode.UpArrow });
+        keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.R });
         keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
-        keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.X, KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
+        keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
     }
 
     public bool GetKeyDown(InputAction action)

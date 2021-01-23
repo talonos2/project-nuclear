@@ -202,6 +202,7 @@ public class LoadSaveController : MonoBehaviour
     internal void AutoSave()
     {
         SaveGame(0);
+        GameData.Instance.loadingFromDungeon = true;
 
     }
 

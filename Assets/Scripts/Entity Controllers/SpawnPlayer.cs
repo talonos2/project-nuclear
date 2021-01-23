@@ -181,8 +181,8 @@ public class SpawnPlayer : MonoBehaviour
                 gameData.nextFacing = SpriteMovement.DirectionMoved.DOWN;
                 break;
             case 21:
-                gameData.nextLocaiton.x = -8;
-                gameData.nextLocaiton.y = -18;
+                gameData.nextLocaiton.x = 11;
+                gameData.nextLocaiton.y = 20;
                 gameData.nextFacing = SpriteMovement.DirectionMoved.DOWN;
                 break;
             case 22:

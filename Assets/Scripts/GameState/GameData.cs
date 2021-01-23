@@ -123,7 +123,7 @@ public class GameData : Singleton<GameData>
     internal bool UI_On;
     internal bool ManualUIToggleOff;
 
-
+    internal bool loadingFromDungeon;
 
 
     internal bool statsSetup=false;
