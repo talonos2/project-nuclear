@@ -22,7 +22,6 @@ public class SwitchMapMusicOnMapStart : MonoBehaviour
             MusicManager.instance.FadeOutMusic(MusicManager.instance.combatMusic, .25f);
             MusicManager.instance.FadeMusic(combatMusic, .25f, .0001f);
             MusicManager.instance.SetCombatMusic(combatMusic);
-            Debug.Log("Case 2");
         }
         if (alwaysOn)
         {
@@ -30,7 +29,6 @@ public class SwitchMapMusicOnMapStart : MonoBehaviour
             MusicManager.instance.FadeMusic(combatMusic, .25f, MusicManager.globalMusicVolume);
             MusicManager.instance.SetCombatMusic(combatMusic);
             MusicManager.instance.SyncCombatToPreexistingMusic();
-            Debug.Log("Case 3");
         }
     }
 
