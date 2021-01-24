@@ -288,24 +288,25 @@ public class PauseMenuController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(optionsReturn);
     }
 
-/*    public void DungeonButtonClick()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        if (scene.name == "TownMap_1" || scene.name == "TownInterior_Pub_1" || scene.name == "TownInterior_Church_1"
-        || scene.name == "TownInterior_Manor_1" || scene.name == "TownInterior_SeersCottage_1")
+    /*    public void DungeonButtonClick()
         {
-            //needs to start cutscene instead
-            GameState.fullPause = false;
-            CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);
-            //StartDungeonRun.StartRun();
-        }
-        else
-        {
-            //endrun code here
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().MurderPlayer();
-            //characterController.MurderPlayer();
-        }
-    }*/
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name == "TownMap_1" || scene.name == "TownInterior_Pub_1" || scene.name == "TownInterior_Church_1"
+            || scene.name == "TownInterior_Manor_1" || scene.name == "TownInterior_SeersCottage_1")
+            {
+                //needs to start cutscene instead
+                GameState.fullPause = false;
+                CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);
+                //StartDungeonRun.StartRun();
+            }
+            else
+            {
+                //endrun code here
+                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().MurderPlayer();
+                //characterController.MurderPlayer();
+            }
+        }*/
+
 
     public void AbandonButtonClick()
     {

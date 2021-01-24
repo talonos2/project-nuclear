@@ -185,10 +185,10 @@ public class LoadSaveController : MonoBehaviour
 
         if (!File.Exists(appPath + "/Saves/" + saveName + ".binary"))
         {
-            saveFile = File.Create(appPath + "/Saves/" + saveName + ".binary");
+            FileStream saveFile2 = File.Create(appPath + "/Saves/" + saveName + ".binary");
 
-            formatter.Serialize(saveFile, gameSaver);
-            saveFile.Close();
+            formatter.Serialize(saveFile2, gameSaver);
+            saveFile2.Close();
         }
 
         saveFile = File.Open(appPath + "/Saves/" + saveName + ".binary", FileMode.Open);

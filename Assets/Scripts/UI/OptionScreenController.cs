@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using Naninovel;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -29,11 +31,8 @@ public class OptionScreenController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);  //clears first button, then sets it
         EventSystem.current.SetSelectedGameObject(optionFirstButton);
 
-        sliders[0].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (MusicManager.instance.GetMusicVolume() * 380));
-        sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (SoundManager.Instance.soundEffectVolume * 380));
-        //sliders[2].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (printerMngr.PrintSpeed * 380));
+        LoadSavedOptionData();
 
-        //        Debug.Log("Initializing to "+MusicManager.instance.GetMusicVolume() + ", " + SoundManager.Instance.soundEffectVolume + ", " + printerMngr.PrintSpeed);
     }
 
     void Update()
@@ -49,11 +48,7 @@ public class OptionScreenController : MonoBehaviour
                     break;
                 case 2: //SFX
                     break;
-                case 3: //Text Speed
-                    break;
-                case 4: //Resolution
-                    break;
-                case 5: //Exit
+                case 3: //Exit Options
                     CloseOptionsMenu();
                     break;
             }
@@ -89,9 +84,14 @@ public class OptionScreenController : MonoBehaviour
 
     private void ChangeSelected(float amount)
     {
+
+        changeValuesOfSliders(currentMenuOptionSelected, amount);       
+    }
+
+    private void changeValuesOfSliders(int optionSelected, float amount) {
         float oldSliderValue;
         float newSliderValue;
-        switch (currentMenuOptionSelected)
+        switch (optionSelected)
         {
             case 1:
                 oldSliderValue = MusicManager.instance.GetMusicVolume();
@@ -105,19 +105,101 @@ public class OptionScreenController : MonoBehaviour
                 SoundManager.Instance.soundEffectVolume = newSliderValue;
                 sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (SoundManager.Instance.soundEffectVolume * 380));
                 break;
-            case 3:
+           /* case 3:
                 oldSliderValue = printerMngr.PrintSpeed;
                 newSliderValue = Mathf.Clamp(oldSliderValue + amount, .001f, 1f);
                 printerMngr.SetPrintSpeed(newSliderValue);
                 sliders[2].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (printerMngr.PrintSpeed * 380));
-                break;
+                break;*/
         }
+    }
+
+    private void SetValueOfSlider(int optionSelected, float amount) {
+        switch (optionSelected)
+        {
+            case 1:
+                MusicManager.instance.ChangeMusicVolume(amount);
+                sliders[0].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (MusicManager.instance.GetMusicVolume() * 380));
+                break;
+            case 2:
+                SoundManager.Instance.soundEffectVolume = amount;
+                sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (SoundManager.Instance.soundEffectVolume * 380));
+                break;
+                /* case 3:
+                     oldSliderValue = printerMngr.PrintSpeed;
+                     newSliderValue = Mathf.Clamp(oldSliderValue + amount, .001f, 1f);
+                     printerMngr.SetPrintSpeed(newSliderValue);
+                     sliders[2].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (printerMngr.PrintSpeed * 380));
+                     break;*/
+        }
+    }
+
+    internal void SaveOptions()
+    {
+
+        string appPath = Application.dataPath;
+        string savedOptions="GameOptions";
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream saveFile;
+        OptionSaveManager optionSaver = new OptionSaveManager();
+        optionSaver.SetupOptionsSave(SoundManager.Instance.soundEffectVolume, MusicManager.instance.GetMusicVolume());
+
+        if (!Directory.Exists(appPath + "/Saves")) { Directory.CreateDirectory(appPath + "/Saves"); }
+        if (!File.Exists(appPath + "/Saves/" + savedOptions + ".binary"))
+        {
+            saveFile = File.Create(appPath + "/Saves/" + savedOptions + ".binary");
+            formatter.Serialize(saveFile, optionSaver);
+            saveFile.Close();
+        }
+        else
+        {
+            saveFile = File.OpenWrite(appPath + "/Saves/" + savedOptions + ".binary");
+            formatter.Serialize(saveFile, optionSaver);
+            saveFile.Close();
+        }
+        GameData.Instance.optionsState = optionSaver;
+
+    }
+
+    private void LoadSavedOptionData()
+    {
+        string appPath = Application.dataPath;
+        if (!Directory.Exists(appPath + "/Saves")) { Directory.CreateDirectory(appPath + "/Saves"); }
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream saveFile;
+        OptionSaveManager optionSaver = new OptionSaveManager();
+        string savedOptions = "GameOptions";
+
+        if (!File.Exists(appPath + "/Saves/" + savedOptions + ".binary"))
+        {
+
+            FileStream saveFile2 = File.Create(appPath + "/Saves/" + savedOptions + ".binary");
+            OptionSaveManager optionSaver2 = new OptionSaveManager();
+            optionSaver2.SetupOptionsSave(SoundManager.Instance.soundEffectVolume, MusicManager.instance.GetMusicVolume());
+            formatter.Serialize(saveFile2, optionSaver2);
+            saveFile2.Close();
+        }
+
+        saveFile = File.Open(appPath + "/Saves/" + savedOptions + ".binary", FileMode.Open);
+        optionSaver = (OptionSaveManager)formatter.Deserialize(saveFile);
+        GameData.Instance.optionsState = optionSaver;
+        LoadValuesIntoOptions(optionSaver);
+        saveFile.Close();
+
+    }
+
+    private void LoadValuesIntoOptions(OptionSaveManager optionSaver)
+    {
+        SetValueOfSlider(1, optionSaver.musicVolume);
+        SetValueOfSlider(2, optionSaver.soundVolume);
     }
 
     public void CloseOptionsMenu()
     {
 
         // pauseMenuController.OptionsReturn();
+        SaveOptions();
         SceneManager.UnloadSceneAsync("OptionsScreen");
     }
 
@@ -161,11 +243,7 @@ public class OptionScreenController : MonoBehaviour
         RectTransformUtility.ScreenPointToLocalPointInRectangle(this.GetComponent<RectTransform>(), pedata.pressPosition, null, out Vector2 startPos);
 
         int boundSlider;
-        if (startPos.y < 0)
-        {
-            boundSlider = 2;
-        }
-        else if (startPos.y < 40)
+        if (startPos.y < 40)
         {
             boundSlider = 1;
         }
@@ -185,9 +263,6 @@ public class OptionScreenController : MonoBehaviour
                 break;
             case 1:
                 SoundManager.Instance.soundEffectVolume = newSliderValue;
-                break;
-            case 2:
-                printerMngr.SetPrintSpeed(newSliderValue);
                 break;
         }
     }

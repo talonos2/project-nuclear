@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FWInputManager: Singleton<FWInputManager>
 {
@@ -68,7 +69,7 @@ public class FWInputManager: Singleton<FWInputManager>
 
     public bool GetKeyDown(InputAction action)
     {
-        if (!GameData.Instance.startSceneLoaded) { return false ; }
+        if (SceneManager.GetActiveScene().name=="LogoScreen") { return false ; }
         if (!started)
         {
             SetToArrowKeys();
