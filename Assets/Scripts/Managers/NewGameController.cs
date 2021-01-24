@@ -124,6 +124,12 @@ public class NewGameController : MonoBehaviour
         SceneManager.LoadScene("OptionsScreen", LoadSceneMode.Additive);
     }
 
+    public void OpenCredits()
+    {
+        SoundManager.Instance.PlayPersistentSound("MenuOkay", 1f);
+        SceneManager.LoadScene("Credits");
+    }
+
     private int PrevMenuOption()
     {
         return (currentMenuOptionSelected + 5)%6;  //TODO: Skip continue and load game if there's no game to load or continue.

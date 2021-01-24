@@ -18,11 +18,17 @@ public class CreditsExit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (FWInputManager.Instance.GetKeyDown(InputAction.GO_BACK)|| 
+            FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE)||
+            FWInputManager.Instance.GetKeyDown(InputAction.USE_POWER))
+        {
+            CloseCredits();
+        }
     }
 
     public void CloseCredits()
     {
-        SceneManager.UnloadSceneAsync("SimpleCredits");
+        SoundManager.Instance.PlayPersistentSound("MenuBack", 1);
+        SceneManager.LoadScene("MainMenu");
     }
 }
