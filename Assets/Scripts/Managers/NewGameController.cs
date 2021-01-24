@@ -87,11 +87,10 @@ public class NewGameController : MonoBehaviour
                     inSaveMenu = true;
                     break;
                 case 3:
-                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
                     OpenOptionsMenu();
                     break;
                 case 4:
-                    //TODO: This is Extras. 
+                    OpenCredits();
                     break;
                 case 5:
                     Quit();

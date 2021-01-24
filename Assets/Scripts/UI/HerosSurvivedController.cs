@@ -53,7 +53,7 @@ public class HerosSurvivedController : MonoBehaviour
         delay -= Time.deltaTime;
 
         if (delay < 0) {
-            SceneManager.LoadScene("TitleScreen");
+            SceneManager.LoadScene("Credits");
         }
 
     }

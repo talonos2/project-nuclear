@@ -28,7 +28,7 @@ public class CreditsExit : MonoBehaviour
 
     public void CloseCredits()
     {
-        SoundManager.Instance.PlayPersistentSound("MenuBack", 1);
-        SceneManager.LoadScene("MainMenu");
+        SoundManager.Instance.PlayPersistentSound("MenuNope", 1);
+        SceneManager.LoadScene("TitleScreen");
     }
 }
