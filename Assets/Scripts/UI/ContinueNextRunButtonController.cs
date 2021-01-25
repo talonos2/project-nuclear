@@ -8,10 +8,12 @@ public class ContinueNextRunButtonController : MonoBehaviour
     public Canvas canvas;
     private bool isActive;
     private float delayToShow;
+    private bool initialStart;
 
     void Start()
     {
         delayToShow = .3f;
+        canvas.enabled = false;
     }
     public void StartRunButtonClicked()
     {
@@ -28,11 +30,17 @@ public class ContinueNextRunButtonController : MonoBehaviour
 
     private void Update()
     {
-        if (delayToShow > 0) {
-            delayToShow -= Time.deltaTime;
-            canvas.enabled = false;
-            return;
+        if (!initialStart) {
+            if (GameData.Instance.isInDialogue || GameData.Instance.isCutscene) return;
         }
+
+            if (delayToShow > 0)
+            {
+                delayToShow -= Time.deltaTime;
+                canvas.enabled = false;
+                return;
+            }
+            else initialStart = true;
 
         if (GameData.Instance.isInDialogue || GameData.Instance.isCutscene)
         {
