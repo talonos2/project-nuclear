@@ -15,7 +15,7 @@ public class ExitController : DoodadData
     public bool dungeonEntrance;
     public SpriteMovement.DirectionMoved exitFacing;
     public AudioClip soundToPlayOnTransition;
-
+    public bool exitIsTeleporter;
 
     public void TransitionMap()
     {
@@ -75,6 +75,7 @@ public class ExitController : DoodadData
             SoundManager.Instance.PlayPersistentSound(soundToPlayOnTransition.name, 1f);
         }
         FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+        if (exitIsTeleporter) { GameData.Instance.teleportingIn = true; }
         fadeout.InitNext(mapToLoad);
         GameObject.Destroy(this);
     }
