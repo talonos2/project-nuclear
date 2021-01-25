@@ -51,6 +51,10 @@ public class CharacterInputController : MonoBehaviour
         {
             characterController.PowerActivateKeyReceived();
         }
+
+
+#if UNITY_EDITOR
+
         if (Input.GetButtonDown("ToggleUICamera"))
         {
             if (GameData.Instance.UI_On)
@@ -66,7 +70,6 @@ public class CharacterInputController : MonoBehaviour
         }
 
 
-#if UNITY_EDITOR
         if (Input.GetButtonDown("MurderPlayer"))
         {
             characterController.MurderPlayer();

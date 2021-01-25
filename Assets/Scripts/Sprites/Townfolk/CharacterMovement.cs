@@ -92,18 +92,22 @@ public class CharacterMovement : SpriteMovement
         if (IsPlayerMoveLocationTerrainPassable(characterLocation.x - 1, characterLocation.y))
         {
             ForceJump(new Vector2(-1, 0), .12f, .3f);
+            SoundManager.Instance.PlaySound("monsterPunched", 1);
         }
         else if (IsPlayerMoveLocationTerrainPassable(characterLocation.x + 1, characterLocation.y))
         {
             ForceJump(new Vector2(1, 0), .12f, .3f);
+            SoundManager.Instance.PlaySound("monsterPunched", 1);
         }
         else if (IsPlayerMoveLocationTerrainPassable(characterLocation.x, characterLocation.y - 1))
         {
             ForceJump(new Vector2(0, -1), .12f, .3f);
+            SoundManager.Instance.PlaySound("monsterPunched", 1);
         }
         else if (IsPlayerMoveLocationTerrainPassable(characterLocation.x, characterLocation.y + 1))
         {
             ForceJump(new Vector2(0, 1), .12f, .3f);
+            SoundManager.Instance.PlaySound("monsterPunched", 1);
         }
     }
 
@@ -117,8 +121,8 @@ public class CharacterMovement : SpriteMovement
 
             if (!IsPlayerMoveLocationPassable(characterNextLocation.x, characterNextLocation.y) && IsThereAMonster() == null)
             {
-                totalDashed += Time.deltaTime * tempMovementSpeed;//Effectivly cuts penalty for dashing in half when running 
-                //into monsters, but not when running into walls/pits/boulders, ect
+                totalDashed += Time.deltaTime * tempMovementSpeed;//Effectivly cuts penalty for dashing in half when running into walls
+
             }
 
             if (!continueDashing)
@@ -580,6 +584,7 @@ public class CharacterMovement : SpriteMovement
         {
             //TODO: Play buzzing Sound
             //TODO: Make MP bar flash
+            SoundManager.Instance.PlaySound("outOfMana",1);
             return false;
         }
 
@@ -709,6 +714,7 @@ public class CharacterMovement : SpriteMovement
             }
             else
             {
+                SoundManager.Instance.PlaySound("outOfMana", 1);
                 TurnHasteOff();
                 tempMovementSpeed = MoveSpeed;
                 tempFramesPerSecond = framesPerSecond;
@@ -748,6 +754,15 @@ public class CharacterMovement : SpriteMovement
         }
     }
 
+    internal void BumpOffBridge() {
+        DoodadGrid doodads = MapGrid.GetComponent<DoodadGrid>();
+        GameObject hopefullyADoodad = doodads.grid[characterLocation.x, characterLocation.y];
+        if (hopefullyADoodad != null && hopefullyADoodad.GetComponent<BridgeController>() != null && !hopefullyADoodad.GetComponent<BridgeController>().isPassable)
+        {
+            JumpOffOfSpikes();
+        }
+    }
+
     internal void ActivateInvisibility()
     {
         if (GameData.Instance.stealthed)
@@ -770,7 +785,8 @@ public class CharacterMovement : SpriteMovement
             }
             else
             {
-                TurnHasteOff();
+                SoundManager.Instance.PlaySound("outOfMana", 1);
+                if (GameData.Instance.hasted) TurnHasteOff();
                 tempMovementSpeed = MoveSpeed;
                 tempFramesPerSecond = framesPerSecond;
             }
@@ -794,6 +810,7 @@ public class CharacterMovement : SpriteMovement
             waitTimer = .4f;
             totalDashed = 0;
         }
+        else { SoundManager.Instance.PlaySound("outOfMana", 1); }
     }
 
     internal void PowerToggleLeftKeyReceived()

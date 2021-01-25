@@ -49,7 +49,7 @@ public class crystalSwitch : SwitchEntityData
             if (stats.currentPower == 1) { stats.currentPower = 0; }
         }        
 
-        SoundManager.Instance.PlaySound("GlowingCrystal", 1f);
+        SoundManager.Instance.PlaySound("crystalAbsorbingPower", 1f);
         crystalActivated = true;
         ToggleTiedObjects();
         brightenCrystal();

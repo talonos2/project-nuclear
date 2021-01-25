@@ -501,7 +501,7 @@ public class MonsterMovement : SpriteMovement
 
     private void PushMonster(int LocX, int LocY, int jumpTargetX, int jumpTargetY)
     {
-        
+        SoundManager.Instance.PlaySound("monsterPunched", 1);
         forcedJumpHeight = .7f;
         timeLeftInForcedJump = .25f;
         totalTimeInForcedJump = .25f;
