@@ -46,10 +46,17 @@ public class VictoryManager : MonoBehaviour
             if (delayWithCleanMap <= 0) {
                 LoadSaveController saving = new LoadSaveController();
 
-                int victory = GameData.Instance.Mara + GameData.Instance.Sara + GameData.Instance.Pendleton + GameData.Instance.Douglass + GameData.Instance.Norma
-                    + GameData.Instance.Derringer + GameData.Instance.Melvardius + GameData.Instance.Todd + GameData.Instance.Devon + GameData.Instance.McDermit;
-                if (victory == 0) GameData.Instance.Worst = 1;
-                if (victory != 10) GameData.Instance.Perfect = 0;
+                int villagersDead = GameData.Instance.VillagersDead();
+                if (villagersDead == GameData.Instance.RunNumber - 1 || villagersDead==10) {
+                    GameData.Instance.Worst = 1;
+                }
+
+                if (villagersDead == 0)
+                {
+                    GameData.Instance.Perfect = 1;
+                }
+                else GameData.Instance.Perfect = 0;
+
                 saving.AutoSave();
 
                 SceneManager.LoadScene("WinScreen");
