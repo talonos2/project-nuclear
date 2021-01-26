@@ -32,7 +32,7 @@ public class cameraClamp : MonoBehaviour
     {
         // float relativeX = mapZeroLocation.x - ThePlayer.transform.position.x - 8;
 
-        if (GameData.Instance.FloorNumber == 0) {
+        if (GameData.Instance.FloorNumber == 0 && GameData.Instance.isInBuilding ) {
             this.transform.localPosition = new Vector3(groundOffset.x, groundOffset.y, this.transform.localPosition.z);
             return;
         }

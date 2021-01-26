@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -337,7 +337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3724}
+  m_AnchoredPosition: {x: 0, y: -3706}
   m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313425375
@@ -569,7 +569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3774.0002}
+  m_AnchoredPosition: {x: 0, y: -3756.0002}
   m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &528397315
@@ -793,7 +793,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 140, y: 0}
+  m_AnchoredPosition: {x: 140, y: -38.999863}
   m_SizeDelta: {x: -280, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &764641090
@@ -855,6 +855,7 @@ MonoBehaviour:
 
 
 
+
     Character Artists
 
 
@@ -888,11 +889,6 @@ MonoBehaviour:
 
 
     Patient Spouses
-
-
-
-
-    Leopard Wrangler
 
 
 
@@ -975,12 +971,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 764641090}
-    characterCount: 356
+    characterCount: 337
     spriteCount: 0
-    spaceCount: 84
-    wordCount: 38
+    spaceCount: 80
+    wordCount: 36
     linkCount: 0
-    lineCount: 69
+    lineCount: 66
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1211,7 +1207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: 0}
+  m_AnchoredPosition: {x: -50, y: -39}
   m_SizeDelta: {x: -100, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1461991589
@@ -1276,12 +1272,14 @@ MonoBehaviour:
 
     Derrick "Drawmadillo" Drysdale
 
+    Laura "The Lil Lion" Porter
+
     Connor "Most Connorable" Mathewson
 
 
     Derrick "Drawmadillo" Drysdale
 
-    Brenda "Belize" Galaviz
+    Brenda "Belise" Galaviz
 
 
     Laura "The Lil Lion" Porter
@@ -1318,10 +1316,6 @@ MonoBehaviour:
     Katrina "Honeychange" Wright
 
     Jason Porter
-
-
-    Steve "PrefersToWrangleJaguars" Jennings
-
 
 
     Carter
@@ -1409,12 +1403,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1461991589}
-    characterCount: 962
+    characterCount: 947
     spriteCount: 0
     spaceCount: 145
-    wordCount: 111
+    wordCount: 113
     linkCount: 0
-    lineCount: 72
+    lineCount: 69
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

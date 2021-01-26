@@ -142,6 +142,7 @@ public class GameData : Singleton<GameData>
 
     internal OptionSaveManager optionsState;
     internal bool teleportingIn;
+    internal bool isInBuilding;
 
     internal bool IsInTown()
     {
