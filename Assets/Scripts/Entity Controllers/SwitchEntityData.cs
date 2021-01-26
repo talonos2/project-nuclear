@@ -174,10 +174,14 @@ public class SwitchEntityData : EntityData
     void Update()
     {
 
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle && !GameState.pickingItem)
         {
             return;
         }
+        if (GameState.fullPause) {
+            return;
+        }
+        
 
         if (timerSet) {
             tempResetTime -= Time.deltaTime;
