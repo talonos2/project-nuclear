@@ -208,7 +208,9 @@ public class OptionScreenController : MonoBehaviour
 
     public void CloseOptionsMenu()
     {
+        GameData.Instance.exitPause = false;
         SaveOptions();
+        
         SceneManager.UnloadSceneAsync("OptionsScreen");
     }
 

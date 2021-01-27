@@ -72,6 +72,10 @@ public class PauseMenuController : MonoBehaviour
             return;
         }
         if (inSaveMenu) return;
+        if (inOptionsMenu) {
+            inOptionsMenu = false;
+            ReActivate();
+        }
 
         if (EventSystem.current.currentSelectedGameObject==null)
         EventSystem.current.SetSelectedGameObject(optionsReturn);
@@ -147,7 +151,7 @@ public class PauseMenuController : MonoBehaviour
     public void LoadGameButtonClicked()
     {
 
-        //DeActivateButtons();
+        DeActivateButtons();
         GameData.Instance.exitPause = true;
         loadSaveController.ActivateLoad(this, false);
 
@@ -155,8 +159,9 @@ public class PauseMenuController : MonoBehaviour
     public void optionButtonClicked()
     {
 
-        //DeActivateButtons();
+        DeActivateButtons();
         SceneManager.LoadScene("OptionsScreen", LoadSceneMode.Additive);
+        inOptionsMenu = true;
         GameData.Instance.exitPause = true;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(optionsReturn);
@@ -167,7 +172,7 @@ public class PauseMenuController : MonoBehaviour
         //hideButtonSelection();
         //buttonSelected = 3;
         //showButtonSelection();
-        DeActivateButtons();
+        //DeActivateButtons();
         GameState.fullPause = false;
         //Debug.Log("title screen runs for some reason");
         SceneManager.LoadScene("TitleScreen");
