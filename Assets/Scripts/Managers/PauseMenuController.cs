@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Naninovel;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -213,6 +214,10 @@ public class PauseMenuController : MonoBehaviour
         GameData.Instance.inDungeon = true;
         DeActivateButtons();
         GameState.fullPause = false;
+        if (GameData.Instance.isInDialogue) {
+            GameData.Instance.isInDialogue = false;
+            Engine.GetService<ScriptPlayer>().ResetService();
+        }
         CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);
     }
 
