@@ -145,6 +145,8 @@ public class GameData : Singleton<GameData>
     internal bool isInBuilding;
 
     internal bool exitPause;
+    internal bool inDungeon;
+    public bool inPauseMenu;
 
     internal bool IsInTown()
     {
@@ -207,7 +209,7 @@ public class GameData : Singleton<GameData>
             Debug.Log("Broken bestTimes thing");
         }
 
-        if (GameState.fullPause || FloorNumber == 0 || pauseTimer || isInDialogue) { return; }
+        if (GameState.fullPause || FloorNumber == 0 || pauseTimer || isInDialogue || !inDungeon) { return; }
 
         int tempSeconds = (int)(timer + Time.deltaTime);
         if (tempSeconds > (int)timer)

@@ -21,6 +21,7 @@ public class HerosSurvivedController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameData.Instance.inDungeon = false;
         int deadPeople = 0;
         if (GameData.Instance.Douglass == 0) { hiro.enabled = false; deadPeople++; }
         if (GameData.Instance.Sara == 0) {blueMaid.enabled = false; deadPeople++; }

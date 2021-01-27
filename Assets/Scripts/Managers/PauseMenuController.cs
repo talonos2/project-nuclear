@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Naninovel;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class PauseMenuController : MonoBehaviour
     {
         //RefreshSelectedOption(0); //TODO: If save game, start on continue.
 
-        
+        GameData.Instance.inPauseMenu = true;
 
         Scene scene = SceneManager.GetActiveScene();
         canvas = this.gameObject.GetComponent<Canvas>();
@@ -131,6 +132,7 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void continueButtonClicked() {
+        GameData.Instance.inPauseMenu = false;
         DeActivateButtons();
         GameObject escMenu=GameObject.Find("EscapeMenuUi");
         if (escMenu) {
@@ -150,7 +152,6 @@ public class PauseMenuController : MonoBehaviour
 
     public void LoadGameButtonClicked()
     {
-
         DeActivateButtons();
         GameData.Instance.exitPause = true;
         loadSaveController.ActivateLoad(this, false);
@@ -173,7 +174,9 @@ public class PauseMenuController : MonoBehaviour
         //buttonSelected = 3;
         //showButtonSelection();
         //DeActivateButtons();
+        GameData.Instance.inPauseMenu = false;
         GameState.fullPause = false;
+        GameData.Instance.inDungeon = false;
         //Debug.Log("title screen runs for some reason");
         SceneManager.LoadScene("TitleScreen");
     }
@@ -198,6 +201,7 @@ public class PauseMenuController : MonoBehaviour
     public void AbandonButtonClick()
     {
         DeActivateButtons();
+        GameData.Instance.inPauseMenu = false;
         GameState.fullPause = false;
         GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().MurderPlayer();
         GameObject.Find("EscapeMenuUi").GetComponent<EscapeKeyController>().ClosePauseMenuCallback();
@@ -207,8 +211,13 @@ public class PauseMenuController : MonoBehaviour
 
     public void EnterButtonClick()
     {
+        GameData.Instance.inDungeon = true;
         DeActivateButtons();
         GameState.fullPause = false;
+        if (GameData.Instance.isInDialogue) {
+            GameData.Instance.isInDialogue = false;
+            Engine.GetService<ScriptPlayer>().ResetService();
+        }
         CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);
     }
 
