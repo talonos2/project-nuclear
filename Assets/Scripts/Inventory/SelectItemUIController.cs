@@ -94,6 +94,7 @@ public class SelectItemUIController : MonoBehaviour
         else if (savedStats.MageClass) { characterClassStatIcon.sprite = mpStatIcon; }
         else if (savedStats.ScoutClass) { characterClassStatIcon.sprite = hpStatIcon; }
         else if (savedStats.SurvivorClass) { characterClassStatIcon.sprite = defStatIcon; }
+        newPlayer.PushCharacterData();
 
     }
 

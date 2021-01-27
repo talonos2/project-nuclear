@@ -11,6 +11,7 @@ public class crystalSwitch : SwitchEntityData
     public bool water;
     public Material cleanSwitchMaterial;
     private bool crystalActivated;
+    public GameObject [] bubbleSpwanersToClose;
     // Start is called before the first frame update
     new void Start()
     {
@@ -47,6 +48,7 @@ public class crystalSwitch : SwitchEntityData
         {
             stats.powersGained = 0;
             if (stats.currentPower == 1) { stats.currentPower = 0; }
+            foreach (GameObject i in bubbleSpwanersToClose){ i.SetActive(false); }
         }        
 
         SoundManager.Instance.PlaySound("crystalAbsorbingPower", 1f);

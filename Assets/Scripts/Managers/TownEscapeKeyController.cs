@@ -138,6 +138,7 @@ public class TownEscapeKeyController : MonoBehaviour
         Application.Quit();
     }
 
+
     internal void ReActivate()
     {
         inOtherMenu = false;

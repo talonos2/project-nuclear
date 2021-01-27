@@ -32,11 +32,10 @@ public class EscapeKeyController : MonoBehaviour
 
                     if (GameData.Instance.exitPause) {
                         GameData.Instance.exitPause = false;
+                        
                     }
                     else ClosePauseMenuCallback();
-
-                
-
+               
                 //canvas.SetActive(false);
             }
             else if (!currentlyEscaped && GameState.fullPause != true)
@@ -100,6 +99,8 @@ public class EscapeKeyController : MonoBehaviour
         //Debug.Log("title screen runs for some reason");
         SceneManager.LoadScene("TitleScreen");
     }
+
+
     public void ExitGameButtonClicked()
     {
         //hideButtonSelection();

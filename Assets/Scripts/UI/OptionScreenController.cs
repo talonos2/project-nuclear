@@ -208,7 +208,9 @@ public class OptionScreenController : MonoBehaviour
 
     public void CloseOptionsMenu()
     {
+        GameData.Instance.exitPause = false;
         SaveOptions();
+        
         SceneManager.UnloadSceneAsync("OptionsScreen");
     }
 
@@ -279,11 +281,13 @@ public class OptionScreenController : MonoBehaviour
     {
         if (FWInputManager.Instance.IsWASD())
         {
+            GameData.Instance.sneakyKeyMap = KeymapType.ARROWS;
             FWInputManager.Instance.SetToArrowKeys();
             RefreshKeys();
         }
         else
         {
+            GameData.Instance.sneakyKeyMap = KeymapType.WASD;
             FWInputManager.Instance.SetToWASD();
             RefreshKeys();
         }

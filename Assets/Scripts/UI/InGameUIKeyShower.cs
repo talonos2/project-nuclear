@@ -19,6 +19,7 @@ public class InGameUIKeyShower : MonoBehaviour
     public TextMeshPro keyToShow;
     public GameObject hidePowerKey;
     private bool UiLocalOn;
+    private KeymapType currentKeyMap= KeymapType.UNDEFINED;
 
     void Start()
     {
@@ -64,14 +65,16 @@ public class InGameUIKeyShower : MonoBehaviour
 
     private void setupWASDKeyText()
     {
-        togglLeftKeyToDisplay= "<size=60>←</size>";
+        currentKeyMap = GameData.Instance.sneakyKeyMap;
+        togglLeftKeyToDisplay = "<size=60>←</size>";
         togglRightKeyToDisplay= "<size=60>→</size>";
         ActivateKeyToDisplay= "<size=60>↑</size>";
         healKeyToDisplay="r";
-}
+    }
 
     private void setupArrowKeyText()
     {
+        currentKeyMap = GameData.Instance.sneakyKeyMap;
         togglLeftKeyToDisplay = "a";
         togglRightKeyToDisplay = "d";
         ActivateKeyToDisplay = "c";
@@ -89,7 +92,7 @@ public class InGameUIKeyShower : MonoBehaviour
             hideKeys();
         }
 
-        if (!setupKeys) {
+        if (!setupKeys || currentKeyMap != GameData.Instance.sneakyKeyMap) {
             if (GameData.Instance.sneakyKeyMap == KeymapType.UNDEFINED)
             {
                 setupKeys = false;
