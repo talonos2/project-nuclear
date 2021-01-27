@@ -30,7 +30,8 @@ public class OptionScreenController : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);  //clears first button, then sets it
         EventSystem.current.SetSelectedGameObject(optionFirstButton);
-
+        GameData.Instance.exitPause = true;
+        
         LoadSavedOptionData();
 
     }
@@ -199,6 +200,7 @@ public class OptionScreenController : MonoBehaviour
     {
 
         // pauseMenuController.OptionsReturn();
+        GameData.Instance.exitPause = false;
         SaveOptions();
         SceneManager.UnloadSceneAsync("OptionsScreen");
     }

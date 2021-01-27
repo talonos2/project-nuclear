@@ -114,6 +114,7 @@ public class NewGameController : MonoBehaviour
 
     public void ContinueGame()
     {
+        SoundManager.Instance.PlaySound("MenuOkay", 1f);
         loadSaveController.LoadGame(0);
     }
 

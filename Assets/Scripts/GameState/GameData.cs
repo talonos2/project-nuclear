@@ -144,6 +144,8 @@ public class GameData : Singleton<GameData>
     internal bool teleportingIn;
     internal bool isInBuilding;
 
+    internal bool exitPause;
+
     internal bool IsInTown()
     {
         return FloorNumber == 0;
