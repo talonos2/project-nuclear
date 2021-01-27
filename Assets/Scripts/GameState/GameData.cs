@@ -141,6 +141,10 @@ public class GameData : Singleton<GameData>
     internal List<Vector2Int> dialoguesSeen = new List<Vector2Int>();
 
     internal OptionSaveManager optionsState;
+    internal bool teleportingIn;
+    internal bool isInBuilding;
+
+    internal bool exitPause;
 
     internal bool IsInTown()
     {

@@ -26,10 +26,16 @@ public class TownEscapeKeyController : MonoBehaviour
 
             if (currentlyEscaped)
             {
-                SoundManager.Instance.PlaySound("MenuNope", 1f);
-                GameState.fullPause = false;
-                currentlyEscaped = false;
-                SceneManager.UnloadSceneAsync("PauseScreenTown");
+
+
+                    if (GameData.Instance.exitPause)
+                    {
+                        GameData.Instance.exitPause = false;
+                    }
+                    else ClosePauseMenu();
+
+                
+                
                 //canvas.SetActive(false);
             }
             else if (!currentlyEscaped && GameState.fullPause != true)
@@ -45,74 +51,16 @@ public class TownEscapeKeyController : MonoBehaviour
 
 
         }
-        /*
-                if (currentlyEscaped)
-                {
-                    if (Input.GetButtonDown("Submit"))
-                    {
-                        if (buttonSelected == 0) { StartRunButtonClicked(); }
-                        if (buttonSelected == 1) { SaveGameButtonClicked(); }
-                        if (buttonSelected == 2) { LoadGameButtonClicked(); }
-                        if (buttonSelected == 3) { optionButtonClicked(); }
-                        if (buttonSelected == 4) { MenuButtonClicked(); }
-                        if (buttonSelected == 5) { ExitGameButtonClicked(); }
-                    }
-                    if (Input.GetButtonDown("SelectNext"))
-                    {
-
-                        delayCounter = delayReset + .3f;
-                        hideButtonSelection();
-                        buttonSelected += 1;
-                        if (buttonSelected >= selected.Length) { buttonSelected = 0; }
-                        showButtonSelection();
-
-
-                    }
-                    if (Input.GetButtonDown("SelectPrevious"))
-                    {
-
-                        delayCounter = delayReset + .3f;
-                        hideButtonSelection();
-                        buttonSelected -= 1;
-                        if (buttonSelected < 0) { buttonSelected = selected.Length - 1; }
-                        showButtonSelection();
-
-
-                    }
-                    if (Input.GetButton("SelectNext"))
-                    {
-                        if (delayCounter <= 0)
-                        {
-                            delayCounter = delayReset;
-                            hideButtonSelection();
-                            buttonSelected += 1;
-                            if (buttonSelected >= selected.Length) { buttonSelected = 0; }
-                            showButtonSelection();
-                        }
-                        else
-                        {
-                            delayCounter -= Time.deltaTime;
-                        }
-                    }
-                    if (Input.GetButton("SelectPrevious"))
-                    {
-                        if (delayCounter <= 0)
-                        {
-                            delayCounter = delayReset;
-                            hideButtonSelection();
-                            buttonSelected -= 1;
-                            if (buttonSelected < 0) { buttonSelected = selected.Length - 1; }
-                            showButtonSelection();
-                        }
-                        else
-                        {
-                            delayCounter -= Time.deltaTime;
-                        }
-                    }
-                }
-                */
+        
     }
 
+    public void ClosePauseMenu() {
+        SoundManager.Instance.PlaySound("MenuNope", 1f);
+        GameState.fullPause = false;
+        currentlyEscaped = false;
+        SceneManager.UnloadSceneAsync("PauseScreenTown");
+
+    }
 
 
     void OnEnable()
@@ -146,6 +94,7 @@ public class TownEscapeKeyController : MonoBehaviour
 
     private void SaveGameButtonClicked()
     {
+        GameData.Instance.exitPause = true;
         hideButtonSelection();
         buttonSelected = 1;
         showButtonSelection();
@@ -154,6 +103,7 @@ public class TownEscapeKeyController : MonoBehaviour
     }
     public void LoadGameButtonClicked()
     {
+        GameData.Instance.exitPause = true;
         hideButtonSelection();
         buttonSelected = 2;
         showButtonSelection();

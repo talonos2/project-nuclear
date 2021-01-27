@@ -10,6 +10,7 @@ public class ShortcutCutsceneMap2_3to3_3s : ShortcutPlayer
     public GameObject instantiatedSnowball;
     public override void initialiseShortcutCutscene()
     {
+        if (GameData.Instance.map3_3Shortcut) { return; }
         phases.Add(true);//Phase 0
         phases.Add(false);//Phase 1
         phases.Add(false);//Phase 2

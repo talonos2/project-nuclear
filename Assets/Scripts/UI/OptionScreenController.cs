@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Naninovel;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -19,15 +18,6 @@ public class OptionScreenController : MonoBehaviour
     public Sprite[] onSprites;
     public Sprite[] offSprites;
 
-    public TextMeshProUGUI wKey;
-    public TextMeshProUGUI aKey;
-    public TextMeshProUGUI sKey;
-    public TextMeshProUGUI dKey;
-    public TextMeshProUGUI lKey;
-    public TextMeshProUGUI rKey;
-    public TextMeshProUGUI cKey;
-    public TextMeshProUGUI typeKey;
-
     public GameObject optionFirstButton;
 
     public Image selectionMarker;
@@ -40,9 +30,10 @@ public class OptionScreenController : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);  //clears first button, then sets it
         EventSystem.current.SetSelectedGameObject(optionFirstButton);
-
+        GameData.Instance.exitPause = true;
+        
         LoadSavedOptionData();
-        RefreshKeys();
+
     }
 
     void Update()
@@ -53,7 +44,6 @@ public class OptionScreenController : MonoBehaviour
             switch (currentMenuOptionSelected)
             {
                 case 0: //Keybindings
-                    this.SwitchKeybinds();
                     break;
                 case 1: //Music
                     break;
@@ -95,15 +85,11 @@ public class OptionScreenController : MonoBehaviour
 
     private void ChangeSelected(float amount)
     {
-        if (currentMenuOptionSelected == 0)
-        {
-            SwitchKeybinds();
-            return;
-        }
-        ChangeValuesOfSliders(currentMenuOptionSelected, amount);       
+
+        changeValuesOfSliders(currentMenuOptionSelected, amount);       
     }
 
-    private void ChangeValuesOfSliders(int optionSelected, float amount) {
+    private void changeValuesOfSliders(int optionSelected, float amount) {
         float oldSliderValue;
         float newSliderValue;
         switch (optionSelected)
@@ -120,6 +106,12 @@ public class OptionScreenController : MonoBehaviour
                 SoundManager.Instance.soundEffectVolume = newSliderValue;
                 sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (SoundManager.Instance.soundEffectVolume * 380));
                 break;
+           /* case 3:
+                oldSliderValue = printerMngr.PrintSpeed;
+                newSliderValue = Mathf.Clamp(oldSliderValue + amount, .001f, 1f);
+                printerMngr.SetPrintSpeed(newSliderValue);
+                sliders[2].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (printerMngr.PrintSpeed * 380));
+                break;*/
         }
     }
 
@@ -206,12 +198,16 @@ public class OptionScreenController : MonoBehaviour
 
     public void CloseOptionsMenu()
     {
+
+        // pauseMenuController.OptionsReturn();
+        GameData.Instance.exitPause = false;
         SaveOptions();
         SceneManager.UnloadSceneAsync("OptionsScreen");
     }
 
     private int PrevMenuOption()
     {
+        //%5 is the number of options (n), 4 and 6 is just 1 above or below the number of options (n-1, n+1)
         int n = optionsImages.Length;
         return (currentMenuOptionSelected + n-1) % n;
     }
@@ -270,60 +266,6 @@ public class OptionScreenController : MonoBehaviour
             case 1:
                 SoundManager.Instance.soundEffectVolume = newSliderValue;
                 break;
-        }
-    }
-
-    public void SwitchKeybinds()
-    {
-        if (FWInputManager.Instance.IsWASD())
-        {
-            FWInputManager.Instance.SetToArrowKeys();
-            RefreshKeys();
-        }
-        else
-        {
-            FWInputManager.Instance.SetToWASD();
-            RefreshKeys();
-        }
-    }
-
-    public void RefreshKeys()
-    {
-        if (FWInputManager.Instance.IsWASD())
-        {
-            wKey.text = "W";
-            wKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(wKey.GetComponent<RectTransform>().anchoredPosition.x, -97);
-            aKey.text = "A";
-            aKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(aKey.GetComponent<RectTransform>().anchoredPosition.x, -123.2f);
-            sKey.text = "S";
-            sKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(sKey.GetComponent<RectTransform>().anchoredPosition.x, -123.2f);
-            dKey.text = "D";
-            dKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(dKey.GetComponent<RectTransform>().anchoredPosition.x, -123.2f);
-            lKey.text = "←";
-            lKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(lKey.GetComponent<RectTransform>().anchoredPosition.x, -182.3f);
-            rKey.text = "→";
-            rKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(rKey.GetComponent<RectTransform>().anchoredPosition.x, -182.3f);
-            cKey.text = "↑";
-            cKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(cKey.GetComponent<RectTransform>().anchoredPosition.x, -182.3f);
-            typeKey.text = "WASD";
-        }
-        else
-        {
-            wKey.text = "↑";
-            wKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(wKey.GetComponent<RectTransform>().anchoredPosition.x, wKey.GetComponent<RectTransform>().anchoredPosition.y + 6);
-            aKey.text = "←";
-            aKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(aKey.GetComponent<RectTransform>().anchoredPosition.x, aKey.GetComponent<RectTransform>().anchoredPosition.y + 6);
-            sKey.text = "↓";
-            sKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(sKey.GetComponent<RectTransform>().anchoredPosition.x, sKey.GetComponent<RectTransform>().anchoredPosition.y + 6);
-            dKey.text = "→";
-            dKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(dKey.GetComponent<RectTransform>().anchoredPosition.x, dKey.GetComponent<RectTransform>().anchoredPosition.y + 6);
-            lKey.text = "A";
-            lKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(lKey.GetComponent<RectTransform>().anchoredPosition.x, lKey.GetComponent<RectTransform>().anchoredPosition.y - 6);
-            rKey.text = "D";
-            rKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(rKey.GetComponent<RectTransform>().anchoredPosition.x, rKey.GetComponent<RectTransform>().anchoredPosition.y - 6);
-            cKey.text = "C";
-            cKey.GetComponent<RectTransform>().anchoredPosition = new Vector2(cKey.GetComponent<RectTransform>().anchoredPosition.x, cKey.GetComponent<RectTransform>().anchoredPosition.y - 6);
-            typeKey.text = "Arrows";
         }
     }
 

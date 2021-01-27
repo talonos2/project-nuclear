@@ -29,10 +29,14 @@ public class EscapeKeyController : MonoBehaviour
 
             if (currentlyEscaped)
             {
-                SoundManager.Instance.PlaySound("MenuNope", 1f);
-                GameState.fullPause = false;
-                currentlyEscaped = false;
-                CloseOptionsMenu();
+
+                    if (GameData.Instance.exitPause) {
+                        GameData.Instance.exitPause = false;
+                    }
+                    else ClosePauseMenuCallback();
+
+                
+
                 //canvas.SetActive(false);
             }
             else if (!currentlyEscaped && GameState.fullPause != true)
@@ -45,74 +49,14 @@ public class EscapeKeyController : MonoBehaviour
             }
 
         }
-        /*
-        if (currentlyEscaped)
-        {
-            
-            if (Input.GetButtonDown("Submit"))
-            {
-                //save
-                Debug.Log(buttonSelected);
-                if (buttonSelected == 1) { LoadGameButtonClicked(); } //load
-                if (buttonSelected == 2) { /*optionButtonClicked();*/ /* buttonSelected = buttonSelected; } //options
-                if (buttonSelected == 3) { MenuButtonClicked(); } //main menu
-                                                                  //abandon
-                if (buttonSelected == 5) { ExitGameButtonClicked(); }//exit
-            }
-            if (Input.GetButtonDown("SelectNext"))
-            {
-                SoundManager.Instance.PlaySound("MenuMove", 1f);
-                delayCounter = delayReset + .3f;
-                hideButtonSelection();
-                buttonSelected += 1;
-                if (buttonSelected >= selected.Length) { buttonSelected = 0; }
-                showButtonSelection();
+ 
+    }
 
-
-            }
-            if (Input.GetButtonDown("SelectPrevious"))
-            {
-                SoundManager.Instance.PlaySound("MenuMove", 1f);
-                delayCounter = delayReset + .3f;
-                hideButtonSelection();
-                buttonSelected -= 1;
-                if (buttonSelected < 0) { buttonSelected = selected.Length - 1; }
-                showButtonSelection();
-
-
-            }
-            if (Input.GetButton("SelectNext"))
-            {
-                if (delayCounter <= 0)
-                {
-                    delayCounter = delayReset;
-                    hideButtonSelection();
-                    buttonSelected += 1;
-                    if (buttonSelected >= selected.Length) { buttonSelected = 0; }
-                    showButtonSelection();
-                }
-                else
-                {
-                    delayCounter -= Time.deltaTime;
-                }
-            }
-            if (Input.GetButton("SelectPrevious"))
-            {
-                if (delayCounter <= 0)
-                {
-                    delayCounter = delayReset;
-                    hideButtonSelection();
-                    buttonSelected -= 1;
-                    if (buttonSelected < 0) { buttonSelected = selected.Length - 1; }
-                    showButtonSelection();
-                }
-                else
-                {
-                    delayCounter -= Time.deltaTime;
-                }
-            }  
-        }
-        */
+    public void ClosePauseMenuCallback() {
+        SoundManager.Instance.PlaySound("MenuNope", 1f);
+        GameState.fullPause = false;
+        currentlyEscaped = false;
+        CloseOptionsMenu();
     }
 
     public void OpenPauseMenu()
@@ -128,30 +72,14 @@ public class EscapeKeyController : MonoBehaviour
         ItemsEquippedUI.SetPauseAnimateClose();
     }
 
-/*
-    void OnEnable()
-    {
-        hideButtonSelection();
-        buttonSelected = 0;
-        showButtonSelection();
 
-    }
-    
-    private void showButtonSelection()
-    {
-        selected[buttonSelected].GetComponent<Image>().enabled = true;
-    }
-    private void hideButtonSelection()
-    {
-        selected[buttonSelected].GetComponent<Image>().enabled = false;
-    }
-    */
     public void LoadGameButtonClicked()
     {
         //hideButtonSelection();
         //buttonSelected = 1;
         //showButtonSelection();
         //canvas.SetActive(false);
+        GameData.Instance.exitPause = true;
         loadSaveController.ActivateLoad(this);
 
     }
@@ -192,4 +120,5 @@ public class EscapeKeyController : MonoBehaviour
         inOtherMenu = false;
         canvas.SetActive(true);
     }
+
 }

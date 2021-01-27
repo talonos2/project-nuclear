@@ -101,13 +101,14 @@
 		
 		#day12
 		;stay
-		@fwturnpawn n:PawnTasha d:s
 		@char Tasha
 		Tasha: Sir Meyster's handling things today.
+		@fwturnpawn n:PawnTasha d:s
 		@exit
 		
 
 		#day13
+		@fwturnpawn n:PawnTasha d:e
 		@char Tasha
 		Tasha: Alright, let's see what you've learned!
 		@exit
@@ -127,6 +128,7 @@
 		#day15
 		@char Tasha
 		Tasha: I'll say this about "moneybags," he's learnin' to throw his weight around.
+		@fwturnpawn n:PawnTasha d:e
 		@exit
 
 		

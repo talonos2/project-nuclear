@@ -15,7 +15,8 @@ public class ExitController : DoodadData
     public bool dungeonEntrance;
     public SpriteMovement.DirectionMoved exitFacing;
     public AudioClip soundToPlayOnTransition;
-
+    public bool exitIsTeleporter;
+    public bool fromBuilding;
 
     public void TransitionMap()
     {
@@ -59,14 +60,20 @@ public class ExitController : DoodadData
                 FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.REACH_LEVEL_16_FEW_MONSTERS, gameData.FloorNumber);
             }
 
-            gameData.FloorNumber += 1;
-            if (townMap)
-            {
-                gameData.FloorNumber = 0;
-            }
+            gameData.FloorNumber += 1;         
         }
 
+        if (townMap)
+        {
+            gameData.FloorNumber = 0;
+            gameData.isInBuilding = true;
+            if (fromBuilding)
+            {
+                gameData.isInBuilding = false;
 
+            }
+            //Debug.Log("is in building? " + gameData.isInBuilding+" from building flag on? "+fromBuilding);
+        }
 
         gameData.SetNextLocation(exitPosition, exitFacing);
 
@@ -75,6 +82,7 @@ public class ExitController : DoodadData
             SoundManager.Instance.PlayPersistentSound(soundToPlayOnTransition.name, 1f);
         }
         FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+        if (exitIsTeleporter) { GameData.Instance.teleportingIn = true; }
         fadeout.InitNext(mapToLoad);
         GameObject.Destroy(this);
     }

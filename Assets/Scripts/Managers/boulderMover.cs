@@ -18,10 +18,12 @@ public class boulderMover : SpriteMovement
     private new void Start()
     {
         base.Start();
-        if (map1_3Shortcut && gameData.map1_3toMap2_3Shortcut) { Destroy(this.gameObject); }
+     if (GameData.Instance.map3_4Shortcut && map3_1Shortcut) { Destroy(this.gameObject); }
+     if (GameData.Instance.map3_3Shortcut&& map2_3Shortcut) { Destroy(this.gameObject); }
+        /* if (map1_3Shortcut && gameData.map1_3toMap2_3Shortcut) { Destroy(this.gameObject); }
         else if (map1_3Shortcut && gameData.map3_3Shortcut) { Destroy(this.gameObject); }
         else if (map2_3Shortcut && gameData.map3_3Shortcut) { Destroy(this.gameObject); }
-        else if(map3_1Shortcut && gameData.map3_4Shortcut){ Destroy(this.gameObject); }
+        else if(map3_1Shortcut && gameData.map3_4Shortcut){ Destroy(this.gameObject); }*/
     }
 
     // Update is called once per frame

@@ -32,6 +32,8 @@ public class SwitchEntityData : EntityData
     private static readonly float TIME_PER_TICK_SOUND = .7f;
 
     public bool playParticlesOnSwitchUndo;
+    public bool timerSwitch;
+    
 
 
     // Start is called before the first frame update
@@ -168,16 +170,20 @@ public class SwitchEntityData : EntityData
     {
         isAnimating = true;
         forwardAnimation = false;
-        frameNumber = totalFrames-1;
+      if (!timerSwitch)  frameNumber = totalFrames-1;
     }
 
     void Update()
     {
 
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle && !GameState.pickingItem)
         {
             return;
         }
+        if (GameState.fullPause) {
+            return;
+        }
+        
 
         if (timerSet) {
             tempResetTime -= Time.deltaTime;
@@ -198,18 +204,40 @@ public class SwitchEntityData : EntityData
         if (!isAnimating) { return; }
         timeSinceLastFrame += Time.deltaTime;
 
-        if (timeSinceLastFrame >= 1 / AnimationSpeed) {
-            if (forwardAnimation) frameNumber += 1;
-            else frameNumber -= 1;
-            animationCounter += 1;
-            sRender.material.SetFloat("_Frame", frameNumber+ OFFSET_FIX);
-            timeSinceLastFrame = 0;
-            if (animationCounter == totalFrames - 1)
+        if (timerSwitch)
+        {
+            if (timeSinceLastFrame >= 1 / AnimationSpeed)
             {
-                isAnimating = false;
-                animationCounter = 0;
+                frameNumber += 1;
+                if (frameNumber == totalFrames - 1)
+                {
+                    frameNumber = 0;
+                }
+                if (!timerSet && frameNumber == 0) {
+                    isAnimating = false;
+                }
+                sRender.material.SetFloat("_Frame", frameNumber + OFFSET_FIX);
+                timeSinceLastFrame = 0;
             }
         }
+        else {
+            if (timeSinceLastFrame >= 1 / AnimationSpeed)
+            {
+                if (forwardAnimation) frameNumber += 1;
+                else frameNumber -= 1;
+                animationCounter += 1;
+                sRender.material.SetFloat("_Frame", frameNumber + OFFSET_FIX);
+                timeSinceLastFrame = 0;
+                if (animationCounter == totalFrames - 1)
+                {
+                    isAnimating = false;
+                    animationCounter = 0;
+                }
+            }
+
+        }
+
+        
     }
 
 }

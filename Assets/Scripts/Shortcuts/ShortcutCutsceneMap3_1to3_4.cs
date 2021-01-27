@@ -10,6 +10,7 @@ public class ShortcutCutsceneMap3_1to3_4 : ShortcutPlayer
 
     public override void initialiseShortcutCutscene()
     {
+
         phases.Add(true);//Phase 0
         phases.Add(false);//Phase 1
         phases.Add(false);//Phase 2

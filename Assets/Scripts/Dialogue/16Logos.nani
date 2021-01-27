@@ -61,7 +61,7 @@
 		@char Tedd
 		Tedd: I can do this. I know I can!
 		@char Logos
-		Logos: It is not enough to simply believe in magic, one must have focus as well.
+		Logos: It is not enough to simply believe in magic. One must have focus as well.
 		@exit
 		
 
@@ -93,7 +93,11 @@
 		;stay
 		@fwturnpawn n:PawnLogos d:s
 		@char Logos
-		Logos: Perhaps... I should just keep things going as long as I can.
+		Logos: So, when you look into the glass, what do you see?
+		@char Jezerine
+		Jezerine: I just see myself.
+		@char Logos
+		Logos: Well, it was worth a try.
 		@exit
 
 		
@@ -101,11 +105,7 @@
 		;stay
 		@fwturnpawn n:PawnLogos d:s
 		@char Logos
-		Logos: So, when you look into the glass, what do you see?
-		@char Jezerine
-		Jezerine: I just see myself.
-		@char Logos
-		Logos: Well, it was worth a try.
+		Logos: Perhaps... I should just keep things going as long as I can.
 		@exit
 		
 		#atDoor
@@ -149,7 +149,7 @@
 		@char Fluer
 		Fluer: Your appendix looks like it'll have to come out in a few years. But hey, your kidneys are looking pretty good!
 		@char Logos
-		Logos: This is... useful, but perhaps not in present circumstances.
+		Logos: This is... useful, but there are larger matters at hand.
 		@exit
 
 		

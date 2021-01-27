@@ -66,7 +66,7 @@ public class InGameUIKeyShower : MonoBehaviour
     {
         togglLeftKeyToDisplay= "<size=60>←</size>";
         togglRightKeyToDisplay= "<size=60>→</size>";
-        ActivateKeyToDisplay= "c";
+        ActivateKeyToDisplay= "<size=60>↑</size>";
         healKeyToDisplay="r";
 }
 

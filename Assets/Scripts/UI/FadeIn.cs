@@ -13,6 +13,8 @@ public class FadeIn : MonoBehaviour
     private bool shortCutFadeIn;
     private bool shortCutFadeOut;
     private bool started = false;
+    public bool map2_3;
+    public Vector2 fadeInWorldLocation2 = new Vector2(0, 0);
     // Start is called before the first frame update
     void Start()
     {
@@ -86,12 +88,24 @@ public class FadeIn : MonoBehaviour
             {
                 if (celesteStyle)
                 {
-                    meshRenderer.material.SetVector("_Location", fadeInWorldLocation);
-                    meshRenderer.material.SetFloat("_Iris", timeLeft / fadeTime);
-                    if (timeLeft < .75f && !started)
-                    {
-                        GameState.fullPause = false;
-                        started = true;
+                    if (map2_3 && GameData.Instance.teleportingIn) {
+                        meshRenderer.material.SetVector("_Location", fadeInWorldLocation2);
+                        meshRenderer.material.SetFloat("_Iris", timeLeft / fadeTime);
+                        if (timeLeft < .75f && !started)
+                        {
+                            GameState.fullPause = false;
+                            started = true;                            
+                        }
+                        
+                    }
+                    else {
+                        meshRenderer.material.SetVector("_Location", fadeInWorldLocation);
+                        meshRenderer.material.SetFloat("_Iris", timeLeft / fadeTime);
+                        if (timeLeft < .75f && !started)
+                        {
+                            GameState.fullPause = false;
+                            started = true;
+                        }
                     }
                 }
                 else
@@ -105,6 +119,7 @@ public class FadeIn : MonoBehaviour
                 //Debug.Log("Fade-in complete! If things are still frozen, it's somebody else's fault now. :P");
                 //GameObject.Destroy(this.gameObject);
                 meshRenderer.enabled = false;
+                if (GameData.Instance.teleportingIn)  GameData.Instance.teleportingIn = false; 
             }
 
         }

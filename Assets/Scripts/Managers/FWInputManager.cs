@@ -61,7 +61,7 @@ public class FWInputManager: Singleton<FWInputManager>
         keyBindings.Add(InputAction.MENU_DOWN, new KeyCode[] { KeyCode.DownArrow, KeyCode.S });
         keyBindings.Add(InputAction.ROTATE_LEFT, new KeyCode[] { KeyCode.LeftArrow });
         keyBindings.Add(InputAction.ROTATE_RIGHT, new KeyCode[] { KeyCode.RightArrow });
-        keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.C, KeyCode.UpArrow });
+        keyBindings.Add(InputAction.USE_POWER, new KeyCode[] { KeyCode.UpArrow });
         keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.R });
         keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
         keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
