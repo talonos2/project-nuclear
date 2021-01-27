@@ -213,9 +213,7 @@ public class SwitchEntityData : EntityData
                 {
                     frameNumber = 0;
                 }
-                Debug.Log("Frame Number " + frameNumber + " timerSet " + timerSet);
                 if (!timerSet && frameNumber == 0) {
-                    Debug.Log("Hmm");
                     isAnimating = false;
                 }
                 sRender.material.SetFloat("_Frame", frameNumber + OFFSET_FIX);

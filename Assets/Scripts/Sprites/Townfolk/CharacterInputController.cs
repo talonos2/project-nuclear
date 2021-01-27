@@ -53,7 +53,7 @@ public class CharacterInputController : MonoBehaviour
         }
 
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 
         if (Input.GetButtonDown("ToggleUICamera"))
         {
@@ -82,7 +82,8 @@ public class CharacterInputController : MonoBehaviour
         {
             characterController.PowerDownCheat();
         }
-#endif
+//#endif
+
         if (FWInputManager.Instance.GetKeyDown(InputAction.REST))
         {
             characterController.AttemptRest();
