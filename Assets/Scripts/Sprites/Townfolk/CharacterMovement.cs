@@ -464,20 +464,23 @@ public class CharacterMovement : SpriteMovement
         {
             return;
         }
-
+        DirectionMoved  inputDirectionChanged= DirectionMoved.NONE;
         if (waitTimer >= 0 && inputDirection != (int)DirectionMoved.NONE)
         {
+
             facedDirection = inputDirection;
             SetLookDirection();
         }
 
         if (!currentlyMoving && !jumping && !GameData.Instance.dashing && !jumpQueued && (timeLeftInForcedJump <= 0))
         {
+            if (facedDirection != inputDirection) inputDirectionChanged = inputDirection;
             if (inputDirection == (int)DirectionMoved.NONE)
             {
                 SetLookDirection();
                 return;
             }
+
 
             facedDirection = inputDirection;
 
@@ -497,6 +500,9 @@ public class CharacterMovement : SpriteMovement
                     }
                     else
                     {
+                        if (inputDirectionChanged != DirectionMoved.NONE) {
+                            SetLookDirection();
+                        }
                         Combat.InitiateFight(this.gameObject, EnemyToFight);
                     }
 

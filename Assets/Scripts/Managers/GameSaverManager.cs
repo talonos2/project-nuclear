@@ -121,7 +121,7 @@ public class GameSaverManager
         deathBoss2 = GameData.Instance.deathBoss2;
 
         map1_3toMap2_3Shortcut = GameData.Instance.map1_3toMap2_3Shortcut;
-        map1_3Shortcut = GameData.Instance.map1_3Shortcut;
+    //    map1_3Shortcut = GameData.Instance.map1_3Shortcut;
         map2_2Shortcut = GameData.Instance.map2_2Shortcut;
         map2_4Shortcut = GameData.Instance.map2_4Shortcut;
         map3_2Shortcut = GameData.Instance.map3_2Shortcut;
@@ -200,7 +200,7 @@ public class GameSaverManager
         GameData.Instance.deathBoss1 = deathBoss;
         GameData.Instance.deathBoss2 = deathBoss2;
 
-        GameData.Instance.map1_3Shortcut = map1_3Shortcut;
+      //  GameData.Instance.map1_3Shortcut = map1_3Shortcut;
         GameData.Instance.map2_2Shortcut = map2_2Shortcut;
         GameData.Instance.map2_4Shortcut = map2_4Shortcut;
         GameData.Instance.map3_2Shortcut = map3_2Shortcut;

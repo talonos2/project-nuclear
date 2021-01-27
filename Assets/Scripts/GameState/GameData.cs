@@ -92,7 +92,7 @@ public class GameData : Singleton<GameData>
     public bool nextLocationSet;
 
     public bool map1_3toMap2_3Shortcut;
-    public bool map1_3Shortcut;
+    //public bool map1_3Shortcut;
     public bool map2_2Shortcut;
     public bool map2_4Shortcut;
     public bool map3_2Shortcut;
