@@ -211,9 +211,9 @@ public class CharacterStats : Stats
         SavedStats.ScoutClass = this.ScoutClass;
         SavedStats.SurvivorClass = this.SurvivorClass;
 
-        setWeaponStats(weapon);
-        setArmorStats(armor);
-        setAccessoryStats(accessory);
+        SavedStats.setWeaponStats(weapon);
+        SavedStats.setArmorStats(armor);
+        SavedStats.setAccessoryStats(accessory);
         SavedStats.weaponBonusAttack = this.weaponBonusAttack;
         SavedStats.armorBonusDefense = this.armorBonusDefense;
 

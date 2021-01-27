@@ -18,7 +18,7 @@ public class VictoryManager : MonoBehaviour
     internal GroundShadow groundShadow;
     protected Renderer sMapRender;
     protected Renderer sCrystalRender;
-
+    public GameObject[] bubbleSpwanersToClose;
 
 
     void Start()
@@ -81,6 +81,7 @@ public class VictoryManager : MonoBehaviour
         groundShadow.resetShadow = true;
         slime.gameObject.SetActive(false);
         water.gameObject.SetActive(true);
+        foreach (GameObject i in bubbleSpwanersToClose) { i.SetActive(false); }
 
     }
 }

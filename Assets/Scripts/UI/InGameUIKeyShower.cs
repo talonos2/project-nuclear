@@ -23,7 +23,6 @@ public class InGameUIKeyShower : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("KeyType" + GameData.Instance.sneakyKeyMap);
         if (GameData.Instance.sneakyKeyMap == KeymapType.UNDEFINED) {
             setupKeys = false;
             return;
