@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_EarthBoss : Enemy
 {
-    public ShortcutCutscene1_3 shortcutScene;
+    public ShortcutCutsceneMap1_3to2_3 shortcutScene;
     public override void doUponDeath()
     {
         if (earthBoss2) {

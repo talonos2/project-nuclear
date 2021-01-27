@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class map2_3ShortcutController : MonoBehaviour
 {
-    public GameObject boulderInRiver;
     public GameObject ground;
     public PassabilityGrid grid;
     public GameObject boulder1;
@@ -30,7 +29,6 @@ public class map2_3ShortcutController : MonoBehaviour
             boulder1.SetActive(true);
             boulder2.SetActive(true);
            // boulder3.SetActive(true);
-            boulderInRiver.SetActive(true);
             grid.passabilityMap = newPassabilityMap;
             grid.configurePathabilityGrid();
             ground.GetComponent<Renderer>().material.mainTexture = newMap;
@@ -42,7 +40,6 @@ public class map2_3ShortcutController : MonoBehaviour
             boulder1.SetActive(false);
             boulder2.SetActive(false);
            // boulder3.SetActive(false);
-            boulderInRiver.SetActive(false);
         }
     }
     public void setupShortcut() {
@@ -52,7 +49,6 @@ public class map2_3ShortcutController : MonoBehaviour
             boulder1.SetActive(true);
             boulder2.SetActive(true);
            // boulder3.SetActive(true);
-            boulderInRiver.SetActive(true);
             grid.passabilityMap = newPassabilityMap;
             grid.configurePathabilityGrid();
             ground.GetComponent<Renderer>().material.mainTexture = newMap;
@@ -64,7 +60,6 @@ public class map2_3ShortcutController : MonoBehaviour
             boulder1.SetActive(false);
             boulder2.SetActive(false);
            // boulder3.SetActive(false);
-            boulderInRiver.SetActive(false);
         }
     }
 
