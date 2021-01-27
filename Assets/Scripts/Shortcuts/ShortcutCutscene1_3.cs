@@ -77,7 +77,7 @@ public class ShortcutCutscene1_3 : ShortcutPlayer
         {
             activateShortcut();
             SoundManager.Instance.PlaySound("Explosion",1);
-            GameData.Instance.map1_3Shortcut = true;
+            //GameData.Instance.map1_3Shortcut = true;
             GameData.Instance.earthBoss2 = true;
             waiting = true;
             waitTime = 3f;
