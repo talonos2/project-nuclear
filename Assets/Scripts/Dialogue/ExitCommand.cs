@@ -8,7 +8,6 @@ public class ExitDialogue : Naninovel.Commands.Command
 {
     public override async Task ExecuteAsync()
     {
-        Debug.Log("Run Exit Command.");
         //await Engine.GetService<StateManager>().ResetStateAsync();
         CutsceneLoader.waitingForScriptPlyr = false;
         Naninovel.Engine.Reset();
@@ -41,7 +40,6 @@ public class ExitDialogue : Naninovel.Commands.Command
             GameData.Instance.isCutscene = false;
             StartDungeonRun.StartRun();
         }
-        Debug.Log("End Exit Command.");
     }
 
     public override Task UndoAsync() => Task.CompletedTask;
