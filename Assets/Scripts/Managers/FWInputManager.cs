@@ -40,6 +40,11 @@ public class FWInputManager: Singleton<FWInputManager>
         keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.R });
         keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
         keyBindings.Add(InputAction.GO_BACK, new KeyCode[] {  KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
+        keyBindings.Add(InputAction.POWER_0, new KeyCode[] { KeyCode.Alpha1 });
+        keyBindings.Add(InputAction.POWER_1, new KeyCode[] { KeyCode.Alpha2 });
+        keyBindings.Add(InputAction.POWER_2, new KeyCode[] { KeyCode.Alpha3 });
+        keyBindings.Add(InputAction.POWER_3, new KeyCode[] { KeyCode.Alpha4 });
+        keyBindings.Add(InputAction.POWER_4, new KeyCode[] { KeyCode.Alpha5 });
     }
 
     internal bool IsWASD()
@@ -49,7 +54,6 @@ public class FWInputManager: Singleton<FWInputManager>
 
     public void SetToWASD()
     {
-        //Debug.Log("SneakyKeybind to WASD!");
         keyBindings = new Dictionary<InputAction, KeyCode[]>();
         keyBindings.Add(InputAction.LEFT, new KeyCode[] { KeyCode.A });
         keyBindings.Add(InputAction.RIGHT, new KeyCode[] { KeyCode.D });
@@ -65,6 +69,11 @@ public class FWInputManager: Singleton<FWInputManager>
         keyBindings.Add(InputAction.REST, new KeyCode[] { KeyCode.R });
         keyBindings.Add(InputAction.ACTIVATE, new KeyCode[] { KeyCode.Z, KeyCode.Space, KeyCode.Return });
         keyBindings.Add(InputAction.GO_BACK, new KeyCode[] { KeyCode.Backspace, KeyCode.Escape, KeyCode.Delete });
+        keyBindings.Add(InputAction.POWER_0, new KeyCode[] { KeyCode.Alpha1});
+        keyBindings.Add(InputAction.POWER_1, new KeyCode[] { KeyCode.Alpha2 });
+        keyBindings.Add(InputAction.POWER_2, new KeyCode[] { KeyCode.Alpha3 });
+        keyBindings.Add(InputAction.POWER_3, new KeyCode[] { KeyCode.Alpha4 });
+        keyBindings.Add(InputAction.POWER_4, new KeyCode[] { KeyCode.Alpha5 });
     }
 
     public bool GetKeyDown(InputAction action)

@@ -13,5 +13,10 @@
     USE_POWER,
     REST,
     ACTIVATE,
-    GO_BACK
+    GO_BACK,
+    POWER_0,
+    POWER_1,
+    POWER_2,
+    POWER_3,
+    POWER_4,
 }
