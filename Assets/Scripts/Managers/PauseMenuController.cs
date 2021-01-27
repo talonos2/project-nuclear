@@ -150,7 +150,6 @@ public class PauseMenuController : MonoBehaviour
 
     public void LoadGameButtonClicked()
     {
-
         DeActivateButtons();
         GameData.Instance.exitPause = true;
         loadSaveController.ActivateLoad(this, false);
@@ -174,6 +173,7 @@ public class PauseMenuController : MonoBehaviour
         //showButtonSelection();
         //DeActivateButtons();
         GameState.fullPause = false;
+        GameData.Instance.inDungeon = false;
         //Debug.Log("title screen runs for some reason");
         SceneManager.LoadScene("TitleScreen");
     }
@@ -207,6 +207,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void EnterButtonClick()
     {
+        GameData.Instance.inDungeon = true;
         DeActivateButtons();
         GameState.fullPause = false;
         CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);

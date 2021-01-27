@@ -34,6 +34,7 @@ public class DeathSceneControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameData.Instance.inDungeon = false;
         gameData = GameData.Instance;
         delay = 1.5f;
         string villagersLeft = "" + (31 - gameData.RunNumber);

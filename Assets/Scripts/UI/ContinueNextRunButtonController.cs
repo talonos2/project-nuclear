@@ -18,7 +18,9 @@ public class ContinueNextRunButtonController : MonoBehaviour
     public void StartRunButtonClicked()
     {
         SoundManager.Instance.PlaySound("MenuOkay", 1f);
+
         GameState.fullPause = false;
+        GameData.Instance.inDungeon = true;
         CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);
         //StartDungeonRun.StartRun();
         //Load 'load game' ui screen

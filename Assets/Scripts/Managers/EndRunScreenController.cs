@@ -28,6 +28,7 @@ public class EndRunScreenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameData.Instance.inDungeon = false;
 
         switch (GameData.Instance.PowersGained)
         {

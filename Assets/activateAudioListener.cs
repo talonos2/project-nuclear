@@ -9,7 +9,7 @@ public class activateAudioListener : MonoBehaviour
     private bool setOnlyOnce;
     void Start()
     {
-       
+        GameData.Instance.inDungeon = false;
     }
 
     private void Awake()
