@@ -54,6 +54,7 @@ public class EscapeKeyController : MonoBehaviour
     public void ClosePauseMenuCallback() {
         SoundManager.Instance.PlaySound("MenuNope", 1f);
         GameState.fullPause = false;
+        GameData.Instance.inPauseMenu = false;
         currentlyEscaped = false;
         CloseOptionsMenu();
     }

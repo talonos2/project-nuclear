@@ -57,6 +57,7 @@ public class TownEscapeKeyController : MonoBehaviour
     public void ClosePauseMenu() {
         SoundManager.Instance.PlaySound("MenuNope", 1f);
         GameState.fullPause = false;
+        GameData.Instance.inPauseMenu = false;
         currentlyEscaped = false;
         SceneManager.UnloadSceneAsync("PauseScreenTown");
 

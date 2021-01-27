@@ -146,6 +146,7 @@ public class GameData : Singleton<GameData>
 
     internal bool exitPause;
     internal bool inDungeon;
+    public bool inPauseMenu;
 
     internal bool IsInTown()
     {

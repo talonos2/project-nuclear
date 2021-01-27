@@ -319,6 +319,7 @@ public class LoadSaveController : MonoBehaviour
             gameSaver = savedDataList[saveSlot];
             gameSaver.PushSaveToGameData();
         GameData.Instance.inDungeon = false;
+        GameData.Instance.inPauseMenu = false;
         //aCanvasThis.enabled = false;
         newGameController.StartNewGameActual();
         

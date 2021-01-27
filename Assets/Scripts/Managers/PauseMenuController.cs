@@ -36,7 +36,7 @@ public class PauseMenuController : MonoBehaviour
     {
         //RefreshSelectedOption(0); //TODO: If save game, start on continue.
 
-        
+        GameData.Instance.inPauseMenu = true;
 
         Scene scene = SceneManager.GetActiveScene();
         canvas = this.gameObject.GetComponent<Canvas>();
@@ -131,6 +131,7 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void continueButtonClicked() {
+        GameData.Instance.inPauseMenu = false;
         DeActivateButtons();
         GameObject escMenu=GameObject.Find("EscapeMenuUi");
         if (escMenu) {
@@ -172,6 +173,7 @@ public class PauseMenuController : MonoBehaviour
         //buttonSelected = 3;
         //showButtonSelection();
         //DeActivateButtons();
+        GameData.Instance.inPauseMenu = false;
         GameState.fullPause = false;
         GameData.Instance.inDungeon = false;
         //Debug.Log("title screen runs for some reason");
@@ -198,6 +200,7 @@ public class PauseMenuController : MonoBehaviour
     public void AbandonButtonClick()
     {
         DeActivateButtons();
+        GameData.Instance.inPauseMenu = false;
         GameState.fullPause = false;
         GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().MurderPlayer();
         GameObject.Find("EscapeMenuUi").GetComponent<EscapeKeyController>().ClosePauseMenuCallback();
