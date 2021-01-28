@@ -606,7 +606,7 @@ public class Combat : MonoBehaviour
         bool dodgeValue = false;
         int roll = UnityEngine.Random.Range(0, 100) + 1;
         if (roll <= playerStats.accessoryDodgeBonus) { dodgeValue = true; }
-
+        Debug.Log("Dodge rolled " + roll + " vs stat of " + playerStats.accessoryDodgeBonus);
         return dodgeValue;
     }
 
@@ -632,6 +632,7 @@ public class Combat : MonoBehaviour
         {
             //Debug.Log("Dodged that!");
             incomingDamage = 0;
+
             //ShouldHaveDodgeEffect
         }
         playerStats.HP -= Mathf.RoundToInt(incomingDamage);
