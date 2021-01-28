@@ -12,6 +12,8 @@ public class HealingAnimationController : MonoBehaviour
     public GameObject bothHealer;
 
     public ParticleSystem healingParticles;
+    public SpriteRenderer healingPenalty;
+    private float delayToShowPenalty = 0;
 
     internal void PlayHealingAnimation(HealingType healingType)
     {
@@ -38,8 +40,23 @@ public class HealingAnimationController : MonoBehaviour
                 break;
         }
 
+        delayToShowPenalty = 1f;
+        healingPenalty.enabled = true;
+
         healingParticles.Stop();
         healingParticles.Play();
+    }
+
+    private void Update()
+    {
+        if (GameState.getFullPauseStatus()) return;
+        if (delayToShowPenalty > 0) {
+            delayToShowPenalty -= Time.deltaTime;
+            if (delayToShowPenalty < 0) {
+                healingPenalty.enabled = false;
+            }
+        }
+
     }
 
 }

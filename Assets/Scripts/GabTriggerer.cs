@@ -21,12 +21,14 @@ public class GabTriggerer : DoodadData
     public ActivationRequirement activationRequirement = ActivationRequirement.NONE;
     public bool changesBasedOnControlSceme = false;
     public string gabText2;
+    //public bool firstTownBackGab;
 
     public enum ActivationRequirement { NONE, NEEDS_ICE_POWER }
 
     public new void Start()
     {
         base.Start();
+        
     }
 
 
@@ -41,7 +43,7 @@ public class GabTriggerer : DoodadData
             if (forcePause)
             {
                 timeRemaining = time;
-                GameState.fullPause = true;
+                GameState.setFullPause(true);
             }
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
             if (uiController==null) //We must be in town.
@@ -77,6 +79,11 @@ public class GabTriggerer : DoodadData
 
     void Update()
     {
+//        if (GameData.Instance.isCutscene || GameData.Instance.isInDialogue || GameState.fullPause) return;
 
+
+
+        
+      //  if (firstTownBackGab) TriggerGab();
     }
 }

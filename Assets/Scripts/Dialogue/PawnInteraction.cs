@@ -53,7 +53,7 @@ public class PawnInteraction : EntityData
     public override void ProcessClick(CharacterStats stats)
     {
 
-        if (GameState.fullPause == true || GameData.Instance.isInDialogue || GameState.isInBattle == true || GameData.Instance.inPauseMenu) return;
+        if (GameState.getFullPauseStatus() == true || GameData.Instance.isInDialogue || GameState.isInBattle == true || GameData.Instance.inPauseMenu) return;
 
         //bool punch
 
@@ -145,7 +145,7 @@ public class PawnInteraction : EntityData
     }
 
     void Update() {
-        if (GameState.fullPause == true  || GameState.isInBattle == true || GameData.Instance.isInDialogue) return;
+        if (GameState.getFullPauseStatus() == true  || GameState.isInBattle == true || GameData.Instance.isInDialogue) return;
         if (GameData.Instance.isCutscene && !punchAnyway) return;//So training dummies can punch during cutscenes
 
         if (isItTrainingDay() || punchAnyway) {

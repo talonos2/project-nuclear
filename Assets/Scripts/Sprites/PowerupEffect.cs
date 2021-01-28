@@ -30,7 +30,7 @@ public class PowerupEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle || GameState.getFullPauseStatus())
         {
             var main = particles.main;  //I don't know why this step is necessary, but it is. :/
             main.simulationSpeed = .0000001f;

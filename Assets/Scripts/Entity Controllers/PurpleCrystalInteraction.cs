@@ -43,7 +43,7 @@ public class PurpleCrystalInteraction : EntityData
     public override void ProcessClick(CharacterStats stats)
     {
 
-        if (GameState.fullPause == true || GameData.Instance.isInDialogue) return;
+        if (GameState.getFullPauseStatus() == true || GameData.Instance.isInDialogue) return;
 
         //SpawnNewMonster();
 
@@ -91,7 +91,7 @@ public class PurpleCrystalInteraction : EntityData
     void Update()
     {
 
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle || GameState.getFullPauseStatus())
         {
             return;
         }

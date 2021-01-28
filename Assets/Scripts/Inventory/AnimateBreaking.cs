@@ -34,7 +34,7 @@ public class AnimateBreaking : MonoBehaviour
 
     void Update()
     {
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle || GameState.getFullPauseStatus())
         {
             return;
         }

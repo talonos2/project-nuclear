@@ -11,7 +11,7 @@ public class Spike2EntityData : SpikeController
     new void Update()
     {
         base.Update();
-        if (!isAnimating || GameState.isInBattle || GameState.fullPause) { return; }
+        if (!isAnimating || GameState.isInBattle || GameState.getFullPauseStatus()) { return; }
         timeSinceLastFrame += Time.deltaTime;
         if (timeSinceLastFrame >= 1 / AnimationSpeed)
         {

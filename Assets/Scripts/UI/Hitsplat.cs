@@ -101,6 +101,7 @@ public class Hitsplat : MonoBehaviour
         this.crit = crit;
         this.type = elementalType;
         this.goodTiming = goodTiming;
+        this.dodge = dodge;
 
         CreateGraphics();
         Update();

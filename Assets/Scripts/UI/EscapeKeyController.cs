@@ -38,10 +38,10 @@ public class EscapeKeyController : MonoBehaviour
                
                 //canvas.SetActive(false);
             }
-            else if (!currentlyEscaped && GameState.fullPause != true)
+            else if (!currentlyEscaped && GameState.getFullPauseStatus() != true)
             {
                 SoundManager.Instance.PlaySound("MenuOpen", 1f);
-                GameState.fullPause = true;
+                GameState.setFullPause(true);
                 currentlyEscaped = true;
                 OpenPauseMenu();
                 //canvas.SetActive(true);
@@ -53,7 +53,7 @@ public class EscapeKeyController : MonoBehaviour
 
     public void ClosePauseMenuCallback() {
         SoundManager.Instance.PlaySound("MenuNope", 1f);
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
         GameData.Instance.inPauseMenu = false;
         currentlyEscaped = false;
         CloseOptionsMenu();
@@ -96,7 +96,7 @@ public class EscapeKeyController : MonoBehaviour
         //hideButtonSelection();
         //buttonSelected = 3;
         //showButtonSelection();
-        GameState.fullPause = false;
+        GameState.setFullPause (false);
         //Debug.Log("title screen runs for some reason");
         SceneManager.LoadScene("TitleScreen");
     }
@@ -107,7 +107,7 @@ public class EscapeKeyController : MonoBehaviour
         //hideButtonSelection();
         //buttonSelected = 5;
         //showButtonSelection();
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
 #if UNITY_EDITOR
         // Application.Quit() does not work in the editor so
         // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game

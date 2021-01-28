@@ -44,7 +44,7 @@ public class Scarecrow_Interaction : EntityData
 
         public override void ProcessClick(CharacterStats stats)
         {
-        if (GameState.fullPause == true || GameData.Instance.isInDialogue || HittingScarecrow) return;
+        if (GameState.getFullPauseStatus() == true || GameData.Instance.isInDialogue || HittingScarecrow) return;
         HittingScarecrow = true;
         float scarecrowDistance = playerEntityData.distanceToEntity(this.transform);
         if (scarecrowDistance < 8.9f) {

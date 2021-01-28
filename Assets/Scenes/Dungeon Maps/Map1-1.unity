@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1323,6 +1323,7 @@ MonoBehaviour:
   gabText2: You inherited the ice power from your predecessor. Toggle Ice Power on
     and off with the Left and Right arrow keys. You deal extra ice damage when it's
     on.
+  firstTownBackGab: 0
 --- !u!65 &437367257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3115,6 +3116,7 @@ MonoBehaviour:
   activationRequirement: 0
   changesBasedOnControlSceme: 0
   gabText2: 
+  firstTownBackGab: 0
 --- !u!65 &1640809712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3500,6 +3502,7 @@ MonoBehaviour:
   activationRequirement: 1
   changesBasedOnControlSceme: 1
   gabText2: "With Ice toggled on, Press \u2191+W, A, S, or D to use it."
+  firstTownBackGab: 0
 --- !u!65 &1960485503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4270,11 +4273,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8332177918306501506, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2236789191275909186, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
         type: 3}
       propertyPath: healthCrystal
@@ -4294,6 +4292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: healingFountain
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332177918306501506, guid: 1ed9c8f56d9ee6748842ef7b33740cec,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed9c8f56d9ee6748842ef7b33740cec, type: 3}
@@ -4382,6 +4385,7 @@ MonoBehaviour:
   activationRequirement: 0
   changesBasedOnControlSceme: 1
   gabText2: Press "R" to rest; this heals but costs 30 seconds.
+  firstTownBackGab: 0
 --- !u!1001 &3128599578103915811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4804,6 +4808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426463875589292825, guid: 2a6b5610efc1eaa418537d5c3c42796f,
+        type: 3}
+      propertyPath: inDungeon
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a6b5610efc1eaa418537d5c3c42796f, type: 3}

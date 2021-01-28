@@ -33,7 +33,8 @@ public class SwitchEntityData : EntityData
 
     public bool playParticlesOnSwitchUndo;
     public bool timerSwitch;
-    
+    public bool map1_3Switch;
+
 
 
     // Start is called before the first frame update
@@ -119,7 +120,9 @@ public class SwitchEntityData : EntityData
             }
             activeSwitch = false;
             SwitchAnimation();
-            SwitchTrailMover trail = GameObject.Instantiate<SwitchTrailMover>(mover);
+            SwitchTrailMover trail;
+            if(!map1_3Switch) trail = GameObject.Instantiate<SwitchTrailMover>(mover);
+             else trail=Instantiate (mover, new Vector3 (this.transform.position.x, transform.position.y -.2f, this.transform.position.z),Quaternion.identity);
             trail.gameObject.transform.position = new Vector3(Mathf.RoundToInt(sRender.transform.position.x*2f)/2f, Mathf.RoundToInt(sRender.transform.position.y * 2f) / 2f,-.001f); ;
             trail.InitStart();
             trail.path = particlePath;
@@ -180,7 +183,7 @@ public class SwitchEntityData : EntityData
         {
             return;
         }
-        if (GameState.fullPause) {
+        if (GameState.getFullPauseStatus()) {
             return;
         }
         

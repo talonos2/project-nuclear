@@ -132,7 +132,7 @@ public class Combat : MonoBehaviour
     public void Update()
     {
         playerSprite.transform.parent.localPosition = new Vector3(monsterStats.combatOffset.x, monsterStats.combatOffset.y, 2);
-        if (GameState.fullPause) return;
+        if (GameState.getFullPauseStatus()) return;
 
         if (enterTimer < ENTER_TIME)
         {
@@ -632,6 +632,7 @@ public class Combat : MonoBehaviour
         {
             //Debug.Log("Dodged that!");
             incomingDamage = 0;
+
             //ShouldHaveDodgeEffect
         }
         playerStats.HP -= Mathf.RoundToInt(incomingDamage);

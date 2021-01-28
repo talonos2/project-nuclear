@@ -35,7 +35,7 @@ public class VictoryManager : MonoBehaviour
         // Update is called once per frame
         void Update()
     {
-        if (!GameData.Instance.victory || GameState.fullPause)
+        if (!GameData.Instance.victory || GameState.getFullPauseStatus())
             return;
         GameData.Instance.isInDialogue = true;
         if (groundShadow.resetShadow){

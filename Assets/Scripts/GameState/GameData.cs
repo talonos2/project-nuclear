@@ -146,7 +146,8 @@ public class GameData : Singleton<GameData>
 
     internal bool exitPause;
     internal bool inDungeon;
-    public bool inPauseMenu;
+    internal bool inPauseMenu;
+    public bool playingTutorial;
 
     internal bool IsInTown()
     {
@@ -205,11 +206,11 @@ public class GameData : Singleton<GameData>
     {
 
         if (bestTimes.Length != 20) {
-            GameState.fullPause = true;
+            GameState.setFullPause(true);
             Debug.Log("Broken bestTimes thing");
         }
 
-        if (GameState.fullPause || FloorNumber == 0 || pauseTimer || isInDialogue || !inDungeon) { return; }
+        if (GameState.getFullPauseStatus() || FloorNumber == 0 || pauseTimer || isInDialogue || !inDungeon) { return; }
 
         int tempSeconds = (int)(timer + Time.deltaTime);
         if (tempSeconds > (int)timer)
@@ -235,7 +236,7 @@ public class GameData : Singleton<GameData>
     internal void EndTheRun()
     {
         pauseTimer = true;
-        GameState.fullPause = true;
+        GameState.setFullPause(true);
         GameObject thePlayer=GameObject.FindGameObjectWithTag("Player");
         thePlayer.GetComponent<CharacterStats>().deactivatePowers();
         thePlayer.GetComponent<CharacterMovement>().uiController.turnOffUiScene();

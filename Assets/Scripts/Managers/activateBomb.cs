@@ -43,7 +43,7 @@ public class activateBomb : EntityData
 
     void Update()
     {
-        if (GameState.fullPause || !waiting) return;
+        if (GameState.getFullPauseStatus() || !waiting) return;
 
         waitingLeft -= Time.deltaTime;
         if (waitingLeft < 0) {

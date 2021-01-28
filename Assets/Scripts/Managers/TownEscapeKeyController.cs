@@ -38,10 +38,10 @@ public class TownEscapeKeyController : MonoBehaviour
                 
                 //canvas.SetActive(false);
             }
-            else if (!currentlyEscaped && GameState.fullPause != true)
+            else if (!currentlyEscaped && GameState.getFullPauseStatus() != true)
             {
                 SoundManager.Instance.PlaySound("MenuOpen", 1f);
-                GameState.fullPause = true;
+                GameState.setFullPause(true);
                 currentlyEscaped = true;
                 SoundManager.Instance.PlaySound("MenuOkay", 1f);
                 SceneManager.LoadScene("PauseScreenTown", LoadSceneMode.Additive);
@@ -56,7 +56,7 @@ public class TownEscapeKeyController : MonoBehaviour
 
     public void ClosePauseMenu() {
         SoundManager.Instance.PlaySound("MenuNope", 1f);
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
         GameData.Instance.inPauseMenu = false;
         currentlyEscaped = false;
         SceneManager.UnloadSceneAsync("PauseScreenTown");
@@ -87,7 +87,7 @@ public class TownEscapeKeyController : MonoBehaviour
         hideButtonSelection();
         buttonSelected = 0;
         showButtonSelection();
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
         CutsceneLoader.LoadCutsceneAndFade(canvas.GetComponent<Canvas>(), .5f);
         //StartDungeonRun.StartRun();
         //Load 'load game' ui screen
@@ -126,7 +126,7 @@ public class TownEscapeKeyController : MonoBehaviour
         hideButtonSelection();
         buttonSelected = 4;
         showButtonSelection();
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
         SceneManager.LoadScene("TitleScreen");
         //load scene
     }
@@ -135,7 +135,7 @@ public class TownEscapeKeyController : MonoBehaviour
         hideButtonSelection();
         buttonSelected = 5;
         showButtonSelection();
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
         Application.Quit();
     }
 

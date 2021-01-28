@@ -121,7 +121,7 @@ public class PauseMenuController : MonoBehaviour
     {
 
         DeActivateButtons();
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
 #if UNITY_EDITOR
         // Application.Quit() does not work in the editor so
         // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
@@ -175,7 +175,7 @@ public class PauseMenuController : MonoBehaviour
         //showButtonSelection();
         //DeActivateButtons();
         GameData.Instance.inPauseMenu = false;
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
         GameData.Instance.inDungeon = false;
         //Debug.Log("title screen runs for some reason");
         SceneManager.LoadScene("TitleScreen");
@@ -202,7 +202,7 @@ public class PauseMenuController : MonoBehaviour
     {
         DeActivateButtons();
         GameData.Instance.inPauseMenu = false;
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().MurderPlayer();
         GameObject.Find("EscapeMenuUi").GetComponent<EscapeKeyController>().ClosePauseMenuCallback();
     }
@@ -213,7 +213,7 @@ public class PauseMenuController : MonoBehaviour
     {
         GameData.Instance.inDungeon = true;
         DeActivateButtons();
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
         if (GameData.Instance.isInDialogue) {
             GameData.Instance.isInDialogue = false;
             Engine.GetService<ScriptPlayer>().ResetService();

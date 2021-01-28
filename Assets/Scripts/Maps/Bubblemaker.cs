@@ -19,7 +19,7 @@ public class Bubblemaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameState.fullPause && !GameState.isInBattle)
+        if (!GameState.getFullPauseStatus() && !GameState.isInBattle)
         {
             timeUntilNext -= Time.deltaTime;
         }

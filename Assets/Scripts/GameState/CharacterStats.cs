@@ -483,7 +483,7 @@ public class CharacterStats : Stats
     // Update is called once per frame
     void Update()
     {
-        if (GameState.fullPause || GameData.Instance.pauseTimer || GameData.Instance.isInDialogue) {
+        if (GameState.getFullPauseStatus() || GameData.Instance.pauseTimer || GameData.Instance.isInDialogue) {
             return;
         }
         regenerationCounter += Time.deltaTime;
