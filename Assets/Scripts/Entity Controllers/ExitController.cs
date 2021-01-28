@@ -23,7 +23,7 @@ public class ExitController : DoodadData
         //Entering the dungeon's first level spawns a special cutscene, and does not count towards leaving.
         if (GameData.Instance.FloorNumber==0 && dungeonEntrance) {
 
-            GameState.fullPause = false;
+            GameState.setFullPause(false);
             CutsceneLoader.LoadCutsceneAndWorldSpaceFade(.5f);
             return;
         }

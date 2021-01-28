@@ -28,7 +28,7 @@ public class FinalBossSpawnAnimator : BossSpawnAnimator
     // Update is called once per frame
     void Update()
     {
-        if (GameState.fullPause) return;
+        if (GameState.getFullPauseStatus()) return;
         if (!spawnBoss)
         {
             return;

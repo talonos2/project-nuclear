@@ -33,7 +33,7 @@ public class MissingVillagerDropdownController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameState.fullPause || GameState.isInBattle||GameData.Instance.isInDialogue||GameData.Instance.isCutscene) {
+        if (GameState.getFullPauseStatus() || GameState.isInBattle||GameData.Instance.isInDialogue||GameData.Instance.isCutscene) {
             return;
         }
         speedToAnimate = animateSpeed * Time.deltaTime * 30;

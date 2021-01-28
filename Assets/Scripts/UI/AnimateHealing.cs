@@ -22,7 +22,7 @@ public class AnimateHealing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameState.isInBattle || GameState.fullPause||GameData.Instance.isCutscene)
+        if (GameState.isInBattle || GameState.getFullPauseStatus() || GameData.Instance.isCutscene)
         {
             return;
         }

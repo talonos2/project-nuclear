@@ -183,7 +183,7 @@ public class SwitchEntityData : EntityData
         {
             return;
         }
-        if (GameState.fullPause) {
+        if (GameState.getFullPauseStatus()) {
             return;
         }
         

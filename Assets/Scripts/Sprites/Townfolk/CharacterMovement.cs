@@ -38,7 +38,7 @@ public class CharacterMovement : SpriteMovement
     // Update is called once per frame
     void Update()
     {
-        if (GameState.isInBattle || GameState.fullPause || GameData.Instance.isInDialogue)
+        if (GameState.isInBattle || GameState.getFullPauseStatus() || GameData.Instance.isInDialogue)
         {
             return;
         }
@@ -89,7 +89,7 @@ public class CharacterMovement : SpriteMovement
 
     internal void SwitchToPowerKeyRecieved(int newPower)
     {
-        if (playerStats.powersGained < newPower || newPower==playerStats.currentPower || GameState.fullPause || GameState.pickingItem) return;
+        if (playerStats.powersGained < newPower || newPower==playerStats.currentPower || GameState.getFullPauseStatus() || GameState.pickingItem) return;
         SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower = newPower;
     }
@@ -467,7 +467,7 @@ public class CharacterMovement : SpriteMovement
     public void MoveKeyReceived(DirectionMoved inputDirection)
     {
 
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle || GameState.getFullPauseStatus())
         {
             return;
         }
@@ -549,7 +549,7 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerActivateKeyReceived()
     {
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle || GameState.getFullPauseStatus())
         {
             return;
         }
@@ -828,7 +828,7 @@ public class CharacterMovement : SpriteMovement
 
     internal void PowerToggleLeftKeyReceived()
     {
-        if (playerStats.powersGained == 0 || GameState.fullPause || GameState.pickingItem) return;
+        if (playerStats.powersGained == 0 || GameState.getFullPauseStatus() || GameState.pickingItem) return;
         SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower -= 1;
         if (playerStats.currentPower < 0)
@@ -840,7 +840,7 @@ public class CharacterMovement : SpriteMovement
     internal void PowerToggleRightKeyReceived()
     {
 
-        if (playerStats.powersGained == 0 || GameState.fullPause || GameState.pickingItem) return;
+        if (playerStats.powersGained == 0 || GameState.getFullPauseStatus() || GameState.pickingItem) return;
         SoundManager.Instance.PlaySound("SwitchElement", 1f);
         playerStats.currentPower += 1;
         if (playerStats.currentPower > playerStats.powersGained)
@@ -855,7 +855,7 @@ public class CharacterMovement : SpriteMovement
 
     public void ActivateKeyReceived()
     {
-        if (GameState.isInBattle || GameState.fullPause)
+        if (GameState.isInBattle || GameState.getFullPauseStatus())
         {
             return;
         }

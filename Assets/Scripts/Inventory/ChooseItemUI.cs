@@ -44,7 +44,7 @@ public class ChooseItemUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameState.fullPause || !pickingItem) { return; }
+        if (GameState.getFullPauseStatus() || !pickingItem) { return; }
         //delayBeforePressing -= Time.deltaTime;
 
         if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))

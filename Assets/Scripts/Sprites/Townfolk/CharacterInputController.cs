@@ -25,7 +25,7 @@ public class CharacterInputController : MonoBehaviour
     {
         if (GameData.Instance.isInDialogue) { waitFrameAfterDialogue = true; }
 
-        if (!moveable || GameState.fullPause || GameData.Instance.isInDialogue) { return; }
+        if (!moveable || GameState.getFullPauseStatus() || GameData.Instance.isInDialogue) { return; }
 
         if (waitFrameAfterDialogue)
         {

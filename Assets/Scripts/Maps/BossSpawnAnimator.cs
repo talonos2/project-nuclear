@@ -31,7 +31,7 @@ public class BossSpawnAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameState.fullPause) return;
+        if (GameState.getFullPauseStatus()) return;
         if (ThePlayer.transform.position.y>= yPositionSpawning && ThePlayer.transform.position.x== xPositionSpawning && !spawnBoss) {
             spawnBoss = true;
             sRender.enabled = true;

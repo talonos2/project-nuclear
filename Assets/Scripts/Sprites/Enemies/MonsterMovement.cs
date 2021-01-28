@@ -49,7 +49,7 @@ public class MonsterMovement : SpriteMovement
     void Update()
     {
 
-        if ((GameState.isInBattle||GameState.fullPause || GameData.Instance.isInDialogue) && !isOnCutsceneMap ) {
+        if ((GameState.isInBattle||GameState.getFullPauseStatus() || GameData.Instance.isInDialogue) && !isOnCutsceneMap ) {
             return; 
         }
         if (bossMonster)

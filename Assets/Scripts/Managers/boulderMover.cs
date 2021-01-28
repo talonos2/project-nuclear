@@ -29,7 +29,7 @@ public class boulderMover : SpriteMovement
     // Update is called once per frame
     void Update()
     {
-        if (GameState.fullPause)
+        if (GameState.getFullPauseStatus())
         {
             return;
         }

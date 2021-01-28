@@ -67,7 +67,7 @@ public class SelectItemUIController : MonoBehaviour
         newPlayer.GetComponent<BoxCollider>().enabled = false;
 
         GameObject.Destroy(newPlayer.transform.GetChild(1).gameObject);
-        GameState.fullPause = true;
+        GameState.setFullPause(true);
         newPlayer.setInitialStats();
         savedStats = GameObject.Find("GameStateData").GetComponent<CharacterStats>();
 
@@ -689,7 +689,7 @@ public class SelectItemUIController : MonoBehaviour
 
     public void LoadGameButtonClicked()
     {
-        GameState.fullPause = false;
+        GameState.setFullPause(false);
 
         StartDungeonRun.StartRun();
     }

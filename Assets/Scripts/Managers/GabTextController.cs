@@ -42,7 +42,7 @@ public class GabTextController : MonoBehaviour
 
         Gab currentGab = gabPlayList[0];
 
-        if (GameState.isInBattle || (GameState.fullPause&&!currentGab.fullPause))
+        if (GameState.isInBattle || (GameState.getFullPauseStatus()&&!currentGab.fullPause))
         {
             HideGabUi();
             return;
@@ -54,6 +54,7 @@ public class GabTextController : MonoBehaviour
             {
                 gabDelayCounter = FADE_TIME;
             }
+            
             gabTextCanvas.enabled = true;
             gabDelayCounter -= Time.deltaTime;
 
@@ -65,7 +66,8 @@ public class GabTextController : MonoBehaviour
                 playingGab = false;
                 if (currentGab.fullPause)
                 {
-                    GameState.fullPause = false;
+                    GameState.setFullPause(false);
+                    GameData.Instance.playingTutorial = false;
                 }
 
                 if (gabPlayList.Count > 0)
@@ -163,7 +165,7 @@ public class GabTextController : MonoBehaviour
             if (gabDelayCounter <= 0)
             {
                 playingDelay = false;
-                GameState.fullPause = false;
+                GameState.setFullPause(false);
                 PlayNextGabText();
             }
         }
@@ -211,6 +213,9 @@ public class GabTextController : MonoBehaviour
             itemGabTextToPrint.enabled = true;
         }
         else {
+            if (currentGab.fullPause) {
+                //Debug.Log("Setting playing tutorial");
+                GameData.Instance.playingTutorial = true; }
             gabTextToPrint.enabled = true;
             itemGabTextToPrint.enabled = false;
         }
@@ -224,7 +229,7 @@ public class GabTextController : MonoBehaviour
         }
         if (currentGab.fullPause)
         {
-            GameState.fullPause = true;
+            GameState.setFullPause(true);
         }
     }
 

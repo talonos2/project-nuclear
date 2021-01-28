@@ -43,7 +43,7 @@ public class GabTriggerer : DoodadData
             if (forcePause)
             {
                 timeRemaining = time;
-                GameState.fullPause = true;
+                GameState.setFullPause(true);
             }
             GameObject uiController = GameObject.FindGameObjectWithTag("DungeonUI");
             if (uiController==null) //We must be in town.
@@ -79,7 +79,11 @@ public class GabTriggerer : DoodadData
 
     void Update()
     {
-      //  if (GameData.Instance.isCutscene || GameData.Instance.isInDialogue || GameState.fullPause) return;
+//        if (GameData.Instance.isCutscene || GameData.Instance.isInDialogue || GameState.fullPause) return;
+
+
+
+        
       //  if (firstTownBackGab) TriggerGab();
     }
 }
