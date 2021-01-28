@@ -141,7 +141,7 @@ public class ElementCaroselManager : MonoBehaviour
     private bool wasDashingLastFrame = false;
     private bool wasHastedLastFrame = false;
 
-    bool particlesOn = false;
+    bool particlesOn = true;
 
     private Sprite GetImageDisplayedForPower(int power)
     {
