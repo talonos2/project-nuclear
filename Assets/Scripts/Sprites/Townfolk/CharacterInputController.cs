@@ -51,9 +51,29 @@ public class CharacterInputController : MonoBehaviour
         {
             characterController.PowerActivateKeyReceived();
         }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.POWER_0))
+        {
+            characterController.SwitchToPowerKeyRecieved(0);
+        }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.POWER_1))
+        {
+            characterController.SwitchToPowerKeyRecieved(1);
+        }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.POWER_2))
+        {
+            characterController.SwitchToPowerKeyRecieved(2);
+        }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.POWER_3))
+        {
+            characterController.SwitchToPowerKeyRecieved(3);
+        }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.POWER_4))
+        {
+            characterController.SwitchToPowerKeyRecieved(4);
+        }
 
 
-//#if UNITY_EDITOR
+        //#if UNITY_EDITOR
 
         if (Input.GetButtonDown("ToggleUICamera"))
         {

@@ -87,6 +87,13 @@ public class CharacterMovement : SpriteMovement
 
     }
 
+    internal void SwitchToPowerKeyRecieved(int newPower)
+    {
+        if (playerStats.powersGained < newPower || newPower==playerStats.currentPower || GameState.fullPause || GameState.pickingItem) return;
+        SoundManager.Instance.PlaySound("SwitchElement", 1f);
+        playerStats.currentPower = newPower;
+    }
+
     internal void JumpOffOfSpikes()
     {
         if (IsPlayerMoveLocationTerrainPassable(characterLocation.x - 1, characterLocation.y))
