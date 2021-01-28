@@ -11,6 +11,7 @@ public class ElementCaroselManager : MonoBehaviour
     public Sprite[] dashAnimSprites;
     public Sprite[] jumpAnimSprites;
     public Sprite[] fireAnimSprites;
+    public Sprite[] stealthAnimSprites;
     public ParticleSystem useParticles;
 
     public SpriteRenderer[] elementalSymbols;
@@ -140,8 +141,22 @@ public class ElementCaroselManager : MonoBehaviour
     private bool wasDashingLastFrame = false;
     private bool wasHastedLastFrame = false;
 
+    bool particlesOn = false;
+
     private Sprite GetImageDisplayedForPower(int power)
     {
+        if (stats.currentPower == 2 && GameData.Instance.stealthed && !particlesOn)
+        {
+            useParticles.Play();
+            particlesOn = true;
+        }
+
+        if ((stats.currentPower != 2 || !GameData.Instance.stealthed) && particlesOn)
+        {
+            useParticles.Stop();
+            particlesOn = false;
+        }
+
         if (power == 0)
         {
             return offSprites[0];
@@ -169,6 +184,10 @@ public class ElementCaroselManager : MonoBehaviour
 
         else if (power == 2)
         {
+            if (stats.currentPower == 2&&GameData.Instance.stealthed)
+            {
+                return stealthAnimSprites[0];
+            }
             if (stats.currentPower == 2)
             {
                 return onSprites[2];
