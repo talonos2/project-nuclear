@@ -16,6 +16,8 @@ public class BridgeController : DoodadData
 
     public bool playsSoundOnPlatformAdd = false;
 
+    CharacterMovement thePlayer;
+
     new void Start()
     {
         base.Start();
@@ -27,6 +29,7 @@ public class BridgeController : DoodadData
             //HidePlatform();
             RemovePlatform();
         }
+        thePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>();
     }
 
     protected void Update()
@@ -80,7 +83,10 @@ public class BridgeController : DoodadData
             MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = this.gameObject;
         }
         if (this.isPlatformTerrain == false) {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().BumpOffBridge();
+            if (thePlayer.characterLocation.x == DoodadLocation.x && thePlayer.characterLocation.y == DoodadLocation.y) {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().BumpOffBridge();
+            }
+            
         }
         this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = !invisibleBridge&& this.isPlatformTerrain == true;
     }
