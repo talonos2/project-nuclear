@@ -9,7 +9,7 @@
 @fwspawnvfx x:-19 y:-11 z:0 Vfx:PawnDerringer
 @fwturnpawn n:PawnDerringer d:e
 
-@fwspawnvfx x:-19 y:-12 z:0 Vfx:PawnJezerine
+@fwspawnvfx x:-18 y:-12 z:0 Vfx:PawnJezerine
 @fwturnpawn n:PawnJezerine d:n
 
 
@@ -36,14 +36,19 @@ Jezerine: How much longer will it take?
 Derringer: I'm afraid it's longer than ten minutes.
 @hideChars time:0
 
-@fwmovepawn n:PawnDerringer d:w
+
 @fwmovepawn n:PawnDerringer d:s
 @fwmovepawn n:PawnDerringer d:s
 @fwmovepawn n:PawnDerringer d:e
 @fwturnpawn n:PawnDerringer d:n
+
+@fwturnpawn n:PawnJezerine d:w
+
+@wait 0.5
+
 @fwturnpawn n:PawnJezerine d:s
 
-@wait 1
+@wait 0.5
 
 @char Derringer
 Derringer: I'm afraid I must be going.
