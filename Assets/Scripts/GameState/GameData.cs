@@ -26,7 +26,7 @@ public class GameData : Singleton<GameData>
 
     public int FloorNumber = 0;
 
-    public int RunNumber = 0;
+    public int RunNumber = 1;
     public int PowersGained = 0;
     public bool timerTrigger;
     public bool hasted;
