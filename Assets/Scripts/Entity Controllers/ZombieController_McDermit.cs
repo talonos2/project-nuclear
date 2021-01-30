@@ -11,6 +11,7 @@ public class ZombieController_McDermit : Enemy
     new void Start()
     {
         base.Start();
+
         if (testMonster)
         {
             return;

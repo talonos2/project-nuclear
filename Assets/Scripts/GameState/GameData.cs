@@ -145,7 +145,7 @@ public class GameData : Singleton<GameData>
     public bool isInBuilding;
 
     internal bool exitPause;
-    internal bool inDungeon;
+    public bool inDungeon;
     internal bool inPauseMenu;
     public bool playingTutorial;
 

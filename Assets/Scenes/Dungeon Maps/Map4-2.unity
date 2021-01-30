@@ -465,6 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapMusic: 8
   combatMusic: 9
+  alwaysOn: 0
 --- !u!4 &328219060
 Transform:
   m_ObjectHideFlags: 0
@@ -2448,7 +2449,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+    - target: {fileID: 2593004536559010741, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502947213680399574, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -2459,6 +2465,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5515415379851588918, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014867980103700926, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -4071,6 +4082,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426463875589292825, guid: 2a6b5610efc1eaa418537d5c3c42796f,
+        type: 3}
+      propertyPath: inDungeon
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a6b5610efc1eaa418537d5c3c42796f, type: 3}

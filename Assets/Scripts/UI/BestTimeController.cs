@@ -54,7 +54,7 @@ public class BestTimeController : MonoBehaviour
         {
             //Died after 0 seconds? Should be impossible.
             Debug.LogError("WARNING: Either you're testing the BestTimeController by running the end run screen directly, or something had gone very wrong!");
-            GameData.Instance.timesThisRun = new []{ 12,22,32, 50, 93.4f, 95.2f, 195.3f, 210,250,300,350,475,515,0,0,0,0,0,0,0};
+            GameData.Instance.timesThisRun = new []{ 12,22,32, 50, 93.4f, 95.2f, 195.3f, 210,250,300,350,475,515,525,555,595,0,0,0,0};
             GameData.Instance.deathTime = 535;
         }
         //End test code.
