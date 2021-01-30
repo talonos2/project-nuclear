@@ -6,7 +6,7 @@ public abstract class CrystalSpawner
 {
 
 
-    public static void SpawnCrystalParticles(CrystalType type, int crystalsGained, CharacterStats playerData, GameObject spawningObject, PowerupEffect powerUpEffect)
+    public static void SpawnCrystalParticles(CrystalType type, int crystalsGained, CharacterStats playerData, GameObject spawningObject, PowerupEffect powerUpEffect, bool hideCrystalSounds = false)
     {
         //SoundManager.Instance.PlaySound("CrystalShatter", 1);
         int numberOfParticles = Mathf.RoundToInt(Mathf.Sqrt(crystalsGained));
@@ -24,7 +24,7 @@ public abstract class CrystalSpawner
         foreach (float delay in delays)
         {
             PowerupEffect pe = GameObject.Instantiate<PowerupEffect>(powerUpEffect, spawningObject.transform.position, Quaternion.identity);
-            pe.Initialize(spawningObject.transform.GetChild(0).position, playerData.transform.GetChild(0).GetChild(0), delay, type);
+            pe.Initialize(spawningObject.transform.GetChild(0).position, playerData.transform.GetChild(0).GetChild(0), delay, type, hideCrystalSounds);
         }
     }
 }

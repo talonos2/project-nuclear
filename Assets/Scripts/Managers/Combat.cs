@@ -378,10 +378,11 @@ public class Combat : MonoBehaviour
                 {
                     break;
                 }
-                CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
-                CrystalSpawner.SpawnCrystalParticles(CrystalType.DEFENSE, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
-                CrystalSpawner.SpawnCrystalParticles(CrystalType.MANA, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
-                CrystalSpawner.SpawnCrystalParticles(CrystalType.HEALTH, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect);
+
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.ATTACK, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect, monsterStats.hideCrystalSounds);
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.DEFENSE, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect, monsterStats.hideCrystalSounds);
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.MANA, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect, monsterStats.hideCrystalSounds);
+                CrystalSpawner.SpawnCrystalParticles(CrystalType.HEALTH, monsterStats.crystalDropAmount, playerStats, monsterStats.gameObject, monsterStats.powerupEffect, monsterStats.hideCrystalSounds);
                 break;
             case CrystalType.ATTACK:
                 playerStats.AttackCrystalsGained += monsterStats.crystalDropAmount;
@@ -415,6 +416,7 @@ public class Combat : MonoBehaviour
 
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
             SoundManager.Instance.PlaySound("GetIce", 1f);
+            SoundManager.Instance.PlaySound("bossDefeat", 1f);
         }
         if (monsterStats.earthBoss)
         {
@@ -422,6 +424,7 @@ public class Combat : MonoBehaviour
             playerStats.powersGained = Math.Max(2, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
             SoundManager.Instance.PlaySound("GetEarth", 1f);
+            SoundManager.Instance.PlaySound("bossDefeat", 1f);
         }
         if (monsterStats.fireBoss)
         {
@@ -429,6 +432,7 @@ public class Combat : MonoBehaviour
             playerStats.powersGained = Math.Max(3, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
             SoundManager.Instance.PlaySound("GetFire", 1f);
+            SoundManager.Instance.PlaySound("bossDefeat", 1f);
         }
         if (monsterStats.airBoss)
         {
@@ -436,22 +440,27 @@ public class Combat : MonoBehaviour
             playerStats.powersGained = Math.Max(4, playerStats.powersGained);
             monsterStats.gameObject.GetComponent<gainPowerDialogue>().playPowerGainedDialogueAsync();
             SoundManager.Instance.PlaySound("GetAir", 1f);
+            SoundManager.Instance.PlaySound("bossDefeat", 1f);
         }
         if (monsterStats.fireBoss2)
         {
             GameData.Instance.fireBoss2 = true;
+            SoundManager.Instance.PlaySound("bossDefeat", 1f);
         }
         if (monsterStats.airBoss2)
         {
             GameData.Instance.airBoss2 = true;
+            SoundManager.Instance.PlaySound("bossDefeat", 1f);
         }
         if (monsterStats.deathBoss)
         {
             GameData.Instance.deathBoss1 = true;
+            SoundManager.Instance.PlaySound("bossDefeat", 1f);
         }
         if (monsterStats.finalBoss)
         {
             GameData.Instance.victory = true;
+            SoundManager.Instance.PlaySound("bossDefeat", 1f);
         }
         //playerStats.currentPower = elementSelected;
         playerStats.PushCharacterData();
