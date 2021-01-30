@@ -15,6 +15,7 @@ public class PowerupEffect : MonoBehaviour
     private bool hasStarted = false;
     private bool hasImpacted = false;
     private CrystalType type;
+    internal bool hideCrystalSounds;
 
     public AudioSource collectionSound;
 
@@ -71,13 +72,13 @@ public class PowerupEffect : MonoBehaviour
         }
     }
 
-    public void Initialize(Vector3 startPosition, Transform endPosition, float delay, CrystalType type)
+    public void Initialize(Vector3 startPosition, Transform endPosition, float delay, CrystalType type, bool hideCrystalSounds=false)
     {
         this.startPosition = startPosition;
         this.endPosition = endPosition;
         this.delay = delay;
         this.type = type;
-
+        this.hideCrystalSounds = hideCrystalSounds;
         Color color = Color.white;
 
         var main = particles.main;  //I don't know why this step is necessary, but it is. :/
@@ -103,6 +104,6 @@ public class PowerupEffect : MonoBehaviour
 
     public void OnImpact()
     {
-        SoundManager.Instance.PlaySound("GetEnergy", 1f);
+        if (!hideCrystalSounds) SoundManager.Instance.PlaySound("GetEnergy", 1f);
     }
 }

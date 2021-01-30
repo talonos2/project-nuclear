@@ -41,6 +41,7 @@ public class Enemy : Stats
     public bool finalBossForm1;
 
     public bool testMonster;
+    public bool hideCrystalSounds;
 
     public void Start()
     {

@@ -26,7 +26,7 @@ public class GameData : Singleton<GameData>
 
     public int FloorNumber = 0;
 
-    public int RunNumber = 0;
+    public int RunNumber = 1;
     public int PowersGained = 0;
     public bool timerTrigger;
     public bool hasted;
@@ -142,7 +142,7 @@ public class GameData : Singleton<GameData>
 
     internal OptionSaveManager optionsState;
     internal bool teleportingIn;
-    internal bool isInBuilding;
+    public bool isInBuilding;
 
     internal bool exitPause;
     internal bool inDungeon;

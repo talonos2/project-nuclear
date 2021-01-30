@@ -8,6 +8,8 @@ public class cameraClamp : MonoBehaviour
     private float mapWidth;
     private GameObject ThePlayer;
     private Vector2 groundOffset;
+    public bool cameraClampDebugMode;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class cameraClamp : MonoBehaviour
             this.transform.localPosition = new Vector3(groundOffset.x, groundOffset.y, this.transform.localPosition.z);
             return;
         }
+
         
 
         float relativeYLowClamp = -mapHeight / 2 - ThePlayer.transform.position.y + 6f;

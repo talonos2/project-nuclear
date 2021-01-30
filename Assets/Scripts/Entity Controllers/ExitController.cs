@@ -66,12 +66,6 @@ public class ExitController : DoodadData
         if (townMap)
         {
             gameData.FloorNumber = 0;
-            gameData.isInBuilding = true;
-            if (fromBuilding)
-            {
-                gameData.isInBuilding = false;
-
-            }
             //Debug.Log("is in building? " + gameData.isInBuilding+" from building flag on? "+fromBuilding);
         }
 
