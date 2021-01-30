@@ -1262,7 +1262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a63fc18fc7bbb46b8071294fe671d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentDescription: 'Rare: STILL not made of reptile scales.'
+  equipmentDescription: 'Rare: This one is also not made of reptile scales.'
   floorFoundOn: 12 13
   Weapon: 0
   Armor: 1
@@ -4953,6 +4953,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8475618078259157552}
     m_Modifications:
+    - target: {fileID: 495438900836472273, guid: 5b75dafd3a0d0624591f8637752cbc17,
+        type: 3}
+      propertyPath: m_Name
+      value: No Accessory Equipped
+      objectReference: {fileID: 0}
     - target: {fileID: 4730018020663208119, guid: 5b75dafd3a0d0624591f8637752cbc17,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5007,11 +5012,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 495438900836472273, guid: 5b75dafd3a0d0624591f8637752cbc17,
-        type: 3}
-      propertyPath: m_Name
-      value: No Accessory Equipped
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b75dafd3a0d0624591f8637752cbc17, type: 3}
