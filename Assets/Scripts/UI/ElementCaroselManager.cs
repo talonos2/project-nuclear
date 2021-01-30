@@ -141,20 +141,17 @@ public class ElementCaroselManager : MonoBehaviour
     private bool wasDashingLastFrame = false;
     private bool wasHastedLastFrame = false;
 
-    bool particlesOn = true;
 
     private Sprite GetImageDisplayedForPower(int power)
     {
-        if (stats.currentPower == 2 && GameData.Instance.stealthed && !particlesOn)
+        if (stats.currentPower == 2 && GameData.Instance.stealthed && !useParticles.isPlaying)
         {
             useParticles.Play();
-            particlesOn = true;
         }
 
-        if ((stats.currentPower != 2 || !GameData.Instance.stealthed) && particlesOn)
+        if ((stats.currentPower != 2 || !GameData.Instance.stealthed) && useParticles.isPlaying)
         {
             useParticles.Stop();
-            particlesOn = false;
         }
 
         if (power == 0)

@@ -91,6 +91,8 @@ public class ShortcutCutsceneMap3_1to3_4 : ShortcutPlayer
         }
         if (phases[3])
         {
+            GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/VFX/SteamParticleEffect"));
+            go.transform.position = instantiatedSnowball.transform.position - new Vector3(0, .5f, 11);
             SoundManager.Instance.PlaySound("fuseForBomb", 1);
             SoundManager.Instance.PlaySound("singleSplash", 1);
             waiting = true;
@@ -99,7 +101,7 @@ public class ShortcutCutsceneMap3_1to3_4 : ShortcutPlayer
 
         if (phases[4])
         {
-            fadeInController.enableShortcutFadeOut(.25f);
+            //fadeInController.enableShortcutFadeOut(.25f);
             waiting = true;
             waitTime = .2f;
         }
@@ -108,9 +110,9 @@ public class ShortcutCutsceneMap3_1to3_4 : ShortcutPlayer
             Destroy(instantiatedSnowball);
             GameData.Instance.map3_4Shortcut = true;
             setupNewAfterSnowballMap();
-            fadeInController.enableShortcutFadeIn(.5f);
+            //fadeInController.enableShortcutFadeIn(.5f);
             waiting = true;
-            waitTime = 3f; //waiting for fade in And seeing the new map
+            waitTime = 4f; //waiting for fade in And seeing the new map
         }
         if (phases[6])
         {
