@@ -145,6 +145,7 @@ public class PauseMenuController : MonoBehaviour
         //   buttonSelected = 1;
         //   showButtonSelection();
         //   inOtherMenu = true;
+        if (GameData.Instance.RunNumber > 30) { MenuButtonClicked(); return; }
         DeActivateButtons();
         GameData.Instance.exitPause = true;
         loadSaveController.ActivateLoad(this, true);
@@ -211,6 +212,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void EnterButtonClick()
     {
+        if (GameData.Instance.RunNumber > 30) { MenuButtonClicked(); return; }
         GameData.Instance.inDungeon = true;
         DeActivateButtons();
         GameState.setFullPause(false);

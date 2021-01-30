@@ -10,11 +10,14 @@ public class SpawnPlayer : MonoBehaviour
     private GameObject newPlayer;
     private GameData gameData;
     public bool inDungeon;
+    public bool inBuilding;
 
     // Start is called before the first frame update
     void Start()
     {
         if (inDungeon) GameData.Instance.inDungeon = true;
+        if (inBuilding) GameData.Instance.isInBuilding = true;
+        else GameData.Instance.isInBuilding = false;
         GameData.Instance.inPauseMenu = false;
         gameData = GameData.Instance;
         CharacterMovement characterMovement;
