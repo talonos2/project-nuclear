@@ -41,7 +41,10 @@ public class HealingAnimationController : MonoBehaviour
         }
 
         delayToShowPenalty = 1f;
-        healingPenalty.enabled = true;
+        if (healingType==HealingType.BOTH) {
+            healingPenalty.enabled = true;
+        }
+        
 
         healingParticles.Stop();
         healingParticles.Play();

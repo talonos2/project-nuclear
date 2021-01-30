@@ -115,6 +115,8 @@ MonoBehaviour:
   lightRadius: 6
   isOnCutsceneMap: 0
   isThisJohnDoe: 0
+  isAPlayer: 0
+  isAMonster: 0
 --- !u!1 &2667092308361575540
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +128,7 @@ GameObject:
   - component: {fileID: 2667092308361575544}
   - component: {fileID: 2667092308361575543}
   - component: {fileID: 2667092308361575541}
+  - component: {fileID: 7790266668383620558}
   m_Layer: 0
   m_Name: PawnCarvingCut
   m_TagString: Untagged
@@ -169,3 +172,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7790266668383620558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2667092308361575540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78221a7565252ad478a5e495ad4a46f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMainCharacter: 0
+  isAMonster: 0
+  isLargeMonster: 0
+  isInteractableObject: 0
+  isItem: 0
+  isSwitch: 0
+  isNPC: 0
+  isOnCutsceneMap: 0
+  scriptName: 
+  pawnNum: 0
+  clickForwarding: 1
+  punchBag: 0
+  daysToPunchBag: 

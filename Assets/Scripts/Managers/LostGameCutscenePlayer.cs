@@ -53,7 +53,7 @@ public class LostGameCutscenePlayer : MonoBehaviour
             //GameObject.Find("SnowParticles").SetActive(false);
             FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
             fadeout.attachToGUI(thisCanvas);
-            fadeout.InitNext("TitleScreen", 4f);
+            fadeout.InitNext("Credits", 4f);
         }
 
         transform.position = transform.position + getMotion;
