@@ -94,6 +94,16 @@ public class FloorNameDropdownController : MonoBehaviour
         nameHolder.text = floorName;
     }
 
+    internal void HideFloorNameUI()
+    {
+        panelToDropDown.SetActive(false);
+    }
+
+    internal void ShowFloorNameUI()
+    {
+        panelToDropDown.SetActive(true);
+    }
+
     // Update is called once per frame
     void Update()
     {

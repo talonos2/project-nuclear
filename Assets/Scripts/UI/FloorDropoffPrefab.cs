@@ -89,7 +89,7 @@ public class FloorDropoffPrefab : MonoBehaviour
         
         if (record)
         {
-            textToDisplay += "New Record: " + minutes + ":" + seconds.ToString("00") + "." + subSeconds.ToString("00");
+            textToDisplay += "New Record! " + minutes + ":" + seconds.ToString("00") + "." + subSeconds.ToString("00");
             if (oldTimeTaken == Mathf.Infinity)
             {
                 textToDisplay += "\nNew Record!";
