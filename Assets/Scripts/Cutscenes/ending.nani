@@ -86,7 +86,9 @@
 		@char Douglass
 		Douglass: Okay, that's enough.
 		Douglass: I'll be taking that ring back.
-		Camera Shake
+		Douglass: You’re getting a little too—
+		Todd: Silence!
+		Douglass: Argh!
 		;@spawn ShakeCamera
 		@char Tasha
 		Tasha: He's... you didn't even give a warning!
@@ -116,13 +118,13 @@
 		@char Douglass
 		Douglass: I'm guessing that's me?
 		@char Norma
-		Norma: Really appreaciate you coming by and all.
+		Norma: Really appreciate you coming by and all.
 		Norma: But maybe you should be looking into a new line of work.
 		@char Douglass
 		Douglass: Excuse me?
 		@char Norma
 		Norma: I'm just sayin'
-		Norma: If any random cowgirl can bust monster heads better than you, mabye hero work ain't what you're cut out for.
+		Norma: If any random cowgirl can bust monster heads better than you, maybe hero work ain't what you're cut out for.
 		@char Douglass
 		Douglass: I... will consider it.
 		Douglass: May I have my stuff back?
@@ -170,7 +172,7 @@
 		@char Tasha
 		Tasha: Who?
 		@char Jezerine
-		Jezerine: You know, from the Cerulian Blight Saga.
+		Jezerine: You know, from the Cerulean Blight Saga.
 		@char Derringer
 		Derringer: I'm afraid the look of the scoring from wyvern blood took longer than I expected.
 		@char Jezerine
@@ -203,11 +205,11 @@
 		Melvardius: In ages past the gods were many.[br]Splintered across the cosmos.
 		Melvardius: They were beings of great power and small understanding.
 		Melvardius: Each thought themselves too different from the others to ever trust them.
-		Melvardius: So they sought out beings of great wisdom, but little might, to mediate their conflict.
+		Melvardius: So, they sought out beings of great wisdom, but little might, to mediate their conflict.
 		Melvardius: And in exchange for peace, they offered their power.
 		Melvardius: In time our ancestors, those small beings, began to see the god's similitude. But true progress came when humanity could no longer see their differences.
 		Melvardius: First they viewed the Soil, the Sea, and the Sky and saw what they all shared.
-		Melvardius: Those came together to form our world, and in time they worked so closely together that they became inseperable.
+		Melvardius: Those came together to form our world, and in time they worked so closely together that they became inseparable.
 		Melvardius: Their old names were forgotten, and now they are Tellus, with dominion over substance.
 		Melvardius: Others followed, in time we began to see that Lodestone and Lightning were joined in a dance of—
 		@char Tristana
@@ -218,7 +220,7 @@
 		@char Tristana
 		Jezerine: You just smote, like, a hundred monsters, and you're not even going to talk about it?
 		@char Melvardius
-		Melvardius: While sometimes nessissary, our goal should not be to destroy that which we do not understand.
+		Melvardius: While sometimes necessary, our goal should not be to destroy that which we do not understand.
 		@char Murtough
 		Murtough: Ya were pretty good at it though.
 		@char Melvardius
@@ -233,6 +235,83 @@
 
 		@elseif !GetWorst()
 		
+		The next day, in the church...
+
+		@char Melvardius
+
+		@if !GetDouglass()
+		Melvardius: Douglass came to us in our time of need.[br]Sadly, we know precious little about him.
+		Melvardius: Without his efforts, and the artifacts he brought to us, we surely would not have survived this crisis.
+		Melvardius: For that, we owe him a debt. One which we can sadly never repay.
+		Melvardius: His effects will be kept in the town hall.[br]Some even displayed in his memory.
+		Melvardius: We do not know when, or if, his relations will come to collect them.
+		Melvardius: We do not even know if he has living family to mourn for him.
+		Melvardius: May I be so bold to say that he is welcome in ours.
+		@endif
+
+
+		@if !GetSara()
+		Melvardius: Many of you may not have known Sara.
+		Melvardius: She was a newcomer to our town, who I fear did not yet feel she belonged.
+		Melvardius: Let us keep a place for her here.[br]Though she may never know it.
+		@endif
+
+		@if !GetMcDermit()
+		Melvardius: While many of our defenders found a supernatural curse to be beyond their call of duty, McDermit stood with us.
+		Melvardius: He did not know how to defeat the threat, or if victory was even possible.
+		Melvardius: But his determination to try is an inspiration to us all. 
+		@endif
+
+		@if !getTodd()
+		Melvardius: Todd... made different choices than many of us.
+		Melvardius: But, let us not take the easy road of casting judgement.
+		Melvardius: In a world with as much uncertainty as ours, can we truly fault someone for finding different answers?
+		Melvardius: Do any of his misdeeds outweigh the regrettable past of our own order?
+		Melvardius: Our ancestor's actions have stained this land, even the soil of this very city, with the blood of those we deemed too different from ourselves.
+		Melvardius: In all I saw in that cavern, I believe their bones are the ones that battled against us.
+		Melvardius: Perhaps they sought a toll for our forefather's acts against them.
+		Melvardius: Perhaps they were not wrong to do so.
+		@wait 1.5
+		Melvardius: As for Todd...
+		Melvardius: Let us not forget that he was a son, and a brother.[br]He leaves behind a family that has watched him grow from his very youth.
+		Melvardius: Let us not forget that he was human, like any of us.
+		@endif
+
+		@if !GetMara()
+		Melvardius: If I knew anything of Norma, she would want me to keep this brief. 
+		Melvardius: Norma spent most of her time outside the walls of our city tending to the herds.
+		Melvardius: Known for keeping to herself, and giving as good as she got.
+		Melvardius: A formidable woman who held friendship so dear that she did not give it away frivolously.
+		@endif
+
+		@if !GetDerringer()
+
+		Melvardius: Derringer...
+		Melvardius: Derringer served our city for many years.
+		Melvardius: He was... he was a quiet man whose diligent efforts helped to shore up our community, and in a very literal way, our very homes and livelihoods.
+		Melvardius: I encourage each of you, when you return to your homes, to find some small token of how this man has touched your life.
+		Melvardius: A shoe for a horse, cutlery, or even a hammer.
+		Melvardius: You need not even go that far.[br]So much of him is here.
+		Melvardius: The doors by which you entered this chamber are hinged by...
+		Melvardius: are hinged by his handiwork.
+		Melvardius: The... the very nails that hold this building together were...
+		Melvardius: were...
+		@wait 2
+		Melvardius: I am sorry.
+		Melvardius: I...
+		Melvardius: I cannot.
+		Melvardius: Farewell.
+
+		@else
+
+		Melvardius: I apologize that a viewing could not accompany the service.
+		Melvardius: It is better to remember our friends as they were.
+		Melvardius: Each of them gave their life for this city.
+		Melvardius: Let us cherish the opportunities they have given us.
+
+
+		@endif
+
 
 
 		@elseif GetWorst()
@@ -269,13 +348,13 @@
 		Tedd: What do you mean?
 
 		@char Melvardius
-		Melvardius: Please do not ask me that. You most of all.
+		Melvardius: Please do not ask me that.[br]You most of all.
 
 		@char Jinn
 		Jinn: You did what you had to.[br]If you hadn't so many more would have died.
 
 		@char Melvardius
-		Melvardius: Perhaps some day we will see that killers and heroes are the same.
+		Melvardius: Perhaps someday we will see that killers and heroes are the same.
 		Melvardius: I fear that will be the day I cease to seek the Grand Unification.
 
 		@char Jinn
@@ -336,7 +415,7 @@
 		@char Mara
 		Mara: What do you mean? These trophies have stories to them.
 		@char McDermit
-		McDermit: Kind of all the same story though right?
+		McDermit: Kind of all the same story though, right?
 		@char Jezerine
 		Jezerine: And it's an awesome story!
 		@char Elder
@@ -344,14 +423,7 @@
 		@char Mara
 		Mara: Don't worry, hun. I'm sure you'll get used to 'em.
 
-
 		@elseif !GetWorst()
-
-		@char Mara
-		Mara: medium
-
-
-		@elseif GetWorst()
 
 		Later, at the bar...
 
@@ -372,7 +444,7 @@
 
 		@char Paul
 		Paul: That's it? You're just going to go back to work?
-		Paul: After all that happened?[br]You wan to act like nothing changed?
+		Paul: After all that happened?[br]You want to act like nothing changed?
 
 		@char Mara
 		Mara: Changed? Are people going to get drunk some other way now?
@@ -382,10 +454,14 @@
 		Mara: Not much will change around here.
 
 		Mara: Folks we lost?[br]They weren't exactly regulars.
-		Mara: I barely knew the preacher.[br]Don't go to church much.
+
+		@if !GetMelvardius()
+			Mara: I barely knew the preacher.[br]Don't go to church much.
+		@endif
+
 
 		@char Paul
-		Paul: You still knew them though.[br]They were your neighbors.
+		Paul: They were still your neighbors.[br]You must have seen them sometimes.
 
 		@char Mara
 		Mara: Not the first time I've lost someone.
@@ -395,7 +471,7 @@
 		Paul: What?
 
 		@char Mara
-		Mara: Always. One way or another, not always this dramatic.
+		Mara: Always.[br]One way or another.[br]Not always this dramatic.
 		Mara: Never crossed a bridge I didn't burn.
 
 		@char Paul
@@ -424,6 +500,13 @@
 		@char Mara
 		Mara: And that... is just one less.
 		Mara: Nothing I can't handle...
+
+
+		@elseif GetWorst()
+
+		@char Mara
+		Mara: worst
+
 
 
 		@endif
@@ -455,7 +538,7 @@
 		@char Devon
 		Devon: You! Just what did you—
 		@char Mara
-		Mara: This calls for a cellibration! Let's head back to the tavern.
+		Mara: This calls for a celebration! Let's head back to the tavern.
 		Mara: Unless you louts let it fall apart while I was gone.
 		@char Wilson
 		Wilson: Sounds wonderful, come along Mr... did we ever get your name?
@@ -495,7 +578,7 @@
 		@char Devon
 		Devon: But that means that they were...
 		@char Metra
-		Metra: You did what you could. We are greatful.
+		Metra: You did what you could. We are grateful.
 
 		@if GetMelvardius()
 			@char Melvardius
@@ -542,7 +625,7 @@
 		@char Devon
 		Devon: And you didn't think to put up a sign?
 		@char Wilson
-		Wilson: Yes, we could have handled things better. Come with us and we'll celibrate and tell you everything.
+		Wilson: Yes, we could have handled things better. Come with us and we'll celebrate and tell you everything.
 		@char Devon
 		Devon: Oh I don't think so. I'm getting out of this crazy place.
 		@char Jezerine
@@ -563,11 +646,6 @@
 
 		
 		#day10
-		
-		;realizes ring won't work away from cave.
-		;good: ready to hunt pillager
-		;med: returns to life of squireship
-		;bad: no longer wants to be a knight
 
 		@if GetPerfect()
 
@@ -582,7 +660,7 @@
 		@char Pendleton
 		Pendleton: It was a group effort.[br]I merely carried the torch passed to me by others.
 		@char Wilson
-		Wilson: Sure the first step on any journey is the hardest.
+		Wilson: Sure, the first step on any journey is the hardest.
 		Wilson: But that last step is pretty tricky too!
 
 		@char Douglass
@@ -633,7 +711,7 @@
 
 		@if GetTodd()
 			@char Todd
-			Todd: I'm not Pendlton.
+			Todd: I'm not Pendleton.
 			@char Meyster
 			Meyster: Ah, sorry.
 			Meyster: Just, you know, from the side you look—Ah! There you are!
@@ -645,12 +723,12 @@
 		@endif
 
 		@char Meyster
-		Meyster: You did it! You completed your first nobel quest!
+		Meyster: You did it! You completed your first noble quest!
 		@char Pendleton
 		Pendleton: Yes, I suppose I did.
 		@char Meyster
 		Meyster: It is a bittersweet occasion.
-		Meyster: For, while I revel in your trumph...[br]I did not think I would be losing my squire so soon.
+		Meyster: For, while I revel in your triumph...[br]I did not think I would be losing my squire so soon.
 		@char Pendleton
 		Pendleton: Losing?
 		@char Meyster
@@ -670,10 +748,10 @@
 			Pendleton: Speaking of, I ought to be returning this ring to Hiro.
 		@else
 			@char Meyster
-			Meyster: Magic you still posess!
+			Meyster: Magic you still possess!
 			Meyster: I am sure Hiro would be honored if you carried on his legacy.
 			@char Pendleton
-			Pendleton: No, I'm sure the honoroable thing to do would be to return the ring to his next of kin.
+			Pendleton: No, I'm sure the honorable thing to do would be to return the ring to his next of kin.
 		@endif
 
 		@char Meyster
@@ -764,8 +842,6 @@
 
 
 		#day11
-		;mixed up one
-
 
 		Soon, at the entrance...
 		@char Stranger
@@ -788,13 +864,13 @@
 		@endif
 
 		@char Tasha
-		Tasha: Come along, we have much to celibrate.
+		Tasha: Come along, we have much to celebrate.
 
 		@if !GetPerfect()
 			@char Wilson
 			Wilson: Do we?
 			@char Tasha
-			Tasha: Honoring sacrafice is part of celibrating.
+			Tasha: Honoring sacrifice is part of celebrating.
 			@if !GetTodd()
 				@char Wilson
 				Wilson: Well, you lot go on without me.
@@ -836,7 +912,7 @@
 			@char Reya
 			Reya: Come with me.
 			Reya: We'll split the gear, you can hold onto that ring, and I'll teach you all you need to know.
-			Reya: If it doesn't work out, we go our seperate ways.
+			Reya: If it doesn't work out, we go our separate ways.
 			Reya: If it does, maybe I'll take that ring from you after all.
 			@char Stranger
 			Stranger: ...
@@ -857,7 +933,7 @@
 			Stranger: Wasn't trying to be.
 			@char Reya
 			Reya: Fine by me.[br]Now how about handing over that gear? And the ring of course.
-			Reya: It's hodgepodge, but I think I could make an ensamble of it.
+			Reya: It's hodgepodge, but I think I could make an ensemble of it.
 			@char Stranger
 			Stranger: Yeah, fine. Enjoy it.
 			@char Reya
@@ -872,7 +948,7 @@
 			@char Reya
 			Reya: Well, you got it.
 			Reya: Now why don't you had over that gear? And the ring of course.
-			Reya: It's hodgepodge, but I think I could make an ensamble of it.
+			Reya: It's hodgepodge, but I think I could make an ensemble of it.
 			@char Stranger
 			Stranger: No.
 			@char Reya
@@ -904,16 +980,12 @@
 			@char Stranger
 			Stranger: It's Steve.
 			@char Sara
-			Sara: So Steve, shall we go to the celibration?
+			Sara: So Steve, shall we go to the celebration?
 			@char Steve
 			Steve: Sure, why not?
 		@endif
 
-		;fadetoblack
-
-
 		@exit
-
 		
 		#day12
 		@if GetPerfect()
@@ -964,7 +1036,7 @@
 		@char Pendleton
 		Pendleton: Not it.
 		@char Wilson
-		Wilson: Certainly, we'll help how we can, but now, let's just celibrate!
+		Wilson: Certainly, we'll help how we can, but now, let's just celebrate!
 
 		@wait 2
 
@@ -1097,14 +1169,9 @@
 
 		Jezerine: I would only hurt them.[br]It's better this way.
 
-
-
 		@endif
 
-
-
 		@exit
-
 
 
 		#day13
@@ -1124,7 +1191,7 @@
 		Wilson: It's okay, you're back. Everything else can wait.
 
 		@char Murtough
-		Murtough: Now doesn't that just warms and old soldiers heart.
+		Murtough: Now doesn't that just warms and old soldier's heart.
 		@char Patrick
 		Patrick: Where have you been? We were getting scared that you...
 		@char Murtough
@@ -1134,7 +1201,7 @@
 		@char Mara
 		Mara: I'll drink to that! Come on, my treat.
 		@char Murtough
-		Murtough: Thats very kind of you, but I think I'll pass.
+		Murtough: That's very kind of you, but I think I'll pass.
 		@char Mara
 		Mara: You will?
 		@char Murtough
@@ -1165,7 +1232,7 @@
 		Murtough: Sure I did.
 		Murtough: Not like you sent in any soldiers before.
 		Murtough: Just a bunch of the old, the hopeful, and the helpless.
-		Murtough: They're aways the first to go anyway.
+		Murtough: They're always the first to go anyway.
 
 		@if GetDouglass()
 			@char Douglass
@@ -1194,10 +1261,10 @@
 
 		@char Murtough
 		Murtough: So, we going to celebrate or what?
-		Murtough: Feels like its been ages since I had a good drink.
+		Murtough: Feels like it has been ages since I had a good drink.
 
 		@char Nelson
-		Nelson: Yes, I suppose there is a cause for celibration.
+		Nelson: Yes, I suppose there is a cause for celebration.
 		Nelson: I shall make preparations.
 		@char Murtough
 		Murtough: Good man.
@@ -1216,13 +1283,13 @@
 		@char Svenra
 		Svenra: I Don't think they let you out just so you could sit here instead.
 		@char JohnDoe
-		JohnDoe: Yeah yeah, I'm gonna be on my way soon eough.
+		JohnDoe: Yeah yeah, I'm gonna be on my way soon enough.
 		JohnDoe: But I'm gonna make sure I give him a piece of my mind first.
 		@char Paul
 		Paul: What are you going to do?
 		@char JohnDoe
 		JohnDoe: You kidding? I hear he can actually fight back now.
-		JohnDoe: That means this pummeling's gonna actaully mean something.
+		JohnDoe: That means this pummeling's gonna actually mean something.
 
 		@wait 2
 		
@@ -1233,7 +1300,7 @@
 		Paul: Thank you kindly.
 		@char JohnDoe
 		JohnDoe: Yeah, whatever.
-		JohnDoe: So what are you even waiting for?
+		JohnDoe: So, what are you sticking around for?
 		JohnDoe: Bet it ain't my scintillating conversation.
 		@char Paul
 		Paul: Somebody's got to play referee.
@@ -1243,9 +1310,6 @@
 		@wait 2
 
 		JohnDoe: He better not have let someone else kill him.
-
-
-		
 
 		@endif
 
@@ -1353,7 +1417,7 @@
 		Tedd: That those things, they used to be people.
 		Tedd: They all had jobs to do, people who loved them.
 		@char Tristana
-		Tristana: But, they were dead before you got there. So it wasn't—
+		Tristana: But they were dead before you got there. So it wasn't—
 		Tedd: Not all of them.
 		@char Tristana
 		Tristana: Um, a few days ago I remember you talking about restoring the town. Do you have any plans to—
@@ -1371,7 +1435,7 @@
 		@char Tedd
 		Tedd: Do you need me to sit for a picture?
 		@char Tristana
-		Tristana: No, I don't think that will be nessissary.
+		Tristana: No, I don't think that will be necessary.
 
 
 		@endif
@@ -1408,7 +1472,7 @@
 		Norma: You missed a good party.
 		@char Svenra
 		Svenra: So, you find enough treasure down there?
-		Phillip: Oh there's plenty down there. More than enough to get the town going again if we use it smartly.
+		Phillip: Oh! There's plenty down there. More than enough to get the town going again if we use it smartly.
 		Phillip: But I wasn't coming out till I found something... priceless.
 
 		@wait 0.5
@@ -1429,7 +1493,7 @@
 
 		@if GetPendleton()
 			@char Pendleton
-			Pendleton: It's a hand-and-a-half sword. More commonly reffered to as—
+			Pendleton: It's a hand-and-a-half sword. More commonly referred to as—
 		@else
 			@char Jezerine
 			Jezerine: It's got to be something right? Look at the carvings on the blade!
@@ -1477,7 +1541,7 @@
 		Wilson: Perhaps this is a job for a professional appraiser?
 
 		@char Phillip
-		Phillip: What? You want to pay their comission?
+		Phillip: What? You want to pay their commission?
 		Phillip: It's not about what it's worth.[br]It's about what customers are willing to pay.
 
 		@if GetDerringer()
@@ -1487,7 +1551,7 @@
 
 		@char Tedd
 		Tedd: It is getting a bit late though.
-		Tedd: Can we pick up again tommorrow?
+		Tedd: Can we pick up again tomorrow?
 
 		@char Phillip
 		Phillip: You all can go. I'll finish up things here.
@@ -1525,7 +1589,7 @@
 		Phillip: You have to seize whatever you can without hesitation.
 		
 		@char Paul
-		Paul: So you're just leaving?
+		Paul: So, you're just leaving?
 		@char Phillip
 		Phillip: I only planned to stay till there was loot. Which worked out better than I had imaigned.
 		Phillip: Thanks for the motivation. Probably wouldn't have made it through without your help.
@@ -1664,7 +1728,7 @@
 			@char Logos
 			Logos: Just... so very tired.
 			@char Patrick
-			Patrick: We'll have a celibration ready for you when you're up to it.
+			Patrick: We'll have a celebration ready for you when you're up to it.
 			@char Logos
 			Logos: Yes yes, I'll get around to it.
 		@elseif GetWorst()
@@ -1716,7 +1780,7 @@
 		@char Jinn
 		Jinn: He was a little monster, as always.
 		@char Paul
-		Paul: But a good little monster right?
+		Paul: But a good little monster, right?
 		@char Darius
 		Darius: Papa, I didn't get slime on anybody today!
 		@char Paul
@@ -1742,7 +1806,7 @@
 		Darius: Dad, am I ever going to look like the other kids?
 		@char Paul
 		Paul: I don't know Son.[br]Miss Fluer said that bones usually... don't shrink.
-		Paul: But you never know. Mr Logos is finding neat stuff in that cave all the time.
+		Paul: But you never know. Mister Logos is finding neat stuff in that cave all the time.
 		@char Darius
 		Darius: When I grow up, will I live in a dungeon and guard treasure?
 		@char Paul
@@ -1795,7 +1859,7 @@
 		@char Darius
 		Darius: Why do we have to go?
 		@char Paul
-		Paul: When people see you it will...
+		Paul: When people see you, it will...
 		Paul: It will bring back bad memories.
 		@char Darius
 		Darius: I'm hungry dad. I can't eat these vegetables.
@@ -1815,7 +1879,7 @@
 
 		Bartholomew: Come on Hans, they said we shouldn't be here.
 		Hans: We're not going in. You just have to get near it.
-		Gretta: Come on, it's the only way we can proove he's lying.
+		Gretta: Come on, it's the only way we can prove he's lying.
 		Hans: I'm not lying! I heard it!
 		Gretta: Yeah right.
 		Hans: I was standing right here, next to the entrance, and I heard it.
@@ -1825,7 +1889,7 @@
 		Hans: Just be quiet! We could be missing it because you won't shut up!
 		Gretta: I won't shut up? You're the one blabbering so you can make excuses later.
 		Bartholomew: Guys?[br]I think I hear it.
-		Gretta: No you don't.
+		Gretta: No, you don't.
 		Hans: Would you just listen?
 
 		@wait 2
@@ -1871,7 +1935,7 @@
 		@char Jinn
 		Jinn: So far, just a lot of questions about things I wasn't paying attention to while running for my life.
 		@char Tristana
-		Tristana: Well, I'm sure they'll come up with something eventaully.
+		Tristana: Well, I'm sure they'll come up with something eventually.
 
 		@wait 1
 
@@ -1900,7 +1964,7 @@
 		Jinn: I can do them because I want to.[br]Not because my survival depends on it.
 		Jinn: I could stop now, and not... die.
 		@char Tristana
-		Tristana: That's a bit of an extreeme way to say it, isn't it?
+		Tristana: That's a bit melodramatic, isn't it?
 		@char Jinn
 		Jinn: Maybe you think so now, but give it a decade or two.
 		@char Tristana
@@ -1914,7 +1978,7 @@
 		Years later, in class...
 
 		@char Jinn
-		Jinn: Now these caves, or chambers, are being found more and more thoughout the world. We had one in our own city not long ago.
+		Jinn: Now these caves, or chambers, are being found more and more throughout the world. We had one in our own city not long ago.
 		Jinn: Since then, we've figure out that these chambers were built to—
 
 		@char Hans
@@ -1980,7 +2044,10 @@
 
 		Tristana: Can... can you just say something?
 		Tristana: Anything! Please!
-		;-Door opening sound-
+		Tristana: I'm coming in!
+
+		@wait 1
+
 		Tristana: Jinn! No!
 
 		@endif
@@ -2001,7 +2068,7 @@
 		@char Pendleton
 		Pendleton: I believe there are a few more.
 		@char Meyster
-		Meyster: Then we return! One does not celibrate until the deed is done.
+		Meyster: Then we return! One does not celebrate until the deed is done.
 		@char Pendleton
 		Pendleton: If you are up to it sire.[br]I'm sure there are others who can take it from here.
 		@char Meyster
@@ -2024,13 +2091,13 @@
 
 		@char Pendleton
 		Pendleton: I know things have not always been the best between us.
-		Pendleton: You try to hard to hold onto the past, and your grip... squishes it.
+		Pendleton: You try too hard to hold onto the past, and your grip... squishes it.
 		@char Meyster
 		Meyster: Squishes?
 		@char Pendleton
 		Pendleton: I... yes, squishes.
 		Pendleton: You make it seem smaller, disfigured, and shaped too much by your hands.
-		Pendleton: You have been a great knight. And I know you can still be great, but perhaps not weilding a sword.
+		Pendleton: You have been a great knight. And I know you can still be great, but perhaps not wielding a sword.
 		@char Meyster
 		Meyster: Aye, that is probably true.
 		@char Pendleton
@@ -2157,12 +2224,12 @@
 		Meyster: Some even sounded like them.
 		Meyster: Tried to fool me. Said they weren't monsters.
 		Meyster: No doubt they would have infiltrated our good society.[br]If I hadn't put an end to them.
-		Meyster: We must be vigilent. Some of their corruption may have already spread.
+		Meyster: We must be vigilant. Some of their corruption may have already spread.
 		@char Wilson
 		Wilson: You... you are done. You can rest now.
 		@char Meyster
 		Meyster: Now? When the victory is so close?
-		Meyster: If even one escapes it would be a tradgedy!
+		Meyster: If even one escapes it would be a tragedy!
 		@char Wilson
 		Wilson: There are no monsters here. You have won.
 		@char Meyster
@@ -2206,7 +2273,7 @@
 		Reya: Thanks to me things will start getting back to normal around here.
 		Reya: Which means it's time for me to leave.
 		@char Nelson
-		Nelson: The rest of the village will not be returning today.[br]Perhaps you could stay for a short celibration?
+		Nelson: The rest of the village will not be returning today.[br]Perhaps you could stay for a short celebration?
 		@char Phillip
 		Phillip: You don't have to of course...
 		@char Reya
@@ -2258,7 +2325,7 @@
 		@char Patrick
 		Patrick: Hey, the way I see it, we were looking for someone to come save us.
 		Patrick: And someone did.
-		Patrick: So, let's have a bit of celibration for our hero.
+		Patrick: So, let's have a bit of celebration for our hero.
 
 		@char Nelson
 		Nelson: That does seem prudent.
@@ -2276,12 +2343,12 @@
 
 		@if GetMara()
 			@char Mara
-			Mara: Alright. If my bar's still standing I say we get some drinks.
+			Mara: Alright. If my bar's still standing, I say we get some drinks.
 			Mara: I don't know about you lot, but I could use one.
 		@endif
 
 		@char Reya
-		Reya: You know  what?[br]I think I'd like to see you celibrate my accomplishments.
+		Reya: You know what?[br]I think I'd like to see you celebrate my accomplishments.
 		Reya: It'll be a nice change of pace.
 
 
@@ -2323,7 +2390,7 @@
 		Reya: From now on I go after kings, and get paid to do it.
 		Reya: Enjoy farming, or whatever it is you do.
 		@char Fluer
-		Fluer: So you're just going to leave us with nothing?
+		Fluer: So, you're just going to leave us with nothing?
 		@char Reya
 		Reya: Hey, I gave you your lives. Be thankful.
 		@char Fluer
@@ -2335,12 +2402,6 @@
 		@char Reya
 		Reya: Good girl.
 		Reya: You won't see me again, but this won't be the last time my deeds change your life.
-
-
-
-
-
-
 
 		@endif
 
@@ -2370,9 +2431,9 @@
 		@char Wilson
 		Wilson: Nothing to worry about there. 
 		Wilson: The rest of the staff has started to return, and they know how to take care of things.
-		Wilson: I would say that you have earened a vacation.[br]I just thought you might spend it somewhere a little more pleasant.
+		Wilson: I would say that you have earned a vacation.[br]I just thought you might spend it somewhere a little more pleasant.
 		@char Nelson
-		Nelson: When I first charged through these runes I saw horror[br]And yet...
+		Nelson: When I first charged through these runes, I saw horror[br]And yet...
 		Nelson: There were places where the old architecture shone though.
 		Nelson: Intact despite the decay and corruption.
 		Nelson: This must have been a beautiful place once.
@@ -2419,7 +2480,7 @@
 			Nelson: Was he selling his wares to support himself?[br]Or a family that will never see his return?
 		@elseif !GetPendleton()
 			Nelson: The young squire may not have been from our town.
-			Nelson: But I feel it fitting that he have a place here now.
+			Nelson: But I feel it fitting that he has a place here now.
 		@endif
 
 		@if !GetSara()
@@ -2500,7 +2561,7 @@
 		@if GetPerfect()
 
 		@char JohnDoe
-		JohnDoe: Alright ya louts, get on outa there.
+		JohnDoe: Alright ya louts, get on outta there.
 		@char McDermit
 		McDermit: Thank you sir. We couldn't have made it without you.
 		@char JohnDoe
@@ -2526,7 +2587,7 @@
 		@char JohnDoe
 		JohnDoe: Eh, fine. Nice to have somebody believe in me for once.
 		@char Meyster
-		Meyster: You know young man. With your spirit and skill you could be a fine knight if you chose to be.
+		Meyster: You know young man. With your spirit and skill, you could be a fine knight if you chose to be.
 		@char JohnDoe
 		JohnDoe: Huh, too bad I didn't choose to then.
 
@@ -2586,7 +2647,7 @@
 
 		@if GetTodd()
 			@char Todd
-			Todd: Oh dark lord, I have failed you!
+			Todd: Oh dark lord! I have failed you!
 			@char JohnDoe
 			JohnDoe: Get over it kid.
 		@endif
@@ -2616,11 +2677,11 @@
 
 		@if GetMara()
 			@char Mara
-			Mara: Would you like a sweetroll?
+			Mara: Would you like a sweet roll?
 			@char JohnDoe
 			JohnDoe: No thanks.
 			@char Mara
-			Mara: Oh come now, you have to try some of our signature sweetrolls.
+			Mara: Oh come now, you have to try some of our signature sweet rolls.
 			@char JohnDoe
 			JohnDoe: Get out of my way!
 			@char Mara
@@ -2677,7 +2738,7 @@
 			Patrick: Um, disease?
 			@char Fluer
 			Fluer: Yes! I think so.
-			Fluer: Illness has been supressed in this town, and I think that place has something to do with it!
+			Fluer: Illness has been suppressed in this town, and I think that place has something to do with it!
 			Fluer: But the illness sat in there, soaking up magic, until it couldn't be contained.
 			Fluer: Or something...[br]I have a lot of work ahead of me.
 		@elseif !GetPerfect()
@@ -2690,7 +2751,7 @@
 		@char Fluer
 		Fluer: Only if I can work on my samples...[br]See how fast this is decomposing?
 		@char Paul
-		Paul: Yeah, um, we'll save you a plate.
+		Paul: Yes, um, we'll save you a plate.
 
 		@char Wilson
 		Wilson: Well, that doesn't seem right.
@@ -2726,7 +2787,7 @@
 		@char Tasha
 		Tasha: Okay darling, let's all calm down. Come on out of there and let's all get something to eat.
 		@char Fluer
-		Fluer: I can't come out. This entire cavern needs to be under quarentine until I understand what's going on here.
+		Fluer: I can't come out. This entire cavern needs to be under quarantine until I understand what's going on here.
 		Fluer: I will need my tools. Just leave them at the entrance and I will retrieve them.
 		@char Metra
 		Metra: Is anyone else in there?
@@ -2792,13 +2853,10 @@
 		Tasha: The loss of any one person diminishes us all.
 
 		@if !GetDerringer()
-			Tasha: Our infastructure.
+			Tasha: Our infrastructure.
 		@elseif !GetNorma()
-			Tasha: Our infastructure.
+			Tasha: Our infrastructure.
 		@endif
-
-
-
 
 		@if !GetSara()
 			Tasha: Our homes.
@@ -2810,14 +2868,14 @@
 		Tasha: Even out very souls.
 		@endif
 
-		Tasha: So any time you want to complain about the grueling training.
+		Tasha: So, any time you want to complain about the grueling training.
 		Tasha: The long hours.
 		Tasha: Or my bad attitude.
 		Tasha: I want you to do something.
-		Tasha: When you stagger home, before you collapse into your bed I want you to take a moment to look out your window.
+		Tasha: When you stagger home, before you collapse into your bed, I want you to take a moment to look out your window.
 		Tasha: And When you see your neighbor out going for a walk.
 		Tasha: Or buying some worthless nick-nack.
-		Tasha: I want you to feel pride in your heart. To know that they can live their lives, not even thinking about the things you have to do.
+		Tasha: I want you to feel pride in your heart. To know that they can live their lives, not even thinking about the things you must do.
 
 		@wait 1
 
@@ -2854,11 +2912,11 @@
 		Fluer: I can't believe you defeated the curse!
 		Fluer: No offense, I mean...
 		@char Metra
-		Metra: Oh it's okay. I don't always save the day. Usually it's someone else.
+		Metra: Oh, it's okay. I don't always save the day. Usually, it's someone else.
 		@char Fluer
 		Fluer: Usually?
 		@char Metra
-		Metra: There are thirty of us after all. Usually I don't even get a chance to try.
+		Metra: There are thirty of us after all. Usually, I don't even get a chance to try.
 		@char Fluer
 		Fluer: I don't understand. We all saw you go in.
 		@char Metra
@@ -2866,7 +2924,7 @@
 		Metra: I'm glad I get to be experiencing this one though. It has been very exciting.
 		@char Fluer
 		Fluer: Experiencing this one?
-		Fluer: Let me take a look at you, I think you might have hit your head. I'll go get my treppaning kit.
+		Fluer: Let me take a look at you, I think you might have hit your head. I'll go get my trepanning kit.
 
 		@char Metra
 		Metra: No, stay. We can talk about something right? How are folks recovering?
@@ -2875,7 +2933,7 @@
 		Fluer: Why are you so nervous?
 		@char Metra
 		Metra: Because...
-		Metra: Because the interseting part is almost over.
+		Metra: Because the interesting part is almost over.
 		Metra: And I don't know if anything comes after this.
 
 		@elseif !GetWorst()
@@ -2920,7 +2978,7 @@
 		@elseif !GetMcDermit()
 		Metra: Was McDermit blocking that chest to stop us, or because it wasn't worth our time?
 		@elseif !GetMelvardius()
-		Metra: Doesn't Melvardius always tell us that overcoming our obstacles is better than removing them?
+		Metra: Didn't Melvardius always tell us that overcoming our obstacles is better than removing them?
 		@endif
 
 		@if !GetDevon()
@@ -2940,7 +2998,7 @@
 		@char Logos
 		Logos: Tragic as it may be, we cannot always be perfect.
 		@char Meyster
-		Meyster: Indeed, Let us look to the future.
+		Meyster: Indeed, let us look to the future.
 
 		@char Metra
 		Metra: No.
@@ -3043,7 +3101,7 @@
 		@char Wilson
 		Wilson: Of course, everyone has a place after all.
 		Wilson: It's just... like a puzzle.
-		Wilson: Like a puzzle with a few peices missing.
+		Wilson: Like a puzzle with a few pieces missing.
 
 		Tedd: Dad...
 
@@ -3099,13 +3157,13 @@
 			Wilson: The mayor wouldn't care.
 			Wilson: It's one less troublemaker.
 			Tedd: Dad...
-			Wilson: No more rabbel-rousing.
+			Wilson: No more rabble-rousing.
 			Wilson: No more... no more...
 			Tedd: Be the mayor tomorrow.
 			Tedd: For now, just be a father.
 			Wilson: I... can try.
 		@else
-			Wilson: Surely I can live with that?
+			Wilson: Surely, I can live with that?
 			Tedd: Maybe, just be a citizen for now.
 			Tedd: And we'll get through this together.
 		@endif
@@ -3116,24 +3174,24 @@
 		@elseif GetWorst()
 
 		@char Wilson
-		Wilson: ...and that concludes the minutes of our pervious meeting.
+		Wilson: ...and that concludes the minutes of our previous meeting.
 		Wilson: Does anyone have something to add?
 
 		@wait 1
 
 		Wilson: Very well. Moving forward.
-		Wilson: At the conclusion of our previous meeting a comitte was organized to consider the future course of our fair town.
+		Wilson: At the conclusion of our previous meeting a committee was organized to consider the future course of our fair town.
 		Wilson: The merits of reconstruction were to be weighed against the idea of shuttering the community.
 
 		@wait 1
 
-		Wilson: Calm down everyone. This is still in the committe stage.
+		Wilson: Calm down everyone. This is still in the committee stage.
 		Wilson: Nothing has to be decided right away.
 		Wilson: The argument for shuttering the town is that we currently lack the population to consider ourselves a village, lackluster leadership, and the proximity of a dangerous cave.
 		Wilson: The benefits of restoring the town are a return of economic activity, increased numbers to defend against external threats, and companionship.
 		Wilson: The cons of shuttering are that we would need to start over somewhere else as refugess.
 		Wilson: The cons of re-opening our town is that we will be called to account for our crimes by our former friends and neighbors.
-		Wilson: We will not undertake a preliminary vote to guage local support.
+		Wilson: We will not undertake a preliminary vote to gauge local support.
 		Wilson: For reconstruction?[br]Against?
 
 		@wait 2
@@ -3162,7 +3220,7 @@
 		@char Svenra
 		Svenra: I gave back the ring.
 		@char Melvardius
-		Melvardius: Yes, that is what emboldened me to inqure of the rest of them.
+		Melvardius: Yes, that is what emboldened me to inquire of the rest of them.
 		@char Svenra
 		Svenra: I don't know what you're talking about.
 		Svenra: I got nothing for you.
@@ -3220,13 +3278,13 @@
 			Svenra: You lot are lucky Mara's still around.
 			Svenra: Doubt any of you even knows what goes into her drinks.
 			@char Murtough
-			Murtough: I just figgure we don't want to know.
+			Murtough: I just figure we don't want to know.
 			@char Mara
 			Mara: He ain't wrong.
 		@else
 			@char Svenra
 			Svenra: The place isn't going to be the same without her.
-			Svenra: Did she get around to telling anyone her secret recipies?
+			Svenra: Did she get around to telling anyone her secret recipes?
 			@char Murtough
 			Murtough: She never was big on writing stuff down.
 		@endif
@@ -3259,7 +3317,7 @@
 			Svenra: Used to let her take naps in my cottage where folks couldn't see her.[br]Poor thing.
 		@elseif !GetDerringer()
 			Svenra: I'm not going to miss that blacksmith's hammering.
-			Svenra: But I always thought those nicknacks he put together were nice.
+			Svenra: But I always thought those nick-nacks he put together were nice.
 		@endif
 
 		@if !GetMelvardius()
@@ -3302,7 +3360,7 @@
 		@char Elder
 		Elder: Ah! Svenra you're looking...[br]Well.
 		@char Svenra
-		Svenra: So good of ya' to notice.
+		Svenra: So good of ya to notice.
 		Svenra: Are you lot done packing yet?
 		@char Patrick
 		Patrick: Packing?
@@ -3323,7 +3381,7 @@
 		@char Svenra
 		Svenra: As they were? Nah.
 		Svenra: I think I like them better this way.
-		Svenra: They're my kind of people. Tireless, obediant.
+		Svenra: They're my kind of people. Tireless, obedient.
 		Svenra: And most of all, quiet.
 
 
@@ -3336,11 +3394,6 @@
 
 		
 		#day28
-
-		;Best: leaves to bring people back
-		;Medi: leaves to spread news
-		;Wors: just leaves, you guys coming?
-
 
 		@if GetPerfect()
 		Soon, at the entrance...
@@ -3375,7 +3428,7 @@
 		@wait 1
 
 		@char Patrick
-		Patrick: The doctor. She has to have some gurneys around, right?
+		Patrick: The doctor. She must have some gurneys around, right?
 		@char Elder
 		Elder: I'll go look.
 		@char Patrick
@@ -3385,7 +3438,7 @@
 		@char Tristana
 		Tristana: On it.
 		@char Patrick
-		Patrick: I'm going back in. I can get a few.[br]We'll have to prioitize finding the people who can help.
+		Patrick: I'm going back in. I can get a few.[br]We'll have to prioritize rescuing the people who can help.
 		Patrick: But...
 		@char Tristana
 		Tristana: Hey, we're going to get them all out. You can do it.
@@ -3446,7 +3499,7 @@
 
 		@char Patrick
 		Patrick: Yeah, I know.
-		Patrick: Of course none of it was my fault.
+		Patrick: Of course, none of it was my fault.
 		Patrick: But... if you lost a patient to consumption.[br]It would hurt.
 		Patrick: Even if it wasn't your fault.
 
@@ -3494,9 +3547,9 @@
 		Years later, wherever...
 
 		@char Jinn
-		Jinn: I don't know about this one. The writer wins?[br]Seems a little self-indulgent.
+		Jinn: I don't know about this one. The writer saves the day?[br]Seems a little self-indulgent.
 		@char Tristana
-		Tristana: If people want to see the knight save the day I have plenty of other novels they can read.
+		Tristana: If people want to see the knight slay the monster, I have plenty of other novels they can read.
 		Tristana: Too many really.
 		@char Jinn
 		Jinn: Starting to feel like you're in a rut?
@@ -3518,7 +3571,7 @@
 		@char Tristana
 		Tristana: Oh? I wouldn't have expected that. Have you read the one about the schoolteacher?
 		@char Jinn
-		Jinn: I've read all of them, but that character was a little too... relateable. 
+		Jinn: I've read all of them, but that character was a little too... relatable. 
 		Jinn: Well, I've read almost all of them.
 		Jinn: I haven't been able to get my hands on the one about the cultist.
 		@char Tristana
@@ -3566,7 +3619,7 @@
 			Tristana: No offense.
 		@else
 			@char Tristana
-			Tristana: What about that myterious hunter who came to town?
+			Tristana: What about that mysterious hunter who came to town?
 			Tristana: Like, I probably shouldn't make stuff up, but we really don't know anything about that guy.
 		@endif
 
@@ -3642,7 +3695,7 @@
 
 		@char Douglass
 		Douglass: I feel like something was left undone.
-		Douglass: Maybe if I head back I can find it.
+		Douglass: Maybe if I head back, I can find it.
 		@char Todd
 		Todd: Oh, you're here too?
 		@char Douglass
@@ -3715,7 +3768,7 @@
 				Todd: Silence! I will show you the power I have been given!
 				Todd: Haha! You see! With this slime, this plasm, I will— AH!
 				@char Melvardius
-				Melvardius: That's enough of that.
+				Melvardius: No, I do not think you will.
 
 				@char Stranger
 				Stranger: Has that preacher always had ice powers?
@@ -3726,7 +3779,7 @@
 				@char Todd
 				Todd: How... did you?
 				@char Melvardius
-				Melvardius: The cave has certainly had an effect on us.
+				Melvardius: The cave has certainly influenced us.
 				Melvardius: But perhaps we should not attribute it to either of our patrons.
 				@char Todd
 				Todd: No... I'm right. This will finally show that.
@@ -3735,7 +3788,7 @@
 				@char Todd
 				Todd: You can't do that!
 				@char Melvardius
-				Melvardius: Go home Todd. Your father worrys for you. He has for some time.
+				Melvardius: Go home Todd. Your father worries for you. He has for some time.
 				@char Todd
 				Todd: This isn't over!
 				@char Melvardius
@@ -3785,7 +3838,7 @@
 		Fluer: I feel like there must have been some connection.
 
 		@char JohnDoe
-		JohnDoe: I think you're just seeing things corralatin' instead of causatin'.
+		JohnDoe: I think you're just seeing things correlatin' instead of causatin'.
 
 		@char Mara
 		Mara: Folks got better eventually, right?
@@ -3813,7 +3866,7 @@
 		Fluer: Hey! Let go!
 
 		@char Mara
-		Mara: Oh relax honey. You'll like the new recipie.
+		Mara: Oh, relax honey. You'll like the new recipe.
 		Mara: And, once you lift the quarantine, so will everyone else.
 		
 
@@ -3877,7 +3930,7 @@
 		Elder: Now we seek for more.[br]No longer content with the meager power of the cavern.
 
 		Elder: We will find more of these places, and delve to unlock their secrets.
-		Elder: Those who resist us will succomb, or be faced with annihilation. 
+		Elder: Those who resist us will succumb, or be faced with annihilation. 
 
 		Elder: The city marches.
 
