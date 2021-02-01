@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class EndRunScreenController : MonoBehaviour
     public Sprite carryOnOn;
     public Sprite carryOnOff;
     public Canvas canvas;
+    public TextMeshProUGUI levelUpText;
 
     private int weaponCutoff;
     private int armorCutoff;
@@ -105,6 +107,16 @@ public class EndRunScreenController : MonoBehaviour
             }
         }
         content.sizeDelta = new Vector2(0, -25 * GameData.Instance.itemsFoundThisRun.Count);
+        GameObject gameState = GameObject.Find("GameStateData");
+        if (gameState != null) {
+            CharacterStats charStats = gameState.GetComponent<CharacterStats>();
+            if (charStats != null)
+            {
+                levelUpText.text = charStats.charName +" Gained \n"+ charStats.Level + " Levels" ;
+            }
+        }
+
+
     }
 
     // Update is called once per frame

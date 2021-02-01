@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1699,12 +1699,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5515415379851588917, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463955122688461023, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2593004536559010741, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5502947213680399574, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719792749757058303, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -1727,16 +1742,6 @@ PrefabInstance:
     - target: {fileID: 4898377835807072795, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515415379851588917, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463955122688461023, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344176989764203060, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
@@ -22032,6 +22037,7 @@ MonoBehaviour:
   prePressed: 0
   playParticlesOnSwitchUndo: 0
   timerSwitch: 0
+  map1_3Switch: 0
   lightning: 0
   fire: 1
   earth: 0
@@ -22134,6 +22140,7 @@ MonoBehaviour:
   prePressed: 0
   playParticlesOnSwitchUndo: 0
   timerSwitch: 0
+  map1_3Switch: 0
   lightning: 0
   fire: 0
   earth: 1
@@ -22280,6 +22287,7 @@ MonoBehaviour:
   prePressed: 0
   playParticlesOnSwitchUndo: 0
   timerSwitch: 0
+  map1_3Switch: 0
   lightning: 0
   fire: 0
   earth: 0
@@ -22396,6 +22404,7 @@ MonoBehaviour:
   prePressed: 0
   playParticlesOnSwitchUndo: 0
   timerSwitch: 0
+  map1_3Switch: 0
   lightning: 1
   fire: 0
   earth: 0
@@ -22449,6 +22458,7 @@ MonoBehaviour:
   prePressed: 0
   playParticlesOnSwitchUndo: 0
   timerSwitch: 0
+  map1_3Switch: 0
 --- !u!114 &5586922833633007399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22484,6 +22494,7 @@ MonoBehaviour:
   prePressed: 0
   playParticlesOnSwitchUndo: 0
   timerSwitch: 0
+  map1_3Switch: 0
 --- !u!114 &5586922833794685603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22523,6 +22534,7 @@ MonoBehaviour:
   prePressed: 0
   playParticlesOnSwitchUndo: 0
   timerSwitch: 0
+  map1_3Switch: 0
 --- !u!114 &8507605489770229810
 MonoBehaviour:
   m_ObjectHideFlags: 0
