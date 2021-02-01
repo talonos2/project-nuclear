@@ -35,6 +35,8 @@ public class OptionScreenController : MonoBehaviour
     public Transform[] sliders;
     private TextPrinterManager printerMngr;
 
+    private bool youAreAllowedToBeCalledFromHere = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +55,9 @@ public class OptionScreenController : MonoBehaviour
             switch (currentMenuOptionSelected)
             {
                 case 0: //Keybindings
+                    youAreAllowedToBeCalledFromHere = true;
                     this.SwitchKeybinds();
+                    youAreAllowedToBeCalledFromHere = false;
                     break;
                 case 1: //Music
                     break;
@@ -279,6 +283,10 @@ public class OptionScreenController : MonoBehaviour
 
     public void SwitchKeybinds()
     {
+        if (!youAreAllowedToBeCalledFromHere&& FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
+        {
+            return;
+        }
         if (FWInputManager.Instance.IsWASD())
         {
             GameData.Instance.sneakyKeyMap = KeymapType.ARROWS;
