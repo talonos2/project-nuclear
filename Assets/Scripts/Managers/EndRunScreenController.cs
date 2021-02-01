@@ -76,7 +76,8 @@ public class EndRunScreenController : MonoBehaviour
             ItemHolderUI newItemHolder = GameObject.Instantiate(templateToCopy);
             newItemHolder.SetItem(GameData.Instance.itemsFoundThisRun[x], false);
             newItemHolder.transform.SetParent(content);
-            newItemHolder.GetComponent<RectTransform>().localPosition = new Vector3(0, y++ * 25);
+            y++;
+            newItemHolder.GetComponent<RectTransform>().localPosition = new Vector3(0, y * 25);
             newItemHolder.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             if (newItemHolder.GetItem() is Weapon)
             {

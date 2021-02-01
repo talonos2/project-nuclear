@@ -34,7 +34,7 @@ Children of the Conquerors - Kill [x] monsters (10x what's needed for a typical 
 
 public enum FWBoolAchievement { KILL_VILLAGER, UNLOCK_SHORTCUT, RETURN_ITEM_ON_TIME, FIND_RARE_ITEM, LOSE_DOUGLAS,
 WIN_GAME, LOSE_GAME, WIN_GAME_NO_VILLAGE_KILLS, WIN_GAME_AS_ELDER, WIN_GAME_AS_TODD, GET_ICE, GET_EARTH, GET_FIRE, GET_AIR, KILL_ZONE_5_IN_ONE_SHOT,
-EQUIP_BEST_RARE_ITEM, KILL_TODD_AS_TEDD, KILL_PENDLETON_AS_MEYSTER, COMPLETE_LEVEL_FAST }
+EQUIP_BEST_RARE_ITEM, KILL_TODD_AS_TEDD, KILL_PENDLETON_AS_MEYSTER, COMPLETE_LEVEL_FAST, HAS_SWEATER}
 
 public enum FWStatAchievement
 {
@@ -85,6 +85,8 @@ public static class AchievementExtensions
                 return "KILL_PENDLETON_AS_MEYSTER";
             case FWBoolAchievement.COMPLETE_LEVEL_FAST:
                 return "COMPLETE_LEVEL_FAST";
+            case FWBoolAchievement.HAS_SWEATER:
+                return "HAS_SWEATER";
             default:
                 throw new UnityException("Bad Achievement String.");
         }

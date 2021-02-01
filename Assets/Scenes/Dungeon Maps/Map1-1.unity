@@ -1323,7 +1323,6 @@ MonoBehaviour:
   gabText2: You inherited the ice power from your predecessor. Toggle Ice Power on
     and off with the Left and Right arrow keys. You deal extra ice damage when it's
     on.
-  firstTownBackGab: 0
 --- !u!65 &437367257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3116,7 +3115,6 @@ MonoBehaviour:
   activationRequirement: 0
   changesBasedOnControlSceme: 0
   gabText2: 
-  firstTownBackGab: 0
 --- !u!65 &1640809712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3502,7 +3500,6 @@ MonoBehaviour:
   activationRequirement: 1
   changesBasedOnControlSceme: 1
   gabText2: "With Ice toggled on, Press \u2191+W, A, S, or D to use it."
-  firstTownBackGab: 0
 --- !u!65 &1960485503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4385,7 +4382,6 @@ MonoBehaviour:
   activationRequirement: 0
   changesBasedOnControlSceme: 1
   gabText2: Press "R" to rest; this heals but costs 30 seconds.
-  firstTownBackGab: 0
 --- !u!1001 &3128599578103915811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4670,6 +4666,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.0499992
+      objectReference: {fileID: 0}
+    - target: {fileID: 990002066825185337, guid: 615ac0871009d1c4cbb3ce4b6c5255a3,
+        type: 3}
+      propertyPath: floorName
+      value: Icy Portcullis
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615ac0871009d1c4cbb3ce4b6c5255a3, type: 3}
