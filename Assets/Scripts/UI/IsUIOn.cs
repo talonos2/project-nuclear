@@ -41,6 +41,7 @@ public class IsUIOn : MonoBehaviour
         {
             uiToTurnOff.GetComponentInChildren<ShowItemsInMenuController>().HideItemUI();
             uiToTurnOff.GetComponentInChildren<MissingVillagerDropdownController>().HideCharDeathUI();
+            uiToTurnOff.GetComponentInChildren<FloorNameDropdownController>().HideFloorNameUI();
         }
     }
 
