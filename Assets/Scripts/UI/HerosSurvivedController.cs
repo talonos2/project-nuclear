@@ -17,6 +17,7 @@ public class HerosSurvivedController : MonoBehaviour
     public Image trapper;
     public Image blacksmith;
     private float delay = 5;
+    public SwitchMapMusicOnMapStart switchMusicManager;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,7 @@ public class HerosSurvivedController : MonoBehaviour
         {
             FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.WIN_GAME_NO_VILLAGE_KILLS);
         }
+
     }
 
     private void Update()
