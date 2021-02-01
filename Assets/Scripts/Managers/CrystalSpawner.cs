@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +26,15 @@ public abstract class CrystalSpawner
         {
             PowerupEffect pe = GameObject.Instantiate<PowerupEffect>(powerUpEffect, spawningObject.transform.position, Quaternion.identity);
             pe.Initialize(spawningObject.transform.GetChild(0).position, playerData.transform.GetChild(0).GetChild(0), delay, type, hideCrystalSounds);
+        }
+    }
+
+    public static void SpawnLosePowerParticles(int numberOfParticles, float timeBetweenEffects, GameObject spawningObject, LosePowerInBossRoomEffect effect, GameObject endingObject, ElementalPower type, Action onComplete)
+    {
+        for (int x = 0; x < numberOfParticles; x++)
+        {
+            LosePowerInBossRoomEffect pe = GameObject.Instantiate<LosePowerInBossRoomEffect>(effect, spawningObject.transform.position, Quaternion.identity);
+            pe.Initialize(spawningObject.transform, endingObject.transform, (x*timeBetweenEffects)+1, (x==0?onComplete:null), type);
         }
     }
 }

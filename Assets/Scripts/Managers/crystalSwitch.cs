@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class crystalSwitch : SwitchEntityData
 {
-    public bool lightning;
-    public bool fire;
-    public bool earth;
-    public bool water;
+    public ElementalPower type;
     public Material cleanSwitchMaterial;
     private bool crystalActivated;
     public GameObject [] bubbleSpwanersToClose;
+    public LosePowerInBossRoomEffect effect;
     // Start is called before the first frame update
     new void Start()
     {
@@ -21,40 +19,44 @@ public class crystalSwitch : SwitchEntityData
 
     }
 
-   
+
 
     override public void ProcessClick(CharacterStats stats)
     {
-        if (crystalActivated == true)return;
-        if (lightning)
+        if (crystalActivated)
         {
-            stats.powersGained = 3;
-            if (stats.currentPower == 4) { stats.currentPower = 3; }
+            return;
         }
-        if (fire)
+        switch (type)
         {
-            stats.powersGained = 2;
-            if (stats.currentPower == 3) { stats.currentPower = 2; }
-            stats.gameObject.GetComponent<CharacterMovement>().TurnHasteOff();
+            case ElementalPower.AIR:
+                stats.powersGained = 3;
+                if (stats.currentPower == 4) { stats.currentPower = 3; }
+                break;
+            case ElementalPower.FIRE:
+                stats.powersGained = 2;
+                if (stats.currentPower == 3) { stats.currentPower = 2; }
+                stats.gameObject.GetComponent<CharacterMovement>().TurnHasteOff();
+                break;
+            case ElementalPower.EARTH:
+                stats.powersGained = 1;
+                if (stats.currentPower == 2) { stats.currentPower = 1; }
+                stats.gameObject.GetComponent<CharacterMovement>().TurnStealthOff();
+                break;
+            case ElementalPower.ICE:
+                stats.powersGained = 0;
+                if (stats.currentPower == 1) { stats.currentPower = 0; }
+                foreach (GameObject i in bubbleSpwanersToClose) { i.SetActive(false); }
+                break;
         }
-        if (earth)
-        {
-            stats.powersGained = 1;
-            if (stats.currentPower == 2) { stats.currentPower = 1; }
-            stats.gameObject.GetComponent<CharacterMovement>().TurnStealthOff();
-
-        }
-        if (water)
-        {
-            stats.powersGained = 0;
-            if (stats.currentPower == 1) { stats.currentPower = 0; }
-            foreach (GameObject i in bubbleSpwanersToClose){ i.SetActive(false); }
-        }        
 
         SoundManager.Instance.PlaySound("crystalAbsorbingPower", 1f);
-        crystalActivated = true;
-        ToggleTiedObjects();
-        brightenCrystal();
+        CrystalSpawner.SpawnLosePowerParticles(100, .01f, stats.gameObject, effect, this.gameObject, type, ()=>
+        {
+            crystalActivated = true;
+            ToggleTiedObjects();
+            brightenCrystal();
+        });
 
     }
 

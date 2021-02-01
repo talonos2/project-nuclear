@@ -411,7 +411,7 @@ public class CharacterMovement : SpriteMovement
     {
         playerStats.AttackCrystalBuff = 0;
         playerStats.AddExp(100000);
-        //playerStats.ShutUpLevelUpper();
+        playerStats.ShutUpLevelUpper();
         playerStats.powersGained = 4;
         playerStats.PushCharacterData();
     }
