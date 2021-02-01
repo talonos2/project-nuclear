@@ -39,7 +39,7 @@ public class SwitchMapMusicOnMapStart : MonoBehaviour
         if (alwaysOn)
         {
             MusicManager.instance.FadeOutMusic(MusicManager.instance.combatMusic, .25f);
-            MusicManager.instance.FadeMusic(combatMusic, .25f, MusicManager.globalMusicVolume);
+            MusicManager.instance.FadeMusic(combatMusic, .25f, .75f);
             MusicManager.instance.SetCombatMusic(combatMusic);
             MusicManager.instance.SyncCombatToPreexistingMusic();
         }
