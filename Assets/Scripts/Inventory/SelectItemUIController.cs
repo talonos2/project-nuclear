@@ -691,6 +691,11 @@ public class SelectItemUIController : MonoBehaviour
     {
         GameState.setFullPause(false);
 
+        if (savedStats.armor.name == "Hand Made Sweater")
+        {
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.HAS_SWEATER);
+        }
+
         StartDungeonRun.StartRun();
     }
 

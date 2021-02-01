@@ -197,8 +197,8 @@
 		
 		#day7
 
-		;@if GetPerfect()
-		Days later, at the church...
+		@if GetPerfect()
+		Days later, in the church...
 		@char Melvardius
 		Melvardius: In ages past the gods were many.[br]Splintered across the cosmos.
 		Melvardius: They were beings of great power and small understanding.
@@ -216,7 +216,7 @@
 		Melvardius: Ahem.
 		Melvardius: I wish to lay a foundation for us to—
 		@char Tristana
-		Tristana: You just smote like a hundred monsters, and you're not even going to talk about it?
+		Jezerine: You just smote, like, a hundred monsters, and you're not even going to talk about it?
 		@char Melvardius
 		Melvardius: While sometimes nessissary, our goal should not be to destroy that which we do not understand.
 		@char Murtough
@@ -231,17 +231,83 @@
 		@char Paul
 		Paul: We do boy, we do.
 
+		@elseif !GetWorst()
+		
 
 
+		@elseif GetWorst()
 
-		;@endif
+		Days later, outside the church...
+
+
+		@char Tedd
+		Tedd: Hey, Melvardius! Jinn! Are you opening up the church again?
+		
+		@Char Melvardius
+		Melvardius: No, Jinn is just helping me pack a few things for my journey.
+		Melvardius: But do not worry.[br]My order will send someone to replace me.
+
+		@char Tedd
+		Tedd: Why? You look like you're all better.
+
+		@Char Melvardius
+		Melvardius: True, my physical wounds have faded surprisingly quickly.
+
+		@char Jinn
+		Jinn: And the rest of you?
+
+		@Char Melvardius
+		Melvardius: Pardon?
+
+		@char Jinn
+		Jinn: I know a too specific answer when I hear one.
+		
+		@char Melvardius
+		Melvardius: You are correct. I fear the true wounds may never heal.
+
+		@char Tedd
+		Tedd: What do you mean?
+
+		@char Melvardius
+		Melvardius: Please do not ask me that. You most of all.
+
+		@char Jinn
+		Jinn: You did what you had to.[br]If you hadn't so many more would have died.
+
+		@char Melvardius
+		Melvardius: Perhaps some day we will see that killers and heroes are the same.
+		Melvardius: I fear that will be the day I cease to seek the Grand Unification.
+
+		@char Jinn
+		Jinn: The people don't think less of you.
+
+		@char Melvardius
+		Melvardius: And therein lies the cruel irony.
+		Melvardius: If I found a community that approved of me...[br]I would not approve of them.
+
+		@char Tedd
+		Tedd: Where are you going?
+
+		@char Melvardius
+		Melvardius: I will go searching.
+
+		@char Tedd
+		Tedd: For what?
+
+		@char Melvardius
+		Melvardius: For a reason to stop searching.
+		Melvardius: I do not know what I will find.[br]If I ever find anything.
+		Melvardius: Now, if you will pardon me, I must be on my way.
+
+
+		@endif
 		
 		@exit
 		
 
 		#day8
 
-		;@if GetPerfect()
+		@if GetPerfect()
 		Days later, at the pub...
 		@char Mara
 		Mara: I don't know about you lot, but I'm in the mood for another round!
@@ -249,7 +315,7 @@
 		@char Murtough
 		Murtough: Always!
 		@char McDermit
-		McDermit: I'm not sure. That last ice cider was a tad, crunchy.
+		McDermit: I'm not sure. That last iced cider was a tad, crunchy.
 		@char Mara
 		Mara: You won't have to worry about that on this batch.
 		Mara: Finally got a still tough enough to run on lava.[br]Let's see what came out of it!
@@ -279,12 +345,88 @@
 		Mara: Don't worry, hun. I'm sure you'll get used to 'em.
 
 
-		;@elseif !GetWorst()
-		;@elseif GetWorst()
+		@elseif !GetWorst()
+
+		@char Mara
+		Mara: medium
 
 
+		@elseif GetWorst()
 
-		;@endif
+		Later, at the bar...
+
+		@char Paul
+		Paul: I didn't expect to see you here.
+
+		@char Mara
+		Mara: You should've.[br]I work here.
+		Mara: Can I get you something?
+
+		@char Paul
+		Paul: I'm not looking for a drink right now.
+
+		@char Mara
+		Mara: I think you're in the wrong place then.
+
+		@wait 1
+
+		@char Paul
+		Paul: That's it? You're just going to go back to work?
+		Paul: After all that happened?[br]You wan to act like nothing changed?
+
+		@char Mara
+		Mara: Changed? Are people going to get drunk some other way now?
+		Mara: No?
+		Mara: Guess I'll just keep gettin'm drunk this way then.
+
+		Mara: Not much will change around here.
+
+		Mara: Folks we lost?[br]They weren't exactly regulars.
+		Mara: I barely knew the preacher.[br]Don't go to church much.
+
+		@char Paul
+		Paul: You still knew them though.[br]They were your neighbors.
+
+		@char Mara
+		Mara: Not the first time I've lost someone.
+		Mara: Not the first time it was my fault.
+
+		@char Paul
+		Paul: What?
+
+		@char Mara
+		Mara: Always. One way or another, not always this dramatic.
+		Mara: Never crossed a bridge I didn't burn.
+
+		@char Paul
+		Paul: Mara, sometimes things happen.[br]You can't say everything was—
+
+		@char Mara
+		Mara: Things don't just happen.
+		Mara: Not to me.
+		Mara: I steer my own ship.
+
+		@char Paul
+		Paul: You couldn't have stopped them from—
+
+		@char Mara
+		Mara: You know what? Get out!
+		Mara: I don't want to see you in here again!
+
+		@char Paul
+		Paul: I just—
+
+		@char Mara
+		Mara: Yeah? And now you're just leaving! Go!
+
+		@wait 2
+
+		@char Mara
+		Mara: And that... is just one less.
+		Mara: Nothing I can't handle...
+
+
+		@endif
 		
 
 		@exit
@@ -2465,7 +2607,7 @@
 			@char Melvardius
 			Melvardius: Surely you see that you must find it in your heart to—
 			@char JohnDoe
-			JohnDoe: Bin it, pointy hat.
+			JohnDoe: Bin it, pointy-hat.
 		@endif
 		@char Murtough
 		Murtough: Look, I'm sorry.[br]What do you even want?
@@ -3541,14 +3683,15 @@
 			@if GetSara()
 				@char Sara
 				Sara: It's not that.
-				Sara: I've just been feeling odd, and though the cave might...
-				@char Todd
-				Todd: Call it whatever you like.
+				Sara: I've just been feeling odd, and though the cave might...	
 			@endif
+			@char Todd
+			Todd: All of us were so rudely torn from power's embrace!
+			Todd: It is time to return.
 
 			@if GetMelvardius()
 				@char Melvardius
-				Melvardius: Okay, that's enough. It's time to go home.
+				Melvardius: Ah, I had heard I might find you all here.
 				@char Todd
 				Todd: Quiet you! We no longer have need of your moralizing.
 				Todd: We are beyond such things![br]Our pact gives us strength!
@@ -3556,10 +3699,9 @@
 				@if GetNorma()
 					@char Norma
 					Norma: I don't remember a pact.
-				@endif
-				@if GetDevon()
+				@elseif GetDevon()
 					@char Devon
-					Devon: I don't know anything about a pact. I just... guess I don't have anything in this town, so why not go back in?
+					Devon: I don't know anything about a pact. I just... guess I don't have anything else going on...
 				@endif
 
 				@char Melvardius
@@ -3571,14 +3713,16 @@
 				@endif
 				@char Todd
 				Todd: Silence! I will show you the power I have been given!
-
-				;@spawn ShakeCamera
-
+				Todd: Haha! You see! With this slime, this plasm, I will— AH!
 				@char Melvardius
 				Melvardius: That's enough of that.
 
-				;shakecamera stop
-
+				@char Stranger
+				Stranger: Has that preacher always had ice powers?
+				@char Murtough
+				Murtough: ...
+				Murtough: Nope.
+				
 				@char Todd
 				Todd: How... did you?
 				@char Melvardius
@@ -3592,6 +3736,10 @@
 				Todd: You can't do that!
 				@char Melvardius
 				Melvardius: Go home Todd. Your father worrys for you. He has for some time.
+				@char Todd
+				Todd: This isn't over!
+				@char Melvardius
+				Melvardius: Yes... I imagine we will all be recovering for some time.
 			@elseif !GetMelvardius()
 				@char Todd
 				Todd: Worry not about petty things like "good" and "evil" for we will be beyond those.
@@ -3605,6 +3753,9 @@
 				@endif
 				@char Todd
 				Todd: Follow, or don't, it's your choice.
+				Todd: But, reject us, and we when we return you will no longer be one of us.
+				Todd: The rest of you, follow me.
+				Todd: Our becoming is at hand.
 			@endif
 
 		@elseif GetMara()
@@ -3721,18 +3872,14 @@
 		@else
 
 		@char Elder
-		Elder: Something about me I guess.
+		Elder: And now... we have our haven.
+		Elder: The old magics, the horrors of our past, have become ours.
+		Elder: Now we seek for more.[br]No longer content with the meager power of the cavern.
 
-		Elder: So, here I am again.
-		Elder: It seems like all I ever did was wander the town.
-		Elder: I still remember back in the day, all I did was wander the town.
-		Elder: Who am I, really?
-		Elder: Sometimes I feel like an afterthought.
-		Elder: Where do I fit in?
+		Elder: We will find more of these places, and delve to unlock their secrets.
+		Elder: Those who resist us will succomb, or be faced with annihilation. 
 
-
-		Elder: I remember this town when it was in its hayday.
-
+		Elder: The city marches.
 
 
 

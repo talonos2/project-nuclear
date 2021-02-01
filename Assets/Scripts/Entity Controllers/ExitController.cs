@@ -30,7 +30,6 @@ public class ExitController : DoodadData
 
 
         GameData gameData= GameData.Instance;
-
         if (gameData.FloorNumber != 0)
         {
             //Keep track of your run time.

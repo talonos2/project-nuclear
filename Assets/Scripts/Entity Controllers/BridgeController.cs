@@ -83,9 +83,13 @@ public class BridgeController : DoodadData
             MapGrid.GetComponent<DoodadGrid>().grid[DoodadLocation.x, DoodadLocation.y] = this.gameObject;
         }
         if (this.isPlatformTerrain == false) {
-            if (thePlayer.characterLocation.x == DoodadLocation.x && thePlayer.characterLocation.y == DoodadLocation.y) {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().BumpOffBridge();
+            if (thePlayer != null) {
+                if (thePlayer.characterLocation.x == DoodadLocation.x && thePlayer.characterLocation.y == DoodadLocation.y)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().BumpOffBridge();
+                }
             }
+           
             
         }
         this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = !invisibleBridge&& this.isPlatformTerrain == true;

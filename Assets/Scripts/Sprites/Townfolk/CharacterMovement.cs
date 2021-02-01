@@ -72,7 +72,7 @@ public class CharacterMovement : SpriteMovement
                 TiePositionToGrid();
                 //  SetCurrentLocation();
                 CheckIfStandingOnWindJumper();
-                CheckPostMoveExitStatus();
+                //CheckPostMoveExitStatus();
                 CheckGabStatus();
             }
         }
