@@ -283,7 +283,7 @@ public class OptionScreenController : MonoBehaviour
 
     public void SwitchKeybinds()
     {
-        if (!youAreAllowedToBeCalledFromHere)
+        if (!youAreAllowedToBeCalledFromHere&& FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
         {
             return;
         }
