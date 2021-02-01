@@ -353,6 +353,8 @@ public class CharacterMovement : SpriteMovement
                 playerStats.HP += (int)(playerStats.MaxHP * .125f);
                 if (playerStats.mana > playerStats.MaxMana) playerStats.mana = playerStats.MaxMana;
                 if (playerStats.HP > playerStats.MaxHP) playerStats.HP = playerStats.MaxHP;
+                SingleParticleEmitter timePenalty = this.gameObject.GetComponentInChildren<SingleParticleEmitter>();
+                timePenalty.EmitSingleParticle();
             }
         }
     }
@@ -409,7 +411,7 @@ public class CharacterMovement : SpriteMovement
     {
         playerStats.AttackCrystalBuff = 0;
         playerStats.AddExp(100000);
-        playerStats.ShutUpLevelUpper();
+        //playerStats.ShutUpLevelUpper();
         playerStats.powersGained = 4;
         playerStats.PushCharacterData();
     }
