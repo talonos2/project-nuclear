@@ -17,6 +17,7 @@ public class ExitController : DoodadData
     public AudioClip soundToPlayOnTransition;
     public bool exitIsTeleporter;
     public bool fromBuilding;
+    public GameObject arrowAnimator;
 
     public void TransitionMap()
     {
@@ -65,6 +66,7 @@ public class ExitController : DoodadData
         if (townMap)
         {
             gameData.FloorNumber = 0;
+            if (arrowAnimator != null) { arrowAnimator.SetActive(false); }
             //Debug.Log("is in building? " + gameData.isInBuilding+" from building flag on? "+fromBuilding);
         }
 
@@ -76,7 +78,7 @@ public class ExitController : DoodadData
         }
         FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
         if (exitIsTeleporter) { GameData.Instance.teleportingIn = true; }
-        fadeout.InitNext(mapToLoad);
+        fadeout.InitNext(mapToLoad,.2f);
         GameObject.Destroy(this);
     }
 
