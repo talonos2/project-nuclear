@@ -81,8 +81,10 @@ public class CutsceneLoader : MonoBehaviour
     {
         if (introCutscene)
         {
-
+            introCutscene = false;
             return "IntroMovie";
+
+
 
             /*switch (introSceneNumber)
             {
@@ -93,6 +95,7 @@ public class CutsceneLoader : MonoBehaviour
                 case 2:
                     return "TownMap_1";
             }*/
+
             return null;
         }
 
