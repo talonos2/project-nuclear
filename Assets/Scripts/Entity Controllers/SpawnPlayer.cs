@@ -15,7 +15,10 @@ public class SpawnPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (inDungeon) GameData.Instance.inDungeon = true;
+        if (inDungeon) { GameData.Instance.inDungeon = true;
+
+
+        }
         if (inBuilding) GameData.Instance.isInBuilding = true;
         else GameData.Instance.isInBuilding = false;
         GameData.Instance.inPauseMenu = false;
@@ -76,6 +79,7 @@ public class SpawnPlayer : MonoBehaviour
         newPlayer.GetComponent<EntityData>().isMainCharacter = true ;
         characterMovement =newPlayer.GetComponent<CharacterMovement>();
         characterMovement.SetRenderer();
+        //if (inDungeon) { newPlayer.GetComponent<CharacterStats>().PushCharacterData(); }
         characterMovement.facedDirection = facing;
         characterMovement.SetLookDirection();
         GameState.isInBattle = false;

@@ -31,10 +31,10 @@ public class ExitDialogue : Naninovel.Commands.Command
             SceneManager.LoadScene("ChooseItemScreen");
         }
 
-        if (CutsceneLoader.introCutscene)
-        {
-            CutsceneLoader.LoadCutsceneAndWorldSpaceFade(.5f);
-        }
+        //if (CutsceneLoader.introCutscene)
+        //{
+        ///    CutsceneLoader.LoadCutsceneAndWorldSpaceFade(.5f);
+        //}
 
 
         if (GameData.Instance.isCutscene && GameData.Instance.RunNumber == 1 && !CutsceneLoader.introCutscene&& !CutsceneLoader.postRun1Cutscene) {
