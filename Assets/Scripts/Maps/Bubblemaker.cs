@@ -8,6 +8,7 @@ public class Bubblemaker : MonoBehaviour
     public float height=1;
     public float width=1;
     public float frequency=1;
+    public float additionalZOffset = 0;
 
     private float timeUntilNext;
     // Start is called before the first frame update
@@ -41,6 +42,7 @@ public class Bubblemaker : MonoBehaviour
     {
         Vector2 direction = Random.insideUnitCircle;
         Vector3 bubblePosition = new Vector3(direction.x * width, direction.y * height, 0) + this.transform.position;
-        GameObject.Instantiate(bubble, bubblePosition, this.transform.rotation);
+        SpriteShadowLoader go = GameObject.Instantiate(bubble, bubblePosition, this.transform.rotation).GetComponent<SpriteShadowLoader>();
+        go.additionalZOffset += additionalZOffset;
     }
 }
