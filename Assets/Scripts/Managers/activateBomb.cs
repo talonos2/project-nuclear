@@ -35,9 +35,13 @@ public class activateBomb : EntityData
     protected float offsetFix = .00001f;
     protected int currentFrame = 0;
     private CharacterStats stats;
+    public GameObject sparklies;
     // Start is called before the first frame update
     void Start()
     {
+        if (GameData.Instance.PowersGained >= 3) {
+            sparklies.SetActive(true);
+        }
         mapGrid = GameObject.Find("Grid");
         mapZeroLocation = mapGrid.GetComponent<PassabilityGrid>().GridToTransform(new Vector2(0, 0));
         entityLocation.x = (int)Math.Round(this.transform.position.x) - (int)mapZeroLocation.x;
