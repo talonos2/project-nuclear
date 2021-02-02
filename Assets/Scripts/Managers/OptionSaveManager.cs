@@ -19,8 +19,8 @@ public class PersistentSaveDataManager : Singleton<PersistentSaveDataManager>
 
     SerializablePersistentSaveData data;
 
-    public float MusicVolume { get { CheckData(); return data.musicVolume; } set { CheckData(); data.musicVolume = value; FlushSavesToDisk(); } }
-    public float SoundVolume { get { CheckData(); return data.soundVolume; } set { CheckData(); data.soundVolume = value; FlushSavesToDisk(); } }
+    public float MusicVolume { get { CheckData(); return data.musicVolume; } set { CheckData(); data.musicVolume = value; MusicManager.instance.ChangeMusicVolume(value); FlushSavesToDisk(); } }
+    public float SoundVolume { get { CheckData(); return data.soundVolume; } set { CheckData(); data.soundVolume = value; SoundManager.Instance.soundEffectVolume = value; FlushSavesToDisk(); } }
     public bool[,] EndingsSeen { get { CheckData(); return data.endingsSeen; } set { CheckData(); data.endingsSeen = value; FlushSavesToDisk(); } }
     public bool[] PeopleWonWith { get { CheckData(); return data.peopleWonWith; } set { CheckData(); data.peopleWonWith = value; FlushSavesToDisk(); } }
 
