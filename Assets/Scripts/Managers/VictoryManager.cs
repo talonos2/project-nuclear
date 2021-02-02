@@ -85,7 +85,8 @@ public class VictoryManager : MonoBehaviour
                 LoadSaveController saving = new LoadSaveController();
 
                 int villagersDead = GameData.Instance.VillagersDead();
-                if (villagersDead == GameData.Instance.RunNumber - 1 || villagersDead==10) {
+                if (villagersDead == GameData.Instance.RunNumber - 1 || villagersDead==10)
+                {
                     GameData.Instance.Worst = 1;
                 }
 
@@ -97,6 +98,27 @@ public class VictoryManager : MonoBehaviour
 
                 saving.AutoSave();
 
+
+                if (GameData.Instance.RunNumber <= 6)
+                {
+                    PersistentSaveDataManager.Instance.EndingsSeen[GameData.Instance.RunNumber - 1, 0] = true;
+                }
+                else
+                {
+                    if (GameData.Instance.Perfect == 1)
+                    {
+                        PersistentSaveDataManager.Instance.EndingsSeen[GameData.Instance.RunNumber - 1, 2] = true;
+                    }
+                    else if (GameData.Instance.Worst == 1)
+                    {
+                        PersistentSaveDataManager.Instance.EndingsSeen[GameData.Instance.RunNumber - 1, 0] = true;
+                    }
+                    else
+                    {
+                        PersistentSaveDataManager.Instance.EndingsSeen[GameData.Instance.RunNumber - 1, 1] = true;
+                    }
+                }
+                FinalWinterAchievementManager.Instance.CheckEndingsSeen();
                 SceneManager.LoadScene("WinScreen");
             }
         }

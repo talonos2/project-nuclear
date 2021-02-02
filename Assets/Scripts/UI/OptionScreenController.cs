@@ -43,7 +43,9 @@ public class OptionScreenController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);  //clears first button, then sets it
         EventSystem.current.SetSelectedGameObject(optionFirstButton);
 
-        LoadSavedOptionData();
+        SetValueOfSlider(1, PersistentSaveDataManager.Instance.MusicVolume);
+        SetValueOfSlider(2, PersistentSaveDataManager.Instance.SoundVolume);
+
         RefreshKeys();
     }
 
@@ -117,13 +119,13 @@ public class OptionScreenController : MonoBehaviour
                 oldSliderValue = MusicManager.instance.GetMusicVolume();
                 newSliderValue = Mathf.Clamp(oldSliderValue + amount, .001f, 1f);
                 MusicManager.instance.ChangeMusicVolume(newSliderValue);
-                sliders[0].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (MusicManager.instance.GetMusicVolume() * 380));
+                sliders[0].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (PersistentSaveDataManager.Instance.MusicVolume * 380));
                 break;
             case 2:
                 oldSliderValue = SoundManager.Instance.soundEffectVolume;
                 newSliderValue = Mathf.Clamp(oldSliderValue + amount, .001f, 1f);
                 SoundManager.Instance.soundEffectVolume = newSliderValue;
-                sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (SoundManager.Instance.soundEffectVolume * 380));
+                sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (PersistentSaveDataManager.Instance.SoundVolume * 380));
                 break;
         }
     }
@@ -134,11 +136,11 @@ public class OptionScreenController : MonoBehaviour
         {
             case 1:
                 MusicManager.instance.ChangeMusicVolume(amount);
-                sliders[0].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (MusicManager.instance.GetMusicVolume() * 380));
+                sliders[0].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (PersistentSaveDataManager.Instance.MusicVolume * 380));
                 break;
             case 2:
                 SoundManager.Instance.soundEffectVolume = amount;
-                sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (SoundManager.Instance.soundEffectVolume * 380));
+                sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (PersistentSaveDataManager.Instance.SoundVolume * 380));
                 break;
                 /* case 3:
                      oldSliderValue = printerMngr.PrintSpeed;
@@ -149,71 +151,9 @@ public class OptionScreenController : MonoBehaviour
         }
     }
 
-    internal void SaveOptions()
-    {
-
-        string appPath = Application.dataPath;
-        string savedOptions = "GameOptions";
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile;
-        OptionSaveManager optionSaver = new OptionSaveManager();
-        optionSaver.SetupOptionsSave(SoundManager.Instance.soundEffectVolume, MusicManager.instance.GetMusicVolume());
-
-        if (!Directory.Exists(appPath + "/Saves")) { Directory.CreateDirectory(appPath + "/Saves"); }
-        if (!File.Exists(appPath + "/Saves/" + savedOptions + ".binary"))
-        {
-            saveFile = File.Create(appPath + "/Saves/" + savedOptions + ".binary");
-            formatter.Serialize(saveFile, optionSaver);
-            saveFile.Close();
-        }
-        else
-        {
-            saveFile = File.OpenWrite(appPath + "/Saves/" + savedOptions + ".binary");
-            formatter.Serialize(saveFile, optionSaver);
-            saveFile.Close();
-        }
-        GameData.Instance.optionsState = optionSaver;
-
-    }
-
-    private void LoadSavedOptionData()
-    {
-        string appPath = Application.dataPath;
-        if (!Directory.Exists(appPath + "/Saves")) { Directory.CreateDirectory(appPath + "/Saves"); }
-
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile;
-        OptionSaveManager optionSaver = new OptionSaveManager();
-        string savedOptions = "GameOptions";
-
-        if (!File.Exists(appPath + "/Saves/" + savedOptions + ".binary"))
-        {
-
-            FileStream saveFile2 = File.Create(appPath + "/Saves/" + savedOptions + ".binary");
-            OptionSaveManager optionSaver2 = new OptionSaveManager();
-            optionSaver2.SetupOptionsSave(SoundManager.Instance.soundEffectVolume, MusicManager.instance.GetMusicVolume());
-            formatter.Serialize(saveFile2, optionSaver2);
-            saveFile2.Close();
-        }
-
-        saveFile = File.Open(appPath + "/Saves/" + savedOptions + ".binary", FileMode.Open);
-        optionSaver = (OptionSaveManager)formatter.Deserialize(saveFile);
-        GameData.Instance.optionsState = optionSaver;
-        LoadValuesIntoOptions(optionSaver);
-        saveFile.Close();
-
-    }
-
-    private void LoadValuesIntoOptions(OptionSaveManager optionSaver)
-    {
-        SetValueOfSlider(1, optionSaver.musicVolume);
-        SetValueOfSlider(2, optionSaver.soundVolume);
-    }
-
     public void CloseOptionsMenu()
     {
         GameData.Instance.exitPause = false;
-        SaveOptions();
         
         SceneManager.UnloadSceneAsync("OptionsScreen");
     }
@@ -273,10 +213,10 @@ public class OptionScreenController : MonoBehaviour
         switch (boundSlider)
         {
             case 0:
-                MusicManager.instance.ChangeMusicVolume(newSliderValue);
+                PersistentSaveDataManager.Instance.MusicVolume = newSliderValue;
                 break;
             case 1:
-                SoundManager.Instance.soundEffectVolume = newSliderValue;
+                PersistentSaveDataManager.Instance.SoundVolume = newSliderValue;
                 break;
         }
     }

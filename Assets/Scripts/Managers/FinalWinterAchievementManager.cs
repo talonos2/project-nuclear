@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -59,7 +60,7 @@ public static class AchievementExtensions
                 return "LOSE_DOUGLAS";
             case FWBoolAchievement.WIN_GAME:
                 return "WIN_GAME";
-            case FWBoolAchievement.LOSE_GAME:
+            case FWBoolAchievement.LOSE_GAME:                    //TODO
                 return "LOSE_GAME";
             case FWBoolAchievement.WIN_GAME_NO_VILLAGE_KILLS:
                 return "WIN_GAME_NO_VILLAGE_KILLS";
@@ -128,6 +129,25 @@ public static class AchievementExtensions
 
 public class FinalWinterAchievementManager : Singleton<FinalWinterAchievementManager>
 {
+    public void CheckForAllShortcuts()
+    {
+        int x = 0;
+        if (GameData.Instance.map1_3toMap2_3Shortcut) x++;
+        if (GameData.Instance.map2_2Shortcut) x++;
+        if (GameData.Instance.map2_4Shortcut) x++;
+        if (GameData.Instance.map3_2Shortcut) x++;
+        if (GameData.Instance.map3_3Shortcut) x++;
+        if (GameData.Instance.map3_4Shortcut) x++;
+        if (GameData.Instance.map4_1Shortcut) x++;
+        if (GameData.Instance.map4_3Shortcut) x++;
+        if (GameData.Instance.map4_4Shortcut) x++;
+        if (GameData.Instance.map5_1Shortcut) x++;
+        if (GameData.Instance.map5_2Shortcut) x++;
+        if (GameData.Instance.map5_3Shortcut) x++;
+        if (GameData.Instance.map5_4Shortcut) x++;
+        FinalWinterAchievementManager.Instance.SetStatAndGiveAchievement(FWStatAchievement.UNLOCK_ALL_SHORTCUTS, x);
+    }
+
     public void GiveAchievement(FWBoolAchievement achievement)
     {
         try
@@ -158,5 +178,34 @@ public class FinalWinterAchievementManager : Singleton<FinalWinterAchievementMan
         {
             Debug.LogWarning("Steamworks Unreachable.");
         }
+    }
+
+    internal void CheckEndingsSeen()
+    {
+        int endingsSeen = 0;
+        foreach (bool b in PersistentSaveDataManager.Instance.EndingsSeen)
+        {
+            if (b)
+            {
+                endingsSeen++;
+            }
+
+        }
+        this.SetStatAndGiveAchievement(FWStatAchievement.READ_ALL_ENDINGS, endingsSeen);
+    }
+
+    internal void CheckPeopleBeatenWith()
+    {
+        int peopleWon = 0;
+        foreach (bool b in PersistentSaveDataManager.Instance.PeopleWonWith)
+        {
+            if (b)
+            {
+                peopleWon++;
+            }
+
+        }
+        this.SetStatAndGiveAchievement(FWStatAchievement.WIN_WITH_10_PEOPLE, peopleWon);
+        this.SetStatAndGiveAchievement(FWStatAchievement.WIN_WITH_25_PEOPLE, peopleWon);
     }
 }
