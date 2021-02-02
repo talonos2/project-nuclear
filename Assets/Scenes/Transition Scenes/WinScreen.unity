@@ -936,6 +936,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982839414}
   m_CullTransparentMesh: 0
+--- !u!1 &1074492147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074492149}
+  - component: {fileID: 1074492148}
+  m_Layer: 0
+  m_Name: This starts Victory Scene Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1074492148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074492147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 429726101d8d5f147814fcc4ee606979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapMusic: 16
+  combatMusic: -1
+  alwaysOn: 0
+  onVictoryMap: 1
+--- !u!4 &1074492149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074492147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.3359375, y: 0.47460938, z: -10.234375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1300987062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,6 +1579,7 @@ MonoBehaviour:
   blueMaid: {fileID: 1422330871}
   trapper: {fileID: 1939176920}
   blacksmith: {fileID: 405361163}
+  switchMusicManager: {fileID: 1074492148}
 --- !u!4 &7641657754023080854
 Transform:
   m_ObjectHideFlags: 0
