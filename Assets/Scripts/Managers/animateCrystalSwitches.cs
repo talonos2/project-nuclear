@@ -6,32 +6,21 @@ public class animateCrystalSwitches : MonoBehaviour
 {
     // Start is called before the first frame update
     private Renderer sRender;
-    public int maxFrames;
-    public int framesPerSecond = 6;
-    private float timeSinceLastFrame = 0;
-    private float offsetFix = .00001f;
-    public int currentFrame = 0;
+    private Vector3 startPosit;
+    public float bobSpeed = 1;
+    public float bobHeight = .3f;
+    public float bobOffset = .3f;
+
     void Start()
     {
         this.sRender = this.GetComponentInChildren<MeshRenderer>();
-        this.sRender.material = new Material(this.sRender.material);
-        sRender.material.SetFloat("_Frame", currentFrame + offsetFix);
+        startPosit = sRender.transform.localPosition;
     }
 
     // Update is called once per frame
     public void AnimateObject()
     {
-        
-        timeSinceLastFrame += Time.deltaTime;
-        if (timeSinceLastFrame >= (1f / framesPerSecond))
-        {
-            timeSinceLastFrame = 0;
-            currentFrame += 1;
-            if (currentFrame == maxFrames) currentFrame=1;
-            sRender.material.SetFloat("_Frame", currentFrame + offsetFix);
-        }
-
-
+        sRender.transform.localPosition = startPosit + new Vector3(0, Mathf.Sin(Time.timeSinceLevelLoad * bobSpeed + bobOffset) * bobHeight+.5f, 0);
     }
 
     void Update()

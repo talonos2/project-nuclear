@@ -104,7 +104,7 @@ public class ElementCaroselManager : MonoBehaviour
 
         for (int x = 0; x < symbolsOn; x++)
         {
-            elementalSymbols[x].transform.localPosition = new Vector3(Mathf.Sin(inRadiansDegreesRotated + x * degreesPerSymbol)*4.5f, Mathf.Cos(inRadiansDegreesRotated + x * degreesPerSymbol)*1.5f - 6.5f, 0);
+            elementalSymbols[x].transform.localPosition = new Vector3(Mathf.Sin(inRadiansDegreesRotated + x * degreesPerSymbol)*4.5f, Mathf.Cos(inRadiansDegreesRotated + x * degreesPerSymbol)*1.1f - 6.3f, 0);
         }
     }
 

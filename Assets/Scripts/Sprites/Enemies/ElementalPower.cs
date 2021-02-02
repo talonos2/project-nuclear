@@ -62,4 +62,22 @@ public static class EleExtensions
         }
         return "Bad Type!";
     }
+
+    public static Color GetColor(this ElementalPower ele)
+    {
+        switch (ele)
+        {
+            case ElementalPower.NULL:
+                return Color.white;
+            case ElementalPower.ICE:
+                return Color.cyan;
+            case ElementalPower.EARTH:
+                return Color.green;
+            case ElementalPower.FIRE:
+                return Color.red;
+            case ElementalPower.AIR:
+                return Color.yellow;
+        }
+        return Color.magenta;
+    }
 }

@@ -216,6 +216,7 @@ public class CharacterStats : Stats
         SavedStats.setAccessoryStats(accessory);
         SavedStats.weaponBonusAttack = this.weaponBonusAttack;
         SavedStats.armorBonusDefense = this.armorBonusDefense;
+        SavedStats.charName = this.charName;
 
     }
 

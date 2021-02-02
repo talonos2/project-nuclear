@@ -11,30 +11,35 @@ public class ClosePub : MonoBehaviour
     public bool manor;
     public bool searsHut;
     public bool church;
+    public GameObject animatedArrow;
     void Start()
     {
         if (GameData.Instance.RunNumber >= 16 && pub) {
             barredDoor.enabled = true;
             exitSpace.isExit = false;
             exitSpace.isBlockableTerrain = true;
+            animatedArrow.SetActive(false);
         }
         if (GameData.Instance.RunNumber >= 25 && church)
         {
             barredDoor.enabled = true;
             exitSpace.isExit = false;
             exitSpace.isBlockableTerrain = true;
+            animatedArrow.SetActive(false);
         }
         if (GameData.Instance.RunNumber >= 30 && manor)
         {
             barredDoor.enabled = true;
             exitSpace.isExit = false;
             exitSpace.isBlockableTerrain = true;
+            animatedArrow.SetActive(false);
         }
         if (GameData.Instance.RunNumber >= 30 && searsHut)
         {
             barredDoor.enabled = true;
             exitSpace.isExit = false;
             exitSpace.isBlockableTerrain = true;
+            animatedArrow.SetActive(false);
         }
     }
 
