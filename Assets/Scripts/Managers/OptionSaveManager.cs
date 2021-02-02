@@ -10,8 +10,8 @@ public class PersistentSaveDataManager : Singleton<PersistentSaveDataManager>
     [Serializable]
     private class SerializablePersistentSaveData
     {
-        internal float musicVolume;
-        internal float soundVolume;
+        internal float musicVolume = 1;
+        internal float soundVolume = 1;
 
         internal bool[,] endingsSeen = new bool[30, 3];
         internal bool[] peopleWonWith = new bool[30];
