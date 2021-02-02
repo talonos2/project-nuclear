@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 /// <summary>
 /// Inherit from this base class to create a singleton.
@@ -49,7 +50,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
         }
     }
-
 
     private void OnApplicationQuit()
     {

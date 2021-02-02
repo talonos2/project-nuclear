@@ -165,7 +165,11 @@ public class EndRunScreenController : MonoBehaviour
         fadeout.attachToGUI(canvas);
         if (GameData.Instance.RunNumber < 31)
         { fadeout.InitNext("TownMap_1", 2); }          
-        else { fadeout.InitNext("TownMap_FinalRun", 2); }
+        else
+        {
+            fadeout.InitNext("TownMap_FinalRun", 2);
+            FinalWinterAchievementManager.Instance.GiveAchievement(FWBoolAchievement.LOSE_GAME);
+        }
     }
 
     public void SetButtonLit(bool on)
