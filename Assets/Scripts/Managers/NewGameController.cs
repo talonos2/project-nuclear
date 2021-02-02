@@ -77,7 +77,7 @@ public class NewGameController : MonoBehaviour
                     StartNewGame();
                     break;
                 case 1:
-                    SoundManager.Instance.PlaySound("MenuOkay", 1f);
+                    //SoundManager.Instance.PlaySound("MenuOkay", 1f);
                     ContinueGame();
                     
                     break;
@@ -114,8 +114,14 @@ public class NewGameController : MonoBehaviour
 
     public void ContinueGame()
     {
-        SoundManager.Instance.PlaySound("MenuOkay", 1f);
-        loadSaveController.LoadGame(0);
+
+        if (loadSaveController.LoadGame(0))
+        {
+            SoundManager.Instance.PlaySound("MenuOkay", 1f);
+        }
+        else {
+            SoundManager.Instance.PlaySound("MenuNope", 1f);
+        }
     }
 
     public void OpenOptionsMenu()
@@ -167,9 +173,13 @@ public class NewGameController : MonoBehaviour
         if (GameData.Instance.RunNumber == 0) GameData.Instance.RunNumber = 1;
 
         if (GameData.Instance.RunNumber==1) {
-            CutsceneLoader.introCutscene = true;
+            //CutsceneLoader.introCutscene = true;
             GameData.Instance.FloorNumber = 0;
-            CutsceneLoader.LoadCutscene();
+            //CutsceneLoader.LoadCutscene();
+            FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+            if (!keepInactive) fadeout.attachToGUI(transform.parent.GetComponent<Canvas>());
+            else fadeout.attachToGUI(canvasToLoad);
+            fadeout.InitNext("IntroMovie", 1);
         }
         if (GameData.Instance.RunNumber > 1 && GameData.Instance.RunNumber <= 30) {
             //GameData.Instance.SetNextLocation(TownSpawnPosition, TownSpwanFacing);

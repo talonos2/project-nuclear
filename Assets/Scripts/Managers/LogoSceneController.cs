@@ -30,6 +30,10 @@ public class LogoSceneController : MonoBehaviour
         if (minDelayUntilNextScene < 0) {
             if (loadingTitleScreen.isDone) {
                 if (!initFadeout) {
+                    //FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+                    //fadeout.attachToGUI(this.transform.parent.GetComponent<Canvas>());
+                    //fadeout.InitScenelessFadeout(.2f);
+                    //initFadeout = true;
                     //fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
                     //fadeout.InitScenelessFadeout(5.5f);
                     //fadingOut = true;
