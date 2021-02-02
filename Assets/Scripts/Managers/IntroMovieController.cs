@@ -13,8 +13,12 @@ public class IntroMovieController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("before MM");
+        MusicManager.instance.FadeOutMusic(MusicManager.MENU, 1f);
+        Debug.Log("after MM");
+
         //FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE) ;
-       // FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+        // FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
 
         //fadeout.InitNext("TitleScreen", .2f);
         //loadingTitleScreen = SceneManager.LoadSceneAsync("TitleScreen",LoadSceneMode.Additive);       
@@ -24,9 +28,17 @@ public class IntroMovieController : MonoBehaviour
 
     private void Update()
     {
-        minDelayUntilNextScene -= Time.deltaTime;
+
+        if (FWInputManager.Instance.GetKeyDown(InputAction.GO_BACK))
+        {
+            StartDungeonRun.StartRun();
+        }
+
+            minDelayUntilNextScene -= Time.deltaTime;
         if (minDelayUntilNextScene < 0) {
-            
+
+            StartDungeonRun.StartRun();
+
         }
 
 
