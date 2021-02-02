@@ -54,6 +54,15 @@ public class ElementCaroselManager : MonoBehaviour
             elementalSymbols[x + stats.powersGained + 1].enabled = true;
         }
         symbolsOn = (stats.powersGained + 1) * 2;
+
+        if (stats.powersGained == 1)
+        {
+            symbolsOn = 6;
+            elementalSymbols[4].gameObject.SetActive(true);
+            elementalSymbols[4].enabled = true;
+            elementalSymbols[5].gameObject.SetActive(true);
+            elementalSymbols[5].enabled = true;
+        }
     }
 
     // Update is called once per frame
@@ -66,6 +75,7 @@ public class ElementCaroselManager : MonoBehaviour
         {
             elementsIThinkIhave = stats.powersGained;
             UpdateNumberOfPowers();
+            elementIThinkIsSelected = -1;
         }
 
         if (elementIThinkIsSelected != stats.currentPower)
@@ -99,12 +109,12 @@ public class ElementCaroselManager : MonoBehaviour
 
         degreesRotated = Mathf.Lerp(degreesRotated, targetDegreesRotated, 1-Mathf.Pow(.000001f, Time.deltaTime));
 
-        float degreesPerSymbol = Mathf.PI / (stats.powersGained+1);
+        float degreesPerSymbol = Mathf.PI / (stats.powersGained==1?3:stats.powersGained+1);
         float inRadiansDegreesRotated = -degreesRotated * (degreesPerSymbol);
 
         for (int x = 0; x < symbolsOn; x++)
         {
-            elementalSymbols[x].transform.localPosition = new Vector3(Mathf.Sin(inRadiansDegreesRotated + x * degreesPerSymbol)*4.5f, Mathf.Cos(inRadiansDegreesRotated + x * degreesPerSymbol)*1.1f - 6.3f, 0);
+            elementalSymbols[x].transform.localPosition = new Vector3(Mathf.Sin(inRadiansDegreesRotated + x * degreesPerSymbol)*4.5f, Mathf.Cos(inRadiansDegreesRotated + x * degreesPerSymbol)*1.4f - 6.5f, 0);
         }
     }
 
