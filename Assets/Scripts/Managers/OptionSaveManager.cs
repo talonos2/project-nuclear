@@ -79,6 +79,10 @@ public class PersistentSaveDataManager : Singleton<PersistentSaveDataManager>
         {
 
             FileStream saveFile2 = File.Create(appPath + "/Saves/" + savedOptions + ".binary");
+            if (data == null)
+            {
+                data = new SerializablePersistentSaveData();
+            }
             formatter.Serialize(saveFile2, data);
             saveFile2.Close();
         }
