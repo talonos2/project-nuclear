@@ -21,6 +21,9 @@ public class DeathSceneControl : MonoBehaviour
     public string townGrowingSmallerText;
 
     private bool deathSoundPlayed = false;
+    private string animatedText;
+    public TextMeshProUGUI textMeshToAnimate;
+    private Animator textAnimator;
 
     public async void playDeathDialogueAsync()
     {
@@ -39,6 +42,12 @@ public class DeathSceneControl : MonoBehaviour
         delay = 1.5f;
         string villagersLeft = "" + (31 - gameData.RunNumber);
         townGrowingSmallerText = "The Town Grows Smaller.\n<size=125>" + villagersLeft + "</size>\nVillagers Remain";
+        string villagersAfter = "" + (30 - gameData.RunNumber);
+        animatedText = villagersAfter;
+        textMeshToAnimate.text = animatedText;
+        textMeshToAnimate.enabled = false;
+        textAnimator = textMeshToAnimate.GetComponentInParent<Animator>();
+        textAnimator.enabled = false;
         textMeshToPrint.enabled = false;
         textMeshToPrint.text = townGrowingSmallerText;
         //textField = textObject.GetComponent<Text>();
@@ -52,6 +61,8 @@ public class DeathSceneControl : MonoBehaviour
     {
         if (GameData.Instance.isInDialogue) return;
         textMeshToPrint.enabled = true;
+
+
         if (waitAFrame) { waitAFrame = false; return; }
 
         if (FWInputManager.Instance.GetKeyDown(InputAction.ACTIVATE))
@@ -69,6 +80,8 @@ public class DeathSceneControl : MonoBehaviour
             townGrowingSmallerText= "The Town Grows Smaller.\n<color=red><size=125>" + (30 - gameData.RunNumber) + 
                 "</color></size>\nVillagers Remain";
             textMeshToPrint.text = townGrowingSmallerText;
+            textMeshToAnimate.enabled = true;
+            textAnimator.enabled = true;
 
             if (!deathSoundPlayed)
             {

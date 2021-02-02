@@ -18,6 +18,8 @@ public static class AttackAnimationExtensions
                 return HandleBlastAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
             case AttackAnimation.PLAYER_HOP:
                 return HandleHopAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats, true);
+            case AttackAnimation.JOHN_DOE_PERSONAL_ATTACK_DO_NOT_STEAL:
+                return HandleJohnDoeAnimationBecauseHesSuperSpecial(timeSinceStart, userSprite, targetSprite, targetStats, userStats);
             case AttackAnimation.FIVE_FRAME_HOP:
                 return HandleHopAnimation(timeSinceStart, userSprite, targetSprite, targetStats, userStats, true, true);
             case AttackAnimation.FIVE_FRAME_HOP_WITH_ANTICIPATE:
@@ -332,6 +334,8 @@ public static class AttackAnimationExtensions
                 return 1;
             case AttackAnimation.PLAYER_HOP:
                 return 1;
+            case AttackAnimation.JOHN_DOE_PERSONAL_ATTACK_DO_NOT_STEAL:
+                return 1;
             case AttackAnimation.FIVE_FRAME_HOP:
                 return 1;
             case AttackAnimation.FIVE_FRAME_HOP_WITH_ANTICIPATE:
@@ -361,6 +365,8 @@ public static class AttackAnimationExtensions
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
             case AttackAnimation.PLAYER_HOP:
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
+            case AttackAnimation.JOHN_DOE_PERSONAL_ATTACK_DO_NOT_STEAL:
+                return AttackAnimationManager.Instance.enemyKnockBackStart;
             case AttackAnimation.FIVE_FRAME_HOP:
                 return AttackAnimationManager.Instance.enemyKnockBackStart;
             case AttackAnimation.FIVE_FRAME_HOP_WITH_ANTICIPATE:
@@ -389,6 +395,8 @@ public static class AttackAnimationExtensions
             case AttackAnimation.BLAST:
                 return AttackAnimationManager.Instance.blastSoundPoint;
             case AttackAnimation.PLAYER_HOP:
+                return AttackAnimationManager.Instance.hopSwingSoundPoint;
+            case AttackAnimation.JOHN_DOE_PERSONAL_ATTACK_DO_NOT_STEAL:
                 return AttackAnimationManager.Instance.hopSwingSoundPoint;
             case AttackAnimation.FIVE_FRAME_HOP:
                 return AttackAnimationManager.Instance.hopSwingSoundPoint;
@@ -420,6 +428,9 @@ public static class AttackAnimationExtensions
                 SoundManager.Instance.PlaySound("Combat/Laser", 1f);
                 return;
             case AttackAnimation.PLAYER_HOP:
+                SoundManager.Instance.PlaySound("Combat/PlayerAttackSwing", 1f);
+                return;
+            case AttackAnimation.JOHN_DOE_PERSONAL_ATTACK_DO_NOT_STEAL:
                 SoundManager.Instance.PlaySound("Combat/PlayerAttackSwing", 1f);
                 return;
             case AttackAnimation.FIVE_FRAME_HOP:
@@ -523,6 +534,88 @@ public static class AttackAnimationExtensions
         }
         return 0;
     }
+
+    private static int HandleJohnDoeAnimationBecauseHesSuperSpecial(float timeSinceStart, GameObject userSprite, GameObject targetSprite, Stats targetStats, Stats userStats)
+    {
+        AttackAnimationManager aam = AttackAnimationManager.Instance;
+        int flip = (-1);
+
+        //User Jump forward.
+        if (timeSinceStart > 0 && timeSinceStart < aam.initialHopDuration)
+        {
+            float amountThrough = timeSinceStart / aam.initialHopDuration;
+            float currentJumpHeight = -Mathf.Pow(-((amountThrough * 2 * Mathf.Pow(aam.initialHopHeight, .5f)) - Mathf.Pow(aam.initialHopHeight, .5f)), 2) + aam.initialHopHeight;
+            Vector3 startPosit = userStats.homePositionOnScreen;
+            Vector3 endPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
+            Vector3 lerpedPosit = Vector3.Lerp(startPosit, endPosit, amountThrough) + new Vector3(0, currentJumpHeight);
+            userSprite.transform.localPosition = lerpedPosit;
+        }
+
+        //Target get knocked back.
+        if (timeSinceStart > aam.enemyKnockBackStart && timeSinceStart < aam.enemyKnockBackStart + aam.enemyKnockBackDuration)
+        {
+            float amountThrough = (timeSinceStart - aam.enemyKnockBackStart) / aam.enemyKnockBackDuration;
+            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen, targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0) * flip, amountThrough);
+            AdjustForScale(targetSprite);
+        }
+
+        //Target rubber-band back forward
+        if (timeSinceStart > aam.enemySpringbackStart && timeSinceStart < aam.enemySpringbackStart + aam.enemySpringbackDuration)
+        {
+            float amountThrough = (timeSinceStart - aam.enemySpringbackStart) / aam.enemySpringbackDuration;
+            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.knockBackXOffset, 0) * flip, targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, amountThrough);
+            AdjustForScale(targetSprite);
+        }
+
+        //Target move back to home position.
+        if (timeSinceStart > aam.enemyMoveBackStart && timeSinceStart < aam.enemyMoveBackStart + aam.enemyMoveBackDuration)
+        {
+            float amountThrough = (timeSinceStart - aam.enemyMoveBackStart) / aam.enemyMoveBackDuration;
+            targetSprite.transform.localPosition = Vector3.Lerp(targetStats.homePositionOnScreen + new Vector2(aam.springBackXOffset, 0) * flip, targetStats.homePositionOnScreen, amountThrough);
+            AdjustForScale(targetSprite);
+        }
+
+        //User move back to home position.
+        if (timeSinceStart > aam.returnHopStart && timeSinceStart < aam.returnHopStart + aam.returnHopDuration)
+        {
+            float amountThrough = (timeSinceStart - aam.returnHopStart) / aam.returnHopDuration;
+            float currentJumpHeight = -Mathf.Pow(-((amountThrough * 2 * Mathf.Pow(aam.returnHopHeight, .5f)) - Mathf.Pow(aam.returnHopHeight, .5f)), 2) + aam.returnHopHeight;
+            Vector3 endPosit = userStats.homePositionOnScreen;
+            Vector3 startPosit = targetStats.homePositionOnScreen + userStats.strikingPointOffset + targetStats.gettingStruckPointOffset;
+            userSprite.transform.localPosition = Vector3.Lerp(startPosit, endPosit, amountThrough) + new Vector3(0, currentJumpHeight);
+        }
+
+        if (timeSinceStart > aam.initialHopDuration && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime)
+        {
+            return 1;
+        }
+        if (timeSinceStart > aam.initialHopDuration + aam.defaultAttackFrameTime && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime * 2)
+        {
+            return 2;
+        }
+        if (timeSinceStart > aam.initialHopDuration + aam.defaultAttackFrameTime * 3 && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime * 5)
+        {
+            return 4;
+        }
+        if (timeSinceStart > aam.initialHopDuration + aam.defaultAttackFrameTime * 2 && timeSinceStart < aam.initialHopDuration + aam.defaultAttackFrameTime * 5)
+        {
+            return 4;
+        }
+        return JohnDoeIsSoMuchCoolerThanEverybodyElse();
+    }
+
+    private static float JOHN_DOE_SWING_SPEED = .07f;
+
+    public static int JohnDoeIsSoMuchCoolerThanEverybodyElse()
+    {
+        int swingFrame = Mathf.FloorToInt(Time.timeSinceLevelLoad / JOHN_DOE_SWING_SPEED);
+        swingFrame %= 3;
+        if (swingFrame != 0)
+        {
+            swingFrame += 6;
+        }
+        return swingFrame;
+    }
 }
 
-public enum AttackAnimation { HOP, BLAST, PLAYER_HOP, FIVE_FRAME_HOP, FIVE_FRAME_HOP_WITH_ANTICIPATE, STATIONARY_THRUST, ORBITAL_LASER, DUMP, THRUST, FINAL_BOSS };
+public enum AttackAnimation { HOP, BLAST, PLAYER_HOP, FIVE_FRAME_HOP, FIVE_FRAME_HOP_WITH_ANTICIPATE, STATIONARY_THRUST, ORBITAL_LASER, DUMP, THRUST, FINAL_BOSS, JOHN_DOE_PERSONAL_ATTACK_DO_NOT_STEAL };
