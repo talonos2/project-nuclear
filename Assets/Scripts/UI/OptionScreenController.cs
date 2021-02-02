@@ -116,15 +116,15 @@ public class OptionScreenController : MonoBehaviour
         switch (optionSelected)
         {
             case 1:
-                oldSliderValue = MusicManager.instance.GetMusicVolume();
+                oldSliderValue = PersistentSaveDataManager.Instance.MusicVolume;
                 newSliderValue = Mathf.Clamp(oldSliderValue + amount, .001f, 1f);
-                MusicManager.instance.ChangeMusicVolume(newSliderValue);
+                PersistentSaveDataManager.Instance.MusicVolume = newSliderValue;
                 sliders[0].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (PersistentSaveDataManager.Instance.MusicVolume * 380));
                 break;
             case 2:
-                oldSliderValue = SoundManager.Instance.soundEffectVolume;
+                oldSliderValue = PersistentSaveDataManager.Instance.SoundVolume;
                 newSliderValue = Mathf.Clamp(oldSliderValue + amount, .001f, 1f);
-                SoundManager.Instance.soundEffectVolume = newSliderValue;
+                PersistentSaveDataManager.Instance.SoundVolume = newSliderValue;
                 sliders[1].GetComponent<RectTransform>().localPosition = new Vector2(0, 190 - (PersistentSaveDataManager.Instance.SoundVolume * 380));
                 break;
         }
