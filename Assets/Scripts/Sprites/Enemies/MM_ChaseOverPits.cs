@@ -8,7 +8,7 @@ public class MM_ChaseOverPits : MonsterMovement
     // Update is called once per frame
     void Update()
     {
-        if (GameState.isInBattle || GameState.getFullPauseStatus())
+        if ((GameState.isInBattle || GameState.getFullPauseStatus() || GameData.Instance.isInDialogue) && !isOnCutsceneMap)
         {
             return;
         }
