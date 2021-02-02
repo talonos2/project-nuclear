@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SlimeMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 347f6ea97b867644daf5d269b21bf93c,
+  m_Name: SlimeFalling
+  m_Shader: {fileID: -6465566751694194690, guid: c06fa1f062ae1234e9bc02168e379fbb,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -21,11 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_393E7247:
-        m_Texture: {fileID: 2800000, guid: 86c0f7eb929f1874d8420e9fd8b2dd4b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_D272255D:
-        m_Texture: {fileID: 2800000, guid: fd5843f93774f7542a537380b1f46877, type: 3}
+        m_Texture: {fileID: 2800000, guid: d0fec062be519eb49925188942c70633, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -67,14 +63,13 @@ Material:
     m_Floats:
     - Boolean_A267E349: 0
     - Vector1_1226684D: 8
-    - Vector1_370ED32A: 0.65
-    - Vector1_4FB17FBE: 0.8
-    - Vector1_794D4568: 11
-    - Vector1_7B6AB870: 8
+    - Vector1_370ED32A: -0.037
+    - Vector1_4FB17FBE: 1.061
+    - Vector1_7B6AB870: 11
     - Vector1_B5E64FFE: 2
-    - Vector1_DFAF785: 0.1
-    - Vector1_FE7BE2C4: 0.3
-    - Vector1_FFCE4595: 0.3
+    - Vector1_DFAF785: 0
+    - Vector1_FE7BE2C4: 1.86
+    - Vector1_FFCE4595: 8
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -97,7 +92,6 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _amountThroughCleaningAnim: 0
     - _gooCleanAmount: 0
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -107,7 +101,6 @@ Material:
     - _MapXY: {r: 30, g: 31, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _gooCleanStartSpot: {r: 0, g: 10.5, b: 0, a: 0}
-    - _gooDissolvePoint: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1397319109676739499
 MonoBehaviour:
   m_ObjectHideFlags: 11

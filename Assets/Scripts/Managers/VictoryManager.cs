@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class VictoryManager : MonoBehaviour
 {
-    private float delayWithCleanMap=6;
+    private float delayWithCleanMap=10;
     private bool cleanMap;
     public GameObject finalMap;
     public Texture finalMapShadow;
@@ -20,23 +20,61 @@ public class VictoryManager : MonoBehaviour
     protected Renderer sCrystalRender;
     public GameObject[] bubbleSpwanersToClose;
 
+    public Renderer[] GooFallMaterialsToChange;
+    public Renderer[] GooCrestMaterialsToChange;
+    public Renderer[] GooMaterialsToChange;
+
+
+    private bool playedParticleEffect = false;
+    private float timeSinceSequenceStarted;
+
 
     void Start()
     {
-        sMapRender= finalMap.GetComponent<Renderer>();
-        sCrystalRender= crystalObject.GetComponent<Renderer>();
+        sMapRender = finalMap.GetComponent<Renderer>();
+        sCrystalRender = crystalObject.GetComponent<Renderer>();
         sMapRender.material = new Material(sMapRender.material);
         sCrystalRender.material = new Material(sCrystalRender.material);
         groundShadow = finalMap.GetComponent<GroundShadow>();
-
-
     }
 
-        // Update is called once per frame
-        void Update()
+    private void ReplaceAll(Renderer[] toReplaceAllOf, Material toReplaceWith)
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (!GameData.Instance.victory || GameState.getFullPauseStatus())
             return;
+
+        if (!playedParticleEffect&& timeSinceSequenceStarted>1.1f)
+        {
+            this.GetComponent<ParticleSystem>().Play();
+            playedParticleEffect = true;
+            foreach (GameObject i in bubbleSpwanersToClose)
+            {
+                i.SetActive(false);
+            }
+            MusicManager.instance.StopAllMusic();
+            GameData.Instance.pauseTimer = true;
+        }
+
+        timeSinceSequenceStarted += Time.deltaTime;
+        float cleaningAmount = timeSinceSequenceStarted * 2 - 2;
+        foreach (Renderer r in GooFallMaterialsToChange)
+        {
+            r.material.SetFloat("_gooCleanAmount", (cleaningAmount));
+        }
+        foreach (Renderer r in GooCrestMaterialsToChange)
+        {
+            r.material.SetFloat("_gooCleanAmount", (cleaningAmount));
+        }
+        foreach (Renderer r in GooMaterialsToChange)
+        {
+            r.material.SetFloat("_gooCleanAmount", (cleaningAmount));
+        }
+
         GameData.Instance.isInDialogue = true;
         if (groundShadow.resetShadow){
             groundShadow.resetShadow = false;
@@ -79,9 +117,8 @@ public class VictoryManager : MonoBehaviour
         groundShadow.shadowTexture = finalMapShadow;
         groundShadow.glowTexture = finalMapGlow;
         groundShadow.resetShadow = true;
-        slime.gameObject.SetActive(false);
+        //slime.gameObject.SetActive(false);
         water.gameObject.SetActive(true);
-        foreach (GameObject i in bubbleSpwanersToClose) { i.SetActive(false); }
 
     }
 }
