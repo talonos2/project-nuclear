@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static SpriteMovement;
@@ -10,6 +11,14 @@ public class CharacterInputController : MonoBehaviour
     EntityData characterEntityData;
     private bool moveable;
     private bool waitFrameAfterDialogue;
+    private int rightKeyFrame;
+    private int leftKeyFrame;
+    private int upKeyFrame;
+    private int downKeyFrame;
+    private bool rightKeyPressedLast;
+    private bool leftKeyPressedLast;
+    private bool upKeyPressedLast;
+    private bool downKeyPressedLast;
 
     void Start()
     {
@@ -119,19 +128,55 @@ public class CharacterInputController : MonoBehaviour
 
         DirectionMoved NextInputDirection = DirectionMoved.NONE;
 
-        if (FWInputManager.Instance.GetKey(InputAction.RIGHT))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.RIGHT))
         {
-            NextInputDirection = DirectionMoved.RIGHT;
+            rightKeyFrame = Time.frameCount;
         }
-        if (FWInputManager.Instance.GetKey(InputAction.LEFT))
+        if (FWInputManager.Instance.GetKeyDown(InputAction.LEFT))
+        {
+            leftKeyFrame = Time.frameCount;
+        }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.UP))
+        {
+            upKeyFrame = Time.frameCount;
+        }
+        if (FWInputManager.Instance.GetKeyDown(InputAction.DOWN))
+        {
+            downKeyFrame = Time.frameCount;
+        }
+
+        if (FWInputManager.Instance.GetKeyUp(InputAction.RIGHT))
+        {
+            rightKeyFrame = 0;
+        }
+        if (FWInputManager.Instance.GetKeyUp(InputAction.LEFT))
+        {
+            leftKeyFrame = 0;
+        }
+        if (FWInputManager.Instance.GetKeyUp(InputAction.UP))
+        {
+            upKeyFrame = 0;
+        }
+        if (FWInputManager.Instance.GetKeyUp(InputAction.DOWN))
+        {
+            downKeyFrame = 0;
+        }
+
+        setMostRecentDirectionPushed();
+
+        if (FWInputManager.Instance.GetKey(InputAction.RIGHT) && rightKeyPressedLast)
+        {
+            NextInputDirection = DirectionMoved.RIGHT;            
+        }
+        if (FWInputManager.Instance.GetKey(InputAction.LEFT) && leftKeyPressedLast)
         {
             NextInputDirection = DirectionMoved.LEFT;
         }
-        if (FWInputManager.Instance.GetKey(InputAction.UP))
+        if (FWInputManager.Instance.GetKey(InputAction.UP) && upKeyPressedLast)
         {
             NextInputDirection = DirectionMoved.UP;
         }
-        if (FWInputManager.Instance.GetKey(InputAction.DOWN))
+        if (FWInputManager.Instance.GetKey(InputAction.DOWN) && downKeyPressedLast)
         {
             NextInputDirection = DirectionMoved.DOWN;
         }
@@ -139,6 +184,39 @@ public class CharacterInputController : MonoBehaviour
         //ToDo Have a variable for key last pressed and use that one. Use timestamps. reset timestamps if key not pressed. 
     }
 
+    private void setMostRecentDirectionPushed()
+    {
+        rightKeyPressedLast = true;
 
 
+        if (rightKeyFrame > leftKeyFrame && rightKeyFrame > upKeyFrame && rightKeyFrame > downKeyFrame) {
+            rightKeyPressedLast = true;
+            leftKeyPressedLast = false;
+            upKeyPressedLast = false;
+            downKeyPressedLast = false;
+        }
+        if (leftKeyFrame > rightKeyFrame && leftKeyFrame > upKeyFrame && leftKeyFrame > downKeyFrame) {
+            rightKeyPressedLast = false;
+            leftKeyPressedLast = true;
+            upKeyPressedLast = false;
+            downKeyPressedLast = false;
+        }
+        if (upKeyFrame > rightKeyFrame && upKeyFrame > leftKeyFrame && upKeyFrame > downKeyFrame)
+        {
+            rightKeyPressedLast = false;
+            leftKeyPressedLast = false;
+            upKeyPressedLast = true;
+            downKeyPressedLast = false;
+        }
+        if (downKeyFrame > rightKeyFrame && downKeyFrame > leftKeyFrame && downKeyFrame > upKeyFrame)
+        {
+            rightKeyPressedLast = false;
+            leftKeyPressedLast = false;
+            upKeyPressedLast = false;
+            downKeyPressedLast = true;
+        }
+
+
+
+    }
 }

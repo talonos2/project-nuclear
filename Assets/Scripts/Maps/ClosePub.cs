@@ -12,13 +12,19 @@ public class ClosePub : MonoBehaviour
     public bool searsHut;
     public bool church;
     public GameObject animatedArrow;
+    private bool animationActive;
+    private bool keepAniOff;
+
     void Start()
     {
+        animationActive = true;
         if (GameData.Instance.RunNumber >= 16 && pub) {
             barredDoor.enabled = true;
             exitSpace.isExit = false;
             exitSpace.isBlockableTerrain = true;
             animatedArrow.SetActive(false);
+            animationActive = false;
+            keepAniOff = true;
         }
         if (GameData.Instance.RunNumber >= 25 && church)
         {
@@ -26,6 +32,8 @@ public class ClosePub : MonoBehaviour
             exitSpace.isExit = false;
             exitSpace.isBlockableTerrain = true;
             animatedArrow.SetActive(false);
+            animationActive = false;
+            keepAniOff = true;
         }
         if (GameData.Instance.RunNumber >= 30 && manor)
         {
@@ -33,6 +41,8 @@ public class ClosePub : MonoBehaviour
             exitSpace.isExit = false;
             exitSpace.isBlockableTerrain = true;
             animatedArrow.SetActive(false);
+            animationActive = false;
+            keepAniOff = true;
         }
         if (GameData.Instance.RunNumber >= 30 && searsHut)
         {
@@ -40,12 +50,26 @@ public class ClosePub : MonoBehaviour
             exitSpace.isExit = false;
             exitSpace.isBlockableTerrain = true;
             animatedArrow.SetActive(false);
+            animationActive = false;
+            keepAniOff = true;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameState.isInBattle || GameState.getFullPauseStatus() || GameData.Instance.isInDialogue || GameData.Instance.isCutscene)
+        {
+            if (animationActive) {
+                animatedArrow.SetActive(false);
+                animationActive = false;
+            }
+            return;
+        }
+        if (!animationActive && !keepAniOff) {
+            animatedArrow.SetActive(true);
+            animationActive = true;
+        }
+
     }
 }
