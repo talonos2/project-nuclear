@@ -81,7 +81,10 @@ public class CutsceneLoader : MonoBehaviour
     {
         if (introCutscene)
         {
-            switch (introSceneNumber)
+
+            return "IntroMovie";
+
+            /*switch (introSceneNumber)
             {
                 case 0:
                     return "TownMap_1";
@@ -89,7 +92,7 @@ public class CutsceneLoader : MonoBehaviour
                     return "TownInterior_Manor_1";
                 case 2:
                     return "TownMap_1";
-            }
+            }*/
             return null;
         }
 
@@ -189,10 +192,11 @@ public class CutsceneLoader : MonoBehaviour
 
         if (introCutscene)
         {
-            Instantiate(cutScenePlayer, new Vector3(cameraLocation[31 + introSceneNumber].x, cameraLocation[31 + introSceneNumber].y, 0), Quaternion.identity);
-            InitAndRunCutscene(cutScenes[31 + introSceneNumber]);
-            introSceneNumber += 1;
-            if (introSceneNumber > 2)
+            //Instantiate(cutScenePlayer, new Vector3(cameraLocation[31 + introSceneNumber].x, cameraLocation[31 + introSceneNumber].y, 0), Quaternion.identity);
+            //InitAndRunCutscene(cutScenes[31 + introSceneNumber]);
+            //introSceneNumber += 1;
+            //if (introSceneNumber > 2)
+
                 introCutscene = false;
         }
         else
