@@ -410,7 +410,7 @@ public class CharacterMovement : SpriteMovement
     internal void PowerUpCheat()
     {
         playerStats.AttackCrystalBuff = 0;
-        playerStats.AddExp(10000000);
+        playerStats.AddExp(1000);
         playerStats.ShutUpLevelUpper();
         playerStats.powersGained = 4;
         playerStats.PushCharacterData();

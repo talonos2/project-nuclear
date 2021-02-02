@@ -86,6 +86,8 @@ public class CharacterStats : Stats
     private float remainingHP = 0;
     private float remainingMP = 0;
 
+    public AttackAnimation attackAnimation = AttackAnimation.HOP;
+
     void Start()
     {        
         gameStateData = GameObject.Find("GameStateData");
