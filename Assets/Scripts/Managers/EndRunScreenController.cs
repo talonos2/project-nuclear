@@ -163,6 +163,7 @@ public class EndRunScreenController : MonoBehaviour
         GameData.Instance.SetNextLocation(new Vector2Int(-4,-13), SpriteMovement.DirectionMoved.DOWN);
         FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
         fadeout.attachToGUI(canvas);
+        GameState.setFullPause(false);
         if (GameData.Instance.RunNumber < 31)
         { fadeout.InitNext("TownMap_1", 2); }          
         else
