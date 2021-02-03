@@ -24,7 +24,10 @@ public class CharacterInputController : MonoBehaviour
     {
         characterController = this.gameObject.GetComponent<CharacterMovement>();
         characterEntityData = this.gameObject.GetComponent<EntityData>();
-
+        downKeyFrame = 0;
+        upKeyFrame = 0;
+        rightKeyFrame = 0;
+        leftKeyFrame = 0;
 
         if (characterEntityData.isMainCharacter) moveable = true;
     }
@@ -186,7 +189,7 @@ public class CharacterInputController : MonoBehaviour
 
     private void setMostRecentDirectionPushed()
     {
-        rightKeyPressedLast = true;
+        downKeyPressedLast = true;
 
 
         if (rightKeyFrame > leftKeyFrame && rightKeyFrame > upKeyFrame && rightKeyFrame > downKeyFrame) {

@@ -30,6 +30,7 @@ public class EndRunScreenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         GameData.Instance.inDungeon = false;
 
         switch (GameData.Instance.PowersGained)
@@ -152,6 +153,7 @@ public class EndRunScreenController : MonoBehaviour
             GameData.Instance.isCutscene = true;
             CutsceneLoader.postRun1Cutscene = true;
         }
+
         CutsceneLoader.runTownBackDialogue = true;
         GameData.Instance.RunNumber += 1;
         GameData.Instance.FloorNumber = 0;

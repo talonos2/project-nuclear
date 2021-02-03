@@ -16,9 +16,11 @@ public class SpawnPlayer : MonoBehaviour
     void Start()
     {
         if (inDungeon) { GameData.Instance.inDungeon = true;
-
+            GameState.pickingItem = false;
 
         }
+
+
         if (inBuilding) GameData.Instance.isInBuilding = true;
         else GameData.Instance.isInBuilding = false;
         GameData.Instance.inPauseMenu = false;
