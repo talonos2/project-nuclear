@@ -113,6 +113,9 @@ public class CharacterStats : Stats
             
             PullCharacterData();
         }
+        if (GameData.Instance.inDungeon && GameData.Instance.RunNumber == 1) { charName = "Douglass";
+            PushCharacterData();
+        }
 
         
     }
