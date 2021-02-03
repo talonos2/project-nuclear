@@ -7,7 +7,6 @@ public class SteamWorksChecker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("I get here right?");
         FinalWinterAchievementManager.Instance.SetupSteamWorksConnection();
     }
 

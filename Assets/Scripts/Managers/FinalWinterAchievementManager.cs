@@ -129,7 +129,8 @@ public static class AchievementExtensions
 
 public class FinalWinterAchievementManager : Singleton<FinalWinterAchievementManager>
 {
-    bool steamConnectionInitialized;
+    private bool steamConnectionInitialized;
+    private bool gatheredSteamStats;
     private Steamworks.AppId_t steamID;
     public void SetupSteamWorksConnection() {
         steamID = new Steamworks.AppId_t(1497510);
@@ -137,6 +138,10 @@ public class FinalWinterAchievementManager : Singleton<FinalWinterAchievementMan
             Debug.Log("Steam not running, restart needed");
         }
         steamConnectionInitialized = Steamworks.SteamAPI.Init();
+        if (steamConnectionInitialized) {
+            gatheredSteamStats=Steamworks.SteamUserStats.RequestCurrentStats();
+        } 
+
         if (!steamConnectionInitialized) Debug.Log("Steam Connection Failed "+steamConnectionInitialized);
     }
 
@@ -167,12 +172,21 @@ public class FinalWinterAchievementManager : Singleton<FinalWinterAchievementMan
 
     public void GiveAchievement(FWBoolAchievement achievement)
     {
+        if (!steamConnectionInitialized) {
+            steamConnectionInitialized = Steamworks.SteamAPI.Init();
+        }
+        if (steamConnectionInitialized && !gatheredSteamStats) {
+            gatheredSteamStats = Steamworks.SteamUserStats.RequestCurrentStats();
+        }
+
         try
         {
             Steamworks.SteamUserStats.GetAchievement(achievement.GetName(), out bool alreadyComplete);
             if (!alreadyComplete)
             {
                 Steamworks.SteamUserStats.SetAchievement(achievement.GetName());
+                bool storeStats = Steamworks.SteamUserStats.StoreStats();
+                if (!storeStats) Debug.Log("Storing of stats failed: SetAchievement call ");
             }
         }
         catch (System.InvalidOperationException e)
@@ -183,12 +197,23 @@ public class FinalWinterAchievementManager : Singleton<FinalWinterAchievementMan
 
     public void SetStatAndGiveAchievement(FWStatAchievement achievement, int currentStat)
     {
+        if (!steamConnectionInitialized)
+        {
+            steamConnectionInitialized = Steamworks.SteamAPI.Init();
+        }
+        if (steamConnectionInitialized && !gatheredSteamStats)
+        {
+            gatheredSteamStats = Steamworks.SteamUserStats.RequestCurrentStats();
+        }
+
         try
         {
             Steamworks.SteamUserStats.GetStat(achievement.GetName(), out int oldStat);
             if (oldStat < currentStat)
             {
                 Steamworks.SteamUserStats.SetStat(achievement.GetName(), currentStat);
+                bool storeStats = Steamworks.SteamUserStats.StoreStats();
+                if (!storeStats) Debug.Log("Storing of stats failed: SetStat call ");
             }
         }
         catch (System.InvalidOperationException e)
