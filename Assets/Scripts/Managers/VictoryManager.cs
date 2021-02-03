@@ -119,7 +119,8 @@ public class VictoryManager : MonoBehaviour
                     }
                 }
                 FinalWinterAchievementManager.Instance.CheckEndingsSeen();
-                SceneManager.LoadScene("WinScreen");
+                FadeOut fadeout = GameObject.Instantiate<FadeOut>(Resources.Load<FadeOut>("Fade Out Plane"));
+                fadeout.InitNext("WinScreen", .2f);
             }
         }
         else if (delayWithCleanMap <= 5) {
