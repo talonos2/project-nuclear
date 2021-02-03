@@ -93,7 +93,7 @@ public class FadeIn : MonoBehaviour
                         meshRenderer.material.SetFloat("_Iris", timeLeft / fadeTime);
                         if (timeLeft < .75f && !started)
                         {
-                            if (!GameData.Instance.playingTutorial) GameState.setFullPause(false);
+                            GameState.setFadeinPause(false);
                             started = true;                            
                         }
                         
@@ -103,7 +103,7 @@ public class FadeIn : MonoBehaviour
                         meshRenderer.material.SetFloat("_Iris", timeLeft / fadeTime);
                         if (timeLeft < .75f && !started)
                         {
-                            if (!GameData.Instance.playingTutorial) GameState.setFullPause(false);
+                            GameState.setFadeinPause(false);
                             started = true;
                         }
                     }
@@ -115,7 +115,7 @@ public class FadeIn : MonoBehaviour
             }
             else
             {
-                if (!GameData.Instance.playingTutorial) GameState.setFullPause(false);
+                if (!GameData.Instance.playingTutorial) GameState.setFadeinPause(false);
                 //Debug.Log("Fade-in complete! If things are still frozen, it's somebody else's fault now. :P");
                 //GameObject.Destroy(this.gameObject);
                 meshRenderer.enabled = false;
