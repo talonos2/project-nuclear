@@ -343,6 +343,7 @@ public class LoadSaveController : MonoBehaviour
         GameData.Instance.inPauseMenu = false;
         //aCanvasThis.enabled = false;
         newGameController.StartNewGameActual();
+        GameState.setFullPause(false);
         return true;
 
 
