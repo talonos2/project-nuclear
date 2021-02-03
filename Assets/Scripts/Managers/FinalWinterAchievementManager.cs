@@ -129,6 +129,23 @@ public static class AchievementExtensions
 
 public class FinalWinterAchievementManager : Singleton<FinalWinterAchievementManager>
 {
+    bool steamConnectionInitialized;
+    private Steamworks.AppId_t steamID;
+    public void SetupSteamWorksConnection() {
+        steamID = new Steamworks.AppId_t(1497510);
+        if (Steamworks.SteamAPI.RestartAppIfNecessary(steamID)) {
+            Debug.Log("Steam not running, restart needed");
+        }
+        steamConnectionInitialized = Steamworks.SteamAPI.Init();
+        if (!steamConnectionInitialized) Debug.Log("Steam Connection Failed "+steamConnectionInitialized);
+    }
+
+    private void OnDestroy()
+    {
+        if (!steamConnectionInitialized) { return; }
+        Steamworks.SteamAPI.Shutdown();        
+    }
+
     public void CheckForAllShortcuts()
     {
         int x = 0;
