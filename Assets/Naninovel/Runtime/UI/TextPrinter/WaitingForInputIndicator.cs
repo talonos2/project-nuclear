@@ -22,7 +22,11 @@ namespace Naninovel.UI
         public void Show (Vector2 position)
         {
             showTime = Time.time;
-            RectTransform.position = position;
+            RectTransform.position = position; //Used for World space
+
+           // RectTransform.localPosition = new  Vector3(position.x, position.y, RectTransform.localPosition.z);
+           // RectTransform.anchoredPosition.Set(.5f, .5f);
+            //Debug.Log("ended up here after set " + RectTransform.localPosition);
             SetIsVisibleAsync(true, revealTime).WrapAsync();
         }
 
@@ -33,5 +37,7 @@ namespace Naninovel.UI
             if (IsVisible)
                 UIComponent.color = Color.Lerp(pingColor, pongColor, Mathf.PingPong(Time.time - showTime, pingPongTime));
         }
+
+
     } 
 }

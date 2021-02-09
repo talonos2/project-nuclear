@@ -7610,8 +7610,8 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -8169,16 +8169,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5235844856794030252, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: newGameButton
-      value: 
-      objectReference: {fileID: 242232565}
-    - target: {fileID: 5235844856794030252, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: newGameController
-      value: 
-      objectReference: {fileID: 359083700}
     - target: {fileID: 324273467017365010, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8284,11 +8274,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5789716473624097901, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -472.0996
-      objectReference: {fileID: 0}
     - target: {fileID: 324273467017365005, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_Enabled
@@ -8296,18 +8281,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2265749230437062205, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.5996094
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265749230437062205, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.39990234
-      objectReference: {fileID: 0}
-    - target: {fileID: 4145043875426067742, guid: ea1df5dda9f7d2046b73f662a04e08c5,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 456.36914
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4919582733500243021, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
@@ -8355,6 +8330,11 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3960700792923474728, guid: ea1df5dda9f7d2046b73f662a04e08c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293743607469696282, guid: ea1df5dda9f7d2046b73f662a04e08c5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -11119,9 +11099,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 600, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

@@ -39,12 +39,20 @@ public class cameraClamp : MonoBehaviour
             return;
         }
 
-        
-
+        //3.389*1.6=5.4224
+        //6.028*1.6=9.645
+        /*
         float relativeYLowClamp = -mapHeight / 2 - ThePlayer.transform.position.y + 6f;
         float relativeYHighClamp = mapHeight / 2- ThePlayer.transform.position.y - 6f;
         float relativeXLowClamp = -mapWidth / 2 - ThePlayer.transform.position.x + 10.67f;
         float relativeXHighClamp = mapWidth / 2 - ThePlayer.transform.position.x - 10.67f;
+        */
+        float aspectRatio = Camera.main.aspect;
+        float relativeYLowClamp = -mapHeight / 2 - ThePlayer.transform.position.y + 6f;
+        float relativeYHighClamp = mapHeight / 2 - ThePlayer.transform.position.y - 6f;
+        float relativeXLowClamp = -mapWidth / 2 - ThePlayer.transform.position.x + 6*aspectRatio;
+        float relativeXHighClamp = mapWidth / 2 - ThePlayer.transform.position.x - 6 * aspectRatio;
+
         float offsetY = 0;
         float offsetX = 0;
         //Debug.Log(relativeY);

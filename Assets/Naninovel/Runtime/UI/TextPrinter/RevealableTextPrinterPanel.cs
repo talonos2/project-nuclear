@@ -129,7 +129,9 @@ namespace Naninovel.UI
         {
             await waitForEndOfFrame; // Otherwise cachedTextGenerator and inidicator position may be invalid.
 
-            if (isVisible) inputIndicator.Show(RevealableText.GetLastRevealedCharPosition());
+            if (isVisible) {
+                inputIndicator.Show(RevealableText.GetLastRevealedCharPosition());
+            }
             else inputIndicator.Hide();
         }
 
@@ -170,9 +172,12 @@ namespace Naninovel.UI
             inputIndicator = Instantiate(inputIndicatorPrefab);
             inputIndicator.RectTransform.SetParent(RevealableText.GameObject.transform, false);
 
+
+
             audioManager = Engine.GetService<AudioManager>();
 
             SetActorNameText(null); // Reset the name-related stuff.
+
         }
 
         protected override void OnEnable ()

@@ -150,7 +150,7 @@ public class LoadSaveController : MonoBehaviour
 
     private void SetupAllSaveUI(int saveSlot)
     {
-        saveSelector.GetComponent<RectTransform>().localPosition = new Vector3(-206, 125 - 80 * pointLocation, 0);
+        saveSelector.GetComponent<RectTransform>().localPosition = new Vector3(-123+ pointLocation * 69, -282, 0);
 
         //if (saveSlot < 5) { saveSlot = 0; }
         saveSlot -= pointLocation;
@@ -261,7 +261,7 @@ public class LoadSaveController : MonoBehaviour
             saveSlotSelected = saveSlotSelected - 31;
         }
         pointLocation = slotEntered;
-        saveSelector.GetComponent<RectTransform>().localPosition = new Vector3(-206, 125 - 80 * pointLocation, 0);
+        saveSelector.GetComponent<RectTransform>().localPosition = new Vector3(-123 + pointLocation * 69, -282, 0);
     }
     public void ClickedUI()
     {
