@@ -189,6 +189,9 @@ public class CharacterInputController : MonoBehaviour
 
     private void setMostRecentDirectionPushed()
     {
+        rightKeyPressedLast = true;
+        leftKeyPressedLast = true;
+        upKeyPressedLast = true;
         downKeyPressedLast = true;
 
 
