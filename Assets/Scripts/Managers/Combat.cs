@@ -90,7 +90,7 @@ public class Combat : MonoBehaviour
         combatFolder = Camera.main.transform.Find("UI").Find("Combat").gameObject;
         combatFolder = Camera.main.transform.Find("UI").Find("Combat").gameObject;
         combatDarkening = Camera.main.transform.Find("UI").Find("DarkeningPlane").gameObject.GetComponent<Renderer>();
-        monsterHPBarHolder = Camera.main.transform.Find("UI").Find("Bars Canvas").Find("Enemy HP Bar Back").gameObject;
+        monsterHPBarHolder = Camera.main.transform.Find("UI").Find("Enemy Bars Canvas").Find("Enemy HP Bar Back").gameObject;
         monsterHPBarHolder.GetComponent<Image>().color = Color.white;
         monsterHPBarHolder.GetComponent<RectTransform>().localPosition = new Vector3(startMonsterHPBarPosition, monsterHPBarHolder.GetComponent<RectTransform>().localPosition.y, monsterHPBarHolder.GetComponent<RectTransform>().localPosition.z);
         monsterHPBar = monsterHPBarHolder.transform.Find("Enemy HP Bar").GetComponent<Image>();

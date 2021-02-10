@@ -6,6 +6,12 @@ public class IsUIOn : MonoBehaviour
 {
     public GameObject[] stuffToTurnOff;
     private bool uiOffScene;
+    public GameObject lowerLeftAligned;
+    public GameObject lowerRightAligned;
+
+    public float flat = 12;
+    public float scalar = 6.5f;
+
 
     void Start()
     {
@@ -45,7 +51,8 @@ public class IsUIOn : MonoBehaviour
         }
     }
 
-    public void turnOnUi() {
+    public void turnOnUi()
+    {
         GameData.Instance.UI_On = true;
         foreach (GameObject t in stuffToTurnOff)
         {
@@ -80,7 +87,8 @@ public class IsUIOn : MonoBehaviour
             turnOffUi();
         }
 
-
-
+        float aspectRatio = (float)Screen.width / (float)Screen.height;
+        lowerLeftAligned.transform.localPosition = new Vector3(flat - scalar*aspectRatio,0,0);
+        lowerRightAligned.transform.localPosition = new Vector3(-8.65f - (1.777777778f*scalar) + scalar*aspectRatio, -4.742f, 1);
     }
 }
