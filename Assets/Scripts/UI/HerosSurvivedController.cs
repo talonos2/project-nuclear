@@ -56,6 +56,14 @@ public class HerosSurvivedController : MonoBehaviour
         delay -= Time.deltaTime;
 
         if (delay < 0) {
+
+            if (GameData.Instance.RunNumber < 30)
+            {
+                GameData.Instance.RunNumber++;
+                NewCrystalLevelController.AddCrystalsPostRun();
+                GameData.Instance.autoSaveStats();
+                GameData.Instance.itemsFoundThisRun.Clear();
+            } 
             SceneManager.LoadScene("Credits");
         }
 
