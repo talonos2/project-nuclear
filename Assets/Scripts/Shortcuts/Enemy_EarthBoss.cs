@@ -9,7 +9,7 @@ public class Enemy_EarthBoss : Enemy
     private new void Start()
     {
         base.Start();
-        if (GameData.Instance.earthBoss2 ) {
+        if (GameData.Instance.map1_3toMap2_3Shortcut) {
             Destroy(this.gameObject);
         }
 

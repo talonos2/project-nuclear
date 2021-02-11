@@ -116,7 +116,7 @@ public class ShortcutCutsceneMap2_3to3_3s : ShortcutPlayer
         }
         if (phases[6])
         {
-            GameData.Instance.map1_3toMap2_3Shortcut = false;
+            //GameData.Instance.map1_3toMap2_3Shortcut = false;
 
             fadeInController.enableShortcutFadeOut(.5f);
             waiting = true;
