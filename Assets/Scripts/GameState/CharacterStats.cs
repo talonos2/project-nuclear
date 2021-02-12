@@ -113,7 +113,8 @@ public class CharacterStats : Stats
             
             PullCharacterData();
         }
-        if (GameData.Instance.inDungeon && GameData.Instance.RunNumber == 1) { charName = "Douglass";
+        if (GameData.Instance.inDungeon && GameData.Instance.RunNumber == 1) {
+            charName = "Douglass";
             PushCharacterData();
         }
 
@@ -124,6 +125,37 @@ public class CharacterStats : Stats
 
     internal void setInitialStats()
     {
+        SetupBaseStats();
+        PushCharacterData();
+    }
+
+    internal void setInitialDouglassStats()
+    {
+
+        SavedStats.Level = 1;
+        SavedStats.experience = 0;
+        SavedStats.powersGained = 0;
+        SavedStats.currentPower = 0;
+
+        SavedStats.HealthCrystalsGained = 0;
+        SavedStats.ManaCrystalsGained = 0;
+        SavedStats.AttackCrystalsGained = 0;
+        SavedStats.defenseCrystalsGained = 0;
+
+        SavedStats.HealthCrystalBuff = 0;
+        SavedStats.ManaCrystalBuff = 0;
+        SavedStats.defenseCrystalBuff = 0;
+        SavedStats.AttackCrystalBuff = 0;
+
+        SavedStats.FighterClass = true;
+        SavedStats.MageClass = false;
+        SavedStats.ScoutClass = false;
+        SavedStats.SurvivorClass = false;
+
+        SavedStats.charName = "Douglass";
+
+
+
         SetupBaseStats();
         PushCharacterData();
     }
@@ -227,7 +259,7 @@ public class CharacterStats : Stats
 
     //Each dungion run this section sets the stats. Main stats to set are the CrystalBuffs and Item buffs. 
     //Also sets class information
-    private void SetupBaseStats()
+    internal void SetupBaseStats()
     {
 
         gameStateData = GameObject.Find("GameStateData");

@@ -39,7 +39,7 @@ public class GameSaverManager
     private bool deathBoss2;
 
     private bool spokenToMcDermit;
-
+    //public  List<Vector2Int> dialoguesSeen = new List<Vector2Int>();
     public List<String> townWeapons = new List<String>();
     public List<String> townArmor = new List<String>();
     public List<String> townAccessories = new List<String>();
@@ -139,6 +139,7 @@ public class GameSaverManager
         totalLevelUpsInThisGame = GameData.Instance.totalLevelUpsInThisGame;
         daggersFound = GameData.Instance.daggersFound;
 
+
         sneakyKeyMap = GameData.Instance.sneakyKeyMap;
 
         foreach (Weapon wpnItem in GameData.Instance.townWeapons)
@@ -154,7 +155,7 @@ public class GameSaverManager
             townAccessories.Add(accItem.name);
         }
 
-
+       // dialoguesSeen = GameData.Instance.dialoguesSeen;
     }
 
 
@@ -221,7 +222,9 @@ public class GameSaverManager
         GameData.Instance.totalLevelUpsInThisGame = totalLevelUpsInThisGame;
         GameData.Instance.daggersFound = daggersFound;
 
-        GameObject equipmentData = GameObject.Find("EquipmentData");
+
+
+       GameObject equipmentData = GameObject.Find("EquipmentData");
 
         GameData.Instance.townWeapons.Clear();
         GameData.Instance.townArmor.Clear();
@@ -264,10 +267,96 @@ public class GameSaverManager
             }
         }
 
-
+       // GameData.Instance.dialoguesSeen = dialoguesSeen;
 
     }
 
+    internal void SetupFirstRunStats()
+    {
+        GameData.Instance.gabNumbers = new bool[32];
+
+        GameData.Instance.HealhCrystalBonus = 0;
+        GameData.Instance.ManaCrystalBonus = 0;
+        GameData.Instance.AttackCrystalBonus = 0;
+        GameData.Instance.DefenseCrystalBonus = 0;
+        GameData.Instance.HealhCrystalTotal = 0;
+        GameData.Instance.ManaCrystalTotal = 0;
+        GameData.Instance.AttackCrystalTotal = 0;
+        GameData.Instance.DefenseCrystalTotal = 0;
+        GameData.Instance.FloorNumber = 0;
+        GameData.Instance.RunNumber = 1;
+        GameData.Instance.PowersGained = 0;
+        GameData.Instance.furthestFloorAchieved = 0;
+        GameData.Instance.bestTimes = new float[] {Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity }; ;
+
+        GameData.Instance.Douglass = 1;
+        GameData.Instance.Sara = 1;
+        GameData.Instance.McDermit = 1;
+        GameData.Instance.Todd = 1;
+        GameData.Instance.Norma = 1;
+        GameData.Instance.Derringer = 1;
+        GameData.Instance.Melvardius = 1;
+        GameData.Instance.Mara = 1;
+        GameData.Instance.Devon = 1;
+        GameData.Instance.Pendleton = 1;
+
+        GameData.Instance.spokenToMcDermit = false;
+
+        GameData.Instance.iceBoss1 = false;
+        GameData.Instance.earthBoss1 = false;
+        GameData.Instance.fireBoss1 = false;
+        GameData.Instance.airBoss1 = false;
+        GameData.Instance.earthBoss2 = false;
+        GameData.Instance.fireBoss2 = false;
+        GameData.Instance.airBoss2 = false;
+        GameData.Instance.deathBoss1 = false;
+        GameData.Instance.deathBoss2 = false;
+
+        //  GameData.Instance.map1_3Shortcut = map1_3Shortcut;
+        GameData.Instance.map2_2Shortcut = false;
+        GameData.Instance.map2_4Shortcut = false;
+        GameData.Instance.map3_2Shortcut = false;
+        GameData.Instance.map3_3Shortcut = false;
+        GameData.Instance.map3_4Shortcut = false;
+        GameData.Instance.map4_1Shortcut = false;
+        GameData.Instance.map4_3Shortcut = false;
+        GameData.Instance.map4_4Shortcut = false;
+        GameData.Instance.map5_1Shortcut = false;
+        GameData.Instance.map5_2Shortcut = false;
+        GameData.Instance.map5_3Shortcut = false;
+        GameData.Instance.map5_4Shortcut = false;
+        GameData.Instance.map1_3toMap2_3Shortcut = false;
+
+        GameData.Instance.sneakyKeyMap = KeymapType.UNDEFINED;
+
+        GameData.Instance.monstersKilledInThisGame = 0;
+        GameData.Instance.totalLevelUpsInThisGame = 0;
+        GameData.Instance.daggersFound = 0;
+
+        GameData.Instance.townWeapons.Clear();
+        GameData.Instance.townArmor.Clear();
+        GameData.Instance.townAccessories.Clear();
+        GameData.Instance.itemsFoundThisRun.Clear();
+
+        GameData.Instance.timesThisRun = new float[] {Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity, Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,
+        Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity,Mathf.Infinity };
+
+       // GameData.Instance.dialoguesSeen = new List<Vector2Int>();
+
+        GameData.Instance.statsSetup = false;
+        GameObject gameStData = GameObject.Find("GameStateData");
+        //gameStData.GetComponent<CharacterStats>().MageClass = false;
+        //gameStData.GetComponent<CharacterStats>().FighterClass = true ;
+
+        gameStData.GetComponent<CharacterStats>().setInitialDouglassStats();
 
 
+
+
+    }
 }

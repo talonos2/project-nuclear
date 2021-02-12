@@ -206,7 +206,15 @@ public class NewGameController : MonoBehaviour
                 CutsceneLoader.introCutscene = true;
                 CutsceneLoader.introSceneNumber = 0;
                 GameData.Instance.FloorNumber = 0;
+                GameSaverManager gameSaver = new GameSaverManager();
+                gameSaver.SetupFirstRunStats();
+                //gameStateData = GameObject.Find("GameStateData");
+                //SavedStats = gameStateData.GetComponent<CharacterStats>();
+
+
                 CutsceneLoader.LoadCutsceneAndFade(this.transform.parent.GetComponent<Canvas>(),2);
+
+
             }
             else
             {
@@ -223,8 +231,11 @@ public class NewGameController : MonoBehaviour
         if (runType.value == 1) {
             if (runVariable.text == "" || Convert.ToInt32(runVariable.text)==0 )
             {
+                Debug.Log("Do I get here");
                 GameData.Instance.RunNumber = 1;
                 GameData.Instance.FloorNumber = 0;
+                GameSaverManager gameSaver = new GameSaverManager();
+                gameSaver.SetupFirstRunStats();
                 CutsceneLoader.introCutscene = true;
             }
             else {
